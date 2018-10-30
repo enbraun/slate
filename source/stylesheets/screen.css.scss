@@ -66,10 +66,15 @@ html, body {
   .lang-selector {
     display: none;
     a {
+      color: #F1D32F;
       padding-top: 0.5em;
       padding-bottom: 0.5em;
     }
   }
+
+
+
+
 
   // This is the logo at the top of the ToC
   .logo {
@@ -251,7 +256,7 @@ html, body {
   margin-left: $nav-width;
   position: relative;
   z-index: 10;
-  background-color: $main-bg;
+  background-color: $main-bg;//2nd coloumn
   min-height: 100%;
 
   padding-bottom: 1px; // prevent margin overflow
@@ -263,7 +268,7 @@ html, body {
   // half of the content always this background color.
   .dark-box {
     width: $examples-width;
-    background-color: $examples-bg;
+    background-color: $examples-bg; //3rd coloumn extra sp
     position: absolute;
     right: 0;
     top: 0;
@@ -431,6 +436,8 @@ html, body {
     }
   }
 
+  
+
   dt {
     font-weight: bold;
   }
@@ -477,6 +484,7 @@ html, body {
       background-color: $aside-success-bg;
     }
   }
+
 
   aside:before {
     vertical-align: middle;
@@ -613,3 +621,4 @@ html, body {
 .highlight, .highlight .w {
   background-color: $code-bg;
 }
+

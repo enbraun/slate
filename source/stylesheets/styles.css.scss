@@ -1,0 +1,30 @@
+@charset "utf-8";
+@import 'normalize';
+
+
+////////////////////////////////////////////////////////////////////////////////
+// Newly added styling.
+////////////////////////////////////////////////////////////////////////////////
+
+
+
+.success{
+  color: #28a745;
+}
+
+.error{
+  color: #d14;
+}
+
+.required{
+  color: #ffae54;
+}
+
+.optional{
+  color: #939da3;
+}
+
+#noticeAside{
+  font-style:italic;
+  font-family: system-ui; 
+}
