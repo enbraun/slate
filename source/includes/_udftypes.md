@@ -8,7 +8,7 @@
 {
   ...
   "emp_birthday":"1997-01-27",
-  "Qualification": "MBA"
+  "qualification": "MBA"
  .... 
 }
 ```

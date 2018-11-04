@@ -16,11 +16,12 @@ includes:
   - errors
   - resourcetypes
   - projecttypes
-  - filters
   - resource
+  - resourceTimings
   - resourceNotes
   - udftypes
   - project
   - booking
+  
 search: true
 ---
