@@ -2,10 +2,6 @@
 
 ## Resource object
 
-Creates a new resource object.
-
-
-
 >Example Response  
 
 ```json
@@ -48,6 +44,9 @@ Creates a new resource object.
    "emp_birthday": "1991-01-27" <- User defined field
 }
 ```
+
+Creates a new resource object.
+
 
 <span style="color:#b93d6a">`Resource`</span> object contains all the information about the resource. The API allows you to create, delete, and update resources. You can retrieve individual resource as well as a list of all your resources.
 
@@ -404,8 +403,8 @@ The full list of all operators is shown below.
 |**Phone**| <ul> <li>has *(default)* </li><li>eq</li></ul> |**Example:** <br><ul><li>-d phone=999 </li><li>-d phone:eq='(485)555-0202' </li><li>-d phone:has=753 </li></ul> 
 |**Start Date**| <ul><li>eq *(default)* </li><li>lt </li><li>  gt </li><li> bt </li><li> ex</li>   |**Example:** <br><ul><li>-d start_date=2016-01-27</li><li>-d start_date:eq=2016-01-27</li><li>-d start_date:lt=1999-12-22 </li><li>-d start_date:gt=1990-01-11 </li><li>-d start_date:bt="2001-01-01&#124;2010-12-31"</li><li>-d start_date:bt=2001-01-01 </li><li>-d start_date:ex="1992-02-12&#124;1997-01-27" </li><li>-d start_date:ex=1992-02-12 </li></ul>
 |**Last Working Date**| <ul><li>eq *(default)* </li><li>lt </li><li>  gt </li><li> bt </li><li> ex</li>  |**Example:** <br><ul><li>-d last_date=2018-04-19</li><li>-d last_date:eq=2016-05-17</li><li>-d last_date:lt=2002-12-31 </li><li>-d last_date:gt=2010-01-01 </li><li>-d last_date:bt="1995-12-31&#124;1999-01-01"</li><li>-d last_date:bt=1995-12-31 </li><li>-d last_date:ex="2001-01-01&#124;2002-01-01" </li><li>-d last_date:ex=2003-01-01 </li></ul>
+ _For User-defined fields please [check here](#filters-for-user-defined-fields)._ 
 
- _For User-defined fields please [check here] (##filters-for-user-defined-fields)._ 
 ## Update a resource 
 
 Updates the specified resource by setting the values of the parameters passed. Any parameters not provided will be left unchanged. 
