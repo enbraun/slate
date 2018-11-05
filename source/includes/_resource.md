@@ -145,14 +145,16 @@ Returns a list of resources. The resources are returned sorted by name.
 > Example Request
 
 ```shell
-curl "https://app.eresourcescheduler.cloud/rest/v1/resources"\
+curl -v -X GET
+"https://app.eresourcescheduler.cloud/rest/v1/resources"\
   -H "Authorization: Bearer B8x5Vj1O65r6wnoV"
 ```
 
 >Example Request With Offset And Limit 
 
 ```shell 
-curl "https://app.eresourcescheduler.cloud/rest/v1/resources?offset=1&limit=1"\
+curl -v -X GET
+"https://app.eresourcescheduler.cloud/rest/v1/resources?offset=1&limit=1"\
  -H "Authorization: Bearer B8x5Vj1O65r6wnoV"
 ```
 
@@ -247,7 +249,7 @@ curl "https://app.eresourcescheduler.cloud/rest/v1/resources?offset=1&limit=1"\
 > Example Request
 
 ```shell
-curl "https://app.eresourcescheduler.cloud/rest/v1/resources/1"\
+curl -v -X GET "https://app.eresourcescheduler.cloud/rest/v1/resources/1"\
   -H "Authorization: Bearer B8x5Vj1O65r6wnoV"
 ```
 
@@ -415,10 +417,10 @@ This request accepts mostly the same arguments as the resource creation call.
 
 > Example Request
 
-```shell
-curl "https://app.eresourcescheduler.cloud/rest/v1/resources/1"\
+```shell 
+curl -v -X PUT
+"https://app.eresourcescheduler.cloud/rest/v1/resources/1"\
   -H "Authorization: Bearer B8x5Vj1O65r6wnoV"
-  -X PUT
 ```
 
 <span class="optional"><b>ARGUMENTS</b></span>
@@ -461,9 +463,8 @@ Name               |  Description
 > Example Request
  
 ```shell
-curl "https://app.eresourcescheduler.cloud/rest/v1/resources/1"\
+curl -v -X DELETE "https://app.eresourcescheduler.cloud/rest/v1/resources/1"\
   -H "Authorization: Bearer B8x5Vj1O65r6wnoV"\
-  -X DELETE
 ```
 
 
@@ -477,10 +478,9 @@ Name | Description
 > Example Request For Forcefull Delete 
  
 ```shell
-curl "https://app.eresourcescheduler.cloud/rest/v1/resources/1 \
+curl -v -X DELETE "https://app.eresourcescheduler.cloud/rest/v1/resources/1 \
       ?forceDeleteBookings=true" \
 -H "Authorization: Bearer B8x5Vj1O65r6wnoV" \
--X DELETE
 ```
 
 ### Returns
@@ -492,4 +492,715 @@ curl "https://app.eresourcescheduler.cloud/rest/v1/resources/1 \
 | **409** <br> <span class = "error">`Conflict`</span> |Conflict indicates that the resource can not be deleted as there are bookings associated with this resource. If you wish to delete it any way you must use force delete option by passing <span class = "error">`true`</span> for parameter <span class = "error">`force_delete_booking`</span>. This operation deletes all bookings of requested resource and resource itself. This can not be undone. Example shown <span style="font-size:24px; font-weight:bold;">￼&#x1f449;</span>|
 
 
+## Timings
 
+> Example Response 
+
+```json
+{
+   "totalcount":2,
+   "data":[
+      {
+         "id":5,
+         "name":"Part Time",
+         "effective_date":"2018-11-15",
+         "applied_on":"2018-11-03T15:06:15.454+05:30",
+         "created_on":"2018-11-03T15:06:15.484913+05:30",
+         "modified_on":null,
+         "created_by":{
+            "id":2,
+            "name":"Patrick Wilson"
+         },
+         "modified_by":{
+            "id":null,
+            "name":null
+         },
+         "timings":[
+            {
+               "day_num":2,
+               "start_time":600,
+               "end_time":840
+            },
+              {...},
+        	  {...}, 
+              {...},
+              {...},
+	          {...},	            
+         ]
+      },
+      {...},
+      {...} 
+```
+
+To capture timings about a resource, eRS Cloud provides Timings. One resource may work in different timings as per his availability or requirement, for such situations Timings are beneficial.
+
+Let say, If a resource works on a full-time profile but then for a certain time of period he switched his timings from full-time to part-time. Then for that certain period “Part Time” calendar will get applied along with its effective date. Timings are beneficial to apply multiple calendars on a resource. 
+
+eRS Cloud API allows you to perform *`POST`*, *`GET`*, *`PUT`*, *`DELETE`* operations on Notes.
+
+
+### Retrieving the timings
+
+> `GET v1/resources/{ID}/timings`
+
+> Example Request
+
+```shell
+curl -v -X GET "https://app.eresourcescheduler.cloud/rest/v1/resources/12/timings"\
+  -H "Authorization: Bearer fZ5jaMNaV9syzOaS"\
+```
+
+> Example Response
+
+
+```json
+{
+   "totalcount":2,
+   "data":[
+      {
+         "id":5,
+         "name":"Part Time",
+         "effective_date":"2018-11-15",
+         "applied_on":"2018-11-03T15:06:15.454+05:30",
+         "created_on":"2018-11-03T15:06:15.484913+05:30",
+         "modified_on":null,
+         "created_by":{
+            "id":2,
+            "name":"Patrick Wilson"
+         },
+         "modified_by":{
+            "id":null,
+            "name":null
+         },
+         "timings":[
+            {
+               "day_num":2,
+               "start_time":600,
+               "end_time":840
+            },
+              {...},
+        	  {...}, 
+              {...},
+              {...},
+	          {...},	            
+         ]
+      },
+      {...},
+      {...} 
+```
+
+Retrieves the details of timings which are applied to the resource. You only need to provide the unique resource identifier that was returned upon resource creation.
+
+<span class="optional"><b>ARGUMENTS</b></span>
+
+Name | Description
+ ---:        |    :---- 
+ **ID** <br><span class="required">`required`</span> | The eRS Cloud-generated ID for the resource which is used to uniquely identified resource object.
+
+
+### Returns
+
+| Code      | Description | 
+| ---:        |    :----   | 
+| **200** <br> <span class = "success">`OK`</span>     | This status code indicates that the operation was successful and timings  get retrieved successfully .  |
+| **403** <br> <span class = "error">`Forbidden`</span> |Authorization failed due to insufficient permissions, this may be caused by user may not have rights to perform the operation.   |
+| **404** <br> <span class = "error">`Not Found`</span> | Not Found error occurs when requested resource does not exist (i.e. There is no resource with given id). This may also occur when requesting a resource which has been deleted. |
+
+
+### Applying new timing (POST)
+
+> `POST v1/resources/{ID}/timings`
+
+> Example Request
+
+```shell
+curl -v -X POST "https://app.eresourcescheduler.cloud/rest/v1/resources/12/timings"\
+  -H "Authorization: Bearer fZ5jaMNaV9syzOaS"\
+  -H "Content-Type: application/json"\
+  -d '{
+ 	    "appliedOn": "2018-12-04T08:14:41.109Z",
+	    "calendarId": "5",
+	    "effectiveDate": "2018-02-02"
+      }'
+```
+
+<span class="optional"><b>ARGUMENTS</b></span>
+
+
+Name         |  Description
+ ---:        |    :----   
+**appliedOn**  <br><span class="required">`required`</span>| AppliedOn Field describes when the calendar gets applied. It is a `DateTime` type of field. 
+**calendarId**  <br><span class="required">`required`</span>|As the name shows it is a calendar id which we have to pass. You will get this id at the time of calendar creation. This field accepts `Integer` only. 
+**effectiveDate**  <br><span class="required">`required`</span>|Effective date describes from when should the calendar get applied. This field accepts `Date` only.
+
+
+### Returns
+ 
+| Code      |Description |
+ :---        |    :----   |
+| **201** <br><span class = "success">`Created`</span> | This status code indicates that the operation was successful and timing get applied successfully.|
+| **400** <br> <span class = "error">`Bad Request`</span> | Bad Request error occurs when a request is not malformed, syntactically incorrect, missing required parameters are  or any unknown parameter is passed.  |
+| **403** <br> <span class = "error">`Forbidden`</span> |Authorization failed due to insufficient permissions, this may be caused by user may not have rights to perform the operation.|
+
+
+### Update timings
+
+
+> `PUT v1/resources/{ID}/timings/{Timing_ID}`
+
+> Example Request
+
+```shell
+curl -v -PUT "https://app.eresourcescheduler.cloud/rest/v1/resources/12/timings/2"\
+  -H "Authorization: Bearer fZ5jaMNaV9syzOaS"\
+  -H "Content-Type: application/json"\
+  -d '{
+ 	    "appliedOn": "2018-12-04T08:14:41.109Z",
+	    "calendarId": "5",
+	    "effectiveDate": "2018-02-02"
+      }'
+```
+
+
+
+Updates the specified resource's calendar by setting the value of the parameter passed. You need to provide the unique resource identifier that was returned upon resource creation and unique timing identifier that was returend upon timing addition. If parameter is not provided then it will be left unchanged.
+
+This request accepts mostly the same argument as the note creation call.
+
+
+<span class="optional"><b>ARGUMENTS</b></span>
+
+
+Name         |  Description
+ ---:        |    :----   
+ **ID** <br><span class="required">`required`</span> | The eRS Cloud-generated ID for the resource which is used to uniquely identified resource object.
+ **Timing_ID** <br><span class="required">`required`</span> | The eRS Cloud-generated ID for the `timing` which is used to uniquely identified.
+**appliedOn**  <br><span class="required">`required`</span>| AppliedOn Field describes when the calendar gets applied. It is a `DateTime` type of field. 
+**calendarId**  <br><span class="required">`required`</span>|As the name shows it is a calendar id which we have to pass. You will get this id at the time of calendar creation. This field accepts `Integer` only. 
+**effectiveDate**  <br><span class="required">`required`</span>|Effective date describes from when should the calendar get applied. This field accepts `Date`only.
+
+### Returns
+
+| Code      | Description | 
+| ---:        |    :----   | 
+| **200** <br> <span class = "success">`OK`</span>    |  This indicates that the operation was successful and a timing get updated successfully.|
+| **400** <br> <span class = "error">`Bad Request`</span> | Bad Request occurs when a request is not well-formed, syntactically incorrect, empty required parameters or any unknown parameter is passed.|
+| **403** <br> <span class = "error">`Forbidden`</span> | Authorization failed due to insufficient permissions, this may be caused by user may not have rights to perform the operation.   |
+
+### Delete timings
+
+
+> `DELETE v1/resources/{ID}/timings/{Timing_ID}`
+
+Permanently deletes a applied Calendar. It cannot be undone. You need to provide the unique resource identifier that was returned upon resource creation and unique timing identifier that was returend upon timing addition.
+
+
+> Example Request
+
+```shell
+curl -v -X DELETE\
+"https://app.eresourcescheduler.cloud/rest/v1/resources/12/timings/2"\
+  -H "Authorization: Bearer fZ5jaMNaV9syzOaS"
+```
+
+<span class="optional"><b>ARGUMENTS</b></span>
+
+Name | Description
+ ---:        |    :---- 
+ **ID** <br><span class="required">`required`</span> | The eRS Cloud-generated ID for the resource which is used to uniquely identified resource object.
+ **Timing_ID** <br><span class="required">`required`</span> | The eRS Cloud-generated ID for the `timing` which is used to uniquely identified.
+
+### Returns
+
+| Code      | Description  
+| ---:        |    :----   
+| **200** <br><span class = "success">`OK`</span> |This status code indicates that the operation was successful and a applied calendar get deleted successfully |
+
+## Exceptions
+
+>Example Response
+
+```json
+{
+   "totalcount":1,
+   "data":[
+      {
+         "id":2,
+         "name":"Working Sunday",
+         "description":"Working Sunday",
+         "date":"2018-11-17",
+         "is_working_exception":true,
+         "created_on":"2018-11-03T15:07:30.917087+05:30",
+         "modified_on":null,
+         "created_by":{
+            "id":2,
+            "name":"Patrick Wilson"
+         },
+         "modified_by":{
+            "id":null,
+            "name":null
+         },
+         "timings":[
+            {
+               "start_time":600,
+               "end_time":1080
+            }
+         ]
+      }
+   ]
+}
+```
+
+Exception is nothing but a thing that is excluded from a general schedule. eRS provides you the feature to add an exception to a resource.
+
+Let say, A resource having calendar which does not have Sunday working. But for some reason, resoure has to work on Sunday then this a case of exception. So in such situation exception is handy.
+
+eRS Cloud provides you two types of exceptions: 
+    <ol><li>Working Exception : <p>&#160;&#160;&#160;&#160;&#160; Working Exception is get added on a non-working day. </p></li> <li>Non-working Exception : <p>&#160;&#160;&#160;&#160;&#160; Non-working Exception is get added on a working day. </p></li></ol>
+
+__*Working Exception can be added without timings*__
+
+
+### Retrieving exceptions
+
+> `GET v1/resources/{ID}/exceptions`
+
+> Example Request
+
+```shell
+curl -v -X GET "https://app.eresourcescheduler.cloud/rest/v1/resources/12/exceptions"\
+  -H "Authorization: Bearer fZ5jaMNaV9syzOaS"\
+```
+
+> Example Response
+
+```json
+
+{
+   "totalcount":1,
+   "data":[
+      {
+         "id":2,
+         "name":"Working Sunday",
+         "description":"Working Sunday",
+         "date":"2018-11-17",
+         "is_working_exception":true,
+         "created_on":"2018-11-03T15:07:30.917087+05:30",
+         "modified_on":null,
+         "created_by":{
+            "id":2,
+            "name":"Patrick Wilson"
+         },
+         "modified_by":{
+            "id":null,
+            "name":null
+         },
+         "timings":[
+            {
+               "start_time":600,
+               "end_time":1080
+            }
+         ]
+      }
+   ]
+}
+```
+
+
+Retrieves the details of exceptions which are applied to the resource. You only need to provide the unique resource identifier that was returned upon resource creation.
+
+<span class="optional"><b>ARGUMENTS</b></span>
+
+Name | Description
+ ---:        |    :---- 
+ **ID** <br><span class="required">`required`</span> | The eRS Cloud-generated ID for the resource which is used to uniquely identified resource object.
+
+
+### Returns
+
+| Code      | Description | 
+| ---:        |    :----   | 
+| **200** <br> <span class = "success">`OK`</span>     | This status code indicates that the operation was successful and exceptions  get retrieved successfully .  |
+| **403** <br> <span class = "error">`Forbidden`</span> |Authorization failed due to insufficient permissions, this may be caused by user may not have rights to perform the operation.   |
+| **404** <br> <span class = "error">`Not Found`</span> | Not Found error occurs when requested resource does not exist (i.e. There is no resource with given id). This may also occur when requesting a resource which has been deleted. |
+
+
+### Create an exception
+
+> `POST v1/resources/{ID}/exceptions`
+
+> Example Request
+
+```shell
+curl -v -X POST
+"https://app.eresourcescheduler.cloud/rest/v1/resources/12/exceptions"\
+  -H "Authorization: Bearer fZ5jaMNaV9syzOaS"\
+  -H "Content-Type: application/json"\
+  -d '{
+ 	"date": "2018-11-02",
+	"description": "Thursday 1",
+	"name": "Thursday 1",
+    "is_working_exception": true,
+    "timings":[
+            {
+               "start_time":600,
+               "end_time":1080
+            }
+         ] 
+    }'
+```
+
+
+<span class="optional"><b>ARGUMENTS</b></span>
+
+
+Name         |  Description
+ ---:        |    :----   
+**date**  <br><span class="required">`required`</span>| Date Field describes when will exception get applied. It is a `Date` type of field. 
+**descirption**  <br><span class="optional">`optional`</span>|As the name shows it is a description which we want to give for the exception . This field is a `string` type of field. 
+**name**  <br><span class="required">`required`</span>|Name describes the name of exception. This field is a `string` type of field
+**is_working_exception**  <br><span class="required">`required`</span>|Is working exception describes whether exception is a working exception or not. Accepts `true` if it is a working exception otherwise accepts `false` if it a non-working exception. This field is a `boolean` type of field
+**timings**  <br><span class="optional">`optional`</span>|Timing describes the timings of exception. This filed can be passed null, as eRS Cloud provids you the facility to create an exception without timings. This field is a `Array of objects` type of field
+**timings.start_time**  <br><span class="optional">`optional`</span>|Start time describes the start time of exception. This filed can be passed null, as eRS Cloud provids you the facility to create an exception without timings. This field is a `Integer` type of field.  
+**timings.end_time**  <br><span class="optional">`optional`</span>|End time describes the end time of exception. This filed can be passed null, as eRS Cloud provids you the facility to create an exception without timings. This field is a `Integer` type of field.  
+
+
+### Returns
+ 
+| Code      |Description |
+ :---        |    :----   |
+| **201** <br><span class = "success">`Created`</span> | This status code indicates that the operation was successful and exception get created successfully.|
+| **400** <br> <span class = "error">`Bad Request`</span> | Bad Request error occurs when a request is not malformed, syntactically incorrect, missing required parameters are  or any unknown parameter is passed.  |
+| **403** <br> <span class = "error">`Forbidden`</span> |Authorization failed due to insufficient permissions, this may be caused by user may not have rights to perform the operation.|
+
+### Update an exception
+
+
+> `PUT v1/resources/{ID}/exceptions/{Exception_ID}`
+
+> Example Request
+
+```shell
+curl -v -PUT "https://app.eresourcescheduler.cloud/rest/v1/resources/12/exceptions/2"\
+  -H "Authorization: Bearer fZ5jaMNaV9syzOaS"\
+  -H "Content-Type: application/json"\
+  -d '{
+ 	"date": "2018-11-02",
+	"description": "Thursday 1",
+	"name": "Thursday 1",
+    "is_working_exception": true,
+    "timings":[
+            {
+               "start_time":600,
+               "end_time":1080
+            }
+         ] 
+    }'
+```
+
+
+
+Updates the specified resource's exception by setting the value of the parameter passed. You need to provide the unique resource identifier that was returned upon resource creation and unique exception identifier that was returend upon exception addition. If parameter is not provided then it will be left unchanged.
+
+This request accepts mostly the same argument as the exception creation call.
+
+Name         |  Description
+ ---:        |    :----   
+ **ID** <br><span class="required">`required`</span> | The eRS Cloud-generated ID for the resource which is used to uniquely identified resource object.
+ **Exception_ID** <br><span class="required">`required`</span> | The eRS Cloud-generated ID for the `exception` which is used to uniquely identified.
+ **date**  <br><span class="required">`required`</span>| Date Field describes when will exceptiob get applied. It is a `Date` type of field. 
+**descirption**  <br><span class="optional">`optional`</span>|As the name shows it is a description which we want to give for the exception . This field is a `string` type of field. 
+**name**  <br><span class="required">`required`</span>|Name describes the name of exception. This field is a `string` type of field
+**is_working_exception**  <br><span class="required">`required`</span>|Is working exception describes whether exception is working exception or not. Accepts `true` if it is working exception otherwise accepts `false` if it a non-working exception. This field is a `boolean` type of field
+**timings**  <br><span class="optional">`optional`</span>|Timing describes the timings of exception. This filed can be pass null, as eRS Cloud provids you the facility to create an exception without timings. This field is a `Array of objects` type of field
+**timings.start_time**  <br><span class="optional">`optional`</span>|Start time describes the start time of exception. This filed can be pass null, as eRS Cloud provids you the facility to create an exception without timings. This field is a `Integer` type of field.  
+**timings.end_time**  <br><span class="optional">`optional`</span>|End time describes the end time of exception. This filed can be pass null, as eRS Cloud provids you the facility to create an exception without timings. This field is a `Integer` type of field.  
+
+### Returns
+
+| Code      | Description | 
+| ---:        |    :----   | 
+| **200** <br> <span class = "success">`OK`</span>    |  This indicates that the operation was successful and a exception get updated successfully.|
+| **400** <br> <span class = "error">`Bad Request`</span> | Bad Request occurs when a request is not well-formed, syntactically incorrect, empty required parameters or any unknown parameter is passed.|
+| **403** <br> <span class = "error">`Forbidden`</span> | Authorization failed due to insufficient permissions, this may be caused by user may not have rights to perform the operation.   |
+
+### Delete an exception
+
+> `DELETE v1/resources/{ID}/exceptions/{Exception_ID}`
+
+Permanently deletes a applied exception. It cannot be undone. You need to provide the unique resource identifier that was returned upon resource creation and unique exception identifier that was returend upon exception addition.
+
+
+> Example Request
+
+```shell
+curl -v -X DELETE\
+"https://app.eresourcescheduler.cloud/rest/v1/resources/12/exceptions/2"\
+  -H "Authorization: Bearer fZ5jaMNaV9syzOaS"
+```
+
+<span class="optional"><b>ARGUMENTS</b></span>
+
+Name | Description
+ ---:        |    :---- 
+ **ID** <br><span class="required">`required`</span> | The eRS Cloud-generated ID for the resource which is used to uniquely identified resource object.
+ **Exception_ID** <br><span class="required">`required`</span> | The eRS Cloud-generated ID for the `exception` which is used to uniquely identified.
+
+
+
+| Code      | Description  
+| ---:        |    :----   
+| **200** <br><span class = "success">`OK`</span> |This status code indicates that the operation was successful and exception get deleted successfully |
+
+## Notes
+
+> Exmaple Response
+
+```json
+{
+   "totalcount":3,
+   "limit":10,
+   "offset":0,
+   "data":[
+      {
+         "id":8,
+         "created_on":"2018-09-02T17:41:14.642026+05:30",
+         "content":"<p>Awarded by  &#34;Employee Of The Month&#34; 
+                    award on Aug  09, 2017<br> </p>",
+         "modified_on":null,
+         "created_by":{
+            "id":2,
+            "name":"Patrick Wilson",
+            "image_uuid":"/img/8945d093-0f76-4347-a9ae-b2f3c13ea281",
+         },
+         "modified_by":{
+            "id":null,
+            "name":null
+         }
+      },
+      {...},
+      {...}
+   ]
+}
+```
+
+To capture additional information about a resource, eRS Cloud provides the `Notes`. If one has to provide any new information to a resource which is not captured from the filed, for such situations Notes are beneficial.
+
+Let's say, If a resource has role "A", but after a certain time his role get changed or new role gets added to his profile. Roles field gives us the ability to add, update or delete a role. But it does not give brief information when the role get added, deleted or updated. The Notes comes in handy in such situations. Notes are handy to maintain the history of a resource.   
+
+eRS Cloud API allows you to perform *`POST`*, *`GET`*, *`PUT`*, *`DELETE`* operations on Notes. 
+
+*The Notes Of Archived Resource remain available for the records.*
+
+
+### List notes
+
+>` GET  v1/resources/{ID}/notes`
+
+
+Retrieves the Notes list of specified resource. You need to provide the unique resource identifier that was returned upon resource creation.The notes are returned which sorted by lastly modified or added.
+
+> Example Request
+
+```shell
+curl -v -X GET
+"https://app.eresourcescheduler.cloud/rest/v1/resources/8/notes"\
+  -H "Authorization: Bearer B8x5Vj1O65r6wnoV"
+```
+
+>Example Request With Offset And Limit 
+
+```shell 
+curl -v -X GET
+"https://app.eresourcescheduler.cloud/rest/v1/resources/8/
+      notes?offset=1&limit=1"\
+ -H "Authorization: Bearer B8x5Vj1O65r6wnoV"
+```
+>Example Request With orderBy 
+
+```shell 
+curl -v -X GET
+ "https://app.eresourcescheduler.cloud/rest/v1/resources/8/
+      notes?offset=1&limit=1&orderBy=createdOn"\
+ -H "Authorization: Bearer B8x5Vj1O65r6wnoV"
+```
+
+
+> Exmaple Response
+
+```json
+{
+   "totalcount":3,
+   "limit":10,
+   "offset":0,
+   "data":[
+      {
+         "id":8,
+         "created_on":"2018-09-02T17:41:14.642026+05:30",
+         "content":"<p>Awarded by  &#34;Employee Of The Month&#34; 
+                    award on Aug  09, 2017<br> </p>",
+         "modified_on":null,
+         "created_by":{
+            "id":2,
+            "name":"Patrick Wilson",
+            "image_uuid":"/img/8945d093-0f76-4347-a9ae-b2f3c13ea281",
+         },
+         "modified_by":{
+            "id":null,
+            "name":null
+         }
+      },
+      {...},
+      {...}
+   ]
+}
+```
+
+### Limit and Offset
+
+
+
+<span class="optional"><b>ARGUMENTS</b></span>
+
+|Name|Description|
+|-:|:-|
+|**limit**<br><span class="optional">`optional`</span>|The limit keyword is used to limit the number of notes returned from a result set.<br><br>The limit number can be any from zero going upwards. When zero is specified as the limit, no notes are returned from the result set.<br><br>Let’s suppose that we want to display 20 notes per page to avoid confusion. The limit comes in handy in such situations. We could be able to limit the results returned from query params to 20 notes only per page.<br><br>*The default value of limit is*  <span class="error">*`25`*</span><br>*Maximum value of limit can be* <span class="error">*`1000.`*</span> *If Limit value is exceeds than*<span class="error">*`1000`*</span>  *then it will get set to* <span class="error">*`1000`*</span> *which is Maximum value for limit.* |
+|**offset**<br><span class="optional">`optional`</span>|The Offset value allows specifying which note to start from retrieving data. <br><br>The Offset value is also most often used together with the Limit keyword.<br><br>The offset number can be any from zero going upwards. When zero is specified as the offset, records from first note are returned from the list of notes.<br><br>Let’s suppose that we want to display notes from third note. The Offset comes in handy in such situations. We could be able to apply offset on the results returned from query params to display  notes from third note.<br><br>*The default value of offset is* <span class="error">*`0`* </span>|
+
+
+### Ordering the notes
+
+<span class="optional"><b>ARGUMENTS</b></span>
+
+|Name|Options|Description|
+|-:|:-:|:-
+|**OrderBy**<br><span class="optional">`optional`</span>|<ul><li>createdOn *(Default)*</li></ul>|List of notes will be returned and sorted by it's created date.|
+| |<ul><li>modifiedOn</li></ul> |List of notes will be returned and sorted by it's latest modified date|
+
+
+
+### Returns 
+
+
+| Code      | Description | 
+| ---:        |    :----   | 
+| **200** <br> <span class = "success">`OK`</span>      |  This indicates that the operation was successful and a list of notes is returned.  |
+**400** <br> <span class = "error">`Bad Request` </span>| Bad Request may occur when offset and limit value is given as negative integer.
+> Example Request
+
+
+### Create a note
+
+>` POST  v1/resources/{ID}/notes`
+
+
+> Example Request
+
+```shell
+
+curl -v -X POST "https://app.eresourcescheduler.cloud/rest/v1/resources/8/notes"\
+  -H "Authorization: Bearer 2Gee9LrXLHMZehzq"\
+  -H "Content-Type: application/json"\
+  -d '{"content":"Hello Enbraun"}'
+```
+
+> Example Request With HTML Tag
+
+```shell
+
+curl -v -X POST "https://app.eresourcescheduler.cloud/rest/v1/resources/8/notes"\
+  -H "Authorization: Bearer 2Gee9LrXLHMZehzq"\
+  -H "Content-Type: application/json"\
+  -d '{"content":"<p>Hello Enbraun</p>"}'
+```
+
+<span class="optional"><b>ARGUMENTS</b></span>
+
+
+Name         |  Description
+ ---:        |    :----   
+**content**  <br><span class="required">`required`</span>  | To create new note you have to pass the body from `content` parameter.  Content param accepts plain text. Also, you can pass text with HTML tags as Notes are Multi Line Rich Text.
+
+
+### Returns
+ 
+| Code      |Description |
+ :---        |    :----   |
+| **201** <br><span class = "success">`Created`</span> | This status code indicates that the operation was successful and created a note successfully.|
+| **400** <br> <span class = "error">`Bad Request`</span> | Bad Request error occurs when a request is not malformed, syntactically incorrect, missing required parameters are  or any unknown parameter is passed.  |
+| **403** <br> <span class = "error">`Forbidden`</span> |Authorization failed due to insufficient permissions, this may be caused by user may not have rights to perform the operation.|
+
+
+
+### Update a note
+
+>` PUT  v1/resources/{ID}/notes/{Note_ID}`
+
+Updates the specified resource's note by setting the value of the parameter passed. You need to  provide the unique resource identifier that was returned upon resource creation and unique note identifier that was returend upon notes creation. If parameter is not provided then it will be left unchanged.
+
+This request accepts mostly the same argument as the note creation call.
+
+> Example Request
+
+```shell
+
+curl -v -X PUT "https://app.eresourcescheduler.cloud/rest/v1/resources/8/notes/4"\
+  -H "Authorization: Bearer 2Gee9LrXLHMZehzq"\
+  -H "Content-Type: application/json"\
+  -d '{"content":"Hello World"}'
+```
+
+> Example Request With HTML Tags.
+
+```shell
+
+curl -v -X PUT "https://app.eresourcescheduler.cloud/rest/v1/resources/8/notes/4"\
+  -H "Authorization: Bearer 2Gee9LrXLHMZehzq"\
+  -H "Content-Type: application/json"\
+  -d '{"content":"<p>Hello World</p>"}'
+```
+
+<span class="optional"><b>ARGUMENTS</b></span>
+
+
+Name         |  Description
+ ---:        |    :----   
+ **Note_ID** <br><span class="required">`required`</span> | The eRS Cloud-generated ID for the note which is used to uniquely identified.
+**content**  <br><span class="required">`required`</span>  | To create new note you have to pass the body from `content` parameter.  Content param accepts plain text. Also, you can pass text with HTML tags as Notes are Multi Line Rich Text.
+
+
+### Returns
+
+| Code      | Description | 
+| ---:        |    :----   | 
+| **200** <br> <span class = "success">`OK`</span>    |  This indicates that the operation was successful and a note get updated successfully.|
+| **400** <br> <span class = "error">`Bad Request`</span> | Bad Request occurs when a request is not well-formed, syntactically incorrect, empty required parameters or any unknown parameter is passed.|
+| **403** <br> <span class = "error">`Forbidden`</span> | Authorization failed due to insufficient permissions, this may be caused by user may not have rights to perform the operation.   |
+
+
+### Delete a note
+
+>` DELETE  v1/resources/{ID}/notes/{Note_ID}`
+
+Permanently deletes a Note. It cannot be undone.You need to  provide the unique resource identifier that was returned upon resource creation and unique note identifier that was returend upon notes creation.
+
+> Example Request
+
+```shell
+
+curl -v -X DELETE "https://app.eresourcescheduler.cloud/rest/v1/resources/8/notes/5"\
+  -H "Authorization: Bearer 2Gee9LrXLHMZehzq"
+```
+
+<span class="optional"><b>ARGUMENTS</b></span>
+
+Name | Description
+ ---:        |    :---- 
+ **ID** <br><span class="required">`required`</span> | The eRS Cloud-generated ID for the resource which is used to uniquely identified resource object.
+**Note_ID** <br><span class="required">`required`</span> | The eRS Cloud-generated ID for the note which is used to uniquely identified.
+
+
+
+| Code      | Description  
+| ---:        |    :----   
+| **200** <br><span class = "success">`OK`</span> |This status code indicates that the operation was successful and a note get deleted successfully |

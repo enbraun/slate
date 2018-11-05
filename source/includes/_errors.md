@@ -4,11 +4,6 @@ eRS Cloud uses conventional HTTP response codes to indicate the success or failu
 
 
 
-
-<!-- Was this section helpful? <span id="demo" onclick="myFunction()">Yes</span>  <span id ="demo" onclick="myFunction()">No</span>  -->
-
-
-
 ## The eRS Cloud API uses the following status codes:
 
 Status Code | Meaning
@@ -22,5 +17,5 @@ Status Code | Meaning
 **405** <br> <span class = "error">**`Method Not Allowed`** </span> | HTTP method is not allowed by a web server for a requested URL. 
 **409** <br> <span class = "error">**`Conflict`** </span>| The request conflicts with another request. 
 **415** <br> <span class = "error">**`Unsuppoerted Media Type`** </span> | No valid media is provided.
-**500** <br> <span class = "error">**`Internal Server Error`** </span>| Something went wrong on eRS's end. (This is rare.)
+**500** <br> <span class = "error">**`Internal Server Error`** </span>| Something went wrong on eRS's end. _(This is rare.)_
 
