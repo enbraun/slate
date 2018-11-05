@@ -10,7 +10,7 @@ For ex. Employee(Human),Contractor(Human),Machines(Non-humam).  -->
 > Exmple Request
 
 ```shell
-curl "https://app.eresourcescheduler.cloud/rest/v1/resourcetype"\
+curl -v -X GET "https://app.eresourcescheduler.cloud/rest/v1/resourcetypes"\
   -H "Authorization: Bearer B8x5Vj1O65r6wnoV"
 ```
 
@@ -57,21 +57,16 @@ This is an object which represents the type of resource. In an organization, the
 
 Name | Description
 ---------: | :-----------
-id  <br><span class="optional">`integer`</span>|  Unique identifier for the object.
-name <br><span class="optional">`string`</span>  |  This is an object which represents the name of a resource type. Also, name of the resource we will find in add resource form. Where we have select which type of user we have to create. There can be multiple types of resource types.
-isHuman <br><span class="optional">`boolean`</span>| This is a boolean type of value which repr­esents the wether the type of resource is human or not. For example, Human resources are Employee, Contractors, etc.  Where as inhuman resources are Machines, Computers, etc.
-fields <br><span class="optional">`array of strings`</span> | Fields are the list of objects representing filed that are present is eRS Cloud to be mapped with Resource type, Project type, and Booking profile to represent attributes of  Resource type, Project type, and Booking profile respectively.
-fileds.name <br><span class="optional">`string`</span> |   This is an object which represents field name of the resource type.
-fileds. type <br><span class="optional">`string`</span> |  This is an object which represents the filed type of resource type. For example  Text, DDSS, DDMS, etc.
-fields. code <br><span class="optional">`string`</span> | This is an object which represents the unique code which is referred to as API code.
-fields. options <br><span class="optional">`string`</span> |  This is an object which represents the options of multi-selections fields. For Ex. DDMS,DDSS,etc.
-fields. options.id <br><span class="optional">`integer`</span> |  Unique identifier for the object of the option.
-fields.option.name <br><span class="optional">`string`</span> |  This is an object which represents the name of the option.
-
-
-### Returns
-
-Retrieves the details of all types of existing resource. 
+**id**  <br><span class="optional">`integer`</span>|  Unique identifier for the object.
+**name** <br><span class="optional">`string`</span>  |  This is an object which represents the name of a resource type. Also, name of the resource we will find in add resource form. Where we have select which type of user we have to create. There can be multiple types of resource types.
+**isHuman** <br><span class="optional">`boolean`</span>| This is a boolean type of value which repr­esents the wether the type of resource is human or not. For example, Human resources are Employee, Contractors, etc.  Where as inhuman resources are Machines, Computers, etc.
+**fields** <br><span class="optional">`array of strings`</span> | Fields are the list of objects representing filed that are present is eRS Cloud to be mapped with Resource type, Project type, and Booking profile to represent attributes of  Resource type, Project type, and Booking profile respectively.
+**fileds.name** <br><span class="optional">`string`</span> |   This is an object which represents field name of the resource type.
+**fileds. type** <br><span class="optional">`string`</span> |  This is an object which represents the filed type of resource type. For example  Text, DDSS, DDMS, etc.
+**fields. code** <br><span class="optional">`string`</span> | This is an object which represents the unique code which is referred to as API code.
+**fields. options** <br><span class="optional">`string`</span> |  This is an object which represents the options of multi-selections fields. For Ex. DDMS,DDSS,etc.
+**fields. options.id** <br><span class="optional">`integer`</span> |  Unique identifier for the object of the option.
+**fields.option.name** <br><span class="optional">`string`</span> |  This is an object which represents the name of the option.
 
 
 
@@ -79,14 +74,15 @@ Retrieves the details of all types of existing resource.
 
 
 
->  `GET v1/resourcetype/{ID}`
+>  `GET v1/resourcetypes/{ID}`
 
 
 
 >Example Request
 
 ```shell
-curl "https://app.eresourcescheduler.cloud/rest/v1/resourcetype/1"\
+curl -v -X GET
+"https://app.eresourcescheduler.cloud/rest/v1/resourcetypes/1"\
   -H "Authorization: Bearer B8x5Vj1O65r6wnoV"
 ```
 
@@ -132,25 +128,28 @@ curl "https://app.eresourcescheduler.cloud/rest/v1/resourcetype/1"\
 
 <span class="optional"><b>ARGUMENTS</b></span>
 
-Parameter | Description
----------: | :-----------
-**id** <br><span class="required">**`required`**</span> | Unique identifier for the object.
+Name | Description
+ ---:        |    :---- 
+ **ID** <br><span class="required">`required`</span> | The eRS Cloud-generated ID for the resource-type which is used to uniquely identified resource-type object.
+
 
 ### Returns
 
-Retrieves the details of all types of existing resource. You need only provide the unique resource type identifier that was returned upon resource type creation.
-
+| Code      | Description | 
+| ---:        |    :----   | 
+| **200** <br> <span class = "success">`OK`</span>     | This status code indicates that the operation was successful and a resource-type  get retrieved successfully .  |
+| **403** <br> <span class = "error">`Forbidden`</span> |Authorization failed due to insufficient permissions, this may be caused by user may not have rights to perform the operation.   |
 
 
 ## Get All Resource Types
 
->  `GET v1/resourcetype`
+>  `GET v1/resourcetypes`
 
 > Example Request
 
 
 ```shell
-curl "https://app.eresourcescheduler.cloud/rest/v1/resourcetype"\
+curl -v -X GET "https://app.eresourcescheduler.cloud/rest/v1/resourcetypes"\
   -H "Authorization: Bearer B8x5Vj1O65r6wnoV"
 ```
 
@@ -198,19 +197,24 @@ curl "https://app.eresourcescheduler.cloud/rest/v1/resourcetype"\
 
 Name | Description
 ---------: | :-----------
-id <br><span class="required">`required`</span> |  Unique identifier for the object.
-name  <br><span class="optional">`optional`</span> |  This is an object which represents the name of the resource type. Also, the name of the resource we will find in add resource form. Where we have select which type of user we have to create. There can be multiple types of resource types.
-isHuman  <br><span class="optional">`optional`</span> | This is a boolean type of value which repr­esents the wether the type of resource is human or not. For example, Human resources are Employee, Contractors, etc.  Whereas inhuman resources are Machines, Computers, etc.
-fields <br><span class="optional">`optional`</span>  |  Fields are the list of objects representing filed that are present is eRS Cloud to be mapped with Resource type, Project type, and Booking profile to represent attributes of  Resource, Project, and Booking respectively.
-fileds.name <br><span class="optional">`optional`</span>  |   This is an object which represents field name of the resource type.
-fileds. type  <br><span class="optional">`optional`</span>  |  This is an object which represents the filed type of resource type. Ex  Text, DDSS, DDMS,etc.
-fields. code <br><span class="optional">`optional`</span>   |  This is an object which represents the unique code which is referred to as API code.
-fields. options <br><span class="optional">`optional`</span>  |  This is an object which represents the options of multi-selections fields. For Ex. DDMS,DDSS,etc.
-fields. options.id  <br><span class="optional">`optional`</span>  |  Unique identifier for the object of the option.
-fields.option.name   <br><span class="optional">`optional`</span>  |  This is an object which represents the name of the option.
+**id** <br><span class="required">`required`</span> |  Unique identifier for the object.
+**name**  <br><span class="optional">`optional`</span> |  This is an object which represents the name of the resource type. Also, the name of the resource we will find in add resource form. Where we have select which type of user we have to create. There can be multiple types of resource types.
+**isHuman**  <br><span class="optional">`optional`</span> | This is a boolean type of value which repr­esents the wether the type of resource is human or not. For example, Human resources are Employee, Contractors, etc.  Whereas inhuman resources are Machines, Computers, etc.
+**fields** <br><span class="optional">`optional`</span>  |  Fields are the list of objects representing filed that are present is eRS Cloud to be mapped with Resource type, Project type, and Booking profile to represent attributes of  Resource, Project, and Booking respectively.
+**fileds.name** <br><span class="optional">`optional`</span>  |   This is an object which represents field name of the resource type.
+**fileds.type**  <br><span class="optional">`optional`</span>  |  This is an object which represents the filed type of resource type. Ex  Text, DDSS, DDMS,etc.
+**fields.code** <br><span class="optional">`optional`</span>   |  This is an object which represents the unique code which is referred to as API code.
+**fields.options** <br><span class="optional">`optional`</span>  |  This is an object which represents the options of multi-selections fields. For Ex. DDMS,DDSS,etc.
+**fields.options.id**  <br><span class="optional">`optional`</span>  |  Unique identifier for the object of the option.
+**fields.option.name**   <br><span class="optional">`optional`</span>  |  This is an object which represents the name of the option.
 
 
-### Results
 
-This endpoint retrieves all Resource Types.
+### Returns
+
+| Code      | Description | 
+| ---:        |    :----   | 
+| **200** <br> <span class = "success">`OK`</span>      |  This indicates that the operation was successful and a list of resource-types is returned.  |
+
+
 

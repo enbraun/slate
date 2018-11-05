@@ -6,7 +6,8 @@
 
 ```shell
 # With shell, you can just pass the correct header with each request
-curl "https://www.eresourcescheduler.cloud/rest/v1/resources"\
+curl -v -X GET
+ "https://www.eresourcescheduler.cloud/rest/v1/resources"\
   -H "Authorization: Bearer <provided_authentication_token>"
 ```
 

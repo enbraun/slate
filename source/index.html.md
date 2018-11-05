@@ -16,9 +16,8 @@ includes:
   - errors
   - resourcetypes
   - projecttypes
+  - calendars
   - resource
-  - resourceTimings
-  - resourceNotes
   - udftypes
   - project
   - booking
