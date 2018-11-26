@@ -7,7 +7,7 @@
 ```json
 {
   ...
-  "emp_birthday":"1997-01-27",
+  "emp_birthday": "1997-01-27",
   "qualification": "MBA"
  .... 
 }
@@ -51,20 +51,3 @@ Name <span style="width:100px; float:left;"></span>|Description
 **Drop Down Single Select**  |  Allows user to select a single value from the dropdown list. You have to add values and it’s description for every entity as a dropdown option. Also, you have to pass  API code which will be referred to as a key. You can add a description for this text so that you can refer it to understand the requirement and use of this field. This field is visible to the end user. You can add help text, information text. You can pass a boolean value to make this field filterable or not. Also, importantly you have to assign at least one available in our 3 forms which are Resource form, Project Form and Booking Form respectively. You can select multiple options for this field.
 **Dropdown  Multi select**  |  Allows user to select multiple values from the dropdown list. You have to add values and it’s description for every entity as a dropdown option. Also, you have to pass  API code which will be referred to as a key. You can add a description for this text so that you can refer it to understand the requirement and use of this field. This field is visible to the end user. You can add help text, information text. You can pass a boolean value to make this field filterable or not. Also, importantly you have to assign at least one available in our 3 forms which are Resource form, Project Form and Booking Form respectively. You can select multiple options for this field.
 
-
-## Filters for User-defined fields
-
-|**Field Type**| **Available Operator**  | **Description & Example**|
-|:--|:--|:--|
-|**Simple Text**| <ul> <li>has *(default)* </li><li>eq</li></ul> |**Example:** <br><ul><li>-d simtext='Simple Text' (default) </li><li>-d simtext:has='Simple Text' </li><li>-d simtext:eq='Simple Text Ed' </li></ul> 
-|**Integer Number**|  <ul><li>eq *(default)* </li><li>lt </li><li>  gt </li><li> bt </li><li> ex</li> |**Example:** <br><ul><li>-d int_test=41 </li><li>-d int_test:eq=41 </li><li>-d int_test:lt=41</li><li>-d int_test:gt=41</li><li>-d int_test:lt=41</li><li>-d int_test:bt="41&#124;121"</li><li>-d int_test:bt=41</li><li>-d int_test:ex="41&#124;121"</li><li>-d int_test:ex=41</li></ul>  
-|**Fractional Number**|  <ul><li>eq *(default)* </li><li>lt </li><li>  gt </li><li> bt </li><li> ex</li> |**Example:** <br><ul><li>-d float_test=12.1 </li><li>-d float_test:eq=12.1 </li><li>-d float_test:lt=45.6</li><li>-d float_test:gt=121.1</li><li>-d float_test:bt="1.0&#124;121.1"</li><li>-d float_test:bt=22.6</li><li>-d float_test:ex="15.7&#124;45.6"</li><li>-d float_test:ex=45.6</li></ul>  
-|**Date**|   <ul><li>eq *(default)* </li><li>lt </li><li>  gt </li><li> bt </li><li> ex</li> |**Example:** <br><ul><li>-d emp_birthday=1992-02-12</li><li>-d emp_birthday:eq=1992-02-12</li><li>-d emp_birthday:lt=1992-02-12 </li><li>-d emp_birthday:gt=1992-02-12 </li><li>-d emp_birthday:bt="1992-02-12&#124;1999-07-07"</li><li>-d emp_birthday:bt=1992-02-12 </li><li>-d emp_birthday:ex="1992-02-12&#124;1997-01-27" </li><li>-d emp_birthday:ex=1992-02-12 </li></ul>  
-|**DateTime**|  <ul><li>eq *(default)* </li><li>lt </li><li>  gt </li><li> bt </li><li> ex</li> |**Example:** <br><ul><li>-d date_time_test="2018-06-06T18:30:00Z" </li><li>-d date_time_test:eq="2018-06-06T18:30:00Z"</li><li>-d date_time_test:lt="2018-06-06T18:30:00Z"</li><li>-d date_time_test:gt="2018-06-06T18:30:00Z"</li><li>-d date_time_test:bt=2018-06-06T18:30:00Z&#124; 2018-06-06T18:30:00Z </li><li>-d date_time_test:bt="2018-06-06T18:30:00Z"</li><li>-d date_time_test:ex="2018-06-06T18:30:00Z&#124; 2018-06-06T18:30:00Z </li><li>-d date_time_test:ex="2018-06-06T18:30:00Z" </li></ul>  
-|**Email**| <ul> <li>has *(default)* </li><li>eq</li></ul> |**Example:** <br><ul><li>-d email='@'</li><li>-d email:has='a' </li><li>-d email:eq='ana.steele@mycompany.com' </li></ul>  
-|**Checkbox**|Default value is true, accepts value true and false |**Example:** <br><ul><li>-d check_test=true </li><li>-d check_test=false </li></ul> 
-|**Checkbox Group**| <ul> <li>any *(default)* </li><li>all</li></ul>|**Example:** <br><ul><li>-d check_group_test="16&#124;18"</li><li>-d check_group_test:any="17&#124;10"</li><li>-d check_group_test:all="16&#124;17"</li></ul>    
-|**Radio Group**|<ul> <li>eq *(default)* </li><li>any</li></ul>|**Example:** <br><ul><li>-d radio_test=15 </li><li>-d radio_test:eq=15 </li><li>-d radio_test:any=15 </li></ul>  
-|**Label**|<ul> <li>eq *(default)* </li><li>any</li></ul> |**Example:** <br><ul><li>-d label_test=18 </li><li>-d label_test:eq=18 </li><li>-d label_test:any=18 </li></ul>  
-|**Drop Down Single Select**| <ul> <li>eq *(default)* </li><li>any</li></ul>|**Example:** <br><ul><li>-d ddss_test=15 </li><li>-d ddss_test:eq=15 </li><li>-d ddss_test:any=15 </li></ul>  
-|**Drop Down Multi Select**|<ul> <li>any *(default)* </li><li>all</li></ul>|**Example:** <br><ul><li>-d ddms_test="20&#124;21"</li><li>-d ddms_test:any="20&#124;21"</li><li>-d ddms_test:all="20&#124;21"</li></ul>  

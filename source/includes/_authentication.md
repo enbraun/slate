@@ -21,7 +21,7 @@ eRS Cloud expects an API key to be included in all API requests to the server in
 
 `Authorization: Bearer B8x5Vj1O65r6wnoV`
 
->A sample test API key is included in all the example here, so you can test any example right away. To test requests using your account, replace the sample API key with your actual (`provided_authentication_token`) API key.
+A sample test API key is included in all the example here, so you can test any example right away. To test requests using your account, replace the sample API key with your actual (`provided_authentication_token`) API key.
 
 <aside class="notice" id="noticeAside">
 You must replace <code>B8x5Vj1O65r6wnoV</code> with your personal API key. 
