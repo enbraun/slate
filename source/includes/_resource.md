@@ -45,10 +45,7 @@
 }
 ```
 
-Creates a new resource object.
-
-
-<span style="color:#b93d6a">`Resource`</span> object contains all the information about the resource. The API allows you to create, delete, and update resource. You can retrieve individual resource as well as list of resources.
+<span style="color:#b93d6a">`Resource`</span> object represent resources (human / non-human) in your organization (i.e. Employees , Machines etc. ) which you want to schedule. Resources could be of multiple types with each type having its own custom attributes along with system defined attributes. The API allows you to list, search, create, delete, and update resources.
 
 <span class="optional"><b>ATTRIBUTES</b></span>
 
@@ -166,7 +163,7 @@ curl -v -X GET \
    "totalcount": 7,
    "offset": 1,
    "limit": 25,
-   "resources": [
+   "data": [
       {
          "id": 2,
          "roles": [
@@ -364,7 +361,7 @@ curl -X POST  "https://app.eresourcescheduler.cloud/rest/v1/resources/search" \
 
 ## Update a resource 
 
-Updates the specified resource by setting the values of the parameters passed. Any parameters not provided will be left unchanged. 
+Updates the specified resource by setting the values of the parameters passed. Any parameters which are not provided will be unchanged. 
 
 This request accepts mostly the same arguments as the resource creation call.
 
