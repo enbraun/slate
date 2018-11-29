@@ -1,6 +1,6 @@
 # Projects Types
 
-##  project type object
+##  Project type object
 
 > Example Request
 

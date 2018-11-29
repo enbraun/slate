@@ -66,7 +66,7 @@ Name         |  Description
 **first_name** <br><span class="optional">`string`</span> | The first name of the resource.
 **image_uuid** <br><span class="optional">`string`</span> | The  image or display picture of the resource.
 **email** <br><span class="optional">`string`</span> | The email address of the resource.
-**User defined fields** <br><span class="optional">`optional`</span>  | Custom user-defined fields used to capture additional information of resource. [Learn more] (#user-defined-fields)
+**User defined fields** <br><span class="optional">`optional`</span>  | Custom user-defined fields used to capture additional information of resource.  Here in given example, <span style="color:#db7708">`emp_birthday`</span> is a user defined field. [Learn more] (#user-defined-fields)
 
 
 
@@ -83,10 +83,12 @@ Name         |  Description
 ```shell
  curl -v -X POST "https://app.eresourcescheduler.cloud/rest/v1/resources" \
   -H "Authorization: Bearer B8x5Vj1O65r6wnoV" \
-  -d  "first_name= Amy" \
-  -d  "start_date= 2016-05-02" \
-  -d  "resource_type_id= 1" \
-  -d  "emp_birthday = 1991-01-27" <- User defined field
+  -H "Content-Type: application/json" \
+  -d  '{ "first_name": "Amy",
+         "start_date": "2016-05-02",
+         "resource_type_id": 1,
+         "emp_birthday": "1991-01-27" 
+        }'
 ```
 
 > Example Request for non-human resource:
@@ -94,13 +96,15 @@ Name         |  Description
 ```shell
  curl -v -X POST "https://app.eresourcescheduler.cloud/rest/v1/resources" \
   -H "Authorization: Bearer B8x5Vj1O65r6wnoV" \
-  -d  "name= La La Land" \
-  -d  "start_date= 2018-08-05" \
-  -d  "resource_type_id= 2" \
-  -d  "capacity = 15" <- User defined field
+  -H "Content-Type: application/json" \
+  -d '{ "name": "La La Land",
+        "start_date": "2018-08-05",
+        "resource_type_id": 2,
+        "capacity": 15 
+       }'
 ```
 
-<span class="optional"><b>ARGUMENTS</b></span>
+<span class="optional"><b>REQUEST BODY PARAMETERES</b></span>
 
 
 Name               |  Description
@@ -126,7 +130,7 @@ Name               |  Description
  :---        |    :----   |
 | **201** <br><span class = "success">`Created`</span> | This status code indicates that the operation was successful and  a resource get created successfully.|
 | **400** <br> <span class = "error">`Bad Request`</span> | Bad Request error occurs when a request is not malformed, syntactically incorrect, missing required parameters are  or any unknown parameter is passed. <br> Additionally, Bad request may also occur in one of these conditions :<ul><li>Invalid image file is provided.</li><li>Resource's start date is after its end date.</li></ul> |
-| **403** <br> <span class = "error">`Forbidden`</span> |Authorization failed due to insufficient permissions, this may be caused by user may not have rights to perform the operation.|
+| **403** <br> <span class = "error">`Forbidden`</span> |Authorization failed due to insufficient permissions. This occurs when user does not have enough access rights to perform this action. Access for each user can be controlled by an Administrator using eRS Cloud Application.|
 
 
 
@@ -215,11 +219,8 @@ curl -v -X GET \
 }
 ```
 
-### Limit and Offset
 
-
-
-<span class="optional"><b>ARGUMENTS</b></span>
+<span class="optional"><b>REQUEST QUERY PARAMETERES</b></span>
 
 |Name|Description|
 |-:|:-|
@@ -235,8 +236,7 @@ curl -v -X GET \
 | ---:        |    :----   | 
 | **200** <br> <span class = "success">`OK`</span>      |  This indicates that the operation was successful and  list of resources is returned.  |
 **400** <br> <span class = "error">`Bad Request` </span>| Bad Request may occur when offset and limit value is negative integer.|
-| **403** <br> <span class = "error">`Forbidden`</span> |Authorization failed due to insufficient permissions, this may be caused by user may not have rights to perform the operation.|
-
+| **403** <br> <span class = "error">`Forbidden`</span> |Authorization failed due to insufficient permissions. This occurs when user does not have enough access rights to perform this action. Access for each user can be controlled by an Administrator using eRS Cloud Application.|
 
 
 ## Retrieve a resource 
@@ -301,7 +301,7 @@ Retrieves the details of an existing resource. You only need to  provide the uni
 | Code      | Description | 
 | ---:        |    :----   | 
 | **200** <br> <span class = "success">`OK`</span>     | This status code indicates that the operation was successful and a resource  get retrieved successfully .  |
-| **403** <br> <span class = "error">`Forbidden`</span> |Authorization failed due to insufficient permissions, this may be caused by user may not have rights to perform the operation.   |
+| **403** <br> <span class = "error">`Forbidden`</span> |Authorization failed due to insufficient permissions. This occurs when user does not have enough access rights to perform this action. Access for each user can be controlled by an Administrator using eRS Cloud Application.|
 | **404** <br> <span class = "error">`Not Found`</span> | Not Found error occurs when requested resource does not exist (i.e. There is no resource with given id). This may also occur when requesting a resource which has been deleted. |
 
 ## Search resources
@@ -311,15 +311,6 @@ Retrieves the details of an existing resource. You only need to  provide the uni
 Filtering API responses to retrieve specific data.
 
 
-### Getting started with filters 
-
-> Example Request For Filter In x-www-form-urlencoded Format
-
-```shell
-curl -X POST  "https://app.eresourcescheduler.cloud/rest/v1/resources/search" \
--H "Authorization: Bearer eYPpTTKgsWW1mhjt" \
--d "resource_type_id:eq=1" 
-```
 The filter parameter allows for filtering the results returned from the various endpoint in various ways. For example fetching only resources having resource type id 1 by adding resource_type_id:eq=1 to your query.[Read more] (#filters)
 
 > Example Request For Filter In JSON Format
@@ -327,9 +318,9 @@ The filter parameter allows for filtering the results returned from the various 
 ```shell
 curl -X POST  "https://app.eresourcescheduler.cloud/rest/v1/resources/search" \
 -H "Content-Type: application/json" \
--H "Authorization: Bearer eYPpTTKgsWW1mhjt" \
--d '{ \
-      "resource_type_id:eq": 1  \
+-H "Authorization: Bearer B8x5Vj1O65r6wnoV" \
+-d '{ 
+      "resource_type_id:eq": 1  
     }'
 ```
 
@@ -338,10 +329,10 @@ curl -X POST  "https://app.eresourcescheduler.cloud/rest/v1/resources/search" \
 ```shell
 curl -X POST  "https://app.eresourcescheduler.cloud/rest/v1/resources/search" \
 -H "Content-Type: application/json" \
--H "Authorization: Bearer eYPpTTKgsWW1mhjt" \
--d '{ \
-      "resource_type_id:eq": 1 , \
-      "roles:all": 3 \
+-H "Authorization: Bearer B8x5Vj1O65r6wnoV" \
+-d '{ 
+      "resource_type_id:eq": 1 , 
+      "roles:all": 3 
     }'
 ```
 
@@ -377,7 +368,7 @@ curl -v -X PUT \
   -d '{"email": "ujjwal.pareek@enbraun.com"}'
 ```
 
-<span class="optional"><b>ARGUMENTS</b></span>
+<span class="optional"><b>REQUEST BODY PARAMETERS</b></span>
 
 
 
@@ -392,7 +383,7 @@ Name               |  Description
 **start_date**<br><span class="required">`required`</span>  |  The date on which resource has joined the organization. You can create the booking from the start date of a resource. You can not create the booking before the start date. It is a required field. This will throw an error if you post an empty value.
 **tags**  <br><span class="optional">`optional`</span>  | Tags is the optional filed. It’s displayed alongside the resource in your list and can be useful for searching and filtering. This may be up to 50 characters. This will be blank if you post an empty value.
 **name**<span class = "error">*</span> <br><span class="optional">`optional`</span>|  Its concatenation of the first name and last name of human type resource. While for non-human type resource Name is <span class="required">`required`</span> field.<br><span class = "error">* Indicates for the non-human type of resource it is a required field.</span>  
-**User defined fields** <br><span class="optional">`optional`</span>  | A user with admin rights can add such custom fields. These fields can be used to capture additional info in Resources. The value for user defined field can be passed as shown in example request. Here in given example, <span style="color:#db7708">`emp_birthday`</span> is a user defined field. [Learn more] (#user-defined-fields)
+**User defined fields** <br><span class="optional">`optional`</span>  | A user with admin rights can add such custom fields. These fields can be used to capture additional info in Resources. [Learn more] (#user-defined-fields)
 
 
 ### Returns
@@ -401,7 +392,7 @@ Name               |  Description
 | ---:        |    :----   | 
 | **200** <br> <span class = "success">`OK`</span>    |  This indicates that the operation was successful and a resource get updated successfully.|
 | **400** <br> <span class = "error">`Bad Request`</span> | Bad Request occurs when a request is not well-formed, syntactically incorrect, empty required parameters or any unknown parameter is passed. <br> Additionally, Bad request may also occur in one of these conditions :<ul><li>Providing start date of a resource as a null.</li><li>User tries to update archived resource.</li><li>User tries to update start date and last date of a resource such that existing booking of that resource do not fit in given range.</li></ul> |
-| **403** <br> <span class = "error">`Forbidden`</span> | Authorization failed due to insufficient permissions, this may be caused by user may not have rights to perform the operation.   |
+| **403** <br> <span class = "error">`Forbidden`</span> | Authorization failed due to insufficient permissions. This occurs when user does not have enough access rights to perform this action. Access for each user can be controlled by an Administrator using eRS Cloud Application.|
 | **404** <br> <span class = "error">`Not Found`</span> | Not Found error occurs when requested resource does not exist (i.e. There is no resource with given id). This may also occur when requesting a resource which has been deleted. |
 
 
@@ -437,7 +428,7 @@ curl -v -X DELETE \
 | ---:        |    :----   
 | **200** <br><span class = "success">`OK`</span> |This status code indicates that the operation was successful and a resource get deleted successfully |
 | **409** <br> <span class = "error">`Conflict`</span> |Conflict indicates that the resource can not be deleted as there are bookings associated with this resource. If you wish to delete it any way you must use force delete option by passing <span class = "error">`true`</span> for parameter <span class = "error">`force_delete_booking`</span>. This operation deletes all bookings of requested resource and resource itself. This can not be undone. Example shown <span style="font-size:24px; font-weight:bold;">￼&#x1f449;</span>|
-| **403** <br> <span class = "error">`Forbidden`</span> | Authorization failed due to insufficient permissions, this may be caused by user may not have rights to perform the operation.   |
+| **403** <br> <span class = "error">`Forbidden`</span> | Authorization failed due to insufficient permissions. This occurs when user does not have enough access rights to perform this action. Access for each user can be controlled by an Administrator using eRS Cloud Application.|
 | **404** <br> <span class = "error">`Not Found`</span> | Not Found error occurs when requested resource does not exist.
 
 
@@ -545,7 +536,7 @@ Retrieves the details of timings which are applied to the resource. You only nee
 | Code      | Description | 
 | ---:        |    :----   | 
 | **200** <br> <span class = "success">`OK`</span>     | This status code indicates that the operation was successful and timings  get retrieved successfully .  |
-| **403** <br> <span class = "error">`Forbidden`</span> |Authorization failed due to insufficient permissions, this may be caused by user may not have rights to perform the operation.   |
+| **403** <br> <span class = "error">`Forbidden`</span> |Authorization failed due to insufficient permissions. This occurs when user does not have enough access rights to perform this action. Access for each user can be controlled by an Administrator using eRS Cloud Application.|
 | **404** <br> <span class = "error">`Not Found`</span> | Not Found error occurs when requested resource does not exist (i.e. There is no resource with given id). This may also occur when requesting a resource which has been deleted. |
 
 
@@ -556,17 +547,17 @@ Retrieves the details of timings which are applied to the resource. You only nee
 > Example Request
 
 ```shell
-curl -v -X POST "https://app.eresourcescheduler.cloud/rest/v1/resources/12/timings"\
-  -H "Authorization: Bearer fZ5jaMNaV9syzOaS"\
-  -H "Content-Type: application/json"\
-  -d '{ \
- 	    "appliedOn": "2018-12-04T08:14:41.109Z", \
-	    "calendarId": "5", \
-	    "effectiveDate": "2018-02-02" \
+curl -v -X POST "https://app.eresourcescheduler.cloud/rest/v1/resources/12/timings" \
+  -H "Authorization: Bearer fZ5jaMNaV9syzOaS" \
+  -H "Content-Type: application/json" \
+  -d '{ 
+ 	    "appliedOn": "2018-12-04T08:14:41.109Z", 
+	    "calendarId": "5", 
+	    "effectiveDate": "2018-02-02" 
       }'
 ```
 
-<span class="optional"><b>ARGUMENTS</b></span>
+<span class="optional"><b>REQUEST BODY PARAMETERS</b></span>
 
 
 Name         |  Description
@@ -582,7 +573,8 @@ Name         |  Description
  :---        |    :----   |
 | **201** <br><span class = "success">`Created`</span> | This status code indicates that the operation was successful and timing get applied successfully.|
 | **400** <br> <span class = "error">`Bad Request`</span> | Bad Request error occurs when a request is not malformed, syntactically incorrect, missing required parameters are  or any unknown parameter is passed.  |
-| **403** <br> <span class = "error">`Forbidden`</span> |Authorization failed due to insufficient permissions, this may be caused by user may not have rights to perform the operation.|
+| **403** <br> <span class = "error">`Forbidden`</span> |Authorization failed due to insufficient permissions. This occurs when user does not have enough access rights to perform this action. Access for each user can be controlled by an Administrator using eRS Cloud Application.|
+| **404** <br> <span class = "error">`Not Found`</span> | Not Found error occurs when requested resource does not exist.
 
 
 ### Update timings
@@ -596,10 +588,10 @@ Name         |  Description
 curl -v -PUT "https://app.eresourcescheduler.cloud/rest/v1/resources/12/timings/2" \
   -H "Authorization: Bearer fZ5jaMNaV9syzOaS" \
   -H "Content-Type: application/json" \
-  -d '{ \
- 	    "appliedOn": "2018-12-04T08:14:41.109Z", \
-	    "calendarId": "5", \
-	    "effectiveDate": "2018-02-02" \
+  -d '{ 
+ 	    "appliedOn": "2018-12-04T08:14:41.109Z", 
+	    "calendarId": "5", 
+	    "effectiveDate": "2018-02-02" 
       }' 
 ```
 
@@ -610,7 +602,7 @@ Updates the specified resource's calendar by setting the value of the parameter 
 This request accepts mostly the same argument as the note creation call.
 
 
-<span class="optional"><b>ARGUMENTS</b></span>
+<span class="optional"><b>REQUEST BODY PARAMETERS</b></span>
 
 
 Name         |  Description
@@ -625,7 +617,8 @@ Name         |  Description
 | ---:        |    :----   | 
 | **200** <br> <span class = "success">`OK`</span>    |  This indicates that the operation was successful and a timing get updated successfully.|
 | **400** <br> <span class = "error">`Bad Request`</span> | Bad Request occurs when a request is not well-formed, syntactically incorrect, empty required parameters or any unknown parameter is passed.|
-| **403** <br> <span class = "error">`Forbidden`</span> | Authorization failed due to insufficient permissions, this may be caused by user may not have rights to perform the operation.   |
+| **403** <br> <span class = "error">`Forbidden`</span> |Authorization failed due to insufficient permissions. This occurs when user does not have enough access rights to perform this action. Access for each user can be controlled by an Administrator using eRS Cloud Application.|
+| **404** <br> <span class = "error">`Not Found`</span> | Not Found error occurs when requested resource id or timing id does not exist.
 
 ### Delete timings
 
@@ -638,8 +631,8 @@ Permanently deletes a applied Calendar. It cannot be undone. You need to provide
 > Example Request
 
 ```shell
-curl -v -X DELETE\
-"https://app.eresourcescheduler.cloud/rest/v1/resources/12/timings/2"\
+curl -v -X DELETE \
+"https://app.eresourcescheduler.cloud/rest/v1/resources/12/timings/2" \
   -H "Authorization: Bearer fZ5jaMNaV9syzOaS"
 ```
 
@@ -648,6 +641,7 @@ curl -v -X DELETE\
 | Code      | Description  
 | ---:        |    :----   
 | **200** <br><span class = "success">`OK`</span> |This status code indicates that the operation was successful and a applied calendar get deleted successfully |
+| **404** <br> <span class = "error">`Not Found`</span> | Not Found error occurs when requested resource id or timing id does not exist.
 
 ## Exceptions
 
@@ -701,8 +695,9 @@ __*Working Exception can be added without timings*__
 > Example Request
 
 ```shell
-curl -v -X GET "https://app.eresourcescheduler.cloud/rest/v1/resources/12/exceptions"\
-  -H "Authorization: Bearer fZ5jaMNaV9syzOaS"\
+curl -v -X GET \
+"https://app.eresourcescheduler.cloud/rest/v1/resources/12/exceptions" \
+  -H "Authorization: Bearer fZ5jaMNaV9syzOaS"
 ```
 
 > Example Response
@@ -733,20 +728,15 @@ curl -v -X GET "https://app.eresourcescheduler.cloud/rest/v1/resources/12/except
                "start_time":600,
                "end_time":1080
             }
-         ]
-      }
-   ]
+          ]
+       }
+    ]
 }
 ```
 
 
 Retrieves the details of exceptions which are applied to the resource. You only need to provide the unique resource identifier that was returned upon resource creation.
 
-<span class="optional"><b>ARGUMENTS</b></span>
-
-Name | Description
- ---:        |    :---- 
- **ID** <br><span class="required">`required`</span> | The eRS Cloud-generated ID for the resource which is used to uniquely identified resource object.
 
 
 ### Returns
@@ -754,7 +744,7 @@ Name | Description
 | Code      | Description | 
 | ---:        |    :----   | 
 | **200** <br> <span class = "success">`OK`</span>     | This status code indicates that the operation was successful and exceptions  get retrieved successfully .  |
-| **403** <br> <span class = "error">`Forbidden`</span> |Authorization failed due to insufficient permissions, this may be caused by user may not have rights to perform the operation.   |
+| **403** <br> <span class = "error">`Forbidden`</span> |Authorization failed due to insufficient permissions. This occurs when user does not have enough access rights to perform this action. Access for each user can be controlled by an Administrator using eRS Cloud Application.|
 | **404** <br> <span class = "error">`Not Found`</span> | Not Found error occurs when requested resource does not exist (i.e. There is no resource with given id). This may also occur when requesting a resource which has been deleted. |
 
 
@@ -765,27 +755,25 @@ Name | Description
 > Example Request
 
 ```shell
-curl -v -X POST
-"https://app.eresourcescheduler.cloud/rest/v1/resources/12/exceptions"\
-  -H "Authorization: Bearer fZ5jaMNaV9syzOaS"\
-  -H "Content-Type: application/json"\
-  -d '{ \
- 	"date": "2018-11-02", \
-	"description": "Thursday 1", \
-	"name": "Thursday 1", \
-    "is_working_exception": true, \
-    "timings":[ \
-            { \
-               "start_time":600, \
-               "end_time":1080 \
-            } \
-         ]  \
-    }'
+curl -v -X POST \
+"https://app.eresourcescheduler.cloud/rest/v1/resources/12/exceptions" \
+  -H "Authorization: Bearer fZ5jaMNaV9syzOaS" \
+  -H "Content-Type: application/json" \
+  -d '{ 
+        "date": "2018-11-02", 
+        "description": "Thursday 1", 
+        "name": "Thursday 1", 
+          "is_working_exception": true, 
+          "timing_blocks":[ 
+                  { 
+                    "start_time":600, 
+                    "end_time":1080 
+                  } 
+               ]  
+       }'
 ```
 
-
-<span class="optional"><b>ARGUMENTS</b></span>
-
+<span class="optional"><b>REQUEST BODY PARAMETERS</b></span>
 
 Name         |  Description
  ---:        |    :----   
@@ -804,8 +792,8 @@ Name         |  Description
  :---        |    :----   |
 | **201** <br><span class = "success">`Created`</span> | This status code indicates that the operation was successful and exception get created successfully.|
 | **400** <br> <span class = "error">`Bad Request`</span> | Bad Request error occurs when a request is not malformed, syntactically incorrect, missing required parameters are  or any unknown parameter is passed.  |
-| **403** <br> <span class = "error">`Forbidden`</span> |Authorization failed due to insufficient permissions, this may be caused by user may not have rights to perform the operation.|
-
+| **403** <br> <span class = "error">`Forbidden`</span> |Authorization failed due to insufficient permissions. This occurs when user does not have enough access rights to perform this action. Access for each user can be controlled by an Administrator using eRS Cloud Application.|
+|  **404** <br><span class = "error">`Not Found`</span> |This status code indicates that resource does not exist|
 ### Update an exception
 
 
@@ -814,20 +802,21 @@ Name         |  Description
 > Example Request
 
 ```shell
-curl -v -PUT "https://app.eresourcescheduler.cloud/rest/v1/resources/12/exceptions/2"\
-  -H "Authorization: Bearer fZ5jaMNaV9syzOaS"\
-  -H "Content-Type: application/json"\
-  -d '{ \
- 	"date": "2018-11-02", \
-	"description": "Thursday 1", \
-	"name": "Thursday 1", \
-    "is_working_exception": true, \
-    "timings":[ \
-            { \
-               "start_time":600, \ 
-               "end_time":1080 \
-            } \
-         ]  \
+curl -v -PUT \
+"https://app.eresourcescheduler.cloud/rest/v1/resources/12/exceptions/2" \
+  -H "Authorization: Bearer fZ5jaMNaV9syzOaS" \
+  -H "Content-Type: application/json" \
+  -d '{ 
+ 	"date": "2018-11-02", 
+	"description": "Thursday 1", 
+	"name": "Thursday 1", 
+    "is_working_exception": true, 
+    "timing_blocks":[ 
+            { 
+               "start_time":600, 
+               "end_time":1080 
+            } 
+         ]  
     }'
 ```
 
@@ -836,6 +825,9 @@ curl -v -PUT "https://app.eresourcescheduler.cloud/rest/v1/resources/12/exceptio
 Updates the specified resource's exception by setting the value of the parameter passed. You need to provide the unique resource identifier that was returned upon resource creation and unique exception identifier that was returend upon exception addition. If parameter is not provided then it will be left unchanged.
 
 This request accepts mostly the same argument as the exception creation call.
+
+<span class="optional"><b>REQUEST BODY PARAMETERS</b></span>
+
 
 Name         |  Description
  ---:        |    :----   
@@ -853,7 +845,9 @@ Name         |  Description
 | ---:        |    :----   | 
 | **200** <br> <span class = "success">`OK`</span>    |  This indicates that the operation was successful and a exception get updated successfully.|
 | **400** <br> <span class = "error">`Bad Request`</span> | Bad Request occurs when a request is not well-formed, syntactically incorrect, empty required parameters or any unknown parameter is passed.|
-| **403** <br> <span class = "error">`Forbidden`</span> | Authorization failed due to insufficient permissions, this may be caused by user may not have rights to perform the operation.   |
+| **403** <br> <span class = "error">`Forbidden`</span> |Authorization failed due to insufficient permissions. This occurs when user does not have enough access rights to perform this action. Access for each user can be controlled by an Administrator using eRS Cloud Application.|
+|  **404** <br><span class = "error">`Not Found`</span> |This status code indicates that resource or exception does not exist| 
+
 
 ### Delete an exception
 
@@ -867,7 +861,7 @@ Permanently deletes a applied exception. It cannot be undone. You need to provid
 ```shell
 curl -v -X DELETE \
 "https://app.eresourcescheduler.cloud/rest/v1/resources/12/exceptions/2"\
-  -H "Authorization: Bearer fZ5jaMNaV9syzOaS"
+  -H "Authorization: Bearer B8x5Vj1O65r6wnoV"
 ```
 
 
@@ -875,6 +869,7 @@ curl -v -X DELETE \
 | Code      | Description  
 | ---:        |    :----   
 | **200** <br><span class = "success">`OK`</span> |This status code indicates that the operation was successful and exception get deleted successfully |
+|  **404** <br><span class = "error">`Not Found`</span> |This status code indicates that resource or exception does not exist| 
 
 ## Notes
 
@@ -943,16 +938,12 @@ curl -v -X GET \
 
 ```shell 
 curl -v -X GET \
- "https://app.eresourcescheduler.cloud/rest/v1/resources/8/notes?offset=1&limit=1&order_by=createdOn" \
+ "https://app.eresourcescheduler.cloud/rest/v1/resources/8/notes?offset=1&limit=1&order_by=created_on" \
  -H "Authorization: Bearer B8x5Vj1O65r6wnoV"
 ```
 
 
-### Limit and Offset
-
-
-
-<span class="optional"><b>ARGUMENTS</b></span>
+<span class="optional"><b>REQUEST QUERY PARAMETERS</b></span>
 
 |Name|Description|
 |-:|:-|
@@ -962,12 +953,12 @@ curl -v -X GET \
 
 ### Ordering the notes
 
-<span class="optional"><b>ARGUMENTS</b></span>
+<span class="optional"><b>REQUEST QUERY PARAMETERS</b></span>
 
 |Name|Options|Description|
 |-:|:-:|:-
-|**Order_by**<br><span class="optional">`optional`</span>|<li>createdOn *(Default)*</li>|List of notes will be returned and sorted by it's created date.|
-| |<li>modifiedOn</li>|List of notes will be returned and sorted by it's latest modified date|
+|**Order_by**<br><span class="optional">`optional`</span>|<li>created_on *(Default)*</li>|List of notes will be returned and sorted by it's created date.|
+| |<li>modified_on</li>|List of notes will be returned and sorted by it's latest modified date|
 
 
 
@@ -978,7 +969,7 @@ curl -v -X GET \
 | ---:        |    :----   | 
 | **200** <br> <span class = "success">`OK`</span>      |  This indicates that the operation was successful and a list of notes is returned.  |
 **400** <br> <span class = "error">`Bad Request` </span>| Bad Request may occur when offset and limit value is given as negative integer. |
-**403** <br> <span class = "error">`Forbidden`</span> | Authorization failed due to insufficient permissions, this may be caused by user may not have rights to perform the operation.   |
+**403** <br> <span class = "error">`Forbidden`</span> | Authorization failed due to insufficient permissions. This occurs when user does not have enough access rights to perform this action. Access for each user can be controlled by an Administrator using eRS Cloud Application.|
 **404** <br><span class = "error">`Not Found`</span> |This status code indicates that resource does not exist| 
 
 > Example Request
@@ -993,7 +984,8 @@ curl -v -X GET \
 
 ```shell
 
-curl -v -X POST "https://app.eresourcescheduler.cloud/rest/v1/resources/8/notes"\
+curl -v -X POST \
+"https://app.eresourcescheduler.cloud/rest/v1/resources/8/notes"\
   -H "Authorization: Bearer 2Gee9LrXLHMZehzq"\
   -H "Content-Type: application/json"\
   -d '{"content": "Hello Enbraun"}'
@@ -1003,13 +995,14 @@ curl -v -X POST "https://app.eresourcescheduler.cloud/rest/v1/resources/8/notes"
 
 ```shell
 
-curl -v -X POST "https://app.eresourcescheduler.cloud/rest/v1/resources/8/notes"\
-  -H "Authorization: Bearer 2Gee9LrXLHMZehzq"\
-  -H "Content-Type: application/json"\
+curl -v -X POST \
+"https://app.eresourcescheduler.cloud/rest/v1/resources/8/notes" \
+  -H "Authorization: Bearer 2Gee9LrXLHMZehzq" \
+  -H "Content-Type: application/json" \
   -d '{"content": "<p>Hello Enbraun</p>"}'
 ```
 
-<span class="optional"><b>ARGUMENTS</b></span>
+<span class="optional"><b>REQUEST BODY PARAMETERS</b></span>
 
 
 Name         |  Description
@@ -1023,7 +1016,7 @@ Name         |  Description
  :---        |    :----   |
 | **201** <br><span class = "success">`Created`</span> | This status code indicates that the operation was successful and created a note successfully.|
 | **400** <br> <span class = "error">`Bad Request`</span> | Bad Request error occurs when a request is not malformed, syntactically incorrect, missing required parameters are  or any unknown parameter is passed.  |
-| **403** <br> <span class = "error">`Forbidden`</span> |Authorization failed due to insufficient permissions, this may be caused by user may not have rights to perform the operation.|
+| **403** <br> <span class = "error">`Forbidden`</span> |Authorization failed due to insufficient permissions. This occurs when user does not have enough access rights to perform this action. Access for each user can be controlled by an Administrator using eRS Cloud Application.|
 |  **404** <br><span class = "error">`Not Found`</span> |This status code indicates that resource does not exist| 
 
 
@@ -1041,7 +1034,8 @@ This request accepts mostly the same argument as the note creation call.
 
 ```shell
 
-curl -v -X PUT "https://app.eresourcescheduler.cloud/rest/v1/resources/8/notes/4" \
+curl -v -X PUT \
+"https://app.eresourcescheduler.cloud/rest/v1/resources/8/notes/4" \
   -H "Authorization: Bearer 2Gee9LrXLHMZehzq" \
   -H "Content-Type: application/json" \
   -d '{"content": "Hello World"}'
@@ -1051,13 +1045,14 @@ curl -v -X PUT "https://app.eresourcescheduler.cloud/rest/v1/resources/8/notes/4
 
 ```shell
 
-curl -v -X PUT "https://app.eresourcescheduler.cloud/rest/v1/resources/8/notes/4" \
+curl -v -X PUT \
+"https://app.eresourcescheduler.cloud/rest/v1/resources/8/notes/4" \
   -H "Authorization: Bearer 2Gee9LrXLHMZehzq"\
   -H "Content-Type: application/json" \
   -d '{"content": "<p>Hello World</p>"}' 
 ```
 
-<span class="optional"><b>ARGUMENTS</b></span>
+<span class="optional"><b>REQUEST BODY PARAMETERS</b></span>
 
 
 Name         |  Description
@@ -1071,7 +1066,7 @@ Name         |  Description
 | ---:        |    :----   | 
 | **200** <br> <span class = "success">`OK`</span>    |  This indicates that the operation was successful and a note get updated successfully.|
 | **400** <br> <span class = "error">`Bad Request`</span> | Bad Request occurs when a request is not well-formed, syntactically incorrect, empty required parameters or any unknown parameter is passed.|
-| **403** <br> <span class = "error">`Forbidden`</span> | Authorization failed due to insufficient permissions, this may be caused by user may not have rights to perform the operation.   |
+| **403** <br> <span class = "error">`Forbidden`</span> | Authorization failed due to insufficient permissions. This occurs when user does not have enough access rights to perform this action. Access for each user can be controlled by an Administrator using eRS Cloud Application.|
 |  **404** <br><span class = "error">`Not Found`</span> |This status code indicates that resource or notes does not exist| 
 
 
@@ -1085,7 +1080,8 @@ Permanently deletes a Note. It cannot be undone.You need to  provide the unique 
 
 ```shell
 
-curl -v -X DELETE "https://app.eresourcescheduler.cloud/rest/v1/resources/8/notes/5"\
+curl -v -X DELETE \
+"https://app.eresourcescheduler.cloud/rest/v1/resources/8/notes/5" \
   -H "Authorization: Bearer 2Gee9LrXLHMZehzq"
 ```
 
@@ -1094,5 +1090,5 @@ curl -v -X DELETE "https://app.eresourcescheduler.cloud/rest/v1/resources/8/note
 | Code      | Description  
 | ---:        |    :----   
 | **200** <br><span class = "success">`OK`</span> |This status code indicates that the operation was successful and a note get deleted successfully |
-| **403** <br> <span class = "error">`Forbidden`</span> | Authorization failed due to insufficient permissions, this may be caused by user may not have rights to perform the operation.   |
+| **403** <br> <span class = "error">`Forbidden`</span> | Authorization failed due to insufficient permissions. This occurs when user does not have enough access rights to perform this action. Access for each user can be controlled by an Administrator using eRS Cloud Application.|
 |  **404** <br><span class = "error">`Not Found`</span> |This status code indicates that resource or notes does not exist| 

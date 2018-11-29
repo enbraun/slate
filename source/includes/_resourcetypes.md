@@ -1,6 +1,6 @@
 # Resource Types
 
-##  resource type object
+##  Resource type object
 
 
 <!-- Resource type is type of any resource. An organization may has multiple types of resources. Resource future categorized into two types, human and non-human.
