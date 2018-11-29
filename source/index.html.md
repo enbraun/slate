@@ -17,6 +17,7 @@ includes:
   - udftypes
   - resourcetypes
   - projecttypes
+  - bookingprofile
   - calendars
   - resource
   - project

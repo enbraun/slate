@@ -155,7 +155,7 @@ curl -v -X GET \
 
 > `GET  /rest/v1/calendars/{ID}`
 
-Retrieves the specified calendar along with excpetions and holiday applied on it. 
+Retrieves the specified calendar along with exceptions and holidays applied on it. 
 
 
 > Example Request

@@ -3,10 +3,8 @@
 
 
 ////////////////////////////////////////////////////////////////////////////////
-// Newly added styling.
+// Custom Styling
 ////////////////////////////////////////////////////////////////////////////////
-
-
 
 .success{
   color: #28a745;
@@ -27,4 +25,12 @@
 #noticeAside{
   font-style:italic;
   font-family: system-ui; 
+}
+
+a.api-ref{
+  color: #0893d8;
+  text-decoration: none;
+  &:hover{
+    color: #202223;
+  }
 }
