@@ -119,15 +119,15 @@ This is an object which represents booking-profile.
 
 Name | Description
 | ---:  |  :----   |
-**id**  <br><span class="optional">`Integer`</span> | Unique identifier for the field.
-**code**  <br><span class="optional">`Integer`</span> | This is an object which represents the unique code which is referred to as API code.
-**field_type** <br><span class="optional">`String`</span> |  This is an object which represents the field type of booking profile. For example UNIT,TSKSS etc.
-**display_name**<br><span class="optional">`String`</span> | This is an object which represents name of object.
-**is_system_defined**<br><span class="optional">`Boolean`</span> | `True` value of this object shows that it is system defined field and `false` value of this field shows that it is user defined field.
-**is_filterable** <br> <span class ="optional">`Boolean`</span> |Value of this field represents that it is used for filter or not. |
-**minnum** <br> <span class ="optional">`Integer`</span> | This is an object which represents minimum value of field.|
-**maxnum** <br> <span class ="optional">`Integer`</span> | this is an object which represents maximum value of field.|
-**mindate** <br> <span class ="optional">`String`</span> |This is an object which represents minimum date of field. |
-**maxdate** <br> <span class = "optional">`String`</span> |This is an object which represents maximum date of field. |
+**id**  <br><span class="optional">`integer`</span> | Unique identifier for the field.
+**code**  <br><span class="optional">`integer`</span> | This is an object which represents the unique code which is referred to as API code.
+**field_type** <br><span class="optional">`string`</span> |  This is an object which represents the field type of booking profile. For example UNIT,TSKSS etc.
+**display_name**<br><span class="optional">`string`</span> | This is an object which represents name of object.
+**is_system_defined**<br><span class="optional">`boolean`</span> | `True` value of this object shows that it is system defined field and `false` value of this field shows that it is user defined field.
+**is_filterable** <br> <span class ="optional">`boolean`</span> |Value of this field represents that it is used for filter or not. |
+**minnum** <br> <span class ="optional">`integer`</span> | This is an object which represents minimum value of field.|
+**maxnum** <br> <span class ="optional">`integer`</span> | this is an object which represents maximum value of field.|
+**mindate** <br> <span class ="optional">`string`</span> |This is an object which represents minimum date of field. |
+**maxdate** <br> <span class = "optional">`string`</span> |This is an object which represents maximum date of field. |
 
 
