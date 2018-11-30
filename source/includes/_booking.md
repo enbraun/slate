@@ -56,7 +56,7 @@ Name         |  Description
 **unit** <br><span class="optional">`integer`</span> |  This represents unit of effort for this booking. Unit could be one of (percent of capacity,  booking hours,hours per day, FTE, Specific time per day)
 **tags** <br><span class="optional">`array of strings`</span> | Tags are the list of strings (labels) attached to this booking object which could be used for the purpose of identification or other information.
 **created_on** <br><span class="optional">`string`</span> |   Time at which the resource object is created.
-**modified_by** <br><span class="optional">`string`</span> | This field describes by whom the modification is done by.
+**modified_by** <br><span class="optional">`object`</span> | This field describes by whom the modification is done.
 **User defined fields** <br><span class="optional">`optional`</span>  | Custom user-defined fields used to capture additional information of booking. [Learn more] (#user-defined-fields)
 
 ## Create a booking
@@ -116,7 +116,7 @@ Returns list of bookings. The bookings are returned sorted by booking's start_ti
 
 ```shell
  curl -v -X GET \
- "https://app.eresourcescheduler.cloud/rest/v1/bookings?start="2018-01-01"&end="2018-12-31""\
+ "https://app.eresourcescheduler.cloud/rest/v1/bookings?start=2018-01-01&end=2018-12-31"\
   -H "Authorization: Bearer B8x5Vj1O65r6wnoV"
 ```
 
@@ -124,7 +124,7 @@ Returns list of bookings. The bookings are returned sorted by booking's start_ti
 
 ```shell 
 curl -v -X GET \
-"https://app.eresourcescheduler.cloud/rest/v1/bookings?start="2018-01-01"&end="2018-12-31"&offset=1&limit=1" \
+"https://app.eresourcescheduler.cloud/rest/v1/bookings?start=2018-01-01&end=2018-12-31&offset=1&limit=1" \
  -H "Authorization: Bearer B8x5Vj1O65r6wnoV"
 ```
 
@@ -174,12 +174,12 @@ curl -v -X GET \
 
 |Name|Description|
 |-:|:-|
-|**limit**<br><span class="optional">`optional`</span>|The limit keyword is used to limit the number of rows returned from a result set.<br>*The default value of limit is*  <span class="error">*`500`*</span><br>*Maximum value of limit can be* <span class="error">*`5000.`*</span> *If value of limit is greater than*<span class="error">*`5000`*</span>  *then it will get set to  Maximum value of limit which is*  <span class="error">*`5000.`*</span>|
+|**limit**<br><span class="optional">`optional`</span>|The limit keyword is used to limit the number of rows returned from a result set.<br>*The default value of limit is*  <span class="error">*`500`*</span><br>*Maximum value of limit can be* <span class="error">*`5000.`*</span> *If value of limit is greater than*<span class="error">*`5000`*</span>  *then it will set to  Maximum value of limit which is*  <span class="error">*`5000.`*</span>|
 |**offset**<br><span class="optional">`optional`</span>|The Offset value allows you to specify the ranking number of the first item on the page .The Offset value is most often used together with the Limit keyword.<br>*The default value of `offset` is* <span class="error">*`0`* </span>|
-|**start**<br><span class="optional">`optional`</span> | Start value is used to get number of bookings which start date is after  or equal it.|
-|**end**<br><span class="optional">`optional`</span> |End value is used to get number of bookings which end date is before or equal it.
+|**start**<br><span class="optional">`optional`</span> | Start value is used to get number of bookings in which start date is equal to or after start.|
+|**end**<br><span class="optional">`optional`</span> |End value is used to get number of bookings in which end date is before or equal to end.
 
- <span class = "error">You have to give both start and end value.If you don't give both value then you will get current month bookings but if you give either start or end value then you will get bad request.</span>
+ <sup class = "error">*</sup>You have to give values of both start and end to get bookings in that duration .If you don't give any value then you will get bookings of current month, but if you give either value of start or end then you will get bad request.
 
 
 ### Returns 
@@ -253,15 +253,13 @@ Retrieves the details of an existing booking. You only need to  provide the uniq
 Filtering API responses to retrieve specific data.
 
 
-### Getting started with filters 
-
 The filter parameter allows for filtering the results returned from the various endpoint in various ways. For example fetching only booking having booking id 1 by adding id:1 to your query.[Read more] (#filters)
 
 > Example Request For Filter In JSON Format
 
 ```shell
 curl -X POST  \
-"https://app.eresourcescheduler.cloud/rest/v1/bookings/search?start="2018-01-01"&end="2018-08-09"" \
+"https://app.eresourcescheduler.cloud/rest/v1/bookings/search?start=2018-01-01&end=2018-08-09" \
 -H "Content-Type: application/json" \
 -H "Authorization: Bearer B8x5Vj1O65r6wnoV" \
 -d '{ 
@@ -273,7 +271,7 @@ curl -X POST  \
 
 ```shell
 curl -X POST  \
-"https://app.eresourcescheduler.cloud/rest/v1/resources/search?start="2018-01-01"&end="2018-08-09"" \
+"https://app.eresourcescheduler.cloud/rest/v1/resources/search?start=2018-01-01&end=2018-08-09" \
 -H "Content-Type: application/json" \
 -H "Authorization: Bearer B8x5Vj1O65r6wnoV" \
 -d '{ 
@@ -324,7 +322,7 @@ Updates the specified booking by setting values of parameters passed. Values of 
         "unit": 3 
       }'
 ```
-<span class="optional"><b>ARGUMENTS</b></span>
+<span class="optional"><b>REQUEST BODY PARAMETERS</b></span>
 
 Name               |  Description
  ---:        |    :----   

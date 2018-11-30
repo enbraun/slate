@@ -43,16 +43,17 @@ Creates a new project object.
 Name         |  Description
  ---:        |    :---- 
 **id** <br><span class="optional">`integer`</span>     |  eRS Cloud-generated unique identifier for the project object. 
-**modified_on** <br><span class="optional">`datetime`</span> | Describes the latest modification date.
-**project_start_date** <br><span class="optional">`date`</span> |  The date on which project will be started.
+**modified_on** <br><span class="optional">`string`</span> | Describes the latest modification date.
+**project_start_date** <br><span class="optional">`string`</span> |  The date on which project will be started.
 **type** <br><span class="optional">`object`</span> | It describes the type of project.
 **title** <br><span class="optional">`string`</span> | The title of the project.
-**end_date** <br><span class="optional">`date`</span> | The date on which project will be ended.
+**end_date** <br><span class="optional">`string`</span> | The date on which project will be ended.
 **tags** <br><span class="optional">`array of strings`</span> |Tags are the list of strings that could be used to organize the project.
 **created_on** <br><span class="optional">`string`</span> |   Time at which the project object is created.
-**modified_by** <br><span class="optional">`string`</span> | This field describes by whom the modification is done by.
+**modified_by** <br><span class="optional">`object`</span> | This field describes  whom the modification is done by.
 **image** <br><span class="optional">`string`</span> | The  image or display picture of the project.
 **email** <br><span class="optional">`string`</span> |  For Example this field is used to save email address of the project's manager.
+**created_by** <br> <span class="optional">`object`</span> | This field describes whom project object is created by .|
 **User defined fields** <br><span class="optional">`optional`</span>  | Custom user-defined fields used to capture additional information of project. [Learn more] (#user-defined-fields)
 
 ## Create a project
@@ -96,7 +97,7 @@ Name               |  Description
 | Code      |Description |
  :---        |    :----   |
 | **201** <br><span class = "success">`Created`</span> | This status code indicates that the operation was successful and  a project get created successfully.|
-| **400** <br> <span class = "error">`Bad Request`</span> | Bad Request error occurs when a request is not malformed, syntactically incorrect, missing required parameters are  or any unknown parameter is passed.|
+| **400** <br> <span class = "error">`Bad Request`</span> | Bad Request error occurs when a request is malformed, syntactically incorrect, missing required parameters are  or any unknown parameter is passed.|
 | **403** <br> <span class = "error">`Forbidden`</span> |Authorization failed due to insufficient permissions. This occurs when user does not have enough access rights to perform this action. Access for each user can be controlled by an Administrator using eRS Cloud Application.|
 
 
@@ -304,7 +305,6 @@ Name               |  Description
  ---:        |    :----   
 **title** <br> <span class="required">`required`</span>  |The title is a string which represents the  title of a project. It is a required field. This may be up to 100 characters. This will throw an error if you post an empty value.
 **image_uuid**  <br><span class="optional">`optional`</span> | Project's image is an optional field. This field accepts the Base64 encoded PNG string.This will be blank if you POST an empty value.
-**project_type_id** <br> <span class="required">`required`</span>| Project type id represents the id of its type. Let’s assume there are two types of project Medical and Education. Type id of Medical is 1 and Type id of Education is 2, then while creating a new project, all the projects whose type id is given as 1 will get created under Medical type and same for Education when type id is 2. It is a required field.
 **project_start_date**<br><span class="required">`optional`</span> |The date on which project has started. 
 **tags**  <br><span class="optional">`optional`</span>  | Tags is an optional filed. It’s displayed alongside the project in your list and can be useful for searching and filtering. This may be up to 50 characters. This will be blank if you post an empty value.
 **email** <br><span class="optional">`optional`</span>  |  This field is used to display email address of project manager(for example)  .The maximum length of this field may be up to 254 characters. This will be blank if you POST an empty value.
@@ -316,7 +316,7 @@ Name               |  Description
 | Code      | Description | 
 | ---:        |    :----   | 
 | **200** <br> <span class = "success">`OK`</span>    |  This indicates that the operation was successful and project get updated successfully.|
-| **400** <br> <span class = "error">`Bad Request`</span> | Bad Request occurs when a request is not well-formed, syntactically incorrect, empty required parameters or any unknown parameter is passed. <br> Additionally, Bad request may also occur when :<ul><li>User tries to update archived project.</li></ul> |
+| **400** <br> <span class = "error">`Bad Request`</span> | Bad Request occurs when a request is not well-formed, syntactically incorrect, empty required parameters or any unknown parameter is passed. <br> Additionally, Bad request may also occur when :<ul><li>User tries to update archived project.</li><li> User tries to update start date which is after last date.</li><li> User tries to update last date which is before start date. </li></ul> |
 | **403** <br> <span class = "error">`Forbidden`</span> | Authorization failed due to insufficient permissions. This occurs when user does not have enough access rights to perform this action. Access for each user can be controlled by an Administrator using eRS Cloud Application.|
 |  **404** <br><span class = "error">`Not Found`</span> |This status code indicates that project does not exist| |
 
@@ -397,15 +397,16 @@ curl -v -X GET \
 	]
 }
 ```
-<span class="optional"><b>ARGUMENTS</b></span>
+<span class="optional"><b>ATTRIBUTES</b></span>
 
 
 Name         |  Description
  ---:        |    :----   
- **ID** <br><span class="required">`required`</span> | The eRS Cloud-generated ID for the project which is used to uniquely identified task object.
- **name** <br> <span class ="required">`required`</span> | Name describes the name of task. This field is a `string` type of field 
-**start_time** <br> <span class="optional">`optional`</span> | Start time describes the start time of task.  
-**end_time** <br> <span class="optional">`optional`</span>| End time describes the end time of task. 
+ **ID** <br><span class="required">`Integer`</span> | The eRS Cloud generated ID for the task which is used to uniquely identified task object.
+ **name** <br> <span class ="required">`String`</span> | Name describes the name of task. This field is a `string` type of field 
+**start_time** <br> <span class="optional">`String`</span> | Start time describes the start time of task.  
+**end_time** <br> <span class="optional">`String`</span>| End time describes the end time of task. 
+**project_id** <br> <span class ="optional">`Integer`</span> | eRS Cloud generated unique identifier for the project object.
 
 
 ### Returns
@@ -447,7 +448,7 @@ Name         |  Description
 | Code      |Description |
  :---        |    :----   |
 | **201** <br><span class = "success">`Created`</span> | This status code indicates that the operation was successful and task get created successfully.|
-| **400** <br> <span class = "error">`Bad Request`</span> | Bad Request error occurs when a request is not malformed, syntactically incorrect, missing required parameters are  or any unknown parameter is passed.  |
+| **400** <br> <span class = "error">`Bad Request`</span> | Bad Request error occurs when a request is not malformed, syntactically incorrect, missing required parameters are  or any unknown parameter is passed.<br> Additionally, Bad request may also occur when :<ul><li> User gives start time after end time </li> </ul> |
 | **403** <br> <span class = "error">`Forbidden`</span> |Authorization failed due to insufficient permissions. This occurs when user does not have enough access rights to perform this action. Access for each user can be controlled by an Administrator using eRS Cloud Application.|
 
 ### Update a task
@@ -481,7 +482,7 @@ Name         |  Description
 | Code      | Description | 
 | ---:        |    :----   | 
 | **200** <br> <span class = "success">`OK`</span>    |  This indicates that the operation was successful and a task get updated successfully.|
-| **400** <br> <span class = "error">`Bad Request`</span> | Bad Request occurs when a request is not well-formed, syntactically incorrect, empty required parameters or any unknown parameter is passed.|
+| **400** <br> <span class = "error">`Bad Request`</span> | Bad Request occurs when a request is not well-formed, syntactically incorrect, empty required parameters or any unknown parameter is passed. <br> Additionally, Bad request may also occur when :<ul><li> User tries to update start time that values after end time. </li> <li> User tries to update end time that values before start time.</li></ul>|
 | **403** <br> <span class = "error">`Forbidden`</span> | Authorization failed due to insufficient permissions. This occurs when user does not have enough access rights to perform this action. Access for each user can be controlled by an Administrator using eRS Cloud Application.|
 |  **404** <br><span class = "error">`Not Found`</span> |This status code indicates that project or task does not exist| |
 
@@ -601,7 +602,16 @@ curl -v -X GET \
 |**Order_by**<br><span class="optional">`optional`</span>|<li>created_on *(Default)*</li>|List of notes will be returned and sorted by it's created date.|
 | |<li>modified_on</li> |List of notes will be returned and sorted by it's latest modified date|
 
+<span class="optional"><b>ATTRIBUTES</b></span>
 
+Name         |  Description
+ ---:        |    :----   
+ **id**<br> <span class="optional">`integer`</span> | eRS Cloud generated unique identifier for the notes. |
+ **created_on** <br><span class="optional">`string`</span> | Time at which the notes object is created. |
+ **content** <br> <span class="optional">`string`</span> | Text written inside notes body .|
+ **modified_on** <br><span class="optional">`string`</span> | Describes the latest modification date.|
+ **created_by** <br> <span class="optional">`object`</span> | This field describes by whom notes is created .|
+ **modified_by** <br><span class="optional">`object`</span> | This field describes by whom the modification is done.
 
 ### Returns 
 
@@ -644,7 +654,7 @@ Name         |  Description
 | Code      |Description |
  :---        |    :----   |
 | **201** <br><span class = "success">`Created`</span> | This status code indicates that the operation was successful and created a note successfully.|
-| **400** <br> <span class = "error">`Bad Request`</span> | Bad Request error occurs when a request is not malformed, syntactically incorrect, missing required parameters are  or any unknown parameter is passed.  |
+| **400** <br> <span class = "error">`Bad Request`</span> | Bad Request error occurs when a request is malformed, syntactically incorrect, missing required parameters are  or any unknown parameter is passed.  |
 | **403** <br> <span class = "error">`Forbidden`</span> |Authorization failed due to insufficient permissions. This occurs when user does not have enough access rights to perform this action. Access for each user can be controlled by an Administrator using eRS Cloud Application.|
   **404** <br><span class = "error">`Not Found`</span> |This status code indicates that project does not exist| 
 
@@ -674,7 +684,7 @@ curl -v -X PUT "https://app.eresourcescheduler.cloud/rest/v1/projects/8/notes/4"
 
 Name         |  Description
  ---:        |    :----   
- **content**  <br><span class="required">`required`</span>  | To create new note you have to pass the body from `content` parameter.  Content param accepts plain text. Also, you can pass text with HTML tags as Notes are Multi Line Rich Text.
+ **content**  <br><span class="required">`required`</span>  | To update note you have to pass the body from `content` parameter.  Content param accepts plain text. Also, you can pass text with HTML tags as Notes are Multi Line Rich Text.
 
 
 ### Returns

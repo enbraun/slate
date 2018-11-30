@@ -77,7 +77,12 @@ curl -v -X GET "https://app.eresourcescheduler.cloud/rest/v1/calendars/1" \
 Name | Description
 ---------: | :-----------
 **id**  <br><span class="optional">`integer`</span>|  Unique identifier for the object.
+**is_default**<br> <span class="optional">`boolean`</span> | This field describes that this calendar object is used as a default if is_default value is true. Default calendar is set as working calendar when working calendar is not given on creating a resource. |
 **name** <br><span class="optional">`string`</span>  |  This is an object which represents the name of a calendar. 
+**created_on** <br><span class="optional">`string`</span> |  Time at which calendar object is created.
+**modified_on** <br><span class="optional">`string`</span> | Describes the latest modification date.
+**created_by** <br> <span class="optional">`object`</span> | This field describes by whom calendar object is created .|
+**modified_by** <br><span class="optional">`object`</span> | This field describes by whom modification is done .
 **timings** <br><span class = "optional">`array of strings`</span> | Timings are list of days in which day_num is defined day(For example-0 for sunday,1 for monday) and start time and end time  are  defined start time and end time for a particular day respectively, also we can calculate no of working-hours on that day.
 **holidays**<br><span class= "optional">`array of strings`</span> | Holidays are list of holidays that are applied on a calendar.
 **exceptions**<br><span class ="optional">`array of strings`</span>| Exceptions are list of exceptions that are applied on a calendar.In any exception,name is exception's name,date is defined for which date  exception is applied on.
