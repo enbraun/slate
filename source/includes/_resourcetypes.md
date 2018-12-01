@@ -1,72 +1,113 @@
 # Resource Types
 
 ##  Resource type object
+ 
 
-
-<!-- Resource type is type of any resource. An organization may has multiple types of resources. Resource future categorized into two types, human and non-human.
-
-For ex. Employee(Human),Contractor(Human),Machines(Non-humam).  -->
-
-> Exmple Request
-
-```shell
-curl -v -X GET "https://app.eresourcescheduler.cloud/rest/v1/resourcetypes"\
-  -H "Authorization: Bearer B8x5Vj1O65r6wnoV"
-```
-
-> Exmple Response
+> Example Response
 
 ```json
 {
-   "id":1,
-   "name":"Employee",
-   "isHuman":true,
-   "fields":[
-      {
-         "name":"First Name",
-         "type":"TEXT",
-         "code":"first_name"
-      },
-      {
-         "name":"Last Name",
-         "type":"TEXT",
-         "code":"last_name"
-      },
-      {
-         "name":"Team",
-         "type":"DDSS",
-         "code":"team",
-         "options":[
-            {
-               "id":1,
-               "name":"Developer"
-            },
-            {
-               "id":2,
-               "name":"Tester"
-            }
-         ]
-      }
-   ]
+      "id": 102,
+      "name": "Contractor",
+      "is_human": true,
+      "description": "This is contractor resource type",
+      "fields": [
+        {
+          "id": 11,
+          "code": "email",
+          "display_name": "Email",
+          "field_type": "EMAIL",
+          "is_required": false,
+          "is_system_defined": true
+        },
+        {
+          "id": 7,
+          "code": "first_name",
+          "display_name": "First Name",
+          "field_type": "TEXT",
+          "is_required": true,
+          "is_system_defined": true
+        },
+        {
+          "id": 8,
+          "code": "last_name",
+          "display_name": "Last Name",
+          "field_type": "TEXT",
+          "placeholder_text": "Enter last name",
+          "maxlength": 100,
+          "is_required": false,
+          "is_system_defined": true
+        },
+        {
+          "id": 14,
+          "code": "last_date",
+          "display_name": "Last Working Date",
+          "field_type": "DATE",
+          "is_required": false,
+          "is_system_defined": true,
+        },
+        {
+          "id": 26,
+          "code": "phone",
+          "display_name": "Phone",
+          "field_type": "TEXT",
+          "maxlength": 50,
+          "is_required": false,
+          "is_system_defined": true
+        },
+        {
+          "id": 18,
+          "code": "roles",
+          "display_name": "Roles",
+          "field_type": "ROLES",
+          "placeholder_text": "Enter a role",
+          "is_required": false,
+          "is_system_defined": true,
+          "options": [
+                  {
+                    "id": 5,
+                    "name": "Architect",
+                    "description": null
+                  },
+                  {
+                    "id": 6,
+                    "name": "Business Analyst",
+                    "description": null
+                  },
+                ],
+        },
+        {
+          "id": 12,
+          "code": "start_date",
+          "display_name": "Start Date",
+          "field_type": "DATE",
+          "is_required": true,
+          "is_system_defined": true,
+        },
+        {...},
+        {...}
+     ]
 }
 ```
 
-This is an object which represents the type of resource. In an organization, there can be multiple types of resources. This object gives you the option to create a resource of two types human and another is non-human. One can categorize the human type of resource as Employee, Contractors, etc. Also, non-humans as Machines,Computers,equipments,etc.
+This is an object which represents the type of resource. In an organization, there can be multiple types of resources.Resource type can be categorized as human or non-human. Human type of resource can be Employee, Contractors, etc. and non-human can be Machines,Computers,equipments,etc.
 
 <span class="optional"><b>ATTRIBUTES</b></span>
 
 Name | Description
 ---------: | :-----------
-**id**  <br><span class="optional">`integer`</span>|  Unique identifier for the object.
-**name** <br><span class="optional">`string`</span>  |  This is an object which represents the name of a resource type. Also, name of the resource we will find in add resource form. Where we have select which type of user we have to create. There can be multiple types of resource types.
-**isHuman** <br><span class="optional">`boolean`</span>| This is a boolean type of value which repr­esents the wether the type of resource is human or not. For example, Human resources are Employee, Contractors, etc.  Where as inhuman resources are Machines, Computers, etc.
-**fields** <br><span class="optional">`array of strings`</span> | Fields are the list of objects representing filed that are present is eRS Cloud to be mapped with Resource type, Project type, and Booking profile to represent attributes of  Resource type, Project type, and Booking profile respectively.
-**fields.name** <br><span class="optional">`string`</span> |   This is an object which represents field name of the resource type.
-**fields. type** <br><span class="optional">`string`</span> |  This is an object which represents the field type of resource type. For example  Text, DDSS, DDMS, etc.
-**fields. code** <br><span class="optional">`string`</span> | This is an object which represents the unique code which is referred to as API code.
-**fields. options** <br><span class="optional">`string`</span> |  This is an object which represents the options of multi-selections fields. For Ex. DDMS,DDSS,etc.
-**fields. options.id** <br><span class="optional">`integer`</span> |  Unique identifier for the object of the option.
-**fields.option.name** <br><span class="optional">`string`</span> |  This is an object which represents the name of the option.
+**id**  <br><span class="optional">`integer`</span>|  It is unique id for the object.It is used to search a object.
+**name** <br><span class="optional">`string`</span>  | It represents name of resource type. 
+**isHuman** <br><span class="optional">`boolean`</span>| It repr­esents whether resource type is human or non-human. For example, human type of resources are Employee, Contractor, etc. , where as non-human resources are Machines, Meeting Rooms, etc.
+**fields** <br><span class="optional">`array of strings`</span> |Fields is an object which contains list of properties of field that are defined for a particular resource type. 
+**fields.id**<br><span class="optional">`integer`</span> | It represents id for the particular field.
+**fields.display_name** <br><span class="optional">`string`</span> | It represents name of the field.
+**fields.field_type** <br><span class="optional">`string`</span> |  It represents type of the field. For example  Text, DDSS, DDMS, etc.
+**fields.code** <br><span class="optional">`string`</span> |It represents the unique code of the field which is referred to as API code. It is used for filtering.
+**fields.is_required** <br> <span class ="optional">`boolean`</span> |It represents that field is mandatory or not.Value of field must not be empty if is_required is true.
+**fields.options** <br><span class="optional">`string`</span> |It represents the options of multi-selections fields. For Ex. DDMS,DDSS,etc.
+**fields.options.id** <br><span class="optional">`integer`</span> | Unique identifier for the option.
+**fields.option.name** <br><span class="optional">`string`</span> | It represents the name of the option.
 
 
 
@@ -82,7 +123,7 @@ Retrieves the details of an existing resource-type. You only need to  provide th
 
 ```shell
 curl -v -X GET \
-"https://app.eresourcescheduler.cloud/rest/v1/resourcetypes/1" \
+"https://app.eresourcescheduler.cloud/rest/v1/resourcetypes/103" \
   -H "Authorization: Bearer B8x5Vj1O65r6wnoV"
 ```
 
@@ -91,36 +132,74 @@ curl -v -X GET \
 
 ```json
 {
-   "id":1,
-   "name":"Employee",
-   "isHuman":true,
-   "fields":[
+    "id": 103,
+    "name": "Education",
+    "is_human": true,
+    "description": "",
+    "fields": [
       {
-         "name":"First Name",
-         "type":"TEXT",
-         "code":"first_name"
+        "id": 11,
+        "code": "email",
+        "display_name": "Email",
+        "field_type": "EMAIL",
+        "is_required": false,
+        "is_system_defined": true
       },
       {
-         "name":"Last Name",
-         "type":"TEXT",
-         "code":"last_name"
+        "id": 7,
+        "code": "first_name",
+        "display_name": "First Name",
+        "field_type": "TEXT",
+        "is_required": true,
+        "is_system_defined": true
       },
       {
-         "name":"Team",
-         "type":"DDSS",
-         "code":"team",
-         "options":[
-            {
-               "id":1,
-               "name":"Developer"
-            },
-            {
-               "id":2,
-               "name":"Tester"
-            }
-         ]
-      }
-   ]
+        "id": 8,
+        "code": "last_name",
+        "display_name": "Last Name",
+        "field_type": "TEXT",
+        "placeholder_text": "Enter last name",
+        "maxlength": 100,
+        "is_required": false,
+        "is_system_defined": true
+       },
+      {
+        "id": 14,
+        "code": "last_date",
+        "display_name": "Last Working Date",
+        "field_type": "DATE",
+        "is_required": false,
+        "is_system_defined": true,
+        "maxdate": "2099-12-31",
+        "mindate": "1900-01-01"
+      },
+      {
+        "id": 18,
+        "code": "roles",
+        "display_name": "Roles",
+        "field_type": "ROLES",
+        "placeholder_text": "Enter a role",
+        "is_required": false,
+        "is_system_defined": true,
+        "options": [
+              {
+                "id": 5,
+                "name": "Architect",
+                "description": null
+              },
+              {...}
+           ],
+      },
+      {
+        "id": 34,
+        "code": "calendar",
+        "display_name": "Working Calendar",
+        "field_type": "CALSS",
+        "is_required": false,
+        "is_system_defined": true
+      },
+      {...}
+    ]
 }
 
 
@@ -153,37 +232,95 @@ curl -v -X GET "https://app.eresourcescheduler.cloud/rest/v1/resourcetypes"\
 
 ```json
 {
-   "id":1,
-   "name":"Employee",
-   "isHuman":true,
-   "fields":[
-      {
-         "name":"First Name",
-         "type":"TEXT",
-         "code":"first_name"
-      },
-      {
-         "name":"Last Name",
-         "type":"TEXT",
-         "code":"last_name"
-      },
-      {
-         "name":"Team",
-         "type":"DDSS",
-         "code":"team",
-         "options":[
-            {
-               "id":1,
-               "name":"Developer"
-            },
-            {
-               "id":2,
-               "name":"Tester"
-            }
-         ]
-      }
-   ]
+  "total_count": 4,
+  "data": [
+   {
+      "id": 102,
+      "name": "Contractor",
+      "is_human": true,
+      "description": "This is contractor resource type",
+      "fields": [
+        {
+          "id": 11,
+          "code": "email",
+          "display_name": "Email",
+          "field_type": "EMAIL",
+          "is_required": false,
+          "is_system_defined": true
+        },
+        {
+          "id": 7,
+          "code": "first_name",
+          "display_name": "First Name",
+          "field_type": "TEXT",
+          "is_required": true,
+          "is_system_defined": true
+        },
+        {
+          "id": 8,
+          "code": "last_name",
+          "display_name": "Last Name",
+          "field_type": "TEXT",
+          "placeholder_text": "Enter last name",
+          "maxlength": 100,
+          "is_required": false,
+          "is_system_defined": true
+        },
+        {
+          "id": 14,
+          "code": "last_date",
+          "display_name": "Last Working Date",
+          "field_type": "DATE",
+          "is_required": false,
+          "is_system_defined": true,
+        },
+        {
+          "id": 26,
+          "code": "phone",
+          "display_name": "Phone",
+          "field_type": "TEXT",
+          "maxlength": 50,
+          "is_required": false,
+          "is_system_defined": true
+        },
+        {
+          "id": 18,
+          "code": "roles",
+          "display_name": "Roles",
+          "field_type": "ROLES",
+          "placeholder_text": "Enter a role",
+          "is_required": false,
+          "is_system_defined": true,
+          "options": [
+                {
+                  "id": 5,
+                  "name": "Architect",
+                  "description": null
+                },
+                {
+                  "id": 6,
+                  "name": "Business Analyst",
+                  "description": null
+                }
+           ],
+        },
+        {
+          "id": 12,
+          "code": "start_date",
+          "display_name": "Start Date",
+          "field_type": "DATE",
+          "is_required": true,
+          "is_system_defined": true,
+        },
+        {...},
+        {...}
+      ]
+    },
+    {...},
+    {...},
+  ]
 }
+
 ```
 
 

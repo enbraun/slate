@@ -38,7 +38,7 @@
       "name": "Patrick Wilson"
    },
    "first_name": "Christian",
-   "image_uuid": "resource_default",
+   "image": "img/resource_default",
    "email": "christian.gray@mycompany.com",
    "start_date": "2016-01-08",
    "emp_birthday": "1991-01-27" <- User defined field
@@ -65,7 +65,7 @@ Name         |  Description
 **name** <br><span class="optional">`string`</span>  | The full name of the resource.
 **modified_by** <br><span class="optional">`object`</span> | This field describes by whom modification is done.
 **first_name** <br><span class="optional">`string`</span> | The first name of the resource.
-**image_uuid** <br><span class="optional">`string`</span> | The  image or display picture of the resource.
+**image** <br><span class="optional">`string`</span> | The  image or display picture of the resource.
 **email** <br><span class="optional">`string`</span> | The email address of the resource.
 **User defined fields** <br><span class="optional">`optional`</span>  | Custom user-defined fields used to capture additional information of resource.  Here in given example, <span style="color:#db7708">`emp_birthday`</span> is a user defined field. [Learn more] (#user-defined-fields)
 
@@ -73,9 +73,6 @@ Name         |  Description
 
 ## Create a resource
     
-
-
-
 >  `POST v1/resources`
 
 
@@ -113,7 +110,7 @@ Name               |  Description
 **calendar**  <br><span class="optional">`optional`</span>  |The calendar used to assign a particular resource’s working calendar. It may vary from resource to resource as per its requirements. With the help of calendar, working timing of a resource can be defined. It is the integer id of calendar. The default calendar will be set if you post an empty value.
 **email** <br><span class="optional">`optional`</span>  |  Resource's email address is an optional field. It’s displayed alongside the resource in your resource list and can be useful for filtering purpose. The maximum length of this field may be up to 254 characters. This will be blank if you POST an empty value.
 **first_name** <br> <span class="required">`required`</span>  |The first name is a string which represents the first name of a resource. It is a required field. This may be up to 100 characters. This will throw an error if you post an empty value.<br> <span class = "error"> For non-human type of resource this field is  <span class="required">**`unavailable`**</span>.</span>
-**image_uuid**  <br><span class="optional">`optional`</span> | Resource's image is an optional field. This field accepts the Base64 encoded PNG string. It's displayed alongside the resource list.This will be blank if you POST an empty value.
+**image**  <br><span class="optional">`optional`</span> | Resource's image is an optional field. This field accepts the Base64 encoded PNG string. It's displayed alongside the resource list.This will be blank if you POST an empty value.
 **last_name**  <br><span class="optional">`optional`</span>  |  The last name is a string which represents the last name of a resource. It is an optional field. This may be up to 100 characters.  This will be blank if you POST an empty value.<br> <span class = "error"> For non-human type of resource this field is  <span class="required">**`unavailable`**</span>.</span>
 **phone**  <br><span class="optional">`optional`</span>  |Resource's phone is an optional field. It’s displayed alongside the resource in your resource list and can be useful for filtering purpose. This may be up to 50 characters. This will be blank if you POST an empty value.
 **resource_type_id** <br> <span class="required">`required`</span>| Resource_type_id represents the id of resource type. Let’s assume there are two types of resources Employee and Meeting rooms. Resource_type_id of Employee is 1 and resource_type_id of Meeting Room type is 2, then while creating a new resource, all the resource whose resource_type_id is given as 1 will get created under Employee type and same for Meeting Room when resource_type_id is 2. It is a required field.
@@ -132,8 +129,6 @@ Name               |  Description
 | **201** <br><span class = "success">`Created`</span> | This status code indicates that the operation was successful and  a resource get created successfully.|
 | **400** <br> <span class = "error">`Bad Request`</span> | Bad Request error occurs when a request is  malformed, syntactically incorrect, missing required parameters are  or any unknown parameter is passed. <br> Additionally, Bad request may also occur in one of these conditions :<ul><li>Invalid image file is provided.</li><li>Resource's start date is after its end date.</li></ul> |
 | **403** <br> <span class = "error">`Forbidden`</span> |Authorization failed due to insufficient permissions. This occurs when user does not have enough access rights to perform this action. Access for each user can be controlled by an Administrator using eRS Cloud Application.|
-
-
 
 
 ## List resources
@@ -191,7 +186,7 @@ curl -v -X GET \
          },
          "last_date": null,
          "first_name": "Anastasia",
-         "image_uuid": "/img/8945d093-0f76-4347-a9ae-b2f3c13ea281",
+         "image": "/img/8945d093-0f76-4347-a9ae-b2f3c13ea281",
          "email": "ana.steele@mycompany.com",
          "start_date":"2016-01-27",
          "modified_on": "2018-10-30T09:15:38.422688Z",
@@ -225,7 +220,7 @@ curl -v -X GET \
 
 |Name|Description|
 |-:|:-|
-|**limit**<br><span class="optional">`optional`</span>|The limit keyword is used to limit the number of rows returned from a result set.<br>*The default value of limit is*  <span class="error">*`25`*</span><br>*Maximum value of limit can be* <span class="error">*`500.`*</span> *If value of limit is greater than*<span class="error">*`500`*</span>  *then it will get set to  Maximum value of limit which is*  <span class="error">*`500.`*</span>|
+|**limit**<br><span class="optional">`optional`</span>|The limit keyword is used to limit the number of rows returned from a result set.<br>*The default value of limit is*  <span class="error">*`25`*</span><br>*Maximum value of limit can be* <span class="error">*`500.`*</span> *If value of limit is greater than*<span class="error">*`500`*</span>  *then it will set to  Maximum value of limit which is*  <span class="error">*`500.`*</span>|
 |**offset**<br><span class="optional">`optional`</span>|The Offset value allows you to specify the ranking number of the first item on the page .The Offset value is most often used together with the Limit keyword.<br>*The default value of `offset` is* <span class="error">*`0`* </span>|
 
 
@@ -288,7 +283,7 @@ curl -v -X GET "https://app.eresourcescheduler.cloud/rest/v1/resources/1"\
       "name": "Patrick Wilson"
    },
    "first_name": "Christian",
-   "image_uuid": "resource_default",
+   "image": "resource_default",
    "email": "christian.gray@mycompany.com",
    "start_date": "2016-01-08",
    "emp_birthday": "1991-01-27" <- User defined field
@@ -376,8 +371,8 @@ curl -v -X PUT \
 Name               |  Description
  ---:        |    :----   
 **email** <br><span class="optional">`optional`</span>  |  Resource's email address is an optional field. It’s displayed alongside the resource in your resource list and can be useful for filtering purpose. The maximum length of this field may be up to 254 characters. This will be blank if you POST an empty value.
-**first_name** <br> <span class="required">`required`</span>  |The first name is a string which represents the first name of a resource. It is a required field. This may be up to 100 characters.  This will be blank if you POST an empty value.<br> <span class = "error"> For non-human type of resource this field is  <span class="required">**`unavailable`**</span>.</span>
-**image_uuid**  <br><span class="optional">`optional`</span> | Resource's image is an optional field. It's displayed alongside the resource list.This will be blank if you POST an empty value.
+**first_name** <br> <span class="required">`required`</span>  |The first name is a string which represents the first name of a resource. It is a required field. This may be up to 100 characters.  This will throw an error if you post an empty value.<br> <span class = "error"> For non-human type of resource this field is  <span class="required">**`unavailable`**</span>.</span>
+**image**  <br><span class="optional">`optional`</span> | Resource's image is an optional field. It's displayed alongside the resource list.This will be blank if you POST an empty value.
 **last_name**  <br><span class="optional">`optional`</span>  |  The last name is a string which represents the last name of a resource. It is an optional field. This may be up to 100 characters.  This will be blank if you POST an empty value.<br> <span class = "error"> For non-human type of resource this field is  <span class="required">**`unavailable`**</span>.</span>
 **phone**  <br><span class="optional">`optional`</span>  |Resource's phone is an optional field. It’s displayed alongside the resource in your resource list and can be useful for filtering purpose. This may be up to 50 characters. This will be blank if you POST an empty value.
 **roles**  <br><span class="optional">`optional`</span>  |  An array of ids of Role to be assigned to this Resource. The first id in the array is considered as Primary Role of that Resource. You can apply multiple performing roles to a resource. Resources can also be searched / filtered using performing roles. No role will get applied if the empty array or null value is passed.

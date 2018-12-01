@@ -4,13 +4,6 @@
 
 Calendar is used to define working-timing of resources. We can apply holidays and exceptions on calendars.A particular calendar can be applied on number of resources. When we want to declare a day off, it is declared by holiday, we can also apply multiple holidays. And if we want to changes in working-timings,can be declared by exceptions.We can add exception for a single day or multiple days.
 
-> Example Request
-
-```shell
-curl -v -X GET "https://app.eresourcescheduler.cloud/rest/v1/calendars/1" \
-  -H "Authorization: Bearer B8x5Vj1O65r6wnoV"
-```
-
 > Example Response
 
 ```json
@@ -89,7 +82,7 @@ Name | Description
 
 ## List Calendars
 
-> `GET  /rest/v1/calendars`
+> `GET  /v1/calendars`
 
 Retrieves the all the available list of calendars. 
 
@@ -158,7 +151,7 @@ curl -v -X GET \
 ## Retrieve a calendar
 
 
-> `GET  /rest/v1/calendars/{ID}`
+> `GET  /v1/calendars/{ID}`
 
 Retrieves the specified calendar along with exceptions and holidays applied on it. 
 
