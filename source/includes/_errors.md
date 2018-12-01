@@ -8,8 +8,6 @@ eRS Cloud uses conventional HTTP response codes to indicate the success or failu
 
 Status Code | Meaning
 ----------: | :-------
-**200** <br><span class = "success">**`OK`**</span> | Everything worked as expected.
-**201** <br><span class = "success">**`Created`**</span> | This indicates success, but the textual part of the response line indicates the URI by which the newly created document should be known .
 **400**  <br> <span class="error">**`Bad Request`**</span> | The request was unacceptable, often due to missing a required parameter.
 **401**  <br> <span class = "error">**`Unauthorized`**</span> | No valid API key provided. Authentication failed due to invalid authentication credentials.
 **403** <br> <span class = "error">**`Forbidden`** </span> | Accessing the page or resource you were trying to reach is absolutely forbidden for some reason.
