@@ -3,6 +3,8 @@
 
 ## Booking profile object
 
+This is an object which represents booking-profile.
+
 > Example Request
 
 ```shell
@@ -113,21 +115,22 @@ curl -v -X GET \
 
 ```
 
-This is an object which represents booking-profile.
+
 
 <span class="optional"><b>ATTRIBUTES</b></span>
 
 Name | Description
 | ---:  |  :----   |
 **id**  <br><span class="optional">`integer`</span> | Unique identifier for the field.
-**code**  <br><span class="optional">`integer`</span> | This is an object which represents the unique code which is referred to as API code.
-**field_type** <br><span class="optional">`string`</span> |  This is an object which represents the field type of booking profile. For example UNIT,TSKSS etc.
-**display_name**<br><span class="optional">`string`</span> | This is an object which represents name of object.
+**code**  <br><span class="optional">`integer`</span> | It represents the unique code of the field which is referred to as API code. It is used for filtering.
+**field_type** <br><span class="optional">`string`</span> |  It represents type of field. For example UNIT,TSKSS etc.
+**display_name**<br><span class="optional">`string`</span> | It represents name of field.
 **is_system_defined**<br><span class="optional">`boolean`</span> | `True` value of this object shows that it is system defined field and `false` value of this field shows that it is user defined field.
-**is_filterable** <br> <span class ="optional">`boolean`</span> |Value of this field represents that it is used for filter or not. |
-**minnum** <br> <span class ="optional">`integer`</span> | This is an object which represents minimum value of field.|
-**maxnum** <br> <span class ="optional">`integer`</span> | this is an object which represents maximum value of field.|
-**mindate** <br> <span class ="optional">`string`</span> |This is an object which represents minimum date of field. |
-**maxdate** <br> <span class = "optional">`string`</span> |This is an object which represents maximum date of field. |
+**is_filterable** <br> <span class ="optional">`boolean`</span> |Value of this field represents that this field is used for filtering or not. |
+**is_mandatory_required**<br> <span class ="optional">`boolean`</span> |It represents that field is mandatory or not. Value of field must not be empty if is_mandatory_required is true.
+**minnum** <br> <span class ="optional">`integer`</span> | It represents minimum value of field.|
+**maxnum** <br> <span class ="optional">`integer`</span> | It represents maximum value of field.|
+**mindate** <br> <span class ="optional">`string`</span> |It represents minimum date of field. |
+**maxdate** <br> <span class = "optional">`string`</span> |It represents maximum date of field. |
 
 

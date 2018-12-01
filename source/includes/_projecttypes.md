@@ -2,37 +2,96 @@
 
 ##  Project type object
 
-> Example Request
-
-```shell
-curl -v -X GET \
-"https://app.eresourcescheduler.cloud/rest/v1/projecttypes" \
-  -H "Authorization: Bearer B8x5Vj1O65r6wnoV"
-```
-
 > Example Response 
  
 ```json
 {
-   "id":1,
-   "name":"Standard",
-   "fields":[
+  "id": 1,
+  "name": "Standard",
+  "description": "",
+  "fields": [
       {
-         "name":"Project Name",
-         "type":"TEXT",
-         "code":"title"
+        "id": 39,
+        "code": "is_archive",
+        "display_name": "Archive",
+        "field_type": "ARCH",
+        "is_required": false,
+        "is_system_defined": true
       },
       {
-         "name":"Start Date",
-         "type":"Date",
-         "code":"project_start_date"
+        "id": 40,
+        "code": "color",
+        "display_name": "Color",
+        "field_type": "COLPICK",
+        "is_required": false,
+        "is_system_defined": false
       },
       {
-         "name":"Color",
-         "type":"COLPICK",
-         "code":"color"
+        "id": 11,
+        "code": "email",
+        "display_name": "Email",
+        "field_type": "EMAIL",
+        "placeholder_text": "Enter valid email id",
+        "maxlength": 254,
+        "regex": "^[a-zA-Z]+[a-zA-Z0-9._]+@[a-zA-Z]+\.[a-zA-Z.]{2,5}$",
+        "is_required": false,
+        "is_system_defined": true
+      },
+      {
+        "id": 15,
+        "code": "end_date",
+        "display_name": "End Date",
+        "field_type": "DATE",
+        "is_required": false,
+        "is_system_defined": true,
+        "mindate": "1900-01-01",
+        "maxdate": "2099-12-31"
+      },
+      {
+        "id": 10,
+        "code": "title",
+        "display_name": "Project Name",
+        "field_type": "ENAME",
+        "minlength": 1,
+        "maxlength": 100,
+        "is_required": true,
+        "is_system_defined": true
+      },
+      {
+        "id": 101,
+        "code": "manager",
+        "display_name": "Manager",
+        "field_type": "DDSS",
+        "is_required": false,
+        "is_system_defined": false,
+        "options": [
+            {
+              "id": 107,
+              "name": "Chester Norman",
+              "description": null
+            },
+            {...}
+        ]
+      },
+      {
+        "id": 13,
+        "code": "project_start_date",
+        "display_name": "Start Date",
+        "field_type": "DATE",
+        "is_required": false,
+        "is_system_defined": true,
+        "mindate": "1900-01-01",
+        "maxdate": "2099-12-31"
+      },
+      {
+        "id": 32,
+        "code": "tags",
+        "display_name": "Tags",
+        "field_type": "TAGS",
+        "is_required": false,
+        "is_system_defined": true
       }
-   ]
+    ]
 }
 ```
 
@@ -44,11 +103,16 @@ curl -v -X GET \
 Name | Description
 | ---:  |  :----   |
 **id**  <br><span class="optional">`integer`</span> | Unique identifier for the object.
-**name** <br><span class="optional">`string`</span> | This is an object which represents the name of the project type. Also, the name of the project we will find in add project form. Where we have select which type of project we have to create. There be can multiple types of project types.
-**fields** <br><span class="optional">`array of strings`</span>  | Fields are the list of objects representing filed that are present is eRS Cloud to be mapped with Resource type, Project type, and Booking profile to represent attributes of  Resource type, Project type, and Booking profile respectively.
-**fields.name** <br><span class="optional">`string`</span> | This is an object which represents field name of project type.
-**fields. type** <br><span class="optional">`string`</span> |  This is an object which represents the filed type of project type. For example, Text, DDSS, DDMS, etc.
-**fields. code**  <br><span class="optional">`integer`</span> | This is an object which represents the unique code which is referred to as API code.
+**name** <br><span class="optional">`string`</span> | It represents name of project type.
+**fields** <br><span class="optional">`array of strings`</span> |Fields is an object which contains list of properties of field that are defined for a particular project type. 
+**fields.id**<br><span class="optional">`integer`</span> | It represents id for the particular field.
+**fields.display_name** <br><span class="optional">`string`</span> | It represents name of the field.
+**fields.field_type** <br><span class="optional">`string`</span> |  It represents type of the field. For example  Text, DDSS, DDMS, etc.
+**fields.code** <br><span class="optional">`string`</span> |It represents the unique code of the field which is referred to as API code. It is used for filtering.
+**fields.is_required** <br> <span class ="optional">`boolean`</span> |It represents that field is mandatory or not. Value of field must not be empty if is_required is true.
+**fields.options** <br><span class="optional">`string`</span> |It represents the options of multi-selections fields. For Ex. DDMS,DDSS,etc.
+**fields.options.id** <br><span class="optional">`integer`</span> | Unique identifier for the option.
+**fields.option.name** <br><span class="optional">`string`</span> | It represents the name of the option.
 
 
 
@@ -63,7 +127,7 @@ Retrieves the details of an existing project-type. You only need to  provide the
 
 ```shell
 curl -v -X GET \
-"https://app.eresourcescheduler.cloud/rest/v1/projecttypes/1" \
+"https://app.eresourcescheduler.cloud/rest/v1/projecttypes/3" \
   -H "Authorization: Bearer B8x5Vj1O65r6wnoV"
 
 ```
@@ -72,25 +136,59 @@ curl -v -X GET \
 
 ```json
 {
-   "id":1,
-   "name":"Standard",
-   "fields":[
+    
+    "id": 3,
+    "name": "Education",
+    "description": "",
+    "fields": [
       {
-         "name":"Project Name",
-         "type":"TEXT",
-         "code":"title"
+        "id": 39,
+        "code": "is_archive",
+        "display_name": "Archive",
+        "field_type": "ARCH",
+        "is_required": false,
+        "is_system_defined": true
       },
       {
-         "name":"Start Date",
-         "type":"Date",
-         "code":"project_start_date"
+        "id": 104,
+        "code": "department",
+        "display_name": "Department",
+        "field_type": "RDGRP",
+        "is_required": false,
+        "is_system_defined": false,
+        "options": [
+             {
+                "id": 117,
+                "name": "Accounts",
+                "description": null
+             },
+             {...}   
+          ],
       },
       {
-         "name":"Color",
-         "type":"COLPICK",
-         "code":"color"
-      }
-   ]
+        "id": 11,
+        "code": "email",
+        "display_name": "Email",
+        "field_type": "EMAIL",
+        "placeholder_text": "Enter valid email id",
+        "maxlength": 254,
+        "regex": "^[a-zA-Z]+[a-zA-Z0-9._]+@[a-zA-Z]+\.[a-zA-Z.]{2,5}$",
+        "is_required": false,
+        "is_system_defined": true
+      },
+      {
+        "id": 15,
+        "code": "end_date",
+        "display_name": "End Date",
+        "field_type": "DATE",
+        "is_required": false,
+        "is_system_defined": true,
+        "mindate": "1900-01-01",
+        "maxdate": "2099-12-31"
+      },
+      {...},
+      {...} 
+    ]
 }
 ```
 
@@ -119,52 +217,67 @@ curl -v -X GET \
 >Example Response
 
 ```json
-[
-   {
-      "id":1,
-      "name":"Standard",
-      "fields":[
-         {
-            "name":"Project Name",
-            "type":"TEXT",
-            "code":"title"
-         },
-         {
-            "name":"Start Date",
-            "type":"Date",
-            "code":"project_start_date"
-         },
-         {
-            "name":"Color",
-            "type":"COLPICK",
-            "code":"color"
-         }
+{
+  "total_count": 4,
+  "data": [
+    {
+      "id": 3,
+      "name": "Education",
+      "description": "",
+      "fields": [
+        {
+          "id": 39,
+          "code": "is_archive",
+          "display_name": "Archive",
+          "field_type": "ARCH",
+          "is_required": false,
+          "is_system_defined": true
+        },
+        {
+          "id": 104,
+          "code": "department",
+          "display_name": "Department",
+          "field_type": "RDGRP",
+          "is_required": false,
+          "is_system_defined": false,
+          "options": [
+              {
+                  "id": 117,
+                  "name": "Accounts",
+                  "description": null
+              },
+              {...}   
+            ],
+        },
+        {
+          "id": 11,
+          "code": "email",
+          "display_name": "Email",
+          "field_type": "EMAIL",
+          "placeholder_text": "Enter valid email id",
+          "maxlength": 254,
+          "regex": "^[a-zA-Z]+[a-zA-Z0-9._]+@[a-zA-Z]+\.[a-zA-Z.]{2,5}$",
+          "is_required": false,
+          "is_system_defined": true
+        },
+        {
+          "id": 15,
+          "code": "end_date",
+          "display_name": "End Date",
+          "field_type": "DATE",
+          "is_required": false,
+          "is_system_defined": true,
+          "mindate": "1900-01-01",
+          "maxdate": "2099-12-31"
+        },
+        {...},
+        {...} 
       ]
-   },
-   {
-      "id":2,
-      "name":"Engineering",
-      "fields":[
-         {
-            "name":"Project Name",
-            "type":"TEXT",
-            "code":"title"
-         },
-         {
-            "name":"Start Date",
-            "type":"Date",
-            "code":"project_start_date"
-         },
-         {
-            "name":"Color",
-            "type":"COLPICK",
-            "code":"color"
-         }
-      ]
-   },
-   {...},
-   {...}
-]
+    },
+    {...},
+    {...}
+  ]
+}
 ```
 
 
