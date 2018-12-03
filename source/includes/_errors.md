@@ -1,10 +1,10 @@
-# Errors
+# Response Codes
 
 eRS Cloud uses conventional HTTP response codes to indicate the success or failure of an API request. In general: Codes in the 2xx range indicate success. Codes in the 4xx range indicate an error that failed given the information provided (e.g., a required parameter was omitted, syntactically incorrect request, etc.). Codes in the 5xx range indicate an error with eRS Cloud's servers (which is rare).
 
 
 
-## The eRS Cloud API uses the following status codes:
+### List of Status Codes :
 
 Status Code | Meaning
 ----------: | :-------
