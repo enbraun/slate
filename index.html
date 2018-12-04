@@ -247,10 +247,10 @@
               </ul>
           </li>
           <li>
-            <a href="#user-defined-fields" class="toc-h1 toc-link" data-title="User defined  fields">User defined  fields</a>
+            <a href="#user-defined-fields" class="toc-h1 toc-link" data-title="User Defined  Fields">User Defined  Fields</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#types-of-user-defined-fields" class="toc-h2 toc-link" data-title="Types of User defined  fields">Types of User defined  fields</a>
+                    <a href="#types-of-user-defined-fields" class="toc-h2 toc-link" data-title="Types of User Defined Fields">Types of User Defined Fields</a>
                   </li>
               </ul>
           </li>
@@ -432,15 +432,15 @@ programming language of the examples with the tabs in the top right. -->
 <pre class="highlight shell tab-shell"><code>    https://app.eresourcescheduler.cloud/rest
 </code></pre>
 <p>eRS Cloud API is organized around Rest. Our API has predictable, resource-oriented URLs, and uses HTTP response codes to indicate API errors. 
-We support cross-origin resource sharing, allowing you to interact securely with our API from a web application (though you should never expose your secret API key). JSON will be returned by all API responses including errors. Use our API to access eRS Cloud API end-points, which can get you information on resources, projects and booking in our database.</p>
+We support cross-origin resource sharing, allowing you to interact securely with our API from a web application (though you should never expose your secret API key). JSON will be returned by all API responses including errors. Use our API to access eRS Cloud API end-points, which can get you information of resources, projects and booking in our database.</p>
 <h1 id='authentication'>Authentication</h1>
-<p>Every eRS Cloud API endpoint require an access token. If not passed one or token is invalid API will return <strong>401</strong> <span class="error">Unauthorized</span> error.</p>
+<p>Every eRS Cloud API endpoint requires an access token. If token is not passed or is invalid, API will return <strong>401</strong> <span class="error">Unauthorized</span> error.</p>
 
-<p>An access token can be generated at <a href="https://app.eresourcescheduler.cloud/#/profile">User Profile -&gt; Security</a>.</p>
+<p>An access token can be generated at <a href="https://app.eresourcescheduler.cloud/#!/profile/password">User Profile -&gt; Security</a>.</p>
 
-<p>Alternatively, OAuth flow can be used to obtain a token if access is required by some third party application.</p>
+<p>Alternatively, OAuth flow can be used to obtain a token if access is required by third party application.</p>
 <h2 id='oauth'>OAuth</h2>
-<p>eRS Cloud API allows access using OAuth 2 code flow to be able integrate with third party application. OAuth 2 is an open standard for authorization that enables third party applications  to obtain access of API on behalf of user who wishes to approve access.</p>
+<p>eRS Cloud API allows access using OAuth 2 code flow to enable integration with third party applications. OAuth 2 is an open standard for authorization that enables third party applications  to obtain access of API on behalf of user who wishes to approve access.</p>
 
 <p>Developer (having admin access to eRS Cloud) are require to register an application to use OAuth. Once application is registered, it is assigned a client Id and client secret. The client secret should be kept confidential and only use when authorizing between application and eRS cloud authorization server.</p>
 
@@ -453,7 +453,7 @@ We support cross-origin resource sharing, allowing you to interact securely with
 &amp;redirect_uri<span class="o">=</span>https://example.com/oauth/callback
 &amp;state<span class="o">=</span>f2g5h3b5
 </code></pre><h3 id='1-request-user-authorization'>1. Request User Authorization</h3>
-<p>Give user an authorization link which redirects to eRS Cloud authorization server. If using a phone or desktop app instead of browser, this could be achieved using some browser plugin.</p>
+<p>Give user an authorization link which redirects to eRS Cloud authorization server. If using a phone or desktop app instead of a browser, this could be achieved using some browser plugin.</p>
 
 <p><strong>Grant Code Request Endpoint.</strong></p>
 
@@ -473,7 +473,7 @@ We support cross-origin resource sharing, allowing you to interact securely with
 </tr>
 <tr>
 <td style="text-align: right"><strong>redirect_uri</strong> <br><code>string</code> <span class="required"><code>required</code></span></td>
-<td style="text-align: left">The callback url where user will be sent back after authorization. This value must match to redirect uri given at the time of application registration.</td>
+<td style="text-align: left">The callback url where user will be sent back after authorization. This value must match to redirect uri, given at the time of application registration.</td>
 </tr>
 <tr>
 <td style="text-align: right"><strong>response_type</strong> <br><code>string</code> <span class="required"><code>required</code></span></td>
@@ -481,7 +481,7 @@ We support cross-origin resource sharing, allowing you to interact securely with
 </tr>
 <tr>
 <td style="text-align: right"><strong>state</strong> <br><code>string</code> <code>optional</code></td>
-<td style="text-align: left">It is used to identify or verify origin of request. Usually it is a random string which is passed along with this request and expect the same when eRS Cloud redirects back to defined redirect uri.</td>
+<td style="text-align: left">It is used to identify or verify origin of request. Usually it is a random string which is passed along with this request and expect the same when eRS Cloud redirects back to defined redirect uri after authorization.</td>
 </tr>
 </tbody></table>
 
@@ -496,7 +496,7 @@ grant_type=authorization_code
 &amp;redirect_uri=https://example.com/oauth/callback"</span><span class="se">\</span>
 -H <span class="s2">"Content-Type:application/x-www-form-urlencoded"</span>
 </code></pre><h3 id='2-request-access-token'>2. Request Access Token</h3>
-<p>Once authorization is complete from, eRS Cloud sends redirect back to defined redirect_uri with a grant code parameter <strong>&quot;code&quot;</strong> (and <strong>state</strong> parameter if was issued at time of requesting grant code) set. </p>
+<p>Once authorization is complete, eRS Cloud sends redirect back to defined <code>redirect_uri</code> with a grant code parameter <strong>&quot;code&quot;</strong> (and <strong>state</strong> parameter if was issued at time of requesting grant code) set. </p>
 
 <p>Now this grant code can be used to fetch access token from token end point.</p>
 
@@ -530,23 +530,19 @@ grant_type=authorization_code
 </tr>
 <tr>
 <td style="text-align: right"><strong>redirect_uri</strong> <br> <code>string</code> <span class="required"><code>required</code></span></td>
-<td style="text-align: left">The callback url where user will be sent back after authorization. This value must match to redirect uri given at the time of application registration.</td>
+<td style="text-align: left">The callback url where user will be sent back after authorization. This value must match to redirect uri, given at the time of application registration.</td>
 </tr>
 </tbody></table>
 
 <p>To learn more about OAuth token generation flow please read <a href="https://oauth.net/2/grant-types/authorization-code/">here</a>.</p>
 
-<p>eRS Cloud expects an API token to be included in all API requests to the server in a header that looks like the following:</p>
+<p>eRS Cloud expects an API token to be included in all API requests to in a header that looks like the following:</p>
 
 <p><code>Authorization: Bearer B8x5Vj1O65r6wnoV</code></p>
 
-<p>A sample test API key is included in all the example here, so you can test any example right away. To test requests using your account, replace the sample API key with your actual (<code>provided_authentication_token</code>) API key.</p>
-
-<aside class="notice" id="noticeAside">
-You must replace `B8x5Vj1O65r6wnoV` with your personal API key. 
-</aside>
+<p>A sample API token is included in all the example request in this document. To test requests using your account, replace the sample access token with your actual access token.</p>
 <h1 id='response-codes'>Response Codes</h1>
-<p>eRS Cloud uses conventional HTTP response codes to indicate the success or failure of an API request. In general: Codes in the 2xx range indicate success. Codes in the 4xx range indicate an error that failed given the information provided (e.g., a required parameter was omitted, syntactically incorrect request, etc.). Codes in the 5xx range indicate an error with eRS Cloud&#39;s servers (which is rare).</p>
+<p>eRS Cloud uses conventional HTTP response codes to indicate the success or failure of an API request. In general: Codes in the 2xx range indicate success. Codes in the 4xx range indicate an error that failed due to incorrect request. (e.g., a required parameter was omitted, syntactically incorrect request, etc.). Codes in the 5xx range indicate an error with eRS Cloud&#39;s servers (which is rare).</p>
 <h3 id='list-of-status-codes'>List of Status Codes :</h3>
 <table><thead>
 <tr>
@@ -560,19 +556,19 @@ You must replace `B8x5Vj1O65r6wnoV` with your personal API key.
 </tr>
 <tr>
 <td style="text-align: right"><strong>201</strong> <br><span class = "success"><strong><code>Created</code></strong></span></td>
-<td style="text-align: left">This indicates success, but the textual part of the response line indicates the URI by which the newly created document should be known .</td>
+<td style="text-align: left">This indicates successful creation of intended object.</td>
 </tr>
 <tr>
 <td style="text-align: right"><strong>400</strong>  <br> <span class="error"><strong><code>Bad Request</code></strong></span></td>
-<td style="text-align: left">The request was unacceptable, often due to missing a required parameter.</td>
+<td style="text-align: left">Indicates that request is not acceptable, often due to missing required parameters or invalid value for any parameter.</td>
 </tr>
 <tr>
 <td style="text-align: right"><strong>401</strong>  <br> <span class = "error"><strong><code>Unauthorized</code></strong></span></td>
-<td style="text-align: left">No valid API key provided. Authentication failed due to invalid authentication credentials.</td>
+<td style="text-align: left">No valid API access token provide. Authentication failed due to invalid authentication credentials.</td>
 </tr>
 <tr>
 <td style="text-align: right"><strong>403</strong> <br> <span class = "error"><strong><code>Forbidden</code></strong> </span></td>
-<td style="text-align: left">Accessing the page or resource you were trying to reach is absolutely forbidden for some reason.</td>
+<td style="text-align: left">Accessing an object or performing an action when user doesn&#39;t have required permissions, causes this error.</td>
 </tr>
 <tr>
 <td style="text-align: right"><strong>404</strong> <br> <span class = "error"><strong><code>Not Found</code></strong> </span></td>
@@ -584,18 +580,18 @@ You must replace `B8x5Vj1O65r6wnoV` with your personal API key.
 </tr>
 <tr>
 <td style="text-align: right"><strong>409</strong> <br> <span class = "error"><strong><code>Conflict</code></strong> </span></td>
-<td style="text-align: left">The request conflicts with another request.</td>
+<td style="text-align: left">Occurs when trying to create a duplicate object where duplicates are not allowed or when request could affect other objects.</td>
 </tr>
 <tr>
-<td style="text-align: right"><strong>415</strong> <br> <span class = "error"><strong><code>Unsuppoerted Media Type</code></strong> </span></td>
+<td style="text-align: right"><strong>415</strong> <br> <span class = "error"><strong><code>Unsupported Media Type</code></strong> </span></td>
 <td style="text-align: left">No valid media is provided.</td>
 </tr>
 <tr>
 <td style="text-align: right"><strong>500</strong> <br> <span class = "error"><strong><code>Internal Server Error</code></strong> </span></td>
-<td style="text-align: left">Something went wrong on eRS&#39;s end. <em>(This is rare.)</em></td>
+<td style="text-align: left">Something went wrong at eRS&#39;s end. <em>(This is rare.)</em></td>
 </tr>
 </tbody></table>
-<h1 id='user-defined-fields'>User defined  fields</h1>
+<h1 id='user-defined-fields'>User Defined  Fields</h1>
 <blockquote>
 <p>Example Response:  </p>
 </blockquote>
@@ -603,20 +599,19 @@ You must replace `B8x5Vj1O65r6wnoV` with your personal API key.
   </span><span class="err">...</span><span class="w">
   </span><span class="s2">"emp_birthday"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1997-01-27"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"qualification"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MBA"</span><span class="w">
- </span><span class="err">....</span><span class="w"> 
+  </span><span class="err">...</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<p>As the name shows these fields are user-defined fields. A user with admin rights can add such custom fields using eRS Cloud Application. These fields can be used to capture additional info in Resources, Project and Booking form.</p>
+<p>As the name shows, these fields are user-defined custom fields. A user with admin rights can add such custom fields using eRS Cloud Application. These fields can be used to capture additional information in Resource, Project and Booking forms.</p>
 
-<p>User defined  fields’s are filterable. Also, the user can change the visibility of such fields in the different form which are Resource, Project and Booking form respectively.</p>
+<p>User defined fields are filterable. Also, user can configure the visibility of such fields in the different forms, for example a field named <code>employee_id</code> can be created which is meant only for <code>Employee</code> type of resources.</p>
 
-<p>There are fifteen types of fields which user can create. Every custom field has its own API code.</p>
+<p>There are fifteen types of different fields available for different use cases. Each type of field has its own set of attributes which can be configured to fit your requirements. Once such fields are added and applied, the response for that object will contain these along with normal attributes.    </p>
 
-<p>Once such fields are added, the response for that object will contain these along with normal attributes. </p>
-
-<aside id="noticeAside">A user can add maximum 30 user-defined fields.</aside>
-<h2 id='types-of-user-defined-fields'>Types of User defined  fields</h2>
-<p>The types of User defined  fields one can create are as follows: </p>
+<aside id="noticeAside">A user can add a maximum 30 user-defined fields.
+</aside>
+<h2 id='types-of-user-defined-fields'>Types of User Defined Fields</h2>
+<p>User can create one of the following type of field.</p>
 
 <table><thead>
 <tr>
@@ -625,64 +620,64 @@ You must replace `B8x5Vj1O65r6wnoV` with your personal API key.
 </tr>
 </thead><tbody>
 <tr>
-<td style="text-align: left"><strong>Simple Text</strong> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-<td style="text-align: left">Allows user to enter any combination of letters and numbers. Also, you have to pass  API code which will be referred to as a key. Also, you can validate this field. You can set validation as maximum length and minimum length.You can add a description for this text so that you can refer it to understand the requirement and use of this field. This field is visible to the end user. You can add help text, information text. You can pass a boolean value to make this field filterable or not. Also, importantly you have to assign at least one available in our 3 forms which are Resource form, Project Form and Booking Form respectively. You can select multiple options for this field.</td>
+<td style="text-align: left"><strong>Simple Text</strong> <br><code>string</code></td>
+<td style="text-align: left">Allows user to enter any combination of letters and numbers. Also, it can be configured to have different validations like <code>min length</code>,  <code>max length</code> and <code>regex pattern</code> to fit most requirements.</td>
 </tr>
 <tr>
-<td style="text-align: left"><strong>Multi Line Rich Text</strong></td>
-<td style="text-align: left">Allows user to enter long rich text. This field has a maximum length of 2000 characters. Also, here a user can do formatting such as adding headers, paragraphs,etc. Also, you have to pass  API code which will be referred to as a key. You can add a description for this text so that you can refer it to understand the requirement and use of this field. This field is visible to the end user. You can add help text, information text. You can pass a boolean value to make this field filterable or not. Also, importantly you have to assign at least one available in our 3 forms which are Resource form, Project Form and Booking Form respectively. You can select multiple options for this field.</td>
+<td style="text-align: left"><strong>Multi Line Rich Text</strong>  <br><code>string</code></td>
+<td style="text-align: left">Allows user to enter long rich text (up to 2000 characters). This type of field allows formatting such as adding headers, paragraphs, hyperlinks, <strong>bold</strong> and <em>italic</em> text etc.</td>
 </tr>
 <tr>
-<td style="text-align: left"><strong>Integer Number</strong></td>
-<td style="text-align: left">Allows user to enter any number. Also, you have to pass  API code which will be referred to as a key. You can validate this field by passing maximum length and minimum length.You can add a description for this text so that you can refer it to understand the requirement and use of this field. This field is visible to the end user. You can add help text, information text. You can pass a boolean value to make this field filterable or not. Also, importantly you have to assign at least one available in our 3 forms which are Resource form, Project Form and Booking Form respectively. You can select multiple options for this field.</td>
+<td style="text-align: left"><strong>Integer Number</strong> <br> <code>integer</code></td>
+<td style="text-align: left">Allows user to enter numeric data. This is useful for fields like <code>emp_id</code>, <code>ref_no</code> etc. These fields can be configured to have validations like <code>min number</code> and <code>max number</code>.</td>
 </tr>
 <tr>
-<td style="text-align: left"><strong>Fractional Number</strong></td>
-<td style="text-align: left">Allows user to enter integer number. Also, you have to pass  API code which will be referred to as a key. You can validate this field by passing maximum length and minimum length.You can add a description for this text so that you can refer it to understand the requirement and use of this field. This field is visible to the end user. You can add help text, information text. You can pass a boolean value to make this field filterable or not. Also, importantly you have to assign at least one available in our 3 forms which are Resource form, Project Form and Booking Form respectively. You can select multiple options for this field.</td>
+<td style="text-align: left"><strong>Fractional Number</strong> <br> <code>number</code></td>
+<td style="text-align: left">Allows user to enter floating point number. This is useful for fields like <code>geo_coordinates</code>, <code>mean_distance</code> etc. This type of field can also have validations like <code>min number</code> and <code>max number</code>.</td>
 </tr>
 <tr>
-<td style="text-align: left"><strong>Date</strong></td>
-<td style="text-align: left">Allows user to enter date from popup calendar.  Also, you have to pass  API code which will be referred to as a key. You can validate this field by passing Maximum Value and Minimum value which is Minimum date and Maximum date.You can add a description for this text so that you can refer it to understand the requirement and use of this field. This field is visible to the end user. You can add help text, information text. You can pass a boolean value to make this field filterable or not. Also, importantly you have to assign at least one available in our 3 forms which are Resource form, Project Form and Booking Form respectively. You can select multiple options for this field.</td>
+<td style="text-align: left"><strong>Date</strong> <br> <code>string</code></td>
+<td style="text-align: left">Allows user to enter date value from a popup calendar. This field takes input in ISO 8601 extended notation for date value i.e. yyyy-MM-dd. Example use case of this type of fields could be like <code>emp_birth_dae</code>, <code>date_of_delivery</code>, <code>date_of_completion</code> etc.  Available validations for these fields are <code>min date</code> and <code>max date</code>.</td>
 </tr>
 <tr>
-<td style="text-align: left"><strong>DateTime</strong></td>
-<td style="text-align: left">Allows user to enter date and time from Popup calendar. Also, you have to pass API code which will be referred to as a key.  You can validate this field by passing Maximum Value and Minimum value which is Minimum date and Maximum date.You can add a description for this text so that you can refer it to understand the requirement and use of this field. This field is visible to the end user. You can add help text, information text. You can pass a boolean value to make this field filterable or not. Also, importantly you have to assign at least one available in our 3 forms which are Resource form, Project Form and Booking Form respectively. You can select multiple options for this field.</td>
+<td style="text-align: left"><strong>DateTime</strong> <br> <code>string</code></td>
+<td style="text-align: left">This type of field can be used where a specific instant of time needs to be recorded. This field takes input in ISO 8601 extended notation for date and time value i.e. yyyy-MM-ddTHH:mm:ssZ. This field support time zone offset as well. Example use case of this type of fields could be like <code>eta</code>, <code>generated_at</code> etc.</td>
 </tr>
 <tr>
-<td style="text-align: left"><strong>URL</strong></td>
-<td style="text-align: left">Allows user to enter a valid website address. When user clicks on the link, URL will open in a separate browser tab. You have to pass API code which will be referred to as a key. You can add prefix and postfix to this field. You can add a description for this text so that you can refer it to understand the requirement and use of this field. This field is visible to the end user. You can add help text, information text. You can pass a boolean value to make this field filterable or not. Also, importantly you have to assign at least one available in our 3 forms which are Resource form, Project Form and Booking Form respectively. You can select multiple options for this field.</td>
+<td style="text-align: left"><strong>URL</strong> <br><code>string</code></td>
+<td style="text-align: left">Allows user to enter a valid link address. This field takes string input which should be a valid URL. This type of fields could be used to store a hyperlink to a website or a network resource.</td>
 </tr>
 <tr>
-<td style="text-align: left"><strong>Email</strong></td>
-<td style="text-align: left">Allows user to enter an email address, which is validated to ensure the proper format.You have to pass API code which will be referred to as a key. You can add prefix and postfix to this field. You can add a description for this text so that you can refer it to understand the requirement and use of this field. This field is visible to the end user. You can add help text, information text. You can pass a boolean value to make this field filterable or not. Also, importantly you have to assign at least one available in our 3 forms which are Resource form, Project Form and Booking Form respectively. You can select multiple options for this field.</td>
+<td style="text-align: left"><strong>Email</strong> <br> <code>string</code></td>
+<td style="text-align: left">Allows user to enter an email address, which is validated to ensure the proper format.</td>
 </tr>
 <tr>
-<td style="text-align: left"><strong>Checkbox</strong></td>
-<td style="text-align: left">Allows user to select or deselect a value using checkbox. You have to API code which will be referred to as a key. By default, you can set it’s value checked or unchecked. You can add a description for this text so that you can refer it to understand the requirement and use of this field. This field is visible to the end user. You can add help text, information text. You can pass a boolean value to make this field filterable or not. Also, importantly you have to assign at least one available in our 3 forms which are Resource form, Project Form and Booking Form respectively. You can select multiple options for this field.</td>
+<td style="text-align: left"><strong>Checkbox</strong>  <br> <code>boolean</code></td>
+<td style="text-align: left">Allows user to select or deselect a value using checkbox. This field takes a boolean value as input. Example use case could be like <code>is_enabled</code>, <code>is_active</code> etc.</td>
 </tr>
 <tr>
-<td style="text-align: left"><strong>Checkbox Group</strong></td>
-<td style="text-align: left">Allows user to select one or more values from a group of checkboxes. Also, you have to pass  API code which will be referred to as a key. You can add a description for this text so that you can refer it to understand the requirement and use of this field. This field is visible to the end user. You can add help text, information text. You can pass a boolean value to make this field filterable or not. Also, importantly you have to assign at least one available in our 3 forms which are Resource form, Project Form and Booking Form respectively. You can select multiple options for this field.</td>
+<td style="text-align: left"><strong>Radio Group</strong> <br> <code>integer</code></td>
+<td style="text-align: left">Allows user to select single value from available values. This field can be configured to have multiple options which user can select one from.</td>
 </tr>
 <tr>
-<td style="text-align: left"><strong>Radio Group</strong></td>
-<td style="text-align: left">Allows user to select single value from multiple values. You have to add values and it’s description for every entity. Also, you have to pass  API code which will be referred to as a key. You can add a description for this text so that you can refer it to understand the requirement and use of this field. This field is visible to the end user. You can add help text, information text. You can pass a boolean value to make this field filterable or not. Also, importantly you have to assign at least one available in our 3 forms which are Resource form, Project Form and Booking Form respectively. You can select multiple options for this field.</td>
+<td style="text-align: left"><strong>Drop Down Single Select</strong> <br> <code>integer</code></td>
+<td style="text-align: left">Allows user to select a single value from the dropdown list of available options. This field can be configured to have multiple options which user can select one from.</td>
 </tr>
 <tr>
-<td style="text-align: left"><strong>Color Picker</strong></td>
-<td style="text-align: left">Allows user to select a color using color picker. Also, you have to pass  API code which will be referred to as a key. You can add a description for this text so that you can refer it to understand the requirement and use of this field. This field is visible to the end user. You can add help text, information text. You can pass a boolean value to make this field filterable or not. Also, importantly you have to assign at least one available in our 3 forms which are Resource form, Project Form and Booking Form respectively. You can select multiple options for this field.</td>
+<td style="text-align: left"><strong>Checkbox Group</strong> <br> <code>array of ids</code></td>
+<td style="text-align: left">Allows user to select one or more values from a group of check boxes. This is useful where user needs to pick multiple values from available options. This field can be configured to have multiple options which user can select from.</td>
+</tr>
+<tr>
+<td style="text-align: left"><strong>Dropdown  Multi select</strong> <br> <code>array of ids</code></td>
+<td style="text-align: left">Allows user to select multiple values from the dropdown list. This field can be configured to have multiple options which user can select from. Though it is similar to checkbox group field, it additionally allows to search from available options and recommended when there are large number of options.</td>
+</tr>
+<tr>
+<td style="text-align: left"><strong>Color Picker</strong> <br> <code>string</code></td>
+<td style="text-align: left">Allows user to store a color code for an object. This is useful to visually identity an object when presenting in user interface. This field takes input in string format of hexadecimal color code with foreground color separated by semicolon <code>;</code> i.e #XXXXXX;1/0. Here X represent hexadecimal digit for background color, 1 represents white foreground color and 0 represents black foreground color. For example if <code>red</code> background with <code>white</code> foreground (text color) needs to be stored, then value should be <code>#FF0000;1</code>.</td>
 </tr>
 <tr>
 <td style="text-align: left"><strong>Label</strong></td>
-<td style="text-align: left">Allows user to select a single value with color from the dropdown list. You have to add values and it’s description for every entity with a color. Also, you have to pass  API code which will be referred to as a key. You can add a description for this text so that you can refer it to understand the requirement and use of this field. This field is visible to the end user. You can add help text, information text. You can pass a boolean value to make this field filterable or not. Also, importantly you have to assign at least one available in our 3 forms which are Resource form, Project Form and Booking Form respectively. You can select multiple options for this field.</td>
-</tr>
-<tr>
-<td style="text-align: left"><strong>Drop Down Single Select</strong></td>
-<td style="text-align: left">Allows user to select a single value from the dropdown list. You have to add values and it’s description for every entity as a dropdown option. Also, you have to pass  API code which will be referred to as a key. You can add a description for this text so that you can refer it to understand the requirement and use of this field. This field is visible to the end user. You can add help text, information text. You can pass a boolean value to make this field filterable or not. Also, importantly you have to assign at least one available in our 3 forms which are Resource form, Project Form and Booking Form respectively. You can select multiple options for this field.</td>
-</tr>
-<tr>
-<td style="text-align: left"><strong>Dropdown  Multi select</strong></td>
-<td style="text-align: left">Allows user to select multiple values from the dropdown list. You have to add values and it’s description for every entity as a dropdown option. Also, you have to pass  API code which will be referred to as a key. You can add a description for this text so that you can refer it to understand the requirement and use of this field. This field is visible to the end user. You can add help text, information text. You can pass a boolean value to make this field filterable or not. Also, importantly you have to assign at least one available in our 3 forms which are Resource form, Project Form and Booking Form respectively. You can select multiple options for this field.</td>
+<td style="text-align: left">Allows user to select a single value with color, from the dropdown list. Multiple options with color code can be defined for this type of fields. These fields are useful for visual representation of meaningful labels. For example a field named <code>status</code> can be created having options such as <code>Active</code> (in green), <code>Closed</code> (in gray), <code>Delayed</code> (in red).</td>
 </tr>
 </tbody></table>
 <h1 id='resource-types'>Resource Types</h1><h2 id='resource-type-object'>Resource type object</h2>
