@@ -10,8 +10,25 @@
   color: #28a745;
 }
 
-.error{
+.error, .danger{
   color: #d14;
+}
+
+.label{
+  color: white;  
+  border-radius: 4px;
+  padding: 1px 2px;
+  font-size: 12px;
+  &.danger{
+    background: #d14;
+  }
+  &.success{
+    background: #28a745;
+  }
+  &.warning{
+    background: #e7b731;
+    color : #444;
+  }
 }
 
 .required{
