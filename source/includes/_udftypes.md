@@ -20,7 +20,7 @@ User defined fields are filterable. Also, user can configure the visibility of s
 There are fifteen types of different fields available for different use cases. Each type of field has its own set of attributes which can be configured to fit your requirements. Once such fields are added and applied, the response for that object will contain these along with normal attributes.    
     
 
-<aside id="noticeAside">A user can add a maximum 30 user-defined fields.
+<aside id="noticeAside">There can be a maximum of 30 user-defined fields.
 </aside>
 
 
@@ -43,10 +43,8 @@ Name <span style="width:100px; float:left;"></span>|Description
 **Email** <br> `string` | Allows user to enter an email address, which is validated to ensure the proper format. 
 **Checkbox**  <br> `boolean` | Allows user to select or deselect a value using checkbox. This field takes a boolean value as input. Example use case could be like `is_enabled`, `is_active` etc.
 **Radio Group** <br> `integer` | Allows user to select single value from available values. This field can be configured to have multiple options which user can select one from.
-**Drop Down Single Select** <br> `integer`  |  Allows user to select a single value from the dropdown list of available options. This field can be configured to have multiple options which user can select one from.
-**Checkbox Group** <br> `array of ids`  |  Allows user to select one or more values from a group of check boxes. This is useful where user needs to pick multiple values from available options. This field can be configured to have multiple options which user can select from.
-**Dropdown  Multi select** <br> `array of ids` | Allows user to select multiple values from the dropdown list. This field can be configured to have multiple options which user can select from. Though it is similar to checkbox group field, it additionally allows to search from available options and recommended when there are large number of options.
+**Drop Down Single Select** <br> `integer`  |  Allows user to select a single value from the dropdown list of available options. This field can be configured to have a pick list of multiple options which user can select one from.
+**Checkbox Group** <br> `integer array`  |  Allows user to select one or more values from a group of check boxes. This is useful where user needs to pick multiple values from available options. This field can be configured to have a pick list of multiple options which user can select from.
+**Dropdown  Multi select** <br> `integer array` | Allows user to select multiple values from the dropdown list. This field can be configured to have a pick list of multiple options which user can select from. Though it is similar to checkbox group field, it additionally allows to search from available options and is recommended when there are large number of options.
 **Color Picker** <br> `string`|  Allows user to store a color code for an object. This is useful to visually identity an object when presenting in user interface. This field takes input in string format of hexadecimal color code with foreground color separated by semicolon `;` i.e #XXXXXX;1/0. Here X represent hexadecimal digit for background color, 1 represents white foreground color and 0 represents black foreground color. For example if `red` background with `white` foreground (text color) needs to be stored, then value should be `#FF0000;1`.
-**Label**  | Allows user to select a single value with color, from the dropdown list. Multiple options with color code can be defined for this type of fields. These fields are useful for visual representation of meaningful labels. For example a field named `status` can be created having options such as `Active` (in green), `Closed` (in gray), `Delayed` (in red).
-
-
+**Label**  <br> `integer` | Allows user to select a single value with color, from the dropdown list. This field can be configured to have a pick list of multiple options which user can select one from. These fields are useful for visual representation of meaningful labels. For example a field named `status` can be created having options such as <span class="success label">Active </span>, <span class="warning label">On Hold</span>, <span class="danger label"> Delayed </span>.

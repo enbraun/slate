@@ -48,12 +48,12 @@ Name | Description
 > Example : Access Token Request
  
 ```shell
-curl -X POST "https://app.eresourcescheduler.cloud/login/oauth/token?
-grant_type=authorization_code
-&code=QbD76mCzJSMJt4fc892i
-&client_id=SZIZIzFXUKfwnUJW
-&client_secret=4pbxCfKa1kJB2nihfbtPLixtv6Tf4V5q
-&redirect_uri=https://example.com/oauth/callback"\
+curl -X POST "https://app.eresourcescheduler.cloud/login/oauth/token?\
+grant_type=authorization_code\
+&code=QbD76mCzJSMJt4fc892i\
+&client_id=SZIZIzFXUKfwnUJW\
+&client_secret=4pbxCfKa1kJB2nihfbtPLixtv6Tf4V5q\
+&redirect_uri='https://example.com/oauth/callback'" \
 -H "Content-Type:application/x-www-form-urlencoded"
 ```
 
