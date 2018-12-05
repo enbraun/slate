@@ -258,7 +258,7 @@
             <a href="#resource-types" class="toc-h1 toc-link" data-title="Resource Types">Resource Types</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#resource-type-object" class="toc-h2 toc-link" data-title="Resource type object">Resource type object</a>
+                    <a href="#resource-type-object" class="toc-h2 toc-link" data-title="Resource Type Object">Resource Type Object</a>
                   </li>
                   <li>
                     <a href="#get-a-specific-resource-type" class="toc-h2 toc-link" data-title="Get a Specific Resource Type">Get a Specific Resource Type</a>
@@ -664,11 +664,11 @@ grant_type=authorization_code
 <td style="text-align: left">Allows user to select a single value from the dropdown list of available options. This field can be configured to have multiple options which user can select one from.</td>
 </tr>
 <tr>
-<td style="text-align: left"><strong>Checkbox Group</strong> <br> <code>array of ids</code></td>
+<td style="text-align: left"><strong>Checkbox Group</strong> <br> <code>integer array</code></td>
 <td style="text-align: left">Allows user to select one or more values from a group of check boxes. This is useful where user needs to pick multiple values from available options. This field can be configured to have multiple options which user can select from.</td>
 </tr>
 <tr>
-<td style="text-align: left"><strong>Dropdown  Multi select</strong> <br> <code>array of ids</code></td>
+<td style="text-align: left"><strong>Dropdown  Multi select</strong> <br> <code>integer array</code></td>
 <td style="text-align: left">Allows user to select multiple values from the dropdown list. This field can be configured to have multiple options which user can select from. Though it is similar to checkbox group field, it additionally allows to search from available options and recommended when there are large number of options.</td>
 </tr>
 <tr>
@@ -676,98 +676,158 @@ grant_type=authorization_code
 <td style="text-align: left">Allows user to store a color code for an object. This is useful to visually identity an object when presenting in user interface. This field takes input in string format of hexadecimal color code with foreground color separated by semicolon <code>;</code> i.e #XXXXXX;1/0. Here X represent hexadecimal digit for background color, 1 represents white foreground color and 0 represents black foreground color. For example if <code>red</code> background with <code>white</code> foreground (text color) needs to be stored, then value should be <code>#FF0000;1</code>.</td>
 </tr>
 <tr>
-<td style="text-align: left"><strong>Label</strong></td>
+<td style="text-align: left"><strong>Label</strong>  <br> <code>integer</code></td>
 <td style="text-align: left">Allows user to select a single value with color, from the dropdown list. Multiple options with color code can be defined for this type of fields. These fields are useful for visual representation of meaningful labels. For example a field named <code>status</code> can be created having options such as <code>Active</code> (in green), <code>Closed</code> (in gray), <code>Delayed</code> (in red).</td>
 </tr>
 </tbody></table>
-<h1 id='resource-types'>Resource Types</h1><h2 id='resource-type-object'>Resource type object</h2>
+<h1 id='resource-types'>Resource Types</h1><h2 id='resource-type-object'>Resource Type Object</h2>
 <blockquote>
 <p>Example Response</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">102</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Contractor"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"is_human"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"This is contractor resource type"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"fields"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-          </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">11</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"email"</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"display_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Email"</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"field_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EMAIL"</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"is_required"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"is_system_defined"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-          </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"first_name"</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"display_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"First Name"</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"field_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TEXT"</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"is_required"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"is_system_defined"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-          </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"last_name"</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"display_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Last Name"</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"field_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TEXT"</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"placeholder_text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Enter last name"</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"maxlength"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"is_required"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"is_system_defined"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-          </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">14</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"last_date"</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"display_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Last Working Date"</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"field_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DATE"</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"is_required"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"is_system_defined"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-          </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">26</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"phone"</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"display_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Phone"</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"field_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TEXT"</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"maxlength"</span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"is_required"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"is_system_defined"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-          </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">18</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"roles"</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"display_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Roles"</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"field_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ROLES"</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"placeholder_text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Enter a role"</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"is_required"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"is_system_defined"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"options"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-                  </span><span class="p">{</span><span class="w">
-                    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-                    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Architect"</span><span class="p">,</span><span class="w">
-                    </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
-                  </span><span class="p">},</span><span class="w">
-                  </span><span class="p">{</span><span class="w">
-                    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w">
-                    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Business Analyst"</span><span class="p">,</span><span class="w">
-                    </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
-                  </span><span class="p">},</span><span class="w">
-                </span><span class="p">],</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-          </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"start_date"</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"display_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Start Date"</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"field_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DATE"</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"is_required"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"is_system_defined"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="p">{</span><span class="err">...</span><span class="p">},</span><span class="w">
-        </span><span class="p">{</span><span class="err">...</span><span class="p">}</span><span class="w">
-     </span><span class="p">]</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Employee"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"is_human"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"fields"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">52</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"udf_department"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"display_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Department"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"field_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DDSS"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"is_required"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"is_system_defined"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"options"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">27</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Service"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+      </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">26</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Technical"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+      </span><span class="p">}]</span><span class="w">
+    </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">11</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"email"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"display_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Email"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"field_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EMAIL"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"placeholder_text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Enter valid email id"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"maxlength"</span><span class="p">:</span><span class="w"> </span><span class="mi">254</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"regex"</span><span class="p">:</span><span class="w"> </span><span class="s2">"^[a-zA-Z]+[a-zA-Z0-9._]+@[a-zA-Z]+</span><span class="se">\\</span><span class="s2">.[a-zA-Z.]{2,5}$"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"is_required"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"is_system_defined"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+    </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">46</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"udf_employee_no"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"display_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Employee No."</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"field_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TEXT"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"minlength"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"maxlength"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"is_required"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"is_system_defined"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+    </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"first_name"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"display_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"First Name"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"field_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TEXT"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"help_text"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"placeholder_text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Enter first name"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"minlength"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"maxlength"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"is_required"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"is_system_defined"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+    </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"last_name"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"display_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Last Name"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"field_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TEXT"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"placeholder_text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Enter last name"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"maxlength"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"is_required"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"is_system_defined"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+    </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">14</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"last_date"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"display_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Last Working Date"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"field_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DATE"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"is_required"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"is_system_defined"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"maxdate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2099-12-31"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"mindate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1900-01-01"</span><span class="w">
+    </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">45</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"udf_office"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"display_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Office"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"field_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DDSS"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"is_required"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"is_system_defined"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"options"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Chicago"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+      </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">11</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Dallas"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+      </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"New York"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+      </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"San Francisco"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+      </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">9</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Washington"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+      </span><span class="p">}]</span><span class="w">
+    </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">26</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"phone"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"display_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Phone"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"field_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TEXT"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"maxlength"</span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"is_required"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"is_system_defined"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+    </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">47</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"udf_qualifications"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"display_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Qualifications"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"field_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DDMS"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"is_required"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"is_system_defined"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"options"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">15</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"B. Tech Computers"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+      </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">14</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"B. Tech Electronics"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+      </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">17</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MBA Finance"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+      </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">18</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MBA Marketing"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+      </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">16</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Phd Economics"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+      </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">13</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PMP"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+      </span><span class="p">}]</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<p>This is an object which represents the type of resource. In an organization, there can be multiple types of resources.Resource type can be categorized as human or non-human. Human type of resource can be Employee, Contractors, etc. and non-human can be Machines,Computers,equipments,etc.</p>
+<p>Resource type object represents the type of resource. In an organization, there can be multiple types of resources. Administrator can add multiple resource types using eRS Cloud application. Resource type can be categorized as human or non-human. Human type of resource can be <code>Employee</code>, <code>Contractor</code>, etc. and non-human can be <code>Meeting Rooms</code>, <code>Projectors</code> etc. Different resource type object can be configured to have different set of custom attributes as well, which allows customizing resource objects to fit your requirements.</p>
 
 <p><span class="optional"><b>ATTRIBUTES</b></span></p>
 
@@ -778,52 +838,52 @@ grant_type=authorization_code
 </tr>
 </thead><tbody>
 <tr>
-<td style="text-align: right"><strong>id</strong>  <br><span class="optional"><code>integer</code></span></td>
-<td style="text-align: left">It is unique id for the object.It is used to search a object.</td>
+<td style="text-align: right"><strong>id</strong>  <br><code>integer</code></td>
+<td style="text-align: left">Unique identification number for the object, which allows referring to this object and can be used to search a particular resource type.</td>
 </tr>
 <tr>
-<td style="text-align: right"><strong>name</strong> <br><span class="optional"><code>string</code></span></td>
-<td style="text-align: left">It represents name of resource type.</td>
+<td style="text-align: right"><strong>name</strong> <br> <code>string</code></td>
+<td style="text-align: left">Represent name for this object. This is used to identify object by using some meaningful phrase to describe type of resources like <code>Employee</code>, <code>Machine</code> etc.</td>
 </tr>
 <tr>
-<td style="text-align: right"><strong>isHuman</strong> <br><span class="optional"><code>boolean</code></span></td>
-<td style="text-align: left">It repr­esents whether resource type is human or non-human. For example, human type of resources are Employee, Contractor, etc. , where as non-human resources are Machines, Meeting Rooms, etc.</td>
+<td style="text-align: right"><strong>isHuman</strong> <br> <code>boolean</code></td>
+<td style="text-align: left">Indicates whether this resource type is <code>human</code> or <code>non-human</code>. For example, <code>Employee</code> could be a human resource type while <code>Machine</code>, <code>Meeting Rooms</code> etc. can be non-human resource type.</td>
 </tr>
 <tr>
-<td style="text-align: right"><strong>fields</strong> <br><span class="optional"><code>array of strings</code></span></td>
-<td style="text-align: left">Fields is an object which contains list of properties of field that are defined for a particular resource type.</td>
+<td style="text-align: right"><strong>fields</strong> <br> <code>array of object</code></td>
+<td style="text-align: left">Represent collection of fields (or attributes) that are available for this resource type. Each <a href="#resource">Resource</a> object of this resource type can store / update values for these filed. While creating or updating a <a href="#resource">Resource</a> user must pass arguments which are available for intended resource type object.</td>
 </tr>
 <tr>
-<td style="text-align: right"><strong>fields.id</strong><br><span class="optional"><code>integer</code></span></td>
-<td style="text-align: left">It represents id for the particular field.</td>
+<td style="text-align: right"><strong>field.id</strong><br> <code>integer</code></td>
+<td style="text-align: left">Represents unique identification number of this field, which can be used to refer or search it.</td>
 </tr>
 <tr>
-<td style="text-align: right"><strong>fields.display_name</strong> <br><span class="optional"><code>string</code></span></td>
-<td style="text-align: left">It represents name of the field.</td>
+<td style="text-align: right"><strong>field.display_name</strong> <br> <code>string</code></td>
+<td style="text-align: left">Name of this field to identify it.</td>
 </tr>
 <tr>
-<td style="text-align: right"><strong>fields.field_type</strong> <br><span class="optional"><code>string</code></span></td>
-<td style="text-align: left">It represents type of the field. For example  Text, DDSS, DDMS, etc.</td>
+<td style="text-align: right"><strong>field.field_type</strong> <br><code>string</code></td>
+<td style="text-align: left">Represents the type of field. For example  TEXT (for Text Field), INT (for Integer Number field), DDSS (for Dropdown Single Select Field), etc. See <a href="#user-defined-fields">User Defined Fields</a> to know more about different field types.</td>
 </tr>
 <tr>
-<td style="text-align: right"><strong>fields.code</strong> <br><span class="optional"><code>string</code></span></td>
-<td style="text-align: left">It represents the unique code of the field which is referred to as API code. It is used for filtering.</td>
+<td style="text-align: right"><strong>field.code</strong> <br><code>string</code></td>
+<td style="text-align: left">It represents the unique code of the field which is referred to as API code. This code acts as <code>key</code> in API response and the same must be used as <code>key</code> to pass values for a POST or PUT request.</td>
 </tr>
 <tr>
-<td style="text-align: right"><strong>fields.is_required</strong> <br> <span class ="optional"><code>boolean</code></span></td>
-<td style="text-align: left">It represents that field is mandatory or not.Value of field must not be empty if is_required is true.</td>
+<td style="text-align: right"><strong>field.is_required</strong> <br> <code>boolean</code></td>
+<td style="text-align: left">Indicates whether this field is mandatory or not. If this field is a <code>required</code> field then a valid value for this field must be passed while creating such object and while updating object (if this field is intended to update).</td>
 </tr>
 <tr>
-<td style="text-align: right"><strong>fields.options</strong> <br><span class="optional"><code>string</code></span></td>
-<td style="text-align: left">It represents the options of multi-selections fields. For Ex. DDMS,DDSS,etc.</td>
+<td style="text-align: right"><strong>field.options</strong> <br> <code>array of objects</code></td>
+<td style="text-align: left">Field types such as Dropdown Single Select, Dropdown Multi Select, Radio Group etc. ( See <a href="#user_defined_fields">User Defined Fields</a> to know more.) allow user to pick one or more from these available options.</td>
 </tr>
 <tr>
-<td style="text-align: right"><strong>fields.options.id</strong> <br><span class="optional"><code>integer</code></span></td>
-<td style="text-align: left">Unique identifier for the option.</td>
+<td style="text-align: right"><strong>field.option.id</strong> <br> <code>integer</code></td>
+<td style="text-align: left">Represents unique identification number for the option object.</td>
 </tr>
 <tr>
-<td style="text-align: right"><strong>fields.option.name</strong> <br><span class="optional"><code>string</code></span></td>
-<td style="text-align: left">It represents the name of the option.</td>
+<td style="text-align: right"><strong>field.option.name</strong> <br> <code>string</code></td>
+<td style="text-align: left">Represents name of option object.</td>
 </tr>
 </tbody></table>
 <h2 id='get-a-specific-resource-type'>Get a Specific Resource Type</h2>
