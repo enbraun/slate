@@ -94,25 +94,31 @@
     ]
 }
 ```
-
-    
- This is an object which represents the type of project. In an organization, there can be multiple types of projects. 
+Project type object represents the type of project. In an organization, there can be multiple types of projects. Administrator can add multiple project types using eRS Cloud application. Different project type object can be configured to have different set of custom attributes as well, which allows customizing project objects to fit your requirements.
 
 <span class="optional"><b>ATTRIBUTES</b></span>
 
 Name | Description
 | ---:  |  :----   |
-**id**  <br><span class="optional">`integer`</span> | Unique identifier for the object.
-**name** <br><span class="optional">`string`</span> | It represents name of project type.
-**fields** <br><span class="optional">`array of strings`</span> |Fields is an object which contains list of properties of field that are defined for a particular project type. 
-**fields.id**<br><span class="optional">`integer`</span> | It represents id for the particular field.
-**fields.display_name** <br><span class="optional">`string`</span> | It represents name of the field.
-**fields.field_type** <br><span class="optional">`string`</span> |  It represents type of the field. For example  Text, DDSS, DDMS, etc.
-**fields.code** <br><span class="optional">`string`</span> |It represents the unique code of the field which is referred to as API code. It is used for filtering.
-**fields.is_required** <br> <span class ="optional">`boolean`</span> |It represents that field is mandatory or not. Value of field must not be empty if is_required is true.
-**fields.options** <br><span class="optional">`string`</span> |It represents the options of multi-selections fields. For Ex. DDMS,DDSS,etc.
-**fields.options.id** <br><span class="optional">`integer`</span> | Unique identifier for the option.
-**fields.option.name** <br><span class="optional">`string`</span> | It represents the name of the option.
+**id**  <br><span class="optional">`integer`</span> |Unique identification number for the object, which allows referring to this object and can be used to search a particular project type.
+**name** <br><span class="optional">`string`</span> | Represent name for this object. This is used to identify object by using some meaningful phrase to describe type of projects like `Standard`, `Education` etc.
+**fields** <br><span class="optional">`array of strings`</span> |Represent collection of fields (or attributes) that are available for this project type. Each [Project] (#project) object of this project type can store / update values for these filed. While creating or updating a [Project] (#resource) user must pass arguments which are available for intended project type object. 
+**fields.id**<br><span class="optional">`integer`</span> | Represents unique identification number of this field, which can be used to refer or search it.
+**fields.display_name** <br><span class="optional">`string`</span> |Name of this field to identify it.
+**fields.field_type** <br><span class="optional">`string`</span> |   Represents the type of field. For example  TEXT (for Text Field), INT (for Integer Number field), DDSS (for Dropdown Single Select Field), etc. See [User Defined Fields] (#user-defined-fields) to know more about different field types.
+**fields.code** <br><span class="optional">`string`</span> | It represents the unique code of the field which is referred to as API code. This code acts as `key` in API response and the same must be used as `key` to pass values for a POST or PUT request.
+**field.minlength** <br><span class="optional">`integer` |  Represents minimum no of characters in value this field can accept (_only applicable for text fields_).
+**field.maxlength** <br><span class="optional">`integer` |  Represents maximum no of characters in value this field can accept (_only applicable for text fields_).
+**field.regex** <br>`string` |  Represents regular expression which must be matched by value for this field (_only applicable for text fields_).
+**field.minnum** <br><span class="optional">`integer` |  Represents minimum value this field can accept (_only applicable for numeric fields_).
+**field.maxnum** <br><span class="optional">`integer` |  Represents maximum value this field can accept (_only applicable for numeric fields_).
+**field.mindate** <br><span class="optional">`string` |  Represents minimum value this field can accept (_only applicable for date / date time fields_).
+**field.maxdate** <br><span class="optional">`string` |  Represents maximum value this field can accept (_only applicable for date / date time fields_).
+**fields.is_required** <br> <span class ="optional">`boolean`</span> |Indicates whether this field is mandatory or not. If this field is a `required` field then a valid value for this field must be passed while creating such object and while updating object (if this field is intended to update).
+**is_system_defined** <br><span class="optional"> `boolean` | Indicates whether this field is system defined or a custom field. Fields which are system defined can not be customized.
+**fields.options** <br><span class="optional">`string`</span> |Field types such as Dropdown Single Select, Dropdown Multi Select, Radio Group etc. ( See [User Defined Fields](#user_defined_fields) to know more.) allow user to pick one or more from these available options.
+**fields.options.id** <br><span class="optional">`integer`</span> |  Represents unique identification number for the individual option object.
+**fields.option.name** <br><span class="optional">`string`</span> | Represents name or content of option object.
 
 
 
@@ -197,6 +203,7 @@ curl -v -X GET \
 | Code      | Description | 
 | ---:        |    :----   | 
 | **200** <br> <span class = "success">`OK`</span>     | This status code indicates that the operation was successful and a project-type  get retrieved successfully .  |
+| **403** <br> <span class = "error">`Forbidden`</span> | Authorization failed due to insufficient permissions. This occurs when user does not have enough access rights to perform this action. Access for each user can be controlled by an Administrator using eRS Cloud Application.|
 |  **404** <br><span class = "error">`Not Found`</span> |This status code indicates that project-type id does not exist|
 
 
@@ -286,3 +293,4 @@ curl -v -X GET \
 | Code      | Description | 
 | ---:        |    :----   | 
 | **200** <br> <span class = "success">`OK`</span>      |  This indicates that the operation was successful and  list of project-types is returned.  |
+| **403** <br> <span class = "error">`Forbidden`</span> | Authorization failed due to insufficient permissions. This occurs when user does not have enough access rights to perform this action. Access for each user can be controlled by an Administrator using eRS Cloud Application.|

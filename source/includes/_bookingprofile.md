@@ -3,7 +3,7 @@
 
 ## Booking profile object
 
-This is an object which represents booking-profile.
+Booking profile object represents booking profile.
 
 > Example Request
 
@@ -121,16 +121,16 @@ curl -v -X GET \
 
 Name | Description
 | ---:  |  :----   |
-**id**  <br><span class="optional">`integer`</span> | Unique identifier for the field.
-**code**  <br><span class="optional">`integer`</span> | It represents the unique code of the field which is referred to as API code. It is used for filtering.
-**field_type** <br><span class="optional">`string`</span> |  It represents type of field. For example UNIT,TSKSS etc.
-**display_name**<br><span class="optional">`string`</span> | It represents name of field.
-**is_system_defined**<br><span class="optional">`boolean`</span> | `True` value of this object shows that it is system defined field and `false` value of this field shows that it is user defined field.
-**is_filterable** <br> <span class ="optional">`boolean`</span> |Value of this field represents that this field is used for filtering or not. |
-**is_mandatory_required**<br> <span class ="optional">`boolean`</span> |It represents that field is mandatory or not. Value of field must not be empty if is_mandatory_required is true.
-**minnum** <br> <span class ="optional">`integer`</span> | It represents minimum value of field.|
-**maxnum** <br> <span class ="optional">`integer`</span> | It represents maximum value of field.|
-**mindate** <br> <span class ="optional">`string`</span> |It represents minimum date of field. |
-**maxdate** <br> <span class = "optional">`string`</span> |It represents maximum date of field. |
+**id**  <br><span class="optional">`integer`</span> |  Represents unique identification number of this field, which can be used to refer or search it.
+**code**  <br><span class="optional">`integer`</span> |  It represents the unique code of the field which is referred to as API code. This code acts as `key` in API response and the same must be used as `key` to pass values for a POST or PUT request.
+**field_type** <br><span class="optional">`string`</span> | Represents the type of field. For example  TEXT (for Text Field), INT (for Integer Number field), DDSS (for Dropdown Single Select Field), etc. See [User Defined Fields] (#user-defined-fields) to know more about different field types.
+**display_name**<br><span class="optional">`string`</span> |Name of this field to identify it.
+**is_system_defined**<br><span class="optional">`boolean`</span> |  Indicates whether this field is system defined or a custom field. Fields which are system defined can not be customized.
+**is_filterable** <br> <span class ="optional">`boolean`</span> |Indicates whether this field is used for filtering or not. |
+**is_mandatory_required**<br> <span class ="optional">`boolean`</span> |Indicates whether this field is mandatory or not. If this field is a `required` field then a valid value for this field must be passed while creating such object and while updating object (if this field is intended to update).
+**minnum** <br> <span class ="optional">`integer`</span> | Represents minimum value this field can accept (_only applicable for numeric fields_).
+**maxnum** <br> <span class ="optional">`integer`</span> | Represents maxmum value this field can accept (_only applicable for numeric fields_).
+**mindate** <br> <span class ="optional">`string`</span> |Represents minimum value this field can accept (_only applicable for date / date time fields_).
+**maxdate** <br> <span class = "optional">`string`</span> |Represents maxmum value this field can accept (_only applicable for date / date time fields_).
 
 
