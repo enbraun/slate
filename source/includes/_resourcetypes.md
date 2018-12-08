@@ -161,7 +161,7 @@ Retrieves the details of an existing resource-type. You only need to  provide th
 >Example Request
 
 ```shell
-curl -v \
+curl -v -X GET \
 "https://app.eresourcescheduler.cloud/rest/v1/resourcetypes/2"\
  -H "Authorization: Bearer B8x5Vj1O65r6wnoV"
 ```
@@ -292,6 +292,7 @@ curl -v \
 | Code      | Description | 
 | ---:      |    :----    | 
 | **200** <br> <span class = "success">`OK`</span> | Indicates that operation was successful and  retrieved a resource-type successfully.  |
+| **403** <br> <span class = "error">`Forbidden`</span> | Authorization failed due to insufficient permissions. This occurs when user does not have enough access rights to perform this action. Access for each user can be controlled by an Administrator using eRS Cloud Application.|
 |  **404** <br><span class = "error">`Not Found`</span> | Indicates that no resource-type object was found with provided identifier.
 
 
@@ -304,8 +305,9 @@ Returns a list of all resource-types sorted by name.
 > Example Request
 
 ```shell
-curl -v "https://app.eresourcescheduler.cloud/rest/v1/resourcetypes"\
- -H "Authorization: Bearer B8x5Vj1O65r6wnoV"
+curl -v -X GET \
+"https://app.eresourcescheduler.cloud/rest/v1/resourcetypes"\
+-H "Authorization: Bearer B8x5Vj1O65r6wnoV"
 ```
 
 > Example Response
@@ -410,6 +412,7 @@ curl -v "https://app.eresourcescheduler.cloud/rest/v1/resourcetypes"\
 | Code      | Description | 
 | ---:        |    :----   | 
 | **200** <br> <span class = "success">`OK`</span>      |  This indicates that the operation was successful and  list of resource-types is returned.  |
+| **403** <br> <span class = "error">`Forbidden`</span> | Authorization failed due to insufficient permissions. This occurs when user does not have enough access rights to perform this action. Access for each user can be controlled by an Administrator using eRS Cloud Application.|
 
 
 
