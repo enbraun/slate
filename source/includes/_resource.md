@@ -6,42 +6,61 @@
 
 ```json
 {
-   "id": 1,
-   "modified_on": "2018-10-04T07:43:26.479769Z",
-   "roles":[
-      {
-         "id": 1,
-         "name": "Software Developer",
-         "description": null
-      }
-   ],
-   "last_name": "Gray",
-   "type":{
-      "id": 1,
-      "name": "Employee",
-      "description": null,
-      "isHuman": true
-   },
-   "created_by":{
-      "id": 2,
-      "name": "Patrick Wilson"
-   },
-   "last_date": null,
-   "tags":[
-     "Seattle"
-   ],
-   "created_on": "2018-10-03T11:55:48.551594Z",
-   "phone": "(555) 555-1234",
-   "name": "Christian Gray",
-   "modified_by":{
-     "id": 2,
-      "name": "Patrick Wilson"
-   },
-   "first_name": "Christian",
-   "image": "img/resource_default",
-   "email": "christian.gray@mycompany.com",
-   "start_date": "2016-01-08",
-   "emp_birthday": "1991-01-27" <- User defined field
+    "id": 1,
+    "first_name": "Andrew",
+    "last_name": "Mooney",
+    "name": "Andrew Mooney",
+    "type": {
+        "name": "Employee",
+        "description": null,
+        "id": 1,
+        "is_human": true
+    },
+    "email": "andrew@enbraun.com",
+    "start_date": "2018-01-01",
+    "last_date": null,
+    "image": "https://erscloud/img/7aca31f5-29ae205ba315",
+    "phone": null,
+    "roles": [{
+        "name": "Quality Engineer",
+        "description": null,
+        "id": 3
+    }, {
+        "name": "Business Analyst",
+        "description": null,
+        "id": 1
+    }],
+    "tags": [],
+    "created_on": "2018-08-20T09:22:02.728296Z",
+    "created_by": {
+        "name": "Rahul Sharma",
+        "id": 118
+    },
+    "modified_on": "2018-11-20T11:55:48.880898Z",
+    "modified_by": {
+        "name": "Rahul Sharma",
+        "id": 118
+    },
+    "udf_qualifications": [{
+        "name": "B.Tech Computers",
+        "description": null,
+        "id": 15
+    }, {
+        "name": "PMP",
+        "description": null,
+        "id": 13
+    }],
+    "udf_employee_no": "ABC0001",
+    "udf_office": {
+        "name": "New York",
+        "description": null,
+        "id": 10
+    },
+    "udf_department": {
+        "name": "Technical",
+        "description": null,
+        "id": 26
+    }
 }
 ```
 
@@ -51,108 +70,112 @@
 
 Name         |  Description
  ---:        |    :---- 
-**id** <br><span class="optional">`integer`</span>     |  eRS Cloud-generated unique identifier for the resource object. 
-**modified_on** <br><span class="optional">`string`</span> | Describes the latest modification date.
-**start_date** <br><span class="optional">`string`</span> |  The date on which resource has joined the Organization.
-**type** <br><span class="optional">`object`</span> | It describes the type of resource.
-**isHuman** <br><span class="optional">`boolean`</span> | Has the value `true` if the resource is human <br>or the value `false` if the resource is non-human.
-**last_name** <br><span class="optional">`string`</span> | The last name of the resource.
-**last_date** <br><span class="optional">`string`</span> |  This field indicates last working date of resource. 
-**tags** <br><span class="optional">`array of strings`</span> |Tags are the list of strings that could be used to organize the resource.
-**created_on** <br><span class="optional">`string`</span> |   Time at which the resource object is created.
-**created_by** <br> <span class="optional">`object`</span> | This field describes by whom resource object is created .|
-**phone** <br><span class="optional">`string`</span> |The phone number of the resource.
-**name** <br><span class="optional">`string`</span>  | The full name of the resource.
-**modified_by** <br><span class="optional">`object`</span> | This field describes by whom modification is done.
-**first_name** <br><span class="optional">`string`</span> | The first name of the resource.
-**image** <br><span class="optional">`string`</span> | The  image or display picture of the resource.
-**email** <br><span class="optional">`string`</span> | The email address of the resource.
-**User defined fields** <br><span class="optional">`optional`</span>  | Custom user-defined fields used to capture additional information of resource.  Here in given example, <span style="color:#db7708">`emp_birthday`</span> is a user defined field. [Learn more] (#user-defined-fields)
+**id** <br>`integer` | Auto generated unique identifier for resource object.
+**first_name** <br>`string` | First name of resource.
+**last_name** <br>`string` | Last name of resource.
+**type** <br>`object` | Describes the type of resource. This is one of the type objects which an admin user creates using eRS Cloud Application.
+**email** <br>`string` | Email address of resource object.
+**start_date** <br>`string` | Represents the first working day of resource in organization. Resource does not have any availability before this date.
+**last_date** <br>`string` | Represents the last working day of resource in organization. After this date, resource is considered archived and has no availability beyond this date.
+**image** <br>`string`| String value representing URI of image file of resource.
+**phone** <br>`string` | Phone number of the resource object.
+**roles** <br>`array of objects` | List of role objects applied on this resource.
+**tags** <br>`array of strings` | Tags are the list of strings (labels) attached to this resource object which could be used for the purpose of filtering, identification or other information.
+**created_on** <br>`string` | Timestamp at which this resource object was created.
+**created_by** <br> `object` | Object representing user who created this resource object.
+**modified_on** <br>`string` | Represents latest modification timestamp.
+**modified_by** <br>`object` | Object representing most recent user who modified this resource object.
+**User defined fields** | Custom user-defined fields used to capture additional information of resource. User defined field can be of multiple types. Custom fields are very useful to configure resource objects to best fit requirements.  In given example response, all keys starting with prefix `udf_` are user defined custom fields. [Learn more] (#user-defined-fields)
 
 
 
 ## Create a resource
+
+Creates a new resource object.
     
->  `POST v1/resources`
+> **`POST /v1/resources`**
 
-
-> Example Request:
+> Example Request for human type of resource:
 
 ```shell
  curl -v -X POST "https://app.eresourcescheduler.cloud/rest/v1/resources" \
-  -H "Authorization: Bearer B8x5Vj1O65r6wnoV" \
-  -H "Content-Type: application/json" \
-  -d  '{ "first_name": "Amy",
-         "start_date": "2016-05-02",
-         "resource_type_id": 1,
-         "emp_birthday": "1991-01-27" 
-        }'
+ -H "Authorization: Bearer B8x5Vj1O65r6wnoV" \
+ -H "Content-Type: application/json" \
+ -d '{ 
+       "first_name": "Andrew",
+       "last_name": "Mooney",
+       "resource_type_id": 1,
+       "start_date": "2016-05-02",
+       "email": "andrew@enbraun.com",
+       "roles" : [1,3],
+       "udf_employee_no": "ABC0001"
+     }'
 ```
 
 > Example Request for non-human resource:
 
 ```shell
  curl -v -X POST "https://app.eresourcescheduler.cloud/rest/v1/resources" \
-  -H "Authorization: Bearer B8x5Vj1O65r6wnoV" \
-  -H "Content-Type: application/json" \
-  -d '{ "name": "La La Land",
-        "start_date": "2018-08-05",
-        "resource_type_id": 2,
-        "capacity": 15 
-       }'
+ -H "Authorization: Bearer B8x5Vj1O65r6wnoV" \
+ -H "Content-Type: application/json" \
+ -d '{  
+       "name": "Projector EX4300",
+       "start_date": "2018-06-01",
+       "resource_type_id": 2,
+       "udf_battery_capacity": 4 
+     }'
 ```
 
-<span class="optional"><b>REQUEST BODY PARAMETERES</b></span>
+<span class="optional"><b>REQUEST BODY PARAMETERS</b></span>
 
 
 Name               |  Description
  ---:        |    :----   
-**calendar**  <br><span class="optional">`optional`</span>  |The calendar used to assign a particular resource’s working calendar. It may vary from resource to resource as per its requirements. With the help of calendar, working timing of a resource can be defined. It is the integer id of calendar. The default calendar will be set if you post an empty value.
-**email** <br><span class="optional">`optional`</span>  |  Resource's email address is an optional field. It’s displayed alongside the resource in your resource list and can be useful for filtering purpose. The maximum length of this field may be up to 254 characters. This will be blank if you POST an empty value.
-**first_name** <br> <span class="required">`required`</span>  |The first name is a string which represents the first name of a resource. It is a required field. This may be up to 100 characters. This will throw an error if you post an empty value.<br> <span class = "error"> For non-human type of resource this field is  <span class="required">**`unavailable`**</span>.</span>
-**image**  <br><span class="optional">`optional`</span> | Resource's image is an optional field. This field accepts the Base64 encoded PNG string. It's displayed alongside the resource list.This will be blank if you POST an empty value.
-**last_name**  <br><span class="optional">`optional`</span>  |  The last name is a string which represents the last name of a resource. It is an optional field. This may be up to 100 characters.  This will be blank if you POST an empty value.<br> <span class = "error"> For non-human type of resource this field is  <span class="required">**`unavailable`**</span>.</span>
-**phone**  <br><span class="optional">`optional`</span>  |Resource's phone is an optional field. It’s displayed alongside the resource in your resource list and can be useful for filtering purpose. This may be up to 50 characters. This will be blank if you POST an empty value.
-**resource_type_id** <br> <span class="required">`required`</span>| Resource_type_id represents the id of resource type. Let’s assume there are two types of resources Employee and Meeting rooms. Resource_type_id of Employee is 1 and resource_type_id of Meeting Room type is 2, then while creating a new resource, all the resource whose resource_type_id is given as 1 will get created under Employee type and same for Meeting Room when resource_type_id is 2. It is a required field.
-**roles**  <br><span class="optional">`optional`</span>  |  An array of ids of Role to be assigned to this Resource. The first id in the array is considered as Primary Role of that Resource. You can apply multiple performing roles to a resource. Resources can also be searched / filtered using performing roles. No role will get applied if the empty array or null value is passed.
-**start_date**<br><span class="required">`required`</span>  |  The date on which resource has joined the organization. You can create the booking from the start date of a resource. You can not create the booking before the start date. It is a required field. This will throw an error if you post an empty value.
-**tags**  <br><span class="optional">`optional`</span>  | Tags is an optional filed. It’s displayed alongside the resource in your list and can be useful for searching and filtering. This may be up to 50 characters. This will be blank if you post an empty value.
-**name**<span class = "error">*</span> <br><span class="optional">`optional`</span>|  Its concatenation of the first name and last name of human type resource. While for non-human type resource Name is <span class="required">`required`</span> field.<br><span class = "error">* Indicates for the non-human type of resource it is a required field.</span>  
-**User defined fields** <br><span class="optional">`optional`</span>  | A user with admin rights can add such custom fields. These fields can be used to capture additional info in Resources. Different types of resources may have a different set of user-defined fields. The value for user defined field can be passed as shown in example request. Here in given example, <span style="color:#db7708">`emp_birthday`</span> is a user defined field. [Learn more] (#user-defined-fields)
-
-
+**resource_type_id** <br> <span class="required">`required`</span> | Id of [resource-type] (#resource-types) object. Every resource must be linked to a [resource-type] (#resource-types). Let’s assume there are two resource types defined as Employee (_having id 1_) and Meeting Room (_having id 2_). While creating a new resource, all the resource whose `resource_type_id` is given as **1** will get created under Employee type and same for Meeting Room when `resource_type_id` is **2**.
+**first_name** <br> <span class="required">`required`</span>  | String representing the first name of a resource. This may be up to 100 characters.<br> _**Note** : for non-human resources, this field is <span class="danger">not available</span>_.
+**last_name** <br> `optional`  | String representing the last name of a resource. This may be up to 100 characters.<br> _**Note** : for non-human resources, this field is <span class="danger">not available</span>_.
+**name** <br> <span class="required">`required`</span> | String representing the name of a resource. This may be up to 100 characters.<br> _**Note** : This field is only available for non-human resources and for human resources, this is <span class="danger">not available</span>_.
+**start_date**<br><span class="required">`required`</span>  |  String value representing a date in ISO 8601 extended notation for date i.e. yyyy-MM-dd. A resource is only available from its start date i.e system does not consider any capacity of resource before this date.
+**last_date**<br>`optional` |  String value representing a date in ISO 8601 extended notation for date i.e. yyyy-MM-dd. A resource is only available till its last date i.e system does not consider any capacity of resource beyond this date (_if defined_).
+**email**<br>`optional` |  String value representing email address of resource object. Email address must be properly formatted with a maximum length of 254 characters.
+**phone**<br>`optional` | String representing phone number of resource. It’s displayed alongside the resource in your resource list.
+**image**<br>`optional` | This field accepts the Base64 encoded PNG string. This creates an image file (used as an avatar) for this resource.
+**roles**<br>`optional` | An array of ids of Roles (which are defined by an admin user in eRS Cloud Application) to be assigned to this Resource. The first id in the array is considered as Primary Role of that Resource. Multiple performing roles can be applied to a resource. Resources can also be searched / filtered using performing roles.
+**calendar**  <br>`optional` | Id of Calendar object which should be assigned to resource effective from its start date. Depending upon requirements, different calendars can be applied on different resources. If calendar is omitted then default calendar (as defined in admin settings) will get applied for this resource.
+**tags**  <br>`optional` | An optional array of strings which could be attached to this resource object as labels. This can be useful for the purpose of filtering, identification or other information.
+**udf_\*** <br>`optional` | A user with admin rights can add custom fields. These fields can be used to capture additional information in Resources. Different types of resources may have a different set of user-defined fields. The value for user defined field can be passed as shown in example request. In first example **_udf_employee_no_**</span> is a user defined field. [Learn more] (#user-defined-fields).
 
 ### Returns
  
-| Code      |Description |
- :---        |    :----   |
-| **201** <br><span class = "success">`Created`</span> | This status code indicates that the operation was successful and  a resource get created successfully.|
-| **400** <br> <span class = "error">`Bad Request`</span> | Bad Request error occurs when a request is  malformed, syntactically incorrect, missing required parameters are  or any unknown parameter is passed. <br> Additionally, Bad request may also occur in one of these conditions :<ul><li>Invalid image file is provided.</li><li>Resource's start date is after its end date.</li></ul> |
-| **403** <br> <span class = "error">`Forbidden`</span> |Authorization failed due to insufficient permissions. This occurs when user does not have enough access rights to perform this action. Access for each user can be controlled by an Administrator using eRS Cloud Application.|
+| Code      | Description |
+| :---      |    :----    |
+**201** <br><span class = "success">`Created`</span> | Indicates that the operation was successful and a resource get created successfully.
+**400** <br> <span class = "error">`Bad Request`</span> | Bad Request error occurs when a request is  malformed, syntactically incorrect, missing required parameters or has any unknown parameter. Additionally, Bad request may also occur in one of these conditions :<ul><li>Resource's start date is after its end date.</li><li>Trying to create resources more than subscribed no of resources.</li></ul> 
+**403** <br> <span class = "error">`Forbidden`</span> |Authorization failed due to insufficient permissions. This occurs when user does not have enough access rights to perform this action. Access for each user can be controlled by an Administrator using eRS Cloud Application.
 
 
 ## List resources
 
-Returns a list of resources. The resources are returned sorted by name and resource id. 
+Returns a list of resources. The resources are returned sorted by name. 
 	
 
->  `GET v1/resources/`
+>  **`GET /v1/resources/`**
 
 
 > Example Request
 
 ```shell
-curl -v -X GET \
+curl -v \
 "https://app.eresourcescheduler.cloud/rest/v1/resources" \
-  -H "Authorization: Bearer B8x5Vj1O65r6wnoV"
+-H "Authorization: Bearer B8x5Vj1O65r6wnoV"
 ```
 
 >Example Request With Offset And Limit 
 
 ```shell 
-curl -v -X GET \
-"https://app.eresourcescheduler.cloud/rest/v1/resources?offset=1&limit=1" \
- -H "Authorization: Bearer B8x5Vj1O65r6wnoV"
+curl -v \
+"https://app.eresourcescheduler.cloud/rest/v1/resources?offset=1&limit=15" \
+-H "Authorization: Bearer B8x5Vj1O65r6wnoV"
 ```
 
 
@@ -160,159 +183,186 @@ curl -v -X GET \
 
 ```json
 {
-   "totalcount": 7,
-   "offset": 1,
-   "limit": 25,
-   "data": [
-      {
-         "id": 2,
-         "roles": [
-            {
-               "name": "Network Engineer",
-               "description": "Network Engineer",
-               "id": 3
-            },
-            {
-               "name": "Web Developer",
-               "description": "Web Developer",
-               "id": 5
-            }
-         ],
-         "type": {
-            "name": "Employee",
-            "description": "Employee Type",
-            "id": 1,
-            "is_human": true
-         },
-         "last_date": null,
-         "first_name": "Anastasia",
-         "image": "/img/8945d093-0f76-4347-a9ae-b2f3c13ea281",
-         "email": "ana.steele@mycompany.com",
-         "start_date":"2016-01-27",
-         "modified_on": "2018-10-30T09:15:38.422688Z",
-         "last_name": "Steele",
-         "created_by": {
-            "name": "Patrick Wilson",
-            "id": 2
-         },
-         "emp_birthday": "2018-01-08", <- User-defined field.
-         "tags": [
-            "Santa Clara",
-            "San Diego"
-         ],
-         "created_on": "2018-10-03T11:56:39.885256Z",
-         "phone": "(485)555-9876",
-         "name": "Anastasia Steele",
-         "modified_by": {
-            "name": "Patrick Wilson",
-            "id": 2
-         }
+  "total_count": 120,
+  "offset": 1,
+  "limit": 25,
+  "data": [{
+      "id": 1,
+      "first_name": "Andrew",
+      "last_name": "Mooney",
+      "name": "Andrew Mooney",
+      "type": {
+        "name": "Employee",
+        "description": null,
+        "id": 1,
+        "is_human": true
       },
-      {...},
-      {...},
-      {...}
-   ]
+      "email": "andrew@enbraun.com",
+      "start_date": "2018-01-01",
+      "last_date": null,
+      "image": "https://erscloud/img/7aca31f5-29ae205ba315",
+      "phone": null,
+      "roles": [{
+        "name": "Quality Engineer",
+        "description": null,
+        "id": 3
+      }, {
+        "name": "Business Analyst",
+        "description": null,
+        "id": 1
+      }],
+      "tags": [],
+      "created_on": "2018-08-20T09:22:02.728296Z",
+      "created_by": {
+        "name": "Rahul Sharma",
+        "id": 118
+      },
+      "modified_on": "2018-11-20T11:55:48.880898Z",
+      "modified_by": {
+        "name": "Rahul Sharma",
+        "id": 118
+      },
+      "udf_qualifications": [{
+        "name": "B.Tech Computers",
+        "description": null,
+        "id": 15
+      }, {
+        "name": "PMP",
+        "description": null,
+        "id": 13
+      }],
+      "udf_employee_no": "ABC0001",
+      "udf_office": {
+        "name": "New York",
+        "description": null,
+        "id": 10
+      },
+      "udf_department": {
+        "name": "Technical",
+        "description": null,
+        "id": 26
+      }
+    },
+    { ... },
+    { ... },
+    { ... }
+  ]
 }
 ```
 
 
-<span class="optional"><b>REQUEST QUERY PARAMETERES</b></span>
+<span class="optional"><b>REQUEST QUERY PARAMETERS</b></span>
 
 |Name|Description|
 |-:|:-|
-|**limit**<br><span class="optional">`optional`</span>|The limit keyword is used to limit the number of rows returned from a result set.<br>*The default value of limit is*  <span class="error">*`25`*</span><br>*Maximum value of limit can be* <span class="error">*`500.`*</span> *If value of limit is greater than*<span class="error">*`500`*</span>  *then it will set to  Maximum value of limit which is*  <span class="error">*`500.`*</span>|
-|**offset**<br><span class="optional">`optional`</span>|The Offset value allows you to specify the ranking number of the first item on the page .The Offset value is most often used together with the Limit keyword.<br>*The default value of `offset` is* <span class="error">*`0`* </span>|
+**limit**<br>`optional` | The limit keyword is used to limit the number of records returned from a result set. If a limit count is given, no more than that many records will be returned (but possibly less, if the query itself yields less records)<br>_Default value of `limit` is_ <span class="required">**`25`**</span><br>_Maximum value of `limit` can be_ <span class="required">**`500`**</span>
+**offset**<br>`optional` | Offset keyword is used to skip n items. If offset value is given as 10, then first 10 records will be skipped from result set. Offset is often used together with the Limit keyword.<br>_Default value of `offset` is_ <span class="required">**`0`**</span>
 
 
 
 ### Returns 
 
 
-| Code      | Description | 
-| ---:        |    :----   | 
-| **200** <br> <span class = "success">`OK`</span>      |  This indicates that the operation was successful and  list of resources is returned.  |
-**400** <br> <span class = "error">`Bad Request` </span>| Bad Request may occur when offset and limit value is negative integer.|
-| **403** <br> <span class = "error">`Forbidden`</span> |Authorization failed due to insufficient permissions. This occurs when user does not have enough access rights to perform this action. Access for each user can be controlled by an Administrator using eRS Cloud Application.|
+| Code    | Description | 
+| ---:    |    :----    | 
+**200** <br> <span class = "success">`OK`</span>  | Indicates that the operation was successful and  list of resources is returned. 
+**400** <br> <span class = "error">`Bad Request` </span> | Bad Request may occur when offset and limit value is negative integer.
+**403** <br> <span class = "error">`Forbidden`</span> | Authorization failed due to insufficient permissions. This occurs when user does not have enough access rights to perform this action. Access for each user can be controlled by an Administrator using eRS Cloud Application.
 
 
 ## Retrieve a resource 
 
-
->  `GET v1/resources/{ID}`
+> **`GET /v1/resources/{ID}`**
 
 > Example Request
 
 ```shell
-curl -v -X GET "https://app.eresourcescheduler.cloud/rest/v1/resources/1"\
-  -H "Authorization: Bearer B8x5Vj1O65r6wnoV"
+curl -v "https://app.eresourcescheduler.cloud/rest/v1/resources/1" \
+-H "Authorization: Bearer B8x5Vj1O65r6wnoV"
 ```
 
 > Example Response
 
 ```json
 {
-   "id": 1,
-   "modified_on": "2018-10-04T07:43:26.479769Z",
-   "roles":[
-      {
-         "id": 1,
-         "name": "Software Developer",
-         "description": null
-      }
-   ],
-   "last_name": "Gray",
-   "type":{
-      "id": 1,
-      "name": "Employee",
-      "description": null,
-      "isHuman": true
-   },
-   "created_by":{
-      "id": 2,
-      "name": "Patrick Wilson"
-   },
-   "last_date": null,
-   "tags":[
-     "Seattle"
-   ],
-   "created_on": "2018-10-03T11:55:48.551594Z",
-   "phone": "(555) 555-1234",
-   "name": "Christian Gray",
-   "modified_by":{
-      "id": 2,
-      "name": "Patrick Wilson"
-   },
-   "first_name": "Christian",
-   "image": "resource_default",
-   "email": "christian.gray@mycompany.com",
-   "start_date": "2016-01-08",
-   "emp_birthday": "1991-01-27" <- User defined field
+    "id": 1,
+    "first_name": "Andrew",
+    "last_name": "Mooney",
+    "name": "Andrew Mooney",
+    "type": {
+        "name": "Employee",
+        "description": null,
+        "id": 1,
+        "is_human": true
+    },
+    "email": "andrew@enbraun.com",
+    "start_date": "2018-01-01",
+    "last_date": null,
+    "image": "https://erscloud/img/7aca31f5-29ae205ba315",
+    "phone": null,
+    "roles": [{
+        "name": "Quality Engineer",
+        "description": null,
+        "id": 3
+    }, {
+        "name": "Business Analyst",
+        "description": null,
+        "id": 1
+    }],
+    "tags": [],
+    "created_on": "2018-08-20T09:22:02.728296Z",
+    "created_by": {
+        "name": "Rahul Sharma",
+        "id": 118
+    },
+    "modified_on": "2018-11-20T11:55:48.880898Z",
+    "modified_by": {
+        "name": "Rahul Sharma",
+        "id": 118
+    },
+    "udf_qualifications": [{
+        "name": "B.Tech Computers",
+        "description": null,
+        "id": 15
+    }, {
+        "name": "PMP",
+        "description": null,
+        "id": 13
+    }],
+    "udf_employee_no": "ABC0001",
+    "udf_office": {
+        "name": "New York",
+        "description": null,
+        "id": 10
+    },
+    "udf_department": {
+        "name": "Technical",
+        "description": null,
+        "id": 26
+    }
 }
 ```
 
-Retrieves the details of an existing resource. You only need to  provide the unique resource identifier that was returned upon resource creation.
+
+Retrieves the details of an existing resource. You only need to  provide the unique resource identifier as request parameter that was returned upon resource creation.
 
 ### Returns
 
 | Code      | Description | 
 | ---:        |    :----   | 
-| **200** <br> <span class = "success">`OK`</span>     | This status code indicates that the operation was successful and a resource  get retrieved successfully .  |
-| **403** <br> <span class = "error">`Forbidden`</span> |Authorization failed due to insufficient permissions. This occurs when user does not have enough access rights to perform this action. Access for each user can be controlled by an Administrator using eRS Cloud Application.|
-| **404** <br> <span class = "error">`Not Found`</span> | Not Found error occurs when requested resource does not exist (i.e. There is no resource with given id). This may also occur when requesting a resource which has been deleted. |
+**200** <br> <span class = "success">`OK`</span> | Indicates that the operation was successful and a resource is retrieved successfully .
+**403** <br> <span class = "error">`Forbidden`</span> | Authorization failed due to insufficient permissions. This occurs when user does not have enough access rights to perform this action. Access for each user can be controlled by an Administrator using eRS Cloud Application.
+**404** <br> <span class = "error">`Not Found`</span> | Not Found error occurs when requested resource does not exist (i.e. There is no resource with given id). This may also occur when requesting a resource which has been deleted.
 
 ## Search resources
 
->  `POST v1/resources/search`
-
-Filtering API responses to retrieve specific data.
-
-
-The filter parameter allows for filtering the results returned from the various endpoint in various ways. For example fetching only resources having resource type id 1 by adding resource_type_id:eq=1 to your query.[Read more] (#filters)
+> **`POST /v1/resources/search`**
 
 > Example Request For Filter In JSON Format
 
 ```shell
-curl -X POST  "https://app.eresourcescheduler.cloud/rest/v1/resources/search" \
+curl -X POST \
+"https://app.eresourcescheduler.cloud/rest/v1/resources/search" \
 -H "Content-Type: application/json" \
 -H "Authorization: Bearer B8x5Vj1O65r6wnoV" \
 -d '{ 
@@ -323,7 +373,8 @@ curl -X POST  "https://app.eresourcescheduler.cloud/rest/v1/resources/search" \
 > Example Request For Filter By Passing Multiple Rules In JSON Format
 
 ```shell
-curl -X POST  "https://app.eresourcescheduler.cloud/rest/v1/resources/search" \
+curl -X POST \
+"https://app.eresourcescheduler.cloud/rest/v1/resources/search" \
 -H "Content-Type: application/json" \
 -H "Authorization: Bearer B8x5Vj1O65r6wnoV" \
 -d '{ 
@@ -332,88 +383,95 @@ curl -X POST  "https://app.eresourcescheduler.cloud/rest/v1/resources/search" \
     }'
 ```
 
-### Filters for System-defined fields
+Search Resource API allows filtering the results returned in various ways. This enables a great power to find out what is needed. eRS Cloud API also allows filtering on custom defined fields with multiple operators and conditions to cover up complex scenarios for searching.
 
-|**Field Type**| **Operator**  | **Example**|
-|:--|:--|:--|
-|**resource_type_id**|<li>eq *(default)* </li><li>any</li>|<li>-d "resource_type_id": 1 </li><li>-d "resource_type_id:eq": 2  </li><li>-d "resource_type_id:any": "1&#124;2" </li>
-|**name**| <li>has *(default)* </li><li>eq</li>|<li>-d "name": "Chris" </li><li>-d "name:eq": "Amy Jones" </li><li>-d "name:has": "c" </li>
-|**roles**| <li>any *(default)* </li><li>all</li>|<li>-d "roles": "1&#124;2&#124;3"</li><li>-d "roles:any": "2&#124;5"</li><li>-d "roles:all": "4&#124;6"</li>
-|**tags**|<li>any *(default)* </li><li>all</li>|<li>-d "tags": "1&#124;2&#124;3"</li><li>-d "tags:any": "2&#124;5"</li><li>-d "tags:all": "4&#124;6"</li>
-|**email**|<li>has *(default)* </li><li>eq</li>|<li>-d "email": "@"</li><li>-d "email:has": "a" </li><li>-d "email:eq": "ana.steele@mycompany.com" </li>
-|**phone**|<li>has *(default)* </li><li>eq</li>|<li>-d "phone": "999" </li><li>-d "phone:eq": "(485)555-0202" </li><li>-d "phone:has": "753" </li>
-|**start_Date**|<li>eq *(default)* </li><li>lt </li><li>  gt </li><li> bt </li><li> ex</li>   |<li>-d "start_date": "2016-01-27"</li><li>-d "start_date:eq": "2016-01-27"</li><li>-d "start_date:lt": "1999-12-22" </li><li>-d "start_date:gt": "1990-01-11" </li><li>-d "start_date:bt": "2001-01-01&#124;2010-12-31"</li><li>-d "start_date:bt": "2001-01-01" </li><li>-d "start_date:ex": "1992-02-12&#124;1997-01-27" </li><li>-d "start_date:ex": "1992-02-12" </li>
-|**last_date**|<li>eq *(default)* </li><li>lt </li><li>  gt </li><li> bt </li><li> ex</li>  |<li>-d "last_date": "2018-04-19"</li><li>-d "last_date:eq": "2016-05-17"</li><li>-d "last_date:lt": "2002-12-31" </li><li>-d "last_date:gt": "2010-01-01" </li><li>-d "last_date:bt": "1995-12-31&#124;1999-01-01"</li><li>-d "last_date:bt": "1995-12-31" </li><li>-d "last_date:ex": "2001-01-01&#124;2002-01-01" </li><li>-d "last_date:ex": "2003-01-01" </li>
- _For User-defined fields please [check here](#filters-for-user-defined-fields)._ 
+A filter condition consists of three components which are **_field_**, **_operator_** and **_value_**. For example fetching only those resources having resource type id 1, could be achieved by adding resource_type_id:eq=1 to your query. If operator is not supplied, it takes default operator for field.
+
+Below is a list of available fields, which allow filtering resources:
+
+
+|**Field Code**| **Operator**  | **Example**|
+|:--|:---|:--|
+**resource_type_id**|<li>**eq** (_default_)  </li><li>any</li>| `"resource_type_id:eq": 1`<br>`"resource_type_id:any": [1,2]`
+**name**|<li class="nowrap">**has** (_default_)&nbsp;&nbsp;</li><li>eq</li>|`-d "name:has": "c"`<br>`-d "name:eq": "Amy Jones"`
+**roles**| <li>**any** (_default_)</li><li>all</li>|`-d "roles:any": [2,5]`<br>`-d "roles:all": [4,6]`
+**tags**|<li>**any** (_default_)</li><li>all</li>| `"tags:any": [2,5]`<br>`"tags:all": [4,6]`</li>
+**email**|<li>**has** (_default_)</li><li>eq</li>| `"email:has": "a"`<br>`"email:eq": "abc@mycompany.com"`
+**phone**|<li>**has** (_default_)</li><li>eq</li>|`"phone:has": "753" `<br> `"phone:eq": "(485)555-0202"`
+**start_Date**|<li>**eq** (_default_)</li><li>lt</li><li>gt</li><li> bt</li><li>ex</li>| `"start_date:eq": "2016-01-27"`<br>` "start_date:lt": "1999-12-22"`<br>` "start_date:gt": "1990-01-11"`<br>`"start_date:bt": ["2001-01-01", "2010-12-31"]`<br> `"start_date:ex": ["1992-02-12", "1997-01-27"]`
+**last_date**|<li>**eq** (_default_)</li><li>lt</li><li>gt</li><li> bt</li><li>ex</li>| `"last_date:eq": "2016-05-17"` <br> `"last_date:lt": "2002-12-31"`<br>` "last_date:gt": "2010-01-01"` <br> `"last_date:bt": ["1995-12-31", "1999-01-01"]`<br> `"last_date:ex": ["2001-01-01", "2002-01-01"]`
+ _For filtering using custom fields and operators please [check here](#filters-for-user-defined-fields)._ 
 
 ## Update a resource 
 
-Updates the specified resource by setting the values of the parameters passed. Any parameters which are not provided will be unchanged. 
+Updates specified resource by setting the values of the parameters passed. Any parameter which is not provided remains unchanged. To unset existing value for a parameter, just pass an empty value i.e. `null` or `undefined`.
 
-This request accepts mostly the same arguments as the resource creation call.
+This request accepts mostly the same arguments as `Create Resource` API.
 
->  `PUT v1/resources/{ID}`
+>  **`PUT /v1/resources/{ID}`**
 
 > Example Request
 
 ```shell 
 curl -v -X PUT \
 "https://app.eresourcescheduler.cloud/rest/v1/resources/1" \
-  -H "Authorization: Bearer B8x5Vj1O65r6wnoV"\ 
-  -H "Content-Type: application/json" \
-  -d '{"email": "ujjwal.pareek@enbraun.com"}'
+-H "Authorization: Bearer B8x5Vj1O65r6wnoV" \
+-H "Content-Type: application/json" \
+-d '{ 
+      "email": "andrew@enbraun.com",
+      "roles" : [3,2],
+      "udf_employee_no": "ABC0003"
+    }'
 ```
 
 <span class="optional"><b>REQUEST BODY PARAMETERS</b></span>
 
-
-
-Name               |  Description
- ---:        |    :----   
-**email** <br><span class="optional">`optional`</span>  |  Resource's email address is an optional field. It’s displayed alongside the resource in your resource list and can be useful for filtering purpose. The maximum length of this field may be up to 254 characters. This will be blank if you POST an empty value.
-**first_name** <br> <span class="required">`required`</span>  |The first name is a string which represents the first name of a resource. It is a required field. This may be up to 100 characters.  This will throw an error if you post an empty value.<br> <span class = "error"> For non-human type of resource this field is  <span class="required">**`unavailable`**</span>.</span>
-**image**  <br><span class="optional">`optional`</span> | Resource's image is an optional field. It's displayed alongside the resource list.This will be blank if you POST an empty value.
-**last_name**  <br><span class="optional">`optional`</span>  |  The last name is a string which represents the last name of a resource. It is an optional field. This may be up to 100 characters.  This will be blank if you POST an empty value.<br> <span class = "error"> For non-human type of resource this field is  <span class="required">**`unavailable`**</span>.</span>
-**phone**  <br><span class="optional">`optional`</span>  |Resource's phone is an optional field. It’s displayed alongside the resource in your resource list and can be useful for filtering purpose. This may be up to 50 characters. This will be blank if you POST an empty value.
-**roles**  <br><span class="optional">`optional`</span>  |  An array of ids of Role to be assigned to this Resource. The first id in the array is considered as Primary Role of that Resource. You can apply multiple performing roles to a resource. Resources can also be searched / filtered using performing roles. No role will get applied if the empty array or null value is passed.
-**start_date**<br><span class="required">`required`</span>  |  The date on which resource has joined the organization. You can create the booking from the start date of a resource. You can not create the booking before the start date. It is a required field. This will throw an error if you post an empty value.
-**tags**  <br><span class="optional">`optional`</span>  | Tags is the optional filed. It’s displayed alongside the resource in your list and can be useful for searching and filtering. This may be up to 50 characters. This will be blank if you post an empty value.
-**name**<span class = "error">*</span> <br><span class="optional">`optional`</span>|  Its concatenation of the first name and last name of human type resource. While for non-human type resource Name is <span class="required">`required`</span> field.<br><span class = "error">* Indicates for the non-human type of resource it is a required field.</span>  
-**User defined fields** <br><span class="optional">`optional`</span>  | A user with admin rights can add such custom fields. These fields can be used to capture additional info in Resources. [Learn more] (#user-defined-fields)
-
+|Name     |  Description |
+| ---:    |    :----     |
+**first_name** <br> <span class="required">`required`</span>  | String representing the first name of a resource. This may be up to 100 characters.<br> _**Note** : for non-human resources, this field is <span class="danger">not available</span>_.
+**last_name** <br> `optional`  | String representing the last name of a resource. This may be up to 100 characters.<br> _**Note** : for non-human resources, this field is <span class="danger">not available</span>_.
+**name** <br> <span class="required">`required`</span> | String representing the name of a resource. This may be up to 100 characters.<br> _**Note** : This field is only available for non-human resources and for human resources, this is <span class="danger">not available</span>_.
+**start_date**<br><span class="required">`required`</span>  |  String value representing a date in ISO 8601 extended notation for date i.e. yyyy-MM-dd. A resource is only available from its start date i.e system does not consider any capacity of resource before this date.
+**last_date**<br>`optional` |  String value representing a date in ISO 8601 extended notation for date i.e. yyyy-MM-dd. A resource is only available till its last date i.e system does not consider any capacity of resource beyond this date (_if defined_).
+**email**<br>`optional` |  String value representing email address of resource object. Email address must be properly formatted with a maximum length of 254 characters.
+**phone**<br>`optional` | String representing phone number of resource. It’s displayed alongside the resource in your resource list.
+**image**<br>`optional` | This field accepts the Base64 encoded PNG string. This creates an image file (used as an avatar) for this resource.
+**roles**<br>`optional` | An array of ids of Roles (which are defined by an admin user in eRS Cloud Application) to be assigned to this Resource. The first id in the array is considered as Primary Role of that Resource. Multiple performing roles can be applied to a resource. Resources can also be searched / filtered using performing roles.
+**tags**  <br>`optional` | An optional array of strings which could be attached to this resource object as labels. This can be useful for the purpose of filtering, identification or other information.
+**udf_\*** <br>`optional` | A user with admin rights can add custom fields. These fields can be used to capture additional information in Resources. Different types of resources may have a different set of user-defined fields. The value for user defined field can be passed as shown in example request. In first example **_udf_employee_no_**</span> is a user defined field. [Learn more] (#user-defined-fields).
 
 ### Returns
 
 | Code      | Description | 
-| ---:        |    :----   | 
-| **200** <br> <span class = "success">`OK`</span>    |  This indicates that the operation was successful and a resource get updated successfully.|
-| **400** <br> <span class = "error">`Bad Request`</span> | Bad Request occurs when a request is not well-formed, syntactically incorrect, empty required parameters or any unknown parameter is passed. <br> Additionally, Bad request may also occur in one of these conditions :<ul><li>Providing start date of a resource as a null.</li><li>User tries to update archived resource.</li><li>User tries to update start date and last date of a resource such that existing booking of that resource do not fit in given range.</li></ul> |
-| **403** <br> <span class = "error">`Forbidden`</span> | Authorization failed due to insufficient permissions. This occurs when user does not have enough access rights to perform this action. Access for each user can be controlled by an Administrator using eRS Cloud Application.|
-| **404** <br> <span class = "error">`Not Found`</span> | Not Found error occurs when requested resource does not exist (i.e. There is no resource with given id). This may also occur when requesting a resource which has been deleted. |
-
-
+| ---:      |    :----    | 
+**200** <br> <span class = "success">`OK`</span> | Indicates that the operation was successful and requested resource is successfully updated.|
+**400** <br> <span class = "error">`Bad Request`</span> | Bad Request occurs when a request is not well-formed, syntactically incorrect, empty required parameters or any unknown parameter is passed. <br> Additionally, Bad request may also occur in one of these conditions :<li>Trying to update an archived resource.</li><li>Trying to change start_date or last_date such that last_date gets smaller than start_date.</li><li>Trying to update start date and last date of a resource such that existing booking of that resource do not fit in given range.</li>
+**403** <br> <span class = "error">`Forbidden`</span> | Authorization failed due to insufficient permissions. This occurs when user does not have enough access rights to perform this action. Access for each user can be controlled by an Administrator using eRS Cloud Application.
+**404** <br> <span class = "error">`Not Found`</span> | Not Found error occurs when requested resource does not exist (i.e. There is no resource with given id). This may also occur when updating a resource which has been deleted.
 
 
 ## Delete a resource 
 
- Permanently deletes a resource. It cannot be undone. By default, this operation will get failed if a resource has any booking associated with it. To override this behaviour, forcefull delete can be used which will delete all bookings and then ultimately delete the resource object.
+ Permanently deletes requested resource. It cannot be undone. By default, this operation will get failed if a resource has any booking associated with it. To override this, forceful delete can be used which will delete all bookings and then ultimately delete the resource object.
 
-> `DELETE v1/resources/{ID}`
+> **`DELETE /v1/resources/{ID}`**
 
 
 > Example Request
  
 ```shell
-curl -v -X DELETE "https://app.eresourcescheduler.cloud/rest/v1/resources/1"\
-  -H "Authorization: Bearer B8x5Vj1O65r6wnoV"
+curl -v -X DELETE \
+"https://app.eresourcescheduler.cloud/rest/v1/resources/1" \
+-H "Authorization: Bearer B8x5Vj1O65r6wnoV"
 ```
 
 
-> Example Request For Forcefull Delete 
+> Example Request For Forceful Delete 
  
 ```shell
 curl -v -X DELETE \
-"https://app.eresourcescheduler.cloud/rest/v1/resources/1/?force_delete_bookings=true" \
+"https://app.eresourcescheduler.cloud/rest/v1/resources/1/?\
+force_delete_bookings=true" \
 -H "Authorization: Bearer B8x5Vj1O65r6wnoV" 
 ```
 
@@ -422,8 +480,8 @@ curl -v -X DELETE \
 
 | Code      | Description  
 | ---:        |    :----   
-| **200** <br><span class = "success">`OK`</span> |This status code indicates that the operation was successful and a resource get deleted successfully |
-| **409** <br> <span class = "error">`Conflict`</span> |Conflict indicates that the resource can not be deleted as there are bookings associated with this resource. If you wish to delete it any way you must use force delete option by passing <span class = "error">`true`</span> for parameter <span class = "error">`force_delete_booking`</span>. This operation deletes all bookings of requested resource and resource itself. This can not be undone. Example shown <span style="font-size:24px; font-weight:bold;">￼&#x1f449;</span>|
+**200** <br><span class = "success">`OK`</span> | This status code indicates that the operation was successful and a resource get deleted successfully.
+**409** <br> <span class = "error">`Conflict`</span> | Conflict indicates that the resource can not be deleted as there are bookings associated with this resource. If you wish to delete it any way you must use force delete option by passing `true` for parameter  `force_delete_booking`. This operation deletes all bookings of requested resource and resource itself (shown in example request).
 | **403** <br> <span class = "error">`Forbidden`</span> | Authorization failed due to insufficient permissions. This occurs when user does not have enough access rights to perform this action. Access for each user can be controlled by an Administrator using eRS Cloud Application.|
 | **404** <br> <span class = "error">`Not Found`</span> | Not Found error occurs when requested resource does not exist.
 

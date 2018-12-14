@@ -125,16 +125,17 @@ Name | Description
 
 ## Get a Specific Project Type
 
->  `GET v1/projecttypes/{ID}`
-
 Retrieves the details of an existing project-type. You only need to  provide the unique project-type identifier that was returned upon project-type creation.
+
+
+> **`GET /v1/projecttypes/{ID}`**
 
 >Example Request
 
 ```shell
-curl -v -X GET \
+curl -v \
 "https://app.eresourcescheduler.cloud/rest/v1/projecttypes/3" \
-  -H "Authorization: Bearer B8x5Vj1O65r6wnoV"
+-H "Authorization: Bearer B8x5Vj1O65r6wnoV"
 
 ```
 
@@ -209,16 +210,16 @@ curl -v -X GET \
 
 ## Get All Projects Types
 
->  `GET v1/projecttypes`
-
 Returns a list of project-types. The project-types are returned sorted by name.
+
+> **`GET /v1/projecttypes`**
 
 > Example Request
 
 ```shell
-curl -v -X GET \
+curl -v \
 "https://app.eresourcescheduler.cloud/rest/v1/projecttypes" \
-  -H "Authorization: Bearer B8x5Vj1O65r6wnoV"
+-H "Authorization: Bearer B8x5Vj1O65r6wnoV"
 ```
 
 >Example Response

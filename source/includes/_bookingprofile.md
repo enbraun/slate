@@ -5,12 +5,14 @@
 
 Booking profile object represents booking profile.
 
+> **`/v1/booking/fields`**
+
 > Example Request
 
 ```shell
-curl -v -X GET \
+curl -v \
 "https://app.eresourcescheduler.cloud/rest/v1/booking/fields" \
-  -H "Authorization: Bearer B8x5Vj1O65r6wnoV"
+-H "Authorization: Bearer B8x5Vj1O65r6wnoV"
 ```
 > Example Response 
  
