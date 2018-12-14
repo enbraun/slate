@@ -1,7 +1,6 @@
 # Resource Types
 
 ##  Resource Type Object
- 
 
 > Example Response
 
@@ -154,16 +153,16 @@ Name | Description
 
 ## Get a Specific Resource Type
 
->  `GET /v1/resourcetypes/{ID}`
-
 Retrieves the details of an existing resource-type. You only need to  provide the unique resource-type identifier of required resource-type.
+
+> **`GET /v1/resourcetypes/{ID}`**
 
 >Example Request
 
 ```shell
-curl -v -X GET \
-"https://app.eresourcescheduler.cloud/rest/v1/resourcetypes/2"\
- -H "Authorization: Bearer B8x5Vj1O65r6wnoV"
+curl -v \
+"https://app.eresourcescheduler.cloud/rest/v1/resourcetypes/2" \
+-H "Authorization: Bearer B8x5Vj1O65r6wnoV"
 ```
 
 >Example Response
@@ -298,15 +297,15 @@ curl -v -X GET \
 
 ## Get All Resource Types
 
->  `GET /v1/resourcetypes`
-
 Returns a list of all resource-types sorted by name.
+
+> **`GET /v1/resourcetypes`**
 
 > Example Request
 
 ```shell
-curl -v -X GET \
-"https://app.eresourcescheduler.cloud/rest/v1/resourcetypes"\
+curl -v \
+"https://app.eresourcescheduler.cloud/rest/v1/resourcetypes" \
 -H "Authorization: Bearer B8x5Vj1O65r6wnoV"
 ```
 
