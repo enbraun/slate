@@ -5,160 +5,173 @@
 
 ```json
   {
-    "id": 2,
-    "modified_on": "2016-10-04T07:43:26.479769Z",
-    "project_start_date": "2016-01-01",
+    "id": 1,
+    "title": "Project-A",
     "type": {
-        "name": "Medical",
-        "description": null,
-        "id": 101
+      "name": "Satellite",
+      "description": null,
+      "id": 1
     },
-    "title": "Armenia",
-    "end_date": "2019-12-31",
-    "tags":[
-        "Seattle"
-    ],
-    "created_on": "2015-12-23T16:30:52.246248Z",
-    "modified_by": {
-        "name": "Testing User",
-        "id": 3
-    },
-    "image": "/img/null",
-    "email": "ujjwal.pareek@enbraun.com",
-    "created_by": {
-        "name": "Testing User",
-        "id": 3
-    },
+    "email": "apollo@enbraun.com",
+    "project_start_date": null,
+    "end_date": null,
+    "image": "https://erscloud/img/7aca31f5-29ae205ba315",
+    "tags": ["NASA"],
     "is_archive": false,
-    "weblink": "https://www.abho.in" <- User defined field
+    "created_on": "2018-08-20T09:25:34.925474Z",
+    "created_by": {
+      "name": "Rahul Sharma",
+      "id": 118
+    },
+    "modified_on": "2018-09-28T12:32:44.896426Z",
+    "modified_by": {
+      "name": "Rahul Sharma",
+      "id": 118
+    },
+    "udf_color": "#FF8A80;0",
+    "udf_progress": 70,
+    "udf_project_manager": "Gene Kranz",
+    "udf_priority": {
+      "name": "High",
+      "description": null,
+      "id": 21
+    }
   }
 ```
-Creates a new project object.
 
-
-<span style="color:#b93d6a">`Project`</span> object contains all the information about the project. The API allows you to create, delete, and update project. You can retrieve individual project as well as list of projects.
+<span style="color:#b93d6a">`Project`</span> object contains all the information about a project. Project is used as an activity for resources to be scheduled for. The API allows you to list, search, create, delete, and update project.
 
 <span class="optional"><b>ATTRIBUTES</b></span>
 
-Name         |  Description
- ---:        |    :---- 
-**id** <br><span class="optional">`integer`</span>     |  eRS Cloud-generated unique identifier for the project object. 
-**modified_on** <br><span class="optional">`string`</span> | Describes the latest modification date.
-**project_start_date** <br><span class="optional">`string`</span> |  The date on which project will be started.
-**type** <br><span class="optional">`object`</span> | It describes the type of project.
-**title** <br><span class="optional">`string`</span> | The title of the project.
-**end_date** <br><span class="optional">`string`</span> | The date on which project will be ended.
-**tags** <br><span class="optional">`array of strings`</span> |Tags are the list of strings that could be used to organize the project.
-**created_on** <br><span class="optional">`string`</span> |   Time at which the project object is created.
-**modified_by** <br><span class="optional">`object`</span> | This field describes  whom the modification is done by.
-**image** <br><span class="optional">`string`</span> | The  image or display picture of the project.
-**email** <br><span class="optional">`string`</span> |  For Example this field is used to save email address of the project's manager.
-**created_by** <br> <span class="optional">`object`</span> | This field describes whom project object is created by .|
-**User defined fields** <br><span class="optional">`optional`</span>  | Custom user-defined fields used to capture additional information of project. [Learn more] (#user-defined-fields)
+Name      |  Description
+ ---:     |    :---- 
+**id** <br>`integer` |  eRS Cloud-generated unique identifier for the project object.
+**title** <br>`string` | Represents title or name of the project.
+**type** <br>`object` | Describes the type of project. This is one of the project type objects which an admin user creates using eRS Cloud Application.
+**email** <br>`string` | An optional email address of project object.
+**project_start_date** <br>`string` |  Date on which project is considered started.
+**end_date** <br>`string` | Date on which project is considered ended / completed.
+**image** <br>`string` | String value representing URI of image file of project.
+**tags** <br>`array of strings` | Tags are the list of strings (labels) attached to this project object which could be used for the purpose of filtering, identification or other information.
+**is_archive** <br>`boolean` | Boolean value representing whether this project is archived or not.
+**created_on** <br>`string` | Timestamp at which this project object was created.
+**created_by** <br> `object` | Object representing user who created this project object.
+**modified_on** <br>`string` | Represents latest modification timestamp.
+**modified_by** <br>`object` | Object representing most recent user who modified this project object.
+**User defined fields** | Custom user-defined fields used to capture additional information of project. User defined field can be of multiple types. Custom fields are very useful to configure project objects to best fit requirements.  In given example response, all keys starting with prefix `udf_` are user defined custom fields. [Learn more] (#user-defined-fields)
 
 ## Create a project
 
+Creates a new project object.
 
-
->  `POST v1/projects`
-
+> **`POST /v1/projects`**
 
 > Example Request:
 
 ```shell
- curl -v -X GET \
- "https://app.eresourcescheduler.cloud/rest/v1/projects" \
-  -H "Authorization: Bearer B8x5Vj1O65r6wnoV" \
-  -H "Content-Type: application/json" \
-  -d  '{ "title": "5 Faroe Islands", 
-        "project_start_date: "2016-05-02", 
-        "project_type_id": 1 , 
-        "weblink": "https://www.abho.in" }' 
-	  
-```   
+ curl -v -X POST "https://app.eresourcescheduler.cloud/rest/v1/projects" \
+ -H "Authorization: Bearer B8x5Vj1O65r6wnoV" \
+ -H "Content-Type: application/json" \
+ -d '{ 
+       "title": "Project-A",
+       "project_type_id": 1,
+       "project_start_date": "2016-05-02",
+       "email": "andrew@enbraun.com",
+       "udf_progress": 70
+     }'
+```
+
 <span class="optional"><b>REQUEST BODY PARAMETERS</b></span>
 
-
 Name               |  Description
- ---:        |    :----   
-**title** <br> <span class="required">`required`</span>  |The title is a string which represents the  title of a project. It is a required field. This may be up to 100 characters. This will throw an error if you post an empty value.
-**image_uuid**  <br><span class="optional">`optional`</span> | Project's image is an optional field. This field accepts the Base64 encoded PNG string.This will be blank if you POST an empty value.
-**project_type_id** <br> <span class="required">`required`</span>| Project_type_id represents the id of project type. Let’s assume there are two types of project - Medical and Education. Project_type_id of Medical is 1 and project_type_id of Education is 2, then while creating a new project, all the projects whose project_type_id is given as 1 will get created under Medical type and same for Education when project_type_id is 2. It is a required field.
-**project_start_date**<br><span class="optional">`optional`</span> |The date on which project has started. 
-**tags**  <br><span class="optional">`optional`</span>  | Tags is an optional filed. It’s displayed alongside the project in your list and can be useful for searching and filtering. This may be up to 50 characters. This will be blank if you post an empty value.
-**email** <br><span class="optional">`optional`</span>  |  This field is used to display email address of project's manager(for example)  .The maximum length of this field may be up to 254 characters. This will be blank if you POST an empty value.
-**User defined fields** <br><span class="optional">`optional`</span>  | A user with admin rights can add such custom fields. These fields can be used to capture additional info in project. Different types of projects may have a different set of user-defined fields. The value for user defined field can be passed as shown in example request. Here in given example, <span style="color:#db7708">`weblink`</span> is a user defined field. [Learn more] (#user-defined-fields)
-
-
-
+ ---:        |    :----
+ **project_type_id** <br> <span class="required">`required`</span> | Id of project type object. A project must be linked with one of project types defined in admin section (_using eRS Cloud Application_). Let’s assume there are two project types defined as `Medical` (_having id as 1_) and `Education` (_having id as 2_), now while creating a new project, if project_type_id is given as 1 then it will get created under Medical type and same for Education when project_type_id is given as 2.
+**title** <br><span class="required">`required`</span> | String representing title / name of project. This can be a maximum of 100 characters long.
+**email** <br>`optional` | String value representing email address of project object. Email address must be properly formatted with a maximum length of 254 characters.
+**project_start_date**<br>`optional` | String value representing a date in ISO 8601 extended notation for date i.e. yyyy-MM-dd.
+**end_date**<br>`optional` | String value representing a date in ISO 8601 extended notation for date i.e. yyyy-MM-dd.
+**tags**  <br>`optional` | An optional array of strings which could be attached to this project object as labels. This can be useful for the purpose of filtering, identification or other information.
+**udf_\*** <br>`optional` | A user with admin rights can add custom fields. These fields can be used to capture additional information in Projects. Different types of projects may have a different set of user-defined fields. The value for user defined field can be passed as shown in example request. In given example **_udf_progress_**</span> is a user defined field. [Learn more] (#user-defined-fields).
 
 ### Returns
- 
-| Code      |Description |
- :---        |    :----   |
-| **201** <br><span class = "success">`Created`</span> | This status code indicates that the operation was successful and  a project get created successfully.|
-| **400** <br> <span class = "error">`Bad Request`</span> | Bad Request error occurs when a request is malformed, syntactically incorrect, missing required parameters are  or any unknown parameter is passed.|
-| **403** <br> <span class = "error">`Forbidden`</span> |Authorization failed due to insufficient permissions. This occurs when user does not have enough access rights to perform this action. Access for each user can be controlled by an Administrator using eRS Cloud Application.|
 
+| Code      | Description |
+| :---      |    :----    |
+**201** <br><span class = "success">`Created`</span> | Indicates that the operation was successful and a project get created successfully.
+**400** <br> <span class = "error">`Bad Request`</span> | Bad Request error occurs when a request is  malformed, syntactically incorrect, missing required parameters or has any unknown parameter. 
+**403** <br> <span class = "error">`Forbidden`</span> | Authorization failed due to insufficient permissions. This occurs when user does not have enough access rights to perform this action. Access for each user can be controlled by an Administrator using eRS Cloud Application.
 
 
 ## List projects
 
 
-Returns a list of projects. The projects are returned sorted by title and project id. 
+Returns a list of projects. The projects are returned sorted by title. 
 	
 
->  `GET v1/projects`
+> **`GET /v1/projects`** 
 
 
 > Example Request
 
 ```shell
-curl "https://app.eresourcescheduler.cloud/rest/v1/projects" \
-  -H "Authorization: Bearer B8x5Vj1O65r6wnoV"
+curl -v \
+"https://app.eresourcescheduler.cloud/rest/v1/projects" \
+-H "Authorization: Bearer B8x5Vj1O65r6wnoV"
 ```
+
+
 >Example Request With Offset And Limit 
 
- ```shell 
-curl "https://app.eresourcescheduler.cloud/rest/v1/projects?offset=1&limit=1" \
- -H "Authorization: Bearer B8x5Vj1O65r6wnoV"
+```shell 
+curl -v \
+"https://app.eresourcescheduler.cloud/rest/v1/projects?offset=1&limit=15" \
+-H "Authorization: Bearer B8x5Vj1O65r6wnoV"
 ```
+
 > Example Response
 
 ```json
 {
-	"offset": 0,
-	"total_count": 50,
-	"limit": 25,
-	"data": [
-      {
-	      "end_date": null,
-        "title": "eRS - Development",
-        "type": {
-          "name": "Medical",
-          "description": null,
-          "id": 101
-         },
-        "id": 1,
-        "email": "ujjwal.pareek@enbraun.com",
-        "project_start_date": null,
-        "modified_on": null,
-        "image": "/img/null",
-          "created_by": {
-          "name": "Testing User",
-          "id": -99
-        },
-        "tags": [],
-        "created_on": "2015-11-28T09:57:58.835938Z",
-        "min_cost": null,
-        "is_archive": false,
-        "modified_by": null,
-        "weblink": "https://www.eresourcescheduler.com",<- User-defined field.
-	    },
-	    {...},
-	    {...},
-	    {...}
-   ]
+  "total_count": 50,
+  "offset": 1,
+  "limit": 15,
+  "data": [{
+      "id": 1,
+      "title": "Project-A",
+      "type": {
+        "name": "Satellite",
+        "description": null,
+        "id": 1
+      },
+      "email": "apollo@enbraun.com",
+      "project_start_date": null,
+      "end_date": null,
+      "image": "https://erscloud/img/7aca31f5-29ae205ba315",
+      "tags": ["NASA"],
+      "is_archive": false,
+      "created_on": "2018-08-20T09:25:34.925474Z",
+      "created_by": {
+        "name": "Rahul Sharma",
+        "id": 118
+      },
+      "modified_on": "2018-09-28T12:32:44.896426Z",
+      "modified_by": {
+        "name": "Rahul Sharma",
+        "id": 118
+      },
+      "udf_color": "#FF8A80;0",
+      "udf_progress": 70,
+      "udf_project_manager": "Gene Kranz",
+      "udf_priority": {
+        "name": "High",
+        "description": null,
+        "id": 21
+      }
+    },
+    { ... },
+    { ... },
+    { ... }
+  ]
 }
 ```
 
@@ -166,62 +179,67 @@ curl "https://app.eresourcescheduler.cloud/rest/v1/projects?offset=1&limit=1" \
 
 |Name|Description|
 |-:|:-|
-|**limit**<br><span class="optional">`optional`</span>|The limit keyword is used to limit the number of rows returned from a result set.<br>*The default value of `limit` is*  <span class="error">*`25`*</span><br>*Maximum value of limit can be* <span class="error">*`500.`*</span> *If value of limit is more than*<span class="error">*`500`*</span>  *then it will get set to maximum value of limit which is* <span class="error">*`500.`*</span> |
-|**offset**<br><span class="optional">`optional`</span>|The Offset value allows you to specify the ranking number of the first item on the page.The Offset value is also most often used together with the Limit keyword..<br>*The default value of `offset` is* <span class="error">*`0`* </span>|
+**limit**<br>`optional` | The limit keyword is used to limit the number of records returned from a result set. If a limit count is given, no more than that many records will be returned (but possibly less, if the query itself yields less records)<br>_Default value of `limit` is_ <span class="required">**`25`**</span><br>_Maximum value of `limit` can be_ <span class="required">**`500`**</span>
+**offset**<br>`optional` | Offset keyword is used to skip n items. If offset value is given as 10, then first 10 records will be skipped from result set. Offset is often used together with the Limit keyword.<br>_Default value of `offset` is_ <span class="required">**`0`**</span>
 
 
 ### Returns 
 
 
-| Code      | Description | 
-| ---:        |    :----   | 
-| **200** <br> <span class = "success">`OK`</span>      |  This indicates that the operation was successful and returned list of projects.  |
-**400** <br> <span class = "error">`Bad Request` </span>| Bad Request may occur when offset and limit value is negative integer.
-| **403** <br> <span class = "error">`Forbidden`</span> |Authorization failed due to insufficient permissions. This occurs when user does not have enough access rights to perform this action. Access for each user can be controlled by an Administrator using eRS Cloud Application.|
+| Code    | Description | 
+| ---:    |    :----    | 
+**200** <br> <span class = "success">`OK`</span>  | Indicates that the operation was successful and  list of resources is returned. 
+**400** <br> <span class = "error">`Bad Request` </span> | Bad Request may occur when offset and limit value is negative integer.
+**403** <br> <span class = "error">`Forbidden`</span> | Authorization failed due to insufficient permissions. This occurs when user does not have enough access rights to perform this action. Access for each user can be controlled by an Administrator using eRS Cloud Application.
 
 ## Retrieve a project
 
 
->  `GET v1/projects/{ID}`
+>  **`GET /v1/projects/{ID}`**
 
 > Example Request
 
 ```shell
-curl -v -X GET \
-"https://app.eresourcescheduler.cloud/rest/v1/projects/1"\
-  -H "Authorization: Bearer B8x5Vj1O65r6wnoV"
+curl -v "https://app.eresourcescheduler.cloud/rest/v1/projects/1" \
+-H "Authorization: Bearer B8x5Vj1O65r6wnoV"
 ```
 
 > Example Response
 
 ```json
-  {
-  "modified_on": "2018-10-29T13:10:06.993223Z",
-  "end_date": "2017-03-15",
-  "color": "#8f9499;0",
-  "title": "eRS - Development",
+{
+  "id": 1,
+  "title": "Project-A",
   "type": {
-    "name": "Standard",
+    "name": "Satellite",
     "description": null,
     "id": 1
   },
-  "created_by": {
-    "name": "Testing User",
-    "id": 12
-  },
-  "tags": [],
-  "created_on": "2018-10-04T10:43:43.36441Z",
+  "email": "apollo@enbraun.com",
+  "project_start_date": null,
+  "end_date": null,
+  "image": "https://erscloud/img/7aca31f5-29ae205ba315",
+  "tags": ["NASA"],
   "is_archive": false,
-  "modified_by": {
-    "name": "Testing User",
-    "id": 12
+  "created_on": "2018-08-20T09:25:34.925474Z",
+  "created_by": {
+    "name": "Rahul Sharma",
+    "id": 118
   },
-  "id": 1,
-  "image_uuid": "/img/4b4eb176-aec9-471a-8e19-02c603f7d31b",
-  "email": "ujjwal.pareek@enbraun.com",
-  "project_start_date": "2016-01-01",
+  "modified_on": "2018-09-28T12:32:44.896426Z",
+  "modified_by": {
+    "name": "Rahul Sharma",
+    "id": 118
+  },
+  "udf_color": "#FF8A80;0",
+  "udf_progress": 70,
+  "udf_project_manager": "Gene Kranz",
+  "udf_priority": {
+    "name": "High",
+    "description": null,
+    "id": 21
+  }
 }
-
 ```
 
 Retrieves the details of an existing project. You only need to provide the unique project identifier that was returned upon project creation.
@@ -258,7 +276,7 @@ The filter parameter allows for filtering the results returned from the various 
 
 ```shell
 curl -v -X POST \
-"https://app.eresourcescheduler.cloud/rest/v1/resources/search" \
+"https://app.eresourcescheduler.cloud/rest/v1/projects/search" \
 -H "Content-Type: application/json" \
 -H "Authorization: Bearer B8x5Vj1O65r6wnoV" \
 -d '{ 

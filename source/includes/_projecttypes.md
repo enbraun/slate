@@ -102,7 +102,7 @@ Name | Description
 | ---:  |  :----   |
 **id**  <br><span class="optional">`integer`</span> |Unique identification number for the object, which allows referring to this object and can be used to search a particular project type.
 **name** <br><span class="optional">`string`</span> | Represent name for this object. This is used to identify object by using some meaningful phrase to describe type of projects like `Standard`, `Education` etc.
-**fields** <br><span class="optional">`array of strings`</span> |Represent collection of fields (or attributes) that are available for this project type. Each [Project] (#project) object of this project type can store / update values for these filed. While creating or updating a [Project] (#resource) user must pass arguments which are available for intended project type object. 
+**fields** <br><span class="optional">`array of strings`</span> |Represent collection of fields (or attributes) that are available for this project type. Each [Project] (#project) object of this project type can store / update values for these filed. While creating or updating a [Project] (#project) user must pass arguments which are available for intended project type object. 
 **fields.id**<br><span class="optional">`integer`</span> | Represents unique identification number of this field, which can be used to refer or search it.
 **fields.display_name** <br><span class="optional">`string`</span> |Name of this field to identify it.
 **fields.field_type** <br><span class="optional">`string`</span> |   Represents the type of field. For example  TEXT (for Text Field), INT (for Integer Number field), DDSS (for Dropdown Single Select Field), etc. See [User Defined Fields] (#user-defined-fields) to know more about different field types.

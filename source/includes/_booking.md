@@ -55,7 +55,7 @@ Name         |  Description
 **effort** <br><span class="optional">`float`</span> |  Effort value for this booking. 
 **unit** <br><span class="optional">`integer`</span> |  This represents unit of effort for this booking. Unit could be one of (percent of capacity,  booking hours,hours per day, FTE, Specific time per day)
 **tags** <br><span class="optional">`array of strings`</span> | Tags are the list of strings (labels) attached to this booking object which could be used for the purpose of identification or other information.
-**created_on** <br><span class="optional">`string`</span> |   Time at which the resource object is created.
+**created_on** <br><span class="optional">`string`</span> |   Time at which the booking object is created.
 **modified_by** <br><span class="optional">`object`</span> | This field describes by whom the modification is done.
 **User defined fields** <br><span class="optional">`optional`</span>  | Custom user-defined fields used to capture additional information of booking. [Learn more] (#user-defined-fields)
 
@@ -245,7 +245,7 @@ Retrieves the details of an existing booking. You only need to  provide the uniq
 | ---:        |    :----   | 
 | **200** <br> <span class = "success">`OK`</span>     | This status code indicates that the operation was successful and a booking  get retrieved successfully .  |
 | **403** <br> <span class = "error">`Forbidden`</span> |Authorization failed due to insufficient permissions. This occurs when user does not have enough access rights to perform this action. Access for each user can be controlled by an Administrator using eRS Cloud Application.|
-| **404** <br> <span class = "error">`Not Found`</span> | Not Found error occurs when requested resource does not exist (i.e. There is no booking with given id). This may also occur when requesting a booking which has been deleted. |
+| **404** <br> <span class = "error">`Not Found`</span> | Not Found error occurs when requested booking does not exist (i.e. There is no booking with given id). This may also occur when requesting a booking which has been deleted. |
 
 ## Search bookings
 >  `POST v1/bookings/search`
@@ -271,7 +271,7 @@ curl -X POST  \
 
 ```shell
 curl -X POST  \
-"https://app.eresourcescheduler.cloud/rest/v1/resources/search?start=2018-01-01&end=2018-08-09" \
+"https://app.eresourcescheduler.cloud/rest/v1/bookings/search?start=2018-01-01&end=2018-08-09" \
 -H "Content-Type: application/json" \
 -H "Authorization: Bearer B8x5Vj1O65r6wnoV" \
 -d '{ 
@@ -326,7 +326,7 @@ Updates the specified booking by setting values of parameters passed. Values of 
 
 Name               |  Description
  ---:        |    :----   
-**resource_id**  <br><span class="required">`required`</span>  | Id of resource object which is being booked or scheduled.This will throw an error if you post an empty value.
+**resource_id**  <br><span class="required">`required`</span>  | Id of resource object which is being booked or scheduled. This will throw an error if you post an empty value.
 **project_id** <br><span class="required">`required`</span>  |  Id of project object which this booking object is being created for. This will throw an error if you post an empty value.
 **start_time** <br> <span class="required">`required`</span>  | Represents start date and time for booking object. This field accepts value in ISO 8601 extended format for date-time i.e. yyyy-mm-ddThh:mm:ss. The value must be snapped in 15 minutes interval, which effectively means that minutes values should be one of(00/15/30/45) and seconds value should always be 0. (if given). This will throw an error if you post an empty value.
 **end_time** <br> <span class="required">`required`</span>  | Represents end date and time for booking object. This field accepts value in ISO 8601 extended format for date-time i.e. yyyy-mm-ddThh:mm:ss. The value must be snapped in 15 minutes interval, which effectively means that minutes values should be one of(00/15/30/45) and seconds value should always be 0. (if given). End date time must always be ahead of start date time by at least 15 minutes as a booking of less than 15 minutes is not allowed. This will throw an error if you post an empty value.

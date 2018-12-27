@@ -129,7 +129,7 @@ Creates a new resource object.
 <span class="optional"><b>REQUEST BODY PARAMETERS</b></span>
 
 
-Name               |  Description
+Name         |  Description
  ---:        |    :----   
 **resource_type_id** <br> <span class="required">`required`</span> | Id of [resource-type] (#resource-types) object. Every resource must be linked to a [resource-type] (#resource-types). Let’s assume there are two resource types defined as Employee (_having id 1_) and Meeting Room (_having id 2_). While creating a new resource, all the resource whose `resource_type_id` is given as **1** will get created under Employee type and same for Meeting Room when `resource_type_id` is **2**.
 **first_name** <br> <span class="required">`required`</span>  | String representing the first name of a resource. This may be up to 100 characters.<br> _**Note** : for non-human resources, this field is <span class="danger">not available</span>_.
@@ -159,7 +159,7 @@ Name               |  Description
 Returns a list of resources. The resources are returned sorted by name. 
 	
 
->  **`GET /v1/resources/`**
+>  **`GET /v1/resources`**
 
 
 > Example Request
@@ -185,7 +185,7 @@ curl -v \
 {
   "total_count": 120,
   "offset": 1,
-  "limit": 25,
+  "limit": 15,
   "data": [{
       "id": 1,
       "first_name": "Andrew",
@@ -349,7 +349,7 @@ Retrieves the details of an existing resource. You only need to  provide the uni
 ### Returns
 
 | Code      | Description | 
-| ---:        |    :----   | 
+| ---:      |    :----    | 
 **200** <br> <span class = "success">`OK`</span> | Indicates that the operation was successful and a resource is retrieved successfully .
 **403** <br> <span class = "error">`Forbidden`</span> | Authorization failed due to insufficient permissions. This occurs when user does not have enough access rights to perform this action. Access for each user can be controlled by an Administrator using eRS Cloud Application.
 **404** <br> <span class = "error">`Not Found`</span> | Not Found error occurs when requested resource does not exist (i.e. There is no resource with given id). This may also occur when requesting a resource which has been deleted.
@@ -385,7 +385,7 @@ curl -X POST \
 
 Search Resource API allows filtering the results returned in various ways. This enables a great power to find out what is needed. eRS Cloud API also allows filtering on custom defined fields with multiple operators and conditions to cover up complex scenarios for searching.
 
-A filter condition consists of three components which are **_field_**, **_operator_** and **_value_**. For example fetching only those resources having resource type id 1, could be achieved by adding resource_type_id:eq=1 to your query. If operator is not supplied, it takes default operator for field.
+A filter condition consists of three components which are **_field_**, **_operator_** and **_value_**. For example, fetching only those resources having resource type id 1, could be achieved by adding resource_type_id:eq=1 to your query. If operator is not supplied, it takes default operator for field.
 
 Below is a list of available fields, which allow filtering resources:
 
@@ -395,7 +395,7 @@ Below is a list of available fields, which allow filtering resources:
 **resource_type_id**|<li>**eq** (_default_)  </li><li>any</li>| `"resource_type_id:eq": 1`<br>`"resource_type_id:any": [1,2]`
 **name**|<li class="nowrap">**has** (_default_)&nbsp;&nbsp;</li><li>eq</li>|`-d "name:has": "c"`<br>`-d "name:eq": "Amy Jones"`
 **roles**| <li>**any** (_default_)</li><li>all</li>|`-d "roles:any": [2,5]`<br>`-d "roles:all": [4,6]`
-**tags**|<li>**any** (_default_)</li><li>all</li>| `"tags:any": [2,5]`<br>`"tags:all": [4,6]`</li>
+**tags**|<li>**any** (_default_)</li><li>all</li>| `"tags:any": ["tagA","tagB"]`<br>`"tags:all": ["tagA","tagB"]`</li>
 **email**|<li>**has** (_default_)</li><li>eq</li>| `"email:has": "a"`<br>`"email:eq": "abc@mycompany.com"`
 **phone**|<li>**has** (_default_)</li><li>eq</li>|`"phone:has": "753" `<br> `"phone:eq": "(485)555-0202"`
 **start_Date**|<li>**eq** (_default_)</li><li>lt</li><li>gt</li><li> bt</li><li>ex</li>| `"start_date:eq": "2016-01-27"`<br>` "start_date:lt": "1999-12-22"`<br>` "start_date:gt": "1990-01-11"`<br>`"start_date:bt": ["2001-01-01", "2010-12-31"]`<br> `"start_date:ex": ["1992-02-12", "1997-01-27"]`
@@ -438,7 +438,7 @@ curl -v -X PUT \
 **image**<br>`optional` | This field accepts the Base64 encoded PNG string. This creates an image file (used as an avatar) for this resource.
 **roles**<br>`optional` | An array of ids of Roles (which are defined by an admin user in eRS Cloud Application) to be assigned to this Resource. The first id in the array is considered as Primary Role of that Resource. Multiple performing roles can be applied to a resource. Resources can also be searched / filtered using performing roles.
 **tags**  <br>`optional` | An optional array of strings which could be attached to this resource object as labels. This can be useful for the purpose of filtering, identification or other information.
-**udf_\*** <br>`optional` | A user with admin rights can add custom fields. These fields can be used to capture additional information in Resources. Different types of resources may have a different set of user-defined fields. The value for user defined field can be passed as shown in example request. In first example **_udf_employee_no_**</span> is a user defined field. [Learn more] (#user-defined-fields).
+**udf_\*** <br>`optional` | A user with admin rights can add custom fields. These fields can be used to capture additional information in Resources. Different types of resources may have a different set of user-defined fields. The value for user defined field can be passed as shown in example request. In given example, **_udf_employee_no_**</span> is a user defined field. [Learn more] (#user-defined-fields).
 
 ### Returns
 
@@ -481,10 +481,9 @@ force_delete_bookings=true" \
 | Code      | Description  
 | ---:        |    :----   
 **200** <br><span class = "success">`OK`</span> | This status code indicates that the operation was successful and a resource get deleted successfully.
-**409** <br> <span class = "error">`Conflict`</span> | Conflict indicates that the resource can not be deleted as there are bookings associated with this resource. If you wish to delete it any way you must use force delete option by passing `true` for parameter  `force_delete_booking`. This operation deletes all bookings of requested resource and resource itself (shown in example request).
+**409** <br> <span class = "error">`Conflict`</span> | Conflict indicates that the resource can not be deleted as there are bookings associated with this resource. If you wish to anyway delete it, you must use force delete option by passing `true` for parameter  `force_delete_booking`. This operation deletes all bookings of requested resource and resource itself (shown in example request).
 | **403** <br> <span class = "error">`Forbidden`</span> | Authorization failed due to insufficient permissions. This occurs when user does not have enough access rights to perform this action. Access for each user can be controlled by an Administrator using eRS Cloud Application.|
 | **404** <br> <span class = "error">`Not Found`</span> | Not Found error occurs when requested resource does not exist.
-
 
 ## Timings
 
