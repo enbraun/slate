@@ -1273,7 +1273,7 @@ grant_type=authorization_code</span><span class="se">\</span><span class="s2">
 </tr>
 <tr>
 <td style="text-align: right"><strong>fields</strong> <br><span class="optional"><code>array of strings</code></span></td>
-<td style="text-align: left">Represent collection of fields (or attributes) that are available for this project type. Each <a href="#project">Project</a> object of this project type can store / update values for these filed. While creating or updating a <a href="#resource">Project</a> user must pass arguments which are available for intended project type object.</td>
+<td style="text-align: left">Represent collection of fields (or attributes) that are available for this project type. Each <a href="#project">Project</a> object of this project type can store / update values for these filed. While creating or updating a <a href="#project">Project</a> user must pass arguments which are available for intended project type object.</td>
 </tr>
 <tr>
 <td style="text-align: right"><strong>fields.id</strong><br><span class="optional"><code>integer</code></span></td>
@@ -2307,7 +2307,7 @@ grant_type=authorization_code</span><span class="se">\</span><span class="s2">
 <p>Returns a list of resources. The resources are returned sorted by name. </p>
 
 <blockquote>
-<p><strong><code>GET /v1/resources/</code></strong></p>
+<p><strong><code>GET /v1/resources</code></strong></p>
 
 <p>Example Request</p>
 </blockquote>
@@ -2328,7 +2328,7 @@ grant_type=authorization_code</span><span class="se">\</span><span class="s2">
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"total_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">120</span><span class="p">,</span><span class="w">
   </span><span class="s2">"offset"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"limit"</span><span class="p">:</span><span class="w"> </span><span class="mi">25</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"limit"</span><span class="p">:</span><span class="w"> </span><span class="mi">15</span><span class="p">,</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
       </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
       </span><span class="s2">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Andrew"</span><span class="p">,</span><span class="w">
@@ -2548,7 +2548,7 @@ grant_type=authorization_code</span><span class="se">\</span><span class="s2">
 </code></pre>
 <p>Search Resource API allows filtering the results returned in various ways. This enables a great power to find out what is needed. eRS Cloud API also allows filtering on custom defined fields with multiple operators and conditions to cover up complex scenarios for searching.</p>
 
-<p>A filter condition consists of three components which are <strong><em>field</em></strong>, <strong><em>operator</em></strong> and <strong><em>value</em></strong>. For example fetching only those resources having resource type id 1, could be achieved by adding resource_type_id:eq=1 to your query. If operator is not supplied, it takes default operator for field.</p>
+<p>A filter condition consists of three components which are <strong><em>field</em></strong>, <strong><em>operator</em></strong> and <strong><em>value</em></strong>. For example, fetching only those resources having resource type id 1, could be achieved by adding resource_type_id:eq=1 to your query. If operator is not supplied, it takes default operator for field.</p>
 
 <p>Below is a list of available fields, which allow filtering resources:</p>
 
@@ -2577,7 +2577,7 @@ grant_type=authorization_code</span><span class="se">\</span><span class="s2">
 <tr>
 <td style="text-align: left"><strong>tags</strong></td>
 <td style="text-align: left"><li><strong>any</strong> (<em>default</em>)</li><li>all</li></td>
-<td style="text-align: left"><code>&quot;tags:any&quot;: [2,5]</code><br><code>&quot;tags:all&quot;: [4,6]</code></li></td>
+<td style="text-align: left"><code>&quot;tags:any&quot;: [&quot;tagA&quot;,&quot;tagB&quot;]</code><br><code>&quot;tags:all&quot;: [&quot;tagA&quot;,&quot;tagB&quot;]</code></li></td>
 </tr>
 <tr>
 <td style="text-align: left"><strong>email</strong></td>
@@ -2672,7 +2672,7 @@ grant_type=authorization_code</span><span class="se">\</span><span class="s2">
 </tr>
 <tr>
 <td style="text-align: right"><strong>udf_*</strong> <br><code>optional</code></td>
-<td style="text-align: left">A user with admin rights can add custom fields. These fields can be used to capture additional information in Resources. Different types of resources may have a different set of user-defined fields. The value for user defined field can be passed as shown in example request. In first example <strong><em>udf_employee_no</em></strong></span> is a user defined field. <a href="#user-defined-fields">Learn more</a>.</td>
+<td style="text-align: left">A user with admin rights can add custom fields. These fields can be used to capture additional information in Resources. Different types of resources may have a different set of user-defined fields. The value for user defined field can be passed as shown in example request. In given example, <strong><em>udf_employee_no</em></strong></span> is a user defined field. <a href="#user-defined-fields">Learn more</a>.</td>
 </tr>
 </tbody></table>
 <h3 id='returns-4'>Returns</h3>
@@ -2731,7 +2731,7 @@ force_delete_bookings=true"</span> <span class="se">\</span>
 </tr>
 <tr>
 <td style="text-align: right"><strong>409</strong> <br> <span class = "error"><code>Conflict</code></span></td>
-<td style="text-align: left">Conflict indicates that the resource can not be deleted as there are bookings associated with this resource. If you wish to delete it any way you must use force delete option by passing <code>true</code> for parameter  <code>force_delete_booking</code>. This operation deletes all bookings of requested resource and resource itself (shown in example request).</td>
+<td style="text-align: left">Conflict indicates that the resource can not be deleted as there are bookings associated with this resource. If you wish to anyway delete it, you must use force delete option by passing <code>true</code> for parameter  <code>force_delete_booking</code>. This operation deletes all bookings of requested resource and resource itself (shown in example request).</td>
 </tr>
 <tr>
 <td style="text-align: right"><strong>403</strong> <br> <span class = "error"><code>Forbidden</code></span></td>
@@ -3696,37 +3696,40 @@ curl -v -X DELETE <span class="se">\</span>
 <p>Example Response  </p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="w">  </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"modified_on"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-10-04T07:43:26.479769Z"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"project_start_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-01-01"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Project-A"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Medical"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">101</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Satellite"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
     </span><span class="p">},</span><span class="w">
-    </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Armenia"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"end_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-12-31"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"tags"</span><span class="p">:[</span><span class="w">
-        </span><span class="s2">"Seattle"</span><span class="w">
-    </span><span class="p">],</span><span class="w">
-    </span><span class="s2">"created_on"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-12-23T16:30:52.246248Z"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"modified_by"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Testing User"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="s2">"image"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/img/null"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ujjwal.pareek@enbraun.com"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"created_by"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Testing User"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="w">
-    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"apollo@enbraun.com"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"project_start_date"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"end_date"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"image"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://erscloud/img/7aca31f5-29ae205ba315"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"NASA"</span><span class="p">],</span><span class="w">
     </span><span class="s2">"is_archive"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"weblink"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.abho.in"</span><span class="w"> </span><span class="err">&lt;-</span><span class="w"> </span><span class="err">User</span><span class="w"> </span><span class="err">defined</span><span class="w"> </span><span class="err">field</span><span class="w">
+    </span><span class="s2">"created_on"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-08-20T09:25:34.925474Z"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"created_by"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Rahul Sharma"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">118</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"modified_on"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-09-28T12:32:44.896426Z"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"modified_by"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Rahul Sharma"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">118</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"udf_color"</span><span class="p">:</span><span class="w"> </span><span class="s2">"#FF8A80;0"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"udf_progress"</span><span class="p">:</span><span class="w"> </span><span class="mi">70</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"udf_project_manager"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Gene Kranz"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"udf_priority"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"High"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">21</span><span class="w">
+    </span><span class="p">}</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<p>Creates a new project object.</p>
-
-<p><span style="color:#b93d6a"><code>Project</code></span> object contains all the information about the project. The API allows you to create, delete, and update project. You can retrieve individual project as well as list of projects.</p>
+<p><span style="color:#b93d6a"><code>Project</code></span> object contains all the information about a project. Project is used as an activity for resources to be scheduled for. The API allows you to list, search, create, delete, and update project.</p>
 
 <p><span class="optional"><b>ATTRIBUTES</b></span></p>
 
@@ -3737,73 +3740,80 @@ curl -v -X DELETE <span class="se">\</span>
 </tr>
 </thead><tbody>
 <tr>
-<td style="text-align: right"><strong>id</strong> <br><span class="optional"><code>integer</code></span></td>
+<td style="text-align: right"><strong>id</strong> <br><code>integer</code></td>
 <td style="text-align: left">eRS Cloud-generated unique identifier for the project object.</td>
 </tr>
 <tr>
-<td style="text-align: right"><strong>modified_on</strong> <br><span class="optional"><code>string</code></span></td>
-<td style="text-align: left">Describes the latest modification date.</td>
+<td style="text-align: right"><strong>title</strong> <br><code>string</code></td>
+<td style="text-align: left">Represents title or name of the project.</td>
 </tr>
 <tr>
-<td style="text-align: right"><strong>project_start_date</strong> <br><span class="optional"><code>string</code></span></td>
-<td style="text-align: left">The date on which project will be started.</td>
+<td style="text-align: right"><strong>type</strong> <br><code>object</code></td>
+<td style="text-align: left">Describes the type of project. This is one of the project type objects which an admin user creates using eRS Cloud Application.</td>
 </tr>
 <tr>
-<td style="text-align: right"><strong>type</strong> <br><span class="optional"><code>object</code></span></td>
-<td style="text-align: left">It describes the type of project.</td>
+<td style="text-align: right"><strong>email</strong> <br><code>string</code></td>
+<td style="text-align: left">An optional email address of project object.</td>
 </tr>
 <tr>
-<td style="text-align: right"><strong>title</strong> <br><span class="optional"><code>string</code></span></td>
-<td style="text-align: left">The title of the project.</td>
+<td style="text-align: right"><strong>project_start_date</strong> <br><code>string</code></td>
+<td style="text-align: left">Date on which project is considered started.</td>
 </tr>
 <tr>
-<td style="text-align: right"><strong>end_date</strong> <br><span class="optional"><code>string</code></span></td>
-<td style="text-align: left">The date on which project will be ended.</td>
+<td style="text-align: right"><strong>end_date</strong> <br><code>string</code></td>
+<td style="text-align: left">Date on which project is considered ended / completed.</td>
 </tr>
 <tr>
-<td style="text-align: right"><strong>tags</strong> <br><span class="optional"><code>array of strings</code></span></td>
-<td style="text-align: left">Tags are the list of strings that could be used to organize the project.</td>
+<td style="text-align: right"><strong>image</strong> <br><code>string</code></td>
+<td style="text-align: left">String value representing URI of image file of project.</td>
 </tr>
 <tr>
-<td style="text-align: right"><strong>created_on</strong> <br><span class="optional"><code>string</code></span></td>
-<td style="text-align: left">Time at which the project object is created.</td>
+<td style="text-align: right"><strong>tags</strong> <br><code>array of strings</code></td>
+<td style="text-align: left">Tags are the list of strings (labels) attached to this project object which could be used for the purpose of filtering, identification or other information.</td>
 </tr>
 <tr>
-<td style="text-align: right"><strong>modified_by</strong> <br><span class="optional"><code>object</code></span></td>
-<td style="text-align: left">This field describes  whom the modification is done by.</td>
+<td style="text-align: right"><strong>is_archive</strong> <br><code>boolean</code></td>
+<td style="text-align: left">Boolean value representing whether this project is archived or not.</td>
 </tr>
 <tr>
-<td style="text-align: right"><strong>image</strong> <br><span class="optional"><code>string</code></span></td>
-<td style="text-align: left">The  image or display picture of the project.</td>
+<td style="text-align: right"><strong>created_on</strong> <br><code>string</code></td>
+<td style="text-align: left">Timestamp at which this project object was created.</td>
 </tr>
 <tr>
-<td style="text-align: right"><strong>email</strong> <br><span class="optional"><code>string</code></span></td>
-<td style="text-align: left">For Example this field is used to save email address of the project&#39;s manager.</td>
+<td style="text-align: right"><strong>created_by</strong> <br> <code>object</code></td>
+<td style="text-align: left">Object representing user who created this project object.</td>
 </tr>
 <tr>
-<td style="text-align: right"><strong>created_by</strong> <br> <span class="optional"><code>object</code></span></td>
-<td style="text-align: left">This field describes whom project object is created by .</td>
+<td style="text-align: right"><strong>modified_on</strong> <br><code>string</code></td>
+<td style="text-align: left">Represents latest modification timestamp.</td>
 </tr>
 <tr>
-<td style="text-align: right"><strong>User defined fields</strong> <br><span class="optional"><code>optional</code></span></td>
-<td style="text-align: left">Custom user-defined fields used to capture additional information of project. <a href="#user-defined-fields">Learn more</a></td>
+<td style="text-align: right"><strong>modified_by</strong> <br><code>object</code></td>
+<td style="text-align: left">Object representing most recent user who modified this project object.</td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>User defined fields</strong></td>
+<td style="text-align: left">Custom user-defined fields used to capture additional information of project. User defined field can be of multiple types. Custom fields are very useful to configure project objects to best fit requirements.  In given example response, all keys starting with prefix <code>udf_</code> are user defined custom fields. <a href="#user-defined-fields">Learn more</a></td>
 </tr>
 </tbody></table>
 <h2 id='create-a-project'>Create a project</h2>
+<p>Creates a new project object.</p>
+
 <blockquote>
-<p><code>POST v1/projects</code></p>
+<p><strong><code>POST /v1/projects</code></strong></p>
 
 <p>Example Request:</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code> curl -v -X GET <span class="se">\</span>
- <span class="s2">"https://app.eresourcescheduler.cloud/rest/v1/projects"</span> <span class="se">\</span>
-  -H <span class="s2">"Authorization: Bearer B8x5Vj1O65r6wnoV"</span> <span class="se">\</span>
-  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
-  -d  <span class="s1">'{ "title": "5 Faroe Islands", 
-        "project_start_date: "2016-05-02", 
-        "project_type_id": 1 , 
-        "weblink": "https://www.abho.in" }'</span> 
-
+<pre class="highlight shell tab-shell"><code> curl -v -X POST <span class="s2">"https://app.eresourcescheduler.cloud/rest/v1/projects"</span> <span class="se">\</span>
+ -H <span class="s2">"Authorization: Bearer B8x5Vj1O65r6wnoV"</span> <span class="se">\</span>
+ -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+ -d <span class="s1">'{ 
+       "title": "Project-A",
+       "project_type_id": 1,
+       "project_start_date": "2016-05-02",
+       "email": "andrew@enbraun.com",
+       "udf_progress": 70
+     }'</span>
 </code></pre>
 <p><span class="optional"><b>REQUEST BODY PARAMETERS</b></span></p>
 
@@ -3814,32 +3824,32 @@ curl -v -X DELETE <span class="se">\</span>
 </tr>
 </thead><tbody>
 <tr>
-<td style="text-align: right"><strong>title</strong> <br> <span class="required"><code>required</code></span></td>
-<td style="text-align: left">The title is a string which represents the  title of a project. It is a required field. This may be up to 100 characters. This will throw an error if you post an empty value.</td>
-</tr>
-<tr>
-<td style="text-align: right"><strong>image_uuid</strong>  <br><span class="optional"><code>optional</code></span></td>
-<td style="text-align: left">Project&#39;s image is an optional field. This field accepts the Base64 encoded PNG string.This will be blank if you POST an empty value.</td>
-</tr>
-<tr>
 <td style="text-align: right"><strong>project_type_id</strong> <br> <span class="required"><code>required</code></span></td>
-<td style="text-align: left">Project_type_id represents the id of project type. Let’s assume there are two types of project - Medical and Education. Project_type_id of Medical is 1 and project_type_id of Education is 2, then while creating a new project, all the projects whose project_type_id is given as 1 will get created under Medical type and same for Education when project_type_id is 2. It is a required field.</td>
+<td style="text-align: left">Id of project type object. A project must be linked with one of project types defined in admin section (<em>using eRS Cloud Application</em>). Let’s assume there are two project types defined as <code>Medical</code> (<em>having id as 1</em>) and <code>Education</code> (<em>having id as 2</em>), now while creating a new project, if project_type_id is given as 1 then it will get created under Medical type and same for Education when project_type_id is given as 2.</td>
 </tr>
 <tr>
-<td style="text-align: right"><strong>project_start_date</strong><br><span class="optional"><code>optional</code></span></td>
-<td style="text-align: left">The date on which project has started.</td>
+<td style="text-align: right"><strong>title</strong> <br><span class="required"><code>required</code></span></td>
+<td style="text-align: left">String representing title / name of project. This can be a maximum of 100 characters long.</td>
 </tr>
 <tr>
-<td style="text-align: right"><strong>tags</strong>  <br><span class="optional"><code>optional</code></span></td>
-<td style="text-align: left">Tags is an optional filed. It’s displayed alongside the project in your list and can be useful for searching and filtering. This may be up to 50 characters. This will be blank if you post an empty value.</td>
+<td style="text-align: right"><strong>email</strong> <br><code>optional</code></td>
+<td style="text-align: left">String value representing email address of project object. Email address must be properly formatted with a maximum length of 254 characters.</td>
 </tr>
 <tr>
-<td style="text-align: right"><strong>email</strong> <br><span class="optional"><code>optional</code></span></td>
-<td style="text-align: left">This field is used to display email address of project&#39;s manager(for example)  .The maximum length of this field may be up to 254 characters. This will be blank if you POST an empty value.</td>
+<td style="text-align: right"><strong>project_start_date</strong><br><code>optional</code></td>
+<td style="text-align: left">String value representing a date in ISO 8601 extended notation for date i.e. yyyy-MM-dd.</td>
 </tr>
 <tr>
-<td style="text-align: right"><strong>User defined fields</strong> <br><span class="optional"><code>optional</code></span></td>
-<td style="text-align: left">A user with admin rights can add such custom fields. These fields can be used to capture additional info in project. Different types of projects may have a different set of user-defined fields. The value for user defined field can be passed as shown in example request. Here in given example, <span style="color:#db7708"><code>weblink</code></span> is a user defined field. <a href="#user-defined-fields">Learn more</a></td>
+<td style="text-align: right"><strong>end_date</strong><br><code>optional</code></td>
+<td style="text-align: left">String value representing a date in ISO 8601 extended notation for date i.e. yyyy-MM-dd.</td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>tags</strong>  <br><code>optional</code></td>
+<td style="text-align: left">An optional array of strings which could be attached to this project object as labels. This can be useful for the purpose of filtering, identification or other information.</td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>udf_*</strong> <br><code>optional</code></td>
+<td style="text-align: left">A user with admin rights can add custom fields. These fields can be used to capture additional information in Projects. Different types of projects may have a different set of user-defined fields. The value for user defined field can be passed as shown in example request. In given example <strong><em>udf_progress</em></strong></span> is a user defined field. <a href="#user-defined-fields">Learn more</a>.</td>
 </tr>
 </tbody></table>
 <h3 id='returns'>Returns</h3>
@@ -3851,11 +3861,11 @@ curl -v -X DELETE <span class="se">\</span>
 </thead><tbody>
 <tr>
 <td style="text-align: left"><strong>201</strong> <br><span class = "success"><code>Created</code></span></td>
-<td style="text-align: left">This status code indicates that the operation was successful and  a project get created successfully.</td>
+<td style="text-align: left">Indicates that the operation was successful and a project get created successfully.</td>
 </tr>
 <tr>
 <td style="text-align: left"><strong>400</strong> <br> <span class = "error"><code>Bad Request</code></span></td>
-<td style="text-align: left">Bad Request error occurs when a request is malformed, syntactically incorrect, missing required parameters are  or any unknown parameter is passed.</td>
+<td style="text-align: left">Bad Request error occurs when a request is  malformed, syntactically incorrect, missing required parameters or has any unknown parameter.</td>
 </tr>
 <tr>
 <td style="text-align: left"><strong>403</strong> <br> <span class = "error"><code>Forbidden</code></span></td>
@@ -3863,58 +3873,68 @@ curl -v -X DELETE <span class="se">\</span>
 </tr>
 </tbody></table>
 <h2 id='list-projects'>List projects</h2>
-<p>Returns a list of projects. The projects are returned sorted by title and project id. </p>
+<p>Returns a list of projects. The projects are returned sorted by title. </p>
 
 <blockquote>
-<p><code>GET v1/projects</code></p>
+<p><strong><code>GET /v1/projects</code></strong> </p>
 
 <p>Example Request</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://app.eresourcescheduler.cloud/rest/v1/projects"</span> <span class="se">\</span>
-  -H <span class="s2">"Authorization: Bearer B8x5Vj1O65r6wnoV"</span>
+<pre class="highlight shell tab-shell"><code>curl -v <span class="se">\</span>
+<span class="s2">"https://app.eresourcescheduler.cloud/rest/v1/projects"</span> <span class="se">\</span>
+-H <span class="s2">"Authorization: Bearer B8x5Vj1O65r6wnoV"</span>
 </code></pre>
 <blockquote>
 <p>Example Request With Offset And Limit </p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://app.eresourcescheduler.cloud/rest/v1/projects?offset=1&amp;limit=1"</span> <span class="se">\</span>
- -H <span class="s2">"Authorization: Bearer B8x5Vj1O65r6wnoV"</span>
+<pre class="highlight shell tab-shell"><code>curl -v <span class="se">\</span>
+<span class="s2">"https://app.eresourcescheduler.cloud/rest/v1/projects?offset=1&amp;limit=15"</span> <span class="se">\</span>
+-H <span class="s2">"Authorization: Bearer B8x5Vj1O65r6wnoV"</span>
 </code></pre>
 <blockquote>
 <p>Example Response</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"offset"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"total_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"limit"</span><span class="p">:</span><span class="w"> </span><span class="mi">25</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-      </span><span class="p">{</span><span class="w">
-          </span><span class="s2">"end_date"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"eRS - Development"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Medical"</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">101</span><span class="w">
-         </span><span class="p">},</span><span class="w">
-        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ujjwal.pareek@enbraun.com"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"project_start_date"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"modified_on"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"image"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/img/null"</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"created_by"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Testing User"</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">-99</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="s2">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
-        </span><span class="s2">"created_on"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-11-28T09:57:58.835938Z"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"min_cost"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"is_archive"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"modified_by"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"weblink"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.eresourcescheduler.com"</span><span class="p">,</span><span class="err">&lt;-</span><span class="w"> </span><span class="err">User-defined</span><span class="w"> </span><span class="err">field.</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="p">{</span><span class="err">...</span><span class="p">},</span><span class="w">
-        </span><span class="p">{</span><span class="err">...</span><span class="p">},</span><span class="w">
-        </span><span class="p">{</span><span class="err">...</span><span class="p">}</span><span class="w">
-   </span><span class="p">]</span><span class="w">
+  </span><span class="s2">"total_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"offset"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"limit"</span><span class="p">:</span><span class="w"> </span><span class="mi">15</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Project-A"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Satellite"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"apollo@enbraun.com"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"project_start_date"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"end_date"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"image"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://erscloud/img/7aca31f5-29ae205ba315"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"NASA"</span><span class="p">],</span><span class="w">
+      </span><span class="s2">"is_archive"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"created_on"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-08-20T09:25:34.925474Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"created_by"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Rahul Sharma"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">118</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"modified_on"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-09-28T12:32:44.896426Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"modified_by"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Rahul Sharma"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">118</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"udf_color"</span><span class="p">:</span><span class="w"> </span><span class="s2">"#FF8A80;0"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"udf_progress"</span><span class="p">:</span><span class="w"> </span><span class="mi">70</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"udf_project_manager"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Gene Kranz"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"udf_priority"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"High"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">21</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p><span class="optional"><b>REQUEST QUERY PARAMETERS</b></span></p>
@@ -3926,12 +3946,12 @@ curl -v -X DELETE <span class="se">\</span>
 </tr>
 </thead><tbody>
 <tr>
-<td style="text-align: right"><strong>limit</strong><br><span class="optional"><code>optional</code></span></td>
-<td style="text-align: left">The limit keyword is used to limit the number of rows returned from a result set.<br><em>The default value of <code>limit</code> is</em>  <span class="error"><em><code>25</code></em></span><br><em>Maximum value of limit can be</em> <span class="error"><em><code>500.</code></em></span> <em>If value of limit is more than</em><span class="error"><em><code>500</code></em></span>  <em>then it will get set to maximum value of limit which is</em> <span class="error"><em><code>500.</code></em></span></td>
+<td style="text-align: right"><strong>limit</strong><br><code>optional</code></td>
+<td style="text-align: left">The limit keyword is used to limit the number of records returned from a result set. If a limit count is given, no more than that many records will be returned (but possibly less, if the query itself yields less records)<br><em>Default value of <code>limit</code> is</em> <span class="required"><strong><code>25</code></strong></span><br><em>Maximum value of <code>limit</code> can be</em> <span class="required"><strong><code>500</code></strong></span></td>
 </tr>
 <tr>
-<td style="text-align: right"><strong>offset</strong><br><span class="optional"><code>optional</code></span></td>
-<td style="text-align: left">The Offset value allows you to specify the ranking number of the first item on the page.The Offset value is also most often used together with the Limit keyword..<br><em>The default value of <code>offset</code> is</em> <span class="error"><em><code>0</code></em> </span></td>
+<td style="text-align: right"><strong>offset</strong><br><code>optional</code></td>
+<td style="text-align: left">Offset keyword is used to skip n items. If offset value is given as 10, then first 10 records will be skipped from result set. Offset is often used together with the Limit keyword.<br><em>Default value of <code>offset</code> is</em> <span class="required"><strong><code>0</code></strong></span></td>
 </tr>
 </tbody></table>
 <h3 id='returns-2'>Returns</h3>
@@ -3943,7 +3963,7 @@ curl -v -X DELETE <span class="se">\</span>
 </thead><tbody>
 <tr>
 <td style="text-align: right"><strong>200</strong> <br> <span class = "success"><code>OK</code></span></td>
-<td style="text-align: left">This indicates that the operation was successful and returned list of projects.</td>
+<td style="text-align: left">Indicates that the operation was successful and  list of resources is returned.</td>
 </tr>
 <tr>
 <td style="text-align: right"><strong>400</strong> <br> <span class = "error"><code>Bad Request</code> </span></td>
@@ -3956,44 +3976,49 @@ curl -v -X DELETE <span class="se">\</span>
 </tbody></table>
 <h2 id='retrieve-a-project'>Retrieve a project</h2>
 <blockquote>
-<p><code>GET v1/projects/{ID}</code></p>
+<p><strong><code>GET /v1/projects/{ID}</code></strong></p>
 
 <p>Example Request</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl -v -X GET <span class="se">\</span>
-<span class="s2">"https://app.eresourcescheduler.cloud/rest/v1/projects/1"</span><span class="se">\</span>
-  -H <span class="s2">"Authorization: Bearer B8x5Vj1O65r6wnoV"</span>
+<pre class="highlight shell tab-shell"><code>curl -v <span class="s2">"https://app.eresourcescheduler.cloud/rest/v1/projects/1"</span> <span class="se">\</span>
+-H <span class="s2">"Authorization: Bearer B8x5Vj1O65r6wnoV"</span>
 </code></pre>
 <blockquote>
 <p>Example Response</p>
 </blockquote>
-<pre class="highlight json tab-json"><code><span class="w">  </span><span class="p">{</span><span class="w">
-  </span><span class="s2">"modified_on"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-10-29T13:10:06.993223Z"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"end_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-03-15"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"color"</span><span class="p">:</span><span class="w"> </span><span class="s2">"#8f9499;0"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"eRS - Development"</span><span class="p">,</span><span class="w">
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Project-A"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Standard"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Satellite"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
     </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
   </span><span class="p">},</span><span class="w">
-  </span><span class="s2">"created_by"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Testing User"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="s2">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
-  </span><span class="s2">"created_on"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-10-04T10:43:43.36441Z"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"apollo@enbraun.com"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"project_start_date"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"end_date"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"image"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://erscloud/img/7aca31f5-29ae205ba315"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"NASA"</span><span class="p">],</span><span class="w">
   </span><span class="s2">"is_archive"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"modified_by"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Testing User"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="w">
+  </span><span class="s2">"created_on"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-08-20T09:25:34.925474Z"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"created_by"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Rahul Sharma"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">118</span><span class="w">
   </span><span class="p">},</span><span class="w">
-  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"image_uuid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/img/4b4eb176-aec9-471a-8e19-02c603f7d31b"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ujjwal.pareek@enbraun.com"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"project_start_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-01-01"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"modified_on"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-09-28T12:32:44.896426Z"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"modified_by"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Rahul Sharma"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">118</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"udf_color"</span><span class="p">:</span><span class="w"> </span><span class="s2">"#FF8A80;0"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"udf_progress"</span><span class="p">:</span><span class="w"> </span><span class="mi">70</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"udf_project_manager"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Gene Kranz"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"udf_priority"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"High"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">21</span><span class="w">
+  </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-
 </span></code></pre>
 <p>Retrieves the details of an existing project. You only need to provide the unique project identifier that was returned upon project creation.</p>
 <h3 id='returns-3'>Returns</h3>
@@ -4040,7 +4065,7 @@ curl -v -X DELETE <span class="se">\</span>
 <p>Example Request For Filter By Passing Multiple Rules In JSON Format</p>
 </blockquote>
 <pre class="highlight shell tab-shell"><code>curl -v -X POST <span class="se">\</span>
-<span class="s2">"https://app.eresourcescheduler.cloud/rest/v1/resources/search"</span> <span class="se">\</span>
+<span class="s2">"https://app.eresourcescheduler.cloud/rest/v1/projects/search"</span> <span class="se">\</span>
 -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
 -H <span class="s2">"Authorization: Bearer B8x5Vj1O65r6wnoV"</span> <span class="se">\</span>
 -d <span class="s1">'{ 
@@ -4846,7 +4871,7 @@ curl -v -X DELETE <span class="s2">"https://app.eresourcescheduler.cloud/rest/v1
 </tr>
 <tr>
 <td style="text-align: right"><strong>created_on</strong> <br><span class="optional"><code>string</code></span></td>
-<td style="text-align: left">Time at which the resource object is created.</td>
+<td style="text-align: left">Time at which the booking object is created.</td>
 </tr>
 <tr>
 <td style="text-align: right"><strong>modified_by</strong> <br><span class="optional"><code>object</code></span></td>
@@ -5111,7 +5136,7 @@ curl -v -X DELETE <span class="s2">"https://app.eresourcescheduler.cloud/rest/v1
 </tr>
 <tr>
 <td style="text-align: right"><strong>404</strong> <br> <span class = "error"><code>Not Found</code></span></td>
-<td style="text-align: left">Not Found error occurs when requested resource does not exist (i.e. There is no booking with given id). This may also occur when requesting a booking which has been deleted.</td>
+<td style="text-align: left">Not Found error occurs when requested booking does not exist (i.e. There is no booking with given id). This may also occur when requesting a booking which has been deleted.</td>
 </tr>
 </tbody></table>
 <h2 id='search-bookings'>Search bookings</h2>
@@ -5138,7 +5163,7 @@ curl -v -X DELETE <span class="s2">"https://app.eresourcescheduler.cloud/rest/v1
 <p>Example Request For Filter By Passing multiple filters  In JSON Format</p>
 </blockquote>
 <pre class="highlight shell tab-shell"><code>curl -X POST  <span class="se">\</span>
-<span class="s2">"https://app.eresourcescheduler.cloud/rest/v1/resources/search?start=2018-01-01&amp;end=2018-08-09"</span> <span class="se">\</span>
+<span class="s2">"https://app.eresourcescheduler.cloud/rest/v1/bookings/search?start=2018-01-01&amp;end=2018-08-09"</span> <span class="se">\</span>
 -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
 -H <span class="s2">"Authorization: Bearer B8x5Vj1O65r6wnoV"</span> <span class="se">\</span>
 -d <span class="s1">'{ 
@@ -5205,7 +5230,7 @@ curl -v -X DELETE <span class="s2">"https://app.eresourcescheduler.cloud/rest/v1
 </thead><tbody>
 <tr>
 <td style="text-align: right"><strong>resource_id</strong>  <br><span class="required"><code>required</code></span></td>
-<td style="text-align: left">Id of resource object which is being booked or scheduled.This will throw an error if you post an empty value.</td>
+<td style="text-align: left">Id of resource object which is being booked or scheduled. This will throw an error if you post an empty value.</td>
 </tr>
 <tr>
 <td style="text-align: right"><strong>project_id</strong> <br><span class="required"><code>required</code></span></td>
