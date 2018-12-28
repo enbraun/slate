@@ -270,7 +270,7 @@ curl -v -X POST \
       "project_type_id:eq": 1 
     }'
 ```
-The filter parameter allows for filtering the results returned from the various endpoint in various ways. For example fetching only projects having project type id 1 by adding project_type_id:eq=1 to your query.[Read more] (#filters)
+The filter parameter allows for filtering the results returned from the various endpoint in various ways. For example fetching only projects having project type id 1 by adding project_type_id:eq=1 to your query. <a href="#filters" class="api-ref">Read more</a>
 
 > Example Request For Filter By Passing Multiple Rules In JSON Format
 
@@ -294,7 +294,7 @@ curl -v -X POST \
 **end_date**|<li>eq *(default)* </li><li>lt </li><li>  gt </li><li> bt </li><br><li> ex</li>|-d "end_date:eq":"2015-02-02"<br>-d "end_date:lt":"2015-02-02"<br>-d "end_date:gt":"2015-02-02"<br> -d "end_date:bt":["2015-02-02","2015-04-05"] <br> -d "end_date:ex":["2015-02-02","2015-04-04"]
 **tags**|<li>any *(default)* </li><li>all</li>|-d "tags":"1&#124;2&#124;3" <br> -d "tags:all":"4&#124;6"
 **is_archive**| N/A | -d "is_archive":true <br> -d "is_archive":false
- _For User-defined fields please [check here](#filters-for-user-defined-fields)._ 
+ _For User-defined fields please <a href="#filters-for-user-defined-fields" class="api-ref">check here</a>._ 
 
 ## Update a project
 
@@ -326,7 +326,7 @@ Name               |  Description
 **project_start_date**<br><span class="required">`optional`</span> |The date on which project has started. 
 **tags**  <br><span class="optional">`optional`</span>  | Tags is an optional filed. It’s displayed alongside the project in your list and can be useful for searching and filtering. This may be up to 50 characters. This will be blank if you post an empty value.
 **email** <br><span class="optional">`optional`</span>  |  This field is used to display email address of project manager(for example)  .The maximum length of this field may be up to 254 characters. This will be blank if you POST an empty value.
-**User defined fields** <br><span class="optional">`optional`</span>  | A user with admin rights can add such custom fields. These fields can be used to capture additional info in project. Different types of projects may have a different set of user-defined fields. [Learn more] (#user-defined-fields)
+**User defined fields** <br><span class="optional">`optional`</span>  | A user with admin rights can add such custom fields. These fields can be used to capture additional info in project. Different types of projects may have a different set of user-defined fields. <a href="#user-defined-fields" class="api-ref">Learn more</a>
 
 
 ### Returns
