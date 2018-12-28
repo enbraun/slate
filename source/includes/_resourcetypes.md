@@ -131,10 +131,10 @@ Name | Description
 **id**  <br>`integer` |  Unique identification number for the object, which allows referring to this object and can be used to search a particular resource type.
 **name** <br> `string` | Represent name for this object. This is used to identify object by using some meaningful phrase to describe type of resources like `Employee`, `Machine` etc.
 **isHuman** <br> `boolean` | Indicates whether this resource type is `human` or `non-human`. For example, `Employee` could be a human resource type while `Machine`, `Meeting Rooms` etc. can be non-human resource type.
-**fields** <br> `array of object`  | Represent collection of fields (or attributes) that are available for this resource type. Each [Resource] (#resource) object of this resource type can store / update values for these filed. While creating or updating a [Resource] (#resource) user must pass arguments which are available for intended resource type object. 
+**fields** <br> `array of object`  | Represent collection of fields (or attributes) that are available for this resource type. Each <a href ="#resource" class = "api-ref">Resource</a> object of this resource type can store / update values for these filed. While creating or updating a <a href ="#resource" class = "api-ref">Resource</a> user must pass arguments which are available for intended resource type object. 
 **field.id**<br> `integer` | Represents unique identification number of this field, which can be used to refer or search it.
 **field.display_name** <br> `string`  | Name of this field to identify it.
-**field.field_type** <br>`string` |  Represents the type of field. For example  TEXT (for Text Field), INT (for Integer Number field), DDSS (for Dropdown Single Select Field), etc. See [User Defined Fields] (#user-defined-fields) to know more about different field types.
+**field.field_type** <br>`string` |  Represents the type of field. For example  TEXT (for Text Field), INT (for Integer Number field), DDSS (for Dropdown Single Select Field), etc. See <a href="#user-defined-fields" class="api-ref">User Defined Fields</a> to know more about different field types.
 **field.code** <br>`string` | It represents the unique code of the field which is referred to as API code. This code acts as `key` in API response and the same must be used as `key` to pass values for a POST or PUT request.
 **field.minlength** <br>`integer` |  Represents minimum no of characters in value this field can accept (_only applicable for text fields_).
 **field.maxlength** <br>`integer` |  Represents maximum no of characters in value this field can accept (_only applicable for text fields_).
@@ -145,7 +145,7 @@ Name | Description
 **field.maxdate** <br>`string` |  Represents maximum value this field can accept (_only applicable for date / date time fields_).
 **field.is_required** <br> `boolean` | Indicates whether this field is mandatory or not. If this field is a `required` field then a valid value for this field must be passed while creating such object and while updating object (if this field is intended to update).
 **is_system_defined** <br> `boolean` | Indicates whether this field is system defined or a custom field. Fields which are system defined can not be customized.
-**field.options** <br> `array of objects` | Field types such as Dropdown Single Select, Dropdown Multi Select, Radio Group etc. ( See [User Defined Fields](#user_defined_fields) to know more.) allow user to pick one or more from these available options.
+**field.options** <br> `array of objects` | Field types such as Dropdown Single Select, Dropdown Multi Select, Radio Group etc. ( See <a href="#user_defined_fields" class = "api-ref">User Defined Fields</a> to know more. ) allow user to pick one or more from these available options.
 **field.option.id** <br> `integer` |   Represents unique identification number for the individual option object.
 **field.option.name** <br> `string` | Represents name or content of option object.
 
