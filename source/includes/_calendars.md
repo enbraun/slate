@@ -120,7 +120,7 @@ curl -v \
 
 ```json
 {
-  "totalcount": 4,
+  "total_count": 4,
   "data": [{
       "id": 2,
       "name": "New York Calendar",

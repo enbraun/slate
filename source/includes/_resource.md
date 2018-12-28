@@ -85,7 +85,7 @@ Name         |  Description
 **created_by** <br> `object` | Object representing user who created this resource object.
 **modified_on** <br>`string` | Represents latest modification timestamp.
 **modified_by** <br>`object` | Object representing most recent user who modified this resource object.
-**User defined fields** | Custom user-defined fields used to capture additional information of resource. User defined field can be of multiple types. Custom fields are very useful to configure resource objects to best fit requirements.  In given example response, all keys starting with prefix `udf_` are user defined custom fields. [Learn more] (#user-defined-fields)
+**User defined fields** | Custom user-defined fields used to capture additional information of resource. User defined field can be of multiple types. Custom fields are very useful to configure resource objects to best fit requirements.  In given example response, all keys starting with prefix `udf_` are user defined custom fields. <a href ="#user-defined-fields" class="api-ref">Learn more</a>
 
 
 
@@ -131,7 +131,7 @@ Creates a new resource object.
 
 Name               |  Description
  ---:        |    :----   
-**resource_type_id** <br> <span class="required">`required`</span> | Id of [resource-type] (#resource-types) object. Every resource must be linked to a [resource-type] (#resource-types). Let’s assume there are two resource types defined as Employee (_having id 1_) and Meeting Room (_having id 2_). While creating a new resource, all the resource whose `resource_type_id` is given as **1** will get created under Employee type and same for Meeting Room when `resource_type_id` is **2**.
+**resource_type_id** <br> <span class="required">`required`</span> | Id of <a href = "#resource-type" class ="api-ref">resource-types</a> object. Every resource must be linked to a <a href = "#resource-type" class ="api-ref">resource-types</a>. Let’s assume there are two resource types defined as Employee (_having id 1_) and Meeting Room (_having id 2_). While creating a new resource, all the resource whose `resource_type_id` is given as **1** will get created under Employee type and same for Meeting Room when `resource_type_id` is **2**.
 **first_name** <br> <span class="required">`required`</span>  | String representing the first name of a resource. This may be up to 100 characters.<br> _**Note** : for non-human resources, this field is <span class="danger">not available</span>_.
 **last_name** <br> `optional`  | String representing the last name of a resource. This may be up to 100 characters.<br> _**Note** : for non-human resources, this field is <span class="danger">not available</span>_.
 **name** <br> <span class="required">`required`</span> | String representing the name of a resource. This may be up to 100 characters.<br> _**Note** : This field is only available for non-human resources and for human resources, this is <span class="danger">not available</span>_.
@@ -143,7 +143,7 @@ Name               |  Description
 **roles**<br>`optional` | An array of ids of Roles (which are defined by an admin user in eRS Cloud Application) to be assigned to this Resource. The first id in the array is considered as Primary Role of that Resource. Multiple performing roles can be applied to a resource. Resources can also be searched / filtered using performing roles.
 **calendar**  <br>`optional` | Id of Calendar object which should be assigned to resource effective from its start date. Depending upon requirements, different calendars can be applied on different resources. If calendar is omitted then default calendar (as defined in admin settings) will get applied for this resource.
 **tags**  <br>`optional` | An optional array of strings which could be attached to this resource object as labels. This can be useful for the purpose of filtering, identification or other information.
-**udf_\*** <br>`optional` | A user with admin rights can add custom fields. These fields can be used to capture additional information in Resources. Different types of resources may have a different set of user-defined fields. The value for user defined field can be passed as shown in example request. In first example **_udf_employee_no_**</span> is a user defined field. [Learn more] (#user-defined-fields).
+**udf_\*** <br>`optional` | A user with admin rights can add custom fields. These fields can be used to capture additional information in Resources. Different types of resources may have a different set of user-defined fields. The value for user defined field can be passed as shown in example request. In first example **_udf_employee_no_**</span> is a user defined field. <a href ="#user-defined-fields" class="api-ref">Learn more</a>
 
 ### Returns
  
@@ -400,7 +400,7 @@ Below is a list of available fields, which allow filtering resources:
 **phone**|<li>**has** (_default_)</li><li>eq</li>|`"phone:has": "753" `<br> `"phone:eq": "(485)555-0202"`
 **start_Date**|<li>**eq** (_default_)</li><li>lt</li><li>gt</li><li> bt</li><li>ex</li>| `"start_date:eq": "2016-01-27"`<br>` "start_date:lt": "1999-12-22"`<br>` "start_date:gt": "1990-01-11"`<br>`"start_date:bt": ["2001-01-01", "2010-12-31"]`<br> `"start_date:ex": ["1992-02-12", "1997-01-27"]`
 **last_date**|<li>**eq** (_default_)</li><li>lt</li><li>gt</li><li> bt</li><li>ex</li>| `"last_date:eq": "2016-05-17"` <br> `"last_date:lt": "2002-12-31"`<br>` "last_date:gt": "2010-01-01"` <br> `"last_date:bt": ["1995-12-31", "1999-01-01"]`<br> `"last_date:ex": ["2001-01-01", "2002-01-01"]`
- _For filtering using custom fields and operators please [check here](#filters-for-user-defined-fields)._ 
+ _For filtering using custom fields and operators please <a href="#filters-for-user-defined-fields" class="api-ref">check here</a>._ 
 
 ## Update a resource 
 
@@ -438,7 +438,7 @@ curl -v -X PUT \
 **image**<br>`optional` | This field accepts the Base64 encoded PNG string. This creates an image file (used as an avatar) for this resource.
 **roles**<br>`optional` | An array of ids of Roles (which are defined by an admin user in eRS Cloud Application) to be assigned to this Resource. The first id in the array is considered as Primary Role of that Resource. Multiple performing roles can be applied to a resource. Resources can also be searched / filtered using performing roles.
 **tags**  <br>`optional` | An optional array of strings which could be attached to this resource object as labels. This can be useful for the purpose of filtering, identification or other information.
-**udf_\*** <br>`optional` | A user with admin rights can add custom fields. These fields can be used to capture additional information in Resources. Different types of resources may have a different set of user-defined fields. The value for user defined field can be passed as shown in example request. In first example **_udf_employee_no_**</span> is a user defined field. [Learn more] (#user-defined-fields).
+**udf_\*** <br>`optional` | A user with admin rights can add custom fields. These fields can be used to capture additional information in Resources. Different types of resources may have a different set of user-defined fields. The value for user defined field can be passed as shown in example request. In first example **_udf_employee_no_**</span> is a user defined field. <a href ="#user-defined-fields" class="api-ref">Learn more</a>
 
 ### Returns
 
@@ -555,7 +555,7 @@ curl -v -X GET "https://app.eresourcescheduler.cloud/rest/v1/resources/12/timing
 
 ```json
 {
-   "totalcount": 2,
+   "total_count": 2,
    "data": [
       {
          "id": 5,
@@ -711,7 +711,7 @@ curl -v -X DELETE \
 
 ```json
 {
-   "totalcount":1,
+   "total_count":1,
    "data":[
       {
          "id":2,
@@ -921,7 +921,7 @@ curl -v -X DELETE \
 
 ```json
 {
-   "totalcount":3,
+   "total_count":3,
    "limit":25,
    "offset":0,
    "data":[

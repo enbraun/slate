@@ -125,7 +125,7 @@ Name | Description
 | ---:  |  :----   |
 **id**  <br><span class="optional">`integer`</span> |  Represents unique identification number of this field, which can be used to refer or search it.
 **code**  <br><span class="optional">`integer`</span> |  It represents the unique code of the field which is referred to as API code. This code acts as `key` in API response and the same must be used as `key` to pass values for a POST or PUT request.
-**field_type** <br><span class="optional">`string`</span> | Represents the type of field. For example  TEXT (for Text Field), INT (for Integer Number field), DDSS (for Dropdown Single Select Field), etc. See [User Defined Fields] (#user-defined-fields) to know more about different field types.
+**field_type** <br><span class="optional">`string`</span> | Represents the type of field. For example  TEXT (for Text Field), INT (for Integer Number field), DDSS (for Dropdown Single Select Field), etc. See <a href = "#user-defined-fields" class="api-ref">User Defined Fields</a> to know more about different field types.
 **display_name**<br><span class="optional">`string`</span> |Name of this field to identify it.
 **is_system_defined**<br><span class="optional">`boolean`</span> |  Indicates whether this field is system defined or a custom field. Fields which are system defined can not be customized.
 **is_filterable** <br> <span class ="optional">`boolean`</span> |Indicates whether this field is used for filtering or not. |

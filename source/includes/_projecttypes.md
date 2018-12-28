@@ -102,10 +102,10 @@ Name | Description
 | ---:  |  :----   |
 **id**  <br><span class="optional">`integer`</span> |Unique identification number for the object, which allows referring to this object and can be used to search a particular project type.
 **name** <br><span class="optional">`string`</span> | Represent name for this object. This is used to identify object by using some meaningful phrase to describe type of projects like `Standard`, `Education` etc.
-**fields** <br><span class="optional">`array of strings`</span> |Represent collection of fields (or attributes) that are available for this project type. Each [Project] (#project) object of this project type can store / update values for these filed. While creating or updating a [Project] (#resource) user must pass arguments which are available for intended project type object. 
+**fields** <br><span class="optional">`array of strings`</span> |Represent collection of fields (or attributes) that are available for this project type. Each <a href = "#project" class="api-ref">Project</a> object of this project type can store / update values for these filed. While creating or updating a <a href = "#project" class="api-ref">Project</a> user must pass arguments which are available for intended project type object. 
 **fields.id**<br><span class="optional">`integer`</span> | Represents unique identification number of this field, which can be used to refer or search it.
 **fields.display_name** <br><span class="optional">`string`</span> |Name of this field to identify it.
-**fields.field_type** <br><span class="optional">`string`</span> |   Represents the type of field. For example  TEXT (for Text Field), INT (for Integer Number field), DDSS (for Dropdown Single Select Field), etc. See [User Defined Fields] (#user-defined-fields) to know more about different field types.
+**fields.field_type** <br><span class="optional">`string`</span> |   Represents the type of field. For example  TEXT (for Text Field), INT (for Integer Number field), DDSS (for Dropdown Single Select Field), etc. See <a href = "#user-defined-fields" class="api-ref">User Defined Fields</a> to know more about different field types.
 **fields.code** <br><span class="optional">`string`</span> | It represents the unique code of the field which is referred to as API code. This code acts as `key` in API response and the same must be used as `key` to pass values for a POST or PUT request.
 **field.minlength** <br><span class="optional">`integer` |  Represents minimum no of characters in value this field can accept (_only applicable for text fields_).
 **field.maxlength** <br><span class="optional">`integer` |  Represents maximum no of characters in value this field can accept (_only applicable for text fields_).
@@ -116,7 +116,7 @@ Name | Description
 **field.maxdate** <br><span class="optional">`string` |  Represents maximum value this field can accept (_only applicable for date / date time fields_).
 **fields.is_required** <br> <span class ="optional">`boolean`</span> |Indicates whether this field is mandatory or not. If this field is a `required` field then a valid value for this field must be passed while creating such object and while updating object (if this field is intended to update).
 **is_system_defined** <br><span class="optional"> `boolean` | Indicates whether this field is system defined or a custom field. Fields which are system defined can not be customized.
-**fields.options** <br><span class="optional">`string`</span> |Field types such as Dropdown Single Select, Dropdown Multi Select, Radio Group etc. ( See [User Defined Fields](#user_defined_fields) to know more.) allow user to pick one or more from these available options.
+**fields.options** <br><span class="optional">`string`</span> |Field types such as Dropdown Single Select, Dropdown Multi Select, Radio Group etc. ( See <a href = "#user_defined_fields" class="api-ref">User Defined Fields</a> to know more. ) allow user to pick one or more from these available options.
 **fields.options.id** <br><span class="optional">`integer`</span> |  Represents unique identification number for the individual option object.
 **fields.option.name** <br><span class="optional">`string`</span> | Represents name or content of option object.
 

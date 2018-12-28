@@ -57,7 +57,7 @@ Name         |  Description
 **tags** <br><span class="optional">`array of strings`</span> | Tags are the list of strings (labels) attached to this booking object which could be used for the purpose of identification or other information.
 **created_on** <br><span class="optional">`string`</span> |   Time at which the resource object is created.
 **modified_by** <br><span class="optional">`object`</span> | This field describes by whom the modification is done.
-**User defined fields** <br><span class="optional">`optional`</span>  | Custom user-defined fields used to capture additional information of booking. [Learn more] (#user-defined-fields)
+**User defined fields** <br><span class="optional">`optional`</span>  | Custom user-defined fields used to capture additional information of booking. <a href="#user-defined-fields" class="api-ref">Learn more</a>
 
 ## Create a booking
 
@@ -96,7 +96,7 @@ Name               |  Description
 **effort**  <br><span class="optional">`optional`</span>  | This defines how much effort is needed to complete the task. Effort value is a floating point number which could not be less than 0 and greater than 99999999.99. If effort value is not provided system will take default value 0.
 **unit**<br><span class="optional">`optional`</span>  | Integer number (1-5) representing unit in which effort is being defined. Unit value could be one of the following : <li>**1** for 'Percent of capacity' : This is default unit for booking. This represents effort in percentage of capacity of intended resource for defined time range. </li> <li> **2** for 'Total Booking Hours' : This defines effort value in fixed hours which doesn't get changed upon changes in booking.</li> <li> **3** for 'Hours Per day' : This could be used where a certain no of hours need to be spend for a booking. For example 4 hours per day (working day).</li> <li> **4** for 'Full Time Equivalent' : Full time equivalent is calculated using FTE calendar defined in Admin section. Capacity from FTE calendar for defined time in booking, is considered as 1 FTE.</li> <li> **5** for 'Time Per Day' : It is useful where effort needs to put in on a particular time of every working day i.e. 4:15 PM to 5:30 PM daily. Time portion of **start_time** argument is considered as per day start time, and Time portion of **end_time** argument is considered per day end time for this booking. </li> |
 **tags**  <br><span class="optional">`optional`</span>  | An optional array of strings which could be attached to this booking object as labels. This can be useful for the purpose of identification or other information.
-**user_defined_field** <br><span class="optional">`optional`</span>  | A user with admin rights can add such custom fields. These fields can be used to capture additional info in bookings. [Learn more] (#user-defined-fields)
+**user_defined_field** <br><span class="optional">`optional`</span>  | A user with admin rights can add such custom fields. These fields can be used to capture additional info in bookings. <a href="#user-defined-fields" class="api-ref">Learn more</a>
 
 ### Returns
  
@@ -132,7 +132,7 @@ curl -v -X GET \
 
 ```json
 {
-   "totalcount": 7,
+   "total_count": 7,
    "data": [
      {
         "modified_on": null,
@@ -253,7 +253,7 @@ Retrieves the details of an existing booking. You only need to  provide the uniq
 Filtering API responses to retrieve specific data.
 
 
-The filter parameter allows for filtering the results returned from the various endpoint in various ways. For example fetching only booking having booking id 1 by adding id:1 to your query.[Read more] (#filters)
+The filter parameter allows for filtering the results returned from the various endpoint in various ways. For example fetching only booking having booking id 1 by adding id:1 to your query.<a href ="#filters" class= "api-ref"> Read more</a>
 
 > Example Request For Filter In JSON Format
 
@@ -293,12 +293,12 @@ Filter by booking-fields
 
    
 You can filter booking by resource-fields. 
- _For Resource-Fields please [click here](#search-resources)._
+ _For Resource-Fields please <a href="#search-resources" class="api-ref">click here</a>._
 
 You can also filter booking by project-fields. 
- _For Project-Fields please [click here](#search-projects)._
+ _For Project-Fields please <a href="#search-projects" class="api-ref">click here</a>._
 
- _For User-defined fields please [click here](#filters-for-user-defined-fields)._ 
+ _For User-defined fields please <a href="#filters-for-user-defined-fields" class="api-ref">click here</a>._ 
 
 
 You can filter booking by multiple objects.  For example fetching only booking having resource_id as 2 , project_id as 9 and booking_id as 1  <span style="font-size:24px; font-weight:bold;">￼&#x1f449;</span>
@@ -334,7 +334,7 @@ Name               |  Description
 **effort**  <br><span class="optional">`optional`</span>  | This defines how much effort is needed to complete the task. Effort value is a floating point number which could not be less than 0 and greater than 99999999.99. If effort value is not provided system will take default value 0.
 **unit**<br><span class="optional">`optional`</span>  | Integer number (1-5) representing unit in which effort is being defined. Unit value could be one of the following : <li>**1** for 'Percent of capacity' : This is default unit for booking. This represents effort in percentage of capacity of intended resource for defined time range. </li> <li> **2** for 'Total Booking Hours' : This defines effort value in fixed hours which doesn't get changed upon changes in booking.</li> <li> **3** for 'Hours Per day' : This could be used where a certain no of hours need to be spend for a booking. For example 4 hours per day (working day).</li> <li> **4** for 'Full Time Equivalent' : Full time equivalent is calculated using FTE calendar defined in Admin section. Capacity from FTE calendar for defined time in booking, is considered as 1 FTE.</li> <li> **5** for 'Time Per Day' : It is useful where effort needs to put in on a particular time of every working day i.e. 4:15 PM to 5:30 PM daily. Time portion of **start_time** argument is considered as per day start time, and Time portion of **end_time** argument is considered per day end time for this booking. </li> |
 **tags**  <br><span class="optional">`optional`</span>  | Tags is an optional filed. Tags are attached to this booking object which could be used for the purpose of identification or other information.. This may be up to 50 characters. This will be blank if you post an empty value.
-**User defined fields** <br><span class="optional">`optional`</span>  | A user with admin rights can add such custom fields. These fields can be used to capture additional info in bookings. [Learn more] (#user-defined-fields)
+**User defined fields** <br><span class="optional">`optional`</span>  | A user with admin rights can add such custom fields. These fields can be used to capture additional info in bookings. <a href="#user-defined-fields" class="api-ref">Learn more</a>
 
 ### Returns
 
