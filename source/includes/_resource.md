@@ -437,7 +437,6 @@ curl -v -X PUT \
 **roles**<br>`optional` | An array of ids of Roles (which are defined by an admin user in eRS Cloud Application) to be assigned to this Resource. The first id in the array is considered as Primary Role of that Resource. Multiple performing roles can be applied to a resource. Resources can also be searched / filtered using performing roles.
 **tags**  <br>`optional` | An optional array of strings which could be attached to this resource object as labels. This can be useful for the purpose of filtering, identification or other information.
 **udf_\*** <br>`optional` | A user with admin rights can add custom fields. These fields can be used to capture additional information in Resources. Different types of resources may have a different set of user-defined fields. The value for user defined field can be passed as shown in example request. In first example **_udf_employee_no_** is a user defined field. <a href ="#user-defined-fields" class="api-ref">Learn more</a>
-**udf_\*** <br>`optional` | A user with admin rights can add custom fields. These fields can be used to capture additional information in Resources. Different types of resources may have a different set of user-defined fields. The value for user defined field can be passed as shown in example request. In first example **_udf_employee_no_**</span> is a user defined field. <a href ="#user-defined-fields" class="api-ref">Learn more</a>
 
 ### Returns
 
