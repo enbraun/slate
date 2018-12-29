@@ -123,16 +123,16 @@ curl -v \
 
 Name | Description
 | ---:  |  :----   |
-**id**  <br><span class="optional">`integer`</span> |  Represents unique identification number of this field, which can be used to refer or search it.
-**code**  <br><span class="optional">`integer`</span> |  It represents the unique code of the field which is referred to as API code. This code acts as `key` in API response and the same must be used as `key` to pass values for a POST or PUT request.
-**field_type** <br><span class="optional">`string`</span> | Represents the type of field. For example  TEXT (for Text Field), INT (for Integer Number field), DDSS (for Dropdown Single Select Field), etc. See <a href = "#user-defined-fields" class="api-ref">User Defined Fields</a> to know more about different field types.
-**display_name**<br><span class="optional">`string`</span> |Name of this field to identify it.
-**is_system_defined**<br><span class="optional">`boolean`</span> |  Indicates whether this field is system defined or a custom field. Fields which are system defined can not be customized.
-**is_filterable** <br> <span class ="optional">`boolean`</span> |Indicates whether this field is used for filtering or not. |
-**is_mandatory_required**<br> <span class ="optional">`boolean`</span> |Indicates whether this field is mandatory or not. If this field is a `required` field then a valid value for this field must be passed while creating such object and while updating object (if this field is intended to update).
-**minnum** <br> <span class ="optional">`integer`</span> | Represents minimum value this field can accept (_only applicable for numeric fields_).
-**maxnum** <br> <span class ="optional">`integer`</span> | Represents maxmum value this field can accept (_only applicable for numeric fields_).
-**mindate** <br> <span class ="optional">`string`</span> |Represents minimum value this field can accept (_only applicable for date / date time fields_).
-**maxdate** <br> <span class = "optional">`string`</span> |Represents maxmum value this field can accept (_only applicable for date / date time fields_).
+**id**  <br>`integer` |  Represents unique identification number of this field, which can be used to refer or search it.
+**code**  <br>`integer` |  It represents the unique code of the field which is referred to as API code. This code acts as `key` in API response and the same must be used as `key` to pass values for a POST or PUT request.
+**field_type** <br>`string` | Represents the type of field. For example  TEXT (for Text Field), INT (for Integer Number field), DDSS (for Dropdown Single Select Field), etc. See <a href = "#user-defined-fields" class="api-ref">User Defined Fields</a> to know more about different field types.
+**display_name**<br>`string` |Name of this field to identify it.
+**is_system_defined**<br>`boolean` |  Indicates whether this field is system defined or a custom field. Fields which are system defined can not be customized.
+**is_filterable** <br>`boolean` |Indicates whether this field is used for filtering or not. |
+**is_mandatory_required**<br>`boolean` |Indicates whether this field is mandatory or not. If this field is a `required` field then a valid value for this field must be passed while creating such object and while updating object (if this field is intended to update).
+**minnum** <br>`integer` | Represents minimum value this field can accept (_only applicable for numeric fields_).
+**maxnum** <br>`integer` | Represents maxmum value this field can accept (_only applicable for numeric fields_).
+**mindate** <br>`string` |Represents minimum value this field can accept (_only applicable for date / date time fields_).
+**maxdate** <br>`string` |Represents maxmum value this field can accept (_only applicable for date / date time fields_).
 
 
