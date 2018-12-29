@@ -6,34 +6,35 @@
 
 ```json
 {
-  "modified_on": null,
-  "role": {
-    "name": "Functional Manager",
+  "id": 34,
+  "resource": {
+    "name": "Andy Murray",
     "id": 2
   },
-  "resource": {
-    "name": "Anselm Batie",
-    "id": 97
+  "role": {
+    "name": "Business Analyst",
+    "id": 1
   },
-  "end_time": "2018-11-14T17:00:00",
   "project": {
-    "id": 1,
-    "title": "Jaipur"
+    "id": 5,
+    "title": "Mars Rover"
   },
-  "effort": 100,
-  "priority": null,
-  "created_by": {
-    "name": "John Doe",
-    "id": 6
-  },
-  "billable": true,
-  "tags": [],
-  "start_time": "2018-11-07T09:00:00",
-  "unit": 1,
   "task": null,
-  "created_on": "2018-11-22T16:18:13.957046Z",
-  "modified_by": null,
-  "id": 25
+  "start_time": "2018-12-26T09:00:00",
+  "end_time": "2018-12-31T17:00:00",
+  "unit": 1,
+  "effort": 100.0,
+  "tags": [],
+  "created_on": "2018-09-07T04:09:45.254681Z",
+  "created_by": {
+    "name": "Rahul Sharma",
+    "id": 118
+  },
+  "modified_on": "2018-11-21T06:23:02.494932Z",
+  "modified_by": {
+    "name": "Rahul Sharma",
+    "id": 118
+  }
 }
 ```
 
@@ -132,41 +133,41 @@ curl -v -X GET \
 
 ```json
 {
-   "total_count": 7,
-   "data": [
-     {
-        "modified_on": null,
-        "role": {
-          "name": "Functional Manager",
-          "id": 2
-        },
-        "resource": {
-          "name": "Anselm Batie",
-          "id": 97
-        },
-        "end_time": "2018-11-14T17:00:00",
-        "project": {
-          "id": 1,
-          "title": "Jaipur"
-        },
-        "effort": 100,
-        "priority": null,
-        "created_by": {
-          "name": "John Doe",
-          "id": 6
-        },
-        "billable": true,
-        "tags": [],
-        "start_time": "2018-11-07T09:00:00",
-        "unit": 1,
-        "task": null,
-        "created_on": "2018-11-22T16:18:13.957046Z",
-        "modified_by": null,
-        "id": 25
-     },
-     {...},
-     {...}
-   ]
+  "total_count": 7,
+  "data": [{
+      "id": 34,
+      "resource": {
+        "name": "Andy Murray",
+        "id": 2
+      },
+      "role": {
+        "name": "Business Analyst",
+        "id": 1
+      },
+      "project": {
+        "id": 5,
+        "title": "Mars Rover"
+      },
+      "task": null,
+      "start_time": "2018-12-26T09:00:00",
+      "end_time": "2018-12-31T17:00:00",
+      "unit": 1,
+      "effort": 100.0,
+      "tags": [],
+      "created_on": "2018-09-07T04:09:45.254681Z",
+      "created_by": {
+        "name": "Rahul Sharma",
+        "id": 118
+      },
+      "modified_on": "2018-11-21T06:23:02.494932Z",
+      "modified_by": {
+        "name": "Rahul Sharma",
+        "id": 118
+      }
+    },
+    { ... },
+    { ... }
+  ]
 }
 ```
 
