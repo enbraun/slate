@@ -3,7 +3,7 @@
 
 Every eRS Cloud API endpoint requires an access token. If token is not passed or is invalid, API will return **401** <span class="error">Unauthorized</span> error.
 
-An access token can be generated at <a href ="https://app.eresourcescheduler.cloud/#!/profile/password" class="api-ref">User Profile -> Security</a>.
+An access token can be generated at <a target = "_blank" href ="https://app.eresourcescheduler.cloud/#!/profile/password" class="api-ref">User Profile -> Security</a>.
 
 Alternatively, OAuth flow can be used to obtain a token if access is required by third party application.
 
@@ -81,7 +81,7 @@ Name | Description
 
 
 
-To learn more about OAuth token generation flow please read <a href="https://oauth.net/2/grant-types/authorization-code/" class = "api-ref">here</a>.
+To learn more about OAuth token generation flow please read <a target = "_blank" href="https://oauth.net/2/grant-types/authorization-code/" class = "api-ref">here</a>.
 
 
 eRS Cloud expects an API token to be included in all API requests to in a header that looks like the following:

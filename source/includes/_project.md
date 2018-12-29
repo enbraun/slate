@@ -51,14 +51,14 @@ Name      |  Description
 **email** <br>`string` | An optional email address of project object.
 **project_start_date** <br>`string` |  Date on which project is considered started.
 **end_date** <br>`string` | Date on which project is considered ended / completed.
-**image** <br>`string` | String value representing URI of image file of project.
+**image** <br>`string` | String value representing URL of image file of project.
 **tags** <br>`array of strings` | Tags are the list of strings (labels) attached to this project object which could be used for the purpose of filtering, identification or other information.
 **is_archive** <br>`boolean` | Boolean value representing whether this project is archived or not.
 **created_on** <br>`string` | Timestamp at which this project object was created.
 **created_by** <br> `object` | Object representing user who created this project object.
 **modified_on** <br>`string` | Represents latest modification timestamp.
 **modified_by** <br>`object` | Object representing most recent user who modified this project object.
-**User defined fields** | Custom user-defined fields used to capture additional information of project. User defined field can be of multiple types. Custom fields are very useful to configure project objects to best fit requirements.  In given example response, all keys starting with prefix `udf_` are user defined custom fields. [Learn more] (#user-defined-fields)
+**udf_\*** | Custom user-defined fields used to capture additional information of project. User defined field can be of multiple types. Custom fields are very useful to configure project objects to best fit requirements.  In given example response, all keys starting with prefix `udf_` are user defined custom fields. <a href="#user-defined-fields" class="api-ref">Learn more</a>
 
 ## Create a project
 
@@ -85,13 +85,13 @@ Creates a new project object.
 
 Name               |  Description
  ---:        |    :----
- **project_type_id** <br> <span class="required">`required`</span> | Id of project type object. A project must be linked with one of project types defined in admin section (_using eRS Cloud Application_). Let’s assume there are two project types defined as `Medical` (_having id as 1_) and `Education` (_having id as 2_), now while creating a new project, if project_type_id is given as 1 then it will get created under Medical type and same for Education when project_type_id is given as 2.
+ **project_type_id** <br> <span class="required">`required`</span> | Id of <a href="#project-type" class="api-ref">project-types</a> object. A project must be linked with one of <a href="#project-type" class="api-ref">project-types</a> defined in admin section (_using eRS Cloud Application_). Let’s assume there are two project types defined as `Medical` (_having id as 1_) and `Education` (_having id as 2_), now while creating a new project, if project_type_id is given as 1 then it will get created under Medical type and same for Education when project_type_id is given as 2.
 **title** <br><span class="required">`required`</span> | String representing title / name of project. This can be a maximum of 100 characters long.
 **email** <br>`optional` | String value representing email address of project object. Email address must be properly formatted with a maximum length of 254 characters.
 **project_start_date**<br>`optional` | String value representing a date in ISO 8601 extended notation for date i.e. yyyy-MM-dd.
 **end_date**<br>`optional` | String value representing a date in ISO 8601 extended notation for date i.e. yyyy-MM-dd.
 **tags**  <br>`optional` | An optional array of strings which could be attached to this project object as labels. This can be useful for the purpose of filtering, identification or other information.
-**udf_\*** <br>`optional` | A user with admin rights can add custom fields. These fields can be used to capture additional information in Projects. Different types of projects may have a different set of user-defined fields. The value for user defined field can be passed as shown in example request. In given example **_udf_progress_**</span> is a user defined field. [Learn more] (#user-defined-fields).
+**udf_\*** <br>`optional` | A user with admin rights can add custom fields. These fields can be used to capture additional information in Projects. Different types of projects may have a different set of user-defined fields. The value for user defined field can be passed as shown in example request. In given example **_udf_progress_**</span> is a user defined field. <a href="#user-defined-fields" class="api-ref">Learn more</a>
 
 ### Returns
 
@@ -188,7 +188,7 @@ curl -v \
 
 | Code    | Description | 
 | ---:    |    :----    | 
-**200** <br> <span class = "success">`OK`</span>  | Indicates that the operation was successful and  list of resources is returned. 
+**200** <br> <span class = "success">`OK`</span>  | Indicates that the operation was successful and  list of projects is returned. 
 **400** <br> <span class = "error">`Bad Request` </span> | Bad Request may occur when offset and limit value is negative integer.
 **403** <br> <span class = "error">`Forbidden`</span> | Authorization failed due to insufficient permissions. This occurs when user does not have enough access rights to perform this action. Access for each user can be controlled by an Administrator using eRS Cloud Application.
 
@@ -254,28 +254,30 @@ Retrieves the details of an existing project. You only need to provide the uniqu
 | **404** <br> <span class = "error">`Not Found`</span> | Not Found error occurs when requested project does not exist (i.e. There is no project with given id). This may also occur when requesting a project which has been deleted. |
 
 ## Search projects
->  `POST v1/projects/search`
-
-Filtering API responses to retrieve specific data.
-
+> **`POST /v1/projects/search`**
 
 > Example Request For Filter In JSON Format
 
 ```shell
-curl -v -X POST \
- "https://app.eresourcescheduler.cloud/rest/v1/projects/search" \
+curl -X POST \
+"https://app.eresourcescheduler.cloud/rest/v1/projects/search" \
 -H "Content-Type: application/json" \
 -H "Authorization: Bearer B8x5Vj1O65r6wnoV" \
 -d '{ 
       "project_type_id:eq": 1 
     }'
 ```
-The filter parameter allows for filtering the results returned from the various endpoint in various ways. For example fetching only projects having project type id 1 by adding project_type_id:eq=1 to your query. <a href="#filters" class="api-ref">Read more</a>
+
+Search Project API allows filtering the results returned in various ways. This enables a great power to find out what is needed. eRS Cloud API also allows filtering on custom defined fields with multiple operators and conditions to cover up complex scenarios for searching.
+
+A filter condition consists of three components which are **_field_**, **_operator_** and **_value_**. For example fetching only those projects having project type id 1, could be achieved by adding project_type_id:eq=1 to your query.  If operator is not supplied, it takes default operator for field. <a href="#filters" class="api-ref">Read more</a>
+
+Below is a list of available fields, which allow filtering projects:
 
 > Example Request For Filter By Passing Multiple Rules In JSON Format
 
 ```shell
-curl -v -X POST \
+curl -X POST \
 "https://app.eresourcescheduler.cloud/rest/v1/projects/search" \
 -H "Content-Type: application/json" \
 -H "Authorization: Bearer B8x5Vj1O65r6wnoV" \
@@ -286,21 +288,21 @@ curl -v -X POST \
 ```
 ### Filters for System-defined fields
 
- **Field Type**| **Operators** | **Example** |
- :--|:--| :----- |
-**project_type_id**|<li>eq *(default)*</li><li>any</li>|-d "project_type_id":1 <br> -d "project_type_id:any":1
-**email**|<li>has *(default)* </li><li>eq</li>| -d "email":"abc" <br> -d "email:eq":"ujjwal@gmail.com"
-**project_start_date**|<li>eq *(default)* </li><li>lt </li><li>  gt </li><li> bt </li><br><li> ex</li> |-d "project_start_date:eq":"2015-02-02"<br>-d "project_start_date:lt":"2015-02-02"<br>-d "project_start_date:gt":"2015-02-02"<br> -d "project_start_date:bt":["2015-02-02","2015-04-05"] <br> -d "project_start_date:ex":["2015-02-02","2015-04-04"]
-**end_date**|<li>eq *(default)* </li><li>lt </li><li>  gt </li><li> bt </li><br><li> ex</li>|-d "end_date:eq":"2015-02-02"<br>-d "end_date:lt":"2015-02-02"<br>-d "end_date:gt":"2015-02-02"<br> -d "end_date:bt":["2015-02-02","2015-04-05"] <br> -d "end_date:ex":["2015-02-02","2015-04-04"]
-**tags**|<li>any *(default)* </li><li>all</li>|-d "tags":"1&#124;2&#124;3" <br> -d "tags:all":"4&#124;6"
-**is_archive**| N/A | -d "is_archive":true <br> -d "is_archive":false
+|**Field Code**| **Operator**  | **Example**|
+|:--|:---|:--|
+**project_type_id**|<li>**eq** (_default_)  </li><li>any</li>| `"project_type_id":1 `<br>`"project_type_id:any":1`
+**email**|<li class="nowrap">**has** (_default_)&nbsp;&nbsp;</li><li>eq</li>|`"email":"abc"` <br>`"email:eq":"ujjwal@gmail.com"`
+**project_start_date**|<li>**eq** (_default_)</li><li>lt</li><li>gt</li><li>bt</li><br><li>ex</li>|`"project_start_date:eq":"2015-02-02"`<br>`"project_start_date:lt":"2015-02-02"`<br>`"project_start_date:gt":"2015-02-02"`<br>`"project_start_date:bt":["2015-02-02","2015-04-05"]` <br>`"project_start_date:ex":["2015-02-02","2015-04-04"]`
+**end_date**|<li>**eq** (_default_) </li><li>lt</li><li>gt</li><li>bt</li><br><li>ex</li>| `"end_date:eq":"2015-02-02"`<br>`"end_date:lt":"2015-02-02"`<br>`"end_date:gt":"2015-02-02"`<br>`"end_date:bt":["2015-02-02","2015-04-05"]`<br>`"end_date:ex":["2015-02-02","2015-04-04"]`
+**tags**|<li>**any** (_default_) </li><li>all</li>|`"tags":"1`&#124;`2`&#124;`3"`<br>`"tags:all":"4`&#124;`6"`
+**is_archive**| N/A |`"is_archive":true` <br>`"is_archive":false`
  _For User-defined fields please <a href="#filters-for-user-defined-fields" class="api-ref">check here</a>._ 
 
 ## Update a project
 
-Updates the specified project by setting the values of the parameters passed. Any parameters not provided will be left unchanged. 
+Updates specified project by setting the values of the parameters passed. Any parameters  which is not provided remains unchanged. To unset existing value for a parameter, just pass an empty value i.e. `null` or `undefined`.
 
-This request accepts mostly the same arguments as the project creation call.
+This request accepts mostly the same arguments as `Create Project` API.
 
 >  `PUT v1/projects/{ID}`
 
@@ -309,24 +311,24 @@ This request accepts mostly the same arguments as the project creation call.
 ```shell 
 curl -v -X PUT \
 "https://app.eresourcescheduler.cloud/rest/v1/projects/1" \
-  -H "Authorization: Bearer B8x5Vj1O65r6wnoV" \
-  -H "Content-Type: application/json" \
-  -d '{"title": "Angola"}' 
+-H "Authorization: Bearer B8x5Vj1O65r6wnoV" \
+-H "Content-Type: application/json" \
+-d '{
+      "title": "Angola",
+      "udf_progress": 70
+    }' 
 ```
 
 
 <span class="optional"><b>REQUEST BODY PARAMETERS</b></span>
 
-
-
-Name               |  Description
- ---:        |    :----   
-**title** <br> <span class="required">`required`</span>  |The title is a string which represents the  title of a project. It is a required field. This may be up to 100 characters. This will throw an error if you post an empty value.
-**image_uuid**  <br><span class="optional">`optional`</span> | Project's image is an optional field. This field accepts the Base64 encoded PNG string.This will be blank if you POST an empty value.
-**project_start_date**<br><span class="required">`optional`</span> |The date on which project has started. 
-**tags**  <br><span class="optional">`optional`</span>  | Tags is an optional filed. It’s displayed alongside the project in your list and can be useful for searching and filtering. This may be up to 50 characters. This will be blank if you post an empty value.
-**email** <br><span class="optional">`optional`</span>  |  This field is used to display email address of project manager(for example)  .The maximum length of this field may be up to 254 characters. This will be blank if you POST an empty value.
-**User defined fields** <br><span class="optional">`optional`</span>  | A user with admin rights can add such custom fields. These fields can be used to capture additional info in project. Different types of projects may have a different set of user-defined fields. <a href="#user-defined-fields" class="api-ref">Learn more</a>
+|Name         |  Description |
+| ---:        |    :----     |
+**title** <br> <span class="required">`required`</span>  |String representing the  title of a project. This may be up to 100 characters.
+**project_start_date**<br>`optional` |String value representing a date in ISO 8601 extended notation for date i.e. yyyy-MM-dd. The project is started from this date.
+**tags**  <br>`optional`  | An optional array of strings which could be attached to this project object as labels. This can be useful for the purpose of filtering, identification or other information. This may be up to 50 characters.
+**email** <br>`optional`  | String value representing email address associated with project object. Email address must be properly formatted with a maximum length of 254 characters. This field will remain blank if you POST an empty value.
+**udf_\*** <br>`optional`  | A user with admin rights can add custom fields. These fields can be used to capture additional information in Project. Different types of projects may have a different set of user-defined fields. The value for user defined field can be passed as shown in example request. In first example **_udf_progress_** is a user defined field. <a href ="#user-defined-fields" class="api-ref">Learn more</a>
 
 
 ### Returns
@@ -340,7 +342,8 @@ Name               |  Description
 
 
 ## Delete a project
- Permanently deletes a project. It cannot be undone. By default, this operation will get failed if a project has any booking associated with it. To override this behaviour, forcefull delete can be used which will delete all bookings and then ultimately delete the project object.
+
+ Permanently deletes requested project. It cannot be undone. By default, this operation will get failed if a project has any booking associated with it. To override this, forceful delete can be used which will delete all bookings and then ultimately delete the project object.
 
 > `DELETE v1/projects/{ID}`
 
@@ -348,15 +351,17 @@ Name               |  Description
 > Example Request
  
 ```shell
-curl -v -X DELETE "https://app.eresourcescheduler.cloud/rest/v1/projects/1" \
-  -H "Authorization: Bearer B8x5Vj1O65r6wnoV"
+curl -v -X DELETE \
+"https://app.eresourcescheduler.cloud/rest/v1/projects/1" \
+-H "Authorization: Bearer B8x5Vj1O65r6wnoV"
 ```
 
 > Example Request For Forcefull Delete 
  
 ```shell
 curl -v -X DELETE \
-"https://app.eresourcescheduler.cloud/rest/v1/rpojects/1?force_delete_bookings=true" 
+"https://app.eresourcescheduler.cloud/rest/v1/rpojects/1?\
+force_delete_bookings=true" \
 -H "Authorization: Bearer B8x5Vj1O65r6wnoV" 
 ```
 
@@ -366,7 +371,7 @@ curl -v -X DELETE \
 | Code      | Description  
 | ---:        |    :----   
 | **200** <br><span class = "success">`OK`</span> |This status code indicates that the operation was successful and a project get deleted successfully |
-| **409** <br> <span class = "error">`Conflict`</span> |Conflict indicates that the project can not be deleted as there are bookings associated with this project. If you wish to delete it any way you must use force delete option by passing <span class = "error">`true`</span> for parameter <span class = "error">`force_delete_bookings`</span>. This operation deletes all bookings of requested project and project itself. This can not be undone. Example shown <span style="font-size:24px; font-weight:bold;">￼&#x1f449;</span>|
+| **409** <br> <span class = "error">`Conflict`</span> |Conflict indicates that the project can not be deleted as there are bookings associated with this project. If you wish to delete it any way you must use force delete option by passing <span class = "error">`true`</span> for parameter `force_delete_bookings`.This operation deletes all bookings of requested project and project itself (shown in example request).
 | **403** <br> <span class = "error">`Forbidden`</span> | Authorization failed due to insufficient permissions. This occurs when user does not have enough access rights to perform this action. Access for each user can be controlled by an Administrator using eRS Cloud Application.|
 |  **404** <br><span class = "error">`Not Found`</span> |This status code indicates that project does not exist| |
 
@@ -422,9 +427,9 @@ Name         |  Description
  ---:        |    :----   
  **ID** <br><span class="required">`Integer`</span> | The eRS Cloud generated ID for the task which is used to uniquely identified task object.
  **name** <br> <span class ="required">`String`</span> | Name describes the name of task. This field is a `string` type of field 
-**start_time** <br> <span class="optional">`String`</span> | Start time describes the start time of task.  
-**end_time** <br> <span class="optional">`String`</span>| End time describes the end time of task. 
-**project_id** <br> <span class ="optional">`Integer`</span> | eRS Cloud generated unique identifier for the project object.
+**start_time** <br>`String` | Start time describes the start time of task.  
+**end_time** <br>`String`| End time describes the end time of task. 
+**project_id** <br>`Integer` | eRS Cloud generated unique identifier for the project object.
 
 
 ### Returns
@@ -458,8 +463,8 @@ Creates a new task assignment object.
 Name         |  Description
  ---:        |    :----   
  **name** <br> <span class ="required">`required`</span> | Name describes the name of task. This field is a `string` type of field 
-**start_time** <br> <span class="optional">`optional`</span> | Start time describes the start time of task. This filed can be passed null, as eRS Cloud provids you the facility to create an task without start time. This field is a `String` type of field.  
-**end_time** <br> <span class="optional">`optional`</span>| End time describes the end time of task. This filed can be passed null,as eRS Cloud provides you the facility to create an task without end time.This field is a `String` type of field.
+**start_time** <br>`optional`| Start time describes the start time of task. This filed can be passed null, as eRS Cloud provids you the facility to create an task without start time. This field is a `String` type of field.  
+**end_time** <br>`optional`| End time describes the end time of task. This filed can be passed null,as eRS Cloud provides you the facility to create an task without end time.This field is a `String` type of field.
 
 ### Returns
  
@@ -492,8 +497,8 @@ This request accepts mostly the same arguments as the task creation call.
 Name         |  Description
  ---:        |    :----   
 **name** <br> <span class ="required">`required`</span> | Name describes the name of task. This field is a `string` type of field.This will throw an error if you post an empty value.
-**start_time** <br> <span class="optional">`optional`</span> | Start time describes the start time of task. This filed can be passed null, as eRS Cloud provids you the facility to create an task without start time. This field is a `String` type of field.  
-**end_time** <br> <span class="optional">`optional`</span>| End time describes the end time of task. This filed can be passed null,as eRS Cloud provides you the facility to create an task without end time.This field is a `String` type of field.
+**start_time** <br>`optional` | Start time describes the start time of task. This filed can be passed null, as eRS Cloud provids you the facility to create an task without start time. This field is a `String` type of field.  
+**end_time** <br>`optional` | End time describes the end time of task. This filed can be passed null,as eRS Cloud provides you the facility to create an task without end time.This field is a `String` type of field.
 
 ### Returns
 
@@ -607,8 +612,8 @@ curl -v -X GET \
 
 |Name|Description|
 |-:|:-|
-|**limit**<br><span class="optional">`optional`</span>|The limit keyword is used to limit the number of notes returned from a result set.<br>*The default value of `limit` is*  <span class="error">*`25`*</span><br>*Maximum value of limit can be* <span class="error">*`100.`*</span> *If value of Limit is more than*<span class="error">*`100`*</span>  *then it will get set Maximum value of limit which is* <span class="error">*`100.`*</span> 
-|**offset**<br><span class="optional">`optional`</span>|The Offset value allows you to specify the ranking number of the first item on the page .The Offset value is most often used together with the Limit keyword.<br>*The default value of `offset` is* <span class="error">*`0`* </span>|
+|**limit**<br>`optional`|The limit keyword is used to limit the number of notes returned from a result set.<br>*The default value of `limit` is*  <span class="error">*`25`*</span><br>*Maximum value of limit can be* <span class="error">*`100.`*</span> *If value of Limit is more than*<span class="error">*`100`*</span>  *then it will get set Maximum value of limit which is* <span class="error">*`100.`*</span> 
+|**offset**<br>`optional`|The Offset value allows you to specify the ranking number of the first item on the page .The Offset value is most often used together with the Limit keyword.<br>*The default value of `offset` is* <span class="error">*`0`* </span>|
 
 
 ### Ordering the notes
@@ -617,19 +622,19 @@ curl -v -X GET \
 
 |Name|Options|Description|
 |-:|:-:|:-
-|**Order_by**<br><span class="optional">`optional`</span>|<li>created_on *(Default)*</li>|List of notes will be returned and sorted by it's created date.|
+|**Order_by**<br>`optional`|<li>created_on *(Default)*</li>|List of notes will be returned and sorted by it's created date.|
 | |<li>modified_on</li> |List of notes will be returned and sorted by it's latest modified date|
 
 <span class="optional"><b>ATTRIBUTES</b></span>
 
 Name         |  Description
  ---:        |    :----   
- **id**<br> <span class="optional">`integer`</span> | eRS Cloud generated unique identifier for the notes. |
- **created_on** <br><span class="optional">`string`</span> | Time at which the notes object is created. |
- **content** <br> <span class="optional">`string`</span> | Text written inside notes body .|
- **modified_on** <br><span class="optional">`string`</span> | Describes the latest modification date.|
- **created_by** <br> <span class="optional">`object`</span> | This field describes by whom notes is created .|
- **modified_by** <br><span class="optional">`object`</span> | This field describes by whom the modification is done.
+ **id**<br>`integer` | eRS Cloud generated unique identifier for the notes. |
+ **created_on** <br>`string` | Time at which the notes object is created. |
+ **content** <br>`string` | Text written inside notes body .|
+ **modified_on** <br>`string` | Describes the latest modification date.|
+ **created_by** <br>`object` | This field describes by whom notes is created .|
+ **modified_by** <br>`object` | This field describes by whom the modification is done.
 
 ### Returns 
 

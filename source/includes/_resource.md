@@ -77,7 +77,7 @@ Name         |  Description
 **email** <br>`string` | Email address of resource object.
 **start_date** <br>`string` | Represents the first working day of resource in organization. Resource does not have any availability before this date.
 **last_date** <br>`string` | Represents the last working day of resource in organization. After this date, resource is considered archived and has no availability beyond this date.
-**image** <br>`string`| String value representing URI of image file of resource.
+**image** <br>`string`| String value representing URL of image file of resource.
 **phone** <br>`string` | Phone number of the resource object.
 **roles** <br>`array of objects` | List of role objects applied on this resource.
 **tags** <br>`array of strings` | Tags are the list of strings (labels) attached to this resource object which could be used for the purpose of filtering, identification or other information.
@@ -85,7 +85,7 @@ Name         |  Description
 **created_by** <br> `object` | Object representing user who created this resource object.
 **modified_on** <br>`string` | Represents latest modification timestamp.
 **modified_by** <br>`object` | Object representing most recent user who modified this resource object.
-**User defined fields** | Custom user-defined fields used to capture additional information of resource. User defined field can be of multiple types. Custom fields are very useful to configure resource objects to best fit requirements.  In given example response, all keys starting with prefix `udf_` are user defined custom fields. <a href ="#user-defined-fields" class="api-ref">Learn more</a>
+**udf_\*** | Custom user-defined fields used to capture additional information of resource. User defined field can be of multiple types. Custom fields are very useful to configure resource objects to best fit requirements.  In given example response, all keys starting with prefix `udf_` are user defined custom fields. <a href ="#user-defined-fields" class="api-ref">Learn more</a>
 
 
 
@@ -139,11 +139,10 @@ Name         |  Description
 **last_date**<br>`optional` |  String value representing a date in ISO 8601 extended notation for date i.e. yyyy-MM-dd. A resource is only available till its last date i.e system does not consider any capacity of resource beyond this date (_if defined_).
 **email**<br>`optional` |  String value representing email address of resource object. Email address must be properly formatted with a maximum length of 254 characters.
 **phone**<br>`optional` | String representing phone number of resource. It’s displayed alongside the resource in your resource list.
-**image**<br>`optional` | This field accepts the Base64 encoded PNG string. This creates an image file (used as an avatar) for this resource.
 **roles**<br>`optional` | An array of ids of Roles (which are defined by an admin user in eRS Cloud Application) to be assigned to this Resource. The first id in the array is considered as Primary Role of that Resource. Multiple performing roles can be applied to a resource. Resources can also be searched / filtered using performing roles.
 **calendar**  <br>`optional` | Id of Calendar object which should be assigned to resource effective from its start date. Depending upon requirements, different calendars can be applied on different resources. If calendar is omitted then default calendar (as defined in admin settings) will get applied for this resource.
 **tags**  <br>`optional` | An optional array of strings which could be attached to this resource object as labels. This can be useful for the purpose of filtering, identification or other information.
-**udf_\*** <br>`optional` | A user with admin rights can add custom fields. These fields can be used to capture additional information in Resources. Different types of resources may have a different set of user-defined fields. The value for user defined field can be passed as shown in example request. In first example **_udf_employee_no_**</span> is a user defined field. <a href ="#user-defined-fields" class="api-ref">Learn more</a>
+**udf_\*** <br>`optional` | A user with admin rights can add custom fields. These fields can be used to capture additional information in Resources. Different types of resources may have a different set of user-defined fields. The value for user defined field can be passed as shown in example request. In first example **_udf_employee_no_** is a user defined field. <a href ="#user-defined-fields" class="api-ref">Learn more</a>
 
 ### Returns
  
@@ -393,8 +392,8 @@ Below is a list of available fields, which allow filtering resources:
 |**Field Code**| **Operator**  | **Example**|
 |:--|:---|:--|
 **resource_type_id**|<li>**eq** (_default_)  </li><li>any</li>| `"resource_type_id:eq": 1`<br>`"resource_type_id:any": [1,2]`
-**name**|<li class="nowrap">**has** (_default_)&nbsp;&nbsp;</li><li>eq</li>|`-d "name:has": "c"`<br>`-d "name:eq": "Amy Jones"`
-**roles**| <li>**any** (_default_)</li><li>all</li>|`-d "roles:any": [2,5]`<br>`-d "roles:all": [4,6]`
+**name**|<li class="nowrap">**has** (_default_)&nbsp;&nbsp;</li><li>eq</li>|`"name:has": "c"`<br>`"name:eq": "Amy Jones"`
+**roles**| <li>**any** (_default_)</li><li>all</li>|`"roles:any": [2,5]`<br>`"roles:all": [4,6]`
 **tags**|<li>**any** (_default_)</li><li>all</li>| `"tags:any": ["tagA","tagB"]`<br>`"tags:all": ["tagA","tagB"]`</li>
 **email**|<li>**has** (_default_)</li><li>eq</li>| `"email:has": "a"`<br>`"email:eq": "abc@mycompany.com"`
 **phone**|<li>**has** (_default_)</li><li>eq</li>|`"phone:has": "753" `<br> `"phone:eq": "(485)555-0202"`
@@ -435,10 +434,9 @@ curl -v -X PUT \
 **last_date**<br>`optional` |  String value representing a date in ISO 8601 extended notation for date i.e. yyyy-MM-dd. A resource is only available till its last date i.e system does not consider any capacity of resource beyond this date (_if defined_).
 **email**<br>`optional` |  String value representing email address of resource object. Email address must be properly formatted with a maximum length of 254 characters.
 **phone**<br>`optional` | String representing phone number of resource. It’s displayed alongside the resource in your resource list.
-**image**<br>`optional` | This field accepts the Base64 encoded PNG string. This creates an image file (used as an avatar) for this resource.
 **roles**<br>`optional` | An array of ids of Roles (which are defined by an admin user in eRS Cloud Application) to be assigned to this Resource. The first id in the array is considered as Primary Role of that Resource. Multiple performing roles can be applied to a resource. Resources can also be searched / filtered using performing roles.
 **tags**  <br>`optional` | An optional array of strings which could be attached to this resource object as labels. This can be useful for the purpose of filtering, identification or other information.
-**udf_\*** <br>`optional` | A user with admin rights can add custom fields. These fields can be used to capture additional information in Resources. Different types of resources may have a different set of user-defined fields. The value for user defined field can be passed as shown in example request. In first example **_udf_employee_no_**</span> is a user defined field. <a href ="#user-defined-fields" class="api-ref">Learn more</a>
+**udf_\*** <br>`optional` | A user with admin rights can add custom fields. These fields can be used to capture additional information in Resources. Different types of resources may have a different set of user-defined fields. The value for user defined field can be passed as shown in example request. In first example **_udf_employee_no_** is a user defined field. <a href ="#user-defined-fields" class="api-ref">Learn more</a>
 
 ### Returns
 
@@ -481,7 +479,7 @@ force_delete_bookings=true" \
 | Code      | Description  
 | ---:        |    :----   
 **200** <br><span class = "success">`OK`</span> | This status code indicates that the operation was successful and a resource get deleted successfully.
-**409** <br> <span class = "error">`Conflict`</span> | Conflict indicates that the resource can not be deleted as there are bookings associated with this resource. If you wish to anyway delete it, you must use force delete option by passing `true` for parameter  `force_delete_booking`. This operation deletes all bookings of requested resource and resource itself (shown in example request).
+**409** <br> <span class = "error">`Conflict`</span> | Conflict indicates that the resource can not be deleted as there are bookings associated with this resource. If you wish to anyway delete it, you must use force delete option by passing `true` for parameter  `force_delete_bookings`. This operation deletes all bookings of requested resource and resource itself (shown in example request).
 | **403** <br> <span class = "error">`Forbidden`</span> | Authorization failed due to insufficient permissions. This occurs when user does not have enough access rights to perform this action. Access for each user can be controlled by an Administrator using eRS Cloud Application.|
 | **404** <br> <span class = "error">`Not Found`</span> | Not Found error occurs when requested resource does not exist.
 
@@ -526,15 +524,15 @@ eRS Cloud API allows you to perform *`POST`*, *`GET`*, *`PUT`*, *`DELETE`* opera
 
 Name         |  Description
  ---:        |    :----   
- **id**<br><span class ="optional">`integer`</span> | eRS Cloud-generated unique identifier for the calendar object. |
- **name**<br><span class="optional">`string'</span> | This field describes name of calendar object. |
- **effective_date**<br> <span class="optional">`string`</span> | Effective date is the date on which the calendar will come into effect on applied resources.
- **applied_on**<br> <span class="optional">`string`</span> |This field describes when calendar is applied. 
- **created_on** <br><span class="optional">`string`</span> |  Time at which the calendar object is created.
- **created_by** <br> <span class="optional">`object`</span> | This field describes by whom project object is created.|
- **modified_on** <br><span class="optional">`string`</span> | Describes the latest modification date.
- **modified_by** <br><span class="optional">`object`</span> | This field describes by whom the modification is done.
- **timings** <br><span class = "optional">`array of strings`</span> | Timings are list of days in which day_num is defined day(For example-0 for sunday,1 for monday) and start time and end time  are  defined start time and end time for a particular day respectively, also we can calculate no of working-hours on that day.|
+ **id**<br>`integer` | eRS Cloud-generated unique identifier for the calendar object. |
+ **name**<br>`string` | This field describes name of calendar object. |
+ **effective_date**<br> `string` | Effective date is the date on which the calendar will come into effect on applied resources.
+ **applied_on**<br> `string` |This field describes when calendar is applied. 
+ **created_on** <br>`string` |  Time at which the calendar object is created.
+ **created_by** <br> `object` | This field describes by whom calendar object is created.|
+ **modified_on** <br>`string` | Describes the latest modification date.
+ **modified_by** <br>`object` | This field describes by whom the modification is done.
+ **timings** <br>`array of strings` | Timings are list of days in which day_num is defined day(For example-0 for sunday,1 for monday) and start time and end time  are  defined start time and end time for a particular day respectively, also we can calculate no of working-hours on that day.|
 
 
 
@@ -752,16 +750,16 @@ __*Working Exception can be added without timings*__
 
 Name         |  Description
  ---:        |    :----   
- **id** <br><span class="optional">`integer`</span>   |  eRS Cloud-generated unique identifier for the exceptions object.|
- **name**<br> <span class ="optional">`string`</span> | This field describes name of exception.| 
- **description**<br> <span class ="optional">`string`</span> | This field describes about the exception.|
- **date**<br> <span class ="optional">`string`</span> | Date Field describes when will exception get applied.|
+ **id** <br>`integer`   |  eRS Cloud-generated unique identifier for the exceptions object.|
+ **name**<br> `string` | This field describes name of exception.| 
+ **description**<br> `string` | This field describes about the exception.|
+ **date**<br> `string` | Date Field describes when will exception get applied.|
  **is_working_exception**  <br><span class="required">`boolean`</span>|Is working exception describes whether exception is a working exception or non working exception. True value means that exception is working exception and false value means that exception is non working exception.
- **created_on** <br><span class="optional">`string`</span> | Time at which  exception is created. |
- **modified_on** <br><span class="optional">`string`</span> | Describes the latest modification date. |
- **created_by** <br> <span class="optional">`object`</span> | This field describes by whom exception is created .|
- **modified_by** <br><span class="optional">`object`</span> | This field describes by whom the modification is done. |
- **timings** <br> <span class="optional">`object`</span> |Timings describes the timings of exception.
+ **created_on** <br>`string` | Time at which  exception is created. |
+ **modified_on** <br>`string` | Describes the latest modification date. |
+ **created_by** <br> `object` | This field describes by whom exception is created .|
+ **modified_by** <br>`object` | This field describes by whom the modification is done. |
+ **timings** <br> `object` |Timings describes the timings of exception.
 
 
 
@@ -821,12 +819,12 @@ curl -v -X POST \
 Name         |  Description
  ---:        |    :----   
 **date**  <br><span class="required">`required`</span>| Date Field describes when will exception get applied. It is a `Date` type of field. 
-**descirption**  <br><span class="optional">`optional`</span>|As the name shows it is a description which we want to give for the exception . This field is a `string` type of field. 
+**descirption**  <br>`optional`|As the name shows it is a description which we want to give for the exception . This field is a `string` type of field. 
 **name**  <br><span class="required">`required`</span>|Name describes the name of exception. This field is a `string` type of field
 **is_working_exception**  <br><span class="required">`required`</span>|Is working exception describes whether exception is a working exception or not. Accepts `true` if it is a working exception otherwise accepts `false` if it a non-working exception. This field is a `boolean` type of field
-**timing_blocks**  <br><span class="optional">`optional`</span>|Timing_blocks describes the timings of exception. This filed can be passed null, as eRS Cloud provids you the facility to create an exception without timings. This field is a `Array of objects` type of field
-**timings.start_time**  <br><span class="optional">`optional`</span>|Start time describes the start time of exception. This filed can be passed null, as eRS Cloud provids you the facility to create an exception without timings. This field is a `Integer` type of field.  
-**timings.end_time**  <br><span class="optional">`optional`</span>|End time describes the end time of exception. This filed can be passed null, as eRS Cloud provids you the facility to create an exception without timings. This field is a `Integer` type of field.  
+**timing_blocks**  <br>`optional`|Timing_blocks describes the timings of exception. This filed can be passed null, as eRS Cloud provids you the facility to create an exception without timings. This field is a `Array of objects` type of field
+**timings.start_time**  <br>`optional`|Start time describes the start time of exception. This filed can be passed null, as eRS Cloud provids you the facility to create an exception without timings. This field is a `Integer` type of field.  
+**timings.end_time**  <br>`optional`|End time describes the end time of exception. This filed can be passed null, as eRS Cloud provids you the facility to create an exception without timings. This field is a `Integer` type of field.  
 
 
 ### Returns
@@ -875,12 +873,12 @@ This request accepts mostly the same argument as the exception creation call.
 Name         |  Description
  ---:        |    :----   
 **date**  <br><span class="required">`required`</span>| Date Field describes when will exceptiob get applied. It is a `Date` type of field. 
-**descirption**  <br><span class="optional">`optional`</span>|As the name shows it is a description which we want to give for the exception . This field is a `string` type of field. 
+**descirption**  <br>`optional`|As the name shows it is a description which we want to give for the exception . This field is a `string` type of field. 
 **name**  <br><span class="required">`required`</span>|Name describes the name of exception. This field is a `string` type of field
 **is_working_exception**  <br><span class="required">`required`</span>|Is working exception describes whether exception is working exception or not. Accepts `true` if it is working exception otherwise accepts `false` if it a non-working exception. This field is a `boolean` type of field
-**timing_blocks**  <br><span class="optional">`optional`</span>|Timing_blocks describes the timings of exception. This filed can be pass null, as eRS Cloud provids you the facility to create an exception without timings. This field is a `Array of objects` type of field
-**timings.start_time**  <br><span class="optional">`optional`</span>|Start time describes the start time of exception. This filed can be pass null, as eRS Cloud provids you the facility to create an exception without timings. This field is a `Integer` type of field.  
-**timings.end_time**  <br><span class="optional">`optional`</span>|End time describes the end time of exception. This filed can be pass null, as eRS Cloud provids you the facility to create an exception without timings. This field is a `Integer` type of field.  
+**timing_blocks**  <br>`optional`|Timing_blocks describes the timings of exception. This filed can be pass null, as eRS Cloud provids you the facility to create an exception without timings. This field is a `Array of objects` type of field
+**timings.start_time**  <br>`optional`|Start time describes the start time of exception. This filed can be pass null, as eRS Cloud provids you the facility to create an exception without timings. This field is a `Integer` type of field.  
+**timings.end_time**  <br>`optional`|End time describes the end time of exception. This filed can be pass null, as eRS Cloud provids you the facility to create an exception without timings. This field is a `Integer` type of field.  
 
 ### Returns
 
@@ -957,12 +955,12 @@ eRS Cloud API allows you to perform *`POST`*, *`GET`*, *`PUT`*, *`DELETE`* opera
 
 Name         |  Description
  ---:        |    :----   
- **id**<br> <span class="optional">`integer`</span> | eRS Cloud generated unique identifier for the notes. |
- **created_on** <br><span class="optional">`string`</span> |   Time at which the notes object is created. |
- **content** <br> <span class="optional">`string`</span> | Text written inside notes body .|
- **modified_on** <br><span class="optional">`string`</span> | Describes the latest modification date.|
- **created_by** <br> <span class="optional">`object`</span> | This field describes by whom notes is created  .|
- **modified_by** <br><span class="optional">`object`</span> | This field describes by whom the modification is done .
+ **id**<br> `integer` | eRS Cloud generated unique identifier for the notes. |
+ **created_on** <br>`string` |   Time at which the notes object is created. |
+ **content** <br> `string` | Text written inside notes body .|
+ **modified_on** <br>`string` | Describes the latest modification date.|
+ **created_by** <br> `object` | This field describes by whom notes is created  .|
+ **modified_by** <br>`object` | This field describes by whom the modification is done .
 
 ### List notes
 
@@ -999,8 +997,8 @@ curl -v -X GET \
 
 |Name|Description|
 |-:|:-|
-|**limit**<br><span class="optional">`optional`</span>|The limit keyword is used to limit the number of notes returned from a result set.<br>*The default value of limit is*  <span class="error">*`25`*</span><br>*Maximum value of limit can be* <span class="error">*`100.`*</span> *If Limit value is exceeds than*<span class="error">*`100`*</span>  *then it will set to* <span class="error">*`100`*</span> *which is Maximum value for limit.* |
-|**offset**<br><span class="optional">`optional`</span>|The Offset value allows specifying which note to start from retrieving data.The Offset value is also most often used together with the Limit keyword.<br>*The default value of offset is* <span class="error">*`0`* </span>|
+|**limit**<br>`optional`|The limit keyword is used to limit the number of notes returned from a result set.<br>*The default value of limit is*  <span class="error">*`25`*</span><br>*Maximum value of limit can be* <span class="error">*`100.`*</span> *If Limit value is exceeds than*<span class="error">*`100`*</span>  *then it will set to* <span class="error">*`100`*</span> *which is Maximum value for limit.* |
+|**offset**<br>`optional`|The Offset value allows specifying which note to start from retrieving data.The Offset value is also most often used together with the Limit keyword.<br>*The default value of offset is* <span class="error">*`0`* </span>|
 
 
 ### Ordering the notes
@@ -1009,7 +1007,7 @@ curl -v -X GET \
 
 |Name|Options|Description|
 |-:|:-:|:-
-|**Order_by**<br><span class="optional">`optional`</span>|<li>created_on *(Default)*</li>|List of notes will be returned and sorted by it's created date.|
+|**Order_by**<br>`optional`|<li>created_on *(Default)*</li>|List of notes will be returned and sorted by it's created date.|
 | |<li>modified_on</li>|List of notes will be returned and sorted by it's latest modified date|
 
 
