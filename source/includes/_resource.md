@@ -131,7 +131,7 @@ Creates a new resource object.
 
 Name         |  Description
  ---:        |    :----   
-**resource_type_id** <br> <span class="required">`required`</span> | Id of <a href = "#resource-type" class ="api-ref">resource-types</a> object. Every resource must be linked to a <a href = "#resource-type" class ="api-ref">resource-types</a>. Let’s assume there are two resource types defined as Employee (_having id 1_) and Meeting Room (_having id 2_). While creating a new resource, all the resource whose `resource_type_id` is given as **1** will get created under Employee type and same for Meeting Room when `resource_type_id` is **2**.
+**resource_type_id** <br> <span class="required">`required`</span> | Id of <a href = "#resource-type" class ="api-ref">resource-type</a> object. Every resource must be linked to a <a href = "#resource-type" class ="api-ref">resource-type</a>. Let’s assume there are two resource types defined as Employee (_having id 1_) and Meeting Room (_having id 2_). While creating a new resource, all the resource whose `resource_type_id` is given as **1** will get created under Employee type and same for Meeting Room when `resource_type_id` is **2**.
 **first_name** <br> <span class="required">`required`</span>  | String representing the first name of a resource. This may be up to 100 characters.<br> _**Note** : for non-human resources, this field is <span class="danger">not available</span>_.
 **last_name** <br> `optional`  | String representing the last name of a resource. This may be up to 100 characters.<br> _**Note** : for non-human resources, this field is <span class="danger">not available</span>_.
 **name** <br> <span class="required">`required`</span> | String representing the name of a resource. This may be up to 100 characters.<br> _**Note** : This field is only available for non-human resources and for human resources, this is <span class="danger">not available</span>_.
@@ -343,7 +343,7 @@ curl -v "https://app.eresourcescheduler.cloud/rest/v1/resources/1" \
 ```
 
 
-Retrieves the details of an existing resource. You only need to  provide the unique resource identifier as request parameter that was returned upon resource creation.
+Retrieves the details of an existing resource. You only need to provide the unique resource identifier that was returned upon resource creation as request parameter .
 
 ### Returns
 
@@ -378,7 +378,7 @@ curl -X POST \
 -H "Authorization: Bearer B8x5Vj1O65r6wnoV" \
 -d '{ 
       "resource_type_id:eq": 1 , 
-      "roles:all": 3 
+      "roles:all": [3,6] 
     }'
 ```
 
@@ -956,8 +956,8 @@ eRS Cloud API allows you to perform *`POST`*, *`GET`*, *`PUT`*, *`DELETE`* opera
 Name         |  Description
  ---:        |    :----   
  **id**<br> `integer` | eRS Cloud generated unique identifier for the notes. |
- **created_on** <br>`string` |   Time at which the notes object is created. |
  **content** <br> `string` | Text written inside notes body .|
+ **created_on** <br>`string` |   Time at which the notes object is created. |
  **modified_on** <br>`string` | Describes the latest modification date.|
  **created_by** <br> `object` | This field describes by whom notes is created  .|
  **modified_by** <br>`object` | This field describes by whom the modification is done .

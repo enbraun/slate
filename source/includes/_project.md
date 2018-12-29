@@ -85,7 +85,7 @@ Creates a new project object.
 
 Name               |  Description
  ---:        |    :----
- **project_type_id** <br> <span class="required">`required`</span> | Id of <a href="#project-type" class="api-ref">project-types</a> object. A project must be linked with one of <a href="#project-type" class="api-ref">project-types</a> defined in admin section (_using eRS Cloud Application_). Let’s assume there are two project types defined as `Medical` (_having id as 1_) and `Education` (_having id as 2_), now while creating a new project, if project_type_id is given as 1 then it will get created under Medical type and same for Education when project_type_id is given as 2.
+ **project_type_id** <br> <span class="required">`required`</span> | Id of <a href="#project-type" class="api-ref">project-type</a> object. A project must be linked with one of <a href="#project-type" class="api-ref">project-type</a> defined in admin section (_using eRS Cloud Application_). Let’s assume there are two project types defined as `Medical` (_having id as 1_) and `Education` (_having id as 2_), now while creating a new project, if project_type_id is given as 1 then it will get created under Medical type and same for Education when project_type_id is given as 2.
 **title** <br><span class="required">`required`</span> | String representing title / name of project. This can be a maximum of 100 characters long.
 **email** <br>`optional` | String value representing email address of project object. Email address must be properly formatted with a maximum length of 254 characters.
 **project_start_date**<br>`optional` | String value representing a date in ISO 8601 extended notation for date i.e. yyyy-MM-dd.
@@ -189,7 +189,7 @@ curl -v \
 | Code    | Description | 
 | ---:    |    :----    | 
 **200** <br> <span class = "success">`OK`</span>  | Indicates that the operation was successful and  list of projects is returned. 
-**400** <br> <span class = "error">`Bad Request` </span> | Bad Request may occur when offset and limit value is negative integer.
+**400** <br> <span class = "error">`Bad Request` </span> | Bad Request may occur when offset or limit value is negative.
 **403** <br> <span class = "error">`Forbidden`</span> | Authorization failed due to insufficient permissions. This occurs when user does not have enough access rights to perform this action. Access for each user can be controlled by an Administrator using eRS Cloud Application.
 
 ## Retrieve a project
@@ -242,7 +242,7 @@ curl -v "https://app.eresourcescheduler.cloud/rest/v1/projects/1" \
 }
 ```
 
-Retrieves the details of an existing project. You only need to provide the unique project identifier that was returned upon project creation.
+Retrieves the details of an existing project. You only need to provide the unique project identifier that was returned upon project creation as request parameter.
 
 
 ### Returns
@@ -292,8 +292,8 @@ curl -X POST \
 |:--|:---|:--|
 **project_type_id**|<li>**eq** (_default_)  </li><li>any</li>| `"project_type_id":1 `<br>`"project_type_id:any":1`
 **email**|<li class="nowrap">**has** (_default_)&nbsp;&nbsp;</li><li>eq</li>|`"email":"abc"` <br>`"email:eq":"ujjwal@gmail.com"`
-**project_start_date**|<li>**eq** (_default_)</li><li>lt</li><li>gt</li><li>bt</li><br><li>ex</li>|`"project_start_date:eq":"2015-02-02"`<br>`"project_start_date:lt":"2015-02-02"`<br>`"project_start_date:gt":"2015-02-02"`<br>`"project_start_date:bt":["2015-02-02","2015-04-05"]` <br>`"project_start_date:ex":["2015-02-02","2015-04-04"]`
-**end_date**|<li>**eq** (_default_) </li><li>lt</li><li>gt</li><li>bt</li><br><li>ex</li>| `"end_date:eq":"2015-02-02"`<br>`"end_date:lt":"2015-02-02"`<br>`"end_date:gt":"2015-02-02"`<br>`"end_date:bt":["2015-02-02","2015-04-05"]`<br>`"end_date:ex":["2015-02-02","2015-04-04"]`
+**project_start_date**|<li>**eq** (_default_)</li><li>lt</li><li>gt</li><li>bt</li><li>ex</li>|`"project_start_date:eq":"2015-02-02"`<br>`"project_start_date:lt":"2015-02-02"`<br>`"project_start_date:gt":"2015-02-02"`<br>`"project_start_date:bt":["2015-02-02","2015-04-05"]` <br>`"project_start_date:ex":["2015-02-02","2015-04-04"]`
+**end_date**|<li>**eq** (_default_) </li><li>lt</li><li>gt</li><li>bt</li><li>ex</li>| `"end_date:eq":"2015-02-02"`<br>`"end_date:lt":"2015-02-02"`<br>`"end_date:gt":"2015-02-02"`<br>`"end_date:bt":["2015-02-02","2015-04-05"]`<br>`"end_date:ex":["2015-02-02","2015-04-04"]`
 **tags**|<li>**any** (_default_) </li><li>all</li>|`"tags":"1`&#124;`2`&#124;`3"`<br>`"tags:all":"4`&#124;`6"`
 **is_archive**| N/A |`"is_archive":true` <br>`"is_archive":false`
  _For User-defined fields please <a href="#filters-for-user-defined-fields" class="api-ref">check here</a>._ 
@@ -304,7 +304,7 @@ Updates specified project by setting the values of the parameters passed. Any pa
 
 This request accepts mostly the same arguments as `Create Project` API.
 
->  `PUT v1/projects/{ID}`
+> **`PUT /v1/projects/{ID}`**
 
 > Example Request
 
@@ -326,8 +326,9 @@ curl -v -X PUT \
 | ---:        |    :----     |
 **title** <br> <span class="required">`required`</span>  |String representing the  title of a project. This may be up to 100 characters.
 **project_start_date**<br>`optional` |String value representing a date in ISO 8601 extended notation for date i.e. yyyy-MM-dd. The project is started from this date.
+**end_date** <br>`optional` | String value representing a date in ISO 8601 extended notation for date i.e. yyyy-MM-dd. The project is considered ended / completed on this date.
 **tags**  <br>`optional`  | An optional array of strings which could be attached to this project object as labels. This can be useful for the purpose of filtering, identification or other information. This may be up to 50 characters.
-**email** <br>`optional`  | String value representing email address associated with project object. Email address must be properly formatted with a maximum length of 254 characters. This field will remain blank if you POST an empty value.
+**email** <br>`optional`  | String value representing email address associated with project object. Email address must be properly formatted with a maximum length of 254 characters.
 **udf_\*** <br>`optional`  | A user with admin rights can add custom fields. These fields can be used to capture additional information in Project. Different types of projects may have a different set of user-defined fields. The value for user defined field can be passed as shown in example request. In first example **_udf_progress_** is a user defined field. <a href ="#user-defined-fields" class="api-ref">Learn more</a>
 
 
@@ -345,7 +346,7 @@ curl -v -X PUT \
 
  Permanently deletes requested project. It cannot be undone. By default, this operation will get failed if a project has any booking associated with it. To override this, forceful delete can be used which will delete all bookings and then ultimately delete the project object.
 
-> `DELETE v1/projects/{ID}`
+> **`DELETE /v1/projects/{ID}`**
 
 
 > Example Request
@@ -630,8 +631,8 @@ curl -v -X GET \
 Name         |  Description
  ---:        |    :----   
  **id**<br>`integer` | eRS Cloud generated unique identifier for the notes. |
- **created_on** <br>`string` | Time at which the notes object is created. |
  **content** <br>`string` | Text written inside notes body .|
+ **created_on** <br>`string` | Time at which the notes object is created. |
  **modified_on** <br>`string` | Describes the latest modification date.|
  **created_by** <br>`object` | This field describes by whom notes is created .|
  **modified_by** <br>`object` | This field describes by whom the modification is done.

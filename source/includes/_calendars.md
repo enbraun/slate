@@ -86,7 +86,7 @@ Name | Description
 **exceptions**<br>`array of objects`| List of exception objects that are applied on calendar object. Exceptions are used to override working timing of calendar for a specified day.
 **exception.id**<br>`integer` | Unique identifier for exception object. 
 **exception.name**<br>`string` | Name of exception object (which is to be displayed wherever referred).
-**holiday.description**<br>`string` | Description for exception object.
+**exception.description**<br>`string` | Description for exception object.
 **exception.date**<br>`string` | Represents date on which exception is to be applied. This is a string value in ISO 8601 extended Date format i.e. yyyy-mm-dd.
 **exception.is_working_exception**<br>`boolean` | Indicates whether this exception is working exception or non-working. A working exception is used to override timings of a working day and if applied on a non-working day, it turns it into working day. A non-working exception turns any working day into non-working.
 **exception.timings**<br>`array of objects` | List of timing objects (or timing blocks) for this exception. This defines working timings for this exception day. There are no timings if exception is a non-working exception.

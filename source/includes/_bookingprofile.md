@@ -23,7 +23,7 @@ curl -v \
     "display_name": "Effort",
     "field_type": "EFFORT",
     "minnum": 0,
-    "is_mandatory_required": false,
+    "is_required": false,
     "is_system_defined": true,
     "is_filterable": false
 },
@@ -32,7 +32,7 @@ curl -v \
     "code": "end_time",
     "display_name": "Ends",
     "field_type": "DATIM",
-    "is_mandatory_required": true,
+    "is_required": true,
     "is_system_defined": true,
     "is_filterable": false,
     "maxdate": "2099-12-31",
@@ -43,7 +43,7 @@ curl -v \
     "code": "role_id",
     "display_name": "Performing Role",
     "field_type": "ROLEPS",
-    "is_mandatory_required": false,
+    "is_required": false,
     "is_system_defined": true,
     "is_filterable": true,
     "options": [
@@ -61,7 +61,7 @@ curl -v \
     "code": "project_id",
     "display_name": "Project",
     "field_type": "PRJSS",
-    "is_mandatory_required": true,
+    "is_required": true,
     "is_system_defined": true,
     "is_filterable": false
 },
@@ -70,7 +70,7 @@ curl -v \
     "code": "resource_id",
     "display_name": "Resource",
     "field_type": "RSRSS",
-    "is_mandatory_required": true,
+    "is_required": true,
     "is_system_defined": true,
     "is_filterable": false
 },
@@ -79,7 +79,7 @@ curl -v \
     "code": "start_time",
     "display_name": "Starts",
     "field_type": "DATIM",
-    "is_mandatory_required": true,
+    "is_required": true,
     "is_system_defined": true,
     "is_filterable": false,
     "maxdate": "2099-12-31",
@@ -90,7 +90,7 @@ curl -v \
     "code": "tags",
     "display_name": "Tags",
     "field_type": "TAGS",
-    "is_mandatory_required": false,
+    "is_required": false,
     "is_system_defined": true,
     "is_filterable": true
 },
@@ -99,7 +99,7 @@ curl -v \
     "code": "task_id",
     "display_name": "Task",
     "field_type": "TSKSS",
-    "is_mandatory_required": false,
+    "is_required": false,
     "is_system_defined": true,
     "is_filterable": false
 },
@@ -110,7 +110,7 @@ curl -v \
     "field_type": "UNIT",
     "minnum": 1,
     "maxnum": 5,
-    "is_mandatory_required": false,
+    "is_required": false,
     "is_system_defined": true,
     "is_filterable": false
 }
@@ -129,7 +129,7 @@ Name | Description
 **display_name**<br>`string` |Name of this field to identify it.
 **is_system_defined**<br>`boolean` |  Indicates whether this field is system defined or a custom field. Fields which are system defined can not be customized.
 **is_filterable** <br>`boolean` |Indicates whether this field is used for filtering or not. |
-**is_mandatory_required**<br>`boolean` |Indicates whether this field is mandatory or not. If this field is a `required` field then a valid value for this field must be passed while creating such object and while updating object (if this field is intended to update).
+**is_required**<br>`boolean` |Indicates whether this field is mandatory or not. If this field is a `required` field then a valid value for this field must be passed while creating such object and while updating object (if this field is intended to update).
 **minnum** <br>`integer` | Represents minimum value this field can accept (_only applicable for numeric fields_).
 **maxnum** <br>`integer` | Represents maxmum value this field can accept (_only applicable for numeric fields_).
 **mindate** <br>`string` |Represents minimum value this field can accept (_only applicable for date / date time fields_).
