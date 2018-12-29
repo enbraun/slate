@@ -436,7 +436,7 @@ We support cross-origin resource sharing, allowing you to interact securely with
 <h1 id='authentication'>Authentication</h1>
 <p>Every eRS Cloud API endpoint requires an access token. If token is not passed or is invalid, API will return <strong>401</strong> <span class="error">Unauthorized</span> error.</p>
 
-<p>An access token can be generated at <a href="https://app.eresourcescheduler.cloud/#!/profile/password">User Profile -&gt; Security</a>.</p>
+<p>An access token can be generated at <a target = "_blank" href ="https://app.eresourcescheduler.cloud/#!/profile/password" class="api-ref">User Profile -&gt; Security</a>.</p>
 
 <p>Alternatively, OAuth flow can be used to obtain a token if access is required by third party application.</p>
 <h2 id='oauth'>OAuth</h2>
@@ -534,7 +534,7 @@ grant_type=authorization_code</span><span class="se">\</span><span class="s2">
 </tr>
 </tbody></table>
 
-<p>To learn more about OAuth token generation flow please read <a href="https://oauth.net/2/grant-types/authorization-code/">here</a>.</p>
+<p>To learn more about OAuth token generation flow please read <a target = "_blank" href="https://oauth.net/2/grant-types/authorization-code/" class = "api-ref">here</a>.</p>
 
 <p>eRS Cloud expects an API token to be included in all API requests to in a header that looks like the following:</p>
 
@@ -818,12 +818,12 @@ grant_type=authorization_code</span><span class="se">\</span><span class="s2">
 <td style="text-align: left">Represent name for this object. This is used to identify object by using some meaningful phrase to describe type of resources like <code>Employee</code>, <code>Machine</code> etc.</td>
 </tr>
 <tr>
-<td style="text-align: right"><strong>isHuman</strong> <br> <code>boolean</code></td>
+<td style="text-align: right"><strong>is_human</strong> <br> <code>boolean</code></td>
 <td style="text-align: left">Indicates whether this resource type is <code>human</code> or <code>non-human</code>. For example, <code>Employee</code> could be a human resource type while <code>Machine</code>, <code>Meeting Rooms</code> etc. can be non-human resource type.</td>
 </tr>
 <tr>
 <td style="text-align: right"><strong>fields</strong> <br> <code>array of object</code></td>
-<td style="text-align: left">Represent collection of fields (or attributes) that are available for this resource type. Each <a href="#resource">Resource</a> object of this resource type can store / update values for these filed. While creating or updating a <a href="#resource">Resource</a> user must pass arguments which are available for intended resource type object.</td>
+<td style="text-align: left">Represent collection of fields (or attributes) that are available for this resource type. Each <a href ="#resource" class = "api-ref">Resource</a> object of this resource type can store / update values for these filed. While creating or updating a <a href ="#resource" class = "api-ref">Resource</a> user must pass arguments which are available for intended resource type object.</td>
 </tr>
 <tr>
 <td style="text-align: right"><strong>field.id</strong><br> <code>integer</code></td>
@@ -835,7 +835,7 @@ grant_type=authorization_code</span><span class="se">\</span><span class="s2">
 </tr>
 <tr>
 <td style="text-align: right"><strong>field.field_type</strong> <br><code>string</code></td>
-<td style="text-align: left">Represents the type of field. For example  TEXT (for Text Field), INT (for Integer Number field), DDSS (for Dropdown Single Select Field), etc. See <a href="#user-defined-fields">User Defined Fields</a> to know more about different field types.</td>
+<td style="text-align: left">Represents the type of field. For example  TEXT (for Text Field), INT (for Integer Number field), DDSS (for Dropdown Single Select Field), etc. See <a href="#user-defined-fields" class="api-ref">User Defined Fields</a> to know more about different field types.</td>
 </tr>
 <tr>
 <td style="text-align: right"><strong>field.code</strong> <br><code>string</code></td>
@@ -879,7 +879,7 @@ grant_type=authorization_code</span><span class="se">\</span><span class="s2">
 </tr>
 <tr>
 <td style="text-align: right"><strong>field.options</strong> <br> <code>array of objects</code></td>
-<td style="text-align: left">Field types such as Dropdown Single Select, Dropdown Multi Select, Radio Group etc. ( See <a href="#user_defined_fields">User Defined Fields</a> to know more.) allow user to pick one or more from these available options.</td>
+<td style="text-align: left">Field types such as Dropdown Single Select, Dropdown Multi Select, Radio Group etc. ( See <a href="#user-defined-fields" class = "api-ref">User Defined Fields</a> to know more. ) allow user to pick one or more from these available options.</td>
 </tr>
 <tr>
 <td style="text-align: right"><strong>field.option.id</strong> <br> <code>integer</code></td>
@@ -1264,39 +1264,39 @@ grant_type=authorization_code</span><span class="se">\</span><span class="s2">
 </tr>
 </thead><tbody>
 <tr>
-<td style="text-align: right"><strong>id</strong>  <br><span class="optional"><code>integer</code></span></td>
+<td style="text-align: right"><strong>id</strong>  <br><code>integer</code></td>
 <td style="text-align: left">Unique identification number for the object, which allows referring to this object and can be used to search a particular project type.</td>
 </tr>
 <tr>
-<td style="text-align: right"><strong>name</strong> <br><span class="optional"><code>string</code></span></td>
+<td style="text-align: right"><strong>name</strong> <br><code>string</code></td>
 <td style="text-align: left">Represent name for this object. This is used to identify object by using some meaningful phrase to describe type of projects like <code>Standard</code>, <code>Education</code> etc.</td>
 </tr>
 <tr>
-<td style="text-align: right"><strong>fields</strong> <br><span class="optional"><code>array of strings</code></span></td>
-<td style="text-align: left">Represent collection of fields (or attributes) that are available for this project type. Each <a href="#project">Project</a> object of this project type can store / update values for these filed. While creating or updating a <a href="#project">Project</a> user must pass arguments which are available for intended project type object.</td>
+<td style="text-align: right"><strong>fields</strong> <br><code>array of strings</code></td>
+<td style="text-align: left">Represent collection of fields (or attributes) that are available for this project type. Each <a href = "#project" class="api-ref">Project</a> object of this project type can store / update values for these filed. While creating or updating a <a href = "#project" class="api-ref">Project</a> user must pass arguments which are available for intended project type object.</td>
 </tr>
 <tr>
-<td style="text-align: right"><strong>fields.id</strong><br><span class="optional"><code>integer</code></span></td>
+<td style="text-align: right"><strong>field.id</strong><br><code>integer</code></td>
 <td style="text-align: left">Represents unique identification number of this field, which can be used to refer or search it.</td>
 </tr>
 <tr>
-<td style="text-align: right"><strong>fields.display_name</strong> <br><span class="optional"><code>string</code></span></td>
+<td style="text-align: right"><strong>field.display_name</strong> <br><code>string</code></td>
 <td style="text-align: left">Name of this field to identify it.</td>
 </tr>
 <tr>
-<td style="text-align: right"><strong>fields.field_type</strong> <br><span class="optional"><code>string</code></span></td>
-<td style="text-align: left">Represents the type of field. For example  TEXT (for Text Field), INT (for Integer Number field), DDSS (for Dropdown Single Select Field), etc. See <a href="#user-defined-fields">User Defined Fields</a> to know more about different field types.</td>
+<td style="text-align: right"><strong>field.field_type</strong> <br><code>string</code></td>
+<td style="text-align: left">Represents the type of field. For example  TEXT (for Text Field), INT (for Integer Number field), DDSS (for Dropdown Single Select Field), etc. See <a href = "#user-defined-fields" class="api-ref">User Defined Fields</a> to know more about different field types.</td>
 </tr>
 <tr>
-<td style="text-align: right"><strong>fields.code</strong> <br><span class="optional"><code>string</code></span></td>
+<td style="text-align: right"><strong>field.code</strong> <br><code>string</code></td>
 <td style="text-align: left">It represents the unique code of the field which is referred to as API code. This code acts as <code>key</code> in API response and the same must be used as <code>key</code> to pass values for a POST or PUT request.</td>
 </tr>
 <tr>
-<td style="text-align: right"><strong>field.minlength</strong> <br><span class="optional"><code>integer</code></td>
+<td style="text-align: right"><strong>field.minlength</strong> <br><code>integer</code></td>
 <td style="text-align: left">Represents minimum no of characters in value this field can accept (<em>only applicable for text fields</em>).</td>
 </tr>
 <tr>
-<td style="text-align: right"><strong>field.maxlength</strong> <br><span class="optional"><code>integer</code></td>
+<td style="text-align: right"><strong>field.maxlength</strong> <br><code>integer</code></td>
 <td style="text-align: left">Represents maximum no of characters in value this field can accept (<em>only applicable for text fields</em>).</td>
 </tr>
 <tr>
@@ -1304,39 +1304,39 @@ grant_type=authorization_code</span><span class="se">\</span><span class="s2">
 <td style="text-align: left">Represents regular expression which must be matched by value for this field (<em>only applicable for text fields</em>).</td>
 </tr>
 <tr>
-<td style="text-align: right"><strong>field.minnum</strong> <br><span class="optional"><code>integer</code></td>
+<td style="text-align: right"><strong>field.minnum</strong> <br><code>integer</code></td>
 <td style="text-align: left">Represents minimum value this field can accept (<em>only applicable for numeric fields</em>).</td>
 </tr>
 <tr>
-<td style="text-align: right"><strong>field.maxnum</strong> <br><span class="optional"><code>integer</code></td>
+<td style="text-align: right"><strong>field.maxnum</strong> <br><code>integer</code></td>
 <td style="text-align: left">Represents maximum value this field can accept (<em>only applicable for numeric fields</em>).</td>
 </tr>
 <tr>
-<td style="text-align: right"><strong>field.mindate</strong> <br><span class="optional"><code>string</code></td>
+<td style="text-align: right"><strong>field.mindate</strong> <br><code>string</code></td>
 <td style="text-align: left">Represents minimum value this field can accept (<em>only applicable for date / date time fields</em>).</td>
 </tr>
 <tr>
-<td style="text-align: right"><strong>field.maxdate</strong> <br><span class="optional"><code>string</code></td>
+<td style="text-align: right"><strong>field.maxdate</strong> <br><code>string</code></td>
 <td style="text-align: left">Represents maximum value this field can accept (<em>only applicable for date / date time fields</em>).</td>
 </tr>
 <tr>
-<td style="text-align: right"><strong>fields.is_required</strong> <br> <span class ="optional"><code>boolean</code></span></td>
+<td style="text-align: right"><strong>field.is_required</strong> <br><code>boolean</code></td>
 <td style="text-align: left">Indicates whether this field is mandatory or not. If this field is a <code>required</code> field then a valid value for this field must be passed while creating such object and while updating object (if this field is intended to update).</td>
 </tr>
 <tr>
-<td style="text-align: right"><strong>is_system_defined</strong> <br><span class="optional"> <code>boolean</code></td>
+<td style="text-align: right"><strong>is_system_defined</strong> <br> <code>boolean</code></td>
 <td style="text-align: left">Indicates whether this field is system defined or a custom field. Fields which are system defined can not be customized.</td>
 </tr>
 <tr>
-<td style="text-align: right"><strong>fields.options</strong> <br><span class="optional"><code>string</code></span></td>
-<td style="text-align: left">Field types such as Dropdown Single Select, Dropdown Multi Select, Radio Group etc. ( See <a href="#user_defined_fields">User Defined Fields</a> to know more.) allow user to pick one or more from these available options.</td>
+<td style="text-align: right"><strong>fields.options</strong> <br><code>string</code></td>
+<td style="text-align: left">Field types such as Dropdown Single Select, Dropdown Multi Select, Radio Group etc. ( See <a href = "#user-defined-fields" class="api-ref">User Defined Fields</a> to know more. ) allow user to pick one or more from these available options.</td>
 </tr>
 <tr>
-<td style="text-align: right"><strong>fields.options.id</strong> <br><span class="optional"><code>integer</code></span></td>
+<td style="text-align: right"><strong>field.option.id</strong> <br><code>integer</code></td>
 <td style="text-align: left">Represents unique identification number for the individual option object.</td>
 </tr>
 <tr>
-<td style="text-align: right"><strong>fields.option.name</strong> <br><span class="optional"><code>string</code></span></td>
+<td style="text-align: right"><strong>field.option.name</strong> <br><code>string</code></td>
 <td style="text-align: left">Represents name or content of option object.</td>
 </tr>
 </tbody></table>
@@ -1544,7 +1544,7 @@ grant_type=authorization_code</span><span class="se">\</span><span class="s2">
     </span><span class="s2">"display_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Effort"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"field_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EFFORT"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"minnum"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"is_mandatory_required"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"is_required"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
     </span><span class="s2">"is_system_defined"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
     </span><span class="s2">"is_filterable"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
 </span><span class="p">},</span><span class="w">
@@ -1553,7 +1553,7 @@ grant_type=authorization_code</span><span class="se">\</span><span class="s2">
     </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"end_time"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"display_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Ends"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"field_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DATIM"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"is_mandatory_required"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"is_required"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
     </span><span class="s2">"is_system_defined"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
     </span><span class="s2">"is_filterable"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
     </span><span class="s2">"maxdate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2099-12-31"</span><span class="p">,</span><span class="w">
@@ -1564,7 +1564,7 @@ grant_type=authorization_code</span><span class="se">\</span><span class="s2">
     </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"role_id"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"display_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Performing Role"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"field_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ROLEPS"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"is_mandatory_required"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"is_required"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
     </span><span class="s2">"is_system_defined"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
     </span><span class="s2">"is_filterable"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
     </span><span class="s2">"options"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -1582,7 +1582,7 @@ grant_type=authorization_code</span><span class="se">\</span><span class="s2">
     </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"project_id"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"display_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Project"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"field_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PRJSS"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"is_mandatory_required"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"is_required"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
     </span><span class="s2">"is_system_defined"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
     </span><span class="s2">"is_filterable"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
 </span><span class="p">},</span><span class="w">
@@ -1591,7 +1591,7 @@ grant_type=authorization_code</span><span class="se">\</span><span class="s2">
     </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"resource_id"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"display_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Resource"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"field_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RSRSS"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"is_mandatory_required"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"is_required"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
     </span><span class="s2">"is_system_defined"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
     </span><span class="s2">"is_filterable"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
 </span><span class="p">},</span><span class="w">
@@ -1600,7 +1600,7 @@ grant_type=authorization_code</span><span class="se">\</span><span class="s2">
     </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"start_time"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"display_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Starts"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"field_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DATIM"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"is_mandatory_required"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"is_required"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
     </span><span class="s2">"is_system_defined"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
     </span><span class="s2">"is_filterable"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
     </span><span class="s2">"maxdate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2099-12-31"</span><span class="p">,</span><span class="w">
@@ -1611,7 +1611,7 @@ grant_type=authorization_code</span><span class="se">\</span><span class="s2">
     </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tags"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"display_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Tags"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"field_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TAGS"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"is_mandatory_required"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"is_required"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
     </span><span class="s2">"is_system_defined"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
     </span><span class="s2">"is_filterable"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
 </span><span class="p">},</span><span class="w">
@@ -1620,7 +1620,7 @@ grant_type=authorization_code</span><span class="se">\</span><span class="s2">
     </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"task_id"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"display_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Task"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"field_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TSKSS"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"is_mandatory_required"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"is_required"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
     </span><span class="s2">"is_system_defined"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
     </span><span class="s2">"is_filterable"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
 </span><span class="p">},</span><span class="w">
@@ -1631,7 +1631,7 @@ grant_type=authorization_code</span><span class="se">\</span><span class="s2">
     </span><span class="s2">"field_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"UNIT"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"minnum"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
     </span><span class="s2">"maxnum"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"is_mandatory_required"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"is_required"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
     </span><span class="s2">"is_system_defined"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
     </span><span class="s2">"is_filterable"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -1646,47 +1646,47 @@ grant_type=authorization_code</span><span class="se">\</span><span class="s2">
 </tr>
 </thead><tbody>
 <tr>
-<td style="text-align: right"><strong>id</strong>  <br><span class="optional"><code>integer</code></span></td>
+<td style="text-align: right"><strong>id</strong>  <br><code>integer</code></td>
 <td style="text-align: left">Represents unique identification number of this field, which can be used to refer or search it.</td>
 </tr>
 <tr>
-<td style="text-align: right"><strong>code</strong>  <br><span class="optional"><code>integer</code></span></td>
+<td style="text-align: right"><strong>code</strong>  <br><code>integer</code></td>
 <td style="text-align: left">It represents the unique code of the field which is referred to as API code. This code acts as <code>key</code> in API response and the same must be used as <code>key</code> to pass values for a POST or PUT request.</td>
 </tr>
 <tr>
-<td style="text-align: right"><strong>field_type</strong> <br><span class="optional"><code>string</code></span></td>
-<td style="text-align: left">Represents the type of field. For example  TEXT (for Text Field), INT (for Integer Number field), DDSS (for Dropdown Single Select Field), etc. See <a href="#user-defined-fields">User Defined Fields</a> to know more about different field types.</td>
+<td style="text-align: right"><strong>field_type</strong> <br><code>string</code></td>
+<td style="text-align: left">Represents the type of field. For example  TEXT (for Text Field), INT (for Integer Number field), DDSS (for Dropdown Single Select Field), etc. See <a href = "#user-defined-fields" class="api-ref">User Defined Fields</a> to know more about different field types.</td>
 </tr>
 <tr>
-<td style="text-align: right"><strong>display_name</strong><br><span class="optional"><code>string</code></span></td>
+<td style="text-align: right"><strong>display_name</strong><br><code>string</code></td>
 <td style="text-align: left">Name of this field to identify it.</td>
 </tr>
 <tr>
-<td style="text-align: right"><strong>is_system_defined</strong><br><span class="optional"><code>boolean</code></span></td>
+<td style="text-align: right"><strong>is_system_defined</strong><br><code>boolean</code></td>
 <td style="text-align: left">Indicates whether this field is system defined or a custom field. Fields which are system defined can not be customized.</td>
 </tr>
 <tr>
-<td style="text-align: right"><strong>is_filterable</strong> <br> <span class ="optional"><code>boolean</code></span></td>
+<td style="text-align: right"><strong>is_filterable</strong> <br><code>boolean</code></td>
 <td style="text-align: left">Indicates whether this field is used for filtering or not.</td>
 </tr>
 <tr>
-<td style="text-align: right"><strong>is_mandatory_required</strong><br> <span class ="optional"><code>boolean</code></span></td>
+<td style="text-align: right"><strong>is_required</strong><br><code>boolean</code></td>
 <td style="text-align: left">Indicates whether this field is mandatory or not. If this field is a <code>required</code> field then a valid value for this field must be passed while creating such object and while updating object (if this field is intended to update).</td>
 </tr>
 <tr>
-<td style="text-align: right"><strong>minnum</strong> <br> <span class ="optional"><code>integer</code></span></td>
+<td style="text-align: right"><strong>minnum</strong> <br><code>integer</code></td>
 <td style="text-align: left">Represents minimum value this field can accept (<em>only applicable for numeric fields</em>).</td>
 </tr>
 <tr>
-<td style="text-align: right"><strong>maxnum</strong> <br> <span class ="optional"><code>integer</code></span></td>
+<td style="text-align: right"><strong>maxnum</strong> <br><code>integer</code></td>
 <td style="text-align: left">Represents maxmum value this field can accept (<em>only applicable for numeric fields</em>).</td>
 </tr>
 <tr>
-<td style="text-align: right"><strong>mindate</strong> <br> <span class ="optional"><code>string</code></span></td>
+<td style="text-align: right"><strong>mindate</strong> <br><code>string</code></td>
 <td style="text-align: left">Represents minimum value this field can accept (<em>only applicable for date / date time fields</em>).</td>
 </tr>
 <tr>
-<td style="text-align: right"><strong>maxdate</strong> <br> <span class = "optional"><code>string</code></span></td>
+<td style="text-align: right"><strong>maxdate</strong> <br><code>string</code></td>
 <td style="text-align: left">Represents maxmum value this field can accept (<em>only applicable for date / date time fields</em>).</td>
 </tr>
 </tbody></table>
@@ -1830,7 +1830,7 @@ grant_type=authorization_code</span><span class="se">\</span><span class="s2">
 <td style="text-align: left">Name of exception object (which is to be displayed wherever referred).</td>
 </tr>
 <tr>
-<td style="text-align: right"><strong>holiday.description</strong><br><code>string</code></td>
+<td style="text-align: right"><strong>exception.description</strong><br><code>string</code></td>
 <td style="text-align: left">Description for exception object.</td>
 </tr>
 <tr>
@@ -1890,7 +1890,7 @@ grant_type=authorization_code</span><span class="se">\</span><span class="s2">
 <p>Exmaple Response</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"totalcount"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"total_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
       </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
       </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"New York Calendar"</span><span class="p">,</span><span class="w">
@@ -2153,7 +2153,7 @@ grant_type=authorization_code</span><span class="se">\</span><span class="s2">
 </tr>
 <tr>
 <td style="text-align: right"><strong>image</strong> <br><code>string</code></td>
-<td style="text-align: left">String value representing URI of image file of resource.</td>
+<td style="text-align: left">String value representing URL of image file of resource.</td>
 </tr>
 <tr>
 <td style="text-align: right"><strong>phone</strong> <br><code>string</code></td>
@@ -2184,8 +2184,8 @@ grant_type=authorization_code</span><span class="se">\</span><span class="s2">
 <td style="text-align: left">Object representing most recent user who modified this resource object.</td>
 </tr>
 <tr>
-<td style="text-align: right"><strong>User defined fields</strong></td>
-<td style="text-align: left">Custom user-defined fields used to capture additional information of resource. User defined field can be of multiple types. Custom fields are very useful to configure resource objects to best fit requirements.  In given example response, all keys starting with prefix <code>udf_</code> are user defined custom fields. <a href="#user-defined-fields">Learn more</a></td>
+<td style="text-align: right"><strong>udf_*</strong></td>
+<td style="text-align: left">Custom user-defined fields used to capture additional information of resource. User defined field can be of multiple types. Custom fields are very useful to configure resource objects to best fit requirements.  In given example response, all keys starting with prefix <code>udf_</code> are user defined custom fields. <a href ="#user-defined-fields" class="api-ref">Learn more</a></td>
 </tr>
 </tbody></table>
 <h2 id='create-a-resource'>Create a resource</h2>
@@ -2232,7 +2232,7 @@ grant_type=authorization_code</span><span class="se">\</span><span class="s2">
 </thead><tbody>
 <tr>
 <td style="text-align: right"><strong>resource_type_id</strong> <br> <span class="required"><code>required</code></span></td>
-<td style="text-align: left">Id of <a href="#resource-types">resource-type</a> object. Every resource must be linked to a <a href="#resource-types">resource-type</a>. Let’s assume there are two resource types defined as Employee (<em>having id 1</em>) and Meeting Room (<em>having id 2</em>). While creating a new resource, all the resource whose <code>resource_type_id</code> is given as <strong>1</strong> will get created under Employee type and same for Meeting Room when <code>resource_type_id</code> is <strong>2</strong>.</td>
+<td style="text-align: left">Id of <a href = "#resource-type" class ="api-ref">resource-type</a> object. Every resource must be linked to a <a href = "#resource-type" class ="api-ref">resource-type</a>. Let’s assume there are two resource types defined as Employee (<em>having id 1</em>) and Meeting Room (<em>having id 2</em>). While creating a new resource, all the resource whose <code>resource_type_id</code> is given as <strong>1</strong> will get created under Employee type and same for Meeting Room when <code>resource_type_id</code> is <strong>2</strong>.</td>
 </tr>
 <tr>
 <td style="text-align: right"><strong>first_name</strong> <br> <span class="required"><code>required</code></span></td>
@@ -2263,10 +2263,6 @@ grant_type=authorization_code</span><span class="se">\</span><span class="s2">
 <td style="text-align: left">String representing phone number of resource. It’s displayed alongside the resource in your resource list.</td>
 </tr>
 <tr>
-<td style="text-align: right"><strong>image</strong><br><code>optional</code></td>
-<td style="text-align: left">This field accepts the Base64 encoded PNG string. This creates an image file (used as an avatar) for this resource.</td>
-</tr>
-<tr>
 <td style="text-align: right"><strong>roles</strong><br><code>optional</code></td>
 <td style="text-align: left">An array of ids of Roles (which are defined by an admin user in eRS Cloud Application) to be assigned to this Resource. The first id in the array is considered as Primary Role of that Resource. Multiple performing roles can be applied to a resource. Resources can also be searched / filtered using performing roles.</td>
 </tr>
@@ -2280,7 +2276,7 @@ grant_type=authorization_code</span><span class="se">\</span><span class="s2">
 </tr>
 <tr>
 <td style="text-align: right"><strong>udf_*</strong> <br><code>optional</code></td>
-<td style="text-align: left">A user with admin rights can add custom fields. These fields can be used to capture additional information in Resources. Different types of resources may have a different set of user-defined fields. The value for user defined field can be passed as shown in example request. In first example <strong><em>udf_employee_no</em></strong></span> is a user defined field. <a href="#user-defined-fields">Learn more</a>.</td>
+<td style="text-align: left">A user with admin rights can add custom fields. These fields can be used to capture additional information in Resources. Different types of resources may have a different set of user-defined fields. The value for user defined field can be passed as shown in example request. In first example <strong><em>udf_employee_no</em></strong> is a user defined field. <a href ="#user-defined-fields" class="api-ref">Learn more</a></td>
 </tr>
 </tbody></table>
 <h3 id='returns'>Returns</h3>
@@ -2499,7 +2495,7 @@ grant_type=authorization_code</span><span class="se">\</span><span class="s2">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<p>Retrieves the details of an existing resource. You only need to  provide the unique resource identifier as request parameter that was returned upon resource creation.</p>
+<p>Retrieves the details of an existing resource. You only need to provide the unique resource identifier that was returned upon resource creation as request parameter .</p>
 <h3 id='returns-3'>Returns</h3>
 <table><thead>
 <tr>
@@ -2543,7 +2539,7 @@ grant_type=authorization_code</span><span class="se">\</span><span class="s2">
 -H <span class="s2">"Authorization: Bearer B8x5Vj1O65r6wnoV"</span> <span class="se">\</span>
 -d <span class="s1">'{ 
       "resource_type_id:eq": 1 , 
-      "roles:all": 3 
+      "roles:all": [3,6] 
     }'</span>
 </code></pre>
 <p>Search Resource API allows filtering the results returned in various ways. This enables a great power to find out what is needed. eRS Cloud API also allows filtering on custom defined fields with multiple operators and conditions to cover up complex scenarios for searching.</p>
@@ -2567,12 +2563,12 @@ grant_type=authorization_code</span><span class="se">\</span><span class="s2">
 <tr>
 <td style="text-align: left"><strong>name</strong></td>
 <td style="text-align: left"><li class="nowrap"><strong>has</strong> (<em>default</em>)&nbsp;&nbsp;</li><li>eq</li></td>
-<td style="text-align: left"><code>-d &quot;name:has&quot;: &quot;c&quot;</code><br><code>-d &quot;name:eq&quot;: &quot;Amy Jones&quot;</code></td>
+<td style="text-align: left"><code>&quot;name:has&quot;: &quot;c&quot;</code><br><code>&quot;name:eq&quot;: &quot;Amy Jones&quot;</code></td>
 </tr>
 <tr>
 <td style="text-align: left"><strong>roles</strong></td>
 <td style="text-align: left"><li><strong>any</strong> (<em>default</em>)</li><li>all</li></td>
-<td style="text-align: left"><code>-d &quot;roles:any&quot;: [2,5]</code><br><code>-d &quot;roles:all&quot;: [4,6]</code></td>
+<td style="text-align: left"><code>&quot;roles:any&quot;: [2,5]</code><br><code>&quot;roles:all&quot;: [4,6]</code></td>
 </tr>
 <tr>
 <td style="text-align: left"><strong>tags</strong></td>
@@ -2601,7 +2597,7 @@ grant_type=authorization_code</span><span class="se">\</span><span class="s2">
 </tr>
 </tbody></table>
 
-<p><em>For filtering using custom fields and operators please <a href="#filters-for-user-defined-fields">check here</a>.</em> </p>
+<p><em>For filtering using custom fields and operators please <a href="#filters-for-user-defined-fields" class="api-ref">check here</a>.</em> </p>
 <h2 id='update-a-resource'>Update a resource</h2>
 <p>Updates specified resource by setting the values of the parameters passed. Any parameter which is not provided remains unchanged. To unset existing value for a parameter, just pass an empty value i.e. <code>null</code> or <code>undefined</code>.</p>
 
@@ -2659,10 +2655,6 @@ grant_type=authorization_code</span><span class="se">\</span><span class="s2">
 <td style="text-align: left">String representing phone number of resource. It’s displayed alongside the resource in your resource list.</td>
 </tr>
 <tr>
-<td style="text-align: right"><strong>image</strong><br><code>optional</code></td>
-<td style="text-align: left">This field accepts the Base64 encoded PNG string. This creates an image file (used as an avatar) for this resource.</td>
-</tr>
-<tr>
 <td style="text-align: right"><strong>roles</strong><br><code>optional</code></td>
 <td style="text-align: left">An array of ids of Roles (which are defined by an admin user in eRS Cloud Application) to be assigned to this Resource. The first id in the array is considered as Primary Role of that Resource. Multiple performing roles can be applied to a resource. Resources can also be searched / filtered using performing roles.</td>
 </tr>
@@ -2672,7 +2664,11 @@ grant_type=authorization_code</span><span class="se">\</span><span class="s2">
 </tr>
 <tr>
 <td style="text-align: right"><strong>udf_*</strong> <br><code>optional</code></td>
-<td style="text-align: left">A user with admin rights can add custom fields. These fields can be used to capture additional information in Resources. Different types of resources may have a different set of user-defined fields. The value for user defined field can be passed as shown in example request. In given example, <strong><em>udf_employee_no</em></strong></span> is a user defined field. <a href="#user-defined-fields">Learn more</a>.</td>
+<td style="text-align: left">A user with admin rights can add custom fields. These fields can be used to capture additional information in Resources. Different types of resources may have a different set of user-defined fields. The value for user defined field can be passed as shown in example request. In first example <strong><em>udf_employee_no</em></strong> is a user defined field. <a href ="#user-defined-fields" class="api-ref">Learn more</a></td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>udf_*</strong> <br><code>optional</code></td>
+<td style="text-align: left">A user with admin rights can add custom fields. These fields can be used to capture additional information in Resources. Different types of resources may have a different set of user-defined fields. The value for user defined field can be passed as shown in example request. In first example <strong><em>udf_employee_no</em></strong></span> is a user defined field. <a href ="#user-defined-fields" class="api-ref">Learn more</a></td>
 </tr>
 </tbody></table>
 <h3 id='returns-4'>Returns</h3>
@@ -2731,7 +2727,7 @@ force_delete_bookings=true"</span> <span class="se">\</span>
 </tr>
 <tr>
 <td style="text-align: right"><strong>409</strong> <br> <span class = "error"><code>Conflict</code></span></td>
-<td style="text-align: left">Conflict indicates that the resource can not be deleted as there are bookings associated with this resource. If you wish to anyway delete it, you must use force delete option by passing <code>true</code> for parameter  <code>force_delete_booking</code>. This operation deletes all bookings of requested resource and resource itself (shown in example request).</td>
+<td style="text-align: left">Conflict indicates that the resource can not be deleted as there are bookings associated with this resource. If you wish to anyway delete it, you must use force delete option by passing <code>true</code> for parameter  <code>force_delete_bookings</code>. This operation deletes all bookings of requested resource and resource itself (shown in example request).</td>
 </tr>
 <tr>
 <td style="text-align: right"><strong>403</strong> <br> <span class = "error"><code>Forbidden</code></span></td>
@@ -2786,39 +2782,39 @@ force_delete_bookings=true"</span> <span class="se">\</span>
 </tr>
 </thead><tbody>
 <tr>
-<td style="text-align: right"><strong>id</strong><br><span class ="optional"><code>integer</code></span></td>
+<td style="text-align: right"><strong>id</strong><br><code>integer</code></td>
 <td style="text-align: left">eRS Cloud-generated unique identifier for the calendar object.</td>
 </tr>
 <tr>
-<td style="text-align: right"><strong>name</strong><br><span class="optional">`string&#39;</span></td>
+<td style="text-align: right"><strong>name</strong><br><code>string</code></td>
 <td style="text-align: left">This field describes name of calendar object.</td>
 </tr>
 <tr>
-<td style="text-align: right"><strong>effective_date</strong><br> <span class="optional"><code>string</code></span></td>
+<td style="text-align: right"><strong>effective_date</strong><br> <code>string</code></td>
 <td style="text-align: left">Effective date is the date on which the calendar will come into effect on applied resources.</td>
 </tr>
 <tr>
-<td style="text-align: right"><strong>applied_on</strong><br> <span class="optional"><code>string</code></span></td>
+<td style="text-align: right"><strong>applied_on</strong><br> <code>string</code></td>
 <td style="text-align: left">This field describes when calendar is applied.</td>
 </tr>
 <tr>
-<td style="text-align: right"><strong>created_on</strong> <br><span class="optional"><code>string</code></span></td>
+<td style="text-align: right"><strong>created_on</strong> <br><code>string</code></td>
 <td style="text-align: left">Time at which the calendar object is created.</td>
 </tr>
 <tr>
-<td style="text-align: right"><strong>created_by</strong> <br> <span class="optional"><code>object</code></span></td>
-<td style="text-align: left">This field describes by whom project object is created.</td>
+<td style="text-align: right"><strong>created_by</strong> <br> <code>object</code></td>
+<td style="text-align: left">This field describes by whom calendar object is created.</td>
 </tr>
 <tr>
-<td style="text-align: right"><strong>modified_on</strong> <br><span class="optional"><code>string</code></span></td>
+<td style="text-align: right"><strong>modified_on</strong> <br><code>string</code></td>
 <td style="text-align: left">Describes the latest modification date.</td>
 </tr>
 <tr>
-<td style="text-align: right"><strong>modified_by</strong> <br><span class="optional"><code>object</code></span></td>
+<td style="text-align: right"><strong>modified_by</strong> <br><code>object</code></td>
 <td style="text-align: left">This field describes by whom the modification is done.</td>
 </tr>
 <tr>
-<td style="text-align: right"><strong>timings</strong> <br><span class = "optional"><code>array of strings</code></span></td>
+<td style="text-align: right"><strong>timings</strong> <br><code>array of strings</code></td>
 <td style="text-align: left">Timings are list of days in which day_num is defined day(For example-0 for sunday,1 for monday) and start time and end time  are  defined start time and end time for a particular day respectively, also we can calculate no of working-hours on that day.</td>
 </tr>
 </tbody></table>
@@ -2835,7 +2831,7 @@ force_delete_bookings=true"</span> <span class="se">\</span>
 <p>Example Response</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-   </span><span class="s2">"totalcount"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"total_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
       </span><span class="p">{</span><span class="w">
          </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
@@ -3049,7 +3045,7 @@ force_delete_bookings=true"</span> <span class="se">\</span>
 <p>Example Response</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-   </span><span class="s2">"totalcount"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"total_count"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
    </span><span class="s2">"data"</span><span class="p">:[</span><span class="w">
       </span><span class="p">{</span><span class="w">
          </span><span class="s2">"id"</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span><span class="w">
@@ -3095,19 +3091,19 @@ force_delete_bookings=true"</span> <span class="se">\</span>
 </tr>
 </thead><tbody>
 <tr>
-<td style="text-align: right"><strong>id</strong> <br><span class="optional"><code>integer</code></span></td>
+<td style="text-align: right"><strong>id</strong> <br><code>integer</code></td>
 <td style="text-align: left">eRS Cloud-generated unique identifier for the exceptions object.</td>
 </tr>
 <tr>
-<td style="text-align: right"><strong>name</strong><br> <span class ="optional"><code>string</code></span></td>
+<td style="text-align: right"><strong>name</strong><br> <code>string</code></td>
 <td style="text-align: left">This field describes name of exception.</td>
 </tr>
 <tr>
-<td style="text-align: right"><strong>description</strong><br> <span class ="optional"><code>string</code></span></td>
+<td style="text-align: right"><strong>description</strong><br> <code>string</code></td>
 <td style="text-align: left">This field describes about the exception.</td>
 </tr>
 <tr>
-<td style="text-align: right"><strong>date</strong><br> <span class ="optional"><code>string</code></span></td>
+<td style="text-align: right"><strong>date</strong><br> <code>string</code></td>
 <td style="text-align: left">Date Field describes when will exception get applied.</td>
 </tr>
 <tr>
@@ -3115,23 +3111,23 @@ force_delete_bookings=true"</span> <span class="se">\</span>
 <td style="text-align: left">Is working exception describes whether exception is a working exception or non working exception. True value means that exception is working exception and false value means that exception is non working exception.</td>
 </tr>
 <tr>
-<td style="text-align: right"><strong>created_on</strong> <br><span class="optional"><code>string</code></span></td>
+<td style="text-align: right"><strong>created_on</strong> <br><code>string</code></td>
 <td style="text-align: left">Time at which  exception is created.</td>
 </tr>
 <tr>
-<td style="text-align: right"><strong>modified_on</strong> <br><span class="optional"><code>string</code></span></td>
+<td style="text-align: right"><strong>modified_on</strong> <br><code>string</code></td>
 <td style="text-align: left">Describes the latest modification date.</td>
 </tr>
 <tr>
-<td style="text-align: right"><strong>created_by</strong> <br> <span class="optional"><code>object</code></span></td>
+<td style="text-align: right"><strong>created_by</strong> <br> <code>object</code></td>
 <td style="text-align: left">This field describes by whom exception is created .</td>
 </tr>
 <tr>
-<td style="text-align: right"><strong>modified_by</strong> <br><span class="optional"><code>object</code></span></td>
+<td style="text-align: right"><strong>modified_by</strong> <br><code>object</code></td>
 <td style="text-align: left">This field describes by whom the modification is done.</td>
 </tr>
 <tr>
-<td style="text-align: right"><strong>timings</strong> <br> <span class="optional"><code>object</code></span></td>
+<td style="text-align: right"><strong>timings</strong> <br> <code>object</code></td>
 <td style="text-align: left">Timings describes the timings of exception.</td>
 </tr>
 </tbody></table>
@@ -3202,7 +3198,7 @@ force_delete_bookings=true"</span> <span class="se">\</span>
 <td style="text-align: left">Date Field describes when will exception get applied. It is a <code>Date</code> type of field.</td>
 </tr>
 <tr>
-<td style="text-align: right"><strong>descirption</strong>  <br><span class="optional"><code>optional</code></span></td>
+<td style="text-align: right"><strong>descirption</strong>  <br><code>optional</code></td>
 <td style="text-align: left">As the name shows it is a description which we want to give for the exception . This field is a <code>string</code> type of field.</td>
 </tr>
 <tr>
@@ -3214,15 +3210,15 @@ force_delete_bookings=true"</span> <span class="se">\</span>
 <td style="text-align: left">Is working exception describes whether exception is a working exception or not. Accepts <code>true</code> if it is a working exception otherwise accepts <code>false</code> if it a non-working exception. This field is a <code>boolean</code> type of field</td>
 </tr>
 <tr>
-<td style="text-align: right"><strong>timing_blocks</strong>  <br><span class="optional"><code>optional</code></span></td>
+<td style="text-align: right"><strong>timing_blocks</strong>  <br><code>optional</code></td>
 <td style="text-align: left">Timing_blocks describes the timings of exception. This filed can be passed null, as eRS Cloud provids you the facility to create an exception without timings. This field is a <code>Array of objects</code> type of field</td>
 </tr>
 <tr>
-<td style="text-align: right"><strong>timings.start_time</strong>  <br><span class="optional"><code>optional</code></span></td>
+<td style="text-align: right"><strong>timings.start_time</strong>  <br><code>optional</code></td>
 <td style="text-align: left">Start time describes the start time of exception. This filed can be passed null, as eRS Cloud provids you the facility to create an exception without timings. This field is a <code>Integer</code> type of field.</td>
 </tr>
 <tr>
-<td style="text-align: right"><strong>timings.end_time</strong>  <br><span class="optional"><code>optional</code></span></td>
+<td style="text-align: right"><strong>timings.end_time</strong>  <br><code>optional</code></td>
 <td style="text-align: left">End time describes the end time of exception. This filed can be passed null, as eRS Cloud provids you the facility to create an exception without timings. This field is a <code>Integer</code> type of field.</td>
 </tr>
 </tbody></table>
@@ -3290,7 +3286,7 @@ force_delete_bookings=true"</span> <span class="se">\</span>
 <td style="text-align: left">Date Field describes when will exceptiob get applied. It is a <code>Date</code> type of field.</td>
 </tr>
 <tr>
-<td style="text-align: right"><strong>descirption</strong>  <br><span class="optional"><code>optional</code></span></td>
+<td style="text-align: right"><strong>descirption</strong>  <br><code>optional</code></td>
 <td style="text-align: left">As the name shows it is a description which we want to give for the exception . This field is a <code>string</code> type of field.</td>
 </tr>
 <tr>
@@ -3302,15 +3298,15 @@ force_delete_bookings=true"</span> <span class="se">\</span>
 <td style="text-align: left">Is working exception describes whether exception is working exception or not. Accepts <code>true</code> if it is working exception otherwise accepts <code>false</code> if it a non-working exception. This field is a <code>boolean</code> type of field</td>
 </tr>
 <tr>
-<td style="text-align: right"><strong>timing_blocks</strong>  <br><span class="optional"><code>optional</code></span></td>
+<td style="text-align: right"><strong>timing_blocks</strong>  <br><code>optional</code></td>
 <td style="text-align: left">Timing_blocks describes the timings of exception. This filed can be pass null, as eRS Cloud provids you the facility to create an exception without timings. This field is a <code>Array of objects</code> type of field</td>
 </tr>
 <tr>
-<td style="text-align: right"><strong>timings.start_time</strong>  <br><span class="optional"><code>optional</code></span></td>
+<td style="text-align: right"><strong>timings.start_time</strong>  <br><code>optional</code></td>
 <td style="text-align: left">Start time describes the start time of exception. This filed can be pass null, as eRS Cloud provids you the facility to create an exception without timings. This field is a <code>Integer</code> type of field.</td>
 </tr>
 <tr>
-<td style="text-align: right"><strong>timings.end_time</strong>  <br><span class="optional"><code>optional</code></span></td>
+<td style="text-align: right"><strong>timings.end_time</strong>  <br><code>optional</code></td>
 <td style="text-align: left">End time describes the end time of exception. This filed can be pass null, as eRS Cloud provids you the facility to create an exception without timings. This field is a <code>Integer</code> type of field.</td>
 </tr>
 </tbody></table>
@@ -3372,7 +3368,7 @@ force_delete_bookings=true"</span> <span class="se">\</span>
 <p>Exmaple Response</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-   </span><span class="s2">"totalcount"</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"total_count"</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span><span class="w">
    </span><span class="s2">"limit"</span><span class="p">:</span><span class="mi">25</span><span class="p">,</span><span class="w">
    </span><span class="s2">"offset"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
    </span><span class="s2">"data"</span><span class="p">:[</span><span class="w">
@@ -3413,27 +3409,27 @@ force_delete_bookings=true"</span> <span class="se">\</span>
 </tr>
 </thead><tbody>
 <tr>
-<td style="text-align: right"><strong>id</strong><br> <span class="optional"><code>integer</code></span></td>
+<td style="text-align: right"><strong>id</strong><br> <code>integer</code></td>
 <td style="text-align: left">eRS Cloud generated unique identifier for the notes.</td>
 </tr>
 <tr>
-<td style="text-align: right"><strong>created_on</strong> <br><span class="optional"><code>string</code></span></td>
-<td style="text-align: left">Time at which the notes object is created.</td>
-</tr>
-<tr>
-<td style="text-align: right"><strong>content</strong> <br> <span class="optional"><code>string</code></span></td>
+<td style="text-align: right"><strong>content</strong> <br> <code>string</code></td>
 <td style="text-align: left">Text written inside notes body .</td>
 </tr>
 <tr>
-<td style="text-align: right"><strong>modified_on</strong> <br><span class="optional"><code>string</code></span></td>
+<td style="text-align: right"><strong>created_on</strong> <br><code>string</code></td>
+<td style="text-align: left">Time at which the notes object is created.</td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>modified_on</strong> <br><code>string</code></td>
 <td style="text-align: left">Describes the latest modification date.</td>
 </tr>
 <tr>
-<td style="text-align: right"><strong>created_by</strong> <br> <span class="optional"><code>object</code></span></td>
+<td style="text-align: right"><strong>created_by</strong> <br> <code>object</code></td>
 <td style="text-align: left">This field describes by whom notes is created  .</td>
 </tr>
 <tr>
-<td style="text-align: right"><strong>modified_by</strong> <br><span class="optional"><code>object</code></span></td>
+<td style="text-align: right"><strong>modified_by</strong> <br><code>object</code></td>
 <td style="text-align: left">This field describes by whom the modification is done .</td>
 </tr>
 </tbody></table>
@@ -3474,11 +3470,11 @@ force_delete_bookings=true"</span> <span class="se">\</span>
 </tr>
 </thead><tbody>
 <tr>
-<td style="text-align: right"><strong>limit</strong><br><span class="optional"><code>optional</code></span></td>
+<td style="text-align: right"><strong>limit</strong><br><code>optional</code></td>
 <td style="text-align: left">The limit keyword is used to limit the number of notes returned from a result set.<br><em>The default value of limit is</em>  <span class="error"><em><code>25</code></em></span><br><em>Maximum value of limit can be</em> <span class="error"><em><code>100.</code></em></span> <em>If Limit value is exceeds than</em><span class="error"><em><code>100</code></em></span>  <em>then it will set to</em> <span class="error"><em><code>100</code></em></span> <em>which is Maximum value for limit.</em></td>
 </tr>
 <tr>
-<td style="text-align: right"><strong>offset</strong><br><span class="optional"><code>optional</code></span></td>
+<td style="text-align: right"><strong>offset</strong><br><code>optional</code></td>
 <td style="text-align: left">The Offset value allows specifying which note to start from retrieving data.The Offset value is also most often used together with the Limit keyword.<br><em>The default value of offset is</em> <span class="error"><em><code>0</code></em> </span></td>
 </tr>
 </tbody></table>
@@ -3493,7 +3489,7 @@ force_delete_bookings=true"</span> <span class="se">\</span>
 </tr>
 </thead><tbody>
 <tr>
-<td style="text-align: right"><strong>Order_by</strong><br><span class="optional"><code>optional</code></span></td>
+<td style="text-align: right"><strong>Order_by</strong><br><code>optional</code></td>
 <td style="text-align: center"><li>created_on <em>(Default)</em></li></td>
 <td style="text-align: left">List of notes will be returned and sorted by it&#39;s created date.</td>
 </tr>
@@ -3765,7 +3761,7 @@ curl -v -X DELETE <span class="se">\</span>
 </tr>
 <tr>
 <td style="text-align: right"><strong>image</strong> <br><code>string</code></td>
-<td style="text-align: left">String value representing URI of image file of project.</td>
+<td style="text-align: left">String value representing URL of image file of project.</td>
 </tr>
 <tr>
 <td style="text-align: right"><strong>tags</strong> <br><code>array of strings</code></td>
@@ -3792,8 +3788,8 @@ curl -v -X DELETE <span class="se">\</span>
 <td style="text-align: left">Object representing most recent user who modified this project object.</td>
 </tr>
 <tr>
-<td style="text-align: right"><strong>User defined fields</strong></td>
-<td style="text-align: left">Custom user-defined fields used to capture additional information of project. User defined field can be of multiple types. Custom fields are very useful to configure project objects to best fit requirements.  In given example response, all keys starting with prefix <code>udf_</code> are user defined custom fields. <a href="#user-defined-fields">Learn more</a></td>
+<td style="text-align: right"><strong>udf_*</strong></td>
+<td style="text-align: left">Custom user-defined fields used to capture additional information of project. User defined field can be of multiple types. Custom fields are very useful to configure project objects to best fit requirements.  In given example response, all keys starting with prefix <code>udf_</code> are user defined custom fields. <a href="#user-defined-fields" class="api-ref">Learn more</a></td>
 </tr>
 </tbody></table>
 <h2 id='create-a-project'>Create a project</h2>
@@ -3825,7 +3821,7 @@ curl -v -X DELETE <span class="se">\</span>
 </thead><tbody>
 <tr>
 <td style="text-align: right"><strong>project_type_id</strong> <br> <span class="required"><code>required</code></span></td>
-<td style="text-align: left">Id of project type object. A project must be linked with one of project types defined in admin section (<em>using eRS Cloud Application</em>). Let’s assume there are two project types defined as <code>Medical</code> (<em>having id as 1</em>) and <code>Education</code> (<em>having id as 2</em>), now while creating a new project, if project_type_id is given as 1 then it will get created under Medical type and same for Education when project_type_id is given as 2.</td>
+<td style="text-align: left">Id of <a href="#project-type" class="api-ref">project-type</a> object. A project must be linked with one of <a href="#project-type" class="api-ref">project-type</a> defined in admin section (<em>using eRS Cloud Application</em>). Let’s assume there are two project types defined as <code>Medical</code> (<em>having id as 1</em>) and <code>Education</code> (<em>having id as 2</em>), now while creating a new project, if project_type_id is given as 1 then it will get created under Medical type and same for Education when project_type_id is given as 2.</td>
 </tr>
 <tr>
 <td style="text-align: right"><strong>title</strong> <br><span class="required"><code>required</code></span></td>
@@ -3849,7 +3845,7 @@ curl -v -X DELETE <span class="se">\</span>
 </tr>
 <tr>
 <td style="text-align: right"><strong>udf_*</strong> <br><code>optional</code></td>
-<td style="text-align: left">A user with admin rights can add custom fields. These fields can be used to capture additional information in Projects. Different types of projects may have a different set of user-defined fields. The value for user defined field can be passed as shown in example request. In given example <strong><em>udf_progress</em></strong></span> is a user defined field. <a href="#user-defined-fields">Learn more</a>.</td>
+<td style="text-align: left">A user with admin rights can add custom fields. These fields can be used to capture additional information in Projects. Different types of projects may have a different set of user-defined fields. The value for user defined field can be passed as shown in example request. In given example <strong><em>udf_progress</em></strong></span> is a user defined field. <a href="#user-defined-fields" class="api-ref">Learn more</a></td>
 </tr>
 </tbody></table>
 <h3 id='returns'>Returns</h3>
@@ -3963,11 +3959,11 @@ curl -v -X DELETE <span class="se">\</span>
 </thead><tbody>
 <tr>
 <td style="text-align: right"><strong>200</strong> <br> <span class = "success"><code>OK</code></span></td>
-<td style="text-align: left">Indicates that the operation was successful and  list of resources is returned.</td>
+<td style="text-align: left">Indicates that the operation was successful and  list of projects is returned.</td>
 </tr>
 <tr>
 <td style="text-align: right"><strong>400</strong> <br> <span class = "error"><code>Bad Request</code> </span></td>
-<td style="text-align: left">Bad Request may occur when offset and limit value is negative integer.</td>
+<td style="text-align: left">Bad Request may occur when offset or limit value is negative.</td>
 </tr>
 <tr>
 <td style="text-align: right"><strong>403</strong> <br> <span class = "error"><code>Forbidden</code></span></td>
@@ -4020,7 +4016,7 @@ curl -v -X DELETE <span class="se">\</span>
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<p>Retrieves the details of an existing project. You only need to provide the unique project identifier that was returned upon project creation.</p>
+<p>Retrieves the details of an existing project. You only need to provide the unique project identifier that was returned upon project creation as request parameter.</p>
 <h3 id='returns-3'>Returns</h3>
 <table><thead>
 <tr>
@@ -4043,28 +4039,28 @@ curl -v -X DELETE <span class="se">\</span>
 </tbody></table>
 <h2 id='search-projects'>Search projects</h2>
 <blockquote>
-<p><code>POST v1/projects/search</code></p>
-</blockquote>
+<p><strong><code>POST /v1/projects/search</code></strong></p>
 
-<p>Filtering API responses to retrieve specific data.</p>
-
-<blockquote>
 <p>Example Request For Filter In JSON Format</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl -v -X POST <span class="se">\</span>
- <span class="s2">"https://app.eresourcescheduler.cloud/rest/v1/projects/search"</span> <span class="se">\</span>
+<pre class="highlight shell tab-shell"><code>curl -X POST <span class="se">\</span>
+<span class="s2">"https://app.eresourcescheduler.cloud/rest/v1/projects/search"</span> <span class="se">\</span>
 -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
 -H <span class="s2">"Authorization: Bearer B8x5Vj1O65r6wnoV"</span> <span class="se">\</span>
 -d <span class="s1">'{ 
       "project_type_id:eq": 1 
     }'</span>
 </code></pre>
-<p>The filter parameter allows for filtering the results returned from the various endpoint in various ways. For example fetching only projects having project type id 1 by adding project_type_id:eq=1 to your query.<a href="#filters">Read more</a></p>
+<p>Search Project API allows filtering the results returned in various ways. This enables a great power to find out what is needed. eRS Cloud API also allows filtering on custom defined fields with multiple operators and conditions to cover up complex scenarios for searching.</p>
+
+<p>A filter condition consists of three components which are <strong><em>field</em></strong>, <strong><em>operator</em></strong> and <strong><em>value</em></strong>. For example fetching only those projects having project type id 1, could be achieved by adding project_type_id:eq=1 to your query.  If operator is not supplied, it takes default operator for field. <a href="#filters" class="api-ref">Read more</a></p>
+
+<p>Below is a list of available fields, which allow filtering projects:</p>
 
 <blockquote>
 <p>Example Request For Filter By Passing Multiple Rules In JSON Format</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl -v -X POST <span class="se">\</span>
+<pre class="highlight shell tab-shell"><code>curl -X POST <span class="se">\</span>
 <span class="s2">"https://app.eresourcescheduler.cloud/rest/v1/projects/search"</span> <span class="se">\</span>
 -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
 -H <span class="s2">"Authorization: Bearer B8x5Vj1O65r6wnoV"</span> <span class="se">\</span>
@@ -4075,59 +4071,62 @@ curl -v -X DELETE <span class="se">\</span>
 </code></pre><h3 id='filters-for-system-defined-fields'>Filters for System-defined fields</h3>
 <table><thead>
 <tr>
-<th style="text-align: left"><strong>Field Type</strong></th>
-<th style="text-align: left"><strong>Operators</strong></th>
+<th style="text-align: left"><strong>Field Code</strong></th>
+<th style="text-align: left"><strong>Operator</strong></th>
 <th style="text-align: left"><strong>Example</strong></th>
 </tr>
 </thead><tbody>
 <tr>
 <td style="text-align: left"><strong>project_type_id</strong></td>
-<td style="text-align: left"><li>eq <em>(default)</em></li><li>any</li></td>
-<td style="text-align: left">-d &quot;project_type_id&quot;:1 <br> -d &quot;project_type_id:any&quot;:1</td>
+<td style="text-align: left"><li><strong>eq</strong> (<em>default</em>)  </li><li>any</li></td>
+<td style="text-align: left"><code>&quot;project_type_id&quot;:1</code><br><code>&quot;project_type_id:any&quot;:1</code></td>
 </tr>
 <tr>
 <td style="text-align: left"><strong>email</strong></td>
-<td style="text-align: left"><li>has <em>(default)</em> </li><li>eq</li></td>
-<td style="text-align: left">-d &quot;email&quot;:&quot;abc&quot; <br> -d &quot;email:eq&quot;:&quot;ujjwal@gmail.com&quot;</td>
+<td style="text-align: left"><li class="nowrap"><strong>has</strong> (<em>default</em>)&nbsp;&nbsp;</li><li>eq</li></td>
+<td style="text-align: left"><code>&quot;email&quot;:&quot;abc&quot;</code> <br><code>&quot;email:eq&quot;:&quot;ujjwal@gmail.com&quot;</code></td>
 </tr>
 <tr>
 <td style="text-align: left"><strong>project_start_date</strong></td>
-<td style="text-align: left"><li>eq <em>(default)</em> </li><li>lt </li><li>  gt </li><li> bt </li><br><li> ex</li></td>
-<td style="text-align: left">-d &quot;project_start_date:eq&quot;:&quot;2015-02-02&quot;<br>-d &quot;project_start_date:lt&quot;:&quot;2015-02-02&quot;<br>-d &quot;project_start_date:gt&quot;:&quot;2015-02-02&quot;<br> -d &quot;project_start_date:bt&quot;:[&quot;2015-02-02&quot;,&quot;2015-04-05&quot;] <br> -d &quot;project_start_date:ex&quot;:[&quot;2015-02-02&quot;,&quot;2015-04-04&quot;]</td>
+<td style="text-align: left"><li><strong>eq</strong> (<em>default</em>)</li><li>lt</li><li>gt</li><li>bt</li><li>ex</li></td>
+<td style="text-align: left"><code>&quot;project_start_date:eq&quot;:&quot;2015-02-02&quot;</code><br><code>&quot;project_start_date:lt&quot;:&quot;2015-02-02&quot;</code><br><code>&quot;project_start_date:gt&quot;:&quot;2015-02-02&quot;</code><br><code>&quot;project_start_date:bt&quot;:[&quot;2015-02-02&quot;,&quot;2015-04-05&quot;]</code> <br><code>&quot;project_start_date:ex&quot;:[&quot;2015-02-02&quot;,&quot;2015-04-04&quot;]</code></td>
 </tr>
 <tr>
 <td style="text-align: left"><strong>end_date</strong></td>
-<td style="text-align: left"><li>eq <em>(default)</em> </li><li>lt </li><li>  gt </li><li> bt </li><br><li> ex</li></td>
-<td style="text-align: left">-d &quot;end_date:eq&quot;:&quot;2015-02-02&quot;<br>-d &quot;end_date:lt&quot;:&quot;2015-02-02&quot;<br>-d &quot;end_date:gt&quot;:&quot;2015-02-02&quot;<br> -d &quot;end_date:bt&quot;:[&quot;2015-02-02&quot;,&quot;2015-04-05&quot;] <br> -d &quot;end_date:ex&quot;:[&quot;2015-02-02&quot;,&quot;2015-04-04&quot;]</td>
+<td style="text-align: left"><li><strong>eq</strong> (<em>default</em>) </li><li>lt</li><li>gt</li><li>bt</li><li>ex</li></td>
+<td style="text-align: left"><code>&quot;end_date:eq&quot;:&quot;2015-02-02&quot;</code><br><code>&quot;end_date:lt&quot;:&quot;2015-02-02&quot;</code><br><code>&quot;end_date:gt&quot;:&quot;2015-02-02&quot;</code><br><code>&quot;end_date:bt&quot;:[&quot;2015-02-02&quot;,&quot;2015-04-05&quot;]</code><br><code>&quot;end_date:ex&quot;:[&quot;2015-02-02&quot;,&quot;2015-04-04&quot;]</code></td>
 </tr>
 <tr>
 <td style="text-align: left"><strong>tags</strong></td>
-<td style="text-align: left"><li>any <em>(default)</em> </li><li>all</li></td>
-<td style="text-align: left">-d &quot;tags&quot;:&quot;1&#124;2&#124;3&quot; <br> -d &quot;tags:all&quot;:&quot;4&#124;6&quot;</td>
+<td style="text-align: left"><li><strong>any</strong> (<em>default</em>) </li><li>all</li></td>
+<td style="text-align: left"><code>&quot;tags&quot;:&quot;1</code>&#124;<code>2</code>&#124;<code>3&quot;</code><br><code>&quot;tags:all&quot;:&quot;4</code>&#124;<code>6&quot;</code></td>
 </tr>
 <tr>
 <td style="text-align: left"><strong>is_archive</strong></td>
 <td style="text-align: left">N/A</td>
-<td style="text-align: left">-d &quot;is_archive&quot;:true <br> -d &quot;is_archive&quot;:false</td>
+<td style="text-align: left"><code>&quot;is_archive&quot;:true</code> <br><code>&quot;is_archive&quot;:false</code></td>
 </tr>
 </tbody></table>
 
-<p><em>For User-defined fields please <a href="#filters-for-user-defined-fields">check here</a>.</em> </p>
+<p><em>For User-defined fields please <a href="#filters-for-user-defined-fields" class="api-ref">check here</a>.</em> </p>
 <h2 id='update-a-project'>Update a project</h2>
-<p>Updates the specified project by setting the values of the parameters passed. Any parameters not provided will be left unchanged. </p>
+<p>Updates specified project by setting the values of the parameters passed. Any parameters  which is not provided remains unchanged. To unset existing value for a parameter, just pass an empty value i.e. <code>null</code> or <code>undefined</code>.</p>
 
-<p>This request accepts mostly the same arguments as the project creation call.</p>
+<p>This request accepts mostly the same arguments as <code>Create Project</code> API.</p>
 
 <blockquote>
-<p><code>PUT v1/projects/{ID}</code></p>
+<p><strong><code>PUT /v1/projects/{ID}</code></strong></p>
 
 <p>Example Request</p>
 </blockquote>
 <pre class="highlight shell tab-shell"><code>curl -v -X PUT <span class="se">\</span>
 <span class="s2">"https://app.eresourcescheduler.cloud/rest/v1/projects/1"</span> <span class="se">\</span>
-  -H <span class="s2">"Authorization: Bearer B8x5Vj1O65r6wnoV"</span> <span class="se">\</span>
-  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
-  -d <span class="s1">'{"title": "Angola"}'</span> 
+-H <span class="s2">"Authorization: Bearer B8x5Vj1O65r6wnoV"</span> <span class="se">\</span>
+-H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+-d <span class="s1">'{
+      "title": "Angola",
+      "udf_progress": 70
+    }'</span> 
 </code></pre>
 <p><span class="optional"><b>REQUEST BODY PARAMETERS</b></span></p>
 
@@ -4139,27 +4138,27 @@ curl -v -X DELETE <span class="se">\</span>
 </thead><tbody>
 <tr>
 <td style="text-align: right"><strong>title</strong> <br> <span class="required"><code>required</code></span></td>
-<td style="text-align: left">The title is a string which represents the  title of a project. It is a required field. This may be up to 100 characters. This will throw an error if you post an empty value.</td>
+<td style="text-align: left">String representing the  title of a project. This may be up to 100 characters.</td>
 </tr>
 <tr>
-<td style="text-align: right"><strong>image_uuid</strong>  <br><span class="optional"><code>optional</code></span></td>
-<td style="text-align: left">Project&#39;s image is an optional field. This field accepts the Base64 encoded PNG string.This will be blank if you POST an empty value.</td>
+<td style="text-align: right"><strong>project_start_date</strong><br><code>optional</code></td>
+<td style="text-align: left">String value representing a date in ISO 8601 extended notation for date i.e. yyyy-MM-dd. The project is started from this date.</td>
 </tr>
 <tr>
-<td style="text-align: right"><strong>project_start_date</strong><br><span class="required"><code>optional</code></span></td>
-<td style="text-align: left">The date on which project has started.</td>
+<td style="text-align: right"><strong>end_date</strong> <br><code>optional</code></td>
+<td style="text-align: left">String value representing a date in ISO 8601 extended notation for date i.e. yyyy-MM-dd. The project is considered ended / completed on this date.</td>
 </tr>
 <tr>
-<td style="text-align: right"><strong>tags</strong>  <br><span class="optional"><code>optional</code></span></td>
-<td style="text-align: left">Tags is an optional filed. It’s displayed alongside the project in your list and can be useful for searching and filtering. This may be up to 50 characters. This will be blank if you post an empty value.</td>
+<td style="text-align: right"><strong>tags</strong>  <br><code>optional</code></td>
+<td style="text-align: left">An optional array of strings which could be attached to this project object as labels. This can be useful for the purpose of filtering, identification or other information. This may be up to 50 characters.</td>
 </tr>
 <tr>
-<td style="text-align: right"><strong>email</strong> <br><span class="optional"><code>optional</code></span></td>
-<td style="text-align: left">This field is used to display email address of project manager(for example)  .The maximum length of this field may be up to 254 characters. This will be blank if you POST an empty value.</td>
+<td style="text-align: right"><strong>email</strong> <br><code>optional</code></td>
+<td style="text-align: left">String value representing email address associated with project object. Email address must be properly formatted with a maximum length of 254 characters.</td>
 </tr>
 <tr>
-<td style="text-align: right"><strong>User defined fields</strong> <br><span class="optional"><code>optional</code></span></td>
-<td style="text-align: left">A user with admin rights can add such custom fields. These fields can be used to capture additional info in project. Different types of projects may have a different set of user-defined fields. <a href="#user-defined-fields">Learn more</a></td>
+<td style="text-align: right"><strong>udf_*</strong> <br><code>optional</code></td>
+<td style="text-align: left">A user with admin rights can add custom fields. These fields can be used to capture additional information in Project. Different types of projects may have a different set of user-defined fields. The value for user defined field can be passed as shown in example request. In first example <strong><em>udf_progress</em></strong> is a user defined field. <a href ="#user-defined-fields" class="api-ref">Learn more</a></td>
 </tr>
 </tbody></table>
 <h3 id='returns-4'>Returns</h3>
@@ -4187,21 +4186,23 @@ curl -v -X DELETE <span class="se">\</span>
 </tr>
 </tbody></table>
 <h2 id='delete-a-project'>Delete a project</h2>
-<p>Permanently deletes a project. It cannot be undone. By default, this operation will get failed if a project has any booking associated with it. To override this behaviour, forcefull delete can be used which will delete all bookings and then ultimately delete the project object.</p>
+<p>Permanently deletes requested project. It cannot be undone. By default, this operation will get failed if a project has any booking associated with it. To override this, forceful delete can be used which will delete all bookings and then ultimately delete the project object.</p>
 
 <blockquote>
-<p><code>DELETE v1/projects/{ID}</code></p>
+<p><strong><code>DELETE /v1/projects/{ID}</code></strong></p>
 
 <p>Example Request</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl -v -X DELETE <span class="s2">"https://app.eresourcescheduler.cloud/rest/v1/projects/1"</span> <span class="se">\</span>
-  -H <span class="s2">"Authorization: Bearer B8x5Vj1O65r6wnoV"</span>
+<pre class="highlight shell tab-shell"><code>curl -v -X DELETE <span class="se">\</span>
+<span class="s2">"https://app.eresourcescheduler.cloud/rest/v1/projects/1"</span> <span class="se">\</span>
+-H <span class="s2">"Authorization: Bearer B8x5Vj1O65r6wnoV"</span>
 </code></pre>
 <blockquote>
 <p>Example Request For Forcefull Delete </p>
 </blockquote>
 <pre class="highlight shell tab-shell"><code>curl -v -X DELETE <span class="se">\</span>
-<span class="s2">"https://app.eresourcescheduler.cloud/rest/v1/rpojects/1?force_delete_bookings=true"</span> 
+<span class="s2">"https://app.eresourcescheduler.cloud/rest/v1/rpojects/1?</span><span class="se">\</span><span class="s2">
+force_delete_bookings=true"</span> <span class="se">\</span>
 -H <span class="s2">"Authorization: Bearer B8x5Vj1O65r6wnoV"</span> 
 </code></pre><h3 id='returns-5'>Returns</h3>
 <table><thead>
@@ -4216,7 +4217,7 @@ curl -v -X DELETE <span class="se">\</span>
 </tr>
 <tr>
 <td style="text-align: right"><strong>409</strong> <br> <span class = "error"><code>Conflict</code></span></td>
-<td style="text-align: left">Conflict indicates that the project can not be deleted as there are bookings associated with this project. If you wish to delete it any way you must use force delete option by passing <span class = "error"><code>true</code></span> for parameter <span class = "error"><code>force_delete_bookings</code></span>. This operation deletes all bookings of requested project and project itself. This can not be undone. Example shown <span style="font-size:24px; font-weight:bold;">￼&#x1f449;</span></td>
+<td style="text-align: left">Conflict indicates that the project can not be deleted as there are bookings associated with this project. If you wish to delete it any way you must use force delete option by passing <span class = "error"><code>true</code></span> for parameter <code>force_delete_bookings</code>.This operation deletes all bookings of requested project and project itself (shown in example request).</td>
 </tr>
 <tr>
 <td style="text-align: right"><strong>403</strong> <br> <span class = "error"><code>Forbidden</code></span></td>
@@ -4287,15 +4288,15 @@ curl -v -X DELETE <span class="se">\</span>
 <td style="text-align: left">Name describes the name of task. This field is a <code>string</code> type of field</td>
 </tr>
 <tr>
-<td style="text-align: right"><strong>start_time</strong> <br> <span class="optional"><code>String</code></span></td>
+<td style="text-align: right"><strong>start_time</strong> <br><code>String</code></td>
 <td style="text-align: left">Start time describes the start time of task.</td>
 </tr>
 <tr>
-<td style="text-align: right"><strong>end_time</strong> <br> <span class="optional"><code>String</code></span></td>
+<td style="text-align: right"><strong>end_time</strong> <br><code>String</code></td>
 <td style="text-align: left">End time describes the end time of task.</td>
 </tr>
 <tr>
-<td style="text-align: right"><strong>project_id</strong> <br> <span class ="optional"><code>Integer</code></span></td>
+<td style="text-align: right"><strong>project_id</strong> <br><code>Integer</code></td>
 <td style="text-align: left">eRS Cloud generated unique identifier for the project object.</td>
 </tr>
 </tbody></table>
@@ -4348,11 +4349,11 @@ curl -v -X DELETE <span class="se">\</span>
 <td style="text-align: left">Name describes the name of task. This field is a <code>string</code> type of field</td>
 </tr>
 <tr>
-<td style="text-align: right"><strong>start_time</strong> <br> <span class="optional"><code>optional</code></span></td>
+<td style="text-align: right"><strong>start_time</strong> <br><code>optional</code></td>
 <td style="text-align: left">Start time describes the start time of task. This filed can be passed null, as eRS Cloud provids you the facility to create an task without start time. This field is a <code>String</code> type of field.</td>
 </tr>
 <tr>
-<td style="text-align: right"><strong>end_time</strong> <br> <span class="optional"><code>optional</code></span></td>
+<td style="text-align: right"><strong>end_time</strong> <br><code>optional</code></td>
 <td style="text-align: left">End time describes the end time of task. This filed can be passed null,as eRS Cloud provides you the facility to create an task without end time.This field is a <code>String</code> type of field.</td>
 </tr>
 </tbody></table>
@@ -4407,11 +4408,11 @@ curl -v -X DELETE <span class="se">\</span>
 <td style="text-align: left">Name describes the name of task. This field is a <code>string</code> type of field.This will throw an error if you post an empty value.</td>
 </tr>
 <tr>
-<td style="text-align: right"><strong>start_time</strong> <br> <span class="optional"><code>optional</code></span></td>
+<td style="text-align: right"><strong>start_time</strong> <br><code>optional</code></td>
 <td style="text-align: left">Start time describes the start time of task. This filed can be passed null, as eRS Cloud provids you the facility to create an task without start time. This field is a <code>String</code> type of field.</td>
 </tr>
 <tr>
-<td style="text-align: right"><strong>end_time</strong> <br> <span class="optional"><code>optional</code></span></td>
+<td style="text-align: right"><strong>end_time</strong> <br><code>optional</code></td>
 <td style="text-align: left">End time describes the end time of task. This filed can be passed null,as eRS Cloud provides you the facility to create an task without end time.This field is a <code>String</code> type of field.</td>
 </tr>
 </tbody></table>
@@ -4554,11 +4555,11 @@ curl -v -X DELETE <span class="se">\</span>
 </tr>
 </thead><tbody>
 <tr>
-<td style="text-align: right"><strong>limit</strong><br><span class="optional"><code>optional</code></span></td>
+<td style="text-align: right"><strong>limit</strong><br><code>optional</code></td>
 <td style="text-align: left">The limit keyword is used to limit the number of notes returned from a result set.<br><em>The default value of <code>limit</code> is</em>  <span class="error"><em><code>25</code></em></span><br><em>Maximum value of limit can be</em> <span class="error"><em><code>100.</code></em></span> <em>If value of Limit is more than</em><span class="error"><em><code>100</code></em></span>  <em>then it will get set Maximum value of limit which is</em> <span class="error"><em><code>100.</code></em></span></td>
 </tr>
 <tr>
-<td style="text-align: right"><strong>offset</strong><br><span class="optional"><code>optional</code></span></td>
+<td style="text-align: right"><strong>offset</strong><br><code>optional</code></td>
 <td style="text-align: left">The Offset value allows you to specify the ranking number of the first item on the page .The Offset value is most often used together with the Limit keyword.<br><em>The default value of <code>offset</code> is</em> <span class="error"><em><code>0</code></em> </span></td>
 </tr>
 </tbody></table>
@@ -4573,7 +4574,7 @@ curl -v -X DELETE <span class="se">\</span>
 </tr>
 </thead><tbody>
 <tr>
-<td style="text-align: right"><strong>Order_by</strong><br><span class="optional"><code>optional</code></span></td>
+<td style="text-align: right"><strong>Order_by</strong><br><code>optional</code></td>
 <td style="text-align: center"><li>created_on <em>(Default)</em></li></td>
 <td style="text-align: left">List of notes will be returned and sorted by it&#39;s created date.</td>
 </tr>
@@ -4593,27 +4594,27 @@ curl -v -X DELETE <span class="se">\</span>
 </tr>
 </thead><tbody>
 <tr>
-<td style="text-align: right"><strong>id</strong><br> <span class="optional"><code>integer</code></span></td>
+<td style="text-align: right"><strong>id</strong><br><code>integer</code></td>
 <td style="text-align: left">eRS Cloud generated unique identifier for the notes.</td>
 </tr>
 <tr>
-<td style="text-align: right"><strong>created_on</strong> <br><span class="optional"><code>string</code></span></td>
-<td style="text-align: left">Time at which the notes object is created.</td>
-</tr>
-<tr>
-<td style="text-align: right"><strong>content</strong> <br> <span class="optional"><code>string</code></span></td>
+<td style="text-align: right"><strong>content</strong> <br><code>string</code></td>
 <td style="text-align: left">Text written inside notes body .</td>
 </tr>
 <tr>
-<td style="text-align: right"><strong>modified_on</strong> <br><span class="optional"><code>string</code></span></td>
+<td style="text-align: right"><strong>created_on</strong> <br><code>string</code></td>
+<td style="text-align: left">Time at which the notes object is created.</td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>modified_on</strong> <br><code>string</code></td>
 <td style="text-align: left">Describes the latest modification date.</td>
 </tr>
 <tr>
-<td style="text-align: right"><strong>created_by</strong> <br> <span class="optional"><code>object</code></span></td>
+<td style="text-align: right"><strong>created_by</strong> <br><code>object</code></td>
 <td style="text-align: left">This field describes by whom notes is created .</td>
 </tr>
 <tr>
-<td style="text-align: right"><strong>modified_by</strong> <br><span class="optional"><code>object</code></span></td>
+<td style="text-align: right"><strong>modified_by</strong> <br><code>object</code></td>
 <td style="text-align: left">This field describes by whom the modification is done.</td>
 </tr>
 </tbody></table>
@@ -4787,41 +4788,42 @@ curl -v -X DELETE <span class="s2">"https://app.eresourcescheduler.cloud/rest/v1
 <p>Example Response</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"modified_on"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"role"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Functional Manager"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">34</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"resource"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Andy Murray"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w">
   </span><span class="p">},</span><span class="w">
-  </span><span class="s2">"resource"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Anselm Batie"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">97</span><span class="w">
+  </span><span class="s2">"role"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Business Analyst"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
   </span><span class="p">},</span><span class="w">
-  </span><span class="s2">"end_time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-11-14T17:00:00"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"project"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Jaipur"</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mars Rover"</span><span class="w">
   </span><span class="p">},</span><span class="w">
-  </span><span class="s2">"effort"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"priority"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"created_by"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John Doe"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="s2">"billable"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
-  </span><span class="s2">"start_time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-11-07T09:00:00"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"unit"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
   </span><span class="s2">"task"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"created_on"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-11-22T16:18:13.957046Z"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"modified_by"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">25</span><span class="w">
+  </span><span class="s2">"start_time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-12-26T09:00:00"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"end_time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-12-31T17:00:00"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"unit"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"effort"</span><span class="p">:</span><span class="w"> </span><span class="mf">100.0</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+  </span><span class="s2">"created_on"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-09-07T04:09:45.254681Z"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"created_by"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Rahul Sharma"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">118</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"modified_on"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-11-21T06:23:02.494932Z"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"modified_by"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Rahul Sharma"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">118</span><span class="w">
+  </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p><span style="color:#b93d6a"><code>Booking</code></span> object represents an assignment or schedule of <a href ="#resource" class="api-ref">resource</a> on a certain <a href="#project" class="api-ref">project</a> or <a href="#tasks" class="api-ref">task</a> for a particular time range.<a href ="#resource" class="api-ref"> Resource </a>can be booked / scheduled  on a <a href="#project" class="api-ref">project </a>(and task) with a defined effort and capacity along with other custom defined fields.</p>
 
 <p><span class="optional"><b>ATTRIBUTES</b></span></p>
 
-<p>Following attributes are available for booking object. Booking object can also be customized to have additional attributes by an Admin user using <strong>eRS Cloud Application</strong>. To know about attributes currently applied for booking object please check Booking Profile API.</p>
+<p>Following attributes are available for booking object. Booking object can also be customized to have additional attributes by an Admin user using <strong>eRS Cloud Application</strong>. To know about attributes currently applied for booking object please check <a href="#booking-profile" class="api-ref">Booking Profile</a> API.</p>
 
 <table><thead>
 <tr>
@@ -4830,76 +4832,83 @@ curl -v -X DELETE <span class="s2">"https://app.eresourcescheduler.cloud/rest/v1
 </tr>
 </thead><tbody>
 <tr>
-<td style="text-align: right"><strong>id</strong> <br><span class="optional"><code>integer</code></span></td>
-<td style="text-align: left">System generated unique identifier for this particular booking object.</td>
+<td style="text-align: right"><strong>id</strong> <br><code>integer</code></td>
+<td style="text-align: left">eRS Cloud-generated unique identifier for the booking object.</td>
 </tr>
 <tr>
-<td style="text-align: right"><strong>resource</strong> <br><span class="optional"><code>object</code></span></td>
-<td style="text-align: left">Resource object which this booking belongs to.</td>
+<td style="text-align: right"><strong>resource</strong> <br><code>object</code></td>
+<td style="text-align: left">Resource object to which this booking belongs.</td>
 </tr>
 <tr>
-<td style="text-align: right"><strong>project</strong> <br><span class="optional"><code>object</code></span></td>
-<td style="text-align: left">Project object this booking was created for.</td>
+<td style="text-align: right"><strong>project</strong> <br><code>object</code></td>
+<td style="text-align: left">Project object for which this booking was created.</td>
 </tr>
 <tr>
-<td style="text-align: right"><strong>task</strong> <br><span class="optional"><code>object</code></span></td>
-<td style="text-align: left">Task object defines what need to be done. Tasks could be one of the defined tasks of booking&#39;s project object.</td>
+<td style="text-align: right"><strong>task</strong> <br><code>object</code></td>
+<td style="text-align: left">Task object defines what needs to be done. Tasks could be one of the defined tasks of booking&#39;s project object.</td>
 </tr>
 <tr>
-<td style="text-align: right"><strong>role</strong> <br><span class="optional"><code>object</code></span></td>
+<td style="text-align: right"><strong>role</strong> <br><code>object</code></td>
 <td style="text-align: left">Role object defines which role Resource needs to perform for this booking.</td>
 </tr>
 <tr>
-<td style="text-align: right"><strong>start_time</strong> <br><span class="optional"><code>string</code></span></td>
+<td style="text-align: right"><strong>start_time</strong> <br><code>string</code></td>
 <td style="text-align: left">Represents starting time of booking.</td>
 </tr>
 <tr>
-<td style="text-align: right"><strong>end_time</strong> <br><span class="optional"><code>string</code></span></td>
+<td style="text-align: right"><strong>end_time</strong> <br><code>string</code></td>
 <td style="text-align: left">Represents ending time of booking.</td>
 </tr>
 <tr>
-<td style="text-align: right"><strong>effort</strong> <br><span class="optional"><code>float</code></span></td>
+<td style="text-align: right"><strong>effort</strong> <br><code>float</code></td>
 <td style="text-align: left">Effort value for this booking.</td>
 </tr>
 <tr>
-<td style="text-align: right"><strong>unit</strong> <br><span class="optional"><code>integer</code></span></td>
-<td style="text-align: left">This represents unit of effort for this booking. Unit could be one of (percent of capacity,  booking hours,hours per day, FTE, Specific time per day)</td>
+<td style="text-align: right"><strong>unit</strong> <br><code>integer</code></td>
+<td style="text-align: left">Represents unit of effort for this booking. Unit could be one of (percent of capacity,  booking hours,hours per day, FTE, Specific time per day)</td>
 </tr>
 <tr>
-<td style="text-align: right"><strong>tags</strong> <br><span class="optional"><code>array of strings</code></span></td>
+<td style="text-align: right"><strong>tags</strong> <br><code>array of strings</code></td>
 <td style="text-align: left">Tags are the list of strings (labels) attached to this booking object which could be used for the purpose of identification or other information.</td>
 </tr>
 <tr>
-<td style="text-align: right"><strong>created_on</strong> <br><span class="optional"><code>string</code></span></td>
-<td style="text-align: left">Time at which the booking object is created.</td>
+<td style="text-align: right"><strong>created_on</strong> <br><code>string</code></td>
+<td style="text-align: left">Timestamp at which this project object was created.</td>
 </tr>
 <tr>
-<td style="text-align: right"><strong>modified_by</strong> <br><span class="optional"><code>object</code></span></td>
-<td style="text-align: left">This field describes by whom the modification is done.</td>
+<td style="text-align: right"><strong>created_by</strong> <br> <code>object</code></td>
+<td style="text-align: left">Object representing user who created this booking object.</td>
 </tr>
 <tr>
-<td style="text-align: right"><strong>User defined fields</strong> <br><span class="optional"><code>optional</code></span></td>
-<td style="text-align: left">Custom user-defined fields used to capture additional information of booking. <a href="#user-defined-fields">Learn more</a></td>
+<td style="text-align: right"><strong>modified_on</strong> <br><code>string</code></td>
+<td style="text-align: left">Represents latest modification timestamp.</td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>modified_by</strong> <br><code>object</code></td>
+<td style="text-align: left">Object representing most recent user who modified this booking object.</td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>udf_*</strong></td>
+<td style="text-align: left">Custom user-defined fields used to capture additional information of booking. User defined field can be of multiple types. Custom fields are very useful to configure booking objects to best fit requirements. In given example response, all keys starting with prefix <code>udf_</code> are user defined custom fields. <a href="#user-defined-fields" class="api-ref">Learn more</a></td>
 </tr>
 </tbody></table>
 <h2 id='create-a-booking'>Create a booking</h2>
 <blockquote>
-<p><code>POST v1/bookings</code></p>
+<p><strong><code>POST v1/bookings</code></strong></p>
 
 <p>Example Request:</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code> curl -v -X POST <span class="se">\</span>
- <span class="s2">"https://app.eresourcescheduler.cloud/rest/v1/bookings"</span> <span class="se">\</span>
-  -H <span class="s2">"Authorization: Bearer B8x5Vj1O65r6wnoV"</span> <span class="se">\</span>
-  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
-  -d <span class="s1">'{ 
-        "resource_id": 1, 
-        "project_id" : 9, 
-        "start_time" : "2017-06-01T09:00", 
-        "end_time": "2017-06-11T17:00", 
-        "effort": 100, 
-        "unit": 1 
-      }'</span>
+<pre class="highlight shell tab-shell"><code> curl -v -X POST <span class="s2">"https://app.eresourcescheduler.cloud/rest/v1/bookings"</span> <span class="se">\</span>
+ -H <span class="s2">"Authorization: Bearer B8x5Vj1O65r6wnoV"</span> <span class="se">\</span>
+ -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+ -d <span class="s1">'{ 
+       "resource_id": 1, 
+       "project_id" : 9, 
+       "start_time" : "2017-06-01T09:00", 
+       "end_time": "2017-06-11T17:00", 
+       "effort": 100, 
+       "unit": 1 
+     }'</span>
 </code></pre>
 <p>Creates a new booking object.</p>
 
@@ -4928,24 +4937,24 @@ curl -v -X DELETE <span class="s2">"https://app.eresourcescheduler.cloud/rest/v1
 <td style="text-align: left">Represents end date and time for booking object. This field accepts value in ISO 8601 extended format for date-time i.e. yyyy-mm-ddThh:mm:ss. The value must be snapped in 15 minutes interval, which effectively means that minutes values should be one of(00/15/30/45) and seconds value should always be 0. (if given). End date time must always be ahead of start date time by at least 15 minutes as a booking of less than 15 minutes is not allowed.</td>
 </tr>
 <tr>
-<td style="text-align: right"><strong>role_id</strong>  <br><span class="optional"><code>optional</code></span></td>
+<td style="text-align: right"><strong>role_id</strong>  <br><code>optional</code></td>
 <td style="text-align: left">Id of role object which needs to be performed for this booking. This could be id of a role which targeted resource performs (i.e &quot;Performing Role&quot;) or any other role (i.e. &quot;Non-Performing-Role&quot;)</td>
 </tr>
 <tr>
-<td style="text-align: right"><strong>effort</strong>  <br><span class="optional"><code>optional</code></span></td>
+<td style="text-align: right"><strong>effort</strong>  <br><code>optional</code></td>
 <td style="text-align: left">This defines how much effort is needed to complete the task. Effort value is a floating point number which could not be less than 0 and greater than 99999999.99. If effort value is not provided system will take default value 0.</td>
 </tr>
 <tr>
-<td style="text-align: right"><strong>unit</strong><br><span class="optional"><code>optional</code></span></td>
-<td style="text-align: left">Integer number (1-5) representing unit in which effort is being defined. Unit value could be one of the following : <li><strong>1</strong> for &#39;Percent of capacity&#39; : This is default unit for booking. This represents effort in percentage of capacity of intended resource for defined time range. </li> <li> <strong>2</strong> for &#39;Total Booking Hours&#39; : This defines effort value in fixed hours which doesn&#39;t get changed upon changes in booking.</li> <li> <strong>3</strong> for &#39;Hours Per day&#39; : This could be used where a certain no of hours need to be spend for a booking. For example 4 hours per day (working day).</li> <li> <strong>4</strong> for &#39;Full Time Equivalent&#39; : Full time equivalent is calculated using FTE calendar defined in Admin section. Capacity from FTE calendar for defined time in booking, is considered as 1 FTE.</li> <li> <strong>5</strong> for &#39;Time Per Day&#39; : It is useful where effort needs to put in on a particular time of every working day i.e. 4:15 PM to 5:30 PM daily. Time portion of <strong>start_time</strong> argument is considered as per day start time, and Time portion of <strong>end_time</strong> argument is considered per day end time for this booking. </li></td>
+<td style="text-align: right"><strong>unit</strong><br><code>optional</code></td>
+<td style="text-align: left">Integer number (1-5) representing unit in which effort is being defined. Unit value could be one of the following : <li><strong>1</strong> for &#39;Percent of capacity&#39; : This is default unit for booking. This represents effort in percentage of capacity of intended resource for defined time range. </li> <li> <strong>2</strong> for &#39;Total Booking Hours&#39; : This defines effort value in fixed hours which doesn&#39;t get changed upon changes in booking.</li> <li> <strong>3</strong> for &#39;Hours Per day&#39; : This could be used where a certain no of hours per day need to be spend for a booking. For example 4 hours per day (working day).</li> <li> <strong>4</strong> for &#39;Full Time Equivalent&#39; : Full time equivalent is calculated using FTE calendar defined in Admin section. Capacity from FTE calendar for defined time in booking, is considered as 1 FTE.</li> <li> <strong>5</strong> for &#39;Time Per Day&#39; : It is useful where effort needs to put in on a particular time of every working day i.e. 4:15 PM to 5:30 PM daily. Time portion of <strong>start_time</strong> argument is considered as per day start time, and Time portion of <strong>end_time</strong> argument is considered per day end time for this booking. </li></td>
 </tr>
 <tr>
-<td style="text-align: right"><strong>tags</strong>  <br><span class="optional"><code>optional</code></span></td>
+<td style="text-align: right"><strong>tags</strong>  <br><code>optional</code></td>
 <td style="text-align: left">An optional array of strings which could be attached to this booking object as labels. This can be useful for the purpose of identification or other information.</td>
 </tr>
 <tr>
-<td style="text-align: right"><strong>user_defined_field</strong> <br><span class="optional"><code>optional</code></span></td>
-<td style="text-align: left">A user with admin rights can add such custom fields. These fields can be used to capture additional info in bookings. <a href="#user-defined-fields">Learn more</a></td>
+<td style="text-align: right"><strong>udf_*</strong> <br><code>optional</code></td>
+<td style="text-align: left">A user with admin rights can add custom fields. These fields can be used to capture additional information in Projects. Different types of projects may have a different set of user-defined fields. The value for user defined field can be passed as shown in example request. In given example <strong><em>udf_progress</em></strong></span> is a user defined field. <a href="#user-defined-fields" class="api-ref">Learn more</a></td>
 </tr>
 </tbody></table>
 <h3 id='returns'>Returns</h3>
@@ -4957,7 +4966,7 @@ curl -v -X DELETE <span class="s2">"https://app.eresourcescheduler.cloud/rest/v1
 </thead><tbody>
 <tr>
 <td style="text-align: left"><strong>201</strong> <br><span class = "success"><code>Created</code></span></td>
-<td style="text-align: left">This status code indicates that the operation was successful and  a booking get created successfully.</td>
+<td style="text-align: left">This status code indicates that the operation was successful and  a booking is created successfully.</td>
 </tr>
 <tr>
 <td style="text-align: left"><strong>400</strong> <br> <span class = "error"><code>Bad Request</code></span></td>
@@ -4972,60 +4981,62 @@ curl -v -X DELETE <span class="s2">"https://app.eresourcescheduler.cloud/rest/v1
 <p>Returns list of bookings. The bookings are returned sorted by booking&#39;s start_time and booking&#39;s id. </p>
 
 <blockquote>
-<p><code>GET v1/bookings</code></p>
+<p><strong><code>GET /v1/bookings</code></strong></p>
 
 <p>Example Request</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code> curl -v -X GET <span class="se">\</span>
- <span class="s2">"https://app.eresourcescheduler.cloud/rest/v1/bookings?start=2018-01-01&amp;end=2018-12-31"</span><span class="se">\</span>
-  -H <span class="s2">"Authorization: Bearer B8x5Vj1O65r6wnoV"</span>
+<pre class="highlight shell tab-shell"><code> curl -v <span class="se">\</span>
+<span class="s2">"https://app.eresourcescheduler.cloud/rest/v1/bookings?</span><span class="se">\</span><span class="s2">
+start=2018-01-01&amp;end=2018-12-31"</span> <span class="se">\</span>
+-H <span class="s2">"Authorization: Bearer B8x5Vj1O65r6wnoV"</span>
 </code></pre>
 <blockquote>
 <p>Example Request With Offset And Limit </p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl -v -X GET <span class="se">\</span>
-<span class="s2">"https://app.eresourcescheduler.cloud/rest/v1/bookings?start=2018-01-01&amp;end=2018-12-31&amp;offset=1&amp;limit=1"</span> <span class="se">\</span>
- -H <span class="s2">"Authorization: Bearer B8x5Vj1O65r6wnoV"</span>
+<pre class="highlight shell tab-shell"><code>curl -v <span class="se">\</span>
+<span class="s2">"https://app.eresourcescheduler.cloud/rest/v1/bookings?</span><span class="se">\</span><span class="s2">
+start=2018-01-01&amp;end=2018-12-31&amp;offset=1&amp;limit=1"</span> <span class="se">\</span>
+-H <span class="s2">"Authorization: Bearer B8x5Vj1O65r6wnoV"</span>
 </code></pre>
 <blockquote>
 <p>Example Response</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-   </span><span class="s2">"totalcount"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span><span class="w">
-   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-     </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"modified_on"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"role"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Functional Manager"</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="s2">"resource"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Anselm Batie"</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">97</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="s2">"end_time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-11-14T17:00:00"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"project"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Jaipur"</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="s2">"effort"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"priority"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"created_by"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John Doe"</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="s2">"billable"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
-        </span><span class="s2">"start_time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-11-07T09:00:00"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"unit"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"task"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"created_on"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-11-22T16:18:13.957046Z"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"modified_by"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">25</span><span class="w">
-     </span><span class="p">},</span><span class="w">
-     </span><span class="p">{</span><span class="err">...</span><span class="p">},</span><span class="w">
-     </span><span class="p">{</span><span class="err">...</span><span class="p">}</span><span class="w">
-   </span><span class="p">]</span><span class="w">
+  </span><span class="s2">"total_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">34</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"resource"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Andy Murray"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"role"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Business Analyst"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"project"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mars Rover"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"task"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"start_time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-12-26T09:00:00"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"end_time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-12-31T17:00:00"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"unit"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"effort"</span><span class="p">:</span><span class="w"> </span><span class="mf">100.0</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+      </span><span class="s2">"created_on"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-09-07T04:09:45.254681Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"created_by"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Rahul Sharma"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">118</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"modified_on"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-11-21T06:23:02.494932Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"modified_by"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Rahul Sharma"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">118</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p><span class="optional"><b>REQUEST QUERY PARAMETERS</b></span></p>
@@ -5037,24 +5048,26 @@ curl -v -X DELETE <span class="s2">"https://app.eresourcescheduler.cloud/rest/v1
 </tr>
 </thead><tbody>
 <tr>
-<td style="text-align: right"><strong>limit</strong><br><span class="optional"><code>optional</code></span></td>
-<td style="text-align: left">The limit keyword is used to limit the number of rows returned from a result set.<br><em>The default value of limit is</em>  <span class="error"><em><code>500</code></em></span><br><em>Maximum value of limit can be</em> <span class="error"><em><code>5000.</code></em></span> <em>If value of limit is greater than</em><span class="error"><em><code>5000</code></em></span>  <em>then it will set to  Maximum value of limit which is</em>  <span class="error"><em><code>5000.</code></em></span></td>
+<td style="text-align: right"><strong>limit</strong><br><code>optional</code></td>
+<td style="text-align: left">The limit keyword is used to limit the number of records returned from a result set. If a limit count is given, no more than that many records will be returned (but possibly less, if the query itself yields less records)<br><em>Default value of <code>limit</code> is</em> <span class="required"><strong><code>500</code></strong></span><br><em>Maximum value of <code>limit</code> can be</em> <span class="required"><strong><code>5000</code></strong></span><br><em>If value of <code>limit</code> is greater than</em><span class="required"><strong><code>5000</code></strong></span>  <em>then it will set to maximum value of limit which is</em> <span class="required"><strong><code>5000</code></strong></span></td>
 </tr>
 <tr>
-<td style="text-align: right"><strong>offset</strong><br><span class="optional"><code>optional</code></span></td>
-<td style="text-align: left">The Offset value allows you to specify the ranking number of the first item on the page .The Offset value is most often used together with the Limit keyword.<br><em>The default value of <code>offset</code> is</em> <span class="error"><em><code>0</code></em> </span></td>
+<td style="text-align: right"><strong>offset</strong><br><code>optional</code></td>
+<td style="text-align: left">The Offset value allows you to specify the ranking number of the first item on the page .The Offset value is most often used together with the Limit keyword.<br><em>The default value of <code>offset</code> is</em> <span class="required"><strong><code>0</code></strong></span></td>
 </tr>
 <tr>
-<td style="text-align: right"><strong>start</strong><br><span class="optional"><code>optional</code></span></td>
+<td style="text-align: right"><strong>start</strong><br><code>optional</code></td>
 <td style="text-align: left">Start value is used to get number of bookings in which start date is equal to or after start.</td>
 </tr>
 <tr>
-<td style="text-align: right"><strong>end</strong><br><span class="optional"><code>optional</code></span></td>
+<td style="text-align: right"><strong>end</strong><br><code>optional</code></td>
 <td style="text-align: left">End value is used to get number of bookings in which end date is before or equal to end.</td>
 </tr>
+<tr>
+<td style="text-align: right"></td>
+<td style="text-align: left"><em><strong>Note</strong> : You have to give values of both <code>start</code> and <code>end</code> to get bookings in that duration. If no value is given then bookings of current month will be listed, but if value of either <code>start</code> or <code>end</code> is given then you will get bad request.</em></td>
+</tr>
 </tbody></table>
-
-<p><sup class = "error">*</sup>You have to give values of both start and end to get bookings in that duration .If you don&#39;t give any value then you will get bookings of current month, but if you give either value of start or end then you will get bad request.</p>
 <h3 id='returns-2'>Returns</h3>
 <table><thead>
 <tr>
@@ -5064,11 +5077,11 @@ curl -v -X DELETE <span class="s2">"https://app.eresourcescheduler.cloud/rest/v1
 </thead><tbody>
 <tr>
 <td style="text-align: right"><strong>200</strong> <br> <span class = "success"><code>OK</code></span></td>
-<td style="text-align: left">This indicates that the operation was successful and  list of bookings is returned.</td>
+<td style="text-align: left">This indicates that the operation was successful and list of bookings is returned.</td>
 </tr>
 <tr>
 <td style="text-align: right"><strong>400</strong> <br> <span class = "error"><code>Bad Request</code> </span></td>
-<td style="text-align: left">Bad Request may occur when offset and limit value is negative integer.</td>
+<td style="text-align: left">Bad Request may occur when offset or limit value is negative integer.</td>
 </tr>
 <tr>
 <td style="text-align: right"><strong>403</strong> <br> <span class = "error"><code>Forbidden</code></span></td>
@@ -5077,7 +5090,7 @@ curl -v -X DELETE <span class="s2">"https://app.eresourcescheduler.cloud/rest/v1
 </tbody></table>
 <h2 id='retrieve-a-booking'>Retrieve a booking</h2>
 <blockquote>
-<p><code>GET v1/bookings/{ID}</code></p>
+<p><strong><code>GET v1/bookings/{ID}</code></strong></p>
 
 <p>Example Request</p>
 </blockquote>
@@ -5146,7 +5159,7 @@ curl -v -X DELETE <span class="s2">"https://app.eresourcescheduler.cloud/rest/v1
 
 <p>Filtering API responses to retrieve specific data.</p>
 
-<p>The filter parameter allows for filtering the results returned from the various endpoint in various ways. For example fetching only booking having booking id 1 by adding id:1 to your query.<a href="#filters">Read more</a></p>
+<p>The filter parameter allows for filtering the results returned from the various endpoint in various ways. For example fetching only booking having booking id 1 by adding id:1 to your query.<a href ="#filters" class= "api-ref"> Read more</a></p>
 
 <blockquote>
 <p>Example Request For Filter In JSON Format</p>
@@ -5194,12 +5207,12 @@ curl -v -X DELETE <span class="s2">"https://app.eresourcescheduler.cloud/rest/v1
 </tbody></table>
 
 <p>You can filter booking by resource-fields. 
- <em>For Resource-Fields please <a href="#search-resources">click here</a>.</em></p>
+ <em>For Resource-Fields please <a href="#search-resources" class="api-ref">click here</a>.</em></p>
 
 <p>You can also filter booking by project-fields. 
- <em>For Project-Fields please <a href="#search-projects">click here</a>.</em></p>
+ <em>For Project-Fields please <a href="#search-projects" class="api-ref">click here</a>.</em></p>
 
-<p><em>For User-defined fields please <a href="#filters-for-user-defined-fields">click here</a>.</em> </p>
+<p><em>For User-defined fields please <a href="#filters-for-user-defined-fields" class="api-ref">click here</a>.</em> </p>
 
 <p>You can filter booking by multiple objects.  For example fetching only booking having resource_id as 2 , project_id as 9 and booking_id as 1  <span style="font-size:24px; font-weight:bold;">￼&#x1f449;</span></p>
 <h2 id='update-a-booking'>Update a booking</h2>
@@ -5245,24 +5258,24 @@ curl -v -X DELETE <span class="s2">"https://app.eresourcescheduler.cloud/rest/v1
 <td style="text-align: left">Represents end date and time for booking object. This field accepts value in ISO 8601 extended format for date-time i.e. yyyy-mm-ddThh:mm:ss. The value must be snapped in 15 minutes interval, which effectively means that minutes values should be one of(00/15/30/45) and seconds value should always be 0. (if given). End date time must always be ahead of start date time by at least 15 minutes as a booking of less than 15 minutes is not allowed. This will throw an error if you post an empty value.</td>
 </tr>
 <tr>
-<td style="text-align: right"><strong>role_id</strong>  <br><span class="optional"><code>optional</code></span></td>
+<td style="text-align: right"><strong>role_id</strong>  <br><code>optional</code></td>
 <td style="text-align: left">Id of role object which needs to be performed for this booking. This could be id of a role which targeted resource performs (i.e &quot;Performing Role&quot;) or any other role (i.e. &quot;Non-Performing-Role&quot;)</td>
 </tr>
 <tr>
-<td style="text-align: right"><strong>effort</strong>  <br><span class="optional"><code>optional</code></span></td>
+<td style="text-align: right"><strong>effort</strong>  <br><code>optional</code></td>
 <td style="text-align: left">This defines how much effort is needed to complete the task. Effort value is a floating point number which could not be less than 0 and greater than 99999999.99. If effort value is not provided system will take default value 0.</td>
 </tr>
 <tr>
-<td style="text-align: right"><strong>unit</strong><br><span class="optional"><code>optional</code></span></td>
+<td style="text-align: right"><strong>unit</strong><br><code>optional</code></td>
 <td style="text-align: left">Integer number (1-5) representing unit in which effort is being defined. Unit value could be one of the following : <li><strong>1</strong> for &#39;Percent of capacity&#39; : This is default unit for booking. This represents effort in percentage of capacity of intended resource for defined time range. </li> <li> <strong>2</strong> for &#39;Total Booking Hours&#39; : This defines effort value in fixed hours which doesn&#39;t get changed upon changes in booking.</li> <li> <strong>3</strong> for &#39;Hours Per day&#39; : This could be used where a certain no of hours need to be spend for a booking. For example 4 hours per day (working day).</li> <li> <strong>4</strong> for &#39;Full Time Equivalent&#39; : Full time equivalent is calculated using FTE calendar defined in Admin section. Capacity from FTE calendar for defined time in booking, is considered as 1 FTE.</li> <li> <strong>5</strong> for &#39;Time Per Day&#39; : It is useful where effort needs to put in on a particular time of every working day i.e. 4:15 PM to 5:30 PM daily. Time portion of <strong>start_time</strong> argument is considered as per day start time, and Time portion of <strong>end_time</strong> argument is considered per day end time for this booking. </li></td>
 </tr>
 <tr>
-<td style="text-align: right"><strong>tags</strong>  <br><span class="optional"><code>optional</code></span></td>
+<td style="text-align: right"><strong>tags</strong>  <br><code>optional</code></td>
 <td style="text-align: left">Tags is an optional filed. Tags are attached to this booking object which could be used for the purpose of identification or other information.. This may be up to 50 characters. This will be blank if you post an empty value.</td>
 </tr>
 <tr>
-<td style="text-align: right"><strong>User defined fields</strong> <br><span class="optional"><code>optional</code></span></td>
-<td style="text-align: left">A user with admin rights can add such custom fields. These fields can be used to capture additional info in bookings. <a href="#user-defined-fields">Learn more</a></td>
+<td style="text-align: right"><strong>udf_*</strong> <br><code>optional</code></td>
+<td style="text-align: left">A user with admin rights can add such custom fields. These fields can be used to capture additional info in bookings. <a href="#user-defined-fields" class="api-ref">Learn more</a></td>
 </tr>
 </tbody></table>
 <h3 id='returns-4'>Returns</h3>
