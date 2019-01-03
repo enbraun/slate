@@ -105,8 +105,8 @@ Name               |  Description
 | Code      |Description |
  :---        |    :----   |
 | **201** <br><span class = "success">`Created`</span> | This status code indicates that the operation was successful and  a booking is created successfully.|
-| **400** <br> <span class = "error">`Bad Request`</span> | Bad Request error occurs when a request is malformed, syntactically incorrect, missing required parameters or any unknown parameter is passed. Additionally, Bad request may also occur in one of these conditions :<ul><li>Booking is starting before the **start_date** of resource or ending after the **last_working_date** of resource (if resource has a last_working_date defined.)</li><li>Resource is **Archived** i.e. if targeted resource has a last working date of past.</li><li>Project is marked as  **Archived**.</li><li>Duration of booking is more than 5 years.</li></ul> |
-| **403** <br> <span class = "error">`Forbidden`</span> |Authorization failed due to insufficient permissions. This occurs when user does not have enough access rights to perform this action. Access for each user can be controlled by an Administrator using eRS Cloud Application.|
+**400** <br> <span class = "error">`Bad Request`</span> | Bad Request error occurs when a request is malformed, syntactically incorrect, missing required parameters or any unknown parameter is passed. Additionally, Bad request may also occur in one of these conditions :<ul><li>Booking is starting before the **start_date** of resource or ending after the **last_working_date** of resource (if resource has a last_working_date defined.)</li><li>Resource is **Archived** i.e. if targeted resource has a last working date of past.</li><li>Project is marked as  **Archived**.</li><li>Duration of booking is more than 5 years.</li></ul>
+**403** <br> <span class = "error">`Forbidden`</span> |Authorization failed due to insufficient permissions. This occurs when user does not have enough access rights to perform this action. Access for each user can be controlled by an Administrator using eRS Cloud Application.|
 
 ## List bookings
 
@@ -117,8 +117,7 @@ Returns list of bookings. The bookings are returned sorted by booking's start_ti
 > Example Request
 
 ```shell
- curl -v \
-"https://app.eresourcescheduler.cloud/rest/v1/bookings?\
+curl -v "https://app.eresourcescheduler.cloud/rest/v1/bookings?\
 start=2018-01-01&end=2018-12-31" \
 -H "Authorization: Bearer B8x5Vj1O65r6wnoV"
 ```
@@ -126,8 +125,7 @@ start=2018-01-01&end=2018-12-31" \
 >Example Request With Offset And Limit 
 
 ```shell 
-curl -v \
-"https://app.eresourcescheduler.cloud/rest/v1/bookings?\
+curl -v "https://app.eresourcescheduler.cloud/rest/v1/bookings?\
 start=2018-01-01&end=2018-12-31&offset=1&limit=1" \
 -H "Authorization: Bearer B8x5Vj1O65r6wnoV"
 ```
@@ -178,11 +176,11 @@ start=2018-01-01&end=2018-12-31&offset=1&limit=1" \
 
 |Name|Description|
 |-:|:-|
-|**limit**<br>`optional`|The limit keyword is used to limit the number of records returned from a result set. If a limit count is given, no more than that many records will be returned (but possibly less, if the query itself yields less records)<br>_Default value of `limit` is_ <span class="required">**`500`**</span><br>_Maximum value of `limit` can be_ <span class="required">**`5000`**</span><br>_If value of `limit` is greater than_<span class="required">**`5000`**</span>  _then it will set to maximum value of limit which is_ <span class="required">**`5000`**</span>|
-|**offset**<br>`optional`|The Offset value allows you to specify the ranking number of the first item on the page .The Offset value is most often used together with the Limit keyword.<br>_The default value of `offset` is_ <span class="required">**`0`**</span>|
-|**start**<br>`optional` | Start value is used to get number of bookings in which start date is equal to or after start.|
-|**end**<br>`optional` |End value is used to get number of bookings in which end date is before or equal to end.|
-||_**Note** : You have to give values of both `start` and `end` to get bookings in that duration. If no value is given then bookings of current month will be listed, but if value of either `start` or `end` is given then you will get bad request._
+**limit**<br>`optional` | The limit keyword is used to limit the number of records returned from a result set. If a limit count is given, no more than that many records will be returned (but possibly less, if the query itself yields less records)<br>_Default value of `limit` is_ <span class="required">**`500`**</span><br>_Maximum value of `limit` can be_ <span class="required">**`5000`**</span>
+**offset**<br>`optional` | Offset keyword is used to skip n items. If offset value is given as 10, then first 10 records will be skipped from result set. Offset is often used together with the Limit keyword.<br>_Default value of `offset` is_ <span class="required">**`0`**</span>
+**start**<br>`optional` | String value representing start date in ISO 8601 extended notation for date i.e. yyyy-MM-dd. This is used to filter bookings starting on or after this date.
+**end**<br>`optional` | String value representing end date in ISO 8601 extended notation for date i.e. yyyy-MM-dd. This is used to filter bookings starting before this date.
+||_**Note** : By default if `start` & `end` arguments are omitted, then bookings of current month will be returned. If bookings of a certain period are needed, then both `start` & `end` arguments required. You have to give values of both `start` and `end` to get bookings in that duration. If only one argument `start` or `end` is passed then a bad request error is raised._
 
 
 ### Returns 
@@ -191,8 +189,8 @@ start=2018-01-01&end=2018-12-31&offset=1&limit=1" \
 | Code      | Description | 
 | ---:        |    :----   | 
 | **200** <br> <span class = "success">`OK`</span>      |This indicates that the operation was successful and list of bookings is returned.  |
-**400** <br> <span class = "error">`Bad Request` </span>|Bad Request may occur when offset or limit value is negative integer.|
-| **403** <br> <span class = "error">`Forbidden`</span> |Authorization failed due to insufficient permissions, this may be caused by user may not have rights to perform the operation.|
+**400** <br> <span class = "error">`Bad Request` </span>| Bad Request may occur when offset or limit value is negative integer.|
+| **403** <br> <span class = "error">`Forbidden`</span> | Authorization failed due to insufficient permissions. This occurs when user does not have enough access rights to perform this action. Access for each user can be controlled by an Administrator using eRS Cloud Application.
 
 
 ## Retrieve a booking
@@ -202,42 +200,43 @@ start=2018-01-01&end=2018-12-31&offset=1&limit=1" \
 > Example Request
 
 ```shell
-curl -v -X GET "https://app.eresourcescheduler.cloud/rest/v1/bookings/25"\
-  -H "Authorization: Bearer B8x5Vj1O65r6wnoV"
+curl -v -X GET "https://app.eresourcescheduler.cloud/rest/v1/bookings/25" \
+-H "Authorization: Bearer B8x5Vj1O65r6wnoV"
 ```
 
 > Example Response
 
 ```json
 {
-  "modified_on": null,
-  "role": {
-    "name": "Functional Manager",
+  "id": 34,
+  "resource": {
+    "name": "Andy Murray",
     "id": 2
   },
-  "resource": {
-    "name": "Anselm Batie",
-    "id": 97
+  "role": {
+    "name": "Business Analyst",
+    "id": 1
   },
-  "end_time": "2018-11-14T17:00:00",
   "project": {
-    "id": 1,
-    "title": "Jaipur"
+    "id": 5,
+    "title": "Mars Rover"
   },
-  "effort": 100,
-  "priority": null,
-  "created_by": {
-    "name": "John Doe",
-    "id": 6
-  },
-  "billable": true,
-  "tags": [],
-  "start_time": "2018-11-07T09:00:00",
-  "unit": 1,
   "task": null,
-  "created_on": "2018-11-22T16:18:13.957046Z",
-  "modified_by": null,
-  "id": 25
+  "start_time": "2018-12-26T09:00:00",
+  "end_time": "2018-12-31T17:00:00",
+  "unit": 1,
+  "effort": 100.0,
+  "tags": [],
+  "created_on": "2018-09-07T04:09:45.254681Z",
+  "created_by": {
+    "name": "Rahul Sharma",
+    "id": 118
+  },
+  "modified_on": "2018-11-21T06:23:02.494932Z",
+  "modified_by": {
+    "name": "Rahul Sharma",
+    "id": 118
+  }
 }
 ```
 Retrieves the details of an existing booking. You only need to  provide the unique booking identifier that was returned upon booking creation.
@@ -246,23 +245,21 @@ Retrieves the details of an existing booking. You only need to  provide the uniq
 
 | Code      | Description | 
 | ---:        |    :----   | 
-| **200** <br> <span class = "success">`OK`</span>     | This status code indicates that the operation was successful and a booking  get retrieved successfully .  |
-| **403** <br> <span class = "error">`Forbidden`</span> |Authorization failed due to insufficient permissions. This occurs when user does not have enough access rights to perform this action. Access for each user can be controlled by an Administrator using eRS Cloud Application.|
-| **404** <br> <span class = "error">`Not Found`</span> | Not Found error occurs when requested booking does not exist (i.e. There is no booking with given id). This may also occur when requesting a booking which has been deleted. |
+**200** <br> <span class = "success">`OK`</span> | This status code indicates that the operation was successful and a booking successfully returned.
+**403** <br> <span class = "error">`Forbidden`</span> |Authorization failed due to insufficient permissions. This occurs when user does not have enough access rights to perform this action. Access for each user can be controlled by an Administrator using eRS Cloud Application.
+**404** <br> <span class = "error">`Not Found`</span> | Not Found error occurs when requested booking does not exist (i.e. There is no booking with given id). This may also occur when requesting a booking which has been deleted.
 
 ## Search bookings
->  `POST v1/bookings/search`
-
-Filtering API responses to retrieve specific data.
 
 
-The filter parameter allows for filtering the results returned from the various endpoint in various ways. For example fetching only booking having booking id 1 by adding id:1 to your query.<a href ="#filters" class= "api-ref"> Read more</a>
+
+>  **`POST /v1/bookings/search`**
 
 > Example Request For Filter In JSON Format
 
 ```shell
-curl -X POST  \
-"https://app.eresourcescheduler.cloud/rest/v1/bookings/search?start=2018-01-01&end=2018-08-09" \
+curl -X POST "https://app.eresourcescheduler.cloud/rest/v1/bookings/search?\
+start=2018-01-01&end=2018-08-09" \
 -H "Content-Type: application/json" \
 -H "Authorization: Bearer B8x5Vj1O65r6wnoV" \
 -d '{ 
@@ -273,57 +270,90 @@ curl -X POST  \
 > Example Request For Filter By Passing multiple filters  In JSON Format
 
 ```shell
-curl -X POST  \
-"https://app.eresourcescheduler.cloud/rest/v1/bookings/search?start=2018-01-01&end=2018-08-09" \
+curl -X POST "https://app.eresourcescheduler.cloud/rest/v1/bookings/search?\
+start=2018-01-01&end=2018-08-09" \
 -H "Content-Type: application/json" \
 -H "Authorization: Bearer B8x5Vj1O65r6wnoV" \
--d '{ 
-       "id": 1,
+-d '{        
        "resource":{"id":2}, 
-       "project":{"id":9} 
+       "project":{"id":9},
+       "role_id": 1
      }'
 ```
 
-### Filters for System-defined fields
- 
-Filter by booking-fields 
+> Example Response
+
+```json
+{
+  "total_count": 7,
+  "data": [{
+      "id": 34,
+      "resource": {
+        "name": "Andy Murray",
+        "id": 2
+      },
+      "role": {
+        "name": "Business Analyst",
+        "id": 1
+      },
+      "project": {
+        "id": 5,
+        "title": "Mars Rover"
+      },
+      "task": null,
+      "start_time": "2018-12-26T09:00:00",
+      "end_time": "2018-12-31T17:00:00",
+      "unit": 1,
+      "effort": 100.0,
+      "tags": [],
+      "created_on": "2018-09-07T04:09:45.254681Z",
+      "created_by": {
+        "name": "Rahul Sharma",
+        "id": 118
+      },
+      "modified_on": "2018-11-21T06:23:02.494932Z",
+      "modified_by": {
+        "name": "Rahul Sharma",
+        "id": 118
+      }
+    },
+    { ... },
+    { ... }
+  ]
+}
+```
+
+Search Booking API allows filtering the results set in various ways. This enables a great power to find out what is needed. eRS Cloud API also allows filtering on custom defined fields with multiple operators and conditions to cover up complex scenarios for searching.
+
+A filter condition consists of three components which are **_field_**, **_operator_** and **_value_**. For example, fetching only those bookings having tag `tagA` or `tagB`, could be achieved by adding "tags:any": ["tagA", "tagB"] to request body. If operator is not supplied, it takes default operator for field.
+
+Below is a list of available fields, which allow filtering bookings:
 
 |**Field Type**   | **Operator**  | **Example**|
 :--|  :---    |  :---     |  :--- |
-**role_id** | <li> any *(default)* </li> <li> eq </li> | <li>-d "role_id":1  / -d "role_id:any":1</li> <li> -d "role_id:eq": "1&#124;2" </li>|
-|**tags**|<li>any *(default)* </li><li>all</li>|<li>-d "tags": "1&#124;2&#124;3"  / -d "tags:any": "2&#124;5"</li><li>-d "tags:all": "4&#124;6"</li> |
+**role_id**|<li>**any** (_default_)  </li><li>eq</li>| `"role_id:any": [1,2]`<br>`"role_id:eq": 1`
+**tags**|<li>**any** (_default_)</li><li>all</li>| `"tags:any": ["tagA","tagB"]`<br>`"tags:all": ["tagA","tagB"]`</li>
 
-
-   
-You can filter booking by resource-fields. 
- _For Resource-Fields please <a href="#search-resources" class="api-ref">click here</a>._
-
-You can also filter booking by project-fields. 
- _For Project-Fields please <a href="#search-projects" class="api-ref">click here</a>._
-
- _For User-defined fields please <a href="#filters-for-user-defined-fields" class="api-ref">click here</a>._ 
-
-
-You can filter booking by multiple objects.  For example fetching only booking having resource_id as 2 , project_id as 9 and booking_id as 1  <span style="font-size:24px; font-weight:bold;">￼&#x1f449;</span>
+Additionally, bookings can also be filtered using <a href="#search-resources" class="api-ref">resource fields</a>, <a href="#search-resources" class="api-ref">project fields</a> and <a href="#filters-for-user-defined-fields" class="api-ref">custom fields</a> of bookings. An example request for fetching only booking having `resource_id` as 2, `project_id` as 9 and `role_id` as 1 is shown.
 
 ## Update a booking
 
 Updates the specified booking by setting values of parameters passed. Values of any parameters which are not provided will be unchanged. 
 
->  `PUT v1/bookings/{ID}`
+>  **`PUT /v1/bookings/{ID}`**
 
 > Example Request
 
 ```shell
- curl -v -X PUT "https://app.eresourcescheduler.cloud/rest/v1/bookings/25" \
-  -H "Authorization: Bearer B8x5Vj1O65r6wnoV" \
-  -H "Content-Type: application/json" \
-  -d '{ 
-        "resource_id": 3, 
-        "project_id" : 4, 
-        "start_time" : "2017-06-05T09:00", 
-        "unit": 3 
-      }'
+curl -v -X PUT "https://app.eresourcescheduler.cloud/rest/v1/bookings/25" \
+-H "Authorization: Bearer B8x5Vj1O65r6wnoV" \
+-H "Content-Type: application/json" \
+-d '{ 
+      "resource_id": 3, 
+      "project_id" : 4, 
+      "start_time" : "2017-06-05T09:00", 
+      "unit": 3 
+    }'
 ```
 <span class="optional"><b>REQUEST BODY PARAMETERS</b></span>
 
@@ -343,10 +373,10 @@ Name               |  Description
 
 | Code      | Description | 
 | ---:        |    :----   | 
-| **200** <br> <span class = "success">`OK`</span>    |  This indicates that the operation was successful and a booking get updated successfully.|
-| **400** <br> <span class = "error">`Bad Request`</span> | Bad Request occurs when a request is not well-formed, syntactically incorrect, empty required parameters or any unknown parameter is passed. |
-| **403** <br> <span class = "error">`Forbidden`</span> |Authorization failed due to insufficient permissions. This occurs when user does not have enough access rights to perform this action. Access for each user can be controlled by an Administrator using eRS Cloud Application.|
-| **404** <br> <span class = "error">`Not Found`</span> | Not Found error occurs when requested booking does not exist (i.e. There is no booking with given id). This may also occur when requesting a booking which has been deleted. |
+**200** <br> <span class = "success">`OK`</span>    |  This indicates that the operation was successful and a booking get updated successfully.
+**400** <br> <span class = "error">`Bad Request`</span> | Bad Request error occurs when a request is malformed, syntactically incorrect, empty required parameters or any unknown parameter is passed. Additionally, Bad request may also occur in one of these conditions :<ul><li>Trying to update `start_time` or `end_time` such that `end_time` gets earlier than `start_time`.</li><li>Trying to update `start_time` of booking before the **start_date** of resource or `end_time` after the **last_working_date** of resource (if resource has a last_working_date defined.)</li><li>Trying to update a booking of **archived** resource</li><li>Trying to update bookings of **archived** project.</li><li>Duration of booking is more than 5 years.</li></ul>
+**403** <br> <span class = "error">`Forbidden`</span> |Authorization failed due to insufficient permissions. This occurs when user does not have enough access rights to perform this action. Access for each user can be controlled by an Administrator using eRS Cloud Application.
+**404** <br> <span class = "error">`Not Found`</span> | Not Found error occurs when requested booking does not exist (i.e. There is no booking with given id). This may also occur when requesting a booking which has been deleted.
 
 
 
@@ -355,14 +385,14 @@ Name               |  Description
 
 Permanently deletes a booking. It cannot be undone.
 
-> `DELETE v1/bookings/{ID}`
+> **`DELETE /v1/bookings/{ID}`**
 
 
 > Example Request
  
 ```shell
-curl -v -X DELETE "https://app.eresourcescheduler.cloud/rest/v1/bookings/1"\
-  -H "Authorization: Bearer B8x5Vj1O65r6wnoV"
+curl -v -X DELETE "https://app.eresourcescheduler.cloud/rest\
+/v1/bookings/1" -H "Authorization: Bearer B8x5Vj1O65r6wnoV"
 ```
 
 ### Returns

@@ -268,6 +268,53 @@ curl -X POST \
     }'
 ```
 
+> Example Response
+
+```json
+{
+  "total_count": 50,
+  "offset": 1,
+  "limit": 15,
+  "data": [{
+      "id": 1,
+      "title": "Project-A",
+      "type": {
+        "name": "Satellite",
+        "description": null,
+        "id": 1
+      },
+      "email": "apollo@enbraun.com",
+      "project_start_date": null,
+      "end_date": null,
+      "image": "https://erscloud/img/7aca31f5-29ae205ba315",
+      "tags": ["NASA"],
+      "is_archive": false,
+      "created_on": "2018-08-20T09:25:34.925474Z",
+      "created_by": {
+        "name": "Rahul Sharma",
+        "id": 118
+      },
+      "modified_on": "2018-09-28T12:32:44.896426Z",
+      "modified_by": {
+        "name": "Rahul Sharma",
+        "id": 118
+      },
+      "udf_color": "#FF8A80;0",
+      "udf_progress": 70,
+      "udf_project_manager": "Gene Kranz",
+      "udf_priority": {
+        "name": "High",
+        "description": null,
+        "id": 21
+      }
+    },
+    { ... },
+    { ... },
+    { ... }
+  ]
+}
+```
+
 Search Project API allows filtering the results returned in various ways. This enables a great power to find out what is needed. eRS Cloud API also allows filtering on custom defined fields with multiple operators and conditions to cover up complex scenarios for searching.
 
 A filter condition consists of three components which are **_field_**, **_operator_** and **_value_**. For example fetching only those projects having project type id 1, could be achieved by adding project_type_id:eq=1 to your query.  If operator is not supplied, it takes default operator for field. <a href="#filters" class="api-ref">Read more</a>
@@ -294,7 +341,7 @@ curl -X POST \
 **email**|<li class="nowrap">**has** (_default_)&nbsp;&nbsp;</li><li>eq</li>|`"email":"abc"` <br>`"email:eq":"ujjwal@gmail.com"`
 **project_start_date**|<li>**eq** (_default_)</li><li>lt</li><li>gt</li><li>bt</li><li>ex</li>|`"project_start_date:eq":"2015-02-02"`<br>`"project_start_date:lt":"2015-02-02"`<br>`"project_start_date:gt":"2015-02-02"`<br>`"project_start_date:bt":["2015-02-02","2015-04-05"]` <br>`"project_start_date:ex":["2015-02-02","2015-04-04"]`
 **end_date**|<li>**eq** (_default_) </li><li>lt</li><li>gt</li><li>bt</li><li>ex</li>| `"end_date:eq":"2015-02-02"`<br>`"end_date:lt":"2015-02-02"`<br>`"end_date:gt":"2015-02-02"`<br>`"end_date:bt":["2015-02-02","2015-04-05"]`<br>`"end_date:ex":["2015-02-02","2015-04-04"]`
-**tags**|<li>**any** (_default_) </li><li>all</li>|`"tags":"1`&#124;`2`&#124;`3"`<br>`"tags:all":"4`&#124;`6"`
+**tags**|<li>**any** (_default_) </li><li>all</li>|`"tags":"["tagA", "tagB"]`<br>`"tags:all":["tagB","tagC"]`
 **is_archive**| N/A |`"is_archive":true` <br>`"is_archive":false`
  _For User-defined fields please <a href="#filters-for-user-defined-fields" class="api-ref">check here</a>._ 
 
@@ -325,7 +372,7 @@ curl -v -X PUT \
 |Name         |  Description |
 | ---:        |    :----     |
 **title** <br> <span class="required">`required`</span>  |String representing the  title of a project. This may be up to 100 characters.
-**project_start_date**<br>`optional` |String value representing a date in ISO 8601 extended notation for date i.e. yyyy-MM-dd. The project is started from this date.
+**project_start_date**<br>`optional` | String value representing a date in ISO 8601 extended notation for date i.e. yyyy-MM-dd. The project is started from this date.
 **end_date** <br>`optional` | String value representing a date in ISO 8601 extended notation for date i.e. yyyy-MM-dd. The project is considered ended / completed on this date.
 **tags**  <br>`optional`  | An optional array of strings which could be attached to this project object as labels. This can be useful for the purpose of filtering, identification or other information. This may be up to 50 characters.
 **email** <br>`optional`  | String value representing email address associated with project object. Email address must be properly formatted with a maximum length of 254 characters.
@@ -336,10 +383,10 @@ curl -v -X PUT \
 
 | Code      | Description | 
 | ---:        |    :----   | 
-| **200** <br> <span class = "success">`OK`</span>    |  This indicates that the operation was successful and project get updated successfully.|
-| **400** <br> <span class = "error">`Bad Request`</span> | Bad Request occurs when a request is not well-formed, syntactically incorrect, empty required parameters or any unknown parameter is passed. <br> Additionally, Bad request may also occur when :<ul><li>User tries to update archived project.</li><li> User tries to update start date which is after last date.</li><li> User tries to update last date which is before start date. </li></ul> |
-| **403** <br> <span class = "error">`Forbidden`</span> | Authorization failed due to insufficient permissions. This occurs when user does not have enough access rights to perform this action. Access for each user can be controlled by an Administrator using eRS Cloud Application.|
-|  **404** <br><span class = "error">`Not Found`</span> |This status code indicates that project does not exist| |
+**200** <br> <span class = "success">`OK`</span> | Indicates that the operation was successful and project is updated successfully.
+**400** <br> <span class = "error">`Bad Request`</span> | Bad Request occurs when a request is not well-formed, syntactically incorrect, empty required parameters or any unknown parameter is passed. <br> Additionally, Bad request may also occur when :<ul><li>User tries to update archived project.</li><li> User tries to update start date or last_date or both such that last date gets smaller than start date. </li></ul>
+**403** <br> <span class = "error">`Forbidden`</span> | Authorization failed due to insufficient permissions. This occurs when user does not have enough access rights to perform this action. Access for each user can be controlled by an Administrator using eRS Cloud Application.
+**404** <br><span class = "error">`Not Found`</span> | This status code indicates that project does not exist.
 
 
 ## Delete a project
@@ -371,10 +418,10 @@ force_delete_bookings=true" \
 
 | Code      | Description  
 | ---:        |    :----   
-| **200** <br><span class = "success">`OK`</span> |This status code indicates that the operation was successful and a project get deleted successfully |
-| **409** <br> <span class = "error">`Conflict`</span> |Conflict indicates that the project can not be deleted as there are bookings associated with this project. If you wish to delete it any way you must use force delete option by passing <span class = "error">`true`</span> for parameter `force_delete_bookings`.This operation deletes all bookings of requested project and project itself (shown in example request).
-| **403** <br> <span class = "error">`Forbidden`</span> | Authorization failed due to insufficient permissions. This occurs when user does not have enough access rights to perform this action. Access for each user can be controlled by an Administrator using eRS Cloud Application.|
-|  **404** <br><span class = "error">`Not Found`</span> |This status code indicates that project does not exist| |
+**200** <br><span class = "success">`OK`</span> |This status code indicates that the operation was successful and a project get deleted successfully.
+**409** <br> <span class = "error">`Conflict`</span> |Conflict indicates that the project can not be deleted as there are bookings associated with this project. If you wish to delete it any way you must use force delete option by passing <span class = "error">`true`</span> for parameter `force_delete_bookings`. This operation deletes all bookings of requested project and project itself (shown in example request).
+**403** <br> <span class = "error">`Forbidden`</span> | Authorization failed due to insufficient permissions. This occurs when user does not have enough access rights to perform this action. Access for each user can be controlled by an Administrator using eRS Cloud Application.
+**404** <br><span class = "error">`Not Found`</span> |This status code indicates that requested project does not exist| |
 
 ## Tasks
 
