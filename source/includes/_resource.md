@@ -450,7 +450,7 @@ curl -v -X PUT \
 
 ## Delete a resource 
 
- Permanently deletes requested resource. It cannot be undone. By default, this operation will get failed if a resource has any booking associated with it. To override this, forceful delete can be used which will delete all bookings and then ultimately delete the resource object.
+ Permanently deletes requested resource. It cannot be undone. By default, this operation will get failed if a resource has any booking or rate associated with it. To override this, forceful delete can be used which will delete all bookings and rates and then, ultimately delete the resource object.
 
 > **`DELETE /v1/resources/{ID}`**
 
@@ -469,7 +469,7 @@ curl -v -X DELETE \
 ```shell
 curl -v -X DELETE \
 "https://app.eresourcescheduler.cloud/rest/v1/resources/1/?\
-force_delete_bookings=true" \
+force_delete_bookings=true&force_delete_rates=true" \
 -H "Authorization: Bearer B8x5Vj1O65r6wnoV" 
 ```
 
@@ -479,7 +479,7 @@ force_delete_bookings=true" \
 | Code      | Description  
 | ---:        |    :----   
 **200** <br><span class = "success">`OK`</span> | This status code indicates that the operation was successful and a resource get deleted successfully.
-**409** <br> <span class = "error">`Conflict`</span> | Conflict indicates that the resource can not be deleted as there are bookings associated with this resource. If you wish to anyway delete it, you must use force delete option by passing `true` for parameter  `force_delete_bookings`. This operation deletes all bookings of requested resource and resource itself (shown in example request).
+**409** <br> <span class = "error">`Conflict`</span> | Conflict indicates that the resource can not be deleted as there are bookings or rates associated with this resource. If you wish to delete it anyway, you must use force delete option by passing `true` for parameter `force_delete_bookings` and `force_delete_rates` which will delete associated bookings and associated rates corresponding to the resource. This operation deletes all bookings and rates of requested resource and resource itself (shown in example request).
 | **403** <br> <span class = "error">`Forbidden`</span> | Authorization failed due to insufficient permissions. This occurs when user does not have enough access rights to perform this action. Access for each user can be controlled by an Administrator using eRS Cloud Application.|
 | **404** <br> <span class = "error">`Not Found`</span> | Not Found error occurs when requested resource does not exist.
 

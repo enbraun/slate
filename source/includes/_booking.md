@@ -24,6 +24,9 @@
   "end_time": "2018-12-31T17:00:00",
   "unit": 1,
   "effort": 100.0,
+  "billing_status": 1,
+  "rate_from": 8,
+  "rate": 999999.99,
   "tags": [],
   "created_on": "2018-09-07T04:09:45.254681Z",
   "created_by": {
@@ -55,6 +58,9 @@ Name         |  Description
 **end_time** <br>`string` | Represents ending time of booking.
 **effort** <br>`float` |  Effort value for this booking. 
 **unit** <br>`integer` |  Represents unit of effort for this booking. Unit could be one of (percent of capacity,  booking hours,hours per day, FTE, Specific time per day)
+**billing_status** <br>`integer` |  Represents billing status for this booking when financial module is active. Billing Status could be one of (same as project, billable, non billable).
+**rate_from** <br>`integer` |  Represents billing rate for this booking when financial module is active. Billing Rate could be one of (same as project, same as resource, same as roles, custom).
+**rate** <br>`integer` |  Represents rate for this booking when financial module is active. Rate can only be defined when **rate_from** is given as custom.
 **tags** <br>`array of strings` | Tags are the list of strings (labels) attached to this booking object which could be used for the purpose of identification or other information.
 **created_on** <br>`string` | Timestamp at which this project object was created.
 **created_by** <br> `object` | Object representing user who created this booking object.
@@ -97,6 +103,9 @@ Name               |  Description
 **role_id**  <br>`optional`  |  Id of role object which needs to be performed for this booking. This could be id of a role which targeted resource performs (i.e "Performing Role") or any other role (i.e. "Non-Performing-Role")
 **effort**  <br>`optional`  | This defines how much effort is needed to complete the task. Effort value is a floating point number which could not be less than 0 and greater than 99999999.99. If effort value is not provided system will take default value 0.
 **unit**<br>`optional`  | Integer number (1-5) representing unit in which effort is being defined. Unit value could be one of the following : <li>**1** for 'Percent of capacity' : This is default unit for booking. This represents effort in percentage of capacity of intended resource for defined time range. </li> <li> **2** for 'Total Booking Hours' : This defines effort value in fixed hours which doesn't get changed upon changes in booking.</li> <li> **3** for 'Hours Per day' : This could be used where a certain no of hours per day need to be spend for a booking. For example 4 hours per day (working day).</li> <li> **4** for 'Full Time Equivalent' : Full time equivalent is calculated using FTE calendar defined in Admin section. Capacity from FTE calendar for defined time in booking, is considered as 1 FTE.</li> <li> **5** for 'Time Per Day' : It is useful where effort needs to put in on a particular time of every working day i.e. 4:15 PM to 5:30 PM daily. Time portion of **start_time** argument is considered as per day start time, and Time portion of **end_time** argument is considered per day end time for this booking. </li> |
+**billing_status**<br>`optional`  | Integer number (1/2/4) representing billing status of the booking. Billing Status value could be one of the following : <li>**1** for 'Same as Project' : This represents billing status will be same as given for the project associated with this booking. </li> <li> **2** for 'Billable' : This defines billing status as billable for this booking.</li> <li> **4** for 'Non Billable' : This is used to set the booking to non billable.<br><br>_**Note** : Default value of **billing_status** can be set from <a href="https://app.eresourcescheduler.cloud/#!/admin/settings/chart" target="_blank" class="api-ref">Admin Scheduling Settings</a>._ |
+**rate_from**<br>`optional`  | Integer number (1/2/4/8) representing billing rate of the booking. Billing Rate value could be one of the following : <li>**1** for 'Same as Project' : This represents rate_from will be same as given for the project associated with this booking. </li> <li> **2** for 'Same as Resource' :  This represents rate_from will be same as given for the resource associated with this booking.</li> <li> **4** for 'Same as Role' :  This represents rate_from will be same as given for the performing role associated with this booking.<li> **8** for 'Custom' :  This represents custom hourly rate can be defined on this booking.<br><br>_**Note** : Default value of **rate_from** can be set from <a href="https://app.eresourcescheduler.cloud/#!/admin/settings/chart" target="_blank" class="api-ref">Admin Scheduling Settings</a>._ |
+**rate**  <br>`optional`  | This defines hourly billing rate associated with this booking. Rate value is a floating point number which can not be less than 0 and greater than 99999999.99. Rate can only be defined when value of **rate_from** is 8, i.e Custom.
 **tags**  <br>`optional`  | An optional array of strings which could be attached to this booking object as labels. This can be useful for the purpose of identification or other information.
 **udf_\*** <br>`optional`  | A user with admin rights can add custom fields. These fields can be used to capture additional information in Projects. Different types of projects may have a different set of user-defined fields. The value for user defined field can be passed as shown in example request. In given example **_udf_progress_**</span> is a user defined field. <a href="#user-defined-fields" class="api-ref">Learn more</a>
 
@@ -154,6 +163,9 @@ start=2018-01-01&end=2018-12-31&offset=1&limit=1" \
       "end_time": "2018-12-31T17:00:00",
       "unit": 1,
       "effort": 100.0,
+      "billing_status": 1,
+      "rate_from": 8,
+      "rate": 999999.99,
       "tags": [],
       "created_on": "2018-09-07T04:09:45.254681Z",
       "created_by": {
@@ -226,6 +238,9 @@ curl -v -X GET "https://app.eresourcescheduler.cloud/rest/v1/bookings/25" \
   "end_time": "2018-12-31T17:00:00",
   "unit": 1,
   "effort": 100.0,
+  "billing_status": 1,
+  "rate_from": 8,
+  "rate": 999999.99,
   "tags": [],
   "created_on": "2018-09-07T04:09:45.254681Z",
   "created_by": {
@@ -305,6 +320,9 @@ start=2018-01-01&end=2018-08-09" \
       "end_time": "2018-12-31T17:00:00",
       "unit": 1,
       "effort": 100.0,
+      "billing_status": 1,
+      "rate_from": 8,
+      "rate": 999999.99,
       "tags": [],
       "created_on": "2018-09-07T04:09:45.254681Z",
       "created_by": {
@@ -366,6 +384,9 @@ Name               |  Description
 **role_id**  <br>`optional`  |  Id of role object which needs to be performed for this booking. This could be id of a role which targeted resource performs (i.e "Performing Role") or any other role (i.e. "Non-Performing-Role")
 **effort**  <br>`optional`  | This defines how much effort is needed to complete the task. Effort value is a floating point number which could not be less than 0 and greater than 99999999.99. If effort value is not provided system will take default value 0.
 **unit**<br>`optional`  | Integer number (1-5) representing unit in which effort is being defined. Unit value could be one of the following : <li>**1** for 'Percent of capacity' : This is default unit for booking. This represents effort in percentage of capacity of intended resource for defined time range. </li> <li> **2** for 'Total Booking Hours' : This defines effort value in fixed hours which doesn't get changed upon changes in booking.</li> <li> **3** for 'Hours Per day' : This could be used where a certain no of hours need to be spend for a booking. For example 4 hours per day (working day).</li> <li> **4** for 'Full Time Equivalent' : Full time equivalent is calculated using FTE calendar defined in Admin section. Capacity from FTE calendar for defined time in booking, is considered as 1 FTE.</li> <li> **5** for 'Time Per Day' : It is useful where effort needs to put in on a particular time of every working day i.e. 4:15 PM to 5:30 PM daily. Time portion of **start_time** argument is considered as per day start time, and Time portion of **end_time** argument is considered per day end time for this booking. </li> |
+**billing_status**<br>`optional`  | Integer number (1/2/4) representing billing status of the booking. Billing Status value could be one of the following : <li>**1** for 'Same as Project' : This represents billing status will be same as given for the project associated with this booking. </li> <li> **2** for 'Billable' : This defines billing status as billable for this booking.</li> <li> **4** for 'Non Billable' : This is used to set the booking to non billable.<br><br>_**Note** : Default value of **billing_status** can be set from <a href="https://app.eresourcescheduler.cloud/#!/admin/settings/chart" target="_blank" class="api-ref">Admin Scheduling Settings</a>._ |
+**rate_from**<br>`optional`  | Integer number (1/2/4/8) representing billing rate of the booking. Billing Rate value could be one of the following : <li>**1** for 'Same as Project' : This represents rate_from will be same as given for the project associated with this booking. </li> <li> **2** for 'Same as Resource' :  This represents rate_from will be same as given for the resource associated with this booking.</li> <li> **4** for 'Same as Role' :  This represents rate_from will be same as given for the performing role associated with this booking.<li> **8** for 'Custom' :  This represents custom hourly rate can be defined on this booking.<br><br>_**Note** : Default value of **rate_from** can be set from <a href="https://app.eresourcescheduler.cloud/#!/admin/settings/chart" target="_blank" class="api-ref">Admin Scheduling Settings</a>._ |
+**rate**  <br>`optional`  | This defines hourly billing rate associated with this booking. Rate value is a floating point number which can not be less than 0 and greater than 99999999.99. Rate can only be defined when value of **rate_from** is 8, i.e Custom.
 **tags**  <br>`optional`  | Tags is an optional filed. Tags are attached to this booking object which could be used for the purpose of identification or other information.. This may be up to 50 characters. This will be blank if you post an empty value.
 **udf_\*** <br>`optional`  | A user with admin rights can add such custom fields. These fields can be used to capture additional info in bookings. <a href="#user-defined-fields" class="api-ref">Learn more</a>
 
