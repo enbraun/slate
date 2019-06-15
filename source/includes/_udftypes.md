@@ -20,8 +20,7 @@ User defined fields are filterable. Also, user can configure the visibility of s
 There are fifteen types of different fields available for different use cases. Each type of field has its own set of attributes which can be configured to fit your requirements. Once such fields are added and applied, the response for that object will contain these along with normal attributes.    
     
 
-<aside id="noticeAside">There can be a maximum of 30 user-defined fields.
-</aside>
+_**Note** : There can be a maximum of 30 user-defined fields._
 
 
 
