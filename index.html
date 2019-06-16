@@ -608,8 +608,7 @@ grant_type=authorization_code</span><span class="se">\</span><span class="s2">
 
 <p>There are fifteen types of different fields available for different use cases. Each type of field has its own set of attributes which can be configured to fit your requirements. Once such fields are added and applied, the response for that object will contain these along with normal attributes.    </p>
 
-<aside id="noticeAside">There can be a maximum of 30 user-defined fields.
-</aside>
+<p><em><strong>Note</strong> : There can be a maximum of 50 user-defined fields.</em></p>
 <h2 id='types-of-user-defined-fields'>Types of User Defined Fields</h2>
 <p>User can create one of the following type of field.</p>
 
@@ -2244,7 +2243,7 @@ grant_type=authorization_code</span><span class="se">\</span><span class="s2">
 </tr>
 <tr>
 <td style="text-align: right"><strong>name</strong> <br> <span class="required"><code>required</code></span></td>
-<td style="text-align: left">String representing the name of a resource. This may be up to 100 characters.<br> <em><strong>Note</strong> : This field is only available for non-human resources and for human resources, this is <span class="danger">not available</span></em>.</td>
+<td style="text-align: left">String representing the name of a resource. This may be up to 100 characters.<br> <em><strong>Note</strong> : This field is only available for non-human resources and for human resources, this field is <span class="danger">not available</span></em>.</td>
 </tr>
 <tr>
 <td style="text-align: right"><strong>start_date</strong><br><span class="required"><code>required</code></span></td>
@@ -2692,7 +2691,7 @@ grant_type=authorization_code</span><span class="se">\</span><span class="s2">
 </tr>
 </tbody></table>
 <h2 id='delete-a-resource'>Delete a resource</h2>
-<p>Permanently deletes requested resource. It cannot be undone. By default, this operation will get failed if a resource has any booking associated with it. To override this, forceful delete can be used which will delete all bookings and then ultimately delete the resource object.</p>
+<p>Permanently deletes requested resource. It cannot be undone. By default, this operation will get failed if a resource has any booking or rate associated with it. To override this, forceful delete can be used which will delete all bookings and rates and then, ultimately delete the resource object.</p>
 
 <blockquote>
 <p><strong><code>DELETE /v1/resources/{ID}</code></strong></p>
@@ -2708,7 +2707,7 @@ grant_type=authorization_code</span><span class="se">\</span><span class="s2">
 </blockquote>
 <pre class="highlight shell tab-shell"><code>curl -v -X DELETE <span class="se">\</span>
 <span class="s2">"https://app.eresourcescheduler.cloud/rest/v1/resources/1/?</span><span class="se">\</span><span class="s2">
-force_delete_bookings=true"</span> <span class="se">\</span>
+force_delete_bookings=true&amp;force_delete_rates=true"</span> <span class="se">\</span>
 -H <span class="s2">"Authorization: Bearer B8x5Vj1O65r6wnoV"</span> 
 </code></pre><h3 id='returns-5'>Returns</h3>
 <table><thead>
@@ -2723,7 +2722,7 @@ force_delete_bookings=true"</span> <span class="se">\</span>
 </tr>
 <tr>
 <td style="text-align: right"><strong>409</strong> <br> <span class = "error"><code>Conflict</code></span></td>
-<td style="text-align: left">Conflict indicates that the resource can not be deleted as there are bookings associated with this resource. If you wish to anyway delete it, you must use force delete option by passing <code>true</code> for parameter  <code>force_delete_bookings</code>. This operation deletes all bookings of requested resource and resource itself (shown in example request).</td>
+<td style="text-align: left">Conflict indicates that the resource can not be deleted as there are bookings or rates associated with this resource. If you wish to delete it anyway, you must use force delete option by passing <code>true</code> for parameter <code>force_delete_bookings</code> and <code>force_delete_rates</code> which will delete associated bookings and associated rates corresponding to the resource. This operation deletes all bookings and rates of requested resource and resource itself (shown in example request).</td>
 </tr>
 <tr>
 <td style="text-align: right"><strong>403</strong> <br> <span class = "error"><code>Forbidden</code></span></td>
@@ -4228,7 +4227,7 @@ curl -v -X DELETE <span class="se">\</span>
 </tr>
 </tbody></table>
 <h2 id='delete-a-project'>Delete a project</h2>
-<p>Permanently deletes requested project. It cannot be undone. By default, this operation will get failed if a project has any booking associated with it. To override this, forceful delete can be used which will delete all bookings and then ultimately delete the project object.</p>
+<p>Permanently deletes requested project. It cannot be undone. By default, this operation will get failed if a project has any booking or rate associated with it. To override this, forceful delete can be used which will delete all bookings and rates and then ultimately delete the project object.</p>
 
 <blockquote>
 <p><strong><code>DELETE /v1/projects/{ID}</code></strong></p>
@@ -4244,7 +4243,7 @@ curl -v -X DELETE <span class="se">\</span>
 </blockquote>
 <pre class="highlight shell tab-shell"><code>curl -v -X DELETE <span class="se">\</span>
 <span class="s2">"https://app.eresourcescheduler.cloud/rest/v1/rpojects/1?</span><span class="se">\</span><span class="s2">
-force_delete_bookings=true"</span> <span class="se">\</span>
+force_delete_bookings=true&amp;force_delete_rates=true"</span> <span class="se">\</span>
 -H <span class="s2">"Authorization: Bearer B8x5Vj1O65r6wnoV"</span> 
 </code></pre><h3 id='returns-5'>Returns</h3>
 <table><thead>
@@ -4259,7 +4258,7 @@ force_delete_bookings=true"</span> <span class="se">\</span>
 </tr>
 <tr>
 <td style="text-align: right"><strong>409</strong> <br> <span class = "error"><code>Conflict</code></span></td>
-<td style="text-align: left">Conflict indicates that the project can not be deleted as there are bookings associated with this project. If you wish to delete it any way you must use force delete option by passing <span class = "error"><code>true</code></span> for parameter <code>force_delete_bookings</code>. This operation deletes all bookings of requested project and project itself (shown in example request).</td>
+<td style="text-align: left">Conflict indicates that the project can not be deleted as there are bookings associated with this project. If you wish to delete it any way you must use force delete option by passing <code>true</code> for parameter <code>force_delete_bookings</code> and <code>force_delete_rates</code> which will delete associated bookings and associated rates corresponding to the project. This operation deletes all bookings of requested project and project itself (shown in example request).</td>
 </tr>
 <tr>
 <td style="text-align: right"><strong>403</strong> <br> <span class = "error"><code>Forbidden</code></span></td>
@@ -4271,46 +4270,44 @@ force_delete_bookings=true"</span> <span class="se">\</span>
 </tr>
 </tbody></table>
 <h2 id='tasks'>Tasks</h2>
-<blockquote>
-<p><code>GET v1/projects/{ID}/tasks</code></p>
-</blockquote>
+<p>A task is a single unit of work – an action to accomplish in a project, a single step in a multi-step project. Each project has its own set of tasks.</p>
 
-<p>Task is assignments or jobs that are to be covered in the project.</p>
-
-<p>eRS Cloud API allows you to perform <em><code>POST</code></em>, <em><code>GET</code></em>, <em><code>PUT</code></em>, <em><code>DELETE</code></em>  operation on Tasks.</p>
+<p>This API allows you to list, create, delete, update tasks of any project.</p>
 <h3 id='list-tasks'>List Tasks</h3>
-<p>Retrieves the Tasks list of specified project. The tasks are returned sorted by name.</p>
+<p>Retrieves list of all the tasks of specified project. List of tasks is returned sorted by name.</p>
 
 <blockquote>
+<p><strong><code>GET /v1/projects/{ID}/tasks</code></strong></p>
+
 <p>Example Request</p>
 </blockquote>
 <pre class="highlight shell tab-shell"><code>curl -v -X GET <span class="se">\</span>
 <span class="s2">"https://app.eresourcescheduler.cloud/rest/v1/projects/2/tasks"</span> <span class="se">\</span>
-  -H <span class="s2">"Authorization: Bearer B8x5Vj1O65r6wnoV"</span>
+-H <span class="s2">"Authorization: Bearer B8x5Vj1O65r6wnoV"</span>
 </code></pre>
 <blockquote>
 <p>Example Response</p>
 </blockquote>
-<pre class="highlight json tab-json"><code><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"total_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">9</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TASK- 2A"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"start_time"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"end_time"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"project_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"created_by"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="s2">"modified_by"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"total_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">9</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TASK- 2A"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"start_time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-09-16T18:30:00+00:00"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"end_time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-09-20T18:30:00+00:00"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"project_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"created_by"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">118</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Rahul Sharma"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"modified_by"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">118</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Rahul Sharma"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
     </span><span class="p">},</span><span class="w">
-    </span><span class="p">{</span><span class="err">...</span><span class="p">},</span><span class="w">
-    </span><span class="p">{</span><span class="err">...</span><span class="p">},</span><span class="w">
-    </span><span class="p">]</span><span class="w">
+    </span><span class="p">{</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p><span class="optional"><b>ATTRIBUTES</b></span></p>
@@ -4323,23 +4320,23 @@ force_delete_bookings=true"</span> <span class="se">\</span>
 </thead><tbody>
 <tr>
 <td style="text-align: right"><strong>ID</strong> <br><span class="required"><code>Integer</code></span></td>
-<td style="text-align: left">The eRS Cloud generated ID for the task which is used to uniquely identified task object.</td>
+<td style="text-align: left">Auto generated unique identifier for task object.</td>
 </tr>
 <tr>
 <td style="text-align: right"><strong>name</strong> <br> <span class ="required"><code>String</code></span></td>
-<td style="text-align: left">Name describes the name of task. This field is a <code>string</code> type of field</td>
+<td style="text-align: left">Name of task object.</td>
 </tr>
 <tr>
 <td style="text-align: right"><strong>start_time</strong> <br><code>String</code></td>
-<td style="text-align: left">Start time describes the start time of task.</td>
+<td style="text-align: left">Represents start time of task object.</td>
 </tr>
 <tr>
 <td style="text-align: right"><strong>end_time</strong> <br><code>String</code></td>
-<td style="text-align: left">End time describes the end time of task.</td>
+<td style="text-align: left">Represents end time of task object.</td>
 </tr>
 <tr>
 <td style="text-align: right"><strong>project_id</strong> <br><code>Integer</code></td>
-<td style="text-align: left">eRS Cloud generated unique identifier for the project object.</td>
+<td style="text-align: left">Unique id of project object, which this task belongs to.</td>
 </tr>
 </tbody></table>
 <h3 id='returns-6'>Returns</h3>
@@ -4351,7 +4348,7 @@ force_delete_bookings=true"</span> <span class="se">\</span>
 </thead><tbody>
 <tr>
 <td style="text-align: right"><strong>200</strong> <br> <span class = "success"><code>OK</code></span></td>
-<td style="text-align: left">This status code indicates that the operation was successful and  tasks get retrieved successfully .</td>
+<td style="text-align: left">This status code indicates that the operation was successful and list tasks retrieved successfully.</td>
 </tr>
 <tr>
 <td style="text-align: right"><strong>403</strong> <br> <span class = "error"><code>Forbidden</code></span></td>
@@ -4359,24 +4356,30 @@ force_delete_bookings=true"</span> <span class="se">\</span>
 </tr>
 <tr>
 <td style="text-align: right"><strong>404</strong> <br> <span class = "error"><code>Not Found</code></span></td>
-<td style="text-align: left">Not Found error occurs when requested project does not exist (i.e. There is no project with given id). This may also occur when requesting a project which has been deleted.</td>
+<td style="text-align: left">Not Found error occurs when requested project does not exist (i.e. There is no project with given id). This may also occur when requesting tasks of project which has been deleted.</td>
 </tr>
 </tbody></table>
 
-<p><br><br><br></p>
+<p><br><br></p>
 <h3 id='create-a-task'>Create a task</h3>
-<p>Creates a new task assignment object.</p>
+<p>Creates a new task object for specified project.</p>
 
 <blockquote>
-<p><code>POST v1/projects/{ID}/tasks</code></p>
+<p><strong><code>POST /v1/projects/{ID}/tasks</code></strong></p>
 
 <p>Example Request</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code> curl -v -X POST <span class="se">\</span>
- <span class="s2">"https://app.eresourcescheduler.cloud/rest/v1/projects/2/tasks"</span> <span class="se">\</span>
-  -H <span class="s2">"Authorization: Bearer B8x5Vj1O65r6wnoV"</span> <span class="se">\</span>
-  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
-  -d <span class="s1">'{"name": "TASK- 2A"}'</span>
+<pre class="highlight shell tab-shell"><code>
+curl -v -X POST <span class="se">\</span>
+<span class="s2">"https://app.eresourcescheduler.cloud/rest/v1/projects/2/tasks"</span> <span class="se">\</span>
+-H <span class="s2">"Authorization: Bearer B8x5Vj1O65r6wnoV"</span> <span class="se">\</span>
+-H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+-d <span class="s1">'{
+      "name": "TASK- 2A",
+      "start_time": "2018-09-16T18:30:00Z",
+      "end_time": "2018-09-20T18:30:00Z",
+    }'</span>
+
 </code></pre>
 <p><span class="optional"><b>REQUEST BODY PARAMETERS</b></span></p>
 
@@ -4388,15 +4391,15 @@ force_delete_bookings=true"</span> <span class="se">\</span>
 </thead><tbody>
 <tr>
 <td style="text-align: right"><strong>name</strong> <br> <span class ="required"><code>required</code></span></td>
-<td style="text-align: left">Name describes the name of task. This field is a <code>string</code> type of field</td>
+<td style="text-align: left">String representing the name of task. This may be up to 100 characters long.</td>
 </tr>
 <tr>
 <td style="text-align: right"><strong>start_time</strong> <br><code>optional</code></td>
-<td style="text-align: left">Start time describes the start time of task. This filed can be passed null, as eRS Cloud provids you the facility to create an task without start time. This field is a <code>String</code> type of field.</td>
+<td style="text-align: left">String representing timestamp value for start time of task. This field takes input in ISO 8601 extended notation for date and time value i.e. yyyy-MM-ddTHH:mm:ssZ and support time zone offset as well.</td>
 </tr>
 <tr>
 <td style="text-align: right"><strong>end_time</strong> <br><code>optional</code></td>
-<td style="text-align: left">End time describes the end time of task. This filed can be passed null,as eRS Cloud provides you the facility to create an task without end time.This field is a <code>String</code> type of field.</td>
+<td style="text-align: left">String representing timestamp value for end time of task. This field takes input in ISO 8601 extended notation for date and time value i.e. yyyy-MM-ddTHH:mm:ssZ and support time zone offset as well.</td>
 </tr>
 </tbody></table>
 <h3 id='returns-7'>Returns</h3>
@@ -4408,11 +4411,11 @@ force_delete_bookings=true"</span> <span class="se">\</span>
 </thead><tbody>
 <tr>
 <td style="text-align: left"><strong>201</strong> <br><span class = "success"><code>Created</code></span></td>
-<td style="text-align: left">This status code indicates that the operation was successful and task get created successfully.</td>
+<td style="text-align: left">Indicates that the operation was successful and task is created successfully.</td>
 </tr>
 <tr>
 <td style="text-align: left"><strong>400</strong> <br> <span class = "error"><code>Bad Request</code></span></td>
-<td style="text-align: left">Bad Request error occurs when a request is not malformed, syntactically incorrect, missing required parameters are  or any unknown parameter is passed.<br> Additionally, Bad request may also occur when :<ul><li> User gives start time after end time </li> </ul></td>
+<td style="text-align: left">Bad Request error occurs when a request is malformed, syntactically incorrect, missing required parameters or any unknown parameter is passed. Additionally, Bad request may also occur when <code>start_time</code> is given later then <code>end_time</code>.</td>
 </tr>
 <tr>
 <td style="text-align: left"><strong>403</strong> <br> <span class = "error"><code>Forbidden</code></span></td>
@@ -4421,21 +4424,24 @@ force_delete_bookings=true"</span> <span class="se">\</span>
 </tbody></table>
 <h3 id='update-a-task'>Update a task</h3>
 <blockquote>
-<p><code>PUT v1/projects/{ID}/tasks/{Task_ID}</code></p>
+<p><strong><code>PUT /v1/projects/{ID}/tasks/{Task_ID}</code></strong></p>
 </blockquote>
 
-<p>Updates the specified task by setting the values of the parameters passed. Any parameters not provided will be left unchanged. </p>
+<p>Updates an existing task by setting the values of the parameters passed. Any parameters not passed will be left unchanged. </p>
 
 <p>This request accepts mostly the same arguments as the task creation call.</p>
 
 <blockquote>
 <p>Example Request</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code> curl -v -X PUT <span class="se">\</span>
- <span class="s2">"https://app.eresourcescheduler.cloud/rest/v1/projects/8/tasks/9"</span> <span class="se">\</span>
-  -H <span class="s2">"Authorization: Bearer B8x5Vj1O65r6wnoV"</span> <span class="se">\</span>
-  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
-  -d <span class="s1">'{"name": "TASK- 2B"}'</span>
+<pre class="highlight shell tab-shell"><code>curl -v -X PUT <span class="se">\</span>
+<span class="s2">"https://app.eresourcescheduler.cloud/rest/v1/projects/8/tasks/9"</span> <span class="se">\</span>
+-H <span class="s2">"Authorization: Bearer B8x5Vj1O65r6wnoV"</span> <span class="se">\</span>
+-H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+-d <span class="s1">'{
+      "name": "TASK- 2B"
+    }'</span>
+
 </code></pre>
 <p><span class="optional"><b>REQUEST BODY PARAMETERS</b></span></p>
 
@@ -4447,15 +4453,15 @@ force_delete_bookings=true"</span> <span class="se">\</span>
 </thead><tbody>
 <tr>
 <td style="text-align: right"><strong>name</strong> <br> <span class ="required"><code>required</code></span></td>
-<td style="text-align: left">Name describes the name of task. This field is a <code>string</code> type of field.This will throw an error if you post an empty value.</td>
+<td style="text-align: left">String representing the name of task. This may be up to 100 characters long.</td>
 </tr>
 <tr>
 <td style="text-align: right"><strong>start_time</strong> <br><code>optional</code></td>
-<td style="text-align: left">Start time describes the start time of task. This filed can be passed null, as eRS Cloud provids you the facility to create an task without start time. This field is a <code>String</code> type of field.</td>
+<td style="text-align: left">String representing timestamp value for start time of task. This field takes input in ISO 8601 extended notation for date and time value i.e. yyyy-MM-ddTHH:mm:ssZ and support time zone offset as well.</td>
 </tr>
 <tr>
 <td style="text-align: right"><strong>end_time</strong> <br><code>optional</code></td>
-<td style="text-align: left">End time describes the end time of task. This filed can be passed null,as eRS Cloud provides you the facility to create an task without end time.This field is a <code>String</code> type of field.</td>
+<td style="text-align: left">String representing timestamp value for end time of task. This field takes input in ISO 8601 extended notation for date and time value i.e. yyyy-MM-ddTHH:mm:ssZ and support time zone offset as well.</td>
 </tr>
 </tbody></table>
 <h3 id='returns-8'>Returns</h3>
@@ -4466,12 +4472,12 @@ force_delete_bookings=true"</span> <span class="se">\</span>
 </tr>
 </thead><tbody>
 <tr>
-<td style="text-align: right"><strong>200</strong> <br> <span class = "success"><code>OK</code></span></td>
-<td style="text-align: left">This indicates that the operation was successful and a task get updated successfully.</td>
+<td style="text-align: right"><strong>200</strong> <br><span class = "success"><code>OK</code></span></td>
+<td style="text-align: left">Indicates that the operation was successful and task is successfully updated.</td>
 </tr>
 <tr>
 <td style="text-align: right"><strong>400</strong> <br> <span class = "error"><code>Bad Request</code></span></td>
-<td style="text-align: left">Bad Request occurs when a request is not well-formed, syntactically incorrect, empty required parameters or any unknown parameter is passed. <br> Additionally, Bad request may also occur when :<ul><li> User tries to update start time that values after end time. </li> <li> User tries to update end time that values before start time.</li></ul></td>
+<td style="text-align: left">Bad Request error occurs when a request is malformed, syntactically incorrect, missing required parameters or any unknown parameter is passed. Additionally, Bad request may also occur if <code>start_time</code> becomes later then <code>end_time</code>.</td>
 </tr>
 <tr>
 <td style="text-align: right"><strong>403</strong> <br> <span class = "error"><code>Forbidden</code></span></td>
@@ -4479,51 +4485,54 @@ force_delete_bookings=true"</span> <span class="se">\</span>
 </tr>
 <tr>
 <td style="text-align: right"><strong>404</strong> <br><span class = "error"><code>Not Found</code></span></td>
-<td style="text-align: left">This status code indicates that project or task does not exist</td>
+<td style="text-align: left">This status code indicates that project or task does not exists.</td>
 </tr>
 </tbody></table>
+
+<p><br><br></p>
 <h3 id='delete-a-task'>Delete a task</h3>
 <blockquote>
-<p><code>DELETE v1/projects/{ID}/task/{Task_ID}</code></p>
+<p><strong><code>DELETE /v1/projects/{ID}/task/{Task_ID}</code></strong></p>
 </blockquote>
 
-<p>Permanently deletes a task. It cannot be undone. By default, this operation will get failed if a task has any booking associated with it. To override this behaviour, forcefull remove can be used which will remove all task from bookings.</p>
+<p>Permanently deletes a task. It cannot be undone. By default, this operation will get failed if a task has any booking associated with it. To override this behavior, forceful remove can be used which will remove this task from all bookings associated with it.</p>
 
 <blockquote>
 <p>Example Request</p>
 </blockquote>
 <pre class="highlight shell tab-shell"><code>curl -v -X DELETE <span class="se">\</span>
-<span class="s2">"https://app.eresourcescheduler.cloud/rest/v1/projects/1/tasks/2"</span><span class="se">\</span>
-  -H <span class="s2">"Authorization: Bearer B8x5Vj1O65r6wnoV"</span>
+<span class="s2">"https://app.eresourcescheduler.cloud/rest/v1/projects/1/tasks/2"</span> <span class="se">\</span>
+-H <span class="s2">"Authorization: Bearer B8x5Vj1O65r6wnoV"</span>
 </code></pre>
 <blockquote>
-<p>Example Request For Forcefull Delete </p>
+<p>Example Request For Forceful Delete </p>
 </blockquote>
 <pre class="highlight shell tab-shell"><code>curl -v -X DELETE <span class="se">\</span>
-<span class="s2">"https://app.eresourcescheduler.cloud/rest/v1/projects/1/tasks/2?remove_from_bookings=true"</span><span class="se">\</span>
-  -H <span class="s2">"Authorization: Bearer B8x5Vj1O65r6wnoV"</span>
+<span class="s2">"https://app.eresourcescheduler.cloud/rest/v1/projects/1/tasks/2</span><span class="se">\</span><span class="s2">
+?remove_from_bookings=true"</span> <span class="se">\</span>
+-H <span class="s2">"Authorization: Bearer B8x5Vj1O65r6wnoV"</span>
 </code></pre><h3 id='return'>Return</h3>
 <table><thead>
 <tr>
-<th style="text-align: right">Code</th>
+<th style="text-align: left">Code</th>
 <th style="text-align: left">Description</th>
 </tr>
 </thead><tbody>
 <tr>
-<td style="text-align: right"><strong>200</strong> <br><span class = "success"><code>OK</code></span></td>
-<td style="text-align: left">This status code indicates that the operation was successful and task get deleted successfully</td>
+<td style="text-align: left"><strong>200</strong> <br><span class = "success"><code>OK</code></span></td>
+<td style="text-align: left">Indicates that the operation was successful and task is deleted successfully.</td>
 </tr>
 <tr>
-<td style="text-align: right"><strong>409</strong> <br> <span class = "error"><code>Conflict</code></span></td>
-<td style="text-align: left">Conflict indicates that the task can not be deleted as there are bookings associated with this task. If you wish to delete it any way you must use force delete option by passing <span class = "error"><code>true</code></span> for parameter <span class = "error"><code>remove_from_bookings</code></span>. This operation removes all task from bookings. This can not be undone. Example shown <span style="font-size:24px; font-weight:bold;">￼&#x1f449;</span></td>
+<td style="text-align: left"><strong>409</strong> <br> <span class = "error"><code>Conflict</code></span></td>
+<td style="text-align: left">Conflict indicates that the task can not be deleted as there are bookings associated with this task. If you wish to delete it any way you must use force delete option by passing <span class = "required"><code>true</code></span> for parameter <span class = "required"><code>remove_from_bookings</code></span>. This operation removes task from all associated bookings and then deletes the task itself. Example request is shown to right.</td>
 </tr>
 <tr>
-<td style="text-align: right"><strong>403</strong> <br> <span class = "error"><code>Forbidden</code></span></td>
+<td style="text-align: left"><strong>403</strong> <br> <span class = "error"><code>Forbidden</code></span></td>
 <td style="text-align: left">Authorization failed due to insufficient permissions. This occurs when user does not have enough access rights to perform this action. Access for each user can be controlled by an Administrator using eRS Cloud Application.</td>
 </tr>
 <tr>
-<td style="text-align: right"><strong>404</strong> <br><span class = "error"><code>Not Found</code></span></td>
-<td style="text-align: left">This status code indicates that project or task does not exist</td>
+<td style="text-align: left"><strong>404</strong> <br><span class = "error"><code>Not Found</code></span></td>
+<td style="text-align: left">This indicates that project or task does not exist.</td>
 </tr>
 </tbody></table>
 <h2 id='project-notes'>Project Notes</h2>
@@ -4848,6 +4857,9 @@ curl -v -X DELETE <span class="s2">"https://app.eresourcescheduler.cloud/rest/v1
   </span><span class="s2">"end_time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-12-31T17:00:00"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"unit"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
   </span><span class="s2">"effort"</span><span class="p">:</span><span class="w"> </span><span class="mf">100.0</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"billing_status"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"rate_from"</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"rate"</span><span class="p">:</span><span class="w"> </span><span class="mf">999999.99</span><span class="p">,</span><span class="w">
   </span><span class="s2">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
   </span><span class="s2">"created_on"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-09-07T04:09:45.254681Z"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"created_by"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -4907,7 +4919,19 @@ curl -v -X DELETE <span class="s2">"https://app.eresourcescheduler.cloud/rest/v1
 </tr>
 <tr>
 <td style="text-align: right"><strong>unit</strong> <br><code>integer</code></td>
-<td style="text-align: left">Represents unit of effort for this booking. Unit could be one of (percent of capacity,  booking hours,hours per day, FTE, Specific time per day)</td>
+<td style="text-align: left">Represents unit of effort for this booking. Unit could be one of <code>Capacity %</code> , <code>Total Booking Hours</code> , <code>Hours Per Day</code> , <code>Full Time Equivalent</code> , <code>Time per day</code>.</td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>billing_status</strong> <br><code>integer</code></td>
+<td style="text-align: left">Represents billing status for this booking. Billing Status could be one of <code>Same as Project</code>, <code>Billable</code>, <code>Non Billable</code>. This field is available only <span class="warning">when financial module is active</span>.</td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>rate_from</strong> <br><code>integer</code></td>
+<td style="text-align: left">Represents billing rate for this booking. Billing Rate could be one of <code>Same as Project</code>, <code>Same as Resource</code>, <code>Same as Role</code>, <code>Custom</code>. This field is available only <span class="warning">when financial module is active</span>.</td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>rate</strong> <br><code>integer</code></td>
+<td style="text-align: left">Represents rate for this booking. Rate can only be defined when <strong>rate_from</strong> is given as <code>Custom</code>. This field is available only <span class="warning">when financial module is active</span>.</td>
 </tr>
 <tr>
 <td style="text-align: right"><strong>tags</strong> <br><code>array of strings</code></td>
@@ -4988,7 +5012,19 @@ curl -v -X DELETE <span class="s2">"https://app.eresourcescheduler.cloud/rest/v1
 </tr>
 <tr>
 <td style="text-align: right"><strong>unit</strong><br><code>optional</code></td>
-<td style="text-align: left">Integer number (1-5) representing unit in which effort is being defined. Unit value could be one of the following : <li><strong>1</strong> for &#39;Percent of capacity&#39; : This is default unit for booking. This represents effort in percentage of capacity of intended resource for defined time range. </li> <li> <strong>2</strong> for &#39;Total Booking Hours&#39; : This defines effort value in fixed hours which doesn&#39;t get changed upon changes in booking.</li> <li> <strong>3</strong> for &#39;Hours Per day&#39; : This could be used where a certain no of hours per day need to be spend for a booking. For example 4 hours per day (working day).</li> <li> <strong>4</strong> for &#39;Full Time Equivalent&#39; : Full time equivalent is calculated using FTE calendar defined in Admin section. Capacity from FTE calendar for defined time in booking, is considered as 1 FTE.</li> <li> <strong>5</strong> for &#39;Time Per Day&#39; : It is useful where effort needs to put in on a particular time of every working day i.e. 4:15 PM to 5:30 PM daily. Time portion of <strong>start_time</strong> argument is considered as per day start time, and Time portion of <strong>end_time</strong> argument is considered per day end time for this booking. </li></td>
+<td style="text-align: left">Integer number (1-5) representing unit in which effort is being defined. Unit value could be one of the following :<br><br><li><strong>1</strong> for <code>Capacity %</code> : This is default unit for booking. This represents effort in percentage of capacity of intended resource for defined time range. </li> <li> <strong>2</strong> for <code>Total Booking Hours</code> : This defines effort value in fixed hours which doesn&#39;t get changed upon changes in booking.</li> <li> <strong>3</strong> for <code>Hours Per day</code> : This could be used where a certain no of hours per day need to be spend for a booking. For example 4 hours per day (working day).</li> <li> <strong>4</strong> for <code>Full Time Equivalent</code> : Full time equivalent is calculated using FTE calendar defined in Admin section. Capacity from FTE calendar for defined time in booking, is considered as 1 FTE.</li> <li> <strong>5</strong> for <code>Time Per Day</code> : It is useful where effort needs to put in on a particular time of every working day i.e. 4:15 PM to 5:30 PM daily. Time portion of <strong>start_time</strong> argument is considered as per day start time, and Time portion of <strong>end_time</strong> argument is considered per day end time for this booking. </li></td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>billing_status</strong><br><code>optional</code></td>
+<td style="text-align: left">Integer number (1/2/4) representing billing status of the booking. Billing Status value could be one of the following :<br><br><li><strong>1</strong> for <code>Same as Project</code> : This represents billing status will be same as given for the project associated with this booking. </li> <li> <strong>2</strong> for <code>Billable</code> : This defines billing status as billable for this booking.</li> <li> <strong>4</strong> for <code>Non Billable</code> : This is used to set the booking to non billable.<br><br><em><strong>Note</strong> : Default value of <strong>billing_status</strong> can be set from <a href="https://app.eresourcescheduler.cloud/#!/admin/settings/chart" target="_blank" class="api-ref">Admin Scheduling Settings</a>.</em></td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>rate_from</strong><br><code>optional</code></td>
+<td style="text-align: left">Integer number (1/2/4/8) representing billing rate of the booking. Billing Rate value could be one of the following :<br><br><li><strong>1</strong> for <code>Same as Project</code> : This represents rate_from will be same as given for the project associated with this booking. </li> <li> <strong>2</strong> for <code>Same as Resource</code> :  This represents rate_from will be same as given for the resource associated with this booking.</li> <li> <strong>4</strong> for <code>Same as Role</code> :  This represents rate_from will be same as given for the performing role associated with this booking.<li> <strong>8</strong> for <code>Custom</code> :  This represents custom hourly rate can be defined on this booking.<br><br><em><strong>Note</strong> : Default value of <strong>rate_from</strong> can be set from <a href="https://app.eresourcescheduler.cloud/#!/admin/settings/chart" target="_blank" class="api-ref">Admin Scheduling Settings</a>.</em></td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>rate</strong>  <br><code>optional</code></td>
+<td style="text-align: left">This defines hourly billing rate associated with this booking. Rate value is a floating point number which can not be less than 0 and greater than 99999999.99. Rate can only be defined when value of <strong>rate_from</strong> is 8, i.e <code>Custom</code>.</td>
 </tr>
 <tr>
 <td style="text-align: right"><strong>tags</strong>  <br><code>optional</code></td>
@@ -5062,6 +5098,9 @@ start=2018-01-01&amp;end=2018-12-31&amp;offset=1&amp;limit=1"</span> <span class
       </span><span class="s2">"end_time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-12-31T17:00:00"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"unit"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
       </span><span class="s2">"effort"</span><span class="p">:</span><span class="w"> </span><span class="mf">100.0</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"billing_status"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"rate_from"</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"rate"</span><span class="p">:</span><span class="w"> </span><span class="mf">999999.99</span><span class="p">,</span><span class="w">
       </span><span class="s2">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
       </span><span class="s2">"created_on"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-09-07T04:09:45.254681Z"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"created_by"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -5159,6 +5198,9 @@ start=2018-01-01&amp;end=2018-12-31&amp;offset=1&amp;limit=1"</span> <span class
   </span><span class="s2">"end_time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-12-31T17:00:00"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"unit"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
   </span><span class="s2">"effort"</span><span class="p">:</span><span class="w"> </span><span class="mf">100.0</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"billing_status"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"rate_from"</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"rate"</span><span class="p">:</span><span class="w"> </span><span class="mf">999999.99</span><span class="p">,</span><span class="w">
   </span><span class="s2">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
   </span><span class="s2">"created_on"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-09-07T04:09:45.254681Z"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"created_by"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -5244,6 +5286,9 @@ start=2018-01-01&amp;end=2018-08-09"</span> <span class="se">\</span>
       </span><span class="s2">"end_time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-12-31T17:00:00"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"unit"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
       </span><span class="s2">"effort"</span><span class="p">:</span><span class="w"> </span><span class="mf">100.0</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"billing_status"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"rate_from"</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"rate"</span><span class="p">:</span><span class="w"> </span><span class="mf">999999.99</span><span class="p">,</span><span class="w">
       </span><span class="s2">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
       </span><span class="s2">"created_on"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-09-07T04:09:45.254681Z"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"created_by"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -5339,7 +5384,19 @@ start=2018-01-01&amp;end=2018-08-09"</span> <span class="se">\</span>
 </tr>
 <tr>
 <td style="text-align: right"><strong>unit</strong><br><code>optional</code></td>
-<td style="text-align: left">Integer number (1-5) representing unit in which effort is being defined. Unit value could be one of the following : <li><strong>1</strong> for &#39;Percent of capacity&#39; : This is default unit for booking. This represents effort in percentage of capacity of intended resource for defined time range. </li> <li> <strong>2</strong> for &#39;Total Booking Hours&#39; : This defines effort value in fixed hours which doesn&#39;t get changed upon changes in booking.</li> <li> <strong>3</strong> for &#39;Hours Per day&#39; : This could be used where a certain no of hours need to be spend for a booking. For example 4 hours per day (working day).</li> <li> <strong>4</strong> for &#39;Full Time Equivalent&#39; : Full time equivalent is calculated using FTE calendar defined in Admin section. Capacity from FTE calendar for defined time in booking, is considered as 1 FTE.</li> <li> <strong>5</strong> for &#39;Time Per Day&#39; : It is useful where effort needs to put in on a particular time of every working day i.e. 4:15 PM to 5:30 PM daily. Time portion of <strong>start_time</strong> argument is considered as per day start time, and Time portion of <strong>end_time</strong> argument is considered per day end time for this booking. </li></td>
+<td style="text-align: left">Integer number (1-5) representing unit in which effort is being defined. Unit value could be one of the following :<br><br><li><strong>1</strong> for <code>Capacity %</code> : This is default unit for booking. This represents effort in percentage of capacity of intended resource for defined time range. </li> <li> <strong>2</strong> for <code>Total Booking Hours</code> : This defines effort value in fixed hours which doesn&#39;t get changed upon changes in booking.</li> <li> <strong>3</strong> for <code>Hours Per day</code> : This could be used where a certain no of hours need to be spend for a booking. For example 4 hours per day (working day).</li> <li> <strong>4</strong> for <code>Full Time Equivalent</code> : Full time equivalent is calculated using FTE calendar defined in Admin section. Capacity from FTE calendar for defined time in booking, is considered as 1 FTE.</li> <li> <strong>5</strong> for <code>Time Per Day</code> : It is useful where effort needs to put in on a particular time of every working day i.e. 4:15 PM to 5:30 PM daily. Time portion of <strong>start_time</strong> argument is considered as per day start time, and Time portion of <strong>end_time</strong> argument is considered per day end time for this booking. </li></td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>billing_status</strong><br><code>optional</code></td>
+<td style="text-align: left">Integer number (1/2/4) representing billing status of the booking. Billing Status value could be one of the following :<br><br><li><strong>1</strong> for <code>Same as Project</code> : This represents billing status will be same as given for the project associated with this booking. </li> <li> <strong>2</strong> for <code>Billable</code> : This defines billing status as billable for this booking.</li> <li> <strong>4</strong> for <code>Non Billable</code> : This is used to set the booking to non billable.<br><br><em><strong>Note</strong> : Default value of <strong>billing_status</strong> can be set from <a href="https://app.eresourcescheduler.cloud/#!/admin/settings/chart" target="_blank" class="api-ref">Admin Scheduling Settings</a>.</em></td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>rate_from</strong><br><code>optional</code></td>
+<td style="text-align: left">Integer number (1/2/4/8) representing billing rate of the booking. Billing Rate value could be one of the following :<br><br><li><strong>1</strong> for <code>Same as Project</code> : This represents rate_from will be same as given for the project associated with this booking. </li> <li> <strong>2</strong> for <code>Same as Resource</code> :  This represents rate_from will be same as given for the resource associated with this booking.</li> <li> <strong>4</strong> for <code>Same as Role</code> :  This represents rate_from will be same as given for the performing role associated with this booking.<li> <strong>8</strong> for <code>Custom</code> :  This represents custom hourly rate can be defined on this booking.<br><br><em><strong>Note</strong> : Default value of <strong>rate_from</strong> can be set from <a href="https://app.eresourcescheduler.cloud/#!/admin/settings/chart" target="_blank" class="api-ref">Admin Scheduling Settings</a>.</em></td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>rate</strong>  <br><code>optional</code></td>
+<td style="text-align: left">This defines hourly billing rate associated with this booking. Rate value is a floating point number which can not be less than 0 and greater than 99999999.99. Rate can only be defined when value of <strong>rate_from</strong> is 8, i.e <code>Custom</code>.</td>
 </tr>
 <tr>
 <td style="text-align: right"><strong>tags</strong>  <br><code>optional</code></td>
