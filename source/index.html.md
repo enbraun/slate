@@ -7,7 +7,7 @@ language_tabs: # must be one of https://git.io/vQNgJ
   
 toc_footers:
 
-- <a href='#'>Help us improve this document</a>
+#- <a href='#'>Help us improve this document</a>
 
 includes:
   - introduction
@@ -21,6 +21,7 @@ includes:
   - resource
   - project
   - booking
+  - rates
   - filter
 search: true
 ---

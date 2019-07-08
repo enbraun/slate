@@ -102,7 +102,7 @@ Name | Description
 | ---:  |  :----   |
 **id**  <br>`integer` |Unique identification number for the object, which allows referring to this object and can be used to search a particular project type.
 **name** <br>`string` | Represent name for this object. This is used to identify object by using some meaningful phrase to describe type of projects like `Standard`, `Education` etc.
-**fields** <br>`array of strings` |Represent collection of fields (or attributes) that are available for this project type. Each <a href = "#project" class="api-ref">Project</a> object of this project type can store / update values for these filed. While creating or updating a <a href = "#project" class="api-ref">Project</a> user must pass arguments which are available for intended project type object. 
+**fields** <br>`array of strings` |Represent collection of fields (or attributes) that are available for this project type. Each <a href = "#project" class="api-ref">Project</a> object of this project type can store / update values for these field. While creating or updating a <a href = "#project" class="api-ref">Project</a> user must pass arguments which are available for intended project type object. 
 **field.id**<br>`integer` | Represents unique identification number of this field, which can be used to refer or search it.
 **field.display_name** <br>`string` |Name of this field to identify it.
 **field.field_type** <br>`string` |   Represents the type of field. For example  TEXT (for Text Field), INT (for Integer Number field), DDSS (for Dropdown Single Select Field), etc. See <a href = "#user-defined-fields" class="api-ref">User Defined Fields</a> to know more about different field types.
