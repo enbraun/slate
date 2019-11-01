@@ -132,17 +132,17 @@ Creates a new resource object.
 Name         |  Description
  ---:        |    :----   
 **resource_type_id** <br> <span class="required">`required`</span> | Id of <a href = "#resource-type" class ="api-ref">resource-type</a> object. Every resource must be linked to a <a href = "#resource-type" class ="api-ref">resource-type</a>. Let’s assume there are two resource types defined as Employee (_having id 1_) and Meeting Room (_having id 2_). While creating a new resource, all the resource whose `resource_type_id` is given as **1** will get created under Employee type and same for Meeting Room when `resource_type_id` is **2**.
-**first_name** <br> <span class="required">`required`</span>  | String representing the first name of a resource. This may be up to 100 characters.<br> _**Note** : for non-human resources, this field is <span class="danger">not available</span>_.
-**last_name** <br> `optional`  | String representing the last name of a resource. This may be up to 100 characters.<br> _**Note** : for non-human resources, this field is <span class="danger">not available</span>_.
-**name** <br> <span class="required">`required`</span> | String representing the name of a resource. This may be up to 100 characters.<br> _**Note** : This field is only available for non-human resources and for human resources, this field is <span class="danger">not available</span>_.
+**first_name** <br> <span class="required">`required`</span>  | String representing the first name of a resource. This may be up to 100 characters.<br> _**Note**: for non-human resources, this field is <span class="danger">not available</span>_.
+**last_name**<sup> *\*</sup> <br> `optional`  | String representing the last name of a resource. This may be up to 100 characters.<br> _**Note**: for non-human resources, this field is <span class="danger">not available</span>_.
+**name** <br> <span class="required">`required`</span> | String representing the name of a resource. This may be up to 100 characters.<br> _**Note**: This field is only available for non-human resources and for human resources, this field is <span class="danger">not available</span>_.
 **start_date**<br><span class="required">`required`</span>  |  String value representing a date in ISO 8601 extended notation for date i.e. yyyy-MM-dd. A resource is only available from its start date i.e system does not consider any capacity of resource before this date.
 **last_date**<br>`optional` |  String value representing a date in ISO 8601 extended notation for date i.e. yyyy-MM-dd. A resource is only available till its last date i.e system does not consider any capacity of resource beyond this date (_if defined_).
-**email**<br>`optional` |  String value representing email address of resource object. Email address must be properly formatted with a maximum length of 254 characters.
-**phone**<br>`optional` | String representing phone number of resource. It’s displayed alongside the resource in your resource list.
-**roles**<br>`optional` | An array of ids of Roles (which are defined by an admin user in eRS Cloud Application) to be assigned to this Resource. The first id in the array is considered as Primary Role of that Resource. Multiple performing roles can be applied to a resource. Resources can also be searched / filtered using performing roles.
+**email**<sup> **</sup><br>`optional` |  String value representing email address of resource object. Email address must be properly formatted with a maximum length of 254 characters.
+**phone**<sup> **</sup><br>`optional` | String representing phone number of resource. It’s displayed alongside the resource in your resource list.
+**roles**<sup> **</sup><br><br>`optional` | An array of ids of Roles (which are defined by an admin user in eRS Cloud Application) to be assigned to this Resource. The first id in the array is considered as Primary Role of that Resource. Multiple performing roles can be applied to a resource. Resources can also be searched / filtered using performing roles.
 **calendar**  <br>`optional` | Id of Calendar object which should be assigned to resource effective from its start date. Depending upon requirements, different calendars can be applied on different resources. If calendar is omitted then default calendar (as defined in admin settings) will get applied for this resource.
-**tags**  <br>`optional` | An optional array of strings which could be attached to this resource object as labels. This can be useful for the purpose of filtering, identification or other information.
-**udf_\*** <br>`optional` | A user with admin rights can add custom fields. These fields can be used to capture additional information in Resources. Different types of resources may have a different set of user-defined fields. The value for user defined field can be passed as shown in example request. In first example **_udf_employee_no_** is a user defined field. <a href ="#user-defined-fields" class="api-ref">Learn more</a>
+**tags**<sup> **</sup><br> <br>`optional` | An optional array of strings which could be attached to this resource object as labels. This can be useful for the purpose of filtering, identification or other information.
+**udf_\*** <br>`optional` | A user with admin rights can add custom fields. These fields can be used to capture additional information in Resources. Different types of resources may have a different set of user-defined fields. The value for user defined field can be passed as shown in example request. In first example **_udf_employee_no_** is a user defined field. <a href ="#user-defined-fields" class="api-ref">Learn more</a><br><br>_**Note**: User with admin rights can remove fields marked with ** from <a href ="#get-a-specific-resource-type" class="api-ref">specific resource type</a>. If these fields are passed after removal from resource type form, while creating resource, the operation will fail with response code **400**_.
 
 ### Returns
  
@@ -373,14 +373,22 @@ curl -X POST \
 
 ```shell
 curl -X POST \
-"https://app.eresourcescheduler.cloud/rest/v1/resources/search" \
+"https://app.eresourcescheduler.cloud/rest/v1/resources/search?offset=1&limit=15" \
 -H "Content-Type: application/json" \
 -H "Authorization: Bearer B8x5Vj1O65r6wnoV" \
 -d '{ 
       "resource_type_id:eq": 1 , 
-      "roles:all": [3,6] 
+      "roles:ex": [3,6] 
     }'
 ```
+
+<span class="optional"><b>REQUEST QUERY PARAMETERS</b></span>
+
+|Name|Description|
+|-:|:-|
+**limit**<br>`optional` | The limit keyword is used to limit the number of records returned from a result set. If a limit count is given, no more than that many records will be returned (but possibly less, if the query itself yields less records)<br>_Default value of `limit` is_ <span class="required">**`25`**</span><br>_Maximum value of `limit` can be_ <span class="required">**`500`**</span>
+**offset**<br>`optional` | Offset keyword is used to skip n items. If offset value is given as 10, then first 10 records will be skipped from result set. Offset is often used together with the Limit keyword.<br>_Default value of `offset` is_ <span class="required">**`0`**</span>
+<br><br>
 
 Search Resource API allows filtering the results returned in various ways. This enables a great power to find out what is needed. eRS Cloud API also allows filtering on custom defined fields with multiple operators and conditions to cover up complex scenarios for searching.
 
@@ -391,12 +399,12 @@ Below is a list of available fields, which allow filtering resources:
 
 |**Field Code**| **Operator**  | **Example**|
 |:--|:---|:--|
-**resource_type_id**|<li>**eq** (_default_)  </li><li>any</li>| `"resource_type_id:eq": 1`<br>`"resource_type_id:any": [1,2]`
-**name**|<li class="nowrap">**has** (_default_)&nbsp;&nbsp;</li><li>eq</li>|`"name:has": "c"`<br>`"name:eq": "Amy Jones"`
-**roles**| <li>**any** (_default_)</li><li>all</li>|`"roles:any": [2,5]`<br>`"roles:all": [4,6]`
-**tags**|<li>**any** (_default_)</li><li>all</li>| `"tags:any": ["tagA","tagB"]`<br>`"tags:all": ["tagA","tagB"]`</li>
-**email**|<li>**has** (_default_)</li><li>eq</li>| `"email:has": "a"`<br>`"email:eq": "abc@mycompany.com"`
-**phone**|<li>**has** (_default_)</li><li>eq</li>|`"phone:has": "753" `<br> `"phone:eq": "(485)555-0202"`
+**resource_type_id**|<li>**eq** (_default_)  </li><li>neq</li><li>any</li><li>none</li>| `"resource_type_id:eq": 1`<br>`"resource_type_id:neq": 2`<br>`"resource_type_id:any": [1,2]`<br>`"resource_type_id:none": [3,4]`
+**name**|<li class="nowrap">**has** (_default_)&nbsp;&nbsp;</li><li>miss</li><li>eq</li><li>neq</li>|`"name:has": "c"`<br>`"name:miss": "c"`<br>`"name:eq": "Amy Jones"`<br>`"name:neq": "Amy Jones"`
+**roles**| <li>**any** (_default_)</li><li>none</li><li>all</li><li>ex</li>|`"roles:any": [2,5]`<br>`"roles:none": [2,5]`<br>`"roles:all": [4,6]`<br>`"roles:ex": [4,6]`
+**tags**|<li>**any** (_default_)</li><li>none</li><li>all</li><li>ex</li>| `"tags:any": ["tagA","tagB"]`<br>`"tags:none": ["tagA","tagB"]`<br>`"tags:all": ["tagA","tagB"]`<br>`"tags:ex": ["tagA","tagB"]`
+**email**|<li>**has** (_default_)</li><li>miss</li><li>eq</li><li>neq</li>| `"email:has": "a"`<br>`"email:miss": "a"`<br>`"email:eq": "abc@mycompany.com"`<br>`"email:neq": "abc@mycompany.com"`
+**phone**|<li>**has** (_default_)</li><li>miss</li><li>eq</li><li>neq</li>|`"phone:has": "753" `<br>`"phone:miss": "753" `<br> `"phone:eq": "(485)555-0202"`<br> `"phone:neq": "(485)555-0202"`
 **start_Date**|<li>**eq** (_default_)</li><li>lt</li><li>gt</li><li> bt</li><li>ex</li>| `"start_date:eq": "2016-01-27"`<br>` "start_date:lt": "1999-12-22"`<br>` "start_date:gt": "1990-01-11"`<br>`"start_date:bt": ["2001-01-01", "2010-12-31"]`<br> `"start_date:ex": ["1992-02-12", "1997-01-27"]`
 **last_date**|<li>**eq** (_default_)</li><li>lt</li><li>gt</li><li> bt</li><li>ex</li>| `"last_date:eq": "2016-05-17"` <br> `"last_date:lt": "2002-12-31"`<br>` "last_date:gt": "2010-01-01"` <br> `"last_date:bt": ["1995-12-31", "1999-01-01"]`<br> `"last_date:ex": ["2001-01-01", "2002-01-01"]`
  _For filtering using custom fields and operators please <a href="#filters-for-user-defined-fields" class="api-ref">check here</a>._ 
@@ -427,16 +435,16 @@ curl -v -X PUT \
 
 |Name     |  Description |
 | ---:    |    :----     |
-**first_name** <br> <span class="required">`required`</span>  | String representing the first name of a resource. This may be up to 100 characters.<br> _**Note** : for non-human resources, this field is <span class="danger">not available</span>_.
-**last_name** <br> `optional`  | String representing the last name of a resource. This may be up to 100 characters.<br> _**Note** : for non-human resources, this field is <span class="danger">not available</span>_.
-**name** <br> <span class="required">`required`</span> | String representing the name of a resource. This may be up to 100 characters.<br> _**Note** : This field is only available for non-human resources and for human resources, this is <span class="danger">not available</span>_.
+**first_name** <br> <span class="required">`required`</span>  | String representing the first name of a resource. This may be up to 100 characters.<br> _**Note**: for non-human resources, this field is <span class="danger">not available</span>_.
+**last_name**<sup>*\*</sup> <br>`optional` | String representing the last name of a resource. This may be up to 100 characters.<br> _**Note**: for non-human resources, this field is <span class="danger">not available</span>_.
+**name** <br> <span class="required">`required`</span> | String representing the name of a resource. This may be up to 100 characters.<br> _**Note**: This field is only available for non-human resources and for human resources, this is <span class="danger">not available</span>_.
 **start_date**<br><span class="required">`required`</span>  |  String value representing a date in ISO 8601 extended notation for date i.e. yyyy-MM-dd. A resource is only available from its start date i.e system does not consider any capacity of resource before this date.
 **last_date**<br>`optional` |  String value representing a date in ISO 8601 extended notation for date i.e. yyyy-MM-dd. A resource is only available till its last date i.e system does not consider any capacity of resource beyond this date (_if defined_).
-**email**<br>`optional` |  String value representing email address of resource object. Email address must be properly formatted with a maximum length of 254 characters.
-**phone**<br>`optional` | String representing phone number of resource. It’s displayed alongside the resource in your resource list.
-**roles**<br>`optional` | An array of ids of Roles (which are defined by an admin user in eRS Cloud Application) to be assigned to this Resource. The first id in the array is considered as Primary Role of that Resource. Multiple performing roles can be applied to a resource. Resources can also be searched / filtered using performing roles.
-**tags**  <br>`optional` | An optional array of strings which could be attached to this resource object as labels. This can be useful for the purpose of filtering, identification or other information.
-**udf_\*** <br>`optional` | A user with admin rights can add custom fields. These fields can be used to capture additional information in Resources. Different types of resources may have a different set of user-defined fields. The value for user defined field can be passed as shown in example request. In first example **_udf_employee_no_** is a user defined field. <a href ="#user-defined-fields" class="api-ref">Learn more</a>
+**email**<sup> **</sup><br>`optional` |  String value representing email address of resource object. Email address must be properly formatted with a maximum length of 254 characters.
+**phone**<sup> **</sup><br>`optional` | String representing phone number of resource. It’s displayed alongside the resource in your resource list.
+**roles**<sup> **</sup><br>`optional` | An array of ids of Roles (which are defined by an admin user in eRS Cloud Application) to be assigned to this Resource. The first id in the array is considered as Primary Role of that Resource. Multiple performing roles can be applied to a resource. Resources can also be searched / filtered using performing roles.
+**tags**<sup> **</sup><br>`optional` | An optional array of strings which could be attached to this resource object as labels. This can be useful for the purpose of filtering, identification or other information.
+**udf_\*** <br>`optional` | A user with admin rights can add custom fields. These fields can be used to capture additional information in Resources. Different types of resources may have a different set of user-defined fields. The value for user defined field can be passed as shown in example request. In first example **_udf_employee_no_** is a user defined field. <a href ="#user-defined-fields" class="api-ref">Learn more</a><br><br>_**Note**: User with admin rights can remove fields marked with ** from <a href ="#get-a-specific-resource-type" class="api-ref">specific resource type</a>. If these fields are passed after removal from resource type form, while updating resource, the operation will fail with response code **400**_.
 
 ### Returns
 

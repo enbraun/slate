@@ -87,11 +87,11 @@ Name               |  Description
  ---:        |    :----
  **project_type_id** <br> <span class="required">`required`</span> | Id of <a href="#project-type" class="api-ref">project-type</a> object. A project must be linked with one of <a href="#project-type" class="api-ref">project-type</a> defined in admin section (_using eRS Cloud Application_). Let’s assume there are two project types defined as `Medical` (_having id as 1_) and `Education` (_having id as 2_), now while creating a new project, if project_type_id is given as 1 then it will get created under Medical type and same for Education when project_type_id is given as 2.
 **title** <br><span class="required">`required`</span> | String representing title / name of project. This can be a maximum of 100 characters long.
-**email** <br>`optional` | String value representing email address of project object. Email address must be properly formatted with a maximum length of 254 characters.
-**project_start_date**<br>`optional` | String value representing a date in ISO 8601 extended notation for date i.e. yyyy-MM-dd.
-**end_date**<br>`optional` | String value representing a date in ISO 8601 extended notation for date i.e. yyyy-MM-dd.
-**tags**  <br>`optional` | An optional array of strings which could be attached to this project object as labels. This can be useful for the purpose of filtering, identification or other information.
-**udf_\*** <br>`optional` | A user with admin rights can add custom fields. These fields can be used to capture additional information in Projects. Different types of projects may have a different set of user-defined fields. The value for user defined field can be passed as shown in example request. In given example **_udf_progress_**</span> is a user defined field. <a href="#user-defined-fields" class="api-ref">Learn more</a>
+**email**<sup> **</sup> <br>`optional` | String value representing email address of project object. Email address must be properly formatted with a maximum length of 254 characters.
+**project_start_date**<sup>**</sup><br>`optional` | String value representing a date in ISO 8601 extended notation for date i.e. yyyy-MM-dd.
+**end_date**<sup> **</sup><br>`optional` | String value representing a date in ISO 8601 extended notation for date i.e. yyyy-MM-dd.
+**tags**<sup> **</sup> <br>`optional` | An optional array of strings which could be attached to this project object as labels. This can be useful for the purpose of filtering, identification or other information.
+**udf_\*** <br>`optional` | A user with admin rights can add custom fields. These fields can be used to capture additional information in Projects. Different types of projects may have a different set of user-defined fields. The value for user defined field can be passed as shown in example request. In given example **_udf_progress_**</span> is a user defined field. <a href="#user-defined-fields" class="api-ref">Learn more</a><br><br>_**Note**: User with admin rights can remove fields marked with ** from <a href ="#get-a-specific-project-type" class="api-ref">specific project type</a>. If these fields are passed after removal from project type form, while creating project, the operation will fail with response code **400**_.
 
 ### Returns
 
@@ -260,11 +260,25 @@ Retrieves the details of an existing project. You only need to provide the uniqu
 
 ```shell
 curl -X POST \
-"https://app.eresourcescheduler.cloud/rest/v1/projects/search" \
+"https://app.eresourcescheduler.cloud/rest/v1/projects/search?offset=1&limit=15" \
 -H "Content-Type: application/json" \
 -H "Authorization: Bearer B8x5Vj1O65r6wnoV" \
 -d '{ 
       "project_type_id:eq": 1 
+    }'
+```
+
+> Example Request For Filter By Passing Multiple Rules In JSON Format
+
+```shell
+curl -X POST \
+"https://app.eresourcescheduler.cloud/rest/v1/projects/search" \
+-H "Content-Type: application/json" \
+-H "Authorization: Bearer B8x5Vj1O65r6wnoV" \
+-d '{ 
+      "project_type_id:eq": 1, 
+      "project_start_date:gt": "2015-04-02",
+      "title:miss": "z"
     }'
 ```
 
@@ -315,33 +329,30 @@ curl -X POST \
 }
 ```
 
+<span class="optional"><b>REQUEST QUERY PARAMETERS</b></span>
+
+|Name|Description|
+|-:|:-|
+**limit**<br>`optional` | The limit keyword is used to limit the number of records returned from a result set. If a limit count is given, no more than that many records will be returned (but possibly less, if the query itself yields less records)<br>_Default value of `limit` is_ <span class="required">**`25`**</span><br>_Maximum value of `limit` can be_ <span class="required">**`500`**</span>
+**offset**<br>`optional` | Offset keyword is used to skip n items. If offset value is given as 10, then first 10 records will be skipped from result set. Offset is often used together with the Limit keyword.<br>_Default value of `offset` is_ <span class="required">**`0`**</span>
+<br><br>
+
 Search Project API allows filtering the results returned in various ways. This enables a great power to find out what is needed. eRS Cloud API also allows filtering on custom defined fields with multiple operators and conditions to cover up complex scenarios for searching.
 
 A filter condition consists of three components which are **_field_**, **_operator_** and **_value_**. For example fetching only those projects having project type id 1, could be achieved by adding project_type_id:eq=1 to your query.  If operator is not supplied, it takes default operator for field. <a href="#filters" class="api-ref">Read more</a>
 
 Below is a list of available fields, which allow filtering projects:
 
-> Example Request For Filter By Passing Multiple Rules In JSON Format
-
-```shell
-curl -X POST \
-"https://app.eresourcescheduler.cloud/rest/v1/projects/search" \
--H "Content-Type: application/json" \
--H "Authorization: Bearer B8x5Vj1O65r6wnoV" \
--d '{ 
-      "project_type_id:eq": 1, 
-      "project_start_date:gt": "2015-04-02" 
-    }'
-```
 ### Filters for System-defined fields
 
 |**Field Code**| **Operator**  | **Example**|
 |:--|:---|:--|
-**project_type_id**|<li>**eq** (_default_)  </li><li>any</li>| `"project_type_id":1 `<br>`"project_type_id:any":1`
-**email**|<li class="nowrap">**has** (_default_)&nbsp;&nbsp;</li><li>eq</li>|`"email":"abc"` <br>`"email:eq":"ujjwal@gmail.com"`
+**project_type_id**|<li>**eq** (_default_)  </li><li>neq</li><li>any</li><li>none</li>| `"project_type_id:eq":1 `<br>`"project_type_id:neq":1 `<br>`"project_type_id:any":1`<br>`"project_type_id:none":1`
+**title**|<li class="nowrap">**has** (_default_)&nbsp;&nbsp;</li><li>miss</li><li>eq</li><li>neq</li>|`"title:has": "e"`<br>`"title:miss": "e"`<br>`"title:eq": "Project-A"`<br>`"title:neq": "Project-A"`
+**email**|<li class="nowrap">**has** (_default_)&nbsp;&nbsp;</li><li>miss</li><li>eq</li><li>neq</li>|`"email:has":"abc"` <br>`"email:miss":"abc"` <br>`"email:eq":"ujjwal@gmail.com"`<br>`"email:neq":"ujjwal@gmail.com"`
 **project_start_date**|<li>**eq** (_default_)</li><li>lt</li><li>gt</li><li>bt</li><li>ex</li>|`"project_start_date:eq":"2015-02-02"`<br>`"project_start_date:lt":"2015-02-02"`<br>`"project_start_date:gt":"2015-02-02"`<br>`"project_start_date:bt":["2015-02-02","2015-04-05"]` <br>`"project_start_date:ex":["2015-02-02","2015-04-04"]`
 **end_date**|<li>**eq** (_default_) </li><li>lt</li><li>gt</li><li>bt</li><li>ex</li>| `"end_date:eq":"2015-02-02"`<br>`"end_date:lt":"2015-02-02"`<br>`"end_date:gt":"2015-02-02"`<br>`"end_date:bt":["2015-02-02","2015-04-05"]`<br>`"end_date:ex":["2015-02-02","2015-04-04"]`
-**tags**|<li>**any** (_default_) </li><li>all</li>|`"tags":"["tagA", "tagB"]`<br>`"tags:all":["tagB","tagC"]`
+**tags**|<li>**any** (_default_) </li><li>none</li><li>all</li><li>ex</li>|`"tags:any":"["tagA", "tagB"]`<br>`"tags:none":"["tagA", "tagB"]`<br>`"tags:all":["tagB","tagC"]`<br>`"tags:ex":["tagB","tagC"]`
 **is_archive**| N/A |`"is_archive":true` <br>`"is_archive":false`
  _For User-defined fields please <a href="#filters-for-user-defined-fields" class="api-ref">check here</a>._ 
 
@@ -372,11 +383,11 @@ curl -v -X PUT \
 |Name         |  Description |
 | ---:        |    :----     |
 **title** <br> <span class="required">`required`</span>  |String representing the  title of a project. This may be up to 100 characters.
-**project_start_date**<br>`optional` | String value representing a date in ISO 8601 extended notation for date i.e. yyyy-MM-dd. The project is started from this date.
-**end_date** <br>`optional` | String value representing a date in ISO 8601 extended notation for date i.e. yyyy-MM-dd. The project is considered ended / completed on this date.
-**tags**  <br>`optional`  | An optional array of strings which could be attached to this project object as labels. This can be useful for the purpose of filtering, identification or other information. This may be up to 50 characters.
-**email** <br>`optional`  | String value representing email address associated with project object. Email address must be properly formatted with a maximum length of 254 characters.
-**udf_\*** <br>`optional`  | A user with admin rights can add custom fields. These fields can be used to capture additional information in Project. Different types of projects may have a different set of user-defined fields. The value for user defined field can be passed as shown in example request. In first example **_udf_progress_** is a user defined field. <a href ="#user-defined-fields" class="api-ref">Learn more</a>
+**project_start_date**<sup>**</sup><br>`optional` | String value representing a date in ISO 8601 extended notation for date i.e. yyyy-MM-dd. The project is started from this date.
+**end_date** <sup> **</sup><br>`optional` | String value representing a date in ISO 8601 extended notation for date i.e. yyyy-MM-dd. The project is considered ended / completed on this date.
+**email**<sup> **</sup> <br>`optional`  | String value representing email address associated with project object. Email address must be properly formatted with a maximum length of 254 characters.
+**tags** <sup> **</sup> <br>`optional`  | An optional array of strings which could be attached to this project object as labels. This can be useful for the purpose of filtering, identification or other information. This may be up to 50 characters.
+**udf_\*** <br>`optional`  | A user with admin rights can add custom fields. These fields can be used to capture additional information in Project. Different types of projects may have a different set of user-defined fields. The value for user defined field can be passed as shown in example request. In first example **_udf_progress_** is a user defined field. <a href ="#user-defined-fields" class="api-ref">Learn more</a><br><br>_**Note**: User with admin rights can remove fields marked with ** from <a href ="#get-a-specific-project-type" class="api-ref">specific project type</a>. If these fields are passed after removal from project type form, while updating project, the operation will fail with response code **400**_.
 
 
 ### Returns
