@@ -6,7 +6,7 @@
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <title>eRS Cloud API Reference</title>
-	  <link href="images/favicon.png" rel="icon" type="image/png" />
+	  <link href="images/favicon-f5496346.png" rel="icon" type="image/png" />
 
     <style>
       .highlight table td { padding: 5px; }
@@ -197,23 +197,23 @@
   color: #f92672;
 }
     </style>
-    <link href="stylesheets/screen.css" rel="stylesheet" media="screen" />
-    <link href="stylesheets/print.css" rel="stylesheet" media="print" />
-    <link href="stylesheets/styles.css" rel="stylesheet" media="screen" />
+    <link href="stylesheets/screen-6615a2a5.css" rel="stylesheet" media="screen" />
+    <link href="stylesheets/print-bccf8c07.css" rel="stylesheet" media="print" />
+    <link href="stylesheets/styles-5c768e67.css" rel="stylesheet" media="screen" />
    
-      <script src="javascripts/all.js"></script>
-    <script src="javascripts/ers.js"></script>
+      <script src="javascripts/all-c5541673.js"></script>
+    <script src="javascripts/ers-d4e03963.js"></script>
   </head>
 
   <body class="index" data-languages="[&quot;shell&quot;]">
     <a href="#" id="nav-button">
       <span>
         NAV
-        <img src="images/navbar.png" alt="Navbar" />
+        <img src="images/navbar-cad8cdcb.png" alt="Navbar" />
       </span>
     </a>
     <div class="toc-wrapper">
-      <img src="images/logo.png" class="logo" alt="Logo" />
+      <img src="images/logo-b55d5102.png" class="logo" alt="Logo" />
         <div class="lang-selector">
               <a href="#" data-language-name="shell">shell</a>
         </div>
@@ -619,7 +619,7 @@ grant_type=authorization_code</span><span class="se">\</span><span class="s2">
 
 <p>There are fifteen types of different fields available for different use cases. Each type of field has its own set of attributes which can be configured to fit your requirements. Once such fields are added and applied, the response for that object will contain these along with normal attributes.    </p>
 
-<p><em><strong>Note</strong> : There can be a maximum of 50 user-defined fields.</em></p>
+<p><em><strong>Note</strong>: There can be a maximum of 50 user-defined fields.</em></p>
 <h2 id='types-of-user-defined-fields'>Types of User Defined Fields</h2>
 <p>User can create one of the following type of field.</p>
 
@@ -832,7 +832,7 @@ grant_type=authorization_code</span><span class="se">\</span><span class="s2">
 <td style="text-align: left">Indicates whether this resource type is <code>human</code> or <code>non-human</code>. For example, <code>Employee</code> could be a human resource type while <code>Machine</code>, <code>Meeting Rooms</code> etc. can be non-human resource type.</td>
 </tr>
 <tr>
-<td style="text-align: right"><strong>fields</strong> <br> <code>array of object</code></td>
+<td style="text-align: right"><strong>fields</strong> <br> <code>array of objects</code></td>
 <td style="text-align: left">Represent collection of fields (or attributes) that are available for this resource type. Each <a href ="#resource" class = "api-ref">Resource</a> object of this resource type can store / update values for these field. While creating or updating a <a href ="#resource" class = "api-ref">Resource</a> user must pass arguments which are available for intended resource type object.</td>
 </tr>
 <tr>
@@ -1282,7 +1282,7 @@ grant_type=authorization_code</span><span class="se">\</span><span class="s2">
 <td style="text-align: left">Represent name for this object. This is used to identify object by using some meaningful phrase to describe type of projects like <code>Standard</code>, <code>Education</code> etc.</td>
 </tr>
 <tr>
-<td style="text-align: right"><strong>fields</strong> <br><code>array of strings</code></td>
+<td style="text-align: right"><strong>fields</strong> <br><code>array of objects</code></td>
 <td style="text-align: left">Represent collection of fields (or attributes) that are available for this project type. Each <a href = "#project" class="api-ref">Project</a> object of this project type can store / update values for these field. While creating or updating a <a href = "#project" class="api-ref">Project</a> user must pass arguments which are available for intended project type object.</td>
 </tr>
 <tr>
@@ -2246,15 +2246,15 @@ grant_type=authorization_code</span><span class="se">\</span><span class="s2">
 </tr>
 <tr>
 <td style="text-align: right"><strong>first_name</strong> <br> <span class="required"><code>required</code></span></td>
-<td style="text-align: left">String representing the first name of a resource. This may be up to 100 characters.<br> <em><strong>Note</strong> : for non-human resources, this field is <span class="danger">not available</span></em>.</td>
+<td style="text-align: left">String representing the first name of a resource. This may be up to 100 characters.<br> <em><strong>Note</strong>: for non-human resources, this field is <span class="danger">not available</span></em>.</td>
 </tr>
 <tr>
-<td style="text-align: right"><strong>last_name</strong> <br> <code>optional</code></td>
-<td style="text-align: left">String representing the last name of a resource. This may be up to 100 characters.<br> <em><strong>Note</strong> : for non-human resources, this field is <span class="danger">not available</span></em>.</td>
+<td style="text-align: right"><strong>last_name</strong><sup> **</sup> <br> <code>optional</code></td>
+<td style="text-align: left">String representing the last name of a resource. This may be up to 100 characters.<br> <em><strong>Note</strong>: for non-human resources, this field is <span class="danger">not available</span></em>.</td>
 </tr>
 <tr>
 <td style="text-align: right"><strong>name</strong> <br> <span class="required"><code>required</code></span></td>
-<td style="text-align: left">String representing the name of a resource. This may be up to 100 characters.<br> <em><strong>Note</strong> : This field is only available for non-human resources and for human resources, this field is <span class="danger">not available</span></em>.</td>
+<td style="text-align: left">String representing the name of a resource. This may be up to 100 characters.<br> <em><strong>Note</strong>: This field is only available for non-human resources and for human resources, this field is <span class="danger">not available</span></em>.</td>
 </tr>
 <tr>
 <td style="text-align: right"><strong>start_date</strong><br><span class="required"><code>required</code></span></td>
@@ -2265,15 +2265,15 @@ grant_type=authorization_code</span><span class="se">\</span><span class="s2">
 <td style="text-align: left">String value representing a date in ISO 8601 extended notation for date i.e. yyyy-MM-dd. A resource is only available till its last date i.e system does not consider any capacity of resource beyond this date (<em>if defined</em>).</td>
 </tr>
 <tr>
-<td style="text-align: right"><strong>email</strong><br><code>optional</code></td>
+<td style="text-align: right"><strong>email</strong><sup> **</sup><br><code>optional</code></td>
 <td style="text-align: left">String value representing email address of resource object. Email address must be properly formatted with a maximum length of 254 characters.</td>
 </tr>
 <tr>
-<td style="text-align: right"><strong>phone</strong><br><code>optional</code></td>
+<td style="text-align: right"><strong>phone</strong><sup> **</sup><br><code>optional</code></td>
 <td style="text-align: left">String representing phone number of resource. It’s displayed alongside the resource in your resource list.</td>
 </tr>
 <tr>
-<td style="text-align: right"><strong>roles</strong><br><code>optional</code></td>
+<td style="text-align: right"><strong>roles</strong><sup> **</sup><br><br><code>optional</code></td>
 <td style="text-align: left">An array of ids of Roles (which are defined by an admin user in eRS Cloud Application) to be assigned to this Resource. The first id in the array is considered as Primary Role of that Resource. Multiple performing roles can be applied to a resource. Resources can also be searched / filtered using performing roles.</td>
 </tr>
 <tr>
@@ -2281,12 +2281,12 @@ grant_type=authorization_code</span><span class="se">\</span><span class="s2">
 <td style="text-align: left">Id of Calendar object which should be assigned to resource effective from its start date. Depending upon requirements, different calendars can be applied on different resources. If calendar is omitted then default calendar (as defined in admin settings) will get applied for this resource.</td>
 </tr>
 <tr>
-<td style="text-align: right"><strong>tags</strong>  <br><code>optional</code></td>
+<td style="text-align: right"><strong>tags</strong><sup> **</sup><br> <br><code>optional</code></td>
 <td style="text-align: left">An optional array of strings which could be attached to this resource object as labels. This can be useful for the purpose of filtering, identification or other information.</td>
 </tr>
 <tr>
 <td style="text-align: right"><strong>udf_*</strong> <br><code>optional</code></td>
-<td style="text-align: left">A user with admin rights can add custom fields. These fields can be used to capture additional information in Resources. Different types of resources may have a different set of user-defined fields. The value for user defined field can be passed as shown in example request. In first example <strong><em>udf_employee_no</em></strong> is a user defined field. <a href ="#user-defined-fields" class="api-ref">Learn more</a></td>
+<td style="text-align: left">A user with admin rights can add custom fields. These fields can be used to capture additional information in Resources. Different types of resources may have a different set of user-defined fields. The value for user defined field can be passed as shown in example request. In first example <strong><em>udf_employee_no</em></strong> is a user defined field. <a href ="#user-defined-fields" class="api-ref">Learn more</a><br><br><em><strong>Note</strong>: User with admin rights can remove fields marked with ** from <a href ="#get-a-specific-resource-type" class="api-ref">specific resource type</a>. If these fields are passed after removal from resource type form, while creating resource, the operation will fail with response code <strong>400</strong></em>.</td>
 </tr>
 </tbody></table>
 <h3 id='returns'>Returns</h3>
@@ -2544,14 +2544,34 @@ grant_type=authorization_code</span><span class="se">\</span><span class="s2">
 <p>Example Request For Filter By Passing Multiple Rules In JSON Format</p>
 </blockquote>
 <pre class="highlight shell tab-shell"><code>curl -X POST <span class="se">\</span>
-<span class="s2">"https://app.eresourcescheduler.cloud/rest/v1/resources/search"</span> <span class="se">\</span>
+<span class="s2">"https://app.eresourcescheduler.cloud/rest/v1/resources/search?offset=1&amp;limit=15"</span> <span class="se">\</span>
 -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
 -H <span class="s2">"Authorization: Bearer B8x5Vj1O65r6wnoV"</span> <span class="se">\</span>
 -d <span class="s1">'{ 
       "resource_type_id:eq": 1 , 
-      "roles:all": [3,6] 
+      "roles:ex": [3,6] 
     }'</span>
 </code></pre>
+<p><span class="optional"><b>REQUEST QUERY PARAMETERS</b></span></p>
+
+<table><thead>
+<tr>
+<th style="text-align: right">Name</th>
+<th style="text-align: left">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: right"><strong>limit</strong><br><code>optional</code></td>
+<td style="text-align: left">The limit keyword is used to limit the number of records returned from a result set. If a limit count is given, no more than that many records will be returned (but possibly less, if the query itself yields less records)<br><em>Default value of <code>limit</code> is</em> <span class="required"><strong><code>25</code></strong></span><br><em>Maximum value of <code>limit</code> can be</em> <span class="required"><strong><code>500</code></strong></span></td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>offset</strong><br><code>optional</code></td>
+<td style="text-align: left">Offset keyword is used to skip n items. If offset value is given as 10, then first 10 records will be skipped from result set. Offset is often used together with the Limit keyword.<br><em>Default value of <code>offset</code> is</em> <span class="required"><strong><code>0</code></strong></span></td>
+</tr>
+</tbody></table>
+
+<p><br><br></p>
+
 <p>Search Resource API allows filtering the results returned in various ways. This enables a great power to find out what is needed. eRS Cloud API also allows filtering on custom defined fields with multiple operators and conditions to cover up complex scenarios for searching.</p>
 
 <p>A filter condition consists of three components which are <strong><em>field</em></strong>, <strong><em>operator</em></strong> and <strong><em>value</em></strong>. For example, fetching only those resources having resource type id 1, could be achieved by adding resource_type_id:eq=1 to your query. If operator is not supplied, it takes default operator for field.</p>
@@ -2567,33 +2587,33 @@ grant_type=authorization_code</span><span class="se">\</span><span class="s2">
 </thead><tbody>
 <tr>
 <td style="text-align: left"><strong>resource_type_id</strong></td>
-<td style="text-align: left"><li><strong>eq</strong> (<em>default</em>)  </li><li>any</li></td>
-<td style="text-align: left"><code>&quot;resource_type_id:eq&quot;: 1</code><br><code>&quot;resource_type_id:any&quot;: [1,2]</code></td>
+<td style="text-align: left"><li><strong>eq</strong> (<em>default</em>)  </li><li>neq</li><li>any</li><li>none</li></td>
+<td style="text-align: left"><code>&quot;resource_type_id:eq&quot;: 1</code><br><code>&quot;resource_type_id:neq&quot;: 2</code><br><code>&quot;resource_type_id:any&quot;: [1,2]</code><br><code>&quot;resource_type_id:none&quot;: [3,4]</code></td>
 </tr>
 <tr>
 <td style="text-align: left"><strong>name</strong></td>
-<td style="text-align: left"><li class="nowrap"><strong>has</strong> (<em>default</em>)&nbsp;&nbsp;</li><li>eq</li></td>
-<td style="text-align: left"><code>&quot;name:has&quot;: &quot;c&quot;</code><br><code>&quot;name:eq&quot;: &quot;Amy Jones&quot;</code></td>
+<td style="text-align: left"><li class="nowrap"><strong>has</strong> (<em>default</em>)&nbsp;&nbsp;</li><li>miss</li><li>eq</li><li>neq</li></td>
+<td style="text-align: left"><code>&quot;name:has&quot;: &quot;c&quot;</code><br><code>&quot;name:miss&quot;: &quot;c&quot;</code><br><code>&quot;name:eq&quot;: &quot;Amy Jones&quot;</code><br><code>&quot;name:neq&quot;: &quot;Amy Jones&quot;</code></td>
 </tr>
 <tr>
 <td style="text-align: left"><strong>roles</strong></td>
-<td style="text-align: left"><li><strong>any</strong> (<em>default</em>)</li><li>all</li></td>
-<td style="text-align: left"><code>&quot;roles:any&quot;: [2,5]</code><br><code>&quot;roles:all&quot;: [4,6]</code></td>
+<td style="text-align: left"><li><strong>any</strong> (<em>default</em>)</li><li>none</li><li>all</li><li>ex</li></td>
+<td style="text-align: left"><code>&quot;roles:any&quot;: [2,5]</code><br><code>&quot;roles:none&quot;: [2,5]</code><br><code>&quot;roles:all&quot;: [4,6]</code><br><code>&quot;roles:ex&quot;: [4,6]</code></td>
 </tr>
 <tr>
 <td style="text-align: left"><strong>tags</strong></td>
-<td style="text-align: left"><li><strong>any</strong> (<em>default</em>)</li><li>all</li></td>
-<td style="text-align: left"><code>&quot;tags:any&quot;: [&quot;tagA&quot;,&quot;tagB&quot;]</code><br><code>&quot;tags:all&quot;: [&quot;tagA&quot;,&quot;tagB&quot;]</code></li></td>
+<td style="text-align: left"><li><strong>any</strong> (<em>default</em>)</li><li>none</li><li>all</li><li>ex</li></td>
+<td style="text-align: left"><code>&quot;tags:any&quot;: [&quot;tagA&quot;,&quot;tagB&quot;]</code><br><code>&quot;tags:none&quot;: [&quot;tagA&quot;,&quot;tagB&quot;]</code><br><code>&quot;tags:all&quot;: [&quot;tagA&quot;,&quot;tagB&quot;]</code><br><code>&quot;tags:ex&quot;: [&quot;tagA&quot;,&quot;tagB&quot;]</code></td>
 </tr>
 <tr>
 <td style="text-align: left"><strong>email</strong></td>
-<td style="text-align: left"><li><strong>has</strong> (<em>default</em>)</li><li>eq</li></td>
-<td style="text-align: left"><code>&quot;email:has&quot;: &quot;a&quot;</code><br><code>&quot;email:eq&quot;: &quot;abc@mycompany.com&quot;</code></td>
+<td style="text-align: left"><li><strong>has</strong> (<em>default</em>)</li><li>miss</li><li>eq</li><li>neq</li></td>
+<td style="text-align: left"><code>&quot;email:has&quot;: &quot;a&quot;</code><br><code>&quot;email:miss&quot;: &quot;a&quot;</code><br><code>&quot;email:eq&quot;: &quot;abc@mycompany.com&quot;</code><br><code>&quot;email:neq&quot;: &quot;abc@mycompany.com&quot;</code></td>
 </tr>
 <tr>
 <td style="text-align: left"><strong>phone</strong></td>
-<td style="text-align: left"><li><strong>has</strong> (<em>default</em>)</li><li>eq</li></td>
-<td style="text-align: left"><code>&quot;phone:has&quot;: &quot;753&quot;</code><br> <code>&quot;phone:eq&quot;: &quot;(485)555-0202&quot;</code></td>
+<td style="text-align: left"><li><strong>has</strong> (<em>default</em>)</li><li>miss</li><li>eq</li><li>neq</li></td>
+<td style="text-align: left"><code>&quot;phone:has&quot;: &quot;753&quot;</code><br><code>&quot;phone:miss&quot;: &quot;753&quot;</code><br> <code>&quot;phone:eq&quot;: &quot;(485)555-0202&quot;</code><br> <code>&quot;phone:neq&quot;: &quot;(485)555-0202&quot;</code></td>
 </tr>
 <tr>
 <td style="text-align: left"><strong>start_Date</strong></td>
@@ -2638,15 +2658,15 @@ grant_type=authorization_code</span><span class="se">\</span><span class="s2">
 </thead><tbody>
 <tr>
 <td style="text-align: right"><strong>first_name</strong> <br> <span class="required"><code>required</code></span></td>
-<td style="text-align: left">String representing the first name of a resource. This may be up to 100 characters.<br> <em><strong>Note</strong> : for non-human resources, this field is <span class="danger">not available</span></em>.</td>
+<td style="text-align: left">String representing the first name of a resource. This may be up to 100 characters.<br> <em><strong>Note</strong>: for non-human resources, this field is <span class="danger">not available</span></em>.</td>
 </tr>
 <tr>
-<td style="text-align: right"><strong>last_name</strong> <br> <code>optional</code></td>
-<td style="text-align: left">String representing the last name of a resource. This may be up to 100 characters.<br> <em><strong>Note</strong> : for non-human resources, this field is <span class="danger">not available</span></em>.</td>
+<td style="text-align: right"><strong>last_name</strong><sup>**</sup> <br><code>optional</code></td>
+<td style="text-align: left">String representing the last name of a resource. This may be up to 100 characters.<br> <em><strong>Note</strong>: for non-human resources, this field is <span class="danger">not available</span></em>.</td>
 </tr>
 <tr>
 <td style="text-align: right"><strong>name</strong> <br> <span class="required"><code>required</code></span></td>
-<td style="text-align: left">String representing the name of a resource. This may be up to 100 characters.<br> <em><strong>Note</strong> : This field is only available for non-human resources and for human resources, this is <span class="danger">not available</span></em>.</td>
+<td style="text-align: left">String representing the name of a resource. This may be up to 100 characters.<br> <em><strong>Note</strong>: This field is only available for non-human resources and for human resources, this is <span class="danger">not available</span></em>.</td>
 </tr>
 <tr>
 <td style="text-align: right"><strong>start_date</strong><br><span class="required"><code>required</code></span></td>
@@ -2657,24 +2677,24 @@ grant_type=authorization_code</span><span class="se">\</span><span class="s2">
 <td style="text-align: left">String value representing a date in ISO 8601 extended notation for date i.e. yyyy-MM-dd. A resource is only available till its last date i.e system does not consider any capacity of resource beyond this date (<em>if defined</em>).</td>
 </tr>
 <tr>
-<td style="text-align: right"><strong>email</strong><br><code>optional</code></td>
+<td style="text-align: right"><strong>email</strong><sup> **</sup><br><code>optional</code></td>
 <td style="text-align: left">String value representing email address of resource object. Email address must be properly formatted with a maximum length of 254 characters.</td>
 </tr>
 <tr>
-<td style="text-align: right"><strong>phone</strong><br><code>optional</code></td>
+<td style="text-align: right"><strong>phone</strong><sup> **</sup><br><code>optional</code></td>
 <td style="text-align: left">String representing phone number of resource. It’s displayed alongside the resource in your resource list.</td>
 </tr>
 <tr>
-<td style="text-align: right"><strong>roles</strong><br><code>optional</code></td>
+<td style="text-align: right"><strong>roles</strong><sup> **</sup><br><code>optional</code></td>
 <td style="text-align: left">An array of ids of Roles (which are defined by an admin user in eRS Cloud Application) to be assigned to this Resource. The first id in the array is considered as Primary Role of that Resource. Multiple performing roles can be applied to a resource. Resources can also be searched / filtered using performing roles.</td>
 </tr>
 <tr>
-<td style="text-align: right"><strong>tags</strong>  <br><code>optional</code></td>
+<td style="text-align: right"><strong>tags</strong><sup> **</sup><br><code>optional</code></td>
 <td style="text-align: left">An optional array of strings which could be attached to this resource object as labels. This can be useful for the purpose of filtering, identification or other information.</td>
 </tr>
 <tr>
 <td style="text-align: right"><strong>udf_*</strong> <br><code>optional</code></td>
-<td style="text-align: left">A user with admin rights can add custom fields. These fields can be used to capture additional information in Resources. Different types of resources may have a different set of user-defined fields. The value for user defined field can be passed as shown in example request. In first example <strong><em>udf_employee_no</em></strong> is a user defined field. <a href ="#user-defined-fields" class="api-ref">Learn more</a></td>
+<td style="text-align: left">A user with admin rights can add custom fields. These fields can be used to capture additional information in Resources. Different types of resources may have a different set of user-defined fields. The value for user defined field can be passed as shown in example request. In first example <strong><em>udf_employee_no</em></strong> is a user defined field. <a href ="#user-defined-fields" class="api-ref">Learn more</a><br><br><em><strong>Note</strong>: User with admin rights can remove fields marked with ** from <a href ="#get-a-specific-resource-type" class="api-ref">specific resource type</a>. If these fields are passed after removal from resource type form, while updating resource, the operation will fail with response code <strong>400</strong></em>.</td>
 </tr>
 </tbody></table>
 <h3 id='returns-4'>Returns</h3>
@@ -3834,24 +3854,24 @@ curl -v -X DELETE <span class="se">\</span>
 <td style="text-align: left">String representing title / name of project. This can be a maximum of 100 characters long.</td>
 </tr>
 <tr>
-<td style="text-align: right"><strong>email</strong> <br><code>optional</code></td>
+<td style="text-align: right"><strong>email</strong><sup> **</sup> <br><code>optional</code></td>
 <td style="text-align: left">String value representing email address of project object. Email address must be properly formatted with a maximum length of 254 characters.</td>
 </tr>
 <tr>
-<td style="text-align: right"><strong>project_start_date</strong><br><code>optional</code></td>
+<td style="text-align: right"><strong>project_start_date</strong><sup>**</sup><br><code>optional</code></td>
 <td style="text-align: left">String value representing a date in ISO 8601 extended notation for date i.e. yyyy-MM-dd.</td>
 </tr>
 <tr>
-<td style="text-align: right"><strong>end_date</strong><br><code>optional</code></td>
+<td style="text-align: right"><strong>end_date</strong><sup> **</sup><br><code>optional</code></td>
 <td style="text-align: left">String value representing a date in ISO 8601 extended notation for date i.e. yyyy-MM-dd.</td>
 </tr>
 <tr>
-<td style="text-align: right"><strong>tags</strong>  <br><code>optional</code></td>
+<td style="text-align: right"><strong>tags</strong><sup> **</sup> <br><code>optional</code></td>
 <td style="text-align: left">An optional array of strings which could be attached to this project object as labels. This can be useful for the purpose of filtering, identification or other information.</td>
 </tr>
 <tr>
 <td style="text-align: right"><strong>udf_*</strong> <br><code>optional</code></td>
-<td style="text-align: left">A user with admin rights can add custom fields. These fields can be used to capture additional information in Projects. Different types of projects may have a different set of user-defined fields. The value for user defined field can be passed as shown in example request. In given example <strong><em>udf_progress</em></strong></span> is a user defined field. <a href="#user-defined-fields" class="api-ref">Learn more</a></td>
+<td style="text-align: left">A user with admin rights can add custom fields. These fields can be used to capture additional information in Projects. Different types of projects may have a different set of user-defined fields. The value for user defined field can be passed as shown in example request. In given example <strong><em>udf_progress</em></strong></span> is a user defined field. <a href="#user-defined-fields" class="api-ref">Learn more</a><br><br><em><strong>Note</strong>: User with admin rights can remove fields marked with ** from <a href ="#get-a-specific-project-type" class="api-ref">specific project type</a>. If these fields are passed after removal from project type form, while creating project, the operation will fail with response code <strong>400</strong></em>.</td>
 </tr>
 </tbody></table>
 <h3 id='returns'>Returns</h3>
@@ -4050,11 +4070,24 @@ curl -v -X DELETE <span class="se">\</span>
 <p>Example Request For Filter In JSON Format</p>
 </blockquote>
 <pre class="highlight shell tab-shell"><code>curl -X POST <span class="se">\</span>
-<span class="s2">"https://app.eresourcescheduler.cloud/rest/v1/projects/search"</span> <span class="se">\</span>
+<span class="s2">"https://app.eresourcescheduler.cloud/rest/v1/projects/search?offset=1&amp;limit=15"</span> <span class="se">\</span>
 -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
 -H <span class="s2">"Authorization: Bearer B8x5Vj1O65r6wnoV"</span> <span class="se">\</span>
 -d <span class="s1">'{ 
       "project_type_id:eq": 1 
+    }'</span>
+</code></pre>
+<blockquote>
+<p>Example Request For Filter By Passing Multiple Rules In JSON Format</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl -X POST <span class="se">\</span>
+<span class="s2">"https://app.eresourcescheduler.cloud/rest/v1/projects/search"</span> <span class="se">\</span>
+-H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+-H <span class="s2">"Authorization: Bearer B8x5Vj1O65r6wnoV"</span> <span class="se">\</span>
+-d <span class="s1">'{ 
+      "project_type_id:eq": 1, 
+      "project_start_date:gt": "2015-04-02",
+      "title:miss": "z"
     }'</span>
 </code></pre>
 <blockquote>
@@ -4103,24 +4136,32 @@ curl -v -X DELETE <span class="se">\</span>
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
+<p><span class="optional"><b>REQUEST QUERY PARAMETERS</b></span></p>
+
+<table><thead>
+<tr>
+<th style="text-align: right">Name</th>
+<th style="text-align: left">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: right"><strong>limit</strong><br><code>optional</code></td>
+<td style="text-align: left">The limit keyword is used to limit the number of records returned from a result set. If a limit count is given, no more than that many records will be returned (but possibly less, if the query itself yields less records)<br><em>Default value of <code>limit</code> is</em> <span class="required"><strong><code>25</code></strong></span><br><em>Maximum value of <code>limit</code> can be</em> <span class="required"><strong><code>500</code></strong></span></td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>offset</strong><br><code>optional</code></td>
+<td style="text-align: left">Offset keyword is used to skip n items. If offset value is given as 10, then first 10 records will be skipped from result set. Offset is often used together with the Limit keyword.<br><em>Default value of <code>offset</code> is</em> <span class="required"><strong><code>0</code></strong></span></td>
+</tr>
+</tbody></table>
+
+<p><br><br></p>
+
 <p>Search Project API allows filtering the results returned in various ways. This enables a great power to find out what is needed. eRS Cloud API also allows filtering on custom defined fields with multiple operators and conditions to cover up complex scenarios for searching.</p>
 
 <p>A filter condition consists of three components which are <strong><em>field</em></strong>, <strong><em>operator</em></strong> and <strong><em>value</em></strong>. For example fetching only those projects having project type id 1, could be achieved by adding project_type_id:eq=1 to your query.  If operator is not supplied, it takes default operator for field. <a href="#filters" class="api-ref">Read more</a></p>
 
 <p>Below is a list of available fields, which allow filtering projects:</p>
-
-<blockquote>
-<p>Example Request For Filter By Passing Multiple Rules In JSON Format</p>
-</blockquote>
-<pre class="highlight shell tab-shell"><code>curl -X POST <span class="se">\</span>
-<span class="s2">"https://app.eresourcescheduler.cloud/rest/v1/projects/search"</span> <span class="se">\</span>
--H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
--H <span class="s2">"Authorization: Bearer B8x5Vj1O65r6wnoV"</span> <span class="se">\</span>
--d <span class="s1">'{ 
-      "project_type_id:eq": 1, 
-      "project_start_date:gt": "2015-04-02" 
-    }'</span>
-</code></pre><h3 id='filters-for-system-defined-fields'>Filters for System-defined fields</h3>
+<h3 id='filters-for-system-defined-fields'>Filters for System-defined fields</h3>
 <table><thead>
 <tr>
 <th style="text-align: left"><strong>Field Code</strong></th>
@@ -4130,13 +4171,18 @@ curl -v -X DELETE <span class="se">\</span>
 </thead><tbody>
 <tr>
 <td style="text-align: left"><strong>project_type_id</strong></td>
-<td style="text-align: left"><li><strong>eq</strong> (<em>default</em>)  </li><li>any</li></td>
-<td style="text-align: left"><code>&quot;project_type_id&quot;:1</code><br><code>&quot;project_type_id:any&quot;:1</code></td>
+<td style="text-align: left"><li><strong>eq</strong> (<em>default</em>)  </li><li>neq</li><li>any</li><li>none</li></td>
+<td style="text-align: left"><code>&quot;project_type_id:eq&quot;:1</code><br><code>&quot;project_type_id:neq&quot;:1</code><br><code>&quot;project_type_id:any&quot;:1</code><br><code>&quot;project_type_id:none&quot;:1</code></td>
+</tr>
+<tr>
+<td style="text-align: left"><strong>title</strong></td>
+<td style="text-align: left"><li class="nowrap"><strong>has</strong> (<em>default</em>)&nbsp;&nbsp;</li><li>miss</li><li>eq</li><li>neq</li></td>
+<td style="text-align: left"><code>&quot;title:has&quot;: &quot;e&quot;</code><br><code>&quot;title:miss&quot;: &quot;e&quot;</code><br><code>&quot;title:eq&quot;: &quot;Project-A&quot;</code><br><code>&quot;title:neq&quot;: &quot;Project-A&quot;</code></td>
 </tr>
 <tr>
 <td style="text-align: left"><strong>email</strong></td>
-<td style="text-align: left"><li class="nowrap"><strong>has</strong> (<em>default</em>)&nbsp;&nbsp;</li><li>eq</li></td>
-<td style="text-align: left"><code>&quot;email&quot;:&quot;abc&quot;</code> <br><code>&quot;email:eq&quot;:&quot;ujjwal@gmail.com&quot;</code></td>
+<td style="text-align: left"><li class="nowrap"><strong>has</strong> (<em>default</em>)&nbsp;&nbsp;</li><li>miss</li><li>eq</li><li>neq</li></td>
+<td style="text-align: left"><code>&quot;email:has&quot;:&quot;abc&quot;</code> <br><code>&quot;email:miss&quot;:&quot;abc&quot;</code> <br><code>&quot;email:eq&quot;:&quot;ujjwal@gmail.com&quot;</code><br><code>&quot;email:neq&quot;:&quot;ujjwal@gmail.com&quot;</code></td>
 </tr>
 <tr>
 <td style="text-align: left"><strong>project_start_date</strong></td>
@@ -4150,8 +4196,8 @@ curl -v -X DELETE <span class="se">\</span>
 </tr>
 <tr>
 <td style="text-align: left"><strong>tags</strong></td>
-<td style="text-align: left"><li><strong>any</strong> (<em>default</em>) </li><li>all</li></td>
-<td style="text-align: left"><code>&quot;tags&quot;:&quot;[&quot;tagA&quot;, &quot;tagB&quot;]</code><br><code>&quot;tags:all&quot;:[&quot;tagB&quot;,&quot;tagC&quot;]</code></td>
+<td style="text-align: left"><li><strong>any</strong> (<em>default</em>) </li><li>none</li><li>all</li><li>ex</li></td>
+<td style="text-align: left"><code>&quot;tags:any&quot;:&quot;[&quot;tagA&quot;, &quot;tagB&quot;]</code><br><code>&quot;tags:none&quot;:&quot;[&quot;tagA&quot;, &quot;tagB&quot;]</code><br><code>&quot;tags:all&quot;:[&quot;tagB&quot;,&quot;tagC&quot;]</code><br><code>&quot;tags:ex&quot;:[&quot;tagB&quot;,&quot;tagC&quot;]</code></td>
 </tr>
 <tr>
 <td style="text-align: left"><strong>is_archive</strong></td>
@@ -4193,24 +4239,24 @@ curl -v -X DELETE <span class="se">\</span>
 <td style="text-align: left">String representing the  title of a project. This may be up to 100 characters.</td>
 </tr>
 <tr>
-<td style="text-align: right"><strong>project_start_date</strong><br><code>optional</code></td>
+<td style="text-align: right"><strong>project_start_date</strong><sup>**</sup><br><code>optional</code></td>
 <td style="text-align: left">String value representing a date in ISO 8601 extended notation for date i.e. yyyy-MM-dd. The project is started from this date.</td>
 </tr>
 <tr>
-<td style="text-align: right"><strong>end_date</strong> <br><code>optional</code></td>
+<td style="text-align: right"><strong>end_date</strong> <sup> **</sup><br><code>optional</code></td>
 <td style="text-align: left">String value representing a date in ISO 8601 extended notation for date i.e. yyyy-MM-dd. The project is considered ended / completed on this date.</td>
 </tr>
 <tr>
-<td style="text-align: right"><strong>tags</strong>  <br><code>optional</code></td>
-<td style="text-align: left">An optional array of strings which could be attached to this project object as labels. This can be useful for the purpose of filtering, identification or other information. This may be up to 50 characters.</td>
-</tr>
-<tr>
-<td style="text-align: right"><strong>email</strong> <br><code>optional</code></td>
+<td style="text-align: right"><strong>email</strong><sup> **</sup> <br><code>optional</code></td>
 <td style="text-align: left">String value representing email address associated with project object. Email address must be properly formatted with a maximum length of 254 characters.</td>
 </tr>
 <tr>
+<td style="text-align: right"><strong>tags</strong> <sup> **</sup> <br><code>optional</code></td>
+<td style="text-align: left">An optional array of strings which could be attached to this project object as labels. This can be useful for the purpose of filtering, identification or other information. This may be up to 50 characters.</td>
+</tr>
+<tr>
 <td style="text-align: right"><strong>udf_*</strong> <br><code>optional</code></td>
-<td style="text-align: left">A user with admin rights can add custom fields. These fields can be used to capture additional information in Project. Different types of projects may have a different set of user-defined fields. The value for user defined field can be passed as shown in example request. In first example <strong><em>udf_progress</em></strong> is a user defined field. <a href ="#user-defined-fields" class="api-ref">Learn more</a></td>
+<td style="text-align: left">A user with admin rights can add custom fields. These fields can be used to capture additional information in Project. Different types of projects may have a different set of user-defined fields. The value for user defined field can be passed as shown in example request. In first example <strong><em>udf_progress</em></strong> is a user defined field. <a href ="#user-defined-fields" class="api-ref">Learn more</a><br><br><em><strong>Note</strong>: User with admin rights can remove fields marked with ** from <a href ="#get-a-specific-project-type" class="api-ref">specific project type</a>. If these fields are passed after removal from project type form, while updating project, the operation will fail with response code <strong>400</strong></em>.</td>
 </tr>
 </tbody></table>
 <h3 id='returns-4'>Returns</h3>
@@ -5014,8 +5060,12 @@ curl -v -X DELETE <span class="s2">"https://app.eresourcescheduler.cloud/rest/v1
 <td style="text-align: left">Represents end date and time for booking object. This field accepts value in ISO 8601 extended format for date-time i.e. yyyy-mm-ddThh:mm:ss. The value must be snapped in 15 minutes interval, which effectively means that minutes values should be one of(00/15/30/45) and seconds value should always be 0. (if given). End date time must always be ahead of start date time by at least 15 minutes as a booking of less than 15 minutes is not allowed.</td>
 </tr>
 <tr>
-<td style="text-align: right"><strong>role_id</strong>  <br><code>optional</code></td>
+<td style="text-align: right"><strong>role_id</strong><sup> **</sup><br><code>optional</code></td>
 <td style="text-align: left">Id of role object which needs to be performed for this booking. This could be id of a role which targeted resource performs (i.e &quot;Performing Role&quot;) or any other role (i.e. &quot;Non-Performing-Role&quot;)</td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>task_id</strong><sup> **</sup><br><code>optional</code></td>
+<td style="text-align: left">Id of task object which needs to be done in this booking. This could only be id of a task which is listed in targeted project.</td>
 </tr>
 <tr>
 <td style="text-align: right"><strong>effort</strong>  <br><code>optional</code></td>
@@ -5027,23 +5077,23 @@ curl -v -X DELETE <span class="s2">"https://app.eresourcescheduler.cloud/rest/v1
 </tr>
 <tr>
 <td style="text-align: right"><strong>billing_status</strong><br><code>optional</code></td>
-<td style="text-align: left">Integer number (1/2/4) representing billing status of the booking. Billing Status value could be one of the following :<br><br><li><strong>1</strong> for <code>Same as Project</code> : This represents billing status will be same as given for the project associated with this booking. </li> <li> <strong>2</strong> for <code>Billable</code> : This defines billing status as billable for this booking.</li> <li> <strong>4</strong> for <code>Non Billable</code> : This is used to set the booking to non billable.<br><br><em><strong>Note</strong> : Default value of <strong>billing_status</strong> can be set from <a href="https://app.eresourcescheduler.cloud/#!/admin/settings/chart" target="_blank" class="api-ref">Admin Scheduling Settings</a>. This field is available only <span class="warning">when financial module is active</span>.</em></td>
+<td style="text-align: left">Integer number (1/2/4) representing billing status of the booking. Billing Status value could be one of the following :<br><br><li><strong>1</strong> for <code>Same as Project</code> : This represents billing status will be same as given for the project associated with this booking. </li> <li> <strong>2</strong> for <code>Billable</code> : This defines billing status as billable for this booking.</li> <li> <strong>4</strong> for <code>Non Billable</code> : This is used to set the booking to non billable.<br><br><em><strong>Note</strong>: Default value of <strong>billing_status</strong> can be set from <a href="https://app.eresourcescheduler.cloud/#!/admin/settings/chart" target="_blank" class="api-ref">Admin Scheduling Settings</a>. This field is available only <span class="warning">when financial module is active</span>.</em></td>
 </tr>
 <tr>
 <td style="text-align: right"><strong>rate_from</strong><br><code>optional</code></td>
-<td style="text-align: left">Integer number (1/2/4/8) representing billing rate of the booking. Billing Rate value could be one of the following :<br><br><li><strong>1</strong> for <code>Same as Project</code> : This represents rate_from will be same as given for the project associated with this booking. </li> <li> <strong>2</strong> for <code>Same as Resource</code> :  This represents rate_from will be same as given for the resource associated with this booking.</li> <li> <strong>4</strong> for <code>Same as Role</code> :  This represents rate_from will be same as given for the performing role associated with this booking.<li> <strong>8</strong> for <code>Custom</code> :  This represents custom hourly rate can be defined on this booking.<br><br><em><strong>Note</strong> : Default value of <strong>rate_from</strong> can be set from <a href="https://app.eresourcescheduler.cloud/#!/admin/settings/chart" target="_blank" class="api-ref">Admin Scheduling Settings</a>. This field is available only <span class="warning">when financial module is active</span>.</em></td>
+<td style="text-align: left">Integer number (1/2/4/8) representing billing rate of the booking. Billing Rate value could be one of the following :<br><br><li><strong>1</strong> for <code>Same as Project</code> : This represents rate_from will be same as given for the project associated with this booking. </li> <li> <strong>2</strong> for <code>Same as Resource</code> :  This represents rate_from will be same as given for the resource associated with this booking.</li> <li> <strong>4</strong> for <code>Same as Role</code> :  This represents rate_from will be same as given for the performing role associated with this booking.<li> <strong>8</strong> for <code>Custom</code> :  This represents custom hourly rate can be defined on this booking.<br><br><em><strong>Note</strong>: Default value of <strong>rate_from</strong> can be set from <a href="https://app.eresourcescheduler.cloud/#!/admin/settings/chart" target="_blank" class="api-ref">Admin Scheduling Settings</a>. This field is available only <span class="warning">when financial module is active</span>.</em></td>
 </tr>
 <tr>
 <td style="text-align: right"><strong>rate</strong>  <br><code>optional</code></td>
-<td style="text-align: left">This defines hourly billing rate associated with this booking. Rate value is a floating point number which can not be less than 0 and greater than 99999999.99. Rate can only be defined when value of <strong>rate_from</strong> is 8, i.e <code>Custom</code>.<br><br><em><strong>Note</strong> : This field is available only <span class="warning">when financial module is active</span>.</em></td>
+<td style="text-align: left">This defines hourly billing rate associated with this booking. Rate value is a floating point number which can not be less than 0 and greater than 99999999.99. Rate can only be defined when value of <strong>rate_from</strong> is 8, i.e <code>Custom</code>.<br><br><em><strong>Note</strong>: This field is available only <span class="warning">when financial module is active</span>.</em></td>
 </tr>
 <tr>
-<td style="text-align: right"><strong>tags</strong>  <br><code>optional</code></td>
+<td style="text-align: right"><strong>tags</strong><sup> **</sup><br><code>optional</code></td>
 <td style="text-align: left">An optional array of strings which could be attached to this booking object as labels. This can be useful for the purpose of identification or other information.</td>
 </tr>
 <tr>
 <td style="text-align: right"><strong>udf_*</strong> <br><code>optional</code></td>
-<td style="text-align: left">A user with admin rights can add custom fields. These fields can be used to capture additional information in Projects. Different types of projects may have a different set of user-defined fields. The value for user defined field can be passed as shown in example request. In given example <strong><em>udf_progress</em></strong></span> is a user defined field. <a href="#user-defined-fields" class="api-ref">Learn more</a></td>
+<td style="text-align: left">A user with admin rights can add custom fields. These fields can be used to capture additional information in Projects. Different types of projects may have a different set of user-defined fields. The value for user defined field can be passed as shown in example request. In given example <strong><em>udf_progress</em></strong></span> is a user defined field. <a href="#user-defined-fields" class="api-ref">Learn more</a><br><br><em><strong>Note</strong>: User with admin rights can remove fields marked with ** from <a href ="#booking-profile" class="api-ref">booking profile</a>. If these fields are passed after removal from booking profile form, while creating booking, the operation will fail with response code <strong>400</strong></em>.</td>
 </tr>
 </tbody></table>
 <h3 id='returns'>Returns</h3>
@@ -5155,7 +5205,7 @@ start=2018-01-01&amp;end=2018-12-31&amp;offset=1&amp;limit=1"</span> <span class
 </tr>
 <tr>
 <td style="text-align: right"></td>
-<td style="text-align: left"><em><strong>Note</strong> : By default if <code>start</code> &amp; <code>end</code> arguments are omitted, then bookings of current month will be returned. If bookings of a certain period are needed, then both <code>start</code> &amp; <code>end</code> arguments required. You have to give values of both <code>start</code> and <code>end</code> to get bookings in that duration. If only one argument <code>start</code> or <code>end</code> is passed then a bad request error is raised.</em></td>
+<td style="text-align: left"><em><strong>Note</strong>: By default if <code>start</code> &amp; <code>end</code> arguments are omitted, then bookings of current month will be returned. If bookings of a certain period are needed, then both <code>start</code> &amp; <code>end</code> arguments required. You have to give values of both <code>start</code> and <code>end</code> to get bookings in that duration. If only one argument <code>start</code> or <code>end</code> is passed then a bad request error is raised.</em></td>
 </tr>
 </tbody></table>
 <h3 id='returns-2'>Returns</h3>
@@ -5270,7 +5320,8 @@ start=2018-01-01&amp;end=2018-08-09"</span> <span class="se">\</span>
 -d <span class="s1">'{        
        "resource":{"id":2}, 
        "project":{"id":9},
-       "role_id": 1
+       "role_id:eq": 1,
+       "tags:none": ["tagX","tagY"]
      }'</span>
 </code></pre>
 <blockquote>
@@ -5317,6 +5368,36 @@ start=2018-01-01&amp;end=2018-08-09"</span> <span class="se">\</span>
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
+<p><span class="optional"><b>REQUEST QUERY PARAMETERS</b></span></p>
+
+<table><thead>
+<tr>
+<th style="text-align: right">Name</th>
+<th style="text-align: left">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: right"><strong>limit</strong><br><code>optional</code></td>
+<td style="text-align: left">The limit keyword is used to limit the number of records returned from a result set. If a limit count is given, no more than that many records will be returned (but possibly less, if the query itself yields less records)<br><em>Default value of <code>limit</code> is</em> <span class="required"><strong><code>500</code></strong></span><br><em>Maximum value of <code>limit</code> can be</em> <span class="required"><strong><code>5000</code></strong></span></td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>offset</strong><br><code>optional</code></td>
+<td style="text-align: left">Offset keyword is used to skip n items. If offset value is given as 10, then first 10 records will be skipped from result set. Offset is often used together with the Limit keyword.<br><em>Default value of <code>offset</code> is</em> <span class="required"><strong><code>0</code></strong></span></td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>start</strong><br><code>optional</code></td>
+<td style="text-align: left">String value representing start date in ISO 8601 extended notation for date i.e. yyyy-MM-dd. This is used to filter bookings starting on or after this date.</td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>end</strong><br><code>optional</code></td>
+<td style="text-align: left">String value representing end date in ISO 8601 extended notation for date i.e. yyyy-MM-dd. This is used to filter bookings starting before this date.</td>
+</tr>
+<tr>
+<td style="text-align: right"></td>
+<td style="text-align: left"><em><strong>Note</strong>: By default if <code>start</code> &amp; <code>end</code> arguments are omitted, then bookings of current month will be returned. If bookings of a certain period are needed, then both <code>start</code> &amp; <code>end</code> arguments required. You have to give values of both <code>start</code> and <code>end</code> to get bookings in that duration. If only one argument <code>start</code> or <code>end</code> is passed then a bad request error is raised.</em></td>
+</tr>
+</tbody></table>
+
 <p>Search Booking API allows filtering the results set in various ways. This enables a great power to find out what is needed. eRS Cloud API also allows filtering on custom defined fields with multiple operators and conditions to cover up complex scenarios for searching.</p>
 
 <p>A filter condition consists of three components which are <strong><em>field</em></strong>, <strong><em>operator</em></strong> and <strong><em>value</em></strong>. For example, fetching only those bookings having tag <code>tagA</code> or <code>tagB</code>, could be achieved by adding &quot;tags:any&quot;: [&quot;tagA&quot;, &quot;tagB&quot;] to request body. If operator is not supplied, it takes default operator for field.</p>
@@ -5332,17 +5413,17 @@ start=2018-01-01&amp;end=2018-08-09"</span> <span class="se">\</span>
 </thead><tbody>
 <tr>
 <td style="text-align: left"><strong>role_id</strong></td>
-<td style="text-align: left"><li><strong>any</strong> (<em>default</em>)  </li><li>eq</li></td>
-<td style="text-align: left"><code>&quot;role_id:any&quot;: [1,2]</code><br><code>&quot;role_id:eq&quot;: 1</code></td>
+<td style="text-align: left"><li><strong>any</strong> (<em>default</em>)  </li><li>none</li><li>eq</li><li>neq</li></td>
+<td style="text-align: left"><code>&quot;role_id:any&quot;: [1,2]</code><br><code>&quot;role_id:none&quot;: [1,2]</code><br><code>&quot;role_id:eq&quot;: 1</code><br><code>&quot;role_id:neq&quot;: 1</code></td>
 </tr>
 <tr>
 <td style="text-align: left"><strong>tags</strong></td>
-<td style="text-align: left"><li><strong>any</strong> (<em>default</em>)</li><li>all</li></td>
-<td style="text-align: left"><code>&quot;tags:any&quot;: [&quot;tagA&quot;,&quot;tagB&quot;]</code><br><code>&quot;tags:all&quot;: [&quot;tagA&quot;,&quot;tagB&quot;]</code></li></td>
+<td style="text-align: left"><li><strong>any</strong> (<em>default</em>)</li><li>none</li><li>all</li><li>ex</li></td>
+<td style="text-align: left"><code>&quot;tags:any&quot;: [&quot;tagA&quot;,&quot;tagB&quot;]</code><br><code>&quot;tags:none&quot;: [&quot;tagA&quot;,&quot;tagB&quot;]</code><br><code>&quot;tags:all&quot;: [&quot;tagA&quot;,&quot;tagB&quot;]</code><br><code>&quot;tags:ex&quot;: [&quot;tagA&quot;,&quot;tagB&quot;]</code></td>
 </tr>
 </tbody></table>
 
-<p>Additionally, bookings can also be filtered using <a href="#search-resources" class="api-ref">resource fields</a>, <a href="#search-resources" class="api-ref">project fields</a> and <a href="#filters-for-user-defined-fields" class="api-ref">custom fields</a> of bookings. An example request for fetching only booking having <code>resource_id</code> as 2, <code>project_id</code> as 9 and <code>role_id</code> as 1 is shown.</p>
+<p>Additionally, bookings can also be filtered using <a href="#search-resources" class="api-ref">resource fields</a>, <a href="#search-projects" class="api-ref">project fields</a> and <a href="#filters-for-user-defined-fields" class="api-ref">custom fields</a> of bookings. An example request for fetching only booking having <code>resource_id</code> as 2, <code>project_id</code> as 9 and <code>role_id</code> as 1 is shown.</p>
 <h2 id='update-a-booking'>Update a booking</h2>
 <p>Updates the specified booking by setting values of parameters passed. Values of any parameters which are not provided will be unchanged. </p>
 
@@ -5386,8 +5467,12 @@ start=2018-01-01&amp;end=2018-08-09"</span> <span class="se">\</span>
 <td style="text-align: left">Represents end date and time for booking object. This field accepts value in ISO 8601 extended format for date-time i.e. yyyy-mm-ddThh:mm:ss. The value must be snapped in 15 minutes interval, which effectively means that minutes values should be one of(00/15/30/45) and seconds value should always be 0. (if given). End date time must always be ahead of start date time by at least 15 minutes as a booking of less than 15 minutes is not allowed. This will throw an error if you post an empty value.</td>
 </tr>
 <tr>
-<td style="text-align: right"><strong>role_id</strong>  <br><code>optional</code></td>
+<td style="text-align: right"><strong>role_id</strong> <sup> **</sup> <br><code>optional</code></td>
 <td style="text-align: left">Id of role object which needs to be performed for this booking. This could be id of a role which targeted resource performs (i.e &quot;Performing Role&quot;) or any other role (i.e. &quot;Non-Performing-Role&quot;)</td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>task_id</strong><sup> **</sup><br><code>optional</code></td>
+<td style="text-align: left">Id of task object which needs to be done in this booking. This could only be id of a task which is listed in targeted project.</td>
 </tr>
 <tr>
 <td style="text-align: right"><strong>effort</strong>  <br><code>optional</code></td>
@@ -5399,23 +5484,23 @@ start=2018-01-01&amp;end=2018-08-09"</span> <span class="se">\</span>
 </tr>
 <tr>
 <td style="text-align: right"><strong>billing_status</strong><br><code>optional</code></td>
-<td style="text-align: left">Integer number (1/2/4) representing billing status of the booking. Billing Status value could be one of the following :<br><br><li><strong>1</strong> for <code>Same as Project</code> : This represents billing status will be same as given for the project associated with this booking. </li> <li> <strong>2</strong> for <code>Billable</code> : This defines billing status as billable for this booking.</li> <li> <strong>4</strong> for <code>Non Billable</code> : This is used to set the booking to non billable.<br><br><em><strong>Note</strong> : Default value of <strong>billing_status</strong> can be set from <a href="https://app.eresourcescheduler.cloud/#!/admin/settings/chart" target="_blank" class="api-ref">Admin Scheduling Settings</a>. This field is available only <span class="warning">when financial module is active</span>.</em></td>
+<td style="text-align: left">Integer number (1/2/4) representing billing status of the booking. Billing Status value could be one of the following :<br><br><li><strong>1</strong> for <code>Same as Project</code> : This represents billing status will be same as given for the project associated with this booking. </li> <li> <strong>2</strong> for <code>Billable</code> : This defines billing status as billable for this booking.</li> <li> <strong>4</strong> for <code>Non Billable</code> : This is used to set the booking to non billable.<br><br><em><strong>Note</strong>: Default value of <strong>billing_status</strong> can be set from <a href="https://app.eresourcescheduler.cloud/#!/admin/settings/chart" target="_blank" class="api-ref">Admin Scheduling Settings</a>. This field is available only <span class="warning">when financial module is active</span>.</em></td>
 </tr>
 <tr>
 <td style="text-align: right"><strong>rate_from</strong><br><code>optional</code></td>
-<td style="text-align: left">Integer number (1/2/4/8) representing billing rate of the booking. Billing Rate value could be one of the following :<br><br><li><strong>1</strong> for <code>Same as Project</code> : This represents rate_from will be same as given for the project associated with this booking. </li> <li> <strong>2</strong> for <code>Same as Resource</code> :  This represents rate_from will be same as given for the resource associated with this booking.</li> <li> <strong>4</strong> for <code>Same as Role</code> :  This represents rate_from will be same as given for the performing role associated with this booking.<li> <strong>8</strong> for <code>Custom</code> :  This represents custom hourly rate can be defined on this booking.<br><br><em><strong>Note</strong> : Default value of <strong>rate_from</strong> can be set from <a href="https://app.eresourcescheduler.cloud/#!/admin/settings/chart" target="_blank" class="api-ref">Admin Scheduling Settings</a>. This field is available only <span class="warning">when financial module is active</span>.</em></td>
+<td style="text-align: left">Integer number (1/2/4/8) representing billing rate of the booking. Billing Rate value could be one of the following :<br><br><li><strong>1</strong> for <code>Same as Project</code> : This represents rate_from will be same as given for the project associated with this booking. </li> <li> <strong>2</strong> for <code>Same as Resource</code> :  This represents rate_from will be same as given for the resource associated with this booking.</li> <li> <strong>4</strong> for <code>Same as Role</code> :  This represents rate_from will be same as given for the performing role associated with this booking.<li> <strong>8</strong> for <code>Custom</code> :  This represents custom hourly rate can be defined on this booking.<br><br><em><strong>Note</strong>: Default value of <strong>rate_from</strong> can be set from <a href="https://app.eresourcescheduler.cloud/#!/admin/settings/chart" target="_blank" class="api-ref">Admin Scheduling Settings</a>. This field is available only <span class="warning">when financial module is active</span>.</em></td>
 </tr>
 <tr>
 <td style="text-align: right"><strong>rate</strong>  <br><code>optional</code></td>
-<td style="text-align: left">This defines hourly billing rate associated with this booking. Rate value is a floating point number which can not be less than 0 and greater than 99999999.99. Rate can only be defined when value of <strong>rate_from</strong> is 8, i.e <code>Custom</code>.<br><br><em><strong>Note</strong> : This field is available only <span class="warning">when financial module is active</span>.</em></td>
+<td style="text-align: left">This defines hourly billing rate associated with this booking. Rate value is a floating point number which can not be less than 0 and greater than 99999999.99. Rate can only be defined when value of <strong>rate_from</strong> is 8, i.e <code>Custom</code>.<br><br><em><strong>Note</strong>: This field is available only <span class="warning">when financial module is active</span>.</em></td>
 </tr>
 <tr>
-<td style="text-align: right"><strong>tags</strong>  <br><code>optional</code></td>
+<td style="text-align: right"><strong>tags</strong><sup> **</sup> <br><code>optional</code></td>
 <td style="text-align: left">Tags is an optional filed. Tags are attached to this booking object which could be used for the purpose of identification or other information.. This may be up to 50 characters. This will be blank if you post an empty value.</td>
 </tr>
 <tr>
 <td style="text-align: right"><strong>udf_*</strong> <br><code>optional</code></td>
-<td style="text-align: left">A user with admin rights can add such custom fields. These fields can be used to capture additional info in bookings. <a href="#user-defined-fields" class="api-ref">Learn more</a></td>
+<td style="text-align: left">A user with admin rights can add such custom fields. These fields can be used to capture additional info in bookings. <a href="#user-defined-fields" class="api-ref">Learn more</a><br><br><em><strong>Note</strong>: User with admin rights can remove fields marked with ** from <a href ="#booking-profile" class="api-ref">booking profile</a>. If these fields are passed after removal from booking profile form, while updating booking, the operation will fail with response code <strong>400</strong></em>.</td>
 </tr>
 </tbody></table>
 <h3 id='returns-4'>Returns</h3>
@@ -5497,7 +5582,7 @@ This API is accessible only <span class="warning">when financial module is activ
 <td style="text-align: left">Name of resource object.</td>
 </tr>
 <tr>
-<td style="text-align: right"><strong>rates</strong> <br><code>array of object</code></td>
+<td style="text-align: right"><strong>rates</strong> <br><code>array of objects</code></td>
 <td style="text-align: left">Represent collection of rates that are assigned on the resource object.</td>
 </tr>
 <tr>
@@ -5934,7 +6019,7 @@ curl -v -X POST <span class="se">\</span>
 <td style="text-align: left">Represents billing status of project object.</td>
 </tr>
 <tr>
-<td style="text-align: right"><strong>rates</strong> <br><code>array of object</code></td>
+<td style="text-align: right"><strong>rates</strong> <br><code>array of objects</code></td>
 <td style="text-align: left">Represent collection of rates that are assigned on the project object. While creating or updating a rate object user must pass arguments which are available for this rate object.</td>
 </tr>
 <tr>
@@ -6383,7 +6468,7 @@ curl -v -X POST <span class="se">\</span>
 <td style="text-align: left">Name of role object.</td>
 </tr>
 <tr>
-<td style="text-align: right"><strong>rates</strong> <br><code>array of object</code></td>
+<td style="text-align: right"><strong>rates</strong> <br><code>array of objects</code></td>
 <td style="text-align: left">Represent collection of rates that are assigned on the project object. While creating or updating a rate object user must pass arguments which are available for this rate object.</td>
 </tr>
 <tr>
@@ -6684,7 +6769,7 @@ curl -v -X POST <span class="se">\</span>
 
 <p>Filters are made up of rules, with a user-defined or system-defined field, a filter operator and a value.</p>
 
-<p>when specifying a filter, the field-name(API Code) and filter operator is always separated by a colon: If an operator is omitted, then default operator (which could be different depending upon field type.) will get applied.</p>
+<p>A filter condition consists of three components which are <strong><em>field</em></strong>, <strong><em>operator</em></strong> and <strong><em>value</em></strong>. If operator is not supplied, it takes default operator for field.</p>
 <h2 id='operator'>Operator</h2>
 <p>The full list of all operators is shown below.</p>
 
@@ -6696,35 +6781,47 @@ curl -v -X POST <span class="se">\</span>
 </thead><tbody>
 <tr>
 <td style="text-align: right">any</td>
-<td style="text-align: left">Result will be displayed if it contains any occurrence within given values from record set.</td>
+<td style="text-align: left">Checks whether field value exists in given set.</td>
 </tr>
 <tr>
 <td style="text-align: right">all</td>
-<td style="text-align: left">Result will be displayed if it contains all occurrence of given values from record set.</td>
+<td style="text-align: left">Checks whether field value contains all elements of given set.</td>
 </tr>
 <tr>
 <td style="text-align: right">has</td>
-<td style="text-align: left">Result will be displayed if it has the given value from record set.</td>
+<td style="text-align: left">Checks whether field value contains given phrase.</td>
 </tr>
 <tr>
 <td style="text-align: right">eq</td>
-<td style="text-align: left">Result will be displayed if it has equal value to given input from record set.</td>
+<td style="text-align: left">Checks whether field value is equal to given input.</td>
 </tr>
 <tr>
 <td style="text-align: right">gt</td>
-<td style="text-align: left">Result will be displayed of if it has  greater values for given input from record set.</td>
+<td style="text-align: left">Checks whether field value is greater than given input.</td>
 </tr>
 <tr>
 <td style="text-align: right">lt</td>
-<td style="text-align: left">Result will be displayed of if it has lesser values for given input from record set.</td>
+<td style="text-align: left">Checks whether field value is lesser than given input.</td>
 </tr>
 <tr>
 <td style="text-align: right">bt</td>
-<td style="text-align: left">Result will be displayed for values which vary between given  range from record set.</td>
+<td style="text-align: left">Checks whether field value is between given range.</td>
 </tr>
 <tr>
 <td style="text-align: right">ex</td>
-<td style="text-align: left">Result will be displayed for values which vary excluding given  range from record set.</td>
+<td style="text-align: left">Checks whether field value is not in the given range.</td>
+</tr>
+<tr>
+<td style="text-align: right">none</td>
+<td style="text-align: left">Checks whether field value does not exist in given set.</td>
+</tr>
+<tr>
+<td style="text-align: right">miss</td>
+<td style="text-align: left">Checks whether field value does not contain given phrase.</td>
+</tr>
+<tr>
+<td style="text-align: right">neq</td>
+<td style="text-align: left">Checks whether field value is not equal to given input.</td>
 </tr>
 </tbody></table>
 <h2 id='filters-for-user-defined-fields'>Filters for User-defined fields</h2>
@@ -6737,63 +6834,63 @@ curl -v -X POST <span class="se">\</span>
 </thead><tbody>
 <tr>
 <td style="text-align: left"><strong>Simple Text</strong></td>
-<td style="text-align: left"><li>has <em>(default)</em> </li><li>eq</li></td>
-<td style="text-align: left"><li>-d &quot;simtext&quot;: &quot;Simple Text&quot; (default) </li><li>-d &quot;simtext:has&quot;: &quot;Simple Text&quot; </li><li>-d &quot;simtext:eq&quot;: &quot;Simple Text Ed&quot; </li></td>
+<td style="text-align: left"><li class="nowrap">has <em>(default)</em> </li><li>miss</li><li>eq</li><li>neq</li></td>
+<td style="text-align: left"><code>&quot;simtext:has&quot;: &quot;Simple Text&quot;</code> <br><code>&quot;simtext:miss&quot;: &quot;Simple Text&quot;</code><br><code>&quot;simtext:eq&quot;: &quot;Simple Text Ed&quot;</code><br><code>&quot;simtext:neq&quot;: &quot;Simple Text Ed&quot;</code></td>
 </tr>
 <tr>
 <td style="text-align: left"><strong>Integer Number</strong></td>
 <td style="text-align: left"><li>eq <em>(default)</em> </li><li>lt </li><li>  gt </li><li> bt </li><li> ex</li></td>
-<td style="text-align: left"><li>-d &quot;int_field&quot;: 41 </li><li>-d &quot;int_field:eq&quot;: 41 </li><li>-d &quot;int_field:lt&quot;: 41</li><li>-d &quot;int_field:gt&quot;: 41</li><li>-d &quot;int_field:lt&quot;:      41</li><li>-d &quot;int_field:bt&quot;: &quot;41&#124;121&quot;</li><li>-d &quot;int_field:bt&quot;: 41</li><li>-d &quot;int_field:ex&quot;: &quot;41&#124;121&quot;</li><li>-d &quot;int_field:ex&quot;: 41</li></td>
+<td style="text-align: left"><code>&quot;int_field:eq&quot;: 41</code> <br><code>&quot;int_field:lt&quot;: 41</code><br><code>&quot;int_field:gt&quot;: 41</code><br><code>&quot;int_field:lt&quot;: 41</code><br><code>&quot;int_field:bt&quot;: [41,121]</code><br><code>&quot;int_field:bt&quot;: 41</code><br><code>&quot;int_field:ex&quot;: [41,121]</code><br><code>&quot;int_field:ex&quot;: 41</code></td>
 </tr>
 <tr>
 <td style="text-align: left"><strong>Fractional Number</strong></td>
 <td style="text-align: left"><li>eq <em>(default)</em> </li><li>lt </li><li>  gt </li><li> bt </li><li> ex</li></td>
-<td style="text-align: left"><li>-d &quot;float_field&quot;:   12.1 </li><li>-d &quot;float_field:eq&quot;: 12.1 </li><li>-d &quot;float_field:lt&quot;: 45.6</li><li>-d &quot;float_field:gt&quot;: 121.1</li><li>-d &quot;float_field:bt&quot;: &quot;1.0&#124;121.1&quot;</li><li>-d &quot;float_field:bt&quot;: 22.6</li><li>-d &quot;float_field:ex&quot;: &quot;15.7&#124;45.6&quot;</li><li>-d &quot;float_field:ex&quot;: 45.6</li></td>
+<td style="text-align: left"><code>&quot;float_field:eq&quot;: 12.1</code><br><code>&quot;float_field:lt&quot;: 45.6</code><br><code>&quot;float_field:gt&quot;: 121.1</code><br><code>&quot;float_field:bt&quot;: [1.0,121.1]</code><br><code>&quot;float_field:bt&quot;: 22.6</code><br><code>&quot;float_field:ex&quot;: [15.7,45.6]</code><br><code>&quot;float_field:ex&quot;: 45.6</code></td>
 </tr>
 <tr>
 <td style="text-align: left"><strong>Date</strong></td>
 <td style="text-align: left"><li>eq <em>(default)</em> </li><li>lt </li><li>  gt </li><li> bt </li><li> ex</li></td>
-<td style="text-align: left"><li>-d &quot;emp_birthday&quot;: &quot;1992-02-12&quot;</li><li>-d &quot;emp_birthday:eq&quot;: &quot;1992-02-12&quot;</li><li>-d &quot;emp_birthday:lt&quot;: &quot;1992-02-12&quot; </li><li>-d &quot;emp_birthday:gt&quot;: &quot;1992-02-12&quot; </li><li>-d &quot;emp_birthday:bt&quot;:&quot;1992-02-12&#124;1999-07-07&quot;</li><li>-d &quot;emp_birthday:bt&quot;: &quot;1992-02-12&quot; </li><li>-d &quot;emp_birthday:ex&quot; : &quot;1992-02-12&#124;1997-01-27&quot; </li><li>-d &quot;emp_birthday:ex&quot;: &quot;1992-02-12&quot; </li></td>
+<td style="text-align: left"><code>&quot;emp_birthday:eq&quot;: &quot;1992-02-12&quot;</code><br><code>&quot;emp_birthday:lt&quot;: &quot;1992-02-12&quot;</code><br><code>&quot;emp_birthday:gt&quot;: &quot;1992-02-12&quot;</code><br><code>&quot;emp_birthday:bt&quot;:[1992-02-12,1999-07-07]</code><br><code>&quot;emp_birthday:bt&quot;: &quot;1992-02-12&quot;</code><br><code>&quot;emp_birthday:ex&quot; : [1992-02-12,1997-01-27]</code> <br><code>&quot;emp_birthday:ex&quot;: &quot;1992-02-12&quot;</code></td>
 </tr>
 <tr>
 <td style="text-align: left"><strong>DateTime</strong></td>
 <td style="text-align: left"><li>eq <em>(default)</em> </li><li>lt </li><li>  gt </li><li> bt </li><li> ex</li></td>
-<td style="text-align: left"><li>-d &quot;date_time_field&quot;: &quot;2018-06-06T18:30:00Z&quot; </li><li>-d &quot;date_time_field:eq&quot;: &quot;2018-06-06T18:30:00Z&quot;</li><li>-d &quot;date_time_field:lt&quot;: &quot;2018-06-06T18:30:00Z&quot;</li><li>-d &quot;date_time_field:gt&quot;: &quot;2018-06-06T18:30:00Z&quot;</li><li>-d &quot;date_time_field:bt&quot;: &quot;2018-06-06T18:30:00Z&#124; 2018-06-06T18:30:00Z&quot; </li><li>-d &quot;date_time_field:bt&quot;: &quot;2018-06-06T18:30:00Z&quot;</li><li>-d &quot;date_time_field:ex&quot;: &quot;2018-06-06T18:30:00Z&#124; 2018-06-06T18:30:00Z&quot; </li><li>-d &quot;date_time_field:ex&quot;:  &quot;2018-06-06T18:30:00Z&quot; </li></td>
+<td style="text-align: left"><code>&quot;date_time_field:eq&quot;: &quot;2018-06-06T18:30:00Z&quot;</code><br><code>&quot;date_time_field:lt&quot;: &quot;2018-06-06T18:30:00Z&quot;</code><br><code>&quot;date_time_field:gt&quot;: &quot;2018-06-06T18:30:00Z&quot;</code><br><code>&quot;date_time_field:bt&quot;: [2018-06-06T18:30:00Z,2018-06-06T18:30:00Z]</code><br><code>&quot;date_time_field:bt&quot;: &quot;2018-06-06T18:30:00Z&quot;</code><br><code>&quot;date_time_field:ex&quot;: [2018-06-06T18:30:00Z,2018-06-06T18:30:00Z]</code><br><code>&quot;date_time_field:ex&quot;: &quot;2018-06-06T18:30:00Z&quot;</code></td>
 </tr>
 <tr>
 <td style="text-align: left"><strong>Email</strong></td>
-<td style="text-align: left"><li>has <em>(default)</em> </li><li>eq</li></td>
-<td style="text-align: left"><li>-d &quot;email&quot;: &quot;@&quot;</li><li>-d &quot;email:has&quot;: &quot;a&quot; </li><li>-d &quot;email:eq&quot;:    &quot;ana@company.com&quot; </li></td>
+<td style="text-align: left"><li>has <em>(default)</em> </li><li>miss</li><li>eq</li><li>neq</li></td>
+<td style="text-align: left"><code>&quot;email:has&quot;: &quot;a&quot;</code><br><code>&quot;email:miss&quot;: &quot;a&quot;</code><br><code>&quot;email:eq&quot;: &quot;ana@company.com&quot;</code><br><code>&quot;email:neq&quot;: &quot;ana@company.com&quot;</code></td>
 </tr>
 <tr>
 <td style="text-align: left"><strong>Checkbox</strong></td>
 <td style="text-align: left">Default value is true, accepts value true and false</td>
-<td style="text-align: left"><li>-d &quot;check_field&quot;: true </li><li>-d &quot;check_field&quot;: false </li></td>
+<td style="text-align: left"><code>&quot;check_field&quot;: true</code><br><code>&quot;check_field&quot;: false</code></td>
 </tr>
 <tr>
 <td style="text-align: left"><strong>Checkbox Group</strong></td>
-<td style="text-align: left"><li>any <em>(default)</em> </li><li>all</li></td>
-<td style="text-align: left"><li>-d &quot;check_group_field&quot;: &quot;16&#124;18&quot;</li><li>-d &quot;check_group_field:any&quot;: &quot;17&#124;10&quot;</li><li>-d &quot;check_group_field:all&quot;: &quot;16&#124;17&quot;</li></td>
+<td style="text-align: left"><li>any <em>(default)</em> </li><li>none</li><li>all</li><li>ex</li></td>
+<td style="text-align: left"><code>&quot;check_group_field:any&quot;: [17,10]</code><br><code>&quot;check_group_field:none&quot;: [17,10]</code><br><code>&quot;check_group_field:all&quot;: [16,17]</code><br><code>&quot;check_group_field:ex&quot;: [16,17]</code></td>
 </tr>
 <tr>
 <td style="text-align: left"><strong>Radio Group</strong></td>
-<td style="text-align: left"><li>eq <em>(default)</em> </li><li>any</li></td>
-<td style="text-align: left"><li>-d &quot;radio_field&quot;: 15 </li><li>-d &quot;radio_field:eq&quot;: 15 </li><li>-d &quot;radio_field:any&quot;: 15 </li></td>
+<td style="text-align: left"><li>eq <em>(default)</em> </li><li>neq</li><li>any</li><li>none</li></td>
+<td style="text-align: left"><code>&quot;radio_field:eq&quot;: 15</code><br><code>&quot;radio_field:neq&quot;: 15</code><br><code>&quot;radio_field:any&quot;: [16,15]</code><br><code>&quot;radio_field:none&quot;: [16,15]</code></td>
 </tr>
 <tr>
 <td style="text-align: left"><strong>Label</strong></td>
-<td style="text-align: left"><li>eq <em>(default)</em> </li><li>any</li></td>
-<td style="text-align: left"><li>-d &quot;label_field&quot;: 18 </li><li>-d &quot;label_field:eq&quot;: 18 </li><li>-d &quot;label_field:any&quot;: 18 </li></td>
+<td style="text-align: left"><li>eq <em>(default)</em> </li><li>neq</li><li>any</li><li>none</li></td>
+<td style="text-align: left"><code>&quot;label_field:eq&quot;: 18</code><br><code>&quot;label_field:neq&quot;: 18</code><br><code>&quot;label_field:any&quot;: [16,18]</code><br><code>&quot;label_field:none&quot;: [16,18]</code></td>
 </tr>
 <tr>
 <td style="text-align: left"><strong>Drop Down Single Select</strong></td>
-<td style="text-align: left"><li>eq <em>(default)</em> </li><li>any</li></td>
-<td style="text-align: left"><li>-d &quot;ddss_field&quot;: 15 </li><li>-d &quot;ddss_field:eq&quot;: 15 </li><li>-d &quot;ddss_field:any&quot;: 15 </li></td>
+<td style="text-align: left"><li>eq <em>(default)</em> </li><li>neq</li><li>any</li><li>none</li></td>
+<td style="text-align: left"><code>&quot;ddss_field:eq&quot;: 15</code><br><code>&quot;ddss_field:neq&quot;: 15</code><br><code>&quot;ddss_field:any&quot;: [16,15]</code><br><code>&quot;ddss_field:none&quot;: [16,15]</code></td>
 </tr>
 <tr>
 <td style="text-align: left"><strong>Drop Down Multi Select</strong></td>
-<td style="text-align: left"><li>any <em>(default)</em> </li><li>all</li></ul></td>
-<td style="text-align: left"><li>-d &quot;ddms_field&quot;: &quot;20&#124;21&quot;</li><li>-d &quot;ddms_field:any&quot;: &quot;20&#124;21&quot;</li><li>-d &quot;ddms_field:all&quot;: &quot;20&#124;21&quot;</li></td>
+<td style="text-align: left"><li>any <em>(default)</em> </li><li>none</li><li>all</li><li>ex</li></ul></td>
+<td style="text-align: left"><code>&quot;ddms_field:any&quot;: [20,21]</code><br><code>&quot;ddms_field:none&quot;: [20,21]</code><br><code>&quot;ddms_field:all&quot;: [20,21]</code><br><code>&quot;ddms_field:ex&quot;: [20,21]</code></td>
 </tr>
 </tbody></table>
 
