@@ -15,7 +15,7 @@ Name         |  Description
  ---:        |    :----   
 **id** <br>`integer` | Unique id of resource object to which this rate belongs.
 **name** <br> `string` | Name of resource object.
-**rates** <br>`array of object`| Represent collection of rates that are assigned on the resource object.
+**rates** <br>`array of objects`| Represent collection of rates that are assigned on the resource object.
 **rate.id** <br>`integer`| Auto generated unique identifier for rate object.
 **rate.rate** <br>`float`| Represents applied rate.
 **rate.effective_date** <br>`string`| Represents effective date for the rate.
@@ -305,7 +305,7 @@ Name         |  Description
 **id** <br>`integer` | Unique id of project object to which this rate belongs.
 **title** <br> `string` | Name of project object.
 **is_billable** <br>`boolean`| Represents billing status of project object.
-**rates** <br>`array of object`| Represent collection of rates that are assigned on the project object. While creating or updating a rate object user must pass arguments which are available for this rate object.
+**rates** <br>`array of objects`| Represent collection of rates that are assigned on the project object. While creating or updating a rate object user must pass arguments which are available for this rate object.
 **rate.id** <br>`integer`| Auto generated unique identifier for rate object.
 **rate.rate** <br>`float`| Represents applied billing rate.
 **rate.effective_date** <br>`string`| Represents effective date for the rate.
@@ -601,7 +601,7 @@ Name         |  Description
  ---:        |    :----   
 **id** <br><span class="required">`integer`</span> | Unique id of role object, which this rate belongs to.
 **name** <br> <span class ="required">`string`</span> | Name of role object.
-**rates** <br>`array of object`| Represent collection of rates that are assigned on the project object. While creating or updating a rate object user must pass arguments which are available for this rate object.
+**rates** <br>`array of objects`| Represent collection of rates that are assigned on the project object. While creating or updating a rate object user must pass arguments which are available for this rate object.
 **rate.id** <br>`integer`| Auto generated unique identifier for rate object.
 **rate.rate** <br>`float`| Represents applied billing rate.
 **rate.effective_date** <br>`string`| Represents effective date for the rate.

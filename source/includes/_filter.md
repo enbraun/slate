@@ -24,7 +24,7 @@ The full list of all operators is shown below.
 | bt | Checks whether field value is between given range. |
 | ex | Checks whether field value is not in the given range. |
 | none | Checks whether field value does not exist in given set. |
-| miss | Checks whether field value does not contain any of the elements from given set. |
+| miss | Checks whether field value does not contain given phrase. |
 | neq  | Checks whether field value is not equal to given input. |
 
 ## Filters for User-defined fields
