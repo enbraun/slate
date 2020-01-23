@@ -32,7 +32,30 @@
 }
 
 .required{
-  color: #ffae54;
+  color: #fb4371;
+}
+
+.mandatoryFlag{
+  color: #fb4371;
+  font-size: 24px;
+  margin-top: -10px;
+  display: inline-block;
+}
+
+.removableFlag{
+  color: #4da955;
+  font-size: 24px;
+  margin-top: -10px;
+  display: inline-block;
+}
+
+.mln-2{
+  margin-left: -2px !important;
+}
+
+.iconInline{
+  font-size: 20px !important;
+  margin-bottom: -2px;
 }
 
 .warning {
