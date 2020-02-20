@@ -247,6 +247,7 @@ curl -v -X POST \
 -H "Authorization: Bearer B8x5Vj1O65r6wnoV" \
 -H "Content-Type: application/json" \
 -d '{
+      "rate": 250,
       "effective_date": "2018-09-16",
       "replace_existing_rate": true
     }'
@@ -338,6 +339,7 @@ curl -v -X POST \
 -H "Authorization: Bearer B8x5Vj1O65r6wnoV" \
 -H "Content-Type: application/json" \
 -d '{
+      "rate": 250,
       "effective_date": "2018-09-16",
       "replace_existing_rate": true
     }'
@@ -506,6 +508,7 @@ curl -v -X POST \
 -H "Authorization: Bearer B8x5Vj1O65r6wnoV" \
 -H "Content-Type: application/json" \
 -d '{
+      "rate": 250,
       "effective_date": "2018-09-16",
       "replace_existing_rate": true
     }'
@@ -636,6 +639,7 @@ curl -v -X POST \
 -H "Authorization: Bearer B8x5Vj1O65r6wnoV" \
 -H "Content-Type: application/json" \
 -d '{
+      "rate": 250,
       "effective_date": "2018-09-16",
       "replace_existing_rate": true
     }'
@@ -758,6 +762,7 @@ curl -v -X POST \
 -H "Authorization: Bearer B8x5Vj1O65r6wnoV" \
 -H "Content-Type: application/json" \
 -d '{
+      "rate": 250,
       "effective_date": "2018-09-16",
       "replace_existing_rate": true
     }'
