@@ -199,7 +199,7 @@
     </style>
     <link href="stylesheets/screen-6615a2a5.css" rel="stylesheet" media="screen" />
     <link href="stylesheets/print-bccf8c07.css" rel="stylesheet" media="print" />
-    <link href="stylesheets/styles-5c768e67.css" rel="stylesheet" media="screen" />
+    <link href="stylesheets/styles-6a854fae.css" rel="stylesheet" media="screen" />
    
       <script src="javascripts/all-c5541673.js"></script>
     <script src="javascripts/ers-d4e03963.js"></script>
@@ -2249,7 +2249,7 @@ grant_type=authorization_code</span><span class="se">\</span><span class="s2">
 <td style="text-align: left">String representing the first name of a resource. This may be up to 100 characters.<br> <em><strong>Note</strong>: for non-human resources, this field is <span class="danger">not available</span></em>.</td>
 </tr>
 <tr>
-<td style="text-align: right"><strong>last_name</strong><sup> **</sup> <br> <code>optional</code></td>
+<td style="text-align: right"><strong>last_name</strong> <br><span class="mandatoryFlag">&#9873;</span> <span class="removableFlag mln-2">&#9873;</span></td>
 <td style="text-align: left">String representing the last name of a resource. This may be up to 100 characters.<br> <em><strong>Note</strong>: for non-human resources, this field is <span class="danger">not available</span></em>.</td>
 </tr>
 <tr>
@@ -2265,15 +2265,15 @@ grant_type=authorization_code</span><span class="se">\</span><span class="s2">
 <td style="text-align: left">String value representing a date in ISO 8601 extended notation for date i.e. yyyy-MM-dd. A resource is only available till its last date i.e system does not consider any capacity of resource beyond this date (<em>if defined</em>).</td>
 </tr>
 <tr>
-<td style="text-align: right"><strong>email</strong><sup> **</sup><br><code>optional</code></td>
+<td style="text-align: right"><strong>email</strong><br><span class="mandatoryFlag">&#9873;</span> <span class="removableFlag mln-2">&#9873;</span></td>
 <td style="text-align: left">String value representing email address of resource object. Email address must be properly formatted with a maximum length of 254 characters.</td>
 </tr>
 <tr>
-<td style="text-align: right"><strong>phone</strong><sup> **</sup><br><code>optional</code></td>
+<td style="text-align: right"><strong>phone</strong><br> <span class="mandatoryFlag">&#9873;</span> <span class="removableFlag mln-2">&#9873;</span></td>
 <td style="text-align: left">String representing phone number of resource. It’s displayed alongside the resource in your resource list.</td>
 </tr>
 <tr>
-<td style="text-align: right"><strong>roles</strong><sup> **</sup><br><br><code>optional</code></td>
+<td style="text-align: right"><strong>roles</strong><br><span class="mandatoryFlag">&#9873;</span> <span class="removableFlag mln-2">&#9873;</span></td>
 <td style="text-align: left">An array of ids of Roles (which are defined by an admin user in eRS Cloud Application) to be assigned to this Resource. The first id in the array is considered as Primary Role of that Resource. Multiple performing roles can be applied to a resource. Resources can also be searched / filtered using performing roles.</td>
 </tr>
 <tr>
@@ -2281,12 +2281,12 @@ grant_type=authorization_code</span><span class="se">\</span><span class="s2">
 <td style="text-align: left">Id of Calendar object which should be assigned to resource effective from its start date. Depending upon requirements, different calendars can be applied on different resources. If calendar is omitted then default calendar (as defined in admin settings) will get applied for this resource.</td>
 </tr>
 <tr>
-<td style="text-align: right"><strong>tags</strong><sup> **</sup><br> <br><code>optional</code></td>
+<td style="text-align: right"><strong>tags</strong><br><span class="removableFlag">&#9873;</span></td>
 <td style="text-align: left">An optional array of strings which could be attached to this resource object as labels. This can be useful for the purpose of filtering, identification or other information.</td>
 </tr>
 <tr>
-<td style="text-align: right"><strong>udf_*</strong> <br><code>optional</code></td>
-<td style="text-align: left">A user with admin rights can add custom fields. These fields can be used to capture additional information in Resources. Different types of resources may have a different set of user-defined fields. The value for user defined field can be passed as shown in example request. In first example <strong><em>udf_employee_no</em></strong> is a user defined field. <a href ="#user-defined-fields" class="api-ref">Learn more</a><br><br><em><strong>Note</strong>: User with admin rights can remove fields marked with ** from <a href ="#get-a-specific-resource-type" class="api-ref">specific resource type</a>. If these fields are passed after removal from resource type form, while creating resource, the operation will fail with response code <strong>400</strong></em>.</td>
+<td style="text-align: right"><strong>udf_*</strong> <br><span class="mandatoryFlag">&#9873;</span> <span class="removableFlag mln-2">&#9873;</span></td>
+<td style="text-align: left">A user with admin rights can add custom fields. These fields can be used to capture additional information in Resources. Different types of resources may have a different set of user-defined fields. The value for user defined field can be passed as shown in example request. In first example <strong><em>udf_employee_no</em></strong> is a user defined field. <a href ="#user-defined-fields" class="api-ref">Learn more</a><br><br><em><strong>Note</strong>: User with admin rights can make fields marked with <span class="mandatoryFlag iconInline">&#9873;</span> mandatory and remove fields marked with <span class="removableFlag iconInline">&#9873;</span>, from <a href ="#get-a-specific-resource-type" class="api-ref">specific resource type</a> using <strong>eRS Cloud Application</strong>. If mandatory fields are not passed with a valid value or removed fields are passed while creating resource, the operation will fail with response code <strong>400</strong></em>.</td>
 </tr>
 </tbody></table>
 <h3 id='returns'>Returns</h3>
@@ -2661,7 +2661,7 @@ grant_type=authorization_code</span><span class="se">\</span><span class="s2">
 <td style="text-align: left">String representing the first name of a resource. This may be up to 100 characters.<br> <em><strong>Note</strong>: for non-human resources, this field is <span class="danger">not available</span></em>.</td>
 </tr>
 <tr>
-<td style="text-align: right"><strong>last_name</strong><sup>**</sup> <br><code>optional</code></td>
+<td style="text-align: right"><strong>last_name</strong><br><span class="mandatoryFlag">&#9873;</span> <span class="removableFlag mln-2">&#9873;</span></td>
 <td style="text-align: left">String representing the last name of a resource. This may be up to 100 characters.<br> <em><strong>Note</strong>: for non-human resources, this field is <span class="danger">not available</span></em>.</td>
 </tr>
 <tr>
@@ -2677,24 +2677,24 @@ grant_type=authorization_code</span><span class="se">\</span><span class="s2">
 <td style="text-align: left">String value representing a date in ISO 8601 extended notation for date i.e. yyyy-MM-dd. A resource is only available till its last date i.e system does not consider any capacity of resource beyond this date (<em>if defined</em>).</td>
 </tr>
 <tr>
-<td style="text-align: right"><strong>email</strong><sup> **</sup><br><code>optional</code></td>
+<td style="text-align: right"><strong>email</strong><br><span class="mandatoryFlag">&#9873;</span> <span class="removableFlag mln-2">&#9873;</span></td>
 <td style="text-align: left">String value representing email address of resource object. Email address must be properly formatted with a maximum length of 254 characters.</td>
 </tr>
 <tr>
-<td style="text-align: right"><strong>phone</strong><sup> **</sup><br><code>optional</code></td>
+<td style="text-align: right"><strong>phone</strong><br><span class="mandatoryFlag">&#9873;</span> <span class="removableFlag mln-2">&#9873;</span></td>
 <td style="text-align: left">String representing phone number of resource. It’s displayed alongside the resource in your resource list.</td>
 </tr>
 <tr>
-<td style="text-align: right"><strong>roles</strong><sup> **</sup><br><code>optional</code></td>
+<td style="text-align: right"><strong>roles</strong><br><span class="mandatoryFlag">&#9873;</span> <span class="removableFlag mln-2">&#9873;</span></td>
 <td style="text-align: left">An array of ids of Roles (which are defined by an admin user in eRS Cloud Application) to be assigned to this Resource. The first id in the array is considered as Primary Role of that Resource. Multiple performing roles can be applied to a resource. Resources can also be searched / filtered using performing roles.</td>
 </tr>
 <tr>
-<td style="text-align: right"><strong>tags</strong><sup> **</sup><br><code>optional</code></td>
+<td style="text-align: right"><strong>tags</strong><br><span class="removableFlag mln-2">&#9873;</span></td>
 <td style="text-align: left">An optional array of strings which could be attached to this resource object as labels. This can be useful for the purpose of filtering, identification or other information.</td>
 </tr>
 <tr>
-<td style="text-align: right"><strong>udf_*</strong> <br><code>optional</code></td>
-<td style="text-align: left">A user with admin rights can add custom fields. These fields can be used to capture additional information in Resources. Different types of resources may have a different set of user-defined fields. The value for user defined field can be passed as shown in example request. In first example <strong><em>udf_employee_no</em></strong> is a user defined field. <a href ="#user-defined-fields" class="api-ref">Learn more</a><br><br><em><strong>Note</strong>: User with admin rights can remove fields marked with ** from <a href ="#get-a-specific-resource-type" class="api-ref">specific resource type</a>. If these fields are passed after removal from resource type form, while updating resource, the operation will fail with response code <strong>400</strong></em>.</td>
+<td style="text-align: right"><strong>udf_*</strong> <br><span class="mandatoryFlag">&#9873;</span> <span class="removableFlag mln-2">&#9873;</span></td>
+<td style="text-align: left">A user with admin rights can add custom fields. These fields can be used to capture additional information in Resources. Different types of resources may have a different set of user-defined fields. The value for user defined field can be passed as shown in example request. In first example <strong><em>udf_employee_no</em></strong> is a user defined field. <a href ="#user-defined-fields" class="api-ref">Learn more</a><br><br><em><strong>Note</strong>: User with admin rights can make fields marked with <span class="mandatoryFlag iconInline">&#9873;</span> mandatory and remove fields marked with <span class="removableFlag iconInline">&#9873;</span>, from <a href ="#get-a-specific-resource-type" class="api-ref">specific resource type</a> using <strong>eRS Cloud Application</strong>. If mandatory fields are not passed with a valid value or removed fields are passed while updating resource, the operation will fail with response code <strong>400</strong></em>.</td>
 </tr>
 </tbody></table>
 <h3 id='returns-4'>Returns</h3>
@@ -3854,24 +3854,24 @@ curl -v -X DELETE <span class="se">\</span>
 <td style="text-align: left">String representing title / name of project. This can be a maximum of 100 characters long.</td>
 </tr>
 <tr>
-<td style="text-align: right"><strong>email</strong><sup> **</sup> <br><code>optional</code></td>
+<td style="text-align: right"><strong>email</strong><br><span class="mandatoryFlag">&#9873;</span> <span class="removableFlag mln-2">&#9873;</span></td>
 <td style="text-align: left">String value representing email address of project object. Email address must be properly formatted with a maximum length of 254 characters.</td>
 </tr>
 <tr>
-<td style="text-align: right"><strong>project_start_date</strong><sup>**</sup><br><code>optional</code></td>
+<td style="text-align: right"><strong>project_start_date</strong><br><span class="mandatoryFlag">&#9873;</span> <span class="removableFlag mln-2">&#9873;</span></td>
 <td style="text-align: left">String value representing a date in ISO 8601 extended notation for date i.e. yyyy-MM-dd.</td>
 </tr>
 <tr>
-<td style="text-align: right"><strong>end_date</strong><sup> **</sup><br><code>optional</code></td>
+<td style="text-align: right"><strong>end_date</strong><br><span class="mandatoryFlag">&#9873;</span> <span class="removableFlag mln-2">&#9873;</span></td>
 <td style="text-align: left">String value representing a date in ISO 8601 extended notation for date i.e. yyyy-MM-dd.</td>
 </tr>
 <tr>
-<td style="text-align: right"><strong>tags</strong><sup> **</sup> <br><code>optional</code></td>
+<td style="text-align: right"><strong>tags</strong><br><span class="removableFlag mln-2">&#9873;</span></td>
 <td style="text-align: left">An optional array of strings which could be attached to this project object as labels. This can be useful for the purpose of filtering, identification or other information.</td>
 </tr>
 <tr>
-<td style="text-align: right"><strong>udf_*</strong> <br><code>optional</code></td>
-<td style="text-align: left">A user with admin rights can add custom fields. These fields can be used to capture additional information in Projects. Different types of projects may have a different set of user-defined fields. The value for user defined field can be passed as shown in example request. In given example <strong><em>udf_progress</em></strong></span> is a user defined field. <a href="#user-defined-fields" class="api-ref">Learn more</a><br><br><em><strong>Note</strong>: User with admin rights can remove fields marked with ** from <a href ="#get-a-specific-project-type" class="api-ref">specific project type</a>. If these fields are passed after removal from project type form, while creating project, the operation will fail with response code <strong>400</strong></em>.</td>
+<td style="text-align: right"><strong>udf_*</strong> <br><span class="mandatoryFlag">&#9873;</span> <span class="removableFlag mln-2">&#9873;</span></td>
+<td style="text-align: left">A user with admin rights can add custom fields. These fields can be used to capture additional information in Projects. Different types of projects may have a different set of user-defined fields. The value for user defined field can be passed as shown in example request. In given example <strong><em>udf_progress</em></strong></span> is a user defined field. <a href="#user-defined-fields" class="api-ref">Learn more</a><br><br><em><strong>Note</strong>: User with admin rights can make fields marked with <span class="mandatoryFlag iconInline">&#9873;</span> mandatory and remove fields marked with <span class="removableFlag iconInline">&#9873;</span>, from <a href ="#get-a-specific-project-type" class="api-ref">specific project type</a> using <strong>eRS Cloud Application</strong>. If mandatory fields are not passed with a valid value or removed fields are passed while creating project, the operation will fail with response code <strong>400</strong></em>.</td>
 </tr>
 </tbody></table>
 <h3 id='returns'>Returns</h3>
@@ -4239,24 +4239,24 @@ curl -v -X DELETE <span class="se">\</span>
 <td style="text-align: left">String representing the  title of a project. This may be up to 100 characters.</td>
 </tr>
 <tr>
-<td style="text-align: right"><strong>project_start_date</strong><sup>**</sup><br><code>optional</code></td>
+<td style="text-align: right"><strong>project_start_date</strong><br><span class="mandatoryFlag">&#9873;</span> <span class="removableFlag mln-2">&#9873;</span></td>
 <td style="text-align: left">String value representing a date in ISO 8601 extended notation for date i.e. yyyy-MM-dd. The project is started from this date.</td>
 </tr>
 <tr>
-<td style="text-align: right"><strong>end_date</strong> <sup> **</sup><br><code>optional</code></td>
+<td style="text-align: right"><strong>end_date</strong><br><span class="mandatoryFlag">&#9873;</span> <span class="removableFlag mln-2">&#9873;</span></td>
 <td style="text-align: left">String value representing a date in ISO 8601 extended notation for date i.e. yyyy-MM-dd. The project is considered ended / completed on this date.</td>
 </tr>
 <tr>
-<td style="text-align: right"><strong>email</strong><sup> **</sup> <br><code>optional</code></td>
+<td style="text-align: right"><strong>email</strong><br><span class="mandatoryFlag">&#9873;</span> <span class="removableFlag mln-2">&#9873;</span></td>
 <td style="text-align: left">String value representing email address associated with project object. Email address must be properly formatted with a maximum length of 254 characters.</td>
 </tr>
 <tr>
-<td style="text-align: right"><strong>tags</strong> <sup> **</sup> <br><code>optional</code></td>
+<td style="text-align: right"><strong>tags</strong><br><span class="removableFlag mln-2">&#9873;</span></td>
 <td style="text-align: left">An optional array of strings which could be attached to this project object as labels. This can be useful for the purpose of filtering, identification or other information. This may be up to 50 characters.</td>
 </tr>
 <tr>
-<td style="text-align: right"><strong>udf_*</strong> <br><code>optional</code></td>
-<td style="text-align: left">A user with admin rights can add custom fields. These fields can be used to capture additional information in Project. Different types of projects may have a different set of user-defined fields. The value for user defined field can be passed as shown in example request. In first example <strong><em>udf_progress</em></strong> is a user defined field. <a href ="#user-defined-fields" class="api-ref">Learn more</a><br><br><em><strong>Note</strong>: User with admin rights can remove fields marked with ** from <a href ="#get-a-specific-project-type" class="api-ref">specific project type</a>. If these fields are passed after removal from project type form, while updating project, the operation will fail with response code <strong>400</strong></em>.</td>
+<td style="text-align: right"><strong>udf_*</strong> <br><span class="mandatoryFlag">&#9873;</span> <span class="removableFlag mln-2">&#9873;</span></td>
+<td style="text-align: left">A user with admin rights can add custom fields. These fields can be used to capture additional information in Project. Different types of projects may have a different set of user-defined fields. The value for user defined field can be passed as shown in example request. In first example <strong><em>udf_progress</em></strong> is a user defined field. <a href ="#user-defined-fields" class="api-ref">Learn more</a><br><br><em><strong>Note</strong>: User with admin rights can make fields marked with <span class="mandatoryFlag iconInline">&#9873;</span> mandatory and remove fields marked with <span class="removableFlag iconInline">&#9873;</span>, from <a href ="#get-a-specific-project-type" class="api-ref">specific project type</a> using <strong>eRS Cloud Application</strong>. If mandatory fields are not passed with a valid value or removed fields are passed while updating project, the operation will fail with response code <strong>400</strong></em>.</td>
 </tr>
 </tbody></table>
 <h3 id='returns-4'>Returns</h3>
@@ -4979,6 +4979,10 @@ curl -v -X DELETE <span class="s2">"https://app.eresourcescheduler.cloud/rest/v1
 <td style="text-align: left">Represents unit of effort for this booking. Unit could be one of <code>Capacity %</code> , <code>Total Booking Hours</code> , <code>Hours Per Day</code> , <code>Full Time Equivalent</code> , <code>Time per day</code>.</td>
 </tr>
 <tr>
+<td style="text-align: right"><strong>progress</strong> <br><code>integer</code></td>
+<td style="text-align: left">Represents percentage completion for this booking.</td>
+</tr>
+<tr>
 <td style="text-align: right"><strong>billing_status</strong> <br><code>integer</code></td>
 <td style="text-align: left">Represents billing status for this booking. Billing Status could be one of <code>Same as Project</code>, <code>Billable</code>, <code>Non Billable</code>. This field is available only <span class="warning">when financial module is active</span>.</td>
 </tr>
@@ -5060,20 +5064,24 @@ curl -v -X DELETE <span class="s2">"https://app.eresourcescheduler.cloud/rest/v1
 <td style="text-align: left">Represents end date and time for booking object. This field accepts value in ISO 8601 extended format for date-time i.e. yyyy-mm-ddThh:mm:ss. The value must be snapped in 15 minutes interval, which effectively means that minutes values should be one of(00/15/30/45) and seconds value should always be 0. (if given). End date time must always be ahead of start date time by at least 15 minutes as a booking of less than 15 minutes is not allowed.</td>
 </tr>
 <tr>
-<td style="text-align: right"><strong>role_id</strong><sup> **</sup><br><code>optional</code></td>
+<td style="text-align: right"><strong>role_id</strong><br><span class="mandatoryFlag">&#9873;</span> <span class="removableFlag mln-2">&#9873;</span></td>
 <td style="text-align: left">Id of role object which needs to be performed for this booking. This could be id of a role which targeted resource performs (i.e &quot;Performing Role&quot;) or any other role (i.e. &quot;Non-Performing-Role&quot;)</td>
 </tr>
 <tr>
-<td style="text-align: right"><strong>task_id</strong><sup> **</sup><br><code>optional</code></td>
+<td style="text-align: right"><strong>task_id</strong><br><span class="removableFlag mln-2">&#9873;</span></td>
 <td style="text-align: left">Id of task object which needs to be done in this booking. This could only be id of a task which is listed in targeted project.</td>
 </tr>
 <tr>
-<td style="text-align: right"><strong>effort</strong>  <br><code>optional</code></td>
+<td style="text-align: right"><strong>effort</strong> <br><code>optional</code></td>
 <td style="text-align: left">This defines how much effort is needed to complete the task. Effort value is a floating point number which could not be less than 0 and greater than 99999999.99. If effort value is not provided system will take default value 0.</td>
 </tr>
 <tr>
 <td style="text-align: right"><strong>unit</strong><br><code>optional</code></td>
 <td style="text-align: left">Integer number (1-5) representing unit in which effort is being defined. Unit value could be one of the following :<br><br><li><strong>1</strong> for <code>Capacity %</code> : This is default unit for booking. This represents effort in percentage of capacity of intended resource for defined time range. </li> <li> <strong>2</strong> for <code>Total Booking Hours</code> : This defines effort value in fixed hours which doesn&#39;t get changed upon changes in booking.</li> <li> <strong>3</strong> for <code>Hours Per day</code> : This could be used where a certain no of hours per day need to be spend for a booking. For example 4 hours per day (working day).</li> <li> <strong>4</strong> for <code>Full Time Equivalent</code> : Full time equivalent is calculated using FTE calendar defined in Admin section. Capacity from FTE calendar for defined time in booking, is considered as 1 FTE.</li> <li> <strong>5</strong> for <code>Time Per Day</code> : It is useful where effort needs to put in on a particular time of every working day i.e. 4:15 PM to 5:30 PM daily. Time portion of <strong>start_time</strong> argument is considered as per day start time, and Time portion of <strong>end_time</strong> argument is considered per day end time for this booking. </li></td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>progress</strong> <br><code>optional</code></td>
+<td style="text-align: left">This defines percentage completion of the booking. Progress is a integer number which could not be less than 0 and greater than 100. If progress is not provided, system will take default value 0.</td>
 </tr>
 <tr>
 <td style="text-align: right"><strong>billing_status</strong><br><code>optional</code></td>
@@ -5088,12 +5096,12 @@ curl -v -X DELETE <span class="s2">"https://app.eresourcescheduler.cloud/rest/v1
 <td style="text-align: left">This defines hourly billing rate associated with this booking. Rate value is a floating point number which can not be less than 0 and greater than 99999999.99. Rate can only be defined when value of <strong>rate_from</strong> is 8, i.e <code>Custom</code>.<br><br><em><strong>Note</strong>: This field is available only <span class="warning">when financial module is active</span>.</em></td>
 </tr>
 <tr>
-<td style="text-align: right"><strong>tags</strong><sup> **</sup><br><code>optional</code></td>
+<td style="text-align: right"><strong>tags</strong><br><span class="removableFlag mln-2">&#9873;</span></td>
 <td style="text-align: left">An optional array of strings which could be attached to this booking object as labels. This can be useful for the purpose of identification or other information.</td>
 </tr>
 <tr>
-<td style="text-align: right"><strong>udf_*</strong> <br><code>optional</code></td>
-<td style="text-align: left">A user with admin rights can add custom fields. These fields can be used to capture additional information in Projects. Different types of projects may have a different set of user-defined fields. The value for user defined field can be passed as shown in example request. In given example <strong><em>udf_progress</em></strong></span> is a user defined field. <a href="#user-defined-fields" class="api-ref">Learn more</a><br><br><em><strong>Note</strong>: User with admin rights can remove fields marked with ** from <a href ="#booking-profile" class="api-ref">booking profile</a>. If these fields are passed after removal from booking profile form, while creating booking, the operation will fail with response code <strong>400</strong></em>.</td>
+<td style="text-align: right"><strong>udf_*</strong><br><span class="mandatoryFlag">&#9873;</span> <span class="removableFlag mln-2">&#9873;</span></td>
+<td style="text-align: left">A user with admin rights can add custom fields. These fields can be used to capture additional information in Projects. Different types of projects may have a different set of user-defined fields. The value for user defined field can be passed as shown in example request. In given example <strong><em>udf_progress</em></strong></span> is a user defined field. <a href="#user-defined-fields" class="api-ref">Learn more</a><br><br><em><strong>Note</strong>: User with admin rights can make fields marked with <span class="mandatoryFlag iconInline">&#9873;</span> mandatory and remove fields marked with <span class="removableFlag iconInline">&#9873;</span>, from <a href ="#booking-profile" class="api-ref">booking profile</a> using <strong>eRS Cloud Application</strong>. If mandatory fields are not passed with a valid value or removed fields are passed while creating booking, the operation will fail with response code <strong>400</strong></em>.</td>
 </tr>
 </tbody></table>
 <h3 id='returns'>Returns</h3>
@@ -5467,11 +5475,11 @@ start=2018-01-01&amp;end=2018-08-09"</span> <span class="se">\</span>
 <td style="text-align: left">Represents end date and time for booking object. This field accepts value in ISO 8601 extended format for date-time i.e. yyyy-mm-ddThh:mm:ss. The value must be snapped in 15 minutes interval, which effectively means that minutes values should be one of(00/15/30/45) and seconds value should always be 0. (if given). End date time must always be ahead of start date time by at least 15 minutes as a booking of less than 15 minutes is not allowed. This will throw an error if you post an empty value.</td>
 </tr>
 <tr>
-<td style="text-align: right"><strong>role_id</strong> <sup> **</sup> <br><code>optional</code></td>
+<td style="text-align: right"><strong>role_id</strong><br><span class="mandatoryFlag">&#9873;</span> <span class="removableFlag mln-2">&#9873;</span></td>
 <td style="text-align: left">Id of role object which needs to be performed for this booking. This could be id of a role which targeted resource performs (i.e &quot;Performing Role&quot;) or any other role (i.e. &quot;Non-Performing-Role&quot;)</td>
 </tr>
 <tr>
-<td style="text-align: right"><strong>task_id</strong><sup> **</sup><br><code>optional</code></td>
+<td style="text-align: right"><strong>task_id</strong><br><span class="removableFlag mln-2">&#9873;</span></td>
 <td style="text-align: left">Id of task object which needs to be done in this booking. This could only be id of a task which is listed in targeted project.</td>
 </tr>
 <tr>
@@ -5481,6 +5489,10 @@ start=2018-01-01&amp;end=2018-08-09"</span> <span class="se">\</span>
 <tr>
 <td style="text-align: right"><strong>unit</strong><br><code>optional</code></td>
 <td style="text-align: left">Integer number (1-5) representing unit in which effort is being defined. Unit value could be one of the following :<br><br><li><strong>1</strong> for <code>Capacity %</code> : This is default unit for booking. This represents effort in percentage of capacity of intended resource for defined time range. </li> <li> <strong>2</strong> for <code>Total Booking Hours</code> : This defines effort value in fixed hours which doesn&#39;t get changed upon changes in booking.</li> <li> <strong>3</strong> for <code>Hours Per day</code> : This could be used where a certain no of hours need to be spend for a booking. For example 4 hours per day (working day).</li> <li> <strong>4</strong> for <code>Full Time Equivalent</code> : Full time equivalent is calculated using FTE calendar defined in Admin section. Capacity from FTE calendar for defined time in booking, is considered as 1 FTE.</li> <li> <strong>5</strong> for <code>Time Per Day</code> : It is useful where effort needs to put in on a particular time of every working day i.e. 4:15 PM to 5:30 PM daily. Time portion of <strong>start_time</strong> argument is considered as per day start time, and Time portion of <strong>end_time</strong> argument is considered per day end time for this booking. </li></td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>progress</strong> <br><code>optional</code></td>
+<td style="text-align: left">This defines percentage completion of the booking. Progress is a integer number which could not be less than 0 and greater than 100. If progress is not provided, system will take default value 0.</td>
 </tr>
 <tr>
 <td style="text-align: right"><strong>billing_status</strong><br><code>optional</code></td>
@@ -5495,12 +5507,12 @@ start=2018-01-01&amp;end=2018-08-09"</span> <span class="se">\</span>
 <td style="text-align: left">This defines hourly billing rate associated with this booking. Rate value is a floating point number which can not be less than 0 and greater than 99999999.99. Rate can only be defined when value of <strong>rate_from</strong> is 8, i.e <code>Custom</code>.<br><br><em><strong>Note</strong>: This field is available only <span class="warning">when financial module is active</span>.</em></td>
 </tr>
 <tr>
-<td style="text-align: right"><strong>tags</strong><sup> **</sup> <br><code>optional</code></td>
+<td style="text-align: right"><strong>tags</strong><br><span class="removableFlag mln-2">&#9873;</span></td>
 <td style="text-align: left">Tags is an optional filed. Tags are attached to this booking object which could be used for the purpose of identification or other information.. This may be up to 50 characters. This will be blank if you post an empty value.</td>
 </tr>
 <tr>
-<td style="text-align: right"><strong>udf_*</strong> <br><code>optional</code></td>
-<td style="text-align: left">A user with admin rights can add such custom fields. These fields can be used to capture additional info in bookings. <a href="#user-defined-fields" class="api-ref">Learn more</a><br><br><em><strong>Note</strong>: User with admin rights can remove fields marked with ** from <a href ="#booking-profile" class="api-ref">booking profile</a>. If these fields are passed after removal from booking profile form, while updating booking, the operation will fail with response code <strong>400</strong></em>.</td>
+<td style="text-align: right"><strong>udf_*</strong><br><span class="mandatoryFlag">&#9873;</span> <span class="removableFlag mln-2">&#9873;</span></td>
+<td style="text-align: left">A user with admin rights can add such custom fields. These fields can be used to capture additional info in bookings. <a href="#user-defined-fields" class="api-ref">Learn more</a><br><br><em><strong>Note</strong>: User with admin rights can make fields marked with <span class="mandatoryFlag iconInline">&#9873;</span> mandatory and remove fields marked with <span class="removableFlag iconInline">&#9873;</span>, from <a href ="#booking-profile" class="api-ref">booking profile</a> using <strong>eRS Cloud Application</strong>. If mandatory fields are not passed with a valid value or removed fields are passed while updating booking, the operation will fail with response code <strong>400</strong></em>.</td>
 </tr>
 </tbody></table>
 <h3 id='returns-4'>Returns</h3>
@@ -5911,6 +5923,7 @@ curl -v -X POST <span class="se">\</span>
 -H <span class="s2">"Authorization: Bearer B8x5Vj1O65r6wnoV"</span> <span class="se">\</span>
 -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
 -d <span class="s1">'{
+      "rate": 250,
       "effective_date": "2018-09-16",
       "replace_existing_rate": true
     }'</span>
@@ -6062,6 +6075,7 @@ curl -v -X POST <span class="se">\</span>
 -H <span class="s2">"Authorization: Bearer B8x5Vj1O65r6wnoV"</span> <span class="se">\</span>
 -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
 -d <span class="s1">'{
+      "rate": 250,
       "effective_date": "2018-09-16",
       "replace_existing_rate": true
     }'</span>
@@ -6306,6 +6320,7 @@ curl -v -X POST <span class="se">\</span>
 -H <span class="s2">"Authorization: Bearer B8x5Vj1O65r6wnoV"</span> <span class="se">\</span>
 -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
 -d <span class="s1">'{
+      "rate": 250,
       "effective_date": "2018-09-16",
       "replace_existing_rate": true
     }'</span>
@@ -6511,6 +6526,7 @@ curl -v -X POST <span class="se">\</span>
 -H <span class="s2">"Authorization: Bearer B8x5Vj1O65r6wnoV"</span> <span class="se">\</span>
 -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
 -d <span class="s1">'{
+      "rate": 250,
       "effective_date": "2018-09-16",
       "replace_existing_rate": true
     }'</span>
@@ -6682,6 +6698,7 @@ curl -v -X POST <span class="se">\</span>
 -H <span class="s2">"Authorization: Bearer B8x5Vj1O65r6wnoV"</span> <span class="se">\</span>
 -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
 -d <span class="s1">'{
+      "rate": 250,
       "effective_date": "2018-09-16",
       "replace_existing_rate": true
     }'</span>
