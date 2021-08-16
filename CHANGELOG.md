@@ -123,7 +123,6 @@ __Note__: 2.5.0 was "pulled" due to a breaking bug discovered after release. It 
 - Add sass gem, thanks to [jakemack](https://github.com/jakemack)
 - Activate `asset_cache` in middleman to improve cacheability of static files, thanks to [Sam Gilman](https://github.com/thenengah)
 - Update to using bundler 2 for `Gemfile.lock`, thanks to [jakemack](https://github.com/jakemack)
-
 ## Version 2.3.1
 
 *July 5, 2018*
