@@ -53,7 +53,7 @@
         "display_name": "Project Name",
         "field_type": "ENAME",
         "minlength": 1,
-        "maxlength": 100,
+        "maxlength": 255,
         "is_required": true,
         "is_system_defined": true
       },
@@ -117,8 +117,9 @@ Name | Description
 **field.is_required** <br>`boolean` |Indicates whether this field is mandatory or not. If this field is a `required` field then a valid value for this field must be passed while creating such object and while updating object (if this field is intended to update).
 **is_system_defined** <br> `boolean` | Indicates whether this field is system defined or a custom field. Fields which are system defined can not be customized.
 **fields.options** <br>`string` |Field types such as Dropdown Single Select, Dropdown Multi Select, Radio Group etc. ( See <a href = "#user-defined-fields" class="api-ref">User Defined Fields</a> to know more. ) allow user to pick one or more from these available options.
-**field.option.id** <br>`integer` |  Represents unique identification number for the individual option object.
-**field.option.name** <br>`string` | Represents name or content of option object.
+**field.options.id** <br>`integer` |  Represents unique identification number for the individual option object.
+**field.options.name** <br>`string` | Represents name or content of option object.
+**field.options.color** <br> `string` | Allows a user to store color code of option object(It is only available for LABEL type fields).
 
 
 
@@ -192,6 +193,16 @@ curl -v \
         "is_system_defined": true,
         "mindate": "1900-01-01",
         "maxdate": "2099-12-31"
+      },
+      {
+        "id": 10,
+        "code": "title",
+        "display_name": "Project Name",
+        "field_type": "ENAME",
+        "minlength": 1,
+        "maxlength": 255,
+        "is_required": true,
+        "is_system_defined": true
       },
       {...},
       {...} 
@@ -278,6 +289,16 @@ curl -v \
           "mindate": "1900-01-01",
           "maxdate": "2099-12-31"
         },
+        {
+        "id": 10,
+        "code": "title",
+        "display_name": "Project Name",
+        "field_type": "ENAME",
+        "minlength": 1,
+        "maxlength": 255,
+        "is_required": true,
+        "is_system_defined": true
+      },
         {...},
         {...} 
       ]

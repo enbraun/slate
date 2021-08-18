@@ -87,7 +87,7 @@ Creates a new project object.
 
 Name               |  Description
  ---:        |    :----
- **project_type_id** <br> <span class="required">`required`</span> | Id of <a href="#project-type" class="api-ref">project-type</a> object. A project must be linked with one of <a href="#project-type" class="api-ref">project-type</a> defined in admin section (_using eRS Cloud Application_). Let’s assume there are two project types defined as `Medical` (_having id as 1_) and `Education` (_having id as 2_), now while creating a new project, if project_type_id is given as 1 then it will get created under Medical type and same for Education when project_type_id is given as 2.
+ **project_type_id** <br> <span class="required">`required`</span> | Id of <a href="#project-types" class="api-ref">project-type</a> object. A project must be linked with one of <a href="#project-types" class="api-ref">project-type</a> defined in admin section (_using eRS Cloud Application_). Let’s assume there are two project types defined as `Medical` (_having id as 1_) and `Education` (_having id as 2_), now while creating a new project, if project_type_id is given as 1 then it will get created under Medical type and same for Education when project_type_id is given as 2.
 **title** <br><span class="required">`required`</span> | String representing title / name of project. This can be a maximum of 255 characters long.
 **email**<br><span class="mandatoryFlag">&#9873;</span> <span class="removableFlag mln-2">&#9873;</span> | String value representing email address of project object. Email address must be properly formatted with a maximum length of 254 characters.
 **project_start_date**<br><span class="mandatoryFlag">&#9873;</span> <span class="removableFlag mln-2">&#9873;</span> | String value representing a date in ISO 8601 extended notation for date i.e. yyyy-MM-dd.
@@ -100,7 +100,7 @@ Name               |  Description
 
 | Code      | Description |
 | :---      |    :----    |
-**201** <br><span class = "success">`Created`</span> | Indicates that the operation was successful and a project get created successfully.
+**201** <br><span class = "success">`Created`</span> | Indicates that the operation was successful and a project created successfully.
 **400** <br> <span class = "error">`Bad Request`</span> | Bad Request error occurs when a request is  malformed, syntactically incorrect, missing required parameters or has any unknown parameter. 
 **403** <br> <span class = "error">`Forbidden`</span> | Authorization failed due to insufficient permissions. This occurs when user does not have enough access rights to perform this action. Access for each user can be controlled by an Administrator using eRS Cloud Application.
 
@@ -254,7 +254,7 @@ Retrieves the details of an existing project. You only need to provide the uniqu
 
 | Code      | Description | 
 | ---:        |    :----   | 
-| **200** <br> <span class = "success">`OK`</span>     | This status code indicates that the operation was successful and a project  get retrieved successfully .  |
+| **200** <br> <span class = "success">`OK`</span>     | This status code indicates that the operation was successful and project retrieved successfully .  |
 | **403** <br> <span class = "error">`Forbidden`</span> |Authorization failed due to insufficient permissions. This occurs when user does not have enough access rights to perform this action. Access for each user can be controlled by an Administrator using eRS Cloud Application.|
 | **404** <br> <span class = "error">`Not Found`</span> | Not Found error occurs when requested project does not exist (i.e. There is no project with given id). This may also occur when requesting a project which has been deleted. |
 
@@ -369,7 +369,7 @@ Below is a list of available fields, which allow filtering projects:
 
 ## Update a project
 
-Updates specified project by setting the values of the parameters passed. Any parameters  which is not provided remains unchanged. To unset existing value for a parameter, just pass an empty value i.e. `null` or `undefined`.
+Updates specified project by setting the values of the parameters passed. Any parameters which are not provided remains unchanged. To unset existing value for a parameter, just pass an empty value i.e. `null`.
 
 This request accepts mostly the same arguments as `Create Project` API.
 
@@ -393,7 +393,7 @@ curl -v -X PUT \
 
 |Name         |  Description |
 | ---:        |    :----     |
-**title** <br> <span class="required">`required`</span>  |String representing the  title of a project. This may be up to 100 characters.
+**title** <br> <span class="required">`required`</span>  |String representing the  title of a project. This may be up to 255 characters.
 **project_start_date**<br><span class="mandatoryFlag">&#9873;</span> <span class="removableFlag mln-2">&#9873;</span> | String value representing a date in ISO 8601 extended notation for date i.e. yyyy-MM-dd. The project is started from this date.
 **end_date**<br><span class="mandatoryFlag">&#9873;</span> <span class="removableFlag mln-2">&#9873;</span> | String value representing a date in ISO 8601 extended notation for date i.e. yyyy-MM-dd. The project is considered ended / completed on this date.
 **email**<br><span class="mandatoryFlag">&#9873;</span> <span class="removableFlag mln-2">&#9873;</span> | String value representing email address associated with project object. Email address must be properly formatted with a maximum length of 254 characters.
@@ -407,14 +407,14 @@ curl -v -X PUT \
 | Code      | Description | 
 | ---:        |    :----   | 
 **200** <br> <span class = "success">`OK`</span> | Indicates that the operation was successful and project is updated successfully.
-**400** <br> <span class = "error">`Bad Request`</span> | Bad Request occurs when a request is not well-formed, syntactically incorrect, empty required parameters or any unknown parameter is passed. <br> Additionally, Bad request may also occur when :<ul><li>User tries to update archived project.</li><li> User tries to update start date or last_date or both such that last date gets smaller than start date. </li></ul>
+**400** <br> <span class = "error">`Bad Request`</span> | Bad Request occurs when a request is not well-formed, syntactically incorrect, empty required parameters or any unknown parameter is passed. <br> Additionally, Bad request may also occur when :<ul><li>User tries to update archived project.</li><li> User tries to update start date or end date or both such that end date gets earlier than start date. </li></ul>
 **403** <br> <span class = "error">`Forbidden`</span> | Authorization failed due to insufficient permissions. This occurs when user does not have enough access rights to perform this action. Access for each user can be controlled by an Administrator using eRS Cloud Application.
 **404** <br><span class = "error">`Not Found`</span> | This status code indicates that project does not exist.
 
 
 ## Delete a project
 
- Permanently deletes requested project. It cannot be undone. By default, this operation will get failed if a project has any booking or rate associated with it. To override this, forceful delete can be used which will delete all bookings and rates and then ultimately delete the project object.
+ Permanently deletes requested project. It cannot be undone. By default, this operation will fail if a project has any booking, timesheet or rate associated with it. To override this, forceful deletion can be used which will delete all bookings, timesheets and rates and then, ultimately deletes the project object.
 
 > **`DELETE /v1/projects/{ID}`**
 
@@ -431,8 +431,9 @@ curl -v -X DELETE \
  
 ```shell
 curl -v -X DELETE \
-"https://app.eresourcescheduler.cloud/rest/v1/rpojects/1?\
-force_delete_bookings=true&force_delete_rates=true" \
+"https://app.eresourcescheduler.cloud/rest/v1/projects/1?\
+force_delete_bookings=true&force_delete_rates=true&\
+force_delete_timesheet_entry=true" \
 -H "Authorization: Bearer B8x5Vj1O65r6wnoV" 
 ```
 
@@ -441,14 +442,14 @@ force_delete_bookings=true&force_delete_rates=true" \
 
 | Code      | Description  
 | ---:        |    :----   
-**200** <br><span class = "success">`OK`</span> |This status code indicates that the operation was successful and a project get deleted successfully.
-**409** <br> <span class = "error">`Conflict`</span> |Conflict indicates that the project can not be deleted as there are bookings associated with this project. If you wish to delete it any way you must use force delete option by passing `true` for parameter `force_delete_bookings` and `force_delete_rates` which will delete associated bookings and associated rates corresponding to the project. This operation deletes all bookings of requested project and project itself (shown in example request).
+**200** <br><span class = "success">`OK`</span> |This status code indicates that the operation was successful and project deleted successfully.
+**409** <br> <span class = "error">`Conflict`</span> |Conflict indicates that the project can not be deleted as there are bookings, timesheets or rates associated with this project. If you wish to delete it any way you must use force delete option by passing `true` for parameter `force_delete_bookings`, `force_delete_timesheet_entry` and `force_delete_rates` which will delete all associated bookings, timesheets and rates corresponding to the project. This operation deletes all bookings, timesheets and rates of requested project and project itself (shown in example request).
 **403** <br> <span class = "error">`Forbidden`</span> | Authorization failed due to insufficient permissions. This occurs when user does not have enough access rights to perform this action. Access for each user can be controlled by an Administrator using eRS Cloud Application.
 **404** <br><span class = "error">`Not Found`</span> |This status code indicates that requested project does not exist| |
 
 ## Tasks
 
-A task is a single unit of work – an action to accomplish in a project, a single step in a multi-step project. Each project has its own set of tasks.
+A task is a single unit of work – an action to accomplish in a project, a single step in a multi-step project. Each project has it's own set of tasks.
 
 This API allows you to list, create, delete, update tasks of any project.
 
@@ -530,7 +531,7 @@ curl -v -X POST \
 -d '{
       "name": "TASK- 2A",
       "start_time": "2018-09-16T18:30:00Z",
-      "end_time": "2018-09-20T18:30:00Z",
+      "end_time": "2018-09-20T18:30:00Z"
     }'
 
 ```
@@ -541,8 +542,8 @@ curl -v -X POST \
 Name     |    Description
 ---:     |    :----   
 **name** <br> <span class ="required">`required`</span> | String representing the name of task. This may be up to 100 characters long.
-**start_time** <br>`optional`| String representing timestamp value for start time of task. This field takes input in ISO 8601 extended notation for date and time value i.e. yyyy-MM-ddTHH:mm:ssZ and support time zone offset as well.
-**end_time** <br>`optional`|  String representing timestamp value for end time of task. This field takes input in ISO 8601 extended notation for date and time value i.e. yyyy-MM-ddTHH:mm:ssZ and support time zone offset as well.
+**start_time** <br>`optional`| String representing timestamp value for start time of task. This field takes input in ISO 8601 extended notation for date and time value i.e. yyyy-MM-ddTHH:mm:ssZ and supports time zone offset as well.
+**end_time** <br>`optional`|  String representing timestamp value for end time of task. This field takes input in ISO 8601 extended notation for date and time value i.e. yyyy-MM-ddTHH:mm:ssZ and supports time zone offset as well.
 
 ### Returns
  
@@ -578,14 +579,14 @@ curl -v -X PUT \
 Name         |  Description
  ---:        |    :----   
 **name** <br> <span class ="required">`required`</span> | String representing the name of task. This may be up to 100 characters long.
-**start_time** <br>`optional`| String representing timestamp value for start time of task. This field takes input in ISO 8601 extended notation for date and time value i.e. yyyy-MM-ddTHH:mm:ssZ and support time zone offset as well.
-**end_time** <br>`optional`|  String representing timestamp value for end time of task. This field takes input in ISO 8601 extended notation for date and time value i.e. yyyy-MM-ddTHH:mm:ssZ and support time zone offset as well.
+**start_time** <br>`optional`| String representing timestamp value for start time of task. This field takes input in ISO 8601 extended notation for date and time value i.e. yyyy-MM-ddTHH:mm:ssZ and supports time zone offset as well.
+**end_time** <br>`optional`|  String representing timestamp value for end time of task. This field takes input in ISO 8601 extended notation for date and time value i.e. yyyy-MM-ddTHH:mm:ssZ and supports time zone offset as well.
 
 ### Returns
 
 | Code      | Description | 
 | ---:      |    :----    | 
-**200** <br><span class = "success">`OK`</span> | Indicates that the operation was successful and task is successfully updated.
+**200** <br><span class = "success">`OK`</span> | Indicates that the operation was successful and task is updated successfully.
 **400** <br> <span class = "error">`Bad Request`</span> | Bad Request error occurs when a request is malformed, syntactically incorrect, missing required parameters or any unknown parameter is passed. Additionally, Bad request may also occur if `start_time` becomes later then `end_time`.
 **403** <br> <span class = "error">`Forbidden`</span> |Authorization failed due to insufficient permissions. This occurs when user does not have enough access rights to perform this action. Access for each user can be controlled by an Administrator using eRS Cloud Application.
 **404** <br><span class = "error">`Not Found`</span> | This status code indicates that project or task does not exists.
@@ -596,7 +597,7 @@ Name         |  Description
 
 > **`DELETE /v1/projects/{ID}/task/{Task_ID}`**
 
-Permanently deletes a task. It cannot be undone. By default, this operation will get failed if a task has any booking associated with it. To override this behavior, forceful remove can be used which will remove this task from all bookings associated with it.
+Permanently deletes a task. It cannot be undone. By default, this operation will fail if a task has any booking or timesheet associated with it. To override this behavior, forceful removal can be used which will remove this task from all bookings and timesheets associated with it.
 
 > Example Request
 
@@ -610,7 +611,7 @@ curl -v -X DELETE \
 ```shell
 curl -v -X DELETE \
 "https://app.eresourcescheduler.cloud/rest/v1/projects/1/tasks/2\
-?remove_from_bookings=true" \
+?remove_from_bookings=true&remove_from_timesheet=true" \
 -H "Authorization: Bearer B8x5Vj1O65r6wnoV"
 ```
 
@@ -619,17 +620,28 @@ curl -v -X DELETE \
 | Code      | Description  
 | :---      | :----
 **200** <br><span class = "success">`OK`</span> | Indicates that the operation was successful and task is deleted successfully.
-**409** <br> <span class = "error">`Conflict`</span> | Conflict indicates that the task can not be deleted as there are bookings associated with this task. If you wish to delete it any way you must use force delete option by passing <span class = "required">`true`</span> for parameter <span class = "required">`remove_from_bookings`</span>. This operation removes task from all associated bookings and then deletes the task itself. Example request is shown to right.
+**409** <br> <span class = "error">`Conflict`</span> | Conflict indicates that the task can not be deleted as there are bookings or timesheets associated with this task. If you wish to delete it any way you must use force delete option by passing <span class = "required">`true`</span> for parameters <span class = "required">`remove_from_bookings`</span> and <span class = "required">`remove_from_timesheet`</span>. This operation removes task from all associated bookings and timesheets, and then deletes the task itself. Example request is shown to right.
 **403** <br> <span class = "error">`Forbidden`</span> |Authorization failed due to insufficient permissions. This occurs when user does not have enough access rights to perform this action. Access for each user can be controlled by an Administrator using eRS Cloud Application.
 **404** <br><span class = "error">`Not Found`</span> | This indicates that project or task does not exist.
 
 ## Project Notes
 
-To capture additional information about a project, eRS Cloud provides the `Notes`. If one has to provide any new information to a project which is not captured from the filed, for such situations Notes are beneficial.
+To capture additional information about a project, eRS Cloud provides the `Notes`. If one has to provide any new information to a project which is not captured from the field, for such situations Notes are beneficial.
 
  eRS Cloud API allows you to perform *`POST`*, *`GET`*, *`PUT`*, *`DELETE`* operations on Notes. 
 
-*The Notes Of Archived Project remain available for the records.*
+_**Note**: The Notes Of Archived Project remain available for the records._
+
+<span class="optional"><b>ATTRIBUTES</b></span>
+
+Name         |  Description
+ ---:        |    :----   
+ **id**<br>`integer` | eRS Cloud generated unique identifier for the notes. |
+ **content** <br>`string` | Text written inside notes body .|
+ **created_on** <br>`string` | Time at which the notes object is created. |
+ **modified_on** <br>`string` | Describes the latest modification date.|
+ **created_by** <br>`object` | This field describes by whom this note is created .|
+ **modified_by** <br>`object` | This field describes by whom the modification is done.
 
 
 ### List notes
@@ -637,7 +649,7 @@ To capture additional information about a project, eRS Cloud provides the `Notes
 >` GET  v1/projects/{ID}/notes`
 
 
-Retrieves the Notes list of specified project. You need to provide the unique project identifier that was returned upon project creation.The notes are returned which sorted by lastly modified or added.
+Retrieves the Notes list of specified project. You need to provide the unique project identifier that was returned upon project creation.The notes are returned which are sorted by lastly modified or added.
 
 > Example Request
 
@@ -695,8 +707,10 @@ curl -v -X GET \
 
 |Name|Description|
 |-:|:-|
-|**limit**<br>`optional`|The limit keyword is used to limit the number of notes returned from a result set.<br>*The default value of `limit` is*  <span class="error">*`25`*</span><br>*Maximum value of limit can be* <span class="error">*`100.`*</span> *If value of Limit is more than*<span class="error">*`100`*</span>  *then it will get set Maximum value of limit which is* <span class="error">*`100.`*</span> 
+|**limit**<br>`optional`|The limit keyword is used to limit the number of notes returned from a result set.<br>*The default value of `limit` is*  <span class="error">*`25`*</span><br>*Maximum value of limit can be* <span class="error">*`100.`*</span> *If value of Limit is more than*<span class="error">*`100`*</span>  *then it will set Maximum value of limit which is* <span class="error">*`100.`*</span> 
 |**offset**<br>`optional`|The Offset value allows you to specify the ranking number of the first item on the page .The Offset value is most often used together with the Limit keyword.<br>*The default value of `offset` is* <span class="error">*`0`* </span>|
+
+
 
 
 ### Ordering the notes
@@ -705,19 +719,9 @@ curl -v -X GET \
 
 |Name|Options|Description|
 |-:|:-:|:-
-|**Order_by**<br>`optional`|<li>created_on *(Default)*</li>|List of notes will be returned and sorted by it's created date.|
+|**order_by**<br>`optional`|<li>created_on *(Default)*</li>|List of notes will be returned and sorted by it's created date.|
 | |<li>modified_on</li> |List of notes will be returned and sorted by it's latest modified date|
 
-<span class="optional"><b>ATTRIBUTES</b></span>
-
-Name         |  Description
- ---:        |    :----   
- **id**<br>`integer` | eRS Cloud generated unique identifier for the notes. |
- **content** <br>`string` | Text written inside notes body .|
- **created_on** <br>`string` | Time at which the notes object is created. |
- **modified_on** <br>`string` | Describes the latest modification date.|
- **created_by** <br>`object` | This field describes by whom notes is created .|
- **modified_by** <br>`object` | This field describes by whom the modification is done.
 
 ### Returns 
 
@@ -797,7 +801,7 @@ Name         |  Description
 
 | Code      | Description | 
 | ---:        |    :----   | 
-| **200** <br> <span class = "success">`OK`</span>    |  This indicates that the operation was successful and a note get updated successfully.|
+| **200** <br> <span class = "success">`OK`</span>    |  This indicates that the operation was successful and a note updated successfully.|
 | **400** <br> <span class = "error">`Bad Request`</span> | Bad Request occurs when a request is not well-formed, syntactically incorrect, empty required parameters or any unknown parameter is passed.|
 | **403** <br> <span class = "error">`Forbidden`</span> | Authorization failed due to insufficient permissions. This occurs when user does not have enough access rights to perform this action. Access for each user can be controlled by an Administrator using eRS Cloud Application.|
 |  **404** <br><span class = "error">`Not Found`</span> |This status code indicates that project or notes does not exist| 
@@ -807,7 +811,7 @@ Name         |  Description
 
 >` DELETE  v1/projects/{ID}/notes/{Note_ID}`
 
-Permanently deletes a Note. It cannot be undone.You need to  provide the unique project identifier that was returned upon project creation and unique note identifier that was returend upon notes creation.
+Permanently deletes a Note. It cannot be undone.You need to  provide the unique project identifier that was returned upon project creation and unique note identifier that was returned upon notes creation.
 
 > Example Request
 
@@ -821,7 +825,7 @@ curl -v -X DELETE "https://app.eresourcescheduler.cloud/rest/v1/projects/8/notes
 
 | Code      | Description  
 | ---:        |    :----   
-| **200** <br><span class = "success">`OK`</span> |This status code indicates that the operation was successful and a note get deleted successfully |
+| **200** <br><span class = "success">`OK`</span> |This status code indicates that the operation was successful and a note deleted successfully |
 | **403** <br> <span class = "error">`Forbidden`</span> | Authorization failed due to insufficient permissions. This occurs when user does not have enough access rights to perform this action. Access for each user can be controlled by an Administrator using eRS Cloud Application.|
 |  **404** <br><span class = "error">`Not Found`</span> |This status code indicates that project or notes does not exist| 
 

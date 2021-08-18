@@ -4,7 +4,7 @@ This API is accessible only <span class="warning">when financial module is activ
 
 ## Resource Rates
 
-A rate is an entity that allows you to assign billing or cost rates to a resource object. Each resource has its own set of billing and cost rate assigned on different effective dates.
+A rate is an entity that allows you to assign billing or cost rates to a resource object. Each resource has it's own set of billing and cost rate assigned on different effective dates.
 
 This API allows you to list, create, delete, update billing or cost rates of any resource.
 
@@ -15,7 +15,7 @@ Name         |  Description
  ---:        |    :----   
 **id** <br>`integer` | Unique id of resource object to which this rate belongs.
 **name** <br> `string` | Name of resource object.
-**rates** <br>`array of objects`| Represent collection of rates that are assigned on the resource object.
+**rates** <br>`array of objects`| Represents collection of rates that are assigned on the resource object.
 **rate.id** <br>`integer`| Auto generated unique identifier for rate object.
 **rate.rate** <br>`float`| Represents applied rate.
 **rate.effective_date** <br>`string`| Represents effective date for the rate.
@@ -73,10 +73,10 @@ Name     |    Description
  
 | Code      |Description |
  :---        |    :----   |
-**201** <br><span class = "success">`Created`</span> | Indicates that the operation was successful and rate is created successfully.
+**201** <br><span class = "success">`Created`</span> | Indicates that the operation was successful and rate created successfully.
 **400** <br> <span class = "error">`Bad Request`</span> | Bad Request error occurs when a request is malformed, syntactically incorrect, missing required parameters or any unknown parameter is passed.
 **403** <br> <span class = "error">`Forbidden`</span> | Authorization failed due to insufficient permissions. This occurs when user does not have enough access rights to perform this action. Access for each user can be controlled by an Administrator using eRS Cloud Application.
-**404** <br><span class = "error">`Not Found`</span> | This status code indicates that resource does not exists.
+**404** <br><span class = "error">`Not Found`</span> | This status code indicates that resource does not exist.
 **409** <br> <span class = "error">`Conflict`</span> | Conflict indicates that the rate can not be created as same type of rate is already associated with passed effective date. If you wish to create rate of same type any way you must use replace existing rate option by passing `true` for parameter <span class = "required"> `replace_existing_rate` </span> or you can create rate of another type on given effective date. This operation replaces existing rate with passed rate. Example request is shown to right.
 
 ### List Resource Rates
@@ -158,10 +158,10 @@ offset=1&limit=10" \
 
 | Code      | Description | 
 | ---:        |    :----   | 
-**200** <br> <span class = "success">`OK`</span> | This status code indicates that the operation was successful and rates retrieved successfully.
+**200** <br> <span class = "success">`OK`</span> | This status code indicates that the operation was successful and list of rates retrieved successfully.
 **400** <br> <span class = "error">`Bad Request` </span> | Bad Request may occur when offset or limit value is negative.
 **403** <br> <span class = "error">`Forbidden`</span> |Authorization failed due to insufficient permissions. This occurs when user does not have enough access rights to perform this action. Access for each user can be controlled by an Administrator using eRS Cloud Application.
-**404** <br> <span class = "error">`Not Found`</span> | Not Found error occurs when requested url is not correct or the data type of query parameters in not integer.
+**404** <br> <span class = "error">`Not Found`</span> | Not Found error occurs when requested url is not correct or the data type of query parameters is not integer.
 
 <br><br><br><br><br><br><br><br>
 <br><br><br><br><br><br><br><br>
@@ -248,7 +248,7 @@ curl -v -X PUT \
  
 ```shell
 
-curl -v -X POST \
+curl -v -X PUT \
 "https://app.eresourcescheduler.cloud/rest/v1/resources/8/rates/9" \
 -H "Authorization: Bearer B8x5Vj1O65r6wnoV" \
 -H "Content-Type: application/json" \
@@ -270,7 +270,7 @@ Name     |    Description
 
 | Code      | Description | 
 | ---:      |    :----    | 
-**200** <br><span class = "success">`OK`</span> | Indicates that the operation was successful and rate is successfully updated.
+**200** <br><span class = "success">`OK`</span> | Indicates that the operation was successful and rate updated successfully.
 **400** <br> <span class = "error">`Bad Request`</span> | Bad Request error occurs when a request is malformed, syntactically incorrect, missing required parameters or any unknown parameter is passed.
 **403** <br> <span class = "error">`Forbidden`</span> | Authorization failed due to insufficient permissions. This occurs when user does not have enough access rights to perform this action. Access for each user can be controlled by an Administrator using eRS Cloud Application.
 **404** <br><span class = "error">`Not Found`</span> | This status code indicates that resource or rate does not exists.
@@ -294,13 +294,13 @@ curl -v -X DELETE \
 
 | Code      | Description  
 | :---      | :----
-**200** <br><span class = "success">`OK`</span> | Indicates that the operation was successful and rate is deleted successfully.
+**200** <br><span class = "success">`OK`</span> | Indicates that the operation was successful and rate deleted successfully.
 **403** <br> <span class = "error">`Forbidden`</span> |Authorization failed due to insufficient permissions. This occurs when user does not have enough access rights to perform this action. Access for each user can be controlled by an Administrator using eRS Cloud Application.
 **404** <br><span class = "error">`Not Found`</span> | This indicates that resource or rate does not exist.
 
 ## Project Rates
 
-A rate is an entity that allows you to assign billing rates to a project object. Each project has its own set of rates assigned on different effective dates.
+A rate is an entity that allows you to assign billing rates to a project object. Each project has it's own set of rates assigned on different effective dates.
 
 This API allows you to list, create, delete, update rates and billing status of any project.
 
@@ -312,7 +312,7 @@ Name         |  Description
 **id** <br>`integer` | Unique id of project object to which this rate belongs.
 **title** <br> `string` | Name of project object.
 **is_billable** <br>`boolean`| Represents billing status of project object.
-**rates** <br>`array of objects`| Represent collection of rates that are assigned on the project object. While creating or updating a rate object user must pass arguments which are available for this rate object.
+**rates** <br>`array of objects`| Represents collection of rates that are assigned on the project object. While creating or updating a rate object user must pass arguments which are available for this rate object.
 **rate.id** <br>`integer`| Auto generated unique identifier for rate object.
 **rate.rate** <br>`float`| Represents applied billing rate.
 **rate.effective_date** <br>`string`| Represents effective date for the rate.
@@ -363,10 +363,10 @@ Name     |    Description
  
 | Code      |Description |
  :---        |    :----   |
-**201** <br><span class = "success">`Created`</span> | Indicates that the operation was successful and rate is created successfully.
+**201** <br><span class = "success">`Created`</span> | Indicates that the operation was successful and rate created successfully.
 **400** <br> <span class = "error">`Bad Request`</span> | Bad Request error occurs when a request is malformed, syntactically incorrect, missing required parameters or any unknown parameter is passed.
 **403** <br> <span class = "error">`Forbidden`</span> | Authorization failed due to insufficient permissions. This occurs when user does not have enough access rights to perform this action. Access for each user can be controlled by an Administrator using eRS Cloud Application.
-**404** <br><span class = "error">`Not Found`</span> | This status code indicates that project does not exists.
+**404** <br><span class = "error">`Not Found`</span> | This status code indicates that project does not exist.
 **409** <br> <span class = "error">`Conflict`</span> | Conflict indicates that the rate can not be created as rate is already associated with passed effective date. If you wish to create rate of same type any way you must use replace existing rate option by passing `true` for parameter <span class = "required"> `replace_existing_rate` </span> which will replace existing rate with passed rate. Example request is shown to right.
 
 ### List Project Rates
@@ -430,10 +430,10 @@ offset=1&limit=10" \
 
 | Code      | Description | 
 | ---:        |    :----   | 
-**200** <br> <span class = "success">`OK`</span> | This status code indicates that the operation was successful and rates retrieved successfully.
+**200** <br> <span class = "success">`OK`</span> | This status code indicates that the operation was successful and list of rates retrieved successfully.
 **400** <br> <span class = "error">`Bad Request` </span> | Bad Request may occur when offset or limit value is negative.
 **403** <br> <span class = "error">`Forbidden`</span> |Authorization failed due to insufficient permissions. This occurs when user does not have enough access rights to perform this action. Access for each user can be controlled by an Administrator using eRS Cloud Application.
-**404** <br> <span class = "error">`Not Found`</span> | Not Found error occurs when requested url is not correct or the data type of query parameters in not integer.
+**404** <br> <span class = "error">`Not Found`</span> | Not Found error occurs when requested url is not correct or the data type of query parameters is not integer.
 
 
 <br><br><br><br><br><br>
@@ -514,7 +514,7 @@ curl -v -X PUT \
  
 ```shell
 
-curl -v -X POST \
+curl -v -X PUT \
 "https://app.eresourcescheduler.cloud/rest/v1/projects/8/rates/9" \
 -H "Authorization: Bearer B8x5Vj1O65r6wnoV" \
 -H "Content-Type: application/json" \
@@ -536,7 +536,7 @@ Name     |    Description
 
 | Code      | Description | 
 | ---:      |    :----    | 
-**200** <br><span class = "success">`OK`</span> | Indicates that the operation was successful and rate is successfully updated.
+**200** <br><span class = "success">`OK`</span> | Indicates that the operation was successful and rate updated successfully.
 **400** <br> <span class = "error">`Bad Request`</span> | Bad Request error occurs when a request is malformed, syntactically incorrect, missing required parameters or any unknown parameter is passed.
 **403** <br> <span class = "error">`Forbidden`</span> | Authorization failed due to insufficient permissions. This occurs when user does not have enough access rights to perform this action. Access for each user can be controlled by an Administrator using eRS Cloud Application.
 **404** <br><span class = "error">`Not Found`</span> | This status code indicates that project or rate does not exists.
@@ -574,10 +574,10 @@ Name         |  Description
 
 | Code      | Description | 
 | ---:      |    :----    | 
-**200** <br><span class = "success">`OK`</span> | Indicates that the operation was successful and billing status is successfully updated.
+**200** <br><span class = "success">`OK`</span> | Indicates that the operation was successful and billing status updated successfully.
 **400** <br> <span class = "error">`Bad Request`</span> | Bad Request error occurs when a request is malformed, syntactically incorrect, missing required parameters or any unknown parameter is passed.
 **403** <br> <span class = "error">`Forbidden`</span> | Authorization failed due to insufficient permissions. This occurs when user does not have enough access rights to perform this action. Access for each user can be controlled by an Administrator using eRS Cloud Application.
-**404** <br><span class = "error">`Not Found`</span> | This status code indicates that project does not exists.
+**404** <br><span class = "error">`Not Found`</span> | This status code indicates that project does not exist.
 
 
 ### Delete Project Rate
@@ -597,14 +597,14 @@ curl -v -X DELETE \
 
 | Code      | Description  
 | :---      | :----
-**200** <br><span class = "success">`OK`</span> | Indicates that the operation was successful and rate is deleted successfully.
+**200** <br><span class = "success">`OK`</span> | Indicates that the operation was successful and rate deleted successfully.
 **403** <br> <span class = "error">`Forbidden`</span> |Authorization failed due to insufficient permissions. This occurs when user does not have enough access rights to perform this action. Access for each user can be controlled by an Administrator using eRS Cloud Application.
 **404** <br><span class = "error">`Not Found`</span> | This indicates that project or rate does not exist.
 
 
 ## Role Rates
 
-A rate is an entity that allows you to assign billing rates to a role object. Each role has its own set of rates assigned on different effective dates.
+A rate is an entity that allows you to assign billing rates to a role object. Each role has it's own set of rates assigned on different effective dates.
 
 This API allows you to list, create, delete, update rates of any role.
 
@@ -615,7 +615,7 @@ Name         |  Description
  ---:        |    :----   
 **id** <br><span class="required">`integer`</span> | Unique id of role object, which this rate belongs to.
 **name** <br> <span class ="required">`string`</span> | Name of role object.
-**rates** <br>`array of objects`| Represent collection of rates that are assigned on the project object. While creating or updating a rate object user must pass arguments which are available for this rate object.
+**rates** <br>`array of objects`| Represents collection of rates that are assigned on the project object. While creating or updating a rate object user must pass arguments which are available for this rate object.
 **rate.id** <br>`integer`| Auto generated unique identifier for rate object.
 **rate.rate** <br>`float`| Represents applied billing rate.
 **rate.effective_date** <br>`string`| Represents effective date for the rate.
@@ -668,10 +668,10 @@ Name     |    Description
  
 | Code      |Description |
  :---        |    :----   |
-**201** <br><span class = "success">`Created`</span> | Indicates that the operation was successful and rate is created successfully.
+**201** <br><span class = "success">`Created`</span> | Indicates that the operation was successful and rate created successfully.
 **400** <br> <span class = "error">`Bad Request`</span> | Bad Request error occurs when a request is malformed, syntactically incorrect, missing required parameters or any unknown parameter is passed.
 **403** <br> <span class = "error">`Forbidden`</span> | Authorization failed due to insufficient permissions. This occurs when user does not have enough access rights to perform this action. Access for each user can be controlled by an Administrator using eRS Cloud Application.
-**404** <br><span class = "error">`Not Found`</span> | This status code indicates that role does not exists.
+**404** <br><span class = "error">`Not Found`</span> | This status code indicates that role does not exist.
 **409** <br> <span class = "error">`Conflict`</span> | Conflict indicates that the rate can not be created as rate is already associated with passed effective date. If you wish to create rate of same type any way you must use replace existing rate option by passing `true` for parameter <span class = "required"> `replace_existing_rate` </span> which will replace existing rate with passed rate. Example request is shown to right.
 
 ### List Role Rates
@@ -735,10 +735,10 @@ offset=1&limit=10" \
 
 | Code      | Description | 
 | ---:        |    :----   | 
-**200** <br> <span class = "success">`OK`</span> | This status code indicates that the operation was successful and list rates retrieved successfully.
+**200** <br> <span class = "success">`OK`</span> | This status code indicates that the operation was successful and list of rates retrieved successfully.
 **400** <br> <span class = "error">`Bad Request` </span> | Bad Request may occur when offset or limit value is negative.
 **403** <br> <span class = "error">`Forbidden`</span> |Authorization failed due to insufficient permissions. This occurs when user does not have enough access rights to perform this action. Access for each user can be controlled by an Administrator using eRS Cloud Application.
-**404** <br> <span class = "error">`Not Found`</span> | Not Found error occurs when requested url is not correct or the data type of query parameters in not integer.
+**404** <br> <span class = "error">`Not Found`</span> | Not Found error occurs when requested url is not correct or the data type of query parameters is not integer.
 
 <br><br><br><br><br><br>
 
@@ -768,7 +768,7 @@ curl -v -X PUT \
  
 ```shell
 
-curl -v -X POST \
+curl -v -X PUT \
 "https://app.eresourcescheduler.cloud/rest/v1/roles/8/rates/9" \
 -H "Authorization: Bearer B8x5Vj1O65r6wnoV" \
 -H "Content-Type: application/json" \
@@ -790,7 +790,7 @@ Name     |    Description
 
 | Code      | Description | 
 | ---:      |    :----    | 
-**200** <br><span class = "success">`OK`</span> | Indicates that the operation was successful and rate is successfully updated.
+**200** <br><span class = "success">`OK`</span> | Indicates that the operation was successful and rate updated successfully.
 **400** <br> <span class = "error">`Bad Request`</span> | Bad Request error occurs when a request is malformed, syntactically incorrect, missing required parameters or any unknown parameter is passed.
 **403** <br> <span class = "error">`Forbidden`</span> | Authorization failed due to insufficient permissions. This occurs when user does not have enough access rights to perform this action. Access for each user can be controlled by an Administrator using eRS Cloud Application.
 **404** <br><span class = "error">`Not Found`</span> | This status code indicates that role or rate does not exists.
@@ -814,6 +814,6 @@ curl -v -X DELETE \
 
 | Code      | Description  
 | :---      | :----
-**200** <br><span class = "success">`OK`</span> | Indicates that the operation was successful and rate is deleted successfully.
+**200** <br><span class = "success">`OK`</span> | Indicates that the operation was successful and rate deleted successfully.
 **403** <br> <span class = "error">`Forbidden`</span> |Authorization failed due to insufficient permissions. This occurs when user does not have enough access rights to perform this action. Access for each user can be controlled by an Administrator using eRS Cloud Application.
 **404** <br><span class = "error">`Not Found`</span> | This indicates that role or rate does not exist.

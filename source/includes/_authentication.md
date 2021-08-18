@@ -84,7 +84,7 @@ Name | Description
 To learn more about OAuth token generation flow please read <a target = "_blank" href="https://oauth.net/2/grant-types/authorization-code/" class = "api-ref">here</a>.
 
 
-eRS Cloud expects an API token to be included in all API requests to in a header that looks like the following:
+eRS Cloud expects an API token to be included in all API requests in a header that looks like the following:
 
 `Authorization: Bearer B8x5Vj1O65r6wnoV`
 

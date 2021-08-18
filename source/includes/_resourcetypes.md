@@ -115,13 +115,22 @@
       "maxlength": 50,
       "is_required": false,
       "is_system_defined": true
+    }, {
+      "id": 12,
+      "code": "start_date",
+      "display_name": "Start Date",
+      "field_type": "DATE",
+      "is_system_defined": true,
+      "maxdate": "2099-12-31",
+      "mindate": "1900-01-01",
+      "is_required": true
     },
     { ... }
   ]
 }
 ```
 
-Resource type object represents the type of resource. In an organization, there can be multiple types of resources. Administrator can add multiple resource types using eRS Cloud application. Resource type can be categorized as human or non-human. Human type of resource can be `Employee`, `Contractor`, etc. and non-human can be `Meeting Rooms`, `Projectors` etc. Different resource type object can be configured to have different set of custom attributes as well, which allows customizing resource objects to fit your requirements.
+Resource type object represents the type of resource. In an organization, there can be multiple types of resources. Administrator can add multiple resource types using eRS Cloud application. Resource types can be categorized as human or non-human. Human type of resource can be `Employee`, `Contractor`, etc. and non-human can be `Meeting Rooms`, `Projectors` etc. Different resource type object can be configured to have different set of custom attributes as well, which allows customizing resource objects to fit your requirements.
 
 
 <span class="optional"><b>ATTRIBUTES</b></span>
@@ -146,8 +155,9 @@ Name | Description
 **field.is_required** <br> `boolean` | Indicates whether this field is mandatory or not. If this field is a `required` field then a valid value for this field must be passed while creating such object and while updating object (if this field is intended to update).
 **is_system_defined** <br> `boolean` | Indicates whether this field is system defined or a custom field. Fields which are system defined can not be customized.
 **field.options** <br> `array of objects` | Field types such as Dropdown Single Select, Dropdown Multi Select, Radio Group etc. ( See <a href="#user-defined-fields" class = "api-ref">User Defined Fields</a> to know more. ) allow user to pick one or more from these available options.
-**field.option.id** <br> `integer` |   Represents unique identification number for the individual option object.
-**field.option.name** <br> `string` | Represents name or content of option object.
+**field.options.id** <br> `integer` |   Represents unique identification number for the individual option object.
+**field.options.name** <br> `string` | Represents name or content of option object.
+**field.options.color** <br> `string` | Allows a user to store color code of option object(It is only available for LABEL type fields).
 
 
 
@@ -279,6 +289,15 @@ curl -v \
       "maxlength": 50,
       "is_required": false,
       "is_system_defined": true
+    }, {
+      "id": 12,
+      "code": "start_date",
+      "display_name": "Start Date",
+      "field_type": "DATE",
+      "is_system_defined": true,
+      "maxdate": "2099-12-31",
+      "mindate": "1900-01-01",
+      "is_required": true
     },
     { ... }
   ]
@@ -394,6 +413,15 @@ curl -v \
           "maxlength": 50,
           "is_required": false,
           "is_system_defined": true
+        }, {
+          "id": 12,
+          "code": "start_date",
+          "display_name": "Start Date",
+          "field_type": "DATE",
+          "is_system_defined": true,
+          "maxdate": "2099-12-31",
+          "mindate": "1900-01-01",
+          "is_required": true
         },
         { ... }
       ]

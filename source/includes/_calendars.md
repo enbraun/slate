@@ -74,25 +74,25 @@ Name | Description
 **description**  <br>`string` |  Description for calendar object.
 **is_default**<br> `boolean`| Indicates whether this calendar object is used as a default calendar or not. There can only be one (which can be changed) default calendar at a time. Default calendar gets applied as working calendar, if calendar not specified while creating a resource.
 **timings** <br> `array of objects` | List of timing objects applicable for this calendar object. Timing objects (or timing blocks) are used to define working capacity for each day of week.
-**timing.day_num** <br> `integer` | Represents day of week, starting from 0 (for Sunday) to 6 (for Saturday).
-**timing.start_time** <br> `integer` | Represents start time for this timing block in minutes (since 12 AM) i.e. for 6:00 AM, value would be 6 * 60 = 360 and for 9:00 AM it would be 9 * 60 = 540.
-**timing.end_time** <br> `integer` | Represents end time for this timing block in minutes (since 12 AM) i.e. for 5:00 PM, value would be (12+5) * 60 = 1020.
+**timings.day_num** <br> `integer` | Represents day of week, starting from 0 (for Sunday) to 6 (for Saturday).
+**timings.start_time** <br> `integer` | Represents start time for this timing block in minutes (since 12 AM) i.e. for 6:00 AM, value would be 6 * 60 = 360 and for 9:00 AM it would be 9 * 60 = 540.
+**timings.end_time** <br> `integer` | Represents end time for this timing block in minutes (since 12 AM) i.e. for 5:00 PM, value would be (12+5) * 60 = 1020.
 **holidays**<br>`array of objects` | List of holiday objects applied for this calendar. There can be multiple holidays applied on calendar. 
-**holiday.id**<br>`integer` | Unique identifier for holiday object. 
-**holiday.name**<br>`string` | Name of holiday.
-**holiday.description**<br>`string` | Description for this holiday object.
-**holiday.date**<br>`string`| Represents date on which holiday occurs. This is a string value in ISO 8601 extended Date format i.e. yyyy-mm-dd.
-**holiday.tags**<br>`array of string` | Tags are the list of strings (labels) attached to this holiday object which could be used for the purpose of identification or other information.
+**holidays.id**<br>`integer` | Unique identifier for holiday object. 
+**holidays.name**<br>`string` | Name of holiday.
+**holidays.description**<br>`string` | Description for this holiday object.
+**holidays.date**<br>`string`| Represents date on which holiday occurs. This is a string value in ISO 8601 extended Date format i.e. yyyy-mm-dd.
+**holidays.tags**<br>`array of string` | Tags are the list of strings (labels) attached to this holiday object which could be used for the purpose of identification or other information.
 **exceptions**<br>`array of objects`| List of exception objects that are applied on calendar object. Exceptions are used to override working timing of calendar for a specified day.
-**exception.id**<br>`integer` | Unique identifier for exception object. 
-**exception.name**<br>`string` | Name of exception object (which is to be displayed wherever referred).
-**exception.description**<br>`string` | Description for exception object.
-**exception.date**<br>`string` | Represents date on which exception is to be applied. This is a string value in ISO 8601 extended Date format i.e. yyyy-mm-dd.
-**exception.is_working_exception**<br>`boolean` | Indicates whether this exception is working exception or non-working. A working exception is used to override timings of a working day and if applied on a non-working day, it turns it into working day. A non-working exception turns any working day into non-working.
-**exception.timings**<br>`array of objects` | List of timing objects (or timing blocks) for this exception. This defines working timings for this exception day. There are no timings if exception is a non-working exception.
-**exception.timing.start_time** <br> `integer` | Represents start time for this timing block in minutes (since 12 AM) i.e. for 6:00 AM, value would be 6 * 60 = 360 and for 9:00 AM it would be 9 * 60 = 540.
-**exception.timing.end_time** <br> `integer` | Represents end time for this timing block in minutes (since 12 AM) i.e. for 5:00 PM, value would be (12+5) * 60 = 1020.
-**exception.tags**<br>`array of string` | Tags are the list of strings (labels) attached to this exception object which could be used for the purpose of identification or other information.
+**exceptions.id**<br>`integer` | Unique identifier for exception object. 
+**exceptions.name**<br>`string` | Name of exception object (which is to be displayed wherever referred).
+**exceptions.description**<br>`string` | Description for exception object.
+**exceptions.date**<br>`string` | Represents date on which exception is to be applied. This is a string value in ISO 8601 extended Date format i.e. yyyy-mm-dd.
+**exceptions.is_working_exception**<br>`boolean` | Indicates whether this exception is working exception or non-working. A working exception is used to override timings of a working day and if applied on a non-working day, it turns it into working day. A non-working exception turns any working day into non-working.
+**exceptions.timings**<br>`array of objects` | List of timing objects (or timing blocks) for this exception. This defines working timings for this exception day. There are no timings if exception is a non-working exception.
+**exceptions.timings.start_time** <br> `integer` | Represents start time for this timing block in minutes (since 12 AM) i.e. for 6:00 AM, value would be 6 * 60 = 360 and for 9:00 AM it would be 9 * 60 = 540.
+**exceptions.timings.end_time** <br> `integer` | Represents end time for this timing block in minutes (since 12 AM) i.e. for 5:00 PM, value would be (12+5) * 60 = 1020.
+**exceptions.tags**<br>`array of string` | Tags are the list of strings (labels) attached to this exception object which could be used for the purpose of identification or other information.
 **created_on** <br>`string`  | Timestamp at which calendar object was created.
 **modified_on** <br>`string` | Describes the latest modification timestamp.
 **created_by** <br> `object` | Describes by whom calendar object was created.|
