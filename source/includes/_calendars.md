@@ -2,7 +2,7 @@
 
 ## Calendar object
 
-Calendar is used to define working-timing of resources. An admin user can define multiple calendars using eRS Cloud application. Each calendar may have different timings defined. Timings allows breaks and multiple timing blocks. In addition to timings, user can apply holidays and exceptions (working or non-working) on calendars. A particular calendar can be applied on a set of resources and a resource can also have multiple calendars on different periods. eRS Cloud API allows getting details of calendars.
+Calendar is used to define working-timing of resources. An admin user can define multiple calendars using eRS Cloud application. Each calendar may have different timings defined. Timings allow breaks and multiple timing blocks. In addition to timings, user can apply holidays and exceptions (working or non-working) on calendars. A particular calendar can be applied on a set of resources and a resource can also have multiple calendars on different time periods. eRS Cloud API allows getting details of calendars.
 
 > Example Response
 
@@ -277,4 +277,4 @@ curl -v \
 | Code      | Description | 
 | ---:        |    :----   | 
 | **200** <br> <span class = "success">`OK`</span>     | Indicates that the operation was successful and requested calendar is returned.
-|  **404** <br><span class = "error">`Not Found`</span> | indicates that calendar object with specified calendar_id does not exist.
+|  **404** <br><span class = "error">`Not Found`</span> | indicates that calendar object with specified calendar id does not exist.

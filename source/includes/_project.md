@@ -509,7 +509,7 @@ Name         |  Description
 | ---:        |    :----   | 
 **200** <br> <span class = "success">`OK`</span> | This status code indicates that the operation was successful and list tasks retrieved successfully.
 **403** <br> <span class = "error">`Forbidden`</span> |Authorization failed due to insufficient permissions. This occurs when user does not have enough access rights to perform this action. Access for each user can be controlled by an Administrator using eRS Cloud Application.
-**404** <br> <span class = "error">`Not Found`</span> | Not Found error occurs when requested project does not exist (i.e. There is no project with given id). This may also occur when requesting tasks of project which has been deleted.
+**404** <br> <span class = "error">`Not Found`</span> | Not Found error occurs when requested project task does not exist (i.e. There is no project task exists with given id). This may also occur when requesting tasks of project that has been deleted.
 
 <br><br>
 
@@ -589,7 +589,7 @@ Name         |  Description
 **200** <br><span class = "success">`OK`</span> | Indicates that the operation was successful and task is updated successfully.
 **400** <br> <span class = "error">`Bad Request`</span> | Bad Request error occurs when a request is malformed, syntactically incorrect, missing required parameters or any unknown parameter is passed. Additionally, Bad request may also occur if `start_time` becomes later then `end_time`.
 **403** <br> <span class = "error">`Forbidden`</span> |Authorization failed due to insufficient permissions. This occurs when user does not have enough access rights to perform this action. Access for each user can be controlled by an Administrator using eRS Cloud Application.
-**404** <br><span class = "error">`Not Found`</span> | This status code indicates that project or task does not exists.
+**404** <br><span class = "error">`Not Found`</span> | This status code indicates that project or task does not exist.
 
 
 <br><br>
@@ -649,7 +649,7 @@ Name         |  Description
 >` GET  v1/projects/{ID}/notes`
 
 
-Retrieves the Notes list of specified project. You need to provide the unique project identifier that was returned upon project creation.The notes are returned which are sorted by lastly modified or added.
+Retrieves the Notes list of specified project. You need to provide the unique project identifier that was returned upon project creation. The notes are returned which are sorted by lastly modified or added.
 
 > Example Request
 
@@ -775,7 +775,7 @@ Name         |  Description
 
 >` PUT  v1/projects/{ID}/notes/{Note_ID}`
 
-Updates the specified project's note by setting the value of the parameter passed. You need to  provide the unique project identifier that was returned upon project creation and unique note identifier that was returend upon notes creation. If parameter is not provided then it will be left unchanged.
+Updates the specified project's note by setting the value of the parameter passed. You need to  provide the unique project identifier that was returned upon project creation and unique note identifier that was returned upon notes creation. If parameter is not provided then it will be left unchanged.
 
 This request accepts mostly the same argument as the note creation call.
 
@@ -811,7 +811,7 @@ Name         |  Description
 
 >` DELETE  v1/projects/{ID}/notes/{Note_ID}`
 
-Permanently deletes a Note. It cannot be undone.You need to  provide the unique project identifier that was returned upon project creation and unique note identifier that was returned upon notes creation.
+Permanently deletes a Note. It cannot be undone. You need to  provide the unique project identifier that was returned upon project creation and unique note identifier that was returned upon notes creation.
 
 > Example Request
 

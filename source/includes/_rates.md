@@ -273,7 +273,7 @@ Name     |    Description
 **200** <br><span class = "success">`OK`</span> | Indicates that the operation was successful and rate updated successfully.
 **400** <br> <span class = "error">`Bad Request`</span> | Bad Request error occurs when a request is malformed, syntactically incorrect, missing required parameters or any unknown parameter is passed.
 **403** <br> <span class = "error">`Forbidden`</span> | Authorization failed due to insufficient permissions. This occurs when user does not have enough access rights to perform this action. Access for each user can be controlled by an Administrator using eRS Cloud Application.
-**404** <br><span class = "error">`Not Found`</span> | This status code indicates that resource or rate does not exists.
+**404** <br><span class = "error">`Not Found`</span> | This status code indicates that resource or rate does not exist.
 **409** <br> <span class = "error">`Conflict`</span> | Conflict indicates that the rate can not be created as same type of rate is already associated with passed effective date. If you wish to create rate of same type any way you must use replace existing rate option by passing `true` for parameter <span class = "required"> `replace_existing_rate` </span> or you can create rate of another type on given effective date. This operation replaces existing rate with passed rate. Example request is shown to right.
 
 ### Delete Resource Rate
@@ -539,7 +539,7 @@ Name     |    Description
 **200** <br><span class = "success">`OK`</span> | Indicates that the operation was successful and rate updated successfully.
 **400** <br> <span class = "error">`Bad Request`</span> | Bad Request error occurs when a request is malformed, syntactically incorrect, missing required parameters or any unknown parameter is passed.
 **403** <br> <span class = "error">`Forbidden`</span> | Authorization failed due to insufficient permissions. This occurs when user does not have enough access rights to perform this action. Access for each user can be controlled by an Administrator using eRS Cloud Application.
-**404** <br><span class = "error">`Not Found`</span> | This status code indicates that project or rate does not exists.
+**404** <br><span class = "error">`Not Found`</span> | This status code indicates that project or rate does not exist.
 **409** <br> <span class = "error">`Conflict`</span> | Conflict indicates that the rate can not be created as rate is already associated with passed effective date. If you wish to create rate of same type any way you must use replace existing rate option by passing `true` for parameter <span class = "required"> `replace_existing_rate` </span> which will replace existing rate with passed rate. Example request is shown to right.
 
 
@@ -793,7 +793,7 @@ Name     |    Description
 **200** <br><span class = "success">`OK`</span> | Indicates that the operation was successful and rate updated successfully.
 **400** <br> <span class = "error">`Bad Request`</span> | Bad Request error occurs when a request is malformed, syntactically incorrect, missing required parameters or any unknown parameter is passed.
 **403** <br> <span class = "error">`Forbidden`</span> | Authorization failed due to insufficient permissions. This occurs when user does not have enough access rights to perform this action. Access for each user can be controlled by an Administrator using eRS Cloud Application.
-**404** <br><span class = "error">`Not Found`</span> | This status code indicates that role or rate does not exists.
+**404** <br><span class = "error">`Not Found`</span> | This status code indicates that role or rate does not exist.
 **409** <br> <span class = "error">`Conflict`</span> | Conflict indicates that the rate can not be created as rate is already associated with passed effective date. If you wish to create rate of same type any way you must use replace existing rate option by passing `true` for parameter <span class = "required"> `replace_existing_rate` </span> which will replace existing rate with passed rate. Example request is shown to right.
 
 ### Delete Role Rate

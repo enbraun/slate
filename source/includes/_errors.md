@@ -17,4 +17,4 @@ Status Code | Meaning
 **405** <br> <span class = "error">**`Method Not Allowed`** </span> | HTTP method is not allowed by a web server for a requested URL. 
 **409** <br> <span class = "error">**`Conflict`** </span>| Occurs when trying to create a duplicate object where duplicates are not allowed or when request could affect other objects.
 **415** <br> <span class = "error">**`Unsupported Media Type`** </span> | No valid media is provided.
-**500** <br> <span class = "error">**`Internal Server Error`** </span>| Something went wrong at eRS's end. _(This is rare.)_
+**500** <br> <span class = "error">**`Internal Server Error`** </span>| Something went wrong at eRS Cloud's end. _(This is rare.)_

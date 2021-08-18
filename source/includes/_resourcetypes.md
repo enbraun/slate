@@ -130,7 +130,7 @@
 }
 ```
 
-Resource type object represents the type of resource. In an organization, there can be multiple types of resources. Administrator can add multiple resource types using eRS Cloud application. Resource types can be categorized as human or non-human. Human type of resource can be `Employee`, `Contractor`, etc. and non-human can be `Meeting Rooms`, `Projectors` etc. Different resource type object can be configured to have different set of custom attributes as well, which allows customizing resource objects to fit your requirements.
+Resource type object represents the type of resource. In an organization, there can be multiple types of resources. Administrator can add multiple resource types using eRS Cloud application. Resource types can be categorized as human or non-human. Human type of resource can be `Employee`, `Contractor`, etc. and non-human can be `Meeting Rooms`, `Projectors` etc. Different resource type objects can be configured to have a different sets of custom attributes as well, which allows customizing resource objects to fit your requirements.
 
 
 <span class="optional"><b>ATTRIBUTES</b></span>
@@ -138,26 +138,26 @@ Resource type object represents the type of resource. In an organization, there 
 Name | Description
 ---------: | :-----------
 **id**  <br>`integer` |  Unique identification number for the object, which allows referring to this object and can be used to search a particular resource type.
-**name** <br> `string` | Represent name for this object. This is used to identify object by using some meaningful phrase to describe type of resources like `Employee`, `Machine` etc.
+**name** <br> `string` | Represents name for this object. This is used to identify object by using some meaningful phrase to describe type of resources like `Employee`, `Machine` etc.
 **is_human** <br> `boolean` | Indicates whether this resource type is `human` or `non-human`. For example, `Employee` could be a human resource type while `Machine`, `Meeting Rooms` etc. can be non-human resource type.
-**fields** <br> `array of objects`  | Represent collection of fields (or attributes) that are available for this resource type. Each <a href ="#resource" class = "api-ref">Resource</a> object of this resource type can store / update values for these field. While creating or updating a <a href ="#resource" class = "api-ref">Resource</a> user must pass arguments which are available for intended resource type object. 
-**field.id**<br> `integer` | Represents unique identification number of this field, which can be used to refer or search it.
-**field.display_name** <br> `string`  | Name of this field to identify it.
-**field.field_type** <br>`string` |  Represents the type of field. For example  TEXT (for Text Field), INT (for Integer Number field), DDSS (for Dropdown Single Select Field), etc. See <a href="#user-defined-fields" class="api-ref">User Defined Fields</a> to know more about different field types.
-**field.code** <br>`string` | It represents the unique code of the field which is referred as API code. This code acts as `key` in API response and the same must be used as `key` to pass values for a POST or PUT request.
-**field.minlength** <br>`integer` |  Represents minimum no of characters in value this field can accept (_only applicable for text fields_).
-**field.maxlength** <br>`integer` |  Represents maximum no of characters in value this field can accept (_only applicable for text fields_).
-**field.regex** <br>`string` |  Represents regular expression which must be matched by value for this field (_only applicable for text fields_).
-**field.minnum** <br>`integer` |  Represents minimum value this field can accept (_only applicable for numeric fields_).
-**field.maxnum** <br>`integer` |  Represents maximum value this field can accept (_only applicable for numeric fields_).
-**field.mindate** <br>`string` |  Represents minimum value this field can accept (_only applicable for date / date time fields_).
-**field.maxdate** <br>`string` |  Represents maximum value this field can accept (_only applicable for date / date time fields_).
-**field.is_required** <br> `boolean` | Indicates whether this field is mandatory or not. If this field is a `required` field then a valid value for this field must be passed while creating such object and while updating object (if this field is intended to update).
+**fields** <br> `array of objects`  | Represents collection of fields (or attributes) that are available for this resource type. Each <a href ="#resource" class = "api-ref">Resource</a> object of this resource type can store / update values for these field. While creating or updating a <a href ="#resource" class = "api-ref">Resource</a> user must pass arguments which are available for intended resource type object. 
+**fields.id**<br> `integer` | Represents unique identification number of this field, which can be used to refer or search it.
+**fields.display_name** <br> `string`  | Name of this field to identify it.
+**fields.field_type** <br>`string` |  Represents the type of field. For example  TEXT (for Text Field), INT (for Integer Number field), DDSS (for Dropdown Single Select Field), etc. See <a href="#user-defined-fields" class="api-ref">User Defined Fields</a> to know more about different field types.
+**fields.code** <br>`string` | It represents the unique code of the field which is referred as API code. This code acts as `key` in API response and the same must be used as `key` to pass values for a POST or PUT request.
+**fields.minlength** <br>`integer` |  Represents minimum no of characters in value this field can accept (_only applicable for text fields_).
+**fields.maxlength** <br>`integer` |  Represents maximum no of characters in value this field can accept (_only applicable for text fields_).
+**fields.regex** <br>`string` |  Represents regular expression which must be matched by value for this field (_only applicable for text fields_).
+**fields.minnum** <br>`integer` |  Represents minimum value this field can accept (_only applicable for numeric fields_).
+**fields.maxnum** <br>`integer` |  Represents maximum value this field can accept (_only applicable for numeric fields_).
+**fields.mindate** <br>`string` |  Represents minimum value this field can accept (_only applicable for date / date time fields_).
+**fields.maxdate** <br>`string` |  Represents maximum value this field can accept (_only applicable for date / date time fields_).
+**fields.is_required** <br> `boolean` | Indicates whether this field is mandatory or not. If this field is a `required` field then a valid value for this field must be passed while creating such object and while updating object (if this field is intended to update).
 **is_system_defined** <br> `boolean` | Indicates whether this field is system defined or a custom field. Fields which are system defined can not be customized.
-**field.options** <br> `array of objects` | Field types such as Dropdown Single Select, Dropdown Multi Select, Radio Group etc. ( See <a href="#user-defined-fields" class = "api-ref">User Defined Fields</a> to know more. ) allow user to pick one or more from these available options.
-**field.options.id** <br> `integer` |   Represents unique identification number for the individual option object.
-**field.options.name** <br> `string` | Represents name or content of option object.
-**field.options.color** <br> `string` | Allows a user to store color code of option object(It is only available for LABEL type fields).
+**fields.options** <br> `array of objects` | Field types such as Dropdown Single Select, Dropdown Multi Select, Radio Group etc. ( See <a href="#user-defined-fields" class = "api-ref">User Defined Fields</a> to know more. ) allow user to pick one or more from these available options.
+**fields.options.id** <br> `integer` |   Represents unique identification number for the individual option object.
+**fields.options.name** <br> `string` | Represents name or content of option object.
+**fields.options.color** <br> `string` | Allows a user to store color code of option object(It is only available for LABEL type fields).
 
 
 

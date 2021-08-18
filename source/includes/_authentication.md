@@ -59,7 +59,7 @@ grant_type=authorization_code\
 
 ###2. Request Access Token
 
-Once authorization is complete, eRS Cloud sends redirect back to defined `redirect_uri` with a grant code parameter **"code"** (and **state** parameter if was issued at time of requesting grant code) set. 
+Once authorization is complete, eRS Cloud sends redirect back to defined `redirect_uri` with a grant code parameter **"code"** (and **state** parameter if was issued at the time of requesting grant code) set. 
 
 Now this grant code can be used to fetch access token from token end point.
 
@@ -90,7 +90,7 @@ eRS Cloud expects an API token to be included in all API requests in a header th
 
 
 
-A sample API token is included in all the example request in this document. To test requests using your account, replace the sample access token with your actual access token.
+A sample API token is included in all the example requests in this document. To test requests using your account, replace the sample access token with your actual access token.
 
 
 

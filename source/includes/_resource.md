@@ -65,7 +65,7 @@
 }
 ```
 
-<span style="color:#b93d6a">`Resource`</span> object represent resources (human / non-human) in your organization (i.e. Employees , Machines etc. ) which you want to schedule. Resources could be of multiple types with each type having it's own custom attributes along with system defined attributes. The API allows you to list, search, create, delete, and update resources.
+<span style="color:#b93d6a">`Resource`</span> object represents resources (human / non-human) in your organization (i.e. Employees , Machines etc. ) which you want to schedule. Resources could be of multiple types with each type having it's own custom attributes along with system defined attributes. The API allows you to list, search, create, delete, and update resources.
 
 <span class="optional"><b>ATTRIBUTES</b></span>
 
@@ -155,7 +155,7 @@ Name         |  Description
 | Code      | Description |
 | :---      |    :----    |
 **201** <br><span class = "success">`Created`</span> | Indicates that the operation was successful and a resource created successfully.
-**400** <br> <span class = "error">`Bad Request`</span> | Bad Request error occurs when a request is  malformed, syntactically incorrect, missing required parameters or has any unknown parameter. Additionally, Bad request may also occur in one of these conditions :<ul><li>Resource's start date is after it's end date.</li><li>Trying to create resources more than subscribed no of resources.</li></ul> 
+**400** <br> <span class = "error">`Bad Request`</span> | Bad Request error occurs when a request is  malformed, syntactically incorrect, missing required parameters or has any unknown parameter. Additionally, Bad request may also occur in one of these conditions :<ul><li>Resource's start date is after it's last working date.</li><li>Trying to create resources more than subscribed no of resources.</li></ul> 
 **403** <br> <span class = "error">`Forbidden`</span> |Authorization failed due to insufficient permissions. This occurs when user does not have enough access rights to perform this action. Access for each user can be controlled by an Administrator using eRS Cloud Application.
 
 
@@ -425,7 +425,7 @@ Below is a list of available fields, which allow filtering resources:
 
 ## Update a resource 
 
-Updates specified resource by setting the values of the parameters passed. Any parameter which are not provided remains unchanged. To unset existing value for a parameter, just pass an empty value i.e. `null`.
+Updates specified resource by setting the values of the parameters passed. Any parameters which are not provided remains unchanged. To unset existing value for a parameter, just pass an empty value i.e. `null`.
 
 This request accepts mostly the same arguments as `Create Resource` API.
 
@@ -467,7 +467,7 @@ curl -v -X PUT \
 | Code      | Description | 
 | ---:      |    :----    | 
 **200** <br> <span class = "success">`OK`</span> | Indicates that the operation was successful and requested resource updated successfully.|
-**400** <br> <span class = "error">`Bad Request`</span> | Bad Request occurs when a request is not well-formed, syntactically incorrect, empty required parameters or any unknown parameter is passed. <br> Additionally, Bad request may also occur in one of these conditions :<li>Trying to update an archived resource.</li><li>Trying to change start_date or last_date such that last_date gets smaller than start_date.</li><li>Trying to update start date and last date of a resource such that existing booking of that resource do not fit in given range.</li>
+**400** <br> <span class = "error">`Bad Request`</span> | Bad Request occurs when a request is not well-formed, syntactically incorrect, empty required parameters or any unknown parameter is passed. <br> Additionally, Bad request may also occur in one of these conditions :<li>Trying to update an archived resource.</li><li>Trying to change start date or last working date such that last working date gets smaller than start date.</li><li>Trying to update start date and last date of a resource such that existing bookings of that resource do not fit in given range.</li>
 **403** <br> <span class = "error">`Forbidden`</span> | Authorization failed due to insufficient permissions. This occurs when user does not have enough access rights to perform this action. Access for each user can be controlled by an Administrator using eRS Cloud Application.
 **404** <br> <span class = "error">`Not Found`</span> | Not Found error occurs when requested resource does not exist (i.e. There is no resource with given id). This may also occur when updating a resource which has been deleted.
 
@@ -649,7 +649,7 @@ curl -v -X POST "https://app.eresourcescheduler.cloud/rest/v1/resources/12/timin
 
 Name         |  Description
  ---:        |    :----   
-**applied_on**  <br><span class="required">`required`</span>| Applied_on Field describes when calendar is applied. It is a `DateTime` type of field. 
+**applied_on**  <br><span class="required">`required`</span>| Applied on Field describes when calendar is applied. It is a `DateTime` type of field. 
 **calendar_id**  <br><span class="required">`required`</span>|As the name shows it is a calendar id which we have to pass. You will get this id at the time of calendar creation. This field accepts `Integer` only. 
 **effective_date**  <br><span class="required">`required`</span>|Effective date is the date on which the calendar will come into effect on applied resources. This field accepts `Date` only.
 
@@ -694,7 +694,7 @@ This request accepts mostly the same argument as the note creation call.
 
 Name         |  Description
  ---:        |    :----   
-**applied_on**  <br><span class="required">`required`</span>| Applied_on Field describes when calendar is applied. It is a `DateTime` type of field. 
+**applied_on**  <br><span class="required">`required`</span>| Applied on Field describes when calendar is applied. It is a `DateTime` type of field. 
 **calendar_id**  <br><span class="required">`required`</span>|As the name shows it is a calendar id which we have to pass. You will get this id at the time of calendar creation. This field accepts `Integer` only. 
 **effective_date**  <br><span class="required">`required`</span>|Effective date is the date on which the calendar will come into effect on applied resources. This field accepts `Date`only.
 
@@ -712,7 +712,7 @@ Name         |  Description
 
 > `DELETE v1/resources/{ID}/timings/{Timing_ID}`
 
-Permanently deletes a applied Calendar. It cannot be undone. You need to provide the unique resource identifier that was returned upon resource creation and unique timing identifier that was returend upon timing addition.
+Permanently deletes a applied Calendar. It cannot be undone. You need to provide the unique resource identifier that was returned upon resource creation and unique timing identifier that was returned upon timing addition.
 
 
 > Example Request
@@ -765,14 +765,14 @@ curl -v -X DELETE \
 }
 ```
 
-Exception is nothing but timing-duration that is different from a general schedule. eRS provides you the feature to add an exception to a resource.
+Exception is nothing but time duration that is different from a general schedule. eRS provides you the feature to add an exception to a resource.
 
 Let's say, a resource having calendar which does not have Sunday working. But for some reason, resource has to work on Sunday then this is a case of exception. So in such a situation exception comes handy.
 
 eRS Cloud provides you two types of exceptions: 
     <ol><li>Working Exception : <p>&#160;&#160;&#160;&#160;&#160; Working Exception is added on a non-working day. </p></li> <li>Non-working Exception : <p>&#160;&#160;&#160;&#160;&#160; Non-working Exception is added on a working day. </p></li></ol>
 
-_**Note**: Working Exception can be added without timings*_
+_**Note**: Working Exception can be added without timings._
 
 <span class="optional"><b>ATTRIBUTES</b></span>
 
@@ -787,7 +787,7 @@ Name         |  Description
  **modified_on** <br>`string` | Timestamp of the latest modification. |
  **created_by** <br> `object` | This field describes by whom exception is created .|
  **modified_by** <br>`object` | This field describes by whom the latest modification is done. |
- **timings** <br> `object` |Timings describes the timings of exception.
+ **timings** <br> `object` |Timings describe the timings of exception.
 
 
 
@@ -850,9 +850,9 @@ Name         |  Description
 **descirption**  <br>`optional`|As the name shows it is a description which we want to give for the exception . This field is a `string` type of field. 
 **name**  <br><span class="required">`required`</span>|Name describes the name of exception. This field is a `string` type of field
 **is_working_exception**  <br><span class="required">`required`</span>|Is working exception describes whether exception is a working exception or not. Accepts `true` if it is a working exception otherwise accepts `false` if it a non-working exception. This field is a `boolean` type of field
-**timing_blocks**  <br>`optional`|Timing_blocks describes the timings of exception. This filed can be passed null, as eRS Cloud provids you the facility to create an exception without timings. This field is a `Array of objects` type of field
-**timings.start_time**  <br>`optional`|Start time describes the start time of exception. This filed can be passed null, as eRS Cloud provids you the facility to create an exception without timings. This field is a `Integer` type of field.  
-**timings.end_time**  <br>`optional`|End time describes the end time of exception. This filed can be passed null, as eRS Cloud provids you the facility to create an exception without timings. This field is a `Integer` type of field.  
+**timing_blocks**  <br>`optional`|Timing_blocks describes the timings of exception. This field can be passed null, as eRS Cloud provides you the facility to create an exception without timings. This field is a `Array of objects` type of field
+**timing_blocks.start_time**  <br>`optional`|Start time describes the start time of exception. This field can be passed null, as eRS Cloud provides you the facility to create an exception without timings. This field is a `Integer` type of field.  
+**timing_blocks.end_time**  <br>`optional`|End time describes the end time of exception. This field can be passed null, as eRS Cloud provides you the facility to create an exception without timings. This field is a `Integer` type of field.  
 
 
 ### Returns
@@ -891,7 +891,7 @@ curl -v -X PUT \
 
 
 
-Updates the specified resource's exception by setting the value of the parameter passed. You need to provide the unique resource identifier that was returned upon resource creation and unique exception identifier that was returend upon exception addition. If parameter is not provided then it will be left unchanged.
+Updates the specified resource's exception by setting the value of the parameter passed. You need to provide the unique resource identifier that was returned upon resource creation and unique exception identifier that was returned upon exception addition. If parameter is not provided then it will be left unchanged.
 
 This request accepts mostly the same argument as the exception creation call.
 
@@ -904,9 +904,9 @@ Name         |  Description
 **descirption**  <br>`optional`|As the name shows it is a description which we want to give for the exception . This field is a `string` type of field. 
 **name**  <br><span class="required">`required`</span>|Name describes the name of exception. This field is a `string` type of field
 **is_working_exception**  <br><span class="required">`required`</span>|Is working exception describes whether exception is working exception or not. Accepts `true` if it is working exception otherwise accepts `false` if it a non-working exception. This field is a `boolean` type of field
-**timing_blocks**  <br>`optional`|Timing_blocks describes the timings of exception. This filed can be pass null, as eRS Cloud provids you the facility to create an exception without timings. This field is a `Array of objects` type of field
-**timings.start_time**  <br>`optional`|Start time describes the start time of exception. This filed can be pass null, as eRS Cloud provids you the facility to create an exception without timings. This field is a `Integer` type of field.  
-**timings.end_time**  <br>`optional`|End time describes the end time of exception. This filed can be pass null, as eRS Cloud provids you the facility to create an exception without timings. This field is a `Integer` type of field.  
+**timing_blocks**  <br>`optional`|Timing_blocks describes the timings of exception. This field can be pass null, as eRS Cloud provides you the facility to create an exception without timings. This field is a `Array of objects` type of field
+**timing_blocks.start_time**  <br>`optional`|Start time describes the start time of exception. This field can be pass null, as eRS Cloud provides you the facility to create an exception without timings. This field is a `Integer` type of field.  
+**timing_blocks.end_time**  <br>`optional`|End time describes the end time of exception. This field can be pass null, as eRS Cloud provides you the facility to create an exception without timings. This field is a `Integer` type of field.  
 
 ### Returns
 
@@ -971,7 +971,7 @@ curl -v -X DELETE \
 }
 ```
 
-To capture additional information about a resource, eRS Cloud provides the `Notes`. If one has to provide any new information to a resource which is not captured from the filed, for such situations Notes are beneficial.
+To capture additional information about a resource, eRS Cloud provides the `Notes`. If one has to provide any new information to a resource that is not captured from the field, for such situations Notes are beneficial.
 
 Let's say, If a resource has role "A", but after a certain time his role changed or new role gets added to his profile. Roles field gives us the ability to add, update or delete a role. But it does not give brief information when the role  added, deleted or updated. The Notes comes in handy in such situations. Notes are handy to maintain the history of a resource.
 
@@ -995,7 +995,7 @@ Name         |  Description
 >` GET  v1/resources/{ID}/notes`
 
 
-Retrieves the Notes list of specified resource. You need to provide the unique resource identifier that was returned upon resource creation.The notes are returned which are sorted by lastly modified or added.
+Retrieves the Notes list of specified resource. You need to provide the unique resource identifier that was returned upon resource creation. The notes are returned which are sorted by lastly modified or added.
 
 > Example Request
 
@@ -1103,7 +1103,7 @@ Name         |  Description
 
 >` PUT  v1/resources/{ID}/notes/{Note_ID}`
 
-Updates the specified resource's note by setting the value of the parameter passed. You need to provide the unique resource identifier that was returned upon resource creation and unique note identifier that was returend upon notes creation. If parameter is not provided then it will be left unchanged.
+Updates the specified resource's note by setting the value of the parameter passed. You need to provide the unique resource identifier that was returned upon resource creation and unique note identifier that was returned upon notes creation. If parameter is not provided then it will be left unchanged.
 
 This request accepts mostly the same argument as the note creation call.
 
