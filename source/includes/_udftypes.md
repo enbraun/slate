@@ -13,14 +13,14 @@
 }
 ```
     
-As the name shows, these fields are user-defined custom fields. A user with admin rights can add such custom fields using eRS Cloud Application. These fields can be used to capture additional information in Resource, Project, Booking and Timesheet forms.
+As the name shows, these fields are user-defined custom fields. A user with Administrator rights can add such custom fields using eRS Cloud Application. These fields can be used to capture additional information in Resource, Project, Booking and Timesheet forms.
 
 User defined fields are filterable. Also, user can configure the visibility of such fields in the different forms, for example a field named `employee_id` can be created which is meant only for `Employee` type of resources.
 
 There are sixteen types of different fields available for different use cases. Each type of field has it's own set of attributes which can be configured to fit your requirements. Once such fields are added and applied, the response for that object will contain these along with normal attributes.
     
 
-_**Note**: There can be a maximum of 50 user-defined fields._
+_**Note**: There can be a maximum of 75 user-defined fields._
 
 
 
@@ -32,11 +32,11 @@ User can create one of the following types of field.
 
 Name <span style="width:100px; float:left;"></span>|Description
 :-  | :-
-**Simple Text** <br>`string` | Allows user to enter any combination of letters and numbers. Also, it can be configured to have different validations like `min length`,  `max length` and `regex pattern` to fit most requirements.
+**Simple Text** <br>`string` | Allows user to enter any combination of letters and numbers. Also, it can be configured to have different validations like `minlength`,  `maxlength` and `regex` to fit most requirements.
 **Multi Line Rich Text**  <br>`string` | Allows user to enter long rich text (up to 2000 characters). This type of field allows formatting such as adding headers, paragraphs, hyperlinks, **bold** and _italic_ text etc.
-**Integer Number** <br> `integer` | Allows user to enter numeric data. This is useful for fields like `emp_id`, `ref_no` etc. These fields can be configured to have validations like `min number` and `max number`.
-**Fractional Number** <br> `number` | Allows user to enter floating point number. This is useful for fields like `geo_coordinates`, `mean_distance` etc. This type of field can also have validations like `min number` and `max number`.
-**Date** <br> `string` | Allows user to enter date value from a popup calendar. This field takes input in ISO 8601 extended notation for date value i.e. yyyy-MM-dd. Example use case of this type of fields could be like `emp_birth_dae`, `date_of_delivery`, `date_of_completion` etc.  Available validations for these fields are `min date` and `max date`.
+**Integer Number** <br> `integer` | Allows user to enter numeric data. This is useful for fields like `emp_id`, `ref_no` etc. These fields can be configured to have validations like `minnum` and `maxnum`.
+**Fractional Number** <br> `number` | Allows user to enter floating point number. This is useful for fields like `geo_coordinates`, `mean_distance` etc. This type of field can also have validations like `minnum` and `maxnum`.
+**Date** <br> `string` | Allows user to enter date value from a popup calendar. This field takes input in ISO 8601 extended notation for date value i.e. yyyy-MM-dd. Example use case of this type of fields could be like `emp_birth_dae`, `date_of_delivery`, `date_of_completion` etc.  Available validations for these fields are `mindate` and `maxdate`.
 **DateTime** <br> `string` |  This type of field can be used where a specific instance of time needs to be recorded. This field takes input in ISO 8601 extended notation for date and time value i.e. yyyy-MM-ddTHH:mm:ssZ. This field supports time zone offset as well. Example use case of this type of fields could be like `eta`, `generated_at` etc.
 **URL** <br>`string` | Allows user to enter a valid link address. This field takes string input which should be a valid URL. This type of fields could be used to store a hyperlink to a website or a network resource.
 **Email** <br> `string` | Allows user to enter an email address, which is validated to ensure the proper format. 

@@ -48,7 +48,7 @@ Name      |  Description
  ---:     |    :---- 
 **id** <br>`integer` |  eRS Cloud generated unique identifier for the project object.
 **title** <br>`string` | Represents title or name of the project. This may be up to 255 characters.
-**type** <br>`object` | Describes the type of project. This is one of the project type objects which an admin user creates using eRS Cloud Application.
+**type** <br>`object` | Describes the type of project. This is one of the project type objects which an Administrator user creates using eRS Cloud Application.
 **email** <br>`string` | An optional email address of project object.
 **project_start_date** <br>`string` |  Date on which project is considered started.
 **end_date** <br>`string` | Date on which project is considered ended / completed.
@@ -58,7 +58,7 @@ Name      |  Description
 **created_on** <br>`string` | Timestamp at which this project object was created.
 **created_by** <br> `object` | Object representing user who created this project object.
 **modified_on** <br>`string` | Represents latest modification timestamp.
-**disable_parallel_booking** <br>`boolean` | Boolean value defining if project can or cannot have multiple bookings at a time. Default value for `disable_parallel_booking` is false.
+**disable_parallel_booking** <br>`boolean` | Boolean value defining if project can or cannot have multiple bookings at a time. Default value for disable parallel booking is false.
 **modified_by** <br>`object` | Object representing most recent user who modified this project object.
 **udf_\*** | Custom user-defined fields used to capture additional information of project. User defined field can be of multiple types. Custom fields are very useful to configure project objects to best fit requirements.  In given example response, all keys starting with prefix `udf_` are user defined custom fields. <a href="#user-defined-fields" class="api-ref">Learn more</a>
 
@@ -87,14 +87,14 @@ Creates a new project object.
 
 Name               |  Description
  ---:        |    :----
- **project_type_id** <br> <span class="required">`required`</span> | Id of <a href="#project-types" class="api-ref">project-type</a> object. A project must be linked with one of <a href="#project-types" class="api-ref">project-type</a> defined in admin section (_using eRS Cloud Application_). Let’s assume there are two project types defined as `Medical` (_having id as 1_) and `Education` (_having id as 2_), now while creating a new project, if project_type_id is given as 1 then it will get created under Medical type and same for Education when project_type_id is given as 2.
+ **project_type_id** <br> <span class="required">`required`</span> | Id of <a href="#project-types" class="api-ref">project-type</a> object. A project must be linked with one of <a href="#project-types" class="api-ref">project-type</a> defined in Administration section (_using eRS Cloud Application_). Let’s assume there are two project types defined as `Medical` (_having id as 1_) and `Education` (_having id as 2_), now while creating a new project, if `project_type_id` is given as **1** then it will get created under Medical type and the same for Education when `project_type_id` is given as **2**.
 **title** <br><span class="required">`required`</span> | String representing title / name of project. This can be a maximum of 255 characters long.
 **email**<br><span class="mandatoryFlag">&#9873;</span> <span class="removableFlag mln-2">&#9873;</span> | String value representing email address of project object. Email address must be properly formatted with a maximum length of 254 characters.
 **project_start_date**<br><span class="mandatoryFlag">&#9873;</span> <span class="removableFlag mln-2">&#9873;</span> | String value representing a date in ISO 8601 extended notation for date i.e. yyyy-MM-dd.
 **end_date**<br><span class="mandatoryFlag">&#9873;</span> <span class="removableFlag mln-2">&#9873;</span> | String value representing a date in ISO 8601 extended notation for date i.e. yyyy-MM-dd.
 **tags**<br><span class="removableFlag mln-2">&#9873;</span> | An optional array of strings which could be attached to this project object as labels. This can be useful for the purpose of filtering, identification or other information.
-**disable_parallel_booking** <br>`optional` | Boolean value defining if project can or cannot have multiple bookings at a time. Default value for `disable_parallel_booking` is false.
-**udf_\*** <br><span class="mandatoryFlag">&#9873;</span> <span class="removableFlag mln-2">&#9873;</span> | A user with admin rights can add custom fields. These fields can be used to capture additional information in Projects. Different types of projects may have a different set of user-defined fields. The value for user defined field can be passed as shown in example request. In given example **_udf_progress_**</span> is a user defined field. <a href="#user-defined-fields" class="api-ref">Learn more</a><br><br>_**Note**: User with admin rights can make fields marked with <span class="mandatoryFlag iconInline">&#9873;</span> mandatory and remove fields marked with <span class="removableFlag iconInline">&#9873;</span>, from <a href ="#get-a-specific-project-type" class="api-ref">specific project type</a> using **eRS Cloud Application**. If mandatory fields are not passed with a valid value or removed fields are passed while creating project, the operation will fail with response code **400**_.
+**disable_parallel_booking** <br>`optional` | Boolean value defining if project can or cannot have multiple bookings at a time. Default value for disable parallel booking is false.
+**udf_\*** <br><span class="mandatoryFlag">&#9873;</span> <span class="removableFlag mln-2">&#9873;</span> | A user with Administrator rights can add custom fields. These fields can be used to capture additional information in Projects. Different types of projects may have a different set of user-defined fields. The value for user defined field can be passed as shown in example request. In given example `udf_progress`</span> is a user defined field. <a href="#user-defined-fields" class="api-ref">Learn more</a><br><br>_**Note**: User with Administrator rights can make fields marked with <span class="mandatoryFlag iconInline">&#9873;</span> mandatory and remove fields marked with <span class="removableFlag iconInline">&#9873;</span>, from <a href ="#get-a-specific-project-type" class="api-ref">specific project type</a> using eRS Cloud Application. If mandatory fields are not passed with a valid value or removed fields are passed while creating project, the operation will fail with response code **400**_.
 
 ### Returns
 
@@ -108,7 +108,7 @@ Name               |  Description
 ## List projects
 
 
-Returns a list of projects. The projects are returned sorted by title. 
+Returns a list of projects. The projects are returned sorted by `title`. 
 	
 
 > **`GET /v1/projects`** 
@@ -256,7 +256,7 @@ Retrieves the details of an existing project. You only need to provide the uniqu
 | ---:        |    :----   | 
 | **200** <br> <span class = "success">`OK`</span>     | This status code indicates that the operation was successful and project retrieved successfully .  |
 | **403** <br> <span class = "error">`Forbidden`</span> |Authorization failed due to insufficient permissions. This occurs when user does not have enough access rights to perform this action. Access for each user can be controlled by an Administrator using eRS Cloud Application.|
-| **404** <br> <span class = "error">`Not Found`</span> | Not Found error occurs when requested project does not exist (i.e. There is no project with given id). This may also occur when requesting a project which has been deleted. |
+| **404** <br> <span class = "error">`Not Found`</span> | Not Found error occurs when requested project does not exist (i.e. There is no project with given id). This may also occur when requesting a project that has been deleted. |
 
 ## Search projects
 > **`POST /v1/projects/search`**
@@ -345,7 +345,7 @@ curl -X POST \
 
 Search Project API allows filtering the results returned in various ways. This enables a great power to find out what is needed. eRS Cloud API also allows filtering on custom defined fields with multiple operators and conditions to cover up complex scenarios for searching.
 
-A filter condition consists of three components which are **_field_**, **_operator_** and **_value_**. For example fetching only those projects having project type id 1, could be achieved by adding project_type_id:eq=1 to your query.  If operator is not supplied, it takes default operator for field. <a href="#filters" class="api-ref">Read more</a>
+A filter condition consists of three components which are **_field_**, **_operator_** and **_value_**. For example fetching only those projects having project type id 1, could be achieved by adding `"project_type_id:eq":1 ` to your query.  If operator is not supplied, it takes default operator for field. <a href="#filters" class="api-ref">Read more</a>
 
 Below is a list of available fields, which allow filtering projects:
 
@@ -359,8 +359,8 @@ Below is a list of available fields, which allow filtering projects:
 **project_start_date**|<li>**eq** (_default_)</li><li>lt</li><li>gt</li><li>bt</li><li>ex</li>|`"project_start_date:eq":"2015-02-02"`<br>`"project_start_date:lt":"2015-02-02"`<br>`"project_start_date:gt":"2015-02-02"`<br>`"project_start_date:bt":["2015-02-02","2015-04-05"]` <br>`"project_start_date:ex":["2015-02-02","2015-04-04"]`
 **end_date**|<li>**eq** (_default_) </li><li>lt</li><li>gt</li><li>bt</li><li>ex</li>| `"end_date:eq":"2015-02-02"`<br>`"end_date:lt":"2015-02-02"`<br>`"end_date:gt":"2015-02-02"`<br>`"end_date:bt":["2015-02-02","2015-04-05"]`<br>`"end_date:ex":["2015-02-02","2015-04-04"]`
 **tags**|<li>**any** (_default_) </li><li>none</li><li>all</li><li>ex</li>|`"tags:any":"["tagA", "tagB"]`<br>`"tags:none":"["tagA", "tagB"]`<br>`"tags:all":["tagB","tagC"]`<br>`"tags:ex":["tagB","tagC"]`
-**is_archive**| N/A |`"is_archive":true` <br>`"is_archive":false`
-**disable_paralled_booking**|Accepts value true and false |`"disable_paralled_booking": true`<br>`"disable_paralled_booking": false`
+**is_archive**| Accepts value true or false |`"is_archive":true` <br>`"is_archive":false`
+**disable_paralled_booking**|Accepts value true or false |`"disable_paralled_booking": true`<br>`"disable_paralled_booking": false`
 **created_by**|<li>**eq** (_default_)</li><li>neq</li><li>any</li><li>none</li>| `"created_by:eq": 1`<br>`"created_by:neq": 1`<br>`"created_by:any": [1, 2]`<br>`"created_by:none": [1, 2]`
 **modified_by**|<li>**eq** (_default_)</li><li>neq</li><li>any</li><li>none</li>| `"modified_by:eq": 1`<br>`"modified_by:neq": 1`<br>`"modified_by:any": [1, 2]`<br>`"modified_by:none": [1, 2]`
 **created_on**|<li>**eq** (_default_)</li><li>lt</li><li>gt</li><li>bt</li><li>ex</li>| `"created_on:eq": ["2021-07-08T00:00:00]`<br>`"created_on:lt": ["2021-07-08T00:00:00]`<br>`"created_on:gt": ["2021-07-08T59:59:59"]`<br>`"created_on:bt": ["2021-07-08T00:00:00", "2021-07-10T23:59:59"]`<br>`"created_on:bt": ["2021-07-08T00:00:00", ""]` <br>`"created_on:bt": ["", "2021-07-10T23:59:59"]` <br>`"created_on:ex": ["2021-07-08T00:00:00", "2021-07-10T23:59:59"]` <br>`"created_on:ex": ["2021-07-08T00:00:00", ""]` <br>`"created_on:ex": ["", "2021-07-10T23:59:59"]]` 
@@ -398,8 +398,8 @@ curl -v -X PUT \
 **end_date**<br><span class="mandatoryFlag">&#9873;</span> <span class="removableFlag mln-2">&#9873;</span> | String value representing a date in ISO 8601 extended notation for date i.e. yyyy-MM-dd. The project is considered ended / completed on this date.
 **email**<br><span class="mandatoryFlag">&#9873;</span> <span class="removableFlag mln-2">&#9873;</span> | String value representing email address associated with project object. Email address must be properly formatted with a maximum length of 254 characters.
 **tags**<br><span class="removableFlag mln-2">&#9873;</span> | An optional array of strings which could be attached to this project object as labels. This can be useful for the purpose of filtering, identification or other information. This may be up to 50 characters.
-**disable_parallel_booking** <br>`optional` | Boolean value defining if project can or cannot have multiple bookings at a time. Default value for `disable_parallel_booking` is false.
-**udf_\*** <br><span class="mandatoryFlag">&#9873;</span> <span class="removableFlag mln-2">&#9873;</span> | A user with admin rights can add custom fields. These fields can be used to capture additional information in Project. Different types of projects may have a different set of user-defined fields. The value for user defined field can be passed as shown in example request. In first example **_udf_progress_** is a user defined field. <a href ="#user-defined-fields" class="api-ref">Learn more</a><br><br>_**Note**: User with admin rights can make fields marked with <span class="mandatoryFlag iconInline">&#9873;</span> mandatory and remove fields marked with <span class="removableFlag iconInline">&#9873;</span>, from <a href ="#get-a-specific-project-type" class="api-ref">specific project type</a> using **eRS Cloud Application**. If mandatory fields are not passed with a valid value or removed fields are passed while updating project, the operation will fail with response code **400**_.
+**disable_parallel_booking** <br>`optional` | Boolean value defining if project can or cannot have multiple bookings at a time. Default value for disable parallel booking is false.
+**udf_\*** <br><span class="mandatoryFlag">&#9873;</span> <span class="removableFlag mln-2">&#9873;</span> | A user with Administrator rights can add custom fields. These fields can be used to capture additional information in Project. Different types of projects may have a different set of user-defined fields. The value for user defined field can be passed as shown in example request. In first example `udf_progress` is a user defined field. <a href ="#user-defined-fields" class="api-ref">Learn more</a><br><br>_**Note**: User with Administrator rights can make fields marked with <span class="mandatoryFlag iconInline">&#9873;</span> mandatory and remove fields marked with <span class="removableFlag iconInline">&#9873;</span>, from <a href ="#get-a-specific-project-type" class="api-ref">specific project type</a> using eRS Cloud Application. If mandatory fields are not passed with a valid value or removed fields are passed while updating project, the operation will fail with response code **400**_.
 
 
 ### Returns
@@ -407,14 +407,14 @@ curl -v -X PUT \
 | Code      | Description | 
 | ---:        |    :----   | 
 **200** <br> <span class = "success">`OK`</span> | Indicates that the operation was successful and project is updated successfully.
-**400** <br> <span class = "error">`Bad Request`</span> | Bad Request occurs when a request is not well-formed, syntactically incorrect, empty required parameters or any unknown parameter is passed. <br> Additionally, Bad request may also occur when :<ul><li>User tries to update archived project.</li><li> User tries to update start date or end date or both such that end date gets earlier than start date. </li></ul>
+**400** <br> <span class = "error">`Bad Request`</span> | Bad Request occurs when a request is not well-formed, syntactically incorrect, empty required parameters or any unknown parameter is passed. <br> Additionally, Bad request may also occur when :<ul><li>User tries to update archived project.</li><li> User tries to update `project_start_date` or `end_date` or both such that `end_date` gets earlier than `project_start_date`. </li></ul>
 **403** <br> <span class = "error">`Forbidden`</span> | Authorization failed due to insufficient permissions. This occurs when user does not have enough access rights to perform this action. Access for each user can be controlled by an Administrator using eRS Cloud Application.
 **404** <br><span class = "error">`Not Found`</span> | This status code indicates that project does not exist.
 
 
 ## Delete a project
 
- Permanently deletes requested project. It cannot be undone. By default, this operation will fail if a project has any booking, timesheet or rate associated with it. To override this, forceful deletion can be used which will delete all bookings, timesheets and rates and then, ultimately deletes the project object.
+ Permanently deletes requested project. It cannot be undone. By default, this operation will fail if a project has any bookings, timesheets or rates associated with it. To override this, forceful deletion can be used which will delete all bookings, timesheets and rates and then, ultimately deletes the project object.
 
 > **`DELETE /v1/projects/{ID}`**
 
@@ -443,7 +443,7 @@ force_delete_timesheet_entry=true" \
 | Code      | Description  
 | ---:        |    :----   
 **200** <br><span class = "success">`OK`</span> |This status code indicates that the operation was successful and project deleted successfully.
-**409** <br> <span class = "error">`Conflict`</span> |Conflict indicates that the project can not be deleted as there are bookings, timesheets or rates associated with this project. If you wish to delete it any way you must use force delete option by passing `true` for parameter `force_delete_bookings`, `force_delete_timesheet_entry` and `force_delete_rates` which will delete all associated bookings, timesheets and rates corresponding to the project. This operation deletes all bookings, timesheets and rates of requested project and project itself (shown in example request).
+**409** <br> <span class = "error">`Conflict`</span> |Conflict indicates that the project can not be deleted as there are bookings, timesheets or rates associated with this project. If you wish to delete it any way you must use force delete option by passing <span class = "required">`true`</span> for parameter <span class = "required">`force_delete_bookings`</span>, <span class = "required">`force_delete_timesheet_entry`</span> and <span class = "required">`force_delete_rates`</span> which will delete all associated bookings, timesheets and rates corresponding to the project. This operation deletes all bookings, timesheets and rates of requested project and project itself (shown in example request).
 **403** <br> <span class = "error">`Forbidden`</span> | Authorization failed due to insufficient permissions. This occurs when user does not have enough access rights to perform this action. Access for each user can be controlled by an Administrator using eRS Cloud Application.
 **404** <br><span class = "error">`Not Found`</span> |This status code indicates that requested project does not exist| |
 
@@ -597,7 +597,7 @@ Name         |  Description
 
 > **`DELETE /v1/projects/{ID}/task/{Task_ID}`**
 
-Permanently deletes a task. It cannot be undone. By default, this operation will fail if a task has any booking or timesheet associated with it. To override this behavior, forceful removal can be used which will remove this task from all bookings and timesheets associated with it.
+Permanently deletes a task. It cannot be undone. By default, this operation will fail if a task has any bookings or timesheets associated with it. To override this behavior, forceful removal can be used which will remove this task from all bookings and timesheets associated with it.
 
 > Example Request
 
@@ -662,14 +662,14 @@ curl -v -X GET "https://app.eresourcescheduler.cloud/rest/v1/projects/8/notes"\
 
 ```shell 
 curl -v -X GET \
-"https://app.eresourcescheduler.cloud/rest/v1/projects/8/notes?offset=1&limit=1"\
+"https://app.eresourcescheduler.cloud/rest/v1/projects/8/notes?offset=1&limit=10"\
  -H "Authorization: Bearer B8x5Vj1O65r6wnoV"
 ```
 >Example Request With order_by
 
 ```shell 
 curl -v -X GET \
-"https://app.eresourcescheduler.cloud/rest/v1/projects/8/notes?offset=1&limit=1&order_by=created_on" \
+"https://app.eresourcescheduler.cloud/rest/v1/projects/8/notes?offset=1&limit=10&order_by=created_on" \
  -H "Authorization: Bearer B8x5Vj1O65r6wnoV"
 ```
 
@@ -719,7 +719,7 @@ curl -v -X GET \
 
 |Name|Options|Description|
 |-:|:-:|:-
-|**order_by**<br>`optional`|<li>created_on *(Default)*</li>|List of notes will be returned and sorted by it's created date.|
+|**order_by**<br>`optional`|<li>**created_on** *(Default)*</li>|List of notes will be returned and sorted by it's created date.|
 | |<li>modified_on</li> |List of notes will be returned and sorted by it's latest modified date|
 
 
@@ -756,7 +756,7 @@ curl -v -X POST "https://app.eresourcescheduler.cloud/rest/v1/projects/8/notes"\
 
 Name         |  Description
  ---:        |    :----   
-**content**  <br><span class="required">`required`</span>  | To create new note you have to pass the body from `content` parameter.  Content param accepts plain text. Also, you can pass text with HTML tags as Notes are Multi Line Rich Text.
+**content**  <br><span class="required">`required`</span>  | To create new note you have to pass the body from content parameter.  Content param accepts plain text. Also, you can pass text with HTML tags as Notes are Multi Line Rich Text.
 
 
 ### Returns

@@ -1,6 +1,6 @@
 # Rates
 <br>
-This API is accessible only <span class="warning">when financial module is active</span>. If the keys connected to this API are used without having access to <b>`Financial Module`</b> then request will return client error status codes.
+This API is accessible only <span class="warning">when financial module is active</span>. If the keys connected to this API are used without having access to <b>Financial Module</b> then request will return client error status codes.
 
 ## Resource Rates
 
@@ -19,7 +19,7 @@ Name         |  Description
 **rate.id** <br>`integer`| Auto generated unique identifier for rate object.
 **rate.rate** <br>`float`| Represents applied rate.
 **rate.effective_date** <br>`string`| Represents effective date for the rate.
-**rate.rate_type** <br>`integer`| Represents rate type. Value of `rate_type` is 1 for cost rate and 2 for billing rate. Both types of rate can be defined on same `effective_date`.
+**rate.rate_type** <br>`integer`| Represents rate type. Value of rate type is **1** for cost rate and **2** for billing rate. Both types of rate can be defined on the same `effective_date`.
 
 ### Create Resource Rate
  
@@ -77,7 +77,7 @@ Name     |    Description
 **400** <br> <span class = "error">`Bad Request`</span> | Bad Request error occurs when a request is malformed, syntactically incorrect, missing required parameters or any unknown parameter is passed.
 **403** <br> <span class = "error">`Forbidden`</span> | Authorization failed due to insufficient permissions. This occurs when user does not have enough access rights to perform this action. Access for each user can be controlled by an Administrator using eRS Cloud Application.
 **404** <br><span class = "error">`Not Found`</span> | This status code indicates that resource does not exist.
-**409** <br> <span class = "error">`Conflict`</span> | Conflict indicates that the rate can not be created as same type of rate is already associated with passed effective date. If you wish to create rate of same type any way you must use replace existing rate option by passing `true` for parameter <span class = "required"> `replace_existing_rate` </span> or you can create rate of another type on given effective date. This operation replaces existing rate with passed rate. Example request is shown to right.
+**409** <br> <span class = "error">`Conflict`</span> | Conflict indicates that the rate can not be created as the same type of rate is already associated with passed effective date. If you wish to create rate of the same type any way you must use replace existing rate option by passing <span class = "required"> `true` </span> for parameter <span class = "required"> `replace_existing_rate` </span> or you can create rate of another type on given `effective_date`. This operation replaces existing rate with passed rate. Example request is shown to right.
 
 ### List Resource Rates
 
@@ -200,7 +200,7 @@ curl -X POST \
 
 Search Resource Rates API allows filtering the results returned in various ways. This enables a great power to find out what is needed. eRS Cloud API also allows filtering on custom defined fields with multiple operators and conditions to cover up complex scenarios for searching.
 
-A filter condition consists of three components which are **_field_**, **_operator_** and **_value_**. For example, fetching only those rates having resource_type_id 1, could be achieved by adding resource_type_id:eq=1 to your query. If operator is not supplied, it takes default operator for field.
+A filter condition consists of three components which are **_field_**, **_operator_** and **_value_**. For example, fetching only those rates having `resource_type_id` 1, could be achieved by adding `"resource_type_id:eq": 1` to your query. If operator is not supplied, it takes default operator for field.
 
 Below is a list of available fields, which allow filtering rates:
 
@@ -216,7 +216,7 @@ Below is a list of available fields, which allow filtering rates:
 **start_Date**|<li>**eq** (_default_)</li><li>lt</li><li>gt</li><li> bt</li><li>ex</li>| `"start_date:eq": "2016-01-27"`<br>` "start_date:lt": "1999-12-22"`<br>` "start_date:gt": "1990-01-11"`<br>`"start_date:bt": ["2001-01-01", "2010-12-31"]`<br> `"start_date:ex": ["1992-02-12", "1997-01-27"]`
 **last_date**|<li>**eq** (_default_)</li><li>lt</li><li>gt</li><li> bt</li><li>ex</li>| `"last_date:eq": "2016-05-17"` <br> `"last_date:lt": "2002-12-31"`<br>` "last_date:gt": "2010-01-01"` <br> `"last_date:bt": ["1995-12-31", "1999-01-01"]`<br> `"last_date:ex": ["2001-01-01", "2002-01-01"]`
 **timezone**|<li>**eq** (_default_)</li><li>neq</li><li>any</li><li>none</li>| `"timezone:eq": 1`<br>`"timezone:neq": 1`<br>`"timezone:any": [1, 2]`<br>`"timezone:none": [3, 2]`
-**disable_paralled_booking**|Accepts value true and false |`"disable_paralled_booking": true`<br>`"disable_paralled_booking": false`
+**disable_paralled_booking**|Accepts value true or false |`"disable_paralled_booking": true`<br>`"disable_paralled_booking": false`
 **created_by**|<li>**eq** (_default_)</li><li>neq</li><li>any</li><li>none</li>| `"created_by:eq": 1`<br>`"created_by:neq": 1`<br>`"created_by:any": [1, 2]`<br>`"created_by:none": [1, 2]`
 **modified_by**|<li>**eq** (_default_)</li><li>neq</li><li>any</li><li>none</li>| `"modified_by:eq": 1`<br>`"modified_by:neq": 1`<br>`"modified_by:any": [1, 2]`<br>`"modified_by:none": [1, 2]`
 **created_on**|<li>**eq** (_default_)</li><li>lt</li><li>gt</li><li>bt</li><li>ex</li>| `"created_on:eq": ["2021-07-08T00:00:00]`<br>`"created_on:lt": ["2021-07-08T00:00:00]`<br>`"created_on:gt": ["2021-07-08T59:59:59"]`<br>`"created_on:bt": ["2021-07-08T00:00:00", "2021-07-10T23:59:59"]`<br>`"created_on:bt": ["2021-07-08T00:00:00", ""]` <br>`"created_on:bt": ["", "2021-07-10T23:59:59"]` <br>`"created_on:ex": ["2021-07-08T00:00:00", "2021-07-10T23:59:59"]` <br>`"created_on:ex": ["2021-07-08T00:00:00", ""]` <br>`"created_on:ex": ["", "2021-07-10T23:59:59"]]` 
@@ -274,7 +274,7 @@ Name     |    Description
 **400** <br> <span class = "error">`Bad Request`</span> | Bad Request error occurs when a request is malformed, syntactically incorrect, missing required parameters or any unknown parameter is passed.
 **403** <br> <span class = "error">`Forbidden`</span> | Authorization failed due to insufficient permissions. This occurs when user does not have enough access rights to perform this action. Access for each user can be controlled by an Administrator using eRS Cloud Application.
 **404** <br><span class = "error">`Not Found`</span> | This status code indicates that resource or rate does not exist.
-**409** <br> <span class = "error">`Conflict`</span> | Conflict indicates that the rate can not be created as same type of rate is already associated with passed effective date. If you wish to create rate of same type any way you must use replace existing rate option by passing `true` for parameter <span class = "required"> `replace_existing_rate` </span> or you can create rate of another type on given effective date. This operation replaces existing rate with passed rate. Example request is shown to right.
+**409** <br> <span class = "error">`Conflict`</span> | Conflict indicates that the rate can not be created as the same type of rate is already associated with passed effective date. If you wish to create rate of the same type any way you must use replace existing rate option by passing <span class = "required"> `true` </span> for parameter <span class = "required"> `replace_existing_rate` </span> or you can create rate of another type on given effective date. This operation replaces existing rate with passed rate. Example request is shown to right.
 
 ### Delete Resource Rate
 
@@ -367,7 +367,7 @@ Name     |    Description
 **400** <br> <span class = "error">`Bad Request`</span> | Bad Request error occurs when a request is malformed, syntactically incorrect, missing required parameters or any unknown parameter is passed.
 **403** <br> <span class = "error">`Forbidden`</span> | Authorization failed due to insufficient permissions. This occurs when user does not have enough access rights to perform this action. Access for each user can be controlled by an Administrator using eRS Cloud Application.
 **404** <br><span class = "error">`Not Found`</span> | This status code indicates that project does not exist.
-**409** <br> <span class = "error">`Conflict`</span> | Conflict indicates that the rate can not be created as rate is already associated with passed effective date. If you wish to create rate of same type any way you must use replace existing rate option by passing `true` for parameter <span class = "required"> `replace_existing_rate` </span> which will replace existing rate with passed rate. Example request is shown to right.
+**409** <br> <span class = "error">`Conflict`</span> | Conflict indicates that the rate can not be created as rate is already associated with passed effective date. If you wish to create rate of the same type any way you must use replace existing rate option by passing <span class = "required"> `true` </span> for parameter <span class = "required"> `replace_existing_rate` </span> which will replace existing rate with passed rate. Example request is shown to right.
 
 ### List Project Rates
 
@@ -468,7 +468,7 @@ curl -X POST \
 
 Search Project Rates API allows filtering the results returned in various ways. This enables a great power to find out what is needed. eRS Cloud API also allows filtering on custom defined fields with multiple operators and conditions to cover up complex scenarios for searching.
 
-A filter condition consists of three components which are **_field_**, **_operator_** and **_value_**. For example fetching only those rates having project_type_id 1, could be achieved by adding project_type_id:eq=1 to your query.  If operator is not supplied, it takes default operator for field. <a href="#filters" class="api-ref">Read more</a>
+A filter condition consists of three components which are **_field_**, **_operator_** and **_value_**. For example fetching only those rates having `project_type_id` 1, could be achieved by adding `"project_type_id":1 ` to your query.  If operator is not supplied, it takes default operator for field. <a href="#filters" class="api-ref">Read more</a>
 
 Below is a list of available fields, which allow filtering rates:
 
@@ -481,8 +481,8 @@ Below is a list of available fields, which allow filtering rates:
 **project_start_date**|<li>**eq** (_default_)</li><li>lt</li><li>gt</li><li>bt</li><li>ex</li>|`"project_start_date:eq":"2015-02-02"`<br>`"project_start_date:lt":"2015-02-02"`<br>`"project_start_date:gt":"2015-02-02"`<br>`"project_start_date:bt":["2015-02-02","2015-04-05"]` <br>`"project_start_date:ex":["2015-02-02","2015-04-04"]`
 **end_date**|<li>**eq** (_default_) </li><li>lt</li><li>gt</li><li>bt</li><li>ex</li>| `"end_date:eq":"2015-02-02"`<br>`"end_date:lt":"2015-02-02"`<br>`"end_date:gt":"2015-02-02"`<br>`"end_date:bt":["2015-02-02","2015-04-05"]`<br>`"end_date:ex":["2015-02-02","2015-04-04"]`
 **tags**|<li>**any** (_default_) </li><li>all</li>|`"tags":"["tagA", "tagB"]`<br>`"tags:all":["tagB","tagC"]`
-**is_archive**| N/A |`"is_archive":true` <br>`"is_archive":false`
-**disable_paralled_booking**|Accepts value true and false |`"disable_paralled_booking": true`<br>`"disable_paralled_booking": false`
+**is_archive**| Accepts value true or false |`"is_archive":true` <br>`"is_archive":false`
+**disable_paralled_booking**|Accepts value true or false |`"disable_paralled_booking": true`<br>`"disable_paralled_booking": false`
 **created_by**|<li>**eq** (_default_)</li><li>neq</li><li>any</li><li>none</li>| `"created_by:eq": 1`<br>`"created_by:neq": 1`<br>`"created_by:any": [1, 2]`<br>`"created_by:none": [1, 2]`
 **modified_by**|<li>**eq** (_default_)</li><li>neq</li><li>any</li><li>none</li>| `"modified_by:eq": 1`<br>`"modified_by:neq": 1`<br>`"modified_by:any": [1, 2]`<br>`"modified_by:none": [1, 2]`
 **created_on**|<li>**eq** (_default_)</li><li>lt</li><li>gt</li><li>bt</li><li>ex</li>| `"created_on:eq": ["2021-07-08T00:00:00]`<br>`"created_on:lt": ["2021-07-08T00:00:00]`<br>`"created_on:gt": ["2021-07-08T59:59:59"]`<br>`"created_on:bt": ["2021-07-08T00:00:00", "2021-07-10T23:59:59"]`<br>`"created_on:bt": ["2021-07-08T00:00:00", ""]` <br>`"created_on:bt": ["", "2021-07-10T23:59:59"]` <br>`"created_on:ex": ["2021-07-08T00:00:00", "2021-07-10T23:59:59"]` <br>`"created_on:ex": ["2021-07-08T00:00:00", ""]` <br>`"created_on:ex": ["", "2021-07-10T23:59:59"]]` 
@@ -540,7 +540,7 @@ Name     |    Description
 **400** <br> <span class = "error">`Bad Request`</span> | Bad Request error occurs when a request is malformed, syntactically incorrect, missing required parameters or any unknown parameter is passed.
 **403** <br> <span class = "error">`Forbidden`</span> | Authorization failed due to insufficient permissions. This occurs when user does not have enough access rights to perform this action. Access for each user can be controlled by an Administrator using eRS Cloud Application.
 **404** <br><span class = "error">`Not Found`</span> | This status code indicates that project or rate does not exist.
-**409** <br> <span class = "error">`Conflict`</span> | Conflict indicates that the rate can not be created as rate is already associated with passed effective date. If you wish to create rate of same type any way you must use replace existing rate option by passing `true` for parameter <span class = "required"> `replace_existing_rate` </span> which will replace existing rate with passed rate. Example request is shown to right.
+**409** <br> <span class = "error">`Conflict`</span> | Conflict indicates that the rate can not be created as rate is already associated with passed effective date. If you wish to create rate of the same type any way you must use replace existing rate option by passing <span class = "required"> `true` </span> for parameter <span class = "required"> `replace_existing_rate` </span> which will replace existing rate with passed rate. Example request is shown to right.
 
 
 ### Update Billing Status
@@ -568,7 +568,7 @@ curl -v -X PUT \
 
 Name         |  Description
  ---:        |    :----   
-**is_billable** <br>`boolean`| Represents billing status of project object.
+**is_billable** <br>`boolean`| Represents billing status of project. It's default value is true and it accepts true and false.
 
 ### Returns
 
@@ -672,7 +672,7 @@ Name     |    Description
 **400** <br> <span class = "error">`Bad Request`</span> | Bad Request error occurs when a request is malformed, syntactically incorrect, missing required parameters or any unknown parameter is passed.
 **403** <br> <span class = "error">`Forbidden`</span> | Authorization failed due to insufficient permissions. This occurs when user does not have enough access rights to perform this action. Access for each user can be controlled by an Administrator using eRS Cloud Application.
 **404** <br><span class = "error">`Not Found`</span> | This status code indicates that role does not exist.
-**409** <br> <span class = "error">`Conflict`</span> | Conflict indicates that the rate can not be created as rate is already associated with passed effective date. If you wish to create rate of same type any way you must use replace existing rate option by passing `true` for parameter <span class = "required"> `replace_existing_rate` </span> which will replace existing rate with passed rate. Example request is shown to right.
+**409** <br> <span class = "error">`Conflict`</span> | Conflict indicates that the rate can not be created as rate is already associated with passed effective date. If you wish to create rate of the same type any way you must use replace existing rate option by passing <span class = "required"> `true` </span> for parameter <span class = "required"> `replace_existing_rate` </span> which will replace existing rate with passed rate. Example request is shown to right.
 
 ### List Role Rates
 
@@ -794,7 +794,7 @@ Name     |    Description
 **400** <br> <span class = "error">`Bad Request`</span> | Bad Request error occurs when a request is malformed, syntactically incorrect, missing required parameters or any unknown parameter is passed.
 **403** <br> <span class = "error">`Forbidden`</span> | Authorization failed due to insufficient permissions. This occurs when user does not have enough access rights to perform this action. Access for each user can be controlled by an Administrator using eRS Cloud Application.
 **404** <br><span class = "error">`Not Found`</span> | This status code indicates that role or rate does not exist.
-**409** <br> <span class = "error">`Conflict`</span> | Conflict indicates that the rate can not be created as rate is already associated with passed effective date. If you wish to create rate of same type any way you must use replace existing rate option by passing `true` for parameter <span class = "required"> `replace_existing_rate` </span> which will replace existing rate with passed rate. Example request is shown to right.
+**409** <br> <span class = "error">`Conflict`</span> | Conflict indicates that the rate can not be created as rate is already associated with passed effective date. If you wish to create rate of the same type any way you must use replace existing rate option by passing <span class = "required"> `true` </span> for parameter <span class = "required"> `replace_existing_rate` </span> which will replace existing rate with passed rate. Example request is shown to right.
 
 ### Delete Role Rate
 

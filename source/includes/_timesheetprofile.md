@@ -48,8 +48,7 @@ curl -v \
     "display_name": "Performing Role",
     "field_type": "ROLEPS",
     "is_required": false,
-    "is_system_defined": true,
-    "is_filterable": true,
+    "is_system_defined": true
     "options": [
          {
             "id": 5,
@@ -66,8 +65,7 @@ curl -v \
     "display_name": "Project",
     "field_type": "PRJSS",
     "is_required": true,
-    "is_system_defined": true,
-    "is_filterable": false
+    "is_system_defined": true
 },
 {
     "id": 2,
@@ -75,8 +73,7 @@ curl -v \
     "display_name": "Resource",
     "field_type": "RSRSS",
     "is_required": true,
-    "is_system_defined": true,
-    "is_filterable": false
+    "is_system_defined": true
 },
 {
     "id": 64,
@@ -92,8 +89,7 @@ curl -v \
     "display_name": "Tags",
     "field_type": "TAGS",
     "is_required": false,
-    "is_system_defined": true,
-    "is_filterable": true
+    "is_system_defined": true
 },
 {
     "id": 30,
@@ -101,8 +97,7 @@ curl -v \
     "display_name": "Task",
     "field_type": "TSKSS",
     "is_required": false,
-    "is_system_defined": true,
-    "is_filterable": false
+    "is_system_defined": true
 }
 
 ```
@@ -118,16 +113,15 @@ Name | Description
 **field_type** <br>`string` | Represents the type of field. For example  TEXT (for Text Field), INT (for Integer Number field), DDSS (for Dropdown Single Select Field), etc. See <a href = "#user-defined-fields" class="api-ref">User Defined Fields</a> to know more about different field types.
 **display_name**<br>`string` |Name of this field to identify it.
 **is_system_defined**<br>`boolean` |  Indicates whether this field is system defined or a custom field. Fields which are system defined can not be customized.
-**is_filterable** <br>`boolean` |Indicates whether this field is used for filtering or not. |
-**is_required**<br>`boolean` |Indicates whether this field is mandatory or not. If this field is a `required` field then a valid value for this field must be passed while creating such object and while updating object (if this field is intended to update).
-**regex** <br>`string` |  Represents regular expression which must be matched by value for this field (_only applicable for text fields_).
-**minnum** <br>`integer` | Represents minimum value this field can accept (_only applicable for numeric fields_).
-**maxnum** <br>`integer` | Represents maximum value this field can accept (_only applicable for numeric fields_).
-**mindate** <br>`string` |Represents minimum value this field can accept (_only applicable for date / date time fields_).
-**maxdate** <br>`string` |Represents maximum value this field can accept (_only applicable for date / date time fields_).
+**is_required**<br>`boolean` |Indicates whether this field is mandatory or not. If this field is a required field then a valid value for this field must be passed while creating such object and while updating object (if this field is intended to update).
+**regex** <br>`string` |  Represents regular expression which must be matched by value for this field. <span class="warning">only applicable for text fields</span>.
+**minnum** <br>`integer` | Represents minimum value this field can accept. <span class="warning">only applicable for numeric fields</span>.
+**maxnum** <br>`integer` | Represents maximum value this field can accept. <span class="warning">only applicable for numeric fields</span>.
+**mindate** <br>`string` |Represents minimum value this field can accept. <span class="warning">only applicable for date / date time fields</span>.
+**maxdate** <br>`string` |Represents maximum value this field can accept. <span class="warning">only applicable for date / date time fields</span>.
 **options** <br> `array of objects` | Field types such as Dropdown Single Select, Dropdown Multi Select, Radio Group etc. ( See <a href="#user-defined-fields" class = "api-ref">User Defined Fields</a> to know more. ) allow user to pick one or more from these available options.
 **options.id** <br> `integer` |   Represents unique identification number for the individual option object.
 **options.name** <br> `string` | Represents name or content of option object.
-**options.color** <br> `string` | Allows a user to store color code of option object(It is only available for LABEL type fields).
+**options.color** <br> `string` | Allows a user to store color code of option object. <span class="warning">It is only available for LABEL type fields</span>.
 
 

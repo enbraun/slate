@@ -3,7 +3,7 @@
 
 Every eRS Cloud API endpoint requires an access token. If token is not passed or is invalid, API will return **401** <span class="error">Unauthorized</span> error.
 
-An access token can be generated at <a target = "_blank" href ="https://app.eresourcescheduler.cloud/#!/profile/password" class="api-ref">User Profile -> Security</a>.
+An access token can be generated at <a target = "_blank" href ="https://app.eresourcescheduler.cloud/#!/profile/password" class="api-ref">Profile -> Security</a>.
 
 Alternatively, OAuth flow can be used to obtain a token if access is required by third party application.
 
@@ -12,7 +12,7 @@ Alternatively, OAuth flow can be used to obtain a token if access is required by
 
 eRS Cloud API allows access using OAuth 2 code flow to enable integration with third party applications. OAuth 2 is an open standard for authorization that enables third party applications  to obtain access of API on behalf of user who wishes to approve access.
 
-Developer (having admin access to eRS Cloud) are require to register an application to use OAuth. Once application is registered, it is assigned a client Id and client secret. The client secret should be kept confidential and only use when authorizing between application and eRS cloud authorization server.
+Developer (having Administrator access to eRS Cloud) are require to register an application to use OAuth. Once application is registered, it is assigned a client Id and client secret. The client secret should be kept confidential and only use when authorizing between application and eRS cloud authorization server.
 
 
 > Example : Authorization Link 

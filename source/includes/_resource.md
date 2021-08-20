@@ -74,8 +74,8 @@ Name         |  Description
 **id** <br>`integer` | Auto generated unique identifier for resource object.
 **first_name** <br>`string` | First name of resource.This may be up to 100 characters.
 **last_name** <br>`string` | Last name of resource. This may be up to 100 characters.
-**name** <br>`string` | String value defining name of non-human type resource. This may be up to 100 characters.
-**type** <br>`object` | Describes the type of resource. This is one of the type objects which an admin user creates using eRS Cloud Application.
+**name** <br>`string` | String value defining name of `non-human` type resource. This may be up to 100 characters.
+**type** <br>`object` | Describes the type of resource. This is one of the type objects which an Administrator user creates using eRS Cloud Application.
 **email** <br>`string` | Email address of resource object.
 **start_date** <br>`string` | Represents the first working day of resource in organization. Resource does not have any availability before this date.
 **last_date** <br>`string` | Represents the last working day of resource in organization. After this date, resource is considered archived and has no availability beyond this date.
@@ -84,7 +84,7 @@ Name         |  Description
 **roles** <br>`array of objects` | List of role objects applied on this resource.
 **tags** <br>`array of strings` | Tags are the list of strings (labels) attached to this resource object which could be used for the purpose of filtering, identification or other information.
 **timezone** <br>`integer` | Defines and categorize resources based on their location. This field is only available when scheduling plus module is on.
-**disable_parallel_booking** <br>`boolean` | Boolean value defining if resource can or cannot have multiple bookings at a time. Default value for `disable_parallel_booking` is false.
+**disable_parallel_booking** <br>`boolean` | Boolean value defining if resource can or cannot have multiple bookings at a time. Default value for disable parallel booking is false.
 **created_on** <br>`string` | Timestamp at which this resource object was created.
 **created_by** <br> `object` | Object representing user who created this resource object.
 **modified_on** <br>`string` | Represents latest modification timestamp.
@@ -135,27 +135,27 @@ Creates a new resource object.
 
 Name         |  Description
  ---:        |    :----   
-**resource_type_id** <br> <span class="required">`required`</span> | Id of <a href = "#resource-types" class ="api-ref">resource-type</a> object. Every resource must be linked to a <a href = "#resource-types" class ="api-ref">resource-type</a>. Let’s assume there are two resource types defined as Employee (_having id 1_) and Meeting Room (_having id 2_). While creating a new resource, all the resource whose `resource_type_id` is given as **1** will get created under Employee type and same for Meeting Room when `resource_type_id` is **2**.
-**first_name** <br> <span class="required">`required`</span>  | String representing the first name of a resource. This may be up to 100 characters.<br> _**Note**: for non-human resources, this field is <span class="danger">not available</span>_.
-**last_name** <br><span class="mandatoryFlag">&#9873;</span> <span class="removableFlag mln-2">&#9873;</span> | String representing the last name of a resource. This may be up to 100 characters.<br> _**Note**: for non-human resources, this field is <span class="danger">not available</span>_.
-**name** <br> <span class="required">`required`</span> | String representing the name of a resource. This may be up to 100 characters.<br> _**Note**: This field is only available for non-human resources and for human resources, this field is <span class="danger">not available</span>_.
+**resource_type_id** <br> <span class="required">`required`</span> | Id of <a href = "#resource-types" class ="api-ref">resource-type</a> object. Every resource must be linked to a <a href = "#resource-types" class ="api-ref">resource-type</a>. Let’s assume there are two resource types defined as Employee (_having id 1_) and Meeting Room (_having id 2_). While creating a new resource, all the resource whose `resource_type_id` is given as **1** will get created under Employee type and the same for Meeting Room when `resource_type_id` is **2**.
+**first_name** <br> <span class="required">`required`</span>  | String representing the first name of a resource. This may be up to 100 characters.<br> _**Note**: for `non-human` resources, this field is <span class="warning">not available</span>_.
+**last_name** <br><span class="mandatoryFlag">&#9873;</span> <span class="removableFlag mln-2">&#9873;</span> | String representing the last name of a resource. This may be up to 100 characters.<br> _**Note**: for `non-human` resources, this field is <span class="warning">not available</span>_.
+**name** <br> <span class="required">`required`</span> | String representing the name of a resource. This may be up to 100 characters.<br> _**Note**: This field is only available for `non-human` resources, and for `human` resources this field is <span class="warning">not available</span>_.
 **start_date**<br><span class="required">`required`</span>  |  String value representing a date in ISO 8601 extended notation for date i.e. yyyy-MM-dd. A resource is only available from it's start date i.e system does not consider any capacity of resource before this date.
-**last_date**<br>`optional` |  String value representing a date in ISO 8601 extended notation for date i.e. yyyy-MM-dd. A resource is only available till it's last date i.e system does not consider any capacity of resource beyond this date (_if defined_).
+**last_date**<br>`optional` |  String value representing a date in ISO 8601 extended notation for date i.e. yyyy-MM-dd. A resource is only available till it's last working date i.e system does not consider any capacity of resource beyond this date (_if defined_).
 **email**<br><span class="mandatoryFlag">&#9873;</span> <span class="removableFlag mln-2">&#9873;</span> |  String value representing email address of resource object. Email address must be properly formatted with a maximum length of 254 characters.
 **phone**<br> <span class="mandatoryFlag">&#9873;</span> <span class="removableFlag mln-2">&#9873;</span> | String representing phone number of resource. It’s displayed alongside the resource in your resource list.
-**roles**<br><span class="mandatoryFlag">&#9873;</span> <span class="removableFlag mln-2">&#9873;</span> | An array of ids of Roles (which are defined by an admin user in eRS Cloud Application) to be assigned to this Resource. The first id in the array is considered as Primary Role of that Resource. Multiple performing roles can be applied to a resource. Resources can also be searched / filtered using performing roles.
-**calendar**  <br>`optional` | Id of Calendar object which should be assigned to resource effective from it's start date. Depending upon requirements, different calendars can be applied on different resources. If calendar is omitted then default calendar (as defined in admin settings) will be applied for this resource.
+**roles**<br><span class="mandatoryFlag">&#9873;</span> <span class="removableFlag mln-2">&#9873;</span> | An array of ids of Roles (which are defined by an Administrator user in eRS Cloud Application) to be assigned to this Resource. The first id in the array is considered as Primary Role of that Resource. Multiple performing roles can be applied to a resource. Resources can also be searched / filtered using performing roles.
+**calendar**  <br>`optional` | Id of Calendar object which should be assigned to resource effective from it's `start_date`. Depending upon requirements, different calendars can be applied on different resources. If calendar is omitted then default calendar (as defined in Administrator settings) will be applied for this resource.
 **tags**<br><span class="removableFlag">&#9873;</span> | An optional array of strings which could be attached to this resource object as labels. This can be useful for the purpose of filtering, identification or other information.
-**timezone** <br><span class="mandatoryFlag">&#9873;</span> <span class="removableFlag mln-2">&#9873;</span> | One timezone object can be defined for a resource. This field is only available when scheduling plus module is on.
-**disable_parallel_booking** <br>`optional` | Boolean value defining if resource can or cannot have multiple bookings at a time. Default value for `disable_parallel_booking` is false.
-**udf_\*** <br><span class="mandatoryFlag">&#9873;</span> <span class="removableFlag mln-2">&#9873;</span> | A user with admin rights can add custom fields. These fields can be used to capture additional information in Resources. Different types of resources may have a different set of user-defined fields. The value for user defined field can be passed as shown in example request. In first example **_udf_employee_no_** is a user defined field. <a href ="#user-defined-fields" class="api-ref">Learn more</a><br><br>_**Note**: User with admin rights can make fields marked with <span class="mandatoryFlag iconInline">&#9873;</span> mandatory and remove fields marked with <span class="removableFlag iconInline">&#9873;</span>, from <a href ="#get-a-specific-resource-type" class="api-ref">specific resource type</a> using **eRS Cloud Application**. If mandatory fields are not passed with a valid value or removed fields are passed while creating resource, the operation will fail with response code **400**_.
+**timezone** <br><span class="mandatoryFlag">&#9873;</span> <span class="removableFlag mln-2">&#9873;</span> | One timezone object can be defined for a resource. <span class="warning">This field is only available when scheduling plus module is on</span>.
+**disable_parallel_booking** <br>`optional` | Boolean value defining if resource can or cannot have multiple bookings at a time. Default value for disable parallel booking is false.
+**udf_\*** <br><span class="mandatoryFlag">&#9873;</span> <span class="removableFlag mln-2">&#9873;</span> | A user with Administrator rights can add custom fields. These fields can be used to capture additional information in Resources. Different types of resources may have a different set of user-defined fields. The value for user defined field can be passed as shown in example request. In first example `udf_employee_no` is a user defined field. <a href ="#user-defined-fields" class="api-ref">Learn more</a><br><br>_**Note**: User with Administrator rights can make fields marked with <span class="mandatoryFlag iconInline">&#9873;</span> mandatory and remove fields marked with <span class="removableFlag iconInline">&#9873;</span>, from <a href ="#get-a-specific-resource-type" class="api-ref">specific resource type</a> using eRS Cloud Application. If mandatory fields are not passed with a valid value or removed fields are passed while creating resource, the operation will fail with response code **400**_.
 
 ### Returns
  
 | Code      | Description |
 | :---      |    :----    |
 **201** <br><span class = "success">`Created`</span> | Indicates that the operation was successful and a resource created successfully.
-**400** <br> <span class = "error">`Bad Request`</span> | Bad Request error occurs when a request is  malformed, syntactically incorrect, missing required parameters or has any unknown parameter. Additionally, Bad request may also occur in one of these conditions :<ul><li>Resource's start date is after it's last working date.</li><li>Trying to create resources more than subscribed no of resources.</li></ul> 
+**400** <br> <span class = "error">`Bad Request`</span> | Bad Request error occurs when a request is  malformed, syntactically incorrect, missing required parameters or has any unknown parameter. Additionally, Bad request may also occur in one of these conditions :<ul><li>Resource's `start_date` is after it's `last_date`.</li><li>Trying to create resources more than subscribed no of resources.</li></ul> 
 **403** <br> <span class = "error">`Forbidden`</span> |Authorization failed due to insufficient permissions. This occurs when user does not have enough access rights to perform this action. Access for each user can be controlled by an Administrator using eRS Cloud Application.
 
 
@@ -400,7 +400,7 @@ curl -X POST \
 
 Search Resource API allows filtering the results returned in various ways. This enables a great power to find out what is needed. eRS Cloud API also allows filtering on custom defined fields with multiple operators and conditions to cover up complex scenarios for searching.
 
-A filter condition consists of three components which are **_field_**, **_operator_** and **_value_**. For example, fetching only those resources having resource type id 1, could be achieved by adding resource_type_id:eq=1 to your query. If operator is not supplied, it takes default operator for field. <a href="#filters" class="api-ref">Read more</a>
+A filter condition consists of three components which are **_field_**, **_operator_** and **_value_**. For example, fetching only those resources having resource type id 1, could be achieved by adding `"resource_type_id:eq": 1` to your query. If operator is not supplied, it takes default operator for field. <a href="#filters" class="api-ref">Read more</a>
 
 Below is a list of available fields, which allow filtering resources:
 
@@ -416,7 +416,7 @@ Below is a list of available fields, which allow filtering resources:
 **start_Date**|<li>**eq** (_default_)</li><li>lt</li><li>gt</li><li> bt</li><li>ex</li>| `"start_date:eq": "2016-01-27"`<br>` "start_date:lt": "1999-12-22"`<br>` "start_date:gt": "1990-01-11"`<br>`"start_date:bt": ["2001-01-01", "2010-12-31"]`<br> `"start_date:ex": ["1992-02-12", "1997-01-27"]`
 **last_date**|<li>**eq** (_default_)</li><li>lt</li><li>gt</li><li> bt</li><li>ex</li>| `"last_date:eq": "2016-05-17"` <br> `"last_date:lt": "2002-12-31"`<br>` "last_date:gt": "2010-01-01"` <br> `"last_date:bt": ["1995-12-31", "1999-01-01"]`<br> `"last_date:ex": ["2001-01-01", "2002-01-01"]`
 **timezone**|<li>**eq** (_default_)</li><li>neq</li><li>any</li><li>none</li>| `"timezone:eq": 1`<br>`"timezone:neq": 1`<br>`"timezone:any": [1, 2]`<br>`"timezone:none": [3, 2]`
-**disable_paralled_booking**|Accepts value true and false |`"disable_paralled_booking": true`<br>`"disable_paralled_booking": false`
+**disable_paralled_booking**|Accepts value true or false |`"disable_paralled_booking": true`<br>`"disable_paralled_booking": false`
 **created_by**|<li>**eq** (_default_)</li><li>neq</li><li>any</li><li>none</li>| `"created_by:eq": 1`<br>`"created_by:neq": 1`<br>`"created_by:any": [1, 2]`<br>`"created_by:none": [1, 2]`
 **modified_by**|<li>**eq** (_default_)</li><li>neq</li><li>any</li><li>none</li>| `"modified_by:eq": 1`<br>`"modified_by:neq": 1`<br>`"modified_by:any": [1, 2]`<br>`"modified_by:none": [1, 2]`
 **created_on**|<li>**eq** (_default_)</li><li>lt</li><li>gt</li><li>bt</li><li>ex</li>| `"created_on:eq": ["2021-07-08T00:00:00]`<br>`"created_on:lt": ["2021-07-08T00:00:00]`<br>`"created_on:gt": ["2021-07-08T59:59:59"]`<br>`"created_on:bt": ["2021-07-08T00:00:00", "2021-07-10T23:59:59"]`<br>`"created_on:bt": ["2021-07-08T00:00:00", ""]` <br>`"created_on:bt": ["", "2021-07-10T23:59:59"]` <br>`"created_on:ex": ["2021-07-08T00:00:00", "2021-07-10T23:59:59"]` <br>`"created_on:ex": ["2021-07-08T00:00:00", ""]` <br>`"created_on:ex": ["", "2021-07-10T23:59:59"]]` 
@@ -449,32 +449,32 @@ curl -v -X PUT \
 
 |Name     |  Description |
 | ---:    |    :----     |
-**first_name** <br> <span class="required">`required`</span>  | String representing the first name of a resource. This may be up to 100 characters.<br> _**Note**: for non-human resources, this field is <span class="danger">not available</span>_.
-**last_name**<br><span class="mandatoryFlag">&#9873;</span> <span class="removableFlag mln-2">&#9873;</span> | String representing the last name of a resource. This may be up to 100 characters.<br> _**Note**: for non-human resources, this field is <span class="danger">not available</span>_.
-**name** <br> <span class="required">`required`</span> | String representing the name of a resource. This may be up to 100 characters.<br> _**Note**: This field is only available for non-human resources and for human resources, this is <span class="danger">not available</span>_.
+**first_name** <br> <span class="required">`required`</span>  | String representing the first name of a resource. This may be up to 100 characters.<br> _**Note**: for 'non-human' resources, this field is <span class="warning">not available</span>_.
+**last_name**<br><span class="mandatoryFlag">&#9873;</span> <span class="removableFlag mln-2">&#9873;</span> | String representing the last name of a resource. This may be up to 100 characters.<br> _**Note**: for `non-human` resources, this field is <span class="warning">not available</span>_.
+**name** <br> <span class="required">`required`</span> | String representing the name of a resource. This may be up to 100 characters.<br> _**Note**: This field is only available for `non-human` resources, and for `human` resources this is <span class="warning">not available</span>_.
 **start_date**<br><span class="required">`required`</span>  |  String value representing a date in ISO 8601 extended notation for date i.e. yyyy-MM-dd. A resource is only available from it's start date i.e system does not consider any capacity of resource before this date.
-**last_date**<br>`optional` |  String value representing a date in ISO 8601 extended notation for date i.e. yyyy-MM-dd. A resource is only available till it's last date i.e system does not consider any capacity of resource beyond this date (_if defined_).
+**last_date**<br>`optional` |  String value representing a date in ISO 8601 extended notation for date i.e. yyyy-MM-dd. A resource is only available till it's last working date i.e system does not consider any capacity of resource beyond this date (_if defined_).
 **email**<br><span class="mandatoryFlag">&#9873;</span> <span class="removableFlag mln-2">&#9873;</span> |  String value representing email address of resource object. Email address must be properly formatted with a maximum length of 254 characters.
 **phone**<br><span class="mandatoryFlag">&#9873;</span> <span class="removableFlag mln-2">&#9873;</span> | String representing phone number of resource. It’s displayed alongside the resource in your resource list.
-**roles**<br><span class="mandatoryFlag">&#9873;</span> <span class="removableFlag mln-2">&#9873;</span> | An array of ids of Roles (which are defined by an admin user in eRS Cloud Application) to be assigned to this Resource. The first id in the array is considered as Primary Role of that Resource. Multiple performing roles can be applied to a resource. Resources can also be searched / filtered using performing roles.
+**roles**<br><span class="mandatoryFlag">&#9873;</span> <span class="removableFlag mln-2">&#9873;</span> | An array of ids of Roles (which are defined by an Administrator user in eRS Cloud Application) to be assigned to this Resource. The first id in the array is considered as Primary Role of that Resource. Multiple performing roles can be applied to a resource. Resources can also be searched / filtered using performing roles.
 **tags**<br><span class="removableFlag mln-2">&#9873;</span> | An optional array of strings which could be attached to this resource object as labels. This can be useful for the purpose of filtering, identification or other information.
-**timezone** <br><span class="mandatoryFlag">&#9873;</span> <span class="removableFlag mln-2">&#9873;</span> | One timezone object can be defined for a resource. This field is only available when scheduling plus module is on.
-**disable_parallel_booking** <br>`optional` | Boolean value defining if resource can or cannot have multiple bookings at a time. Default value for `disable_parallel_booking` is false.
-**udf_\*** <br><span class="mandatoryFlag">&#9873;</span> <span class="removableFlag mln-2">&#9873;</span> | A user with admin rights can add custom fields. These fields can be used to capture additional information in Resources. Different types of resources may have a different set of user-defined fields. The value for user defined field can be passed as shown in example request. In first example **_udf_employee_no_** is a user defined field. <a href ="#user-defined-fields" class="api-ref">Learn more</a><br><br>_**Note**: User with admin rights can make fields marked with <span class="mandatoryFlag iconInline">&#9873;</span> mandatory and remove fields marked with <span class="removableFlag iconInline">&#9873;</span>, from <a href ="#get-a-specific-resource-type" class="api-ref">specific resource type</a> using **eRS Cloud Application**. If mandatory fields are not passed with a valid value or removed fields are passed while updating resource, the operation will fail with response code **400**_.
+**timezone** <br><span class="mandatoryFlag">&#9873;</span> <span class="removableFlag mln-2">&#9873;</span> | One timezone object can be defined for a resource. <span class="warning">This field is only available when scheduling plus module is on</span>.
+**disable_parallel_booking** <br>`optional` | Boolean value defining if resource can or cannot have multiple bookings at a time. Default value for disable parallel booking is false.
+**udf_\*** <br><span class="mandatoryFlag">&#9873;</span> <span class="removableFlag mln-2">&#9873;</span> | A user with Administrator rights can add custom fields. These fields can be used to capture additional information in Resources. Different types of resources may have a different set of user-defined fields. The value for user defined field can be passed as shown in example request. In first example `udf_employee_no` is a user defined field. <a href ="#user-defined-fields" class="api-ref">Learn more</a><br><br>_**Note**: User with Administrator rights can make fields marked with <span class="mandatoryFlag iconInline">&#9873;</span> mandatory and remove fields marked with <span class="removableFlag iconInline">&#9873;</span>, from <a href ="#get-a-specific-resource-type" class="api-ref">specific resource type</a> using eRS Cloud Application. If mandatory fields are not passed with a valid value or removed fields are passed while updating resource, the operation will fail with response code **400**_.
 
 ### Returns
 
 | Code      | Description | 
 | ---:      |    :----    | 
 **200** <br> <span class = "success">`OK`</span> | Indicates that the operation was successful and requested resource updated successfully.|
-**400** <br> <span class = "error">`Bad Request`</span> | Bad Request occurs when a request is not well-formed, syntactically incorrect, empty required parameters or any unknown parameter is passed. <br> Additionally, Bad request may also occur in one of these conditions :<li>Trying to update an archived resource.</li><li>Trying to change start date or last working date such that last working date gets smaller than start date.</li><li>Trying to update start date and last date of a resource such that existing bookings of that resource do not fit in given range.</li>
+**400** <br> <span class = "error">`Bad Request`</span> | Bad Request occurs when a request is not well-formed, syntactically incorrect, empty required parameters or any unknown parameter is passed. <br> Additionally, Bad request may also occur in one of these conditions :<li>Trying to update an archived resource.</li><li>Trying to change `start_date` or `last_date` such that `last_date` gets smaller than `start_date`.</li><li>Trying to update `start_date` and `last_date` of a resource such that existing bookings of that resource do not fit in given range.</li>
 **403** <br> <span class = "error">`Forbidden`</span> | Authorization failed due to insufficient permissions. This occurs when user does not have enough access rights to perform this action. Access for each user can be controlled by an Administrator using eRS Cloud Application.
 **404** <br> <span class = "error">`Not Found`</span> | Not Found error occurs when requested resource does not exist (i.e. There is no resource with given id). This may also occur when updating a resource which has been deleted.
 
 
 ## Delete a resource 
 
- Permanently deletes requested resource. It cannot be undone. By default, this operation will fail if a resource has any booking, timesheet or rate associated with it. To override this, forceful deletion can be used which will delete all bookings, timesheets and rates and then, ultimately deletes the resource object.
+ Permanently deletes requested resource. It cannot be undone. By default, this operation will fail if a resource has any bookings, timesheets or rates associated with it. To override this, forceful deletion can be used which will delete all bookings, timesheets and rates and then, ultimately deletes the resource object.
 
 > **`DELETE /v1/resources/{ID}`**
 
@@ -504,7 +504,7 @@ force_delete_timesheet_entry=true" \
 | Code      | Description  
 | ---:        |    :----   
 **200** <br><span class = "success">`OK`</span> | This status code indicates that the operation was successful and a resource deleted successfully.
-**409** <br> <span class = "error">`Conflict`</span> | Conflict indicates that the resource can not be deleted as there are bookings, timesheets or rates associated with this resource. If you wish to delete it anyway, you must use force delete option by passing `true` for parameters `force_delete_bookings`, `force_delete_timesheet_entry` and `force_delete_rates` which will delete associated bookings, timesheets and rates corresponding to the resource. This operation deletes all bookings, timesheets and rates of requested resource and resource itself (shown in example request).
+**409** <br> <span class = "error">`Conflict`</span> | Conflict indicates that the resource can not be deleted as there are bookings, timesheets or rates associated with this resource. If you wish to delete it anyway, you must use force delete option by passing <span class = "required">`true`</span> for parameters <span class = "required">`force_delete_bookings`</span>, <span class = "required">`force_delete_timesheet_entry`</span> and <span class = "required">`force_delete_rates`</span> which will delete associated bookings, timesheets and rates corresponding to the resource. This operation deletes all bookings, timesheets and rates of requested resource and resource itself (shown in example request).
 | **403** <br> <span class = "error">`Forbidden`</span> | Authorization failed due to insufficient permissions. This occurs when user does not have enough access rights to perform this action. Access for each user can be controlled by an Administrator using eRS Cloud Application.|
 | **404** <br> <span class = "error">`Not Found`</span> | Not Found error occurs when requested resource does not exist.
 
@@ -541,7 +541,7 @@ force_delete_timesheet_entry=true" \
 
 To capture timings about a resource, eRS Cloud provides Timings. One resource may work in different timings as per his availability or requirement, for such situations Timings are beneficial.
 
-Let say, If a resource works on a full-time profile but then for a certain period of time he switched his timings from full-time to part-time. Then for that certain period “Part Time” calendar will be applied along with it's effective date. Timings are beneficial to apply multiple calendars on a resource. 
+Let say, If a resource works on a full-time profile but then for a certain period of time he switched his timings from full-time to part-time. Then for that certain period part-time calendar will be applied along with it's effective date. Timings are beneficial to apply multiple calendars on a resource. 
 
 eRS Cloud API allows you to perform *`POST`*, *`GET`*, *`PUT`*, *`DELETE`* operations on Notes.
 
@@ -557,7 +557,7 @@ Name         |  Description
  **created_by** <br> `object` | This field describes by whom calendar object is created.|
  **modified_on** <br>`string` | Timestamp of the latest modification.
  **modified_by** <br>`object` | This field describes by whom the latest modification is done.
- **timings** <br>`array of strings` | Timings are list of days in which day_num is defined day(For example-0 for sunday,1 for monday) and start_time and end_time  are  defined as start time and end time for a particular day respectively, also we can calculate no of working-hours on that day.|
+ **timings** <br>`array of strings` | Timings are list of days in which `day_num` is defined day(For example-0 for sunday,1 for monday) and `start_time` and `end_time`  are  defined as start time and end time for a particular day respectively, also we can calculate no of working-hours on that day.|
  **timings.day_num** <br> `integer` | Represents day of week, starting from 0 (for Sunday) to 6 (for Saturday). |
  **timings.start_time** <br> `integer` | Represents start time for this timing block in minutes (since 12 AM) i.e. for 6:00 AM, value would be 6 * 60 = 360 and for 9:00 AM it would be 9 * 60 = 540. |
  **timings.end_time** <br> `integer` | Represents end time for this timing block in minutes (since 12 AM) i.e. for 5:00 PM, value would be (12+5) * 60 = 1020. |
@@ -622,7 +622,7 @@ Retrieves the details of timings which are applied to the resource. You only nee
 | ---:        |    :----   | 
 | **200** <br> <span class = "success">`OK`</span>     | This status code indicates that the operation was successful and timings retrieved successfully .  |
 | **403** <br> <span class = "error">`Forbidden`</span> |Authorization failed due to insufficient permissions. This occurs when user does not have enough access rights to perform this action. Access for each user can be controlled by an Administrator using eRS Cloud Application.|
-| **404** <br> <span class = "error">`Not Found`</span> | Not Found error occurs when requested resource does not exist (i.e. There is no resource with given id). This may also occur when requesting a resource which has been deleted. |
+| **404** <br> <span class = "error">`Not Found`</span> | Not Found error occurs when requested resource does not exist (i.e. There is no resource with given id). This may also occur when requesting a resource that has been deleted. |
 
 <br><br><br><br><br><br><br><br>
 <br><br><br><br><br><br><br><br>
@@ -814,7 +814,7 @@ Retrieves the details of exceptions which are applied to the resource. You only 
 | ---:        |    :----   | 
 | **200** <br> <span class = "success">`OK`</span>     | This status code indicates that the operation was successful and exceptions retrieved successfully .  |
 | **403** <br> <span class = "error">`Forbidden`</span> |Authorization failed due to insufficient permissions. This occurs when user does not have enough access rights to perform this action. Access for each user can be controlled by an Administrator using eRS Cloud Application.|
-| **404** <br> <span class = "error">`Not Found`</span> | Not Found error occurs when requested resource does not exist (i.e. There is no resource with given id). This may also occur when requesting a resource which has been deleted. |
+| **404** <br> <span class = "error">`Not Found`</span> | Not Found error occurs when requested resource does not exist (i.e. There is no resource with given id). This may also occur when requesting a resource that has been deleted. |
 
 
 ### Create an exception
@@ -850,9 +850,9 @@ Name         |  Description
 **descirption**  <br>`optional`|As the name shows it is a description which we want to give for the exception . This field is a `string` type of field. 
 **name**  <br><span class="required">`required`</span>|Name describes the name of exception. This field is a `string` type of field
 **is_working_exception**  <br><span class="required">`required`</span>|Is working exception describes whether exception is a working exception or not. Accepts `true` if it is a working exception otherwise accepts `false` if it a non-working exception. This field is a `boolean` type of field
-**timing_blocks**  <br>`optional`|Timing_blocks describes the timings of exception. This field can be passed null, as eRS Cloud provides you the facility to create an exception without timings. This field is a `Array of objects` type of field
-**timing_blocks.start_time**  <br>`optional`|Start time describes the start time of exception. This field can be passed null, as eRS Cloud provides you the facility to create an exception without timings. This field is a `Integer` type of field.  
-**timing_blocks.end_time**  <br>`optional`|End time describes the end time of exception. This field can be passed null, as eRS Cloud provides you the facility to create an exception without timings. This field is a `Integer` type of field.  
+**timing_blocks**  <br>`optional`|Timing blocks describes the timings of exception. This field can be passed `null`, as eRS Cloud provides you the facility to create an exception without timings. This field is a `Array of objects` type of field
+**timing_blocks.start_time**  <br>`optional`|Start time describes the start time of exception. This field can be passed `null`, as eRS Cloud provides you the facility to create an exception without timings. This field is a `Integer` type of field.  
+**timing_blocks.end_time**  <br>`optional`|End time describes the end time of exception. This field can be passed `null`, as eRS Cloud provides you the facility to create an exception without timings. This field is a `Integer` type of field.  
 
 
 ### Returns
@@ -904,9 +904,9 @@ Name         |  Description
 **descirption**  <br>`optional`|As the name shows it is a description which we want to give for the exception . This field is a `string` type of field. 
 **name**  <br><span class="required">`required`</span>|Name describes the name of exception. This field is a `string` type of field
 **is_working_exception**  <br><span class="required">`required`</span>|Is working exception describes whether exception is working exception or not. Accepts `true` if it is working exception otherwise accepts `false` if it a non-working exception. This field is a `boolean` type of field
-**timing_blocks**  <br>`optional`|Timing_blocks describes the timings of exception. This field can be pass null, as eRS Cloud provides you the facility to create an exception without timings. This field is a `Array of objects` type of field
-**timing_blocks.start_time**  <br>`optional`|Start time describes the start time of exception. This field can be pass null, as eRS Cloud provides you the facility to create an exception without timings. This field is a `Integer` type of field.  
-**timing_blocks.end_time**  <br>`optional`|End time describes the end time of exception. This field can be pass null, as eRS Cloud provides you the facility to create an exception without timings. This field is a `Integer` type of field.  
+**timing_blocks**  <br>`optional`|Timing blocks describes the timings of exception. This field can be pass `null`, as eRS Cloud provides you the facility to create an exception without timings. This field is a `Array of objects` type of field
+**timing_blocks.start_time**  <br>`optional`|Start time describes the start time of exception. This field can be pass `null`, as eRS Cloud provides you the facility to create an exception without timings. This field is a `Integer` type of field.  
+**timing_blocks.end_time**  <br>`optional`|End time describes the end time of exception. This field can be pass `null`, as eRS Cloud provides you the facility to create an exception without timings. This field is a `Integer` type of field.  
 
 ### Returns
 
@@ -1009,14 +1009,14 @@ curl -v -X GET \
 
 ```shell 
 curl -v -X GET \
-"https://app.eresourcescheduler.cloud/rest/v1/resources/8/notes?offset=1&limit=1" \
+"https://app.eresourcescheduler.cloud/rest/v1/resources/8/notes?offset=1&limit=10" \
  -H "Authorization: Bearer B8x5Vj1O65r6wnoV"
 ```
 >Example Request With orderBy 
 
 ```shell 
 curl -v -X GET \
- "https://app.eresourcescheduler.cloud/rest/v1/resources/8/notes?offset=1&limit=1&order_by=created_on" \
+ "https://app.eresourcescheduler.cloud/rest/v1/resources/8/notes?offset=1&limit=10&order_by=created_on" \
  -H "Authorization: Bearer B8x5Vj1O65r6wnoV"
 ```
 
@@ -1035,7 +1035,7 @@ curl -v -X GET \
 
 |Name|Options|Description|
 |-:|:-:|:-
-|**order_by**<br>`optional`|<li>created_on *(Default)*</li>|List of notes will be returned and sorted by it's created date.|
+|**order_by**<br>`optional`|<li>**created_on** *(Default)*</li>|List of notes will be returned and sorted by it's created date.|
 | |<li>modified_on</li>|List of notes will be returned and sorted by it's latest modified date|
 
 
