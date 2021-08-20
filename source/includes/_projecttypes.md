@@ -109,7 +109,7 @@ Name | Description
 **fields.code** <br>`string` | It represents the unique code of the field which is referred as API code. This code acts as `key` in API response and the same must be used as `key` to pass values for a POST or PUT request.
 **fields.minlength** <br>`integer` |  Represents minimum no of characters in value this field can accept. <span class="warning">Only applicable for text fields</span>.
 **fields.maxlength** <br>`integer` |  Represents maximum no of characters in value this field can accept. <span class="warning">Only applicable for text fields</span>.
-**fields.regex** <br>`string` |  Represents regular expression which must be matched by value for this field <span class="warning">Only applicable for text fields</span>.
+**fields.regex** <br>`string` |  Represents regular expression which must be matched by value for this field. <span class="warning">Only applicable for text fields</span>.
 **fields.minnum** <br>`integer` |  Represents minimum value this field can accept. <span class="warning">Only applicable for numeric fields</span>.
 **fields.maxnum** <br>`integer` |  Represents maximum value this field can accept. <span class="warning">Only applicable for numeric fields</span>.
 **fields.mindate** <br>`string` |  Represents minimum value this field can accept. <span class="warning">Only applicable for date / date time fields</span>.

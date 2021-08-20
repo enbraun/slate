@@ -214,7 +214,7 @@ curl -v \
 
 ```json
 {
-    "id": 2,
+    "id": 1,
     "name": "New York Calendar",
     "description": null,
     "is_default": false,    

@@ -595,7 +595,7 @@ Name         |  Description
 <br><br>
 ### Delete a task
 
-> **`DELETE /v1/projects/{ID}/task/{Task_ID}`**
+> **`DELETE /v1/projects/{ID}/tasks/{Task_ID}`**
 
 Permanently deletes a task. It cannot be undone. By default, this operation will fail if a task has any bookings or timesheets associated with it. To override this behavior, forceful removal can be used which will remove this task from all bookings and timesheets associated with it.
 
@@ -677,9 +677,9 @@ curl -v -X GET \
 
 ```json
 {
-  "total_count": 3,
+  "total_count": 4,
   "limit": 10,
-  "offset": 0,
+  "offset": 1,
   "data": [
     {
       "id": 20,

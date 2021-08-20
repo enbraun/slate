@@ -267,7 +267,7 @@ Retrieves the details of an existing booking. You only need to  provide the uniq
 
 | Code      | Description | 
 | ---:        |    :----   | 
-**200** <br> <span class = "success">`OK`</span> | This status code indicates that the operation was successful and a booking successfully returned.
+**200** <br> <span class = "success">`OK`</span> | This status code indicates that the operation was successful and a booking returned successfully.
 **403** <br> <span class = "error">`Forbidden`</span> |Authorization failed due to insufficient permissions. This occurs when user does not have enough access rights to perform this action. Access for each user can be controlled by an Administrator using eRS Cloud Application.
 **404** <br> <span class = "error">`Not Found`</span> | Not Found error occurs when requested booking does not exist (i.e. There is no booking with given ID). This may also occur when requesting a booking that has been deleted.
 
@@ -381,7 +381,7 @@ _Additionally, bookings can also be filtered using <a href="#search-resources" c
 
 ## Update a Booking
 
-Updates the specified booking by setting values of parameters passed. Values of any parameters which are not provided will be unchanged. 
+Updates the specified booking by setting values of parameters passed. Values of any parameters which are not provided will be unchanged. To unset existing value for a parameter, just pass an empty value i.e. `null`.
 
 >  **`PUT /v1/bookings/{ID}`**
 

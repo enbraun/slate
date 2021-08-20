@@ -580,7 +580,7 @@ curl -v -X GET "https://app.eresourcescheduler.cloud/rest/v1/resources/12/timing
 
 ```json
 {
-   "total_count": 2,
+   "total_count": 3,
    "data": [
       {
          "id": 5,

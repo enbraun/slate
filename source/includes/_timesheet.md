@@ -448,7 +448,7 @@ _Additionally, timesheet entries can also be filtered using <a href="#search-res
 
 ## Update a Timesheet Entry
 
-Updates the specified timesheet entry by setting values of parameters passed. Values of any parameters which are not provided will be unchanged. 
+Updates the specified timesheet entry by setting values of parameters passed. Values of any parameters which are not provided will be unchanged.  To unset existing value for a parameter, just pass an empty value i.e. `null`.
 
 >  **`PUT /v1/timesheet/{ID}`**
 
