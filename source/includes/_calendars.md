@@ -72,7 +72,7 @@ Name | Description
 **id**  <br>`integer` |  Unique identifier for the object.
 **name** <br>`string` |  A meaningful name to identify this calendar object.
 **description**  <br>`string` |  Description for calendar object.
-**is_default**<br> `boolean`| Indicates whether this calendar object is used as a default calendar or not. There can only be one (which can be changed) default calendar at a time. Default calendar gets applied as working calendar, if calendar not specified while creating a resource.
+**is_default**<br> `boolean`| Indicates whether this calendar object is used as a default calendar or not. There can only be one (which can be changed from <a href="https://app.eresourcescheduler.cloud/#!/admin/calendars/settings" target="_blank" class="api-ref">Administrator calendar settings</a>) default calendar at a time. Default calendar gets applied as working calendar, if calendar not specified while creating a resource.
 **timings** <br> `array of objects` | List of timing objects applicable for this calendar object. Timing objects (or `timing_blocks`) are used to define working capacity for each day of week.
 **timings.day_num** <br> `integer` | Represents day of week, starting from 0 (for Sunday) to 6 (for Saturday).
 **timings.start_time** <br> `integer` | Represents start time for this timing block in minutes (since 12 AM) i.e. for 6:00 AM, value would be 6 * 60 = 360 and for 9:00 AM it would be 9 * 60 = 540.

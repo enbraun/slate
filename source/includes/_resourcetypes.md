@@ -154,7 +154,7 @@ Name | Description
 **fields.maxdate** <br>`string` |  Represents maximum value this field can accept. <span class="warning">Only applicable for date / date time fields</span>.
 **fields.is_required** <br> `boolean` | Indicates whether this field is mandatory or not. If this field is a required field then a valid value for this field must be passed while creating such object and while updating object (if this field is intended to update).
 **is_system_defined** <br> `boolean` | Indicates whether this field is system defined or a custom field. Fields which are system defined can not be customized.
-**fields.options** <br> `array of objects` | Field types such as Dropdown Single Select, Dropdown Multi Select, Radio Group etc. ( See <a href="#user-defined-fields" class = "api-ref">User Defined Fields</a> to know more. ) allow user to pick one or more from these available options.
+**fields.options** <br> `array of objects` | Field types such as Dropdown Single Select, Dropdown Multi Select, Radio Group etc. ( See <a href="#user-defined-fields" class = "api-ref">User Defined Fields</a> to know more. ) Allows user to pick one or more from these available options.
 **fields.options.id** <br> `integer` |   Represents unique identification number for the individual option object.
 **fields.options.name** <br> `string` | Represents name or content of option object.
 **fields.options.color** <br> `string` | Allows a user to store color code of option object.<span class="warning">It is only available for LABEL type fields</span>.
