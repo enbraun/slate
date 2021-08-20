@@ -27,7 +27,7 @@ The full list of all operators is shown below.
 | miss | Checks whether field value does not contain given phrase. |
 | neq  | Checks whether field value is not equal to given input. |
 
-## Filters for User-defined fields
+## Filters for User-Defined Fields
 
 |**Field Type**| **Operators**  | **Example**|
 |:--|:--|:--|

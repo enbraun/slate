@@ -1,7 +1,7 @@
 
 # Booking Profile
 
-## Booking profile object
+## Booking Profile Object
 
 Booking profile object represents booking profile.
 

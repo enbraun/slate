@@ -1,7 +1,7 @@
 
 # Timesheet Profile
 
-## Timesheet profile object
+## Timesheet Profile Object
 
 Timesheet profile object represents timesheet profile.
 

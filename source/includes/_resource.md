@@ -1,6 +1,6 @@
 # Resource
 
-## Resource object
+## Resource Object
 
 >Example Response  
 
@@ -93,7 +93,7 @@ Name         |  Description
 
 
 
-## Create a resource
+## Create a Resource
 
 Creates a new resource object.
     
@@ -159,7 +159,7 @@ Name         |  Description
 **403** <br> <span class = "error">`Forbidden`</span> |Authorization failed due to insufficient permissions. This occurs when user does not have enough access rights to perform this action. Access for each user can be controlled by an Administrator using eRS Cloud Application.
 
 
-## List resources
+## List Resources
 
 Returns a list of resources. The resources are returned sorted by name. 
 	
@@ -276,7 +276,7 @@ curl -v \
 **403** <br> <span class = "error">`Forbidden`</span> | Authorization failed due to insufficient permissions. This occurs when user does not have enough access rights to perform this action. Access for each user can be controlled by an Administrator using eRS Cloud Application.
 
 
-## Retrieve a resource 
+## Retrieve a Resource 
 
 > **`GET /v1/resources/{ID}`**
 
@@ -361,7 +361,7 @@ Retrieves the details of an existing resource. You only need to provide the uniq
 **403** <br> <span class = "error">`Forbidden`</span> | Authorization failed due to insufficient permissions. This occurs when user does not have enough access rights to perform this action. Access for each user can be controlled by an Administrator using eRS Cloud Application.
 **404** <br> <span class = "error">`Not Found`</span> | Not Found error occurs when requested resource does not exist (i.e. There is no resource with given ID). This may also occur when requesting a resource that has been deleted.
 
-## Search resources
+## Search Resources
 
 > **`POST /v1/resources/search`**
 
@@ -423,7 +423,7 @@ Below is a list of available fields, which allow filtering resources:
 **modified_on**|<li>**eq** (_default_)</li><li>lt</li><li>gt</li><li>bt</li><li>ex</li>| `"modified_on:eq": ["2021-07-08T00:00:00]`<br>`"modified_on:lt": ["2021-07-08T00:00:00]`<br>`"modified_on:gt": ["2021-07-08T59:59:59"]`<br>`"modified_on:bt": ["2021-07-08T00:00:00", "2021-07-10T23:59:59"]`<br>`"modified_on:bt": ["2021-07-08T00:00:00", ""]` <br>`"modified_on:bt": ["", "2021-07-10T23:59:59"]` <br>`"modified_on:ex": ["2021-07-08T00:00:00", "2021-07-10T23:59:59"]` <br>`"modified_on:ex": ["2021-07-08T00:00:00", ""]` <br>`"modified_on:ex": ["", "2021-07-10T23:59:59"]]` 
  _For filtering using custom fields and operators please <a href="#filters-for-user-defined-fields" class="api-ref">check here</a>._ 
 
-## Update a resource 
+## Update a Resource 
 
 Updates specified resource by setting the values of the parameters passed. Any parameters which are not provided remains unchanged. To unset existing value for a parameter, just pass an empty value i.e. `null`.
 
@@ -472,7 +472,7 @@ curl -v -X PUT \
 **404** <br> <span class = "error">`Not Found`</span> | Not Found error occurs when requested resource does not exist (i.e. There is no resource with given ID). This may also occur when updating a resource that has been deleted.
 
 
-## Delete a resource 
+## Delete a Resource 
 
  Permanently deletes requested resource. It cannot be undone. By default, this operation will fail if a resource has any bookings, timesheets or rates associated with it. To override this, forceful deletion can be used which will delete all bookings, timesheets and rates and then, ultimately deletes the resource object.
 
@@ -1090,7 +1090,7 @@ curl -v -X GET \
 |**offset**<br>`optional`|The Offset value allows specifying which note to start from retrieving data. The Offset value is also most often used together with the Limit keyword.<br>*The default value of offset is* <span class="error">*`0`.* </span>|
 
 
-### Ordering the notes
+### Ordering The Notes
 
 <span class="optional"><b>REQUEST QUERY PARAMETERS</b></span>
 

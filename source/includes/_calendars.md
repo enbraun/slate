@@ -1,6 +1,6 @@
 # Calendars
 
-## Calendar object
+## Calendar Object
 
 Calendar is used to define working-timing of resources. An Administrator user can define multiple calendars using eRS Cloud application. Each calendar may have different timings defined. Timings allow breaks and multiple timing blocks. In addition to timings, user can apply holidays and exceptions (working or non-working) on calendars. A particular calendar can be applied on a set of resources and a resource can also have multiple calendars on different time periods. eRS Cloud API allows getting details of calendars.
 
@@ -195,7 +195,7 @@ curl -v \
 
 
 
-## Retrieve a calendar
+## Retrieve a Calendar
 
 Retrieves the specified calendar along with exceptions and holidays applied on it. 
 

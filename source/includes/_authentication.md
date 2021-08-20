@@ -81,7 +81,7 @@ Name | Description
 
 
 
-To learn more about OAuth token generation flow please read <a target = "_blank" href="https://oauth.net/2/grant-types/authorization-code/" class = "api-ref">here</a>.
+_To learn more about OAuth token generation flow please read <a target = "_blank" href="https://oauth.net/2/grant-types/authorization-code/" class = "api-ref">here</a>._
 
 
 eRS Cloud expects an API token to be included in all API requests in a header that looks like the following:

@@ -1,6 +1,6 @@
 # Timesheet
 
-## Timesheet object
+## Timesheet Object
 
 >Example Response
 
@@ -142,7 +142,7 @@ Name               |  Description
 **400** <br> <span class = "error">`Bad Request`</span> | Bad Request occurs when a request is malformed, syntactically incorrect, missing required parameters or any unknown parameter is passed. Additionally, Bad Request may also occur in one of these conditions:<ul><li>Timesheet entry `date` is given before the `start_date` of resource or after the `last_date` of resource (if resource has a `last_date` defined).</li><li>Trying to create timesheet entry on archived resource.</li><li>Trying to create timesheet entry on archived project.</li><li>Parameters passed in timesheet entry are violating one or more pre-defined configurations of resource or project from <a href="https://app.eresourcescheduler.cloud/#!/timesheet/setup/resources" target="_blank" class="api-ref">Timesheet Setup</a> using eRS Cloud Application.</li></ul>
 **403** <br> <span class = "error">`Forbidden`</span> |Authorization failed due to insufficient permissions. This occurs when user does not have enough access rights to perform this action. Access for each user can be controlled by an Administrator using eRS Cloud Application.|
 
-## List timesheets
+## List Timesheets
 
 Returns list of timesheet entries.
 	
@@ -246,7 +246,7 @@ start=2021-07-01&end=2021-07-31&offset=1&limit=10" \
 | **403** <br> <span class = "error">`Forbidden`</span> | Authorization failed due to insufficient permissions. This occurs when user does not have enough access rights to perform this action. Access for each user can be controlled by an Administrator using eRS Cloud Application.
 
 
-## Retrieve a timesheet entry
+## Retrieve a Timesheet Entry
 
 > **`GET v1/timesheet/{ID}`**
 
@@ -321,7 +321,7 @@ Retrieves the details of an existing timesheet entry. You only need to  provide 
 **403** <br> <span class = "error">`Forbidden`</span> |Authorization failed due to insufficient permissions. This occurs when user does not have enough access rights to perform this action. Access for each user can be controlled by an Administrator using eRS Cloud Application.
 **404** <br> <span class = "error">`Not Found`</span> | Not Found error occurs when requested timesheet entry does not exist (i.e. There is no timesheet entry with given ID). This may also occur when requesting a timesheet entry that has been deleted.
 
-## Search timesheet entries
+## Search Timesheet Entries
 
 
 
@@ -446,7 +446,7 @@ Below is a list of available fields, which allow filtering of timesheet entries:
 **entry_status**|<li>**eq** (_default_)</li><li>neq</li><li>any</li><li>none</li>| `"entry_status:eq": 1`<br>`"entry_status:neq": 2`<br>`"entry_status:any": [4, 8]`<br>`"entry_status:none": [1, 2]`
 _Additionally, timesheet entries can also be filtered using <a href="#search-resources" class="api-ref">resource fields</a>, <a href="#search-projects" class="api-ref">project fields</a> and <a href="#filters-for-user-defined-fields" class="api-ref">custom fields</a> of timesheet. An example request for fetching only timesheet entry having `resource_id` as 2, `project_id` as 9 and `role_id` as 1 is shown._
 
-## Update timesheet entry
+## Update a Timesheet Entry
 
 Updates the specified timesheet entry by setting values of parameters passed. Values of any parameters which are not provided will be unchanged. 
 
@@ -495,7 +495,7 @@ Name               |  Description
 **403** <br> <span class = "error">`Forbidden`</span> |Authorization failed due to insufficient permissions. This occurs when user does not have enough access rights to perform this action. Access for each user can be controlled by an Administrator using eRS Cloud Application.
 **404** <br> <span class = "error">`Not Found`</span> | Not Found error occurs when requested timesheet entry does not exist (i.e. There is no timesheet entry with given ID). This may also occur when requesting a timesheet entry that has been deleted.
 
-## Update timesheet entry status
+## Update a Timesheet Entry Status
 
 Updates status of a specified timesheet entry by setting different integer values set for status.
 
@@ -527,7 +527,7 @@ Name               |  Description
 **403** <br> <span class = "error">`Forbidden`</span> |Authorization failed due to insufficient permissions. This occurs when user does not have enough access rights to perform this action. Access for each user can be controlled by an Administrator using eRS Cloud Application.
 **404** <br> <span class = "error">`Not Found`</span> | Not Found error occurs when requested timesheet entry does not exist (i.e. There is no timesheet entry with given ID). This may also occur when requesting a timesheet entry that has been deleted.
 
-## Delete a timesheet entry
+## Delete a Timesheet Entry
 
 Permanently deletes a timesheet entry. It cannot be undone.
 

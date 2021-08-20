@@ -1,6 +1,6 @@
 # Project
 
-## Project object
+## Project Object
 >Example Response  
 
 ```json
@@ -62,7 +62,7 @@ Name      |  Description
 **modified_by** <br>`object` | Object representing most recent user who modified this project object.
 **udf_\*** | Custom user-defined fields used to capture additional information of project. User defined field can be of multiple types. Custom fields are very useful to configure project objects to best fit requirements.  In given example response, all keys starting with prefix `udf_` are user defined custom fields. <a href="#user-defined-fields" class="api-ref">Learn more</a>
 
-## Create a project
+## Create a Project
 
 Creates a new project object.
 
@@ -105,7 +105,7 @@ Name               |  Description
 **403** <br> <span class = "error">`Forbidden`</span> | Authorization failed due to insufficient permissions. This occurs when user does not have enough access rights to perform this action. Access for each user can be controlled by an Administrator using eRS Cloud Application.
 
 
-## List projects
+## List Projects
 
 
 Returns a list of projects. The projects are returned sorted by `title`. 
@@ -196,7 +196,7 @@ curl -v \
 **400** <br> <span class = "error">`Bad Request` </span> | Bad Request may occur when offset or limit value is negative.
 **403** <br> <span class = "error">`Forbidden`</span> | Authorization failed due to insufficient permissions. This occurs when user does not have enough access rights to perform this action. Access for each user can be controlled by an Administrator using eRS Cloud Application.
 
-## Retrieve a project
+## Retrieve a Project
 
 
 >  **`GET /v1/projects/{ID}`**
@@ -258,7 +258,7 @@ Retrieves the details of an existing project. You only need to provide the uniqu
 | **403** <br> <span class = "error">`Forbidden`</span> |Authorization failed due to insufficient permissions. This occurs when user does not have enough access rights to perform this action. Access for each user can be controlled by an Administrator using eRS Cloud Application.|
 | **404** <br> <span class = "error">`Not Found`</span> | Not Found error occurs when requested project does not exist (i.e. There is no project with given ID). This may also occur when requesting a project that has been deleted. |
 
-## Search projects
+## Search Projects
 > **`POST /v1/projects/search`**
 
 > Example Request For Filter In JSON Format
@@ -367,7 +367,7 @@ Below is a list of available fields, which allow filtering projects:
 **modified_on**|<li>**eq** (_default_)</li><li>lt</li><li>gt</li><li>bt</li><li>ex</li>| `"modified_on:eq": ["2021-07-08T00:00:00]`<br>`"modified_on:lt": ["2021-07-08T00:00:00]`<br>`"modified_on:gt": ["2021-07-08T59:59:59"]`<br>`"modified_on:bt": ["2021-07-08T00:00:00", "2021-07-10T23:59:59"]`<br>`"modified_on:bt": ["2021-07-08T00:00:00", ""]` <br>`"modified_on:bt": ["", "2021-07-10T23:59:59"]` <br>`"modified_on:ex": ["2021-07-08T00:00:00", "2021-07-10T23:59:59"]` <br>`"modified_on:ex": ["2021-07-08T00:00:00", ""]` <br>`"modified_on:ex": ["", "2021-07-10T23:59:59"]]` 
 _For filtering using custom fields and operators please <a href="#filters-for-user-defined-fields" class="api-ref">check here</a>._  
 
-## Update a project
+## Update a Project
 
 Updates specified project by setting the values of the parameters passed. Any parameters which are not provided remains unchanged. To unset existing value for a parameter, just pass an empty value i.e. `null`.
 
@@ -412,7 +412,7 @@ curl -v -X PUT \
 **404** <br><span class = "error">`Not Found`</span> | This status code indicates that project does not exist.
 
 
-## Delete a project
+## Delete a Project
 
  Permanently deletes requested project. It cannot be undone. By default, this operation will fail if a project has any bookings, timesheets or rates associated with it. To override this, forceful deletion can be used which will delete all bookings, timesheets and rates and then, ultimately deletes the project object.
 

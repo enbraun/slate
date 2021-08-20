@@ -1,6 +1,6 @@
 # Booking
 
-## Booking object
+## Booking Object
 
 >Example Response
 
@@ -71,7 +71,7 @@ Name         |  Description
 **disable_parallel** <br>`integer` | Defines if the resource or project or both can or cannot have multiple bookings at a time.
 **udf_\*** | Custom user-defined fields are used to capture additional information of booking. User defined fields can be of multiple types. Custom fields are very useful to configure booking objects to best fit requirements. In given example response, all keys starting with prefix `udf_` are user defined custom fields. <a href="#user-defined-fields" class="api-ref">Learn more</a>
 
-## Create a booking
+## Create a Booking
 
 > **`POST v1/bookings`**
 
@@ -103,8 +103,8 @@ Name               |  Description
 **project_id** <br><span class="required">`required`</span>  |  ID of project object which this booking object is being created for.
 **start_time** <br> <span class="required">`required`</span>  | Represents start date and time for booking object. This field accepts value in ISO 8601 format for date-time i.e. yyyy-mm-ddThh:mm:ss. The value must be snapped in 15 minutes interval, which effectively means that minutes values should be one of(00/15/30/45) and seconds value should always be 0. (if given).
 **end_time** <br> <span class="required">`required`</span>  | Represents end date and time for booking object. This field accepts value in ISO 8601 format for date-time i.e. yyyy-mm-ddThh:mm:ss. The value must be snapped in 15 minutes interval, which effectively means that minutes values should be one of(00/15/30/45) and seconds value should always be 0. (if given). `end_time` must always be ahead of `start_time` by at least 15 minutes as a booking of less than 15 minutes is not allowed.
-**role_id**<br><span class="mandatoryFlag">&#9873;</span> <span class="removableFlag mln-2">&#9873;</span> |  ID of role object which needs to be performed for this booking. This could be id of a role which targeted resource performs (i.e "Performing Role") or any other role (i.e. "Non-Performing-Role").
-**task_id**<br><span class="removableFlag mln-2">&#9873;</span> |  ID of task object which needs to be done in this booking. This could only be id of a task which is listed in targeted project.
+**role_id**<br><span class="mandatoryFlag">&#9873;</span> <span class="removableFlag mln-2">&#9873;</span> |  ID of role object which needs to be performed for this booking. This could be ID of a role which targeted resource performs (i.e "Performing Role") or any other role (i.e. "Non-Performing-Role").
+**task_id**<br><span class="removableFlag mln-2">&#9873;</span> |  ID of task object which needs to be done in this booking. This could only be ID of a task which is listed in targeted project.
 **effort** <br>`optional`  | This defines how much effort is needed to complete the task. Effort value is a floating point number which could not be less than 0 and greater than 99999999.99. If effort value is not provided system will take default value 0.
 **unit**<br>`optional`  | Integer number (1-5) representing unit in which effort is being defined. Unit value could be one of the following :<br><br><li>**1** for `Capacity %` : This is default unit for booking. This represents `effort` in percentage of capacity of intended resource for defined time range. </li> <li> **2** for `Total Booking Hours` : This defines `effort` value in fixed hours which doesn't change upon changes in booking.</li> <li> **3** for `Hours Per day` : This could be used where a certain no of hours per day need to be spend for a booking. For example 4 hours per day (working day).</li> <li> **4** for `Full Time Equivalent` : Full time equivalent is calculated using FTE calendar defined in <a href="https://app.eresourcescheduler.cloud/#!/admin/calendars/settings" target="_blank" class="api-ref">Administrator calendar settings</a>. Capacity from FTE calendar for defined time in booking, is considered as 1 FTE.</li> <li> **5** for `Time Per Day` : It is useful where `effort` needs to put in on a particular time of every working day i.e. 4:15 PM to 5:30 PM daily. Time portion of `start_time` argument is considered as per day start time, and Time portion of `end_time` argument is considered per day end time for this booking. </li> |
 **progress** <br>`optional`  | This defines percentage completion of the booking. Progress is a integer number which could not be less than 0 and greater than 100. If progress is not provided, system will take default value 0.
@@ -124,9 +124,9 @@ Name               |  Description
 **400** <br> <span class = "error">`Bad Request`</span> | Bad Request error occurs when a request is malformed, syntactically incorrect, missing required parameters or any unknown parameter is passed. Additionally, Bad request may also occur in one of these conditions :<ul><li>Booking is starting before the `start_date` of resource or ending after the `last_date` of resource (if resource has a `last_date` defined.)</li><li>Resource is Archived i.e. if targeted resource has a `last_date` of past.</li><li>Project is marked as  Archived.</li><li>Duration of booking is more than allowed booking duration set by Administrator using ers Cloud Application in <a href="https://app.eresourcescheduler.cloud/#!/admin/settings/chart" target="_blank" class="api-ref">Administrator Scheduling Settings</a>.</li></ul>
 **403** <br> <span class = "error">`Forbidden`</span> |Authorization failed due to insufficient permissions. This occurs when user does not have enough access rights to perform this action. Access for each user can be controlled by an Administrator using eRS Cloud Application.|
 
-## List bookings
+## List Bookings
 
-Returns list of bookings. The bookings are returned sorted by booking's start_time and booking's id. 
+Returns list of bookings. The bookings are returned sorted by booking's `start_time` and ID. 
 	
 > **`GET /v1/bookings`**
 
@@ -212,7 +212,7 @@ start=2018-01-01&end=2018-12-31&offset=1&limit=10" \
 | **403** <br> <span class = "error">`Forbidden`</span> | Authorization failed due to insufficient permissions. This occurs when user does not have enough access rights to perform this action. Access for each user can be controlled by an Administrator using eRS Cloud Application.
 
 
-## Retrieve a booking
+## Retrieve a Booking
 
 > **`GET v1/bookings/{ID}`**
 
@@ -269,9 +269,9 @@ Retrieves the details of an existing booking. You only need to  provide the uniq
 | ---:        |    :----   | 
 **200** <br> <span class = "success">`OK`</span> | This status code indicates that the operation was successful and a booking successfully returned.
 **403** <br> <span class = "error">`Forbidden`</span> |Authorization failed due to insufficient permissions. This occurs when user does not have enough access rights to perform this action. Access for each user can be controlled by an Administrator using eRS Cloud Application.
-**404** <br> <span class = "error">`Not Found`</span> | Not Found error occurs when requested booking does not exist (i.e. There is no booking with given id). This may also occur when requesting a booking that has been deleted.
+**404** <br> <span class = "error">`Not Found`</span> | Not Found error occurs when requested booking does not exist (i.e. There is no booking with given ID). This may also occur when requesting a booking that has been deleted.
 
-## Search bookings
+## Search Bookings
 
 
 
@@ -379,7 +379,7 @@ Below is a list of available fields, which allow filtering bookings:
 
 _Additionally, bookings can also be filtered using <a href="#search-resources" class="api-ref">resource fields</a>, <a href="#search-projects" class="api-ref">project fields</a> and <a href="#filters-for-user-defined-fields" class="api-ref">custom fields</a> of bookings. An example request for fetching only booking having `resource_id` as 2, `project_id` as 9 and `role_id` as 1 is shown._
 
-## Update a booking
+## Update a Booking
 
 Updates the specified booking by setting values of parameters passed. Values of any parameters which are not provided will be unchanged. 
 
@@ -406,8 +406,8 @@ Name               |  Description
 **project_id** <br><span class="required">`required`</span>  |  ID of project object which this booking object is being created for. This will throw an error if you post an empty value.
 **start_time** <br> <span class="required">`required`</span>  | Represents start date and time for booking object. This field accepts value in ISO 8601 format for date-time i.e. yyyy-mm-ddThh:mm:ss. The value must be snapped in 15 minutes interval, which effectively means that minutes values should be one of(00/15/30/45) and seconds value should always be 0. (if given). This will throw an error if you post an empty value.
 **end_time** <br> <span class="required">`required`</span>  | Represents end date and time for booking object. This field accepts value in ISO 8601 format for date-time i.e. yyyy-mm-ddThh:mm:ss. The value must be snapped in 15 minutes interval, which effectively means that minutes values should be one of(00/15/30/45) and seconds value should always be 0. (if given). `end_time` must always be ahead of `start_time` by at least 15 minutes as a booking of less than 15 minutes is not allowed. This will throw an error if you post an empty value.
-**role_id**<br><span class="mandatoryFlag">&#9873;</span> <span class="removableFlag mln-2">&#9873;</span> |  ID of role object which needs to be performed for this booking. This could be id of a role which targeted resource performs (i.e "Performing Role") or any other role (i.e. "Non-Performing-Role").
-**task_id**<br><span class="removableFlag mln-2">&#9873;</span> |  ID of task object which needs to be done in this booking. This could only be id of a task which is listed in targeted project.
+**role_id**<br><span class="mandatoryFlag">&#9873;</span> <span class="removableFlag mln-2">&#9873;</span> |  ID of role object which needs to be performed for this booking. This could be ID of a role which targeted resource performs (i.e "Performing Role") or any other role (i.e. "Non-Performing-Role").
+**task_id**<br><span class="removableFlag mln-2">&#9873;</span> |  ID of task object which needs to be done in this booking. This could only be ID of a task which is listed in targeted project.
 **effort**  <br>`optional`  | This defines how much effort is needed to complete the task. Effort value is a floating point number which could not be less than 0 and greater than 99999999.99. If effort value is not provided system will take default value 0.
 **unit**<br>`optional`  | Integer number (1-5) representing unit in which effort is being defined. Unit value could be one of the following :<br><br><li>**1** for `Capacity %` : This is default unit for booking. This represents `effort` in percentage of capacity of intended resource for defined time range. </li> <li> **2** for `Total Booking Hours` : This defines `effort` value in fixed hours which doesn't change upon changes in booking.</li> <li> **3** for `Hours Per day` : This could be used where a certain no of hours need to be spend for a booking. For example 4 hours per day (working day).</li> <li> **4** for `Full Time Equivalent` : Full time equivalent is calculated using FTE calendar defined in <a href="https://app.eresourcescheduler.cloud/#!/admin/calendars/settings" target="_blank" class="api-ref">Administrator calendar settings</a>. Capacity from FTE calendar for defined time in booking, is considered as 1 FTE.</li> <li> **5** for `Time Per Day` : It is useful where `effort` needs to put in on a particular time of every working day i.e. 4:15 PM to 5:30 PM daily. Time portion of `start_time` argument is considered as per day start time, and Time portion of `end_time` argument is considered per day end time for this booking. </li> |
 **progress** <br>`optional`  | This defines percentage completion of the booking. Progress is a integer number which could not be less than 0 and greater than 100. If progress is not provided, system will take default value 0.
@@ -426,12 +426,12 @@ Name               |  Description
 **200** <br> <span class = "success">`OK`</span>    |  This indicates that the operation was successful and a booking updated successfully.
 **400** <br> <span class = "error">`Bad Request`</span> | Bad Request error occurs when a request is malformed, syntactically incorrect, empty required parameters or any unknown parameter is passed. Additionally, Bad request may also occur in one of these conditions :<ul><li>Trying to update `start_time` or `end_time` such that `end_time` gets earlier than `start_time`.</li><li>Trying to update `start_time` of booking before the `start_date` of resource or `end_time` after the `last_date` of resource (if resource has a `last_date` defined.)</li><li>Trying to update a booking of archived resource</li><li>Trying to update bookings of archived project.</li><li>Duration of booking is more than allowed booking duration set by Administrator using ers Cloud Application in <a href="https://app.eresourcescheduler.cloud/#!/admin/settings/chart" target="_blank" class="api-ref">Administrator Scheduling Settings</a>.</li></ul>
 **403** <br> <span class = "error">`Forbidden`</span> |Authorization failed due to insufficient permissions. This occurs when user does not have enough access rights to perform this action. Access for each user can be controlled by an Administrator using eRS Cloud Application.
-**404** <br> <span class = "error">`Not Found`</span> | Not Found error occurs when requested booking does not exist (i.e. There is no booking with given id). This may also occur when requesting a booking that has been deleted.
+**404** <br> <span class = "error">`Not Found`</span> | Not Found error occurs when requested booking does not exist (i.e. There is no booking with given ID). This may also occur when requesting a booking that has been deleted.
 
 
 
 
-## Delete a booking
+## Delete a Booking
 
 Permanently deletes a booking. It cannot be undone.
 
