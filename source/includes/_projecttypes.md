@@ -119,7 +119,7 @@ Name | Description
 **fields.options** <br>`string` |Field types such as Dropdown Single Select, Dropdown Multi Select, Radio Group etc. ( See <a href = "#user-defined-fields" class="api-ref">User Defined Fields</a> to know more. ) Allows user to pick one or more from these available options.
 **fields.options.id** <br>`integer` |  Represents unique identification number for the individual option object.
 **fields.options.name** <br>`string` | Represents name or content of option object.
-**fields.options.color** <br> `string` | Allows a user to store color code of option object.<span class="warning">It is only available for LABEL type fields</span>.
+**fields.options.color** <br> `string` | Allows a user to store color code of option object. <span class="warning">It is only available for LABEL type fields</span>.
 
 
 
@@ -216,7 +216,7 @@ curl -v \
 | ---:        |    :----   | 
 | **200** <br> <span class = "success">`OK`</span>     | This status code indicates that the operation was successful and a project-type  get retrieved successfully .  |
 | **403** <br> <span class = "error">`Forbidden`</span> | Authorization failed due to insufficient permissions. This occurs when user does not have enough access rights to perform this action. Access for each user can be controlled by an Administrator using eRS Cloud Application.|
-|  **404** <br><span class = "error">`Not Found`</span> |This status code indicates that project-type ID does not exist|
+|  **404** <br><span class = "error">`Not Found`</span> |This status code indicates that project-type ID does not exist.|
 
 
 ## Get All Project Types

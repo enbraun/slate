@@ -72,7 +72,7 @@
 Name         |  Description
  ---:        |    :---- 
 **id** <br>`integer` | Auto generated unique identifier for resource object.
-**first_name** <br>`string` | First name of resource.This may be up to 100 characters.
+**first_name** <br>`string` | First name of resource. This may be up to 100 characters.
 **last_name** <br>`string` | Last name of resource. This may be up to 100 characters.
 **name** <br>`string` | String value defining name of `non-human` type resource. This may be up to 100 characters.
 **type** <br>`object` | Describes the type of resource. This is one of the type objects which an Administrator user creates using eRS Cloud Application.
@@ -136,9 +136,9 @@ Creates a new resource object.
 Name         |  Description
  ---:        |    :----   
 **resource_type_id** <br> <span class="required">`required`</span> | ID of <a href = "#resource-types" class ="api-ref">resource-type</a> object. Every resource must be linked to a <a href = "#resource-types" class ="api-ref">resource-type</a>. Let’s assume there are two resource types defined as Employee (_having ID 1_) and Meeting Room (_having ID 2_). While creating a new resource, all the resource whose `resource_type_id` is given as **1** will get created under Employee type and the same for Meeting Room when `resource_type_id` is **2**.
-**first_name** <br> <span class="required">`required`</span>  | String representing the first name of a resource. This may be up to 100 characters.<br> _**Note**: for `non-human` resources, this field is <span class="warning">not available</span>_.
-**last_name** <br><span class="mandatoryFlag">&#9873;</span> <span class="removableFlag mln-2">&#9873;</span> | String representing the last name of a resource. This may be up to 100 characters.<br> _**Note**: for `non-human` resources, this field is <span class="warning">not available</span>_.
-**name** <br> <span class="required">`required`</span> | String representing the name of a resource. This may be up to 100 characters.<br> _**Note**: This field is only available for `non-human` resources, and for `human` resources this field is <span class="warning">not available</span>_.
+**first_name** <br> <span class="required">`required`</span>  | String representing the first name of a resource. This may be up to 100 characters.<br> _**Note**: for `non-human` resources,<span class="warning"> this field is not available</span>_.
+**last_name** <br><span class="mandatoryFlag">&#9873;</span> <span class="removableFlag mln-2">&#9873;</span> | String representing the last name of a resource. This may be up to 100 characters.<br> _**Note**: for `non-human` resources, <span class="warning"> this field is not available</span>_.
+**name** <br> <span class="required">`required`</span> | String representing the name of a resource. This may be up to 100 characters.<br> _**Note**: This field is only available for `non-human` resources, and for `human` resources,<span class="warning"> this field is not available</span>_.
 **start_date**<br><span class="required">`required`</span>  |  String value representing a date in ISO 8601 extended notation for date i.e. yyyy-MM-dd. A resource is only available from it's start date i.e system does not consider any capacity of resource before this date.
 **last_date**<br>`optional` |  String value representing a date in ISO 8601 extended notation for date i.e. yyyy-MM-dd. A resource is only available till it's last working date i.e system does not consider any capacity of resource beyond this date (_if defined_).
 **email**<br><span class="mandatoryFlag">&#9873;</span> <span class="removableFlag mln-2">&#9873;</span> |  String value representing email address of resource object. Email address must be properly formatted with a maximum length of 254 characters.
@@ -261,8 +261,8 @@ curl -v \
 
 |Name|Description|
 |-:|:-|
-**limit**<br>`optional` | The limit keyword is used to limit the number of records returned from a result set. If a limit count is given, no more than that many records will be returned (but possibly less, if the query itself yields less records)<br>_Default value of `limit` is_ <span class="required">**`25`**</span><br>_Maximum value of `limit` can be_ <span class="required">**`500`**</span>
-**offset**<br>`optional` | Offset keyword is used to skip n items. If offset value is given as 10, then first 10 records will be skipped from result set. Offset is often used together with the Limit keyword.<br>_Default value of `offset` is_ <span class="required">**`0`**</span>
+**limit**<br>`optional` | The limit keyword is used to limit the number of records returned from a result set. If a limit count is given, no more than that many records will be returned (but possibly less, if the query itself yields less records)<br>_Default value of `limit` is_ <span class="required">**`25`**</span>.<br>_Maximum value of `limit` can be_ <span class="required">**`500`**</span>.
+**offset**<br>`optional` | Offset keyword is used to skip n items. If offset value is given as 10, then first 10 records will be skipped from result set. Offset is often used together with the Limit keyword.<br>_Default value of `offset` is_ <span class="required">**`0`**</span>.
 
 
 
@@ -351,13 +351,13 @@ curl -v "https://app.eresourcescheduler.cloud/rest/v1/resources/1" \
 ```
 
 
-Retrieves the details of an existing resource. You only need to provide the unique resource identifier that was returned upon resource creation as request parameter .
+Retrieves the details of an existing resource. You only need to provide the unique resource identifier that was returned upon resource creation as request parameter.
 
 ### Returns
 
 | Code      | Description | 
 | ---:      |    :----    | 
-**200** <br> <span class = "success">`OK`</span> | Indicates that the operation was successful and a resource is retrieved successfully .
+**200** <br> <span class = "success">`OK`</span> | Indicates that the operation was successful and a resource is retrieved successfully.
 **403** <br> <span class = "error">`Forbidden`</span> | Authorization failed due to insufficient permissions. This occurs when user does not have enough access rights to perform this action. Access for each user can be controlled by an Administrator using eRS Cloud Application.
 **404** <br> <span class = "error">`Not Found`</span> | Not Found error occurs when requested resource does not exist (i.e. There is no resource with given ID). This may also occur when requesting a resource that has been deleted.
 
@@ -394,8 +394,8 @@ curl -X POST \
 
 |Name|Description|
 |-:|:-|
-**limit**<br>`optional` | The limit keyword is used to limit the number of records returned from a result set. If a limit count is given, no more than that many records will be returned (but possibly less, if the query itself yields less records)<br>_Default value of `limit` is_ <span class="required">**`25`**</span><br>_Maximum value of `limit` can be_ <span class="required">**`500`**</span>
-**offset**<br>`optional` | Offset keyword is used to skip n items. If offset value is given as 10, then first 10 records will be skipped from result set. Offset is often used together with the Limit keyword.<br>_Default value of `offset` is_ <span class="required">**`0`**</span>
+**limit**<br>`optional` | The limit keyword is used to limit the number of records returned from a result set. If a limit count is given, no more than that many records will be returned (but possibly less, if the query itself yields less records)<br>_Default value of `limit` is_ <span class="required">**`25`**</span>.<br>_Maximum value of `limit` can be_ <span class="required">**`500`**</span>.
+**offset**<br>`optional` | Offset keyword is used to skip n items. If offset value is given as 10, then first 10 records will be skipped from result set. Offset is often used together with the Limit keyword.<br>_Default value of `offset` is_ <span class="required">**`0`**</span>.
 <br><br>
 
 Search Resource API allows filtering the results returned in various ways. This enables a great power to find out what is needed. eRS Cloud API also allows filtering on custom defined fields with multiple operators and conditions to cover up complex scenarios for searching.
@@ -449,9 +449,9 @@ curl -v -X PUT \
 
 |Name     |  Description |
 | ---:    |    :----     |
-**first_name** <br> <span class="required">`required`</span>  | String representing the first name of a resource. This may be up to 100 characters.<br> _**Note**: for 'non-human' resources, this field is <span class="warning">not available</span>_.
-**last_name**<br><span class="mandatoryFlag">&#9873;</span> <span class="removableFlag mln-2">&#9873;</span> | String representing the last name of a resource. This may be up to 100 characters.<br> _**Note**: for `non-human` resources, this field is <span class="warning">not available</span>_.
-**name** <br> <span class="required">`required`</span> | String representing the name of a resource. This may be up to 100 characters.<br> _**Note**: This field is only available for `non-human` resources, and for `human` resources this is <span class="warning">not available</span>_.
+**first_name** <br> <span class="required">`required`</span>  | String representing the first name of a resource. This may be up to 100 characters.<br> _**Note**: for 'non-human' resources,<span class="warning"> this field is not available</span>_.
+**last_name**<br><span class="mandatoryFlag">&#9873;</span> <span class="removableFlag mln-2">&#9873;</span> | String representing the last name of a resource. This may be up to 100 characters.<br> _**Note**: for `non-human` resources, <span class="warning"> this field is not available</span>_.
+**name** <br> <span class="required">`required`</span> | String representing the name of a resource. This may be up to 100 characters.<br> _**Note**: This field is only available for `non-human` resources, and for `human` resources,<span class="warning"> this field is not available</span>_.
 **start_date**<br><span class="required">`required`</span>  |  String value representing a date in ISO 8601 extended notation for date i.e. yyyy-MM-dd. A resource is only available from it's start date i.e system does not consider any capacity of resource before this date.
 **last_date**<br>`optional` |  String value representing a date in ISO 8601 extended notation for date i.e. yyyy-MM-dd. A resource is only available till it's last working date i.e system does not consider any capacity of resource beyond this date (_if defined_).
 **email**<br><span class="mandatoryFlag">&#9873;</span> <span class="removableFlag mln-2">&#9873;</span> |  String value representing email address of resource object. Email address must be properly formatted with a maximum length of 254 characters.
@@ -845,7 +845,7 @@ Retrieves the details of exceptions which are applied to the resource. You only 
 
 | Code      | Description | 
 | ---:        |    :----   | 
-| **200** <br> <span class = "success">`OK`</span>     | This status code indicates that the operation was successful and exceptions retrieved successfully .  |
+| **200** <br> <span class = "success">`OK`</span>     | This status code indicates that the operation was successful and exceptions retrieved successfully.  |
 | **403** <br> <span class = "error">`Forbidden`</span> |Authorization failed due to insufficient permissions. This occurs when user does not have enough access rights to perform this action. Access for each user can be controlled by an Administrator using eRS Cloud Application.|
 | **404** <br> <span class = "error">`Not Found`</span> | Not Found error occurs when requested resource does not exist (i.e. There is no resource with given ID). This may also occur when requesting a resource that has been deleted. |
 
@@ -881,9 +881,9 @@ Name         |  Description
  ---:        |    :----   
 **date**  <br><span class="required">`required`</span>| Date Field describes when will the exception get applied. It is a `Date` type of field. 
 **descirption**  <br>`optional`|As the name shows it is a description which we want to give for the exception . This field is a `string` type of field. 
-**name**  <br><span class="required">`required`</span>|Name describes the name of exception. This field is a `string` type of field
-**is_working_exception**  <br><span class="required">`required`</span>|Is working exception describes whether exception is a working exception or not. Accepts `true` if it is a working exception otherwise accepts `false` if it a non-working exception. This field is a `boolean` type of field
-**timing_blocks**  <br>`optional`|Timing blocks describes the timings of exception. This field can be passed `null`, as eRS Cloud provides you the facility to create an exception without timings. This field is a `Array of objects` type of field
+**name**  <br><span class="required">`required`</span>|Name describes the name of exception. This field is a `string` type of field.
+**is_working_exception**  <br><span class="required">`required`</span>|Is working exception describes whether exception is a working exception or not. Accepts `true` if it is a working exception otherwise accepts `false` if it a non-working exception. This field is a `boolean` type of field.
+**timing_blocks**  <br>`optional`|Timing blocks describes the timings of exception. This field can be passed `null`, as eRS Cloud provides you the facility to create an exception without timings. This field is a `Array of objects` type of field.
 **timing_blocks.start_time**  <br>`optional`|Start time describes the start time of exception. This field can be passed `null`, as eRS Cloud provides you the facility to create an exception without timings. This field is a `Integer` type of field.  
 **timing_blocks.end_time**  <br>`optional`|End time describes the end time of exception. This field can be passed `null`, as eRS Cloud provides you the facility to create an exception without timings. This field is a `Integer` type of field.  
 
@@ -895,7 +895,7 @@ Name         |  Description
 | **201** <br><span class = "success">`Created`</span> | This status code indicates that the operation was successful and exception created successfully.|
 | **400** <br> <span class = "error">`Bad Request`</span> | Bad Request error occurs when a request is malformed, syntactically incorrect, missing required parameters are  or any unknown parameter is passed.  |
 | **403** <br> <span class = "error">`Forbidden`</span> |Authorization failed due to insufficient permissions. This occurs when user does not have enough access rights to perform this action. Access for each user can be controlled by an Administrator using eRS Cloud Application.|
-|  **404** <br><span class = "error">`Not Found`</span> |This status code indicates that resource does not exist|
+|  **404** <br><span class = "error">`Not Found`</span> |This status code indicates that resource does not exist.|
 ### Update an exception
 
 
@@ -935,9 +935,9 @@ Name         |  Description
  ---:        |    :----   
 **date**  <br><span class="required">`required`</span>| Date Field describes when will the exception get applied. It is a `Date` type of field. 
 **descirption**  <br>`optional`|As the name shows it is a description which we want to give for the exception . This field is a `string` type of field. 
-**name**  <br><span class="required">`required`</span>|Name describes the name of exception. This field is a `string` type of field
+**name**  <br><span class="required">`required`</span>|Name describes the name of exception. This field is a `string` type of field.
 **is_working_exception**  <br><span class="required">`required`</span>|Is working exception describes whether exception is working exception or not. Accepts `true` if it is working exception otherwise accepts `false` if it a non-working exception. This field is a `boolean` type of field
-**timing_blocks**  <br>`optional`|Timing blocks describes the timings of exception. This field can be pass `null`, as eRS Cloud provides you the facility to create an exception without timings. This field is a `Array of objects` type of field
+**timing_blocks**  <br>`optional`|Timing blocks describes the timings of exception. This field can be pass `null`, as eRS Cloud provides you the facility to create an exception without timings. This field is a `Array of objects` type of field.
 **timing_blocks.start_time**  <br>`optional`|Start time describes the start time of exception. This field can be pass `null`, as eRS Cloud provides you the facility to create an exception without timings. This field is a `Integer` type of field.  
 **timing_blocks.end_time**  <br>`optional`|End time describes the end time of exception. This field can be pass `null`, as eRS Cloud provides you the facility to create an exception without timings. This field is a `Integer` type of field.  
 
@@ -945,10 +945,10 @@ Name         |  Description
 
 | Code      | Description | 
 | ---:        |    :----   | 
-| **200** <br> <span class = "success">`OK`</span>    |  This indicates that the operation was successful and a exception updated successfully.|
+| **200** <br> <span class = "success">`OK`</span> | This indicates that the operation was successful and a exception updated successfully.|
 | **400** <br> <span class = "error">`Bad Request`</span> | Bad Request occurs when a request is not well-formed, syntactically incorrect, empty required parameters or any unknown parameter is passed.|
 | **403** <br> <span class = "error">`Forbidden`</span> |Authorization failed due to insufficient permissions. This occurs when user does not have enough access rights to perform this action. Access for each user can be controlled by an Administrator using eRS Cloud Application.|
-|  **404** <br><span class = "error">`Not Found`</span> |This status code indicates that resource or exception does not exist| 
+| **404** <br><span class = "error">`Not Found`</span> |This status code indicates that resource or exception does not exist.| 
 
 
 ### Delete an exception
@@ -970,8 +970,8 @@ curl -v -X DELETE \
 
 | Code      | Description  
 | ---:        |    :----   
-| **200** <br><span class = "success">`OK`</span> |This status code indicates that the operation was successful and exception deleted successfully |
-|  **404** <br><span class = "error">`Not Found`</span> |This status code indicates that resource or exception does not exist| 
+| **200** <br><span class = "success">`OK`</span> |This status code indicates that the operation was successful and exception deleted successfully. |
+| **404** <br><span class = "error">`Not Found`</span> |This status code indicates that resource or exception does not exist.| 
 
 ## Notes
 
@@ -1086,8 +1086,8 @@ curl -v -X GET \
 
 |Name|Description|
 |-:|:-|
-|**limit**<br>`optional`|The limit keyword is used to limit the number of notes returned from a result set.<br>*The default value of limit is*  <span class="error">*`25`*</span><br>*Maximum value of limit can be* <span class="error">*`100.`*</span> *If Limit value is exceeds than*<span class="error">*`100`*</span>  *then it will set to* <span class="error">*`100`*</span> *which is Maximum value for limit.* |
-|**offset**<br>`optional`|The Offset value allows specifying which note to start from retrieving data.The Offset value is also most often used together with the Limit keyword.<br>*The default value of offset is* <span class="error">*`0`* </span>|
+|**limit**<br>`optional`|The limit keyword is used to limit the number of notes returned from a result set.<br>*The default value of limit is*  <span class="error">*`25`.*</span><br>*Maximum value of limit can be* <span class="error">*`100.`*</span> *If Limit value is exceeds than*<span class="error">*`100`*</span>  *then it will set to* <span class="error">*`100`*</span> *which is Maximum value for limit.* |
+|**offset**<br>`optional`|The Offset value allows specifying which note to start from retrieving data. The Offset value is also most often used together with the Limit keyword.<br>*The default value of offset is* <span class="error">*`0`.* </span>|
 
 
 ### Ordering the notes
@@ -1097,7 +1097,7 @@ curl -v -X GET \
 |Name|Options|Description|
 |-:|:-:|:-
 |**order_by**<br>`optional`|<li>**created_on** *(Default)*</li>|List of notes will be returned and sorted by it's created date.|
-| |<li>modified_on</li>|List of notes will be returned and sorted by it's latest modified date|
+| |<li>modified_on</li>|List of notes will be returned and sorted by it's latest modified date.|
 
 
 ### Returns 
@@ -1108,7 +1108,7 @@ curl -v -X GET \
 | **200** <br> <span class = "success">`OK`</span>      |  This indicates that the operation was successful and a list of notes is returned.  |
 **400** <br> <span class = "error">`Bad Request` </span>| Bad Request may occur when offset and limit value is given as negative integer. |
 **403** <br> <span class = "error">`Forbidden`</span> | Authorization failed due to insufficient permissions. This occurs when user does not have enough access rights to perform this action. Access for each user can be controlled by an Administrator using eRS Cloud Application.|
-**404** <br><span class = "error">`Not Found`</span> |This status code indicates that resource does not exist| 
+**404** <br><span class = "error">`Not Found`</span> |This status code indicates that resource does not exist.| 
 
 > Example Request
 
@@ -1145,7 +1145,7 @@ curl -v -X POST \
 
 Name         |  Description
  ---:        |    :----   
- **content**  <br><span class="required">`required`</span>  | To create new note you have to pass the body from `content` parameter.  Content param accepts plain text. Also, you can pass text with HTML tags as Notes are Multi Line Rich Text.
+ **content**  <br><span class="required">`required`</span> | To create new note you have to pass the body from `content` parameter.  Content param accepts plain text. Also, you can pass text with HTML tags as Notes are Multi Line Rich Text.
 
 
 ### Returns
@@ -1153,9 +1153,9 @@ Name         |  Description
 | Code      |Description |
  :---        |    :----   |
 | **201** <br><span class = "success">`Created`</span> | This status code indicates that the operation was successful and created a note successfully.|
-| **400** <br> <span class = "error">`Bad Request`</span> | Bad Request error occurs when a request is malformed, syntactically incorrect, missing required parameters are  or any unknown parameter is passed.  |
-| **403** <br> <span class = "error">`Forbidden`</span> |Authorization failed due to insufficient permissions. This occurs when user does not have enough access rights to perform this action. Access for each user can be controlled by an Administrator using eRS Cloud Application.|
-|  **404** <br><span class = "error">`Not Found`</span> |This status code indicates that resource does not exist| 
+| **400** <br> <span class = "error">`Bad Request`</span> | Bad Request error occurs when a request is malformed, syntactically incorrect, missing required parameters or any unknown parameters are passed.  |
+| **403** <br> <span class = "error">`Forbidden`</span> | Authorization failed due to insufficient permissions. This occurs when user does not have enough access rights to perform this action. Access for each user can be controlled by an Administrator using eRS Cloud Application.|
+| **404** <br><span class = "error">`Not Found`</span> | This status code indicates that resource does not exist.| 
 
 
 
@@ -1164,7 +1164,7 @@ Name         |  Description
 
 >` PUT  v1/resources/{ID}/notes/{Note_ID}`
 
-Updates the specified resource's note by setting the value of the parameter passed. You need to provide the unique resource identifier that was returned upon resource creation and unique note identifier that was returned upon notes creation. If parameter is not provided then it will be left unchanged.
+Updates the specified resource's note by setting the value of the parameter passed. You need to provide the unique resource identifier that was returned upon resource creation and unique note identifier that was returned upon note's creation. If parameter is not provided then it will be left unchanged.
 
 This request accepts mostly the same argument as the note creation call.
 
@@ -1202,17 +1202,17 @@ Name         |  Description
 
 | Code      | Description | 
 | ---:        |    :----   | 
-| **200** <br> <span class = "success">`OK`</span>    |  This indicates that the operation was successful and a note  updated successfully.|
-| **400** <br> <span class = "error">`Bad Request`</span> | Bad Request occurs when a request is not well-formed, syntactically incorrect, empty required parameters or any unknown parameter is passed.|
+| **200** <br> <span class = "success">`OK`</span> | This indicates that the operation was successful and a note  updated successfully.|
+| **400** <br> <span class = "error">`Bad Request`</span> | Bad Request occurs when a request is not well-formed, syntactically incorrect, empty required parameters or any unknown parameters are passed.|
 | **403** <br> <span class = "error">`Forbidden`</span> | Authorization failed due to insufficient permissions. This occurs when user does not have enough access rights to perform this action. Access for each user can be controlled by an Administrator using eRS Cloud Application.|
-|  **404** <br><span class = "error">`Not Found`</span> |This status code indicates that resource or notes does not exist| 
+| **404** <br><span class = "error">`Not Found`</span> | This status code indicates that resource or note does not exist.| 
 
 
 ### Delete a note
 
 >` DELETE  v1/resources/{ID}/notes/{Note_ID}`
 
-Permanently deletes a Note. It cannot be undone.You need to  provide the unique resource identifier that was returned upon resource creation and unique note identifier that was returned upon notes creation.
+Permanently deletes a Note. It cannot be undone. You need to  provide the unique resource identifier that was returned upon resource creation and unique note identifier that was returned upon note's creation.
 
 > Example Request
 
@@ -1227,6 +1227,6 @@ curl -v -X DELETE \
 
 | Code      | Description  
 | ---:        |    :----   
-| **200** <br><span class = "success">`OK`</span> |This status code indicates that the operation was successful and a note deleted successfully |
+| **200** <br><span class = "success">`OK`</span> | This status code indicates that the operation was successful and a note deleted successfully. |
 | **403** <br> <span class = "error">`Forbidden`</span> | Authorization failed due to insufficient permissions. This occurs when user does not have enough access rights to perform this action. Access for each user can be controlled by an Administrator using eRS Cloud Application.|
-|  **404** <br><span class = "error">`Not Found`</span> |This status code indicates that resource or notes does not exist| 
+|  **404** <br><span class = "error">`Not Found`</span> | This status code indicates that resource or note does not exist.| 

@@ -183,8 +183,8 @@ curl -v \
 
 |Name|Description|
 |-:|:-|
-**limit**<br>`optional` | The limit keyword is used to limit the number of records returned from a result set. If a limit count is given, no more than that many records will be returned (but possibly less, if the query itself yields less records)<br>_Default value of `limit` is_ <span class="required">**`25`**</span><br>_Maximum value of `limit` can be_ <span class="required">**`500`**</span>
-**offset**<br>`optional` | Offset keyword is used to skip n items. If offset value is given as 10, then first 10 records will be skipped from result set. Offset is often used together with the Limit keyword.<br>_Default value of `offset` is_ <span class="required">**`0`**</span>
+**limit**<br>`optional` | The limit keyword is used to limit the number of records returned from a result set. If a limit count is given, no more than that many records will be returned (but possibly less, if the query itself yields less records)<br>_Default value of `limit` is_ <span class="required">**`25`**</span>.<br>_Maximum value of `limit` can be_ <span class="required">**`500`**</span>.
+**offset**<br>`optional` | Offset keyword is used to skip n items. If offset value is given as 10, then first 10 records will be skipped from result set. Offset is often used together with the Limit keyword.<br>_Default value of `offset` is_ <span class="required">**`0`**</span>.
 
 
 ### Returns 
@@ -254,7 +254,7 @@ Retrieves the details of an existing project. You only need to provide the uniqu
 
 | Code      | Description | 
 | ---:        |    :----   | 
-| **200** <br> <span class = "success">`OK`</span>     | This status code indicates that the operation was successful and project retrieved successfully .  |
+| **200** <br> <span class = "success">`OK`</span>     | This status code indicates that the operation was successful and project retrieved successfully.  |
 | **403** <br> <span class = "error">`Forbidden`</span> |Authorization failed due to insufficient permissions. This occurs when user does not have enough access rights to perform this action. Access for each user can be controlled by an Administrator using eRS Cloud Application.|
 | **404** <br> <span class = "error">`Not Found`</span> | Not Found error occurs when requested project does not exist (i.e. There is no project with given ID). This may also occur when requesting a project that has been deleted. |
 
@@ -339,8 +339,8 @@ curl -X POST \
 
 |Name|Description|
 |-:|:-|
-**limit**<br>`optional` | The limit keyword is used to limit the number of records returned from a result set. If a limit count is given, no more than that many records will be returned (but possibly less, if the query itself yields less records)<br>_Default value of `limit` is_ <span class="required">**`25`**</span><br>_Maximum value of `limit` can be_ <span class="required">**`500`**</span>
-**offset**<br>`optional` | Offset keyword is used to skip n items. If offset value is given as 10, then first 10 records will be skipped from result set. Offset is often used together with the Limit keyword.<br>_Default value of `offset` is_ <span class="required">**`0`**</span>
+**limit**<br>`optional` | The limit keyword is used to limit the number of records returned from a result set. If a limit count is given, no more than that many records will be returned (but possibly less, if the query itself yields less records)<br>_Default value of `limit` is_ <span class="required">**`25`**</span>.<br>_Maximum value of `limit` can be_ <span class="required">**`500`**</span>.
+**offset**<br>`optional` | Offset keyword is used to skip n items. If offset value is given as 10, then first 10 records will be skipped from result set. Offset is often used together with the Limit keyword.<br>_Default value of `offset` is_ <span class="required">**`0`**</span>.
 <br><br>
 
 Search Project API allows filtering the results returned in various ways. This enables a great power to find out what is needed. eRS Cloud API also allows filtering on custom defined fields with multiple operators and conditions to cover up complex scenarios for searching.
@@ -365,7 +365,7 @@ Below is a list of available fields, which allow filtering projects:
 **modified_by**|<li>**eq** (_default_)</li><li>neq</li><li>any</li><li>none</li>| `"modified_by:eq": 1`<br>`"modified_by:neq": 1`<br>`"modified_by:any": [1, 2]`<br>`"modified_by:none": [1, 2]`
 **created_on**|<li>**eq** (_default_)</li><li>lt</li><li>gt</li><li>bt</li><li>ex</li>| `"created_on:eq": ["2021-07-08T00:00:00]`<br>`"created_on:lt": ["2021-07-08T00:00:00]`<br>`"created_on:gt": ["2021-07-08T59:59:59"]`<br>`"created_on:bt": ["2021-07-08T00:00:00", "2021-07-10T23:59:59"]`<br>`"created_on:bt": ["2021-07-08T00:00:00", ""]` <br>`"created_on:bt": ["", "2021-07-10T23:59:59"]` <br>`"created_on:ex": ["2021-07-08T00:00:00", "2021-07-10T23:59:59"]` <br>`"created_on:ex": ["2021-07-08T00:00:00", ""]` <br>`"created_on:ex": ["", "2021-07-10T23:59:59"]]` 
 **modified_on**|<li>**eq** (_default_)</li><li>lt</li><li>gt</li><li>bt</li><li>ex</li>| `"modified_on:eq": ["2021-07-08T00:00:00]`<br>`"modified_on:lt": ["2021-07-08T00:00:00]`<br>`"modified_on:gt": ["2021-07-08T59:59:59"]`<br>`"modified_on:bt": ["2021-07-08T00:00:00", "2021-07-10T23:59:59"]`<br>`"modified_on:bt": ["2021-07-08T00:00:00", ""]` <br>`"modified_on:bt": ["", "2021-07-10T23:59:59"]` <br>`"modified_on:ex": ["2021-07-08T00:00:00", "2021-07-10T23:59:59"]` <br>`"modified_on:ex": ["2021-07-08T00:00:00", ""]` <br>`"modified_on:ex": ["", "2021-07-10T23:59:59"]]` 
- _For User-defined fields please <a href="#filters-for-user-defined-fields" class="api-ref">check here</a>._ 
+_For filtering using custom fields and operators please <a href="#filters-for-user-defined-fields" class="api-ref">check here</a>._  
 
 ## Update a project
 
@@ -445,7 +445,7 @@ force_delete_timesheet_entry=true" \
 **200** <br><span class = "success">`OK`</span> |This status code indicates that the operation was successful and project deleted successfully.
 **409** <br> <span class = "error">`Conflict`</span> |Conflict indicates that the project can not be deleted as there are bookings, timesheets or rates associated with this project. If you wish to delete it any way you must use force delete option by passing <span class = "required">`true`</span> for parameter <span class = "required">`force_delete_bookings`</span>, <span class = "required">`force_delete_timesheet_entry`</span> and <span class = "required">`force_delete_rates`</span> which will delete all associated bookings, timesheets and rates corresponding to the project. This operation deletes all bookings, timesheets and rates of requested project and project itself (shown in example request).
 **403** <br> <span class = "error">`Forbidden`</span> | Authorization failed due to insufficient permissions. This occurs when user does not have enough access rights to perform this action. Access for each user can be controlled by an Administrator using eRS Cloud Application.
-**404** <br><span class = "error">`Not Found`</span> |This status code indicates that requested project does not exist| |
+**404** <br><span class = "error">`Not Found`</span> |This status code indicates that requested project does not exist.| |
 
 ## Tasks
 
@@ -637,10 +637,10 @@ _**Note**: The Notes Of Archived Project remain available for the records._
 Name         |  Description
  ---:        |    :----   
  **id**<br>`integer` | eRS Cloud generated unique identifier for the notes. |
- **content** <br>`string` | Text written inside notes body .|
+ **content** <br>`string` | Text written inside notes body.|
  **created_on** <br>`string` | Time at which the notes object is created. |
  **modified_on** <br>`string` | Describes the latest modification date.|
- **created_by** <br>`object` | This field describes by whom this note is created .|
+ **created_by** <br>`object` | This field describes by whom this note is created.|
  **modified_by** <br>`object` | This field describes by whom the modification is done.
 
 
@@ -707,8 +707,8 @@ curl -v -X GET \
 
 |Name|Description|
 |-:|:-|
-|**limit**<br>`optional`|The limit keyword is used to limit the number of notes returned from a result set.<br>*The default value of `limit` is*  <span class="error">*`25`*</span><br>*Maximum value of limit can be* <span class="error">*`100.`*</span> *If value of Limit is more than*<span class="error">*`100`*</span>  *then it will set Maximum value of limit which is* <span class="error">*`100.`*</span> 
-|**offset**<br>`optional`|The Offset value allows you to specify the ranking number of the first item on the page .The Offset value is most often used together with the Limit keyword.<br>*The default value of `offset` is* <span class="error">*`0`* </span>|
+|**limit**<br>`optional`| The limit keyword is used to limit the number of notes returned from a result set. <br>*The default value of `limit` is*  <span class="error">*`25`*</span>.<br>*Maximum value of limit can be* <span class="error">*`100.`*</span> *If value of Limit is more than*<span class="error">*`100`*</span>  *then it will set Maximum value of limit which is* <span class="error">*`100`*</span>. 
+|**offset**<br>`optional`| The Offset value allows you to specify the ranking number of the first item on the page . The Offset value is most often used together with the Limit keyword.<br>*The default value of `offset` is* <span class="error">*`0`* </span>.|
 
 
 
@@ -720,7 +720,7 @@ curl -v -X GET \
 |Name|Options|Description|
 |-:|:-:|:-
 |**order_by**<br>`optional`|<li>**created_on** *(Default)*</li>|List of notes will be returned and sorted by it's created date.|
-| |<li>modified_on</li> |List of notes will be returned and sorted by it's latest modified date|
+| |<li>modified_on</li> |List of notes will be returned and sorted by it's latest modified date.|
 
 
 ### Returns 
@@ -728,10 +728,10 @@ curl -v -X GET \
 
 | Code      | Description | 
 | ---:        |    :----   | 
-| **200** <br> <span class = "success">`OK`</span>      |  This indicates that the operation was successful and returned list of notes.  |
-|**400** <br> <span class = "error">`Bad Request` </span>| Bad Request may occur when offset and limit value is negative.|
+| **200** <br> <span class = "success">`OK`</span> | This indicates that the operation was successful and returned list of notes.  |
+| **400** <br> <span class = "error">`Bad Request`</span> | Bad Request may occur when offset and limit value is negative.|
 | **403** <br> <span class = "error">`Forbidden`</span> | Authorization failed due to insufficient permissions. This occurs when user does not have enough access rights to perform this action. Access for each user can be controlled by an Administrator using eRS Cloud Application.|
-|  **404** <br><span class = "error">`Not Found`</span> |This status code indicates that project ID does not exist| 
+| **404** <br><span class = "error">`Not Found`</span> | This status code indicates that project ID does not exist.| 
 
 
 > Example Request
@@ -756,7 +756,7 @@ curl -v -X POST "https://app.eresourcescheduler.cloud/rest/v1/projects/8/notes"\
 
 Name         |  Description
  ---:        |    :----   
-**content**  <br><span class="required">`required`</span>  | To create new note you have to pass the body from content parameter.  Content param accepts plain text. Also, you can pass text with HTML tags as Notes are Multi Line Rich Text.
+**content**  <br><span class="required">`required`</span>  | To create new note you have to pass the body from content parameter. Content param accepts plain text. Also, you can pass text with HTML tags as Notes are Multi Line Rich Text.
 
 
 ### Returns
@@ -765,8 +765,8 @@ Name         |  Description
  :---        |    :----   |
 | **201** <br><span class = "success">`Created`</span> | This status code indicates that the operation was successful and created a note successfully.|
 | **400** <br> <span class = "error">`Bad Request`</span> | Bad Request error occurs when a request is malformed, syntactically incorrect, missing required parameters are  or any unknown parameter is passed.  |
-| **403** <br> <span class = "error">`Forbidden`</span> |Authorization failed due to insufficient permissions. This occurs when user does not have enough access rights to perform this action. Access for each user can be controlled by an Administrator using eRS Cloud Application.|
-  **404** <br><span class = "error">`Not Found`</span> |This status code indicates that project does not exist| 
+| **403** <br> <span class = "error">`Forbidden`</span> | Authorization failed due to insufficient permissions. This occurs when user does not have enough access rights to perform this action. Access for each user can be controlled by an Administrator using eRS Cloud Application.|
+  **404** <br><span class = "error">`Not Found`</span> | This status code indicates that project does not exist.| 
 
 
 
@@ -775,7 +775,7 @@ Name         |  Description
 
 >` PUT  v1/projects/{ID}/notes/{Note_ID}`
 
-Updates the specified project's note by setting the value of the parameter passed. You need to  provide the unique project identifier that was returned upon project creation and unique note identifier that was returned upon notes creation. If parameter is not provided then it will be left unchanged.
+Updates the specified project's note by setting the value of the parameter passed. You need to  provide the unique project identifier that was returned upon project creation and unique note identifier that was returned upon note's creation. If parameter is not provided then it will be left unchanged.
 
 This request accepts mostly the same argument as the note creation call.
 
@@ -804,14 +804,14 @@ Name         |  Description
 | **200** <br> <span class = "success">`OK`</span>    |  This indicates that the operation was successful and a note updated successfully.|
 | **400** <br> <span class = "error">`Bad Request`</span> | Bad Request occurs when a request is not well-formed, syntactically incorrect, empty required parameters or any unknown parameter is passed.|
 | **403** <br> <span class = "error">`Forbidden`</span> | Authorization failed due to insufficient permissions. This occurs when user does not have enough access rights to perform this action. Access for each user can be controlled by an Administrator using eRS Cloud Application.|
-|  **404** <br><span class = "error">`Not Found`</span> |This status code indicates that project or notes does not exist| 
+|  **404** <br><span class = "error">`Not Found`</span> | This status code indicates that project or note does not exist.| 
 
 
 ### Delete a note
 
 >` DELETE  v1/projects/{ID}/notes/{Note_ID}`
 
-Permanently deletes a Note. It cannot be undone. You need to  provide the unique project identifier that was returned upon project creation and unique note identifier that was returned upon notes creation.
+Permanently deletes a Note. It cannot be undone. You need to  provide the unique project identifier that was returned upon project creation and unique note identifier that was returned upon note's creation.
 
 > Example Request
 
@@ -825,7 +825,7 @@ curl -v -X DELETE "https://app.eresourcescheduler.cloud/rest/v1/projects/8/notes
 
 | Code      | Description  
 | ---:        |    :----   
-| **200** <br><span class = "success">`OK`</span> |This status code indicates that the operation was successful and a note deleted successfully |
+| **200** <br><span class = "success">`OK`</span> |This status code indicates that the operation was successful and a note deleted successfully. |
 | **403** <br> <span class = "error">`Forbidden`</span> | Authorization failed due to insufficient permissions. This occurs when user does not have enough access rights to perform this action. Access for each user can be controlled by an Administrator using eRS Cloud Application.|
-|  **404** <br><span class = "error">`Not Found`</span> |This status code indicates that project or notes does not exist| 
+|  **404** <br><span class = "error">`Not Found`</span> | This status code indicates that project or note does not exist.| 
 

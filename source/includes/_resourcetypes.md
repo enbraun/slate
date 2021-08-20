@@ -157,7 +157,7 @@ Name | Description
 **fields.options** <br> `array of objects` | Field types such as Dropdown Single Select, Dropdown Multi Select, Radio Group etc. ( See <a href="#user-defined-fields" class = "api-ref">User Defined Fields</a> to know more. ) Allows user to pick one or more from these available options.
 **fields.options.id** <br> `integer` |   Represents unique identification number for the individual option object.
 **fields.options.name** <br> `string` | Represents name or content of option object.
-**fields.options.color** <br> `string` | Allows a user to store color code of option object.<span class="warning">It is only available for LABEL type fields</span>.
+**fields.options.color** <br> `string` | Allows a user to store color code of option object. <span class="warning">It is only available for LABEL type fields</span>.
 
 
 
