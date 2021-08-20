@@ -427,7 +427,7 @@ curl -v -X DELETE \
 -H "Authorization: Bearer B8x5Vj1O65r6wnoV"
 ```
 
-> Example Request For Forcefull Delete 
+> Example Request For Forceful Delete 
  
 ```shell
 curl -v -X DELETE \

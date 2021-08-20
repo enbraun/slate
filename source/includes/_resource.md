@@ -99,7 +99,7 @@ Creates a new resource object.
     
 > **`POST /v1/resources`**
 
-> Example Request for human type of resource:
+> Example Request For Human Type Of Resource:
 
 ```shell
  curl -v -X POST "https://app.eresourcescheduler.cloud/rest/v1/resources" \
@@ -116,7 +116,7 @@ Creates a new resource object.
      }'
 ```
 
-> Example Request for non-human resource:
+> Example Request For Non-Human Type Of Resource:
 
 ```shell
  curl -v -X POST "https://app.eresourcescheduler.cloud/rest/v1/resources" \
@@ -146,7 +146,7 @@ Name         |  Description
 **roles**<br><span class="mandatoryFlag">&#9873;</span> <span class="removableFlag mln-2">&#9873;</span> | An array of IDs of Roles (which are defined by an Administrator user in eRS Cloud Application) to be assigned to this Resource. The first ID in the array is considered as Primary Role of that Resource. Multiple performing roles can be applied to a resource. Resources can also be searched / filtered using performing roles.
 **calendar**  <br>`optional` | ID of Calendar object which should be assigned to resource effective from it's `start_date`. Depending upon requirements, different calendars can be applied on different resources. If calendar is omitted then default calendar (as defined in <a href="https://app.eresourcescheduler.cloud/#!/admin/calendars/settings" target="_blank" class="api-ref">Administrator calendar settings</a>) will be applied for this resource.
 **tags**<br><span class="removableFlag">&#9873;</span> | An optional array of strings which could be attached to this resource object as labels. This can be useful for the purpose of filtering, identification or other information.
-**timezone** <br><span class="mandatoryFlag">&#9873;</span> <span class="removableFlag mln-2">&#9873;</span> | One timezone object can be defined for a resource. <span class="warning">This field is only available when scheduling plus module is on</span>.
+**timezone** <br><span class="mandatoryFlag">&#9873;</span> <span class="removableFlag mln-2">&#9873;</span> | One timezone object can be defined for a resource.<br><br>_**Note**: <span class="warning">This field is only available when scheduling plus module is on</span>._
 **disable_parallel_booking** <br>`optional` | Boolean value defining if resource can or cannot have multiple bookings at a time. Default value for disable parallel booking is false.
 **udf_\*** <br><span class="mandatoryFlag">&#9873;</span> <span class="removableFlag mln-2">&#9873;</span> | A user with Administrator rights can add custom fields. These fields can be used to capture additional information in Resources. Different types of resources may have a different set of user-defined fields. The value for user defined field can be passed as shown in example request. In first example `udf_employee_no` is a user defined field. <a href ="#user-defined-fields" class="api-ref">Learn more</a><br><br>_**Note**: User with Administrator rights can make fields marked with <span class="mandatoryFlag iconInline">&#9873;</span> mandatory and remove fields marked with <span class="removableFlag iconInline">&#9873;</span>, from <a href ="#get-a-specific-resource-type" class="api-ref">specific resource type</a> using eRS Cloud Application. If mandatory fields are not passed with a valid value or removed fields are passed while creating resource, the operation will fail with response code **400**_.
 
@@ -458,7 +458,7 @@ curl -v -X PUT \
 **phone**<br><span class="mandatoryFlag">&#9873;</span> <span class="removableFlag mln-2">&#9873;</span> | String representing phone number of resource. It’s displayed alongside the resource in your resource list.
 **roles**<br><span class="mandatoryFlag">&#9873;</span> <span class="removableFlag mln-2">&#9873;</span> | An array of IDs of Roles (which are defined by an Administrator user in eRS Cloud Application) to be assigned to this Resource. The first ID in the array is considered as Primary Role of that Resource. Multiple performing roles can be applied to a resource. Resources can also be searched / filtered using performing roles.
 **tags**<br><span class="removableFlag mln-2">&#9873;</span> | An optional array of strings which could be attached to this resource object as labels. This can be useful for the purpose of filtering, identification or other information.
-**timezone** <br><span class="mandatoryFlag">&#9873;</span> <span class="removableFlag mln-2">&#9873;</span> | One timezone object can be defined for a resource. <span class="warning">This field is only available when scheduling plus module is on</span>.
+**timezone** <br><span class="mandatoryFlag">&#9873;</span> <span class="removableFlag mln-2">&#9873;</span> | One timezone object can be defined for a resource.<br><br>_**Note**: <span class="warning">This field is only available when scheduling plus module is on</span>._
 **disable_parallel_booking** <br>`optional` | Boolean value defining if resource can or cannot have multiple bookings at a time. Default value for disable parallel booking is false.
 **udf_\*** <br><span class="mandatoryFlag">&#9873;</span> <span class="removableFlag mln-2">&#9873;</span> | A user with Administrator rights can add custom fields. These fields can be used to capture additional information in Resources. Different types of resources may have a different set of user-defined fields. The value for user defined field can be passed as shown in example request. In first example `udf_employee_no` is a user defined field. <a href ="#user-defined-fields" class="api-ref">Learn more</a><br><br>_**Note**: User with Administrator rights can make fields marked with <span class="mandatoryFlag iconInline">&#9873;</span> mandatory and remove fields marked with <span class="removableFlag iconInline">&#9873;</span>, from <a href ="#get-a-specific-resource-type" class="api-ref">specific resource type</a> using eRS Cloud Application. If mandatory fields are not passed with a valid value or removed fields are passed while updating resource, the operation will fail with response code **400**_.
 
@@ -1045,7 +1045,7 @@ curl -v -X GET \
 "https://app.eresourcescheduler.cloud/rest/v1/resources/8/notes?offset=1&limit=10" \
  -H "Authorization: Bearer B8x5Vj1O65r6wnoV"
 ```
->Example Request With orderBy 
+>Example Request With order_by 
 
 ```shell 
 curl -v -X GET \
