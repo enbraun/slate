@@ -216,7 +216,7 @@ curl -v \
 | ---:        |    :----   | 
 | **200** <br> <span class = "success">`OK`</span>     | This status code indicates that the operation was successful and a project-type  get retrieved successfully .  |
 | **403** <br> <span class = "error">`Forbidden`</span> | Authorization failed due to insufficient permissions. This occurs when user does not have enough access rights to perform this action. Access for each user can be controlled by an Administrator using eRS Cloud Application.|
-|  **404** <br><span class = "error">`Not Found`</span> |This status code indicates that project-type id does not exist|
+|  **404** <br><span class = "error">`Not Found`</span> |This status code indicates that project-type ID does not exist|
 
 
 ## Get All Project Types

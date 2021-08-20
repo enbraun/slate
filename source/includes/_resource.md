@@ -135,7 +135,7 @@ Creates a new resource object.
 
 Name         |  Description
  ---:        |    :----   
-**resource_type_id** <br> <span class="required">`required`</span> | Id of <a href = "#resource-types" class ="api-ref">resource-type</a> object. Every resource must be linked to a <a href = "#resource-types" class ="api-ref">resource-type</a>. Let’s assume there are two resource types defined as Employee (_having id 1_) and Meeting Room (_having id 2_). While creating a new resource, all the resource whose `resource_type_id` is given as **1** will get created under Employee type and the same for Meeting Room when `resource_type_id` is **2**.
+**resource_type_id** <br> <span class="required">`required`</span> | ID of <a href = "#resource-types" class ="api-ref">resource-type</a> object. Every resource must be linked to a <a href = "#resource-types" class ="api-ref">resource-type</a>. Let’s assume there are two resource types defined as Employee (_having ID 1_) and Meeting Room (_having ID 2_). While creating a new resource, all the resource whose `resource_type_id` is given as **1** will get created under Employee type and the same for Meeting Room when `resource_type_id` is **2**.
 **first_name** <br> <span class="required">`required`</span>  | String representing the first name of a resource. This may be up to 100 characters.<br> _**Note**: for `non-human` resources, this field is <span class="warning">not available</span>_.
 **last_name** <br><span class="mandatoryFlag">&#9873;</span> <span class="removableFlag mln-2">&#9873;</span> | String representing the last name of a resource. This may be up to 100 characters.<br> _**Note**: for `non-human` resources, this field is <span class="warning">not available</span>_.
 **name** <br> <span class="required">`required`</span> | String representing the name of a resource. This may be up to 100 characters.<br> _**Note**: This field is only available for `non-human` resources, and for `human` resources this field is <span class="warning">not available</span>_.
@@ -143,8 +143,8 @@ Name         |  Description
 **last_date**<br>`optional` |  String value representing a date in ISO 8601 extended notation for date i.e. yyyy-MM-dd. A resource is only available till it's last working date i.e system does not consider any capacity of resource beyond this date (_if defined_).
 **email**<br><span class="mandatoryFlag">&#9873;</span> <span class="removableFlag mln-2">&#9873;</span> |  String value representing email address of resource object. Email address must be properly formatted with a maximum length of 254 characters.
 **phone**<br> <span class="mandatoryFlag">&#9873;</span> <span class="removableFlag mln-2">&#9873;</span> | String representing phone number of resource. It’s displayed alongside the resource in your resource list.
-**roles**<br><span class="mandatoryFlag">&#9873;</span> <span class="removableFlag mln-2">&#9873;</span> | An array of ids of Roles (which are defined by an Administrator user in eRS Cloud Application) to be assigned to this Resource. The first id in the array is considered as Primary Role of that Resource. Multiple performing roles can be applied to a resource. Resources can also be searched / filtered using performing roles.
-**calendar**  <br>`optional` | Id of Calendar object which should be assigned to resource effective from it's `start_date`. Depending upon requirements, different calendars can be applied on different resources. If calendar is omitted then default calendar (as defined in Administrator settings) will be applied for this resource.
+**roles**<br><span class="mandatoryFlag">&#9873;</span> <span class="removableFlag mln-2">&#9873;</span> | An array of ids of Roles (which are defined by an Administrator user in eRS Cloud Application) to be assigned to this Resource. The first ID in the array is considered as Primary Role of that Resource. Multiple performing roles can be applied to a resource. Resources can also be searched / filtered using performing roles.
+**calendar**  <br>`optional` | ID of Calendar object which should be assigned to resource effective from it's `start_date`. Depending upon requirements, different calendars can be applied on different resources. If calendar is omitted then default calendar (as defined in Administrator settings) will be applied for this resource.
 **tags**<br><span class="removableFlag">&#9873;</span> | An optional array of strings which could be attached to this resource object as labels. This can be useful for the purpose of filtering, identification or other information.
 **timezone** <br><span class="mandatoryFlag">&#9873;</span> <span class="removableFlag mln-2">&#9873;</span> | One timezone object can be defined for a resource. <span class="warning">This field is only available when scheduling plus module is on</span>.
 **disable_parallel_booking** <br>`optional` | Boolean value defining if resource can or cannot have multiple bookings at a time. Default value for disable parallel booking is false.
@@ -359,7 +359,7 @@ Retrieves the details of an existing resource. You only need to provide the uniq
 | ---:      |    :----    | 
 **200** <br> <span class = "success">`OK`</span> | Indicates that the operation was successful and a resource is retrieved successfully .
 **403** <br> <span class = "error">`Forbidden`</span> | Authorization failed due to insufficient permissions. This occurs when user does not have enough access rights to perform this action. Access for each user can be controlled by an Administrator using eRS Cloud Application.
-**404** <br> <span class = "error">`Not Found`</span> | Not Found error occurs when requested resource does not exist (i.e. There is no resource with given id). This may also occur when requesting a resource which has been deleted.
+**404** <br> <span class = "error">`Not Found`</span> | Not Found error occurs when requested resource does not exist (i.e. There is no resource with given ID). This may also occur when requesting a resource that has been deleted.
 
 ## Search resources
 
@@ -400,7 +400,7 @@ curl -X POST \
 
 Search Resource API allows filtering the results returned in various ways. This enables a great power to find out what is needed. eRS Cloud API also allows filtering on custom defined fields with multiple operators and conditions to cover up complex scenarios for searching.
 
-A filter condition consists of three components which are **_field_**, **_operator_** and **_value_**. For example, fetching only those resources having resource type id 1, could be achieved by adding `"resource_type_id:eq": 1` to your query. If operator is not supplied, it takes default operator for field. <a href="#filters" class="api-ref">Read more</a>
+A filter condition consists of three components which are **_field_**, **_operator_** and **_value_**. For example, fetching only those resources having `resource_type_id` 1, could be achieved by adding `"resource_type_id:eq": 1` to your query. If operator is not supplied, it takes default operator for field. <a href="#filters" class="api-ref">Read more</a>
 
 Below is a list of available fields, which allow filtering resources:
 
@@ -416,7 +416,7 @@ Below is a list of available fields, which allow filtering resources:
 **start_Date**|<li>**eq** (_default_)</li><li>lt</li><li>gt</li><li> bt</li><li>ex</li>| `"start_date:eq": "2016-01-27"`<br>` "start_date:lt": "1999-12-22"`<br>` "start_date:gt": "1990-01-11"`<br>`"start_date:bt": ["2001-01-01", "2010-12-31"]`<br> `"start_date:ex": ["1992-02-12", "1997-01-27"]`
 **last_date**|<li>**eq** (_default_)</li><li>lt</li><li>gt</li><li> bt</li><li>ex</li>| `"last_date:eq": "2016-05-17"` <br> `"last_date:lt": "2002-12-31"`<br>` "last_date:gt": "2010-01-01"` <br> `"last_date:bt": ["1995-12-31", "1999-01-01"]`<br> `"last_date:ex": ["2001-01-01", "2002-01-01"]`
 **timezone**|<li>**eq** (_default_)</li><li>neq</li><li>any</li><li>none</li>| `"timezone:eq": 1`<br>`"timezone:neq": 1`<br>`"timezone:any": [1, 2]`<br>`"timezone:none": [3, 2]`
-**disable_paralled_booking**|Accepts value true or false |`"disable_paralled_booking": true`<br>`"disable_paralled_booking": false`
+**disable_paralled_booking**| N/A |`"disable_paralled_booking": true`<br>`"disable_paralled_booking": false`
 **created_by**|<li>**eq** (_default_)</li><li>neq</li><li>any</li><li>none</li>| `"created_by:eq": 1`<br>`"created_by:neq": 1`<br>`"created_by:any": [1, 2]`<br>`"created_by:none": [1, 2]`
 **modified_by**|<li>**eq** (_default_)</li><li>neq</li><li>any</li><li>none</li>| `"modified_by:eq": 1`<br>`"modified_by:neq": 1`<br>`"modified_by:any": [1, 2]`<br>`"modified_by:none": [1, 2]`
 **created_on**|<li>**eq** (_default_)</li><li>lt</li><li>gt</li><li>bt</li><li>ex</li>| `"created_on:eq": ["2021-07-08T00:00:00]`<br>`"created_on:lt": ["2021-07-08T00:00:00]`<br>`"created_on:gt": ["2021-07-08T59:59:59"]`<br>`"created_on:bt": ["2021-07-08T00:00:00", "2021-07-10T23:59:59"]`<br>`"created_on:bt": ["2021-07-08T00:00:00", ""]` <br>`"created_on:bt": ["", "2021-07-10T23:59:59"]` <br>`"created_on:ex": ["2021-07-08T00:00:00", "2021-07-10T23:59:59"]` <br>`"created_on:ex": ["2021-07-08T00:00:00", ""]` <br>`"created_on:ex": ["", "2021-07-10T23:59:59"]]` 
@@ -427,7 +427,7 @@ Below is a list of available fields, which allow filtering resources:
 
 Updates specified resource by setting the values of the parameters passed. Any parameters which are not provided remains unchanged. To unset existing value for a parameter, just pass an empty value i.e. `null`.
 
-This request accepts mostly the same arguments as `Create Resource` API.
+This request accepts mostly the same arguments as `Create Resource` API, except user can never update `resource_type_id` of any resource.
 
 >  **`PUT /v1/resources/{ID}`**
 
@@ -456,7 +456,7 @@ curl -v -X PUT \
 **last_date**<br>`optional` |  String value representing a date in ISO 8601 extended notation for date i.e. yyyy-MM-dd. A resource is only available till it's last working date i.e system does not consider any capacity of resource beyond this date (_if defined_).
 **email**<br><span class="mandatoryFlag">&#9873;</span> <span class="removableFlag mln-2">&#9873;</span> |  String value representing email address of resource object. Email address must be properly formatted with a maximum length of 254 characters.
 **phone**<br><span class="mandatoryFlag">&#9873;</span> <span class="removableFlag mln-2">&#9873;</span> | String representing phone number of resource. It’s displayed alongside the resource in your resource list.
-**roles**<br><span class="mandatoryFlag">&#9873;</span> <span class="removableFlag mln-2">&#9873;</span> | An array of ids of Roles (which are defined by an Administrator user in eRS Cloud Application) to be assigned to this Resource. The first id in the array is considered as Primary Role of that Resource. Multiple performing roles can be applied to a resource. Resources can also be searched / filtered using performing roles.
+**roles**<br><span class="mandatoryFlag">&#9873;</span> <span class="removableFlag mln-2">&#9873;</span> | An array of ids of Roles (which are defined by an Administrator user in eRS Cloud Application) to be assigned to this Resource. The first ID in the array is considered as Primary Role of that Resource. Multiple performing roles can be applied to a resource. Resources can also be searched / filtered using performing roles.
 **tags**<br><span class="removableFlag mln-2">&#9873;</span> | An optional array of strings which could be attached to this resource object as labels. This can be useful for the purpose of filtering, identification or other information.
 **timezone** <br><span class="mandatoryFlag">&#9873;</span> <span class="removableFlag mln-2">&#9873;</span> | One timezone object can be defined for a resource. <span class="warning">This field is only available when scheduling plus module is on</span>.
 **disable_parallel_booking** <br>`optional` | Boolean value defining if resource can or cannot have multiple bookings at a time. Default value for disable parallel booking is false.
@@ -469,7 +469,7 @@ curl -v -X PUT \
 **200** <br> <span class = "success">`OK`</span> | Indicates that the operation was successful and requested resource updated successfully.|
 **400** <br> <span class = "error">`Bad Request`</span> | Bad Request occurs when a request is not well-formed, syntactically incorrect, empty required parameters or any unknown parameter is passed. <br> Additionally, Bad request may also occur in one of these conditions :<li>Trying to update an archived resource.</li><li>Trying to change `start_date` or `last_date` such that `last_date` gets smaller than `start_date`.</li><li>Trying to update `start_date` and `last_date` of a resource such that existing bookings of that resource do not fit in given range.</li>
 **403** <br> <span class = "error">`Forbidden`</span> | Authorization failed due to insufficient permissions. This occurs when user does not have enough access rights to perform this action. Access for each user can be controlled by an Administrator using eRS Cloud Application.
-**404** <br> <span class = "error">`Not Found`</span> | Not Found error occurs when requested resource does not exist (i.e. There is no resource with given id). This may also occur when updating a resource which has been deleted.
+**404** <br> <span class = "error">`Not Found`</span> | Not Found error occurs when requested resource does not exist (i.e. There is no resource with given ID). This may also occur when updating a resource that has been deleted.
 
 
 ## Delete a resource 
@@ -622,7 +622,7 @@ Retrieves the details of timings which are applied to the resource. You only nee
 | ---:        |    :----   | 
 | **200** <br> <span class = "success">`OK`</span>     | This status code indicates that the operation was successful and timings retrieved successfully .  |
 | **403** <br> <span class = "error">`Forbidden`</span> |Authorization failed due to insufficient permissions. This occurs when user does not have enough access rights to perform this action. Access for each user can be controlled by an Administrator using eRS Cloud Application.|
-| **404** <br> <span class = "error">`Not Found`</span> | Not Found error occurs when requested resource does not exist (i.e. There is no resource with given id). This may also occur when requesting a resource that has been deleted. |
+| **404** <br> <span class = "error">`Not Found`</span> | Not Found error occurs when requested resource does not exist (i.e. There is no resource with given ID). This may also occur when requesting a resource that has been deleted. |
 
 <br><br><br><br><br><br><br><br>
 <br><br><br><br><br><br><br><br>
@@ -650,7 +650,7 @@ curl -v -X POST "https://app.eresourcescheduler.cloud/rest/v1/resources/12/timin
 Name         |  Description
  ---:        |    :----   
 **applied_on**  <br><span class="required">`required`</span>| Applied on Field describes when calendar is applied. It is a `DateTime` type of field. 
-**calendar_id**  <br><span class="required">`required`</span>|As the name shows it is a calendar id which we have to pass. You will get this id at the time of calendar creation. This field accepts `Integer` only. 
+**calendar_id**  <br><span class="required">`required`</span>|As the name shows it is a calendar ID which we have to pass. You will get this ID at the time of calendar creation. This field accepts `Integer` only. 
 **effective_date**  <br><span class="required">`required`</span>|Effective date is the date on which the calendar will come into effect on applied resources. This field accepts `Date` only.
 
 
@@ -695,7 +695,7 @@ This request accepts mostly the same argument as the note creation call.
 Name         |  Description
  ---:        |    :----   
 **applied_on**  <br><span class="required">`required`</span>| Applied on Field describes when calendar is applied. It is a `DateTime` type of field. 
-**calendar_id**  <br><span class="required">`required`</span>|As the name shows it is a calendar id which we have to pass. You will get this id at the time of calendar creation. This field accepts `Integer` only. 
+**calendar_id**  <br><span class="required">`required`</span>|As the name shows it is a calendar ID which we have to pass. You will get this ID at the time of calendar creation. This field accepts `Integer` only. 
 **effective_date**  <br><span class="required">`required`</span>|Effective date is the date on which the calendar will come into effect on applied resources. This field accepts `Date`only.
 
 ### Returns
@@ -703,9 +703,9 @@ Name         |  Description
 | Code      | Description | 
 | ---:        |    :----   | 
 | **200** <br> <span class = "success">`OK`</span>    |  This indicates that the operation was successful and timings updated successfully.|
-| **400** <br> <span class = "error">`Bad Request`</span> | Bad Request occurs when a request is not well-formed, syntactically incorrect, empty required parameters or any unknown parameter is passed.|
+| **400** <br> <span class = "error">`Bad Request`</span> | Bad Request occurs when a request is not well-formed, syntactically incorrect, empty required parameters or any unknown parameter is passed. Bad request can also occur when when trying to update timing as there will be no effective timing on `start_date` of resource.|
 | **403** <br> <span class = "error">`Forbidden`</span> |Authorization failed due to insufficient permissions. This occurs when user does not have enough access rights to perform this action. Access for each user can be controlled by an Administrator using eRS Cloud Application.|
-| **404** <br> <span class = "error">`Not Found`</span> | Not Found error occurs when requested resource id or timing id does not exist.
+| **404** <br> <span class = "error">`Not Found`</span> | Not Found error occurs when requested resource ID or timing ID does not exist.
 
 ### Delete timings
 
@@ -727,8 +727,9 @@ curl -v -X DELETE \
 
 | Code      | Description  
 | ---:        |    :----   
-| **200** <br><span class = "success">`OK`</span> |This status code indicates that the operation was successful and an applied calendar deleted successfully |
-| **404** <br> <span class = "error">`Not Found`</span> | Not Found error occurs when requested resource id or timing id does not exist.
+| **200** <br><span class = "success">`OK`</span> |This status code indicates that the operation was successful and an applied calendar deleted successfully. |
+| **400** <br><span class = "error">`Bad Request`</span> | Bad request indicates that this timing cannot be deleted from this resource as this calendar is effective from or before `start_date` of resource.
+| **404** <br> <span class = "error">`Not Found`</span> | Not Found error occurs when requested resource ID or timing ID does not exist.
 
 ## Exceptions
 
@@ -803,6 +804,38 @@ curl -v -X GET \
   -H "Authorization: Bearer B8x5Vj1O65r6wnoV"
 ```
 
+> Example Response
+
+```json
+{
+   "total_count":1,
+   "data":[
+      {
+         "id":2,
+         "name":"Working Sunday",
+         "description":"Working Sunday",
+         "date":"2018-11-17",
+         "is_working_exception":true,
+         "created_on":"2018-11-03T15:07:30.917087+05:30",
+         "modified_on":null,
+         "created_by":{
+            "id":2,
+            "name":"Patrick Wilson"
+         },
+         "modified_by":{
+            "id":null,
+            "name":null
+         },
+         "timings":[
+            {
+               "start_time":600,
+               "end_time":1080
+            }
+         ]
+      }
+   ]
+}
+```
 
 Retrieves the details of exceptions which are applied to the resource. You only need to provide the unique resource identifier that was returned upon resource creation.
 
@@ -814,7 +847,7 @@ Retrieves the details of exceptions which are applied to the resource. You only 
 | ---:        |    :----   | 
 | **200** <br> <span class = "success">`OK`</span>     | This status code indicates that the operation was successful and exceptions retrieved successfully .  |
 | **403** <br> <span class = "error">`Forbidden`</span> |Authorization failed due to insufficient permissions. This occurs when user does not have enough access rights to perform this action. Access for each user can be controlled by an Administrator using eRS Cloud Application.|
-| **404** <br> <span class = "error">`Not Found`</span> | Not Found error occurs when requested resource does not exist (i.e. There is no resource with given id). This may also occur when requesting a resource that has been deleted. |
+| **404** <br> <span class = "error">`Not Found`</span> | Not Found error occurs when requested resource does not exist (i.e. There is no resource with given ID). This may also occur when requesting a resource that has been deleted. |
 
 
 ### Create an exception
@@ -1018,6 +1051,34 @@ curl -v -X GET \
 curl -v -X GET \
  "https://app.eresourcescheduler.cloud/rest/v1/resources/8/notes?offset=1&limit=10&order_by=created_on" \
  -H "Authorization: Bearer B8x5Vj1O65r6wnoV"
+```
+> Exmaple Response
+
+```json
+{
+   "total_count":3,
+   "limit":10,
+   "offset":1,
+   "data":[
+      {
+         "id":8,
+         "created_on":"2018-09-02T17:41:14.642026+05:30",
+         "content":"<p>Awarded by  &#34;Employee Of The Month&#34; 
+                    award on Aug  09, 2017<br> </p>",
+         "modified_on":null,
+         "created_by":{
+            "id":2,
+            "name":"Patrick Wilson"
+         },
+         "modified_by":{
+            "id":null,
+            "name":null
+         }
+      },
+      {...},
+      {...}
+   ]
+}
 ```
 
 

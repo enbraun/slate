@@ -12,7 +12,7 @@ Alternatively, OAuth flow can be used to obtain a token if access is required by
 
 eRS Cloud API allows access using OAuth 2 code flow to enable integration with third party applications. OAuth 2 is an open standard for authorization that enables third party applications  to obtain access of API on behalf of user who wishes to approve access.
 
-Developer (having Administrator access to eRS Cloud) are require to register an application to use OAuth. Once application is registered, it is assigned a client Id and client secret. The client secret should be kept confidential and only use when authorizing between application and eRS cloud authorization server.
+Developer (having Administrator access to eRS Cloud) are require to register an application to use OAuth. Once application is registered, it is assigned a client ID and client secret. The client secret should be kept confidential and only use when authorizing between application and eRS cloud authorization server.
 
 
 > Example : Authorization Link 
@@ -38,9 +38,9 @@ https://app.eresourcescheduler.cloud/login/oauth/authorize
 
 Name | Description
 ----------: | :-------
-**client_id** <br>`string` <span class="required">`required`</span>   |  eRS Cloud generated unique client id which was assigned while registering application. 
+**client_id** <br>`string` <span class="required">`required`</span>   |  eRS Cloud generated unique client ID which was assigned while registering application. 
 **redirect_uri** <br>`string` <span class="required">`required`</span>  | The callback url where user will be sent back after authorization. This value must match to redirect uri, given at the time of application registration.
-**response_type** <br>`string` <span class="required">`required`</span>  | This must be set to `"code"` for obtaining grant code.
+**response_type** <br>`string` <span class="required">`required`</span>  | This must be set to "code" for obtaining grant code.
 **state** <br>`string` `optional`  | It is used to identify or verify origin of request. Usually it is a random string which is passed along with this request and expect the same when eRS Cloud redirects back to defined redirect uri after authorization.  
 
 
@@ -59,7 +59,7 @@ grant_type=authorization_code\
 
 ###2. Request Access Token
 
-Once authorization is complete, eRS Cloud sends redirect back to defined `redirect_uri` with a grant code parameter **"code"** (and **state** parameter if was issued at the time of requesting grant code) set. 
+Once authorization is complete, eRS Cloud sends redirect back to defined `redirect_uri` with a grant code parameter "code" (and state parameter if was issued at the time of requesting grant code) set. 
 
 Now this grant code can be used to fetch access token from token end point.
 
@@ -75,7 +75,7 @@ Name | Description
 ----------: | :-------
 **grant_type** <br> `string` <span class="required">`required`</span>  |  This must be set to "authorization_code" for access token request. 
 **code** <br> `string` <span class="required">`required`</span> | The grant code which was received in step 1.
-**client_id** <br> `string` <span class="required">`required`</span>  |  eRS Cloud generated unique client id which was assigned while registering application.
+**client_id** <br> `string` <span class="required">`required`</span>  |  eRS Cloud generated unique client ID which was assigned while registering application.
 **client_secret** <br> `string` <span class="required">`required`</span>  |  The client secret which was assigned while registering application.
 **redirect_uri** <br> `string` <span class="required">`required`</span> | The callback url where user will be sent back after authorization. This value must match to redirect uri, given at the time of application registration. 
 

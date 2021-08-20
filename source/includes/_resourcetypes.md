@@ -145,13 +145,13 @@ Name | Description
 **fields.display_name** <br> `string`  | Name of this field to identify it.
 **fields.field_type** <br>`string` |  Represents the type of field. For example  TEXT (for Text Field), INT (for Integer Number field), DDSS (for Dropdown Single Select Field), etc. See <a href="#user-defined-fields" class="api-ref">User Defined Fields</a> to know more about different field types.
 **fields.code** <br>`string` | It represents the unique code of the field which is referred as API code. This code acts as `key` in API response and the same must be used as `key` to pass values for a POST or PUT request.
-**fields.minlength** <br>`integer` |  Represents minimum no of characters in value this field can accept. <span class="warning"> only applicable for text fields</span>.
-**fields.maxlength** <br>`integer` |  Represents maximum no of characters in value this field can accept. <span class="warning">only applicable for text fields<span>.
-**fields.regex** <br>`string` |  Represents regular expression which must be matched by value for this field. <span class="warning">only applicable for text fields</span>.
-**fields.minnum** <br>`integer` |  Represents minimum value this field can accept. <span class="warning">only applicable for numeric fields<span>.
-**fields.maxnum** <br>`integer` |  Represents maximum value this field can accept. <span class="warning">only applicable for numeric fields</span>.
-**fields.mindate** <br>`string` |  Represents minimum value this field can accept. <span class="warning">only applicable for date / date time fields</span>.
-**fields.maxdate** <br>`string` |  Represents maximum value this field can accept. <span class="warning">only applicable for date / date time fields</span>.
+**fields.minlength** <br>`integer` |  Represents minimum no of characters in value this field can accept. <span class="warning"> Only applicable for text fields</span>.
+**fields.maxlength** <br>`integer` |  Represents maximum no of characters in value this field can accept. <span class="warning">Only applicable for text fields<span>.
+**fields.regex** <br>`string` |  Represents regular expression which must be matched by value for this field. <span class="warning">Only applicable for text fields</span>.
+**fields.minnum** <br>`integer` |  Represents minimum value this field can accept. <span class="warning">Only applicable for numeric fields<span>.
+**fields.maxnum** <br>`integer` |  Represents maximum value this field can accept. <span class="warning">Only applicable for numeric fields</span>.
+**fields.mindate** <br>`string` |  Represents minimum value this field can accept. <span class="warning">Only applicable for date / date time fields</span>.
+**fields.maxdate** <br>`string` |  Represents maximum value this field can accept. <span class="warning">Only applicable for date / date time fields</span>.
 **fields.is_required** <br> `boolean` | Indicates whether this field is mandatory or not. If this field is a required field then a valid value for this field must be passed while creating such object and while updating object (if this field is intended to update).
 **is_system_defined** <br> `boolean` | Indicates whether this field is system defined or a custom field. Fields which are system defined can not be customized.
 **fields.options** <br> `array of objects` | Field types such as Dropdown Single Select, Dropdown Multi Select, Radio Group etc. ( See <a href="#user-defined-fields" class = "api-ref">User Defined Fields</a> to know more. ) allow user to pick one or more from these available options.

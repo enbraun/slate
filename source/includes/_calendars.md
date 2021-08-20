@@ -277,4 +277,4 @@ curl -v \
 | Code      | Description | 
 | ---:        |    :----   | 
 | **200** <br> <span class = "success">`OK`</span>     | Indicates that the operation was successful and requested calendar has been returned successfully.
-|  **404** <br><span class = "error">`Not Found`</span> | indicates that calendar object with specified calendar id does not exist or has been deleted already.
+|  **404** <br><span class = "error">`Not Found`</span> | indicates that calendar object with specified calendar ID does not exist or has been deleted already.

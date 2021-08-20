@@ -87,7 +87,7 @@ Creates a new project object.
 
 Name               |  Description
  ---:        |    :----
- **project_type_id** <br> <span class="required">`required`</span> | Id of <a href="#project-types" class="api-ref">project-type</a> object. A project must be linked with one of <a href="#project-types" class="api-ref">project-type</a> defined in Administration section (_using eRS Cloud Application_). Let’s assume there are two project types defined as `Medical` (_having id as 1_) and `Education` (_having id as 2_), now while creating a new project, if `project_type_id` is given as **1** then it will get created under Medical type and the same for Education when `project_type_id` is given as **2**.
+ **project_type_id** <br> <span class="required">`required`</span> | ID of <a href="#project-types" class="api-ref">project-type</a> object. A project must be linked with one of <a href="#project-types" class="api-ref">project-type</a> defined in Administration section (_using eRS Cloud Application_). Let’s assume there are two project types defined as `Medical` (_having ID as 1_) and `Education` (_having ID as 2_), now while creating a new project, if `project_type_id` is given as **1** then it will get created under Medical type and the same for Education when `project_type_id` is given as **2**.
 **title** <br><span class="required">`required`</span> | String representing title / name of project. This can be a maximum of 255 characters long.
 **email**<br><span class="mandatoryFlag">&#9873;</span> <span class="removableFlag mln-2">&#9873;</span> | String value representing email address of project object. Email address must be properly formatted with a maximum length of 254 characters.
 **project_start_date**<br><span class="mandatoryFlag">&#9873;</span> <span class="removableFlag mln-2">&#9873;</span> | String value representing a date in ISO 8601 extended notation for date i.e. yyyy-MM-dd.
@@ -256,7 +256,7 @@ Retrieves the details of an existing project. You only need to provide the uniqu
 | ---:        |    :----   | 
 | **200** <br> <span class = "success">`OK`</span>     | This status code indicates that the operation was successful and project retrieved successfully .  |
 | **403** <br> <span class = "error">`Forbidden`</span> |Authorization failed due to insufficient permissions. This occurs when user does not have enough access rights to perform this action. Access for each user can be controlled by an Administrator using eRS Cloud Application.|
-| **404** <br> <span class = "error">`Not Found`</span> | Not Found error occurs when requested project does not exist (i.e. There is no project with given id). This may also occur when requesting a project that has been deleted. |
+| **404** <br> <span class = "error">`Not Found`</span> | Not Found error occurs when requested project does not exist (i.e. There is no project with given ID). This may also occur when requesting a project that has been deleted. |
 
 ## Search projects
 > **`POST /v1/projects/search`**
@@ -345,7 +345,7 @@ curl -X POST \
 
 Search Project API allows filtering the results returned in various ways. This enables a great power to find out what is needed. eRS Cloud API also allows filtering on custom defined fields with multiple operators and conditions to cover up complex scenarios for searching.
 
-A filter condition consists of three components which are **_field_**, **_operator_** and **_value_**. For example fetching only those projects having project type id 1, could be achieved by adding `"project_type_id:eq":1 ` to your query.  If operator is not supplied, it takes default operator for field. <a href="#filters" class="api-ref">Read more</a>
+A filter condition consists of three components which are **_field_**, **_operator_** and **_value_**. For example fetching only those projects having `project_type_id` 1, could be achieved by adding `"project_type_id:eq":1 ` to your query.  If operator is not supplied, it takes default operator for field. <a href="#filters" class="api-ref">Read more</a>
 
 Below is a list of available fields, which allow filtering projects:
 
@@ -359,8 +359,8 @@ Below is a list of available fields, which allow filtering projects:
 **project_start_date**|<li>**eq** (_default_)</li><li>lt</li><li>gt</li><li>bt</li><li>ex</li>|`"project_start_date:eq":"2015-02-02"`<br>`"project_start_date:lt":"2015-02-02"`<br>`"project_start_date:gt":"2015-02-02"`<br>`"project_start_date:bt":["2015-02-02","2015-04-05"]` <br>`"project_start_date:ex":["2015-02-02","2015-04-04"]`
 **end_date**|<li>**eq** (_default_) </li><li>lt</li><li>gt</li><li>bt</li><li>ex</li>| `"end_date:eq":"2015-02-02"`<br>`"end_date:lt":"2015-02-02"`<br>`"end_date:gt":"2015-02-02"`<br>`"end_date:bt":["2015-02-02","2015-04-05"]`<br>`"end_date:ex":["2015-02-02","2015-04-04"]`
 **tags**|<li>**any** (_default_) </li><li>none</li><li>all</li><li>ex</li>|`"tags:any":"["tagA", "tagB"]`<br>`"tags:none":"["tagA", "tagB"]`<br>`"tags:all":["tagB","tagC"]`<br>`"tags:ex":["tagB","tagC"]`
-**is_archive**| Accepts value true or false |`"is_archive":true` <br>`"is_archive":false`
-**disable_paralled_booking**|Accepts value true or false |`"disable_paralled_booking": true`<br>`"disable_paralled_booking": false`
+**is_archive**| N/A |`"is_archive":true` <br>`"is_archive":false`
+**disable_paralled_booking**| N/A |`"disable_paralled_booking": true`<br>`"disable_paralled_booking": false`
 **created_by**|<li>**eq** (_default_)</li><li>neq</li><li>any</li><li>none</li>| `"created_by:eq": 1`<br>`"created_by:neq": 1`<br>`"created_by:any": [1, 2]`<br>`"created_by:none": [1, 2]`
 **modified_by**|<li>**eq** (_default_)</li><li>neq</li><li>any</li><li>none</li>| `"modified_by:eq": 1`<br>`"modified_by:neq": 1`<br>`"modified_by:any": [1, 2]`<br>`"modified_by:none": [1, 2]`
 **created_on**|<li>**eq** (_default_)</li><li>lt</li><li>gt</li><li>bt</li><li>ex</li>| `"created_on:eq": ["2021-07-08T00:00:00]`<br>`"created_on:lt": ["2021-07-08T00:00:00]`<br>`"created_on:gt": ["2021-07-08T59:59:59"]`<br>`"created_on:bt": ["2021-07-08T00:00:00", "2021-07-10T23:59:59"]`<br>`"created_on:bt": ["2021-07-08T00:00:00", ""]` <br>`"created_on:bt": ["", "2021-07-10T23:59:59"]` <br>`"created_on:ex": ["2021-07-08T00:00:00", "2021-07-10T23:59:59"]` <br>`"created_on:ex": ["2021-07-08T00:00:00", ""]` <br>`"created_on:ex": ["", "2021-07-10T23:59:59"]]` 
@@ -371,7 +371,7 @@ Below is a list of available fields, which allow filtering projects:
 
 Updates specified project by setting the values of the parameters passed. Any parameters which are not provided remains unchanged. To unset existing value for a parameter, just pass an empty value i.e. `null`.
 
-This request accepts mostly the same arguments as `Create Project` API.
+This request accepts mostly the same arguments as `Create Project` API, except user can never update `project_type_id` of any project.
 
 > **`PUT /v1/projects/{ID}`**
 
@@ -500,7 +500,7 @@ Name         |  Description
  **name** <br> <span class ="required">`String`</span> | Name of task object.
 **start_time** <br>`String`| Represents start time of task object.
 **end_time** <br>`String`| Represents end time of task object. 
-**project_id** <br>`Integer` | Unique id of project object, which this task belongs to.
+**project_id** <br>`Integer` | Unique ID of project object, which this task belongs to.
 
 
 ### Returns
@@ -509,7 +509,7 @@ Name         |  Description
 | ---:        |    :----   | 
 **200** <br> <span class = "success">`OK`</span> | This status code indicates that the operation was successful and list tasks retrieved successfully.
 **403** <br> <span class = "error">`Forbidden`</span> |Authorization failed due to insufficient permissions. This occurs when user does not have enough access rights to perform this action. Access for each user can be controlled by an Administrator using eRS Cloud Application.
-**404** <br> <span class = "error">`Not Found`</span> | Not Found error occurs when requested project task does not exist (i.e. There is no project task exists with given id). This may also occur when requesting tasks of project that has been deleted.
+**404** <br> <span class = "error">`Not Found`</span> | Not Found error occurs when requested project task does not exist (i.e. There is no project task exists with given ID). This may also occur when requesting tasks of project that has been deleted.
 
 <br><br>
 
@@ -678,7 +678,7 @@ curl -v -X GET \
 ```json
 {
   "total_count": 3,
-  "limit": 25,
+  "limit": 10,
   "offset": 0,
   "data": [
     {
@@ -731,7 +731,7 @@ curl -v -X GET \
 | **200** <br> <span class = "success">`OK`</span>      |  This indicates that the operation was successful and returned list of notes.  |
 |**400** <br> <span class = "error">`Bad Request` </span>| Bad Request may occur when offset and limit value is negative.|
 | **403** <br> <span class = "error">`Forbidden`</span> | Authorization failed due to insufficient permissions. This occurs when user does not have enough access rights to perform this action. Access for each user can be controlled by an Administrator using eRS Cloud Application.|
-|  **404** <br><span class = "error">`Not Found`</span> |This status code indicates that project id does not exist| 
+|  **404** <br><span class = "error">`Not Found`</span> |This status code indicates that project ID does not exist| 
 
 
 > Example Request
