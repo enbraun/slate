@@ -21,7 +21,7 @@ Options:
 
 
 run_build() {
-  bundle exec middleman build --clean
+  bundle exec middleman build
 }
 
 parse_args() {
@@ -124,6 +124,9 @@ main() {
     git fetch --force $repo $deploy_branch:$deploy_branch
     enable_expanded_output
   fi
+
+  # Copy cname record to build directory
+  cp CNAME "$deploy_directory/"
 
   # check if deploy_branch exists locally
   if git show-ref --verify --quiet "refs/heads/$deploy_branch"
