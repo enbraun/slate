@@ -112,13 +112,13 @@ offset=1&limit=10" \
                 "created_on": "2018-08-20T09:20:34.925474Z",
                 "created_by": 
                 {
-                    "name": "Rahul Sharma",
+                    "name": "John doe",
                     "id": 118
                 },
                 "modified_on": "2018-09-28T12:23:44.896426Z",
                 "modified_by": 
                 {
-                    "name": "Rahul Sharma",
+                    "name": "John doe",
                     "id": 118
                 },
             },
@@ -130,13 +130,13 @@ offset=1&limit=10" \
                 "created_on": "2018-08-20T09:30:34.925474Z",
                 "created_by": 
                 {
-                    "name": "Rahul Sharma",
+                    "name": "John doe",
                     "id": 118
                 },
                 "modified_on": "2018-09-28T12:32:44.896426Z",
                 "modified_by": 
                 {
-                    "name": "Rahul Sharma",
+                    "name": "John doe",
                     "id": 118
                 },
             }
@@ -216,7 +216,7 @@ Below is a list of available fields, which allow filtering rates:
 **start_Date**|<li>**eq** (_default_)</li><li>lt</li><li>gt</li><li> bt</li><li>ex</li>| `"start_date:eq": "2016-01-27"`<br>` "start_date:lt": "1999-12-22"`<br>` "start_date:gt": "1990-01-11"`<br>`"start_date:bt": ["2001-01-01", "2010-12-31"]`<br> `"start_date:ex": ["1992-02-12", "1997-01-27"]`
 **last_date**|<li>**eq** (_default_)</li><li>lt</li><li>gt</li><li> bt</li><li>ex</li>| `"last_date:eq": "2016-05-17"` <br> `"last_date:lt": "2002-12-31"`<br>` "last_date:gt": "2010-01-01"` <br> `"last_date:bt": ["1995-12-31", "1999-01-01"]`<br> `"last_date:ex": ["2001-01-01", "2002-01-01"]`
 **timezone**|<li>**eq** (_default_)</li><li>neq</li><li>any</li><li>none</li>| `"timezone:eq": 1`<br>`"timezone:neq": 1`<br>`"timezone:any": [1, 2]`<br>`"timezone:none": [3, 2]`
-**disable_paralled_booking**| N/A |`"disable_paralled_booking": true`<br>`"disable_paralled_booking": false`
+**disable_parallel_booking**| N/A |`"disable_parallel_booking": true`<br>`"disable_parallel_booking": false`
 **created_by**|<li>**eq** (_default_)</li><li>neq</li><li>any</li><li>none</li>| `"created_by:eq": 1`<br>`"created_by:neq": 1`<br>`"created_by:any": [1, 2]`<br>`"created_by:none": [1, 2]`
 **modified_by**|<li>**eq** (_default_)</li><li>neq</li><li>any</li><li>none</li>| `"modified_by:eq": 1`<br>`"modified_by:neq": 1`<br>`"modified_by:any": [1, 2]`<br>`"modified_by:none": [1, 2]`
 **created_on**|<li>**eq** (_default_)</li><li>lt</li><li>gt</li><li>bt</li><li>ex</li>| `"created_on:eq": ["2021-07-08T00:00:00]`<br>`"created_on:lt": ["2021-07-08T00:00:00]`<br>`"created_on:gt": ["2021-07-08T59:59:59"]`<br>`"created_on:bt": ["2021-07-08T00:00:00", "2021-07-10T23:59:59"]`<br>`"created_on:bt": ["2021-07-08T00:00:00", ""]` <br>`"created_on:bt": ["", "2021-07-10T23:59:59"]` <br>`"created_on:ex": ["2021-07-08T00:00:00", "2021-07-10T23:59:59"]` <br>`"created_on:ex": ["2021-07-08T00:00:00", ""]` <br>`"created_on:ex": ["", "2021-07-10T23:59:59"]]` 
@@ -278,7 +278,7 @@ Name     |    Description
 
 ### Delete Resource Rate
 
-> **`DELETE /v1/resources/{ID}/rate/{RATE_ID}`**
+> **`DELETE /v1/resources/{ID}/rates/{RATE_ID}`**
 
 Permanently deletes a rate. It cannot be undone.
 
@@ -402,13 +402,13 @@ offset=1&limit=10" \
                 "created_on": "2018-08-20T09:25:34.925474Z",
                 "created_by": 
                 {
-                    "name": "Rahul Sharma",
+                    "name": "John doe",
                     "id": 118
                 },
                 "modified_on": "2018-09-28T12:32:44.896426Z",
                 "modified_by": 
                 {
-                    "name": "Rahul Sharma",
+                    "name": "John doe",
                     "id": 118
                 },
                 }
@@ -482,7 +482,7 @@ Below is a list of available fields, which allow filtering rates:
 **end_date**|<li>**eq** (_default_) </li><li>lt</li><li>gt</li><li>bt</li><li>ex</li>| `"end_date:eq":"2015-02-02"`<br>`"end_date:lt":"2015-02-02"`<br>`"end_date:gt":"2015-02-02"`<br>`"end_date:bt":["2015-02-02","2015-04-05"]`<br>`"end_date:ex":["2015-02-02","2015-04-04"]`
 **tags**|<li>**any** (_default_) </li><li>all</li>|`"tags":"["tagA", "tagB"]`<br>`"tags:all":["tagB","tagC"]`
 **is_archive**| N/A |`"is_archive":true` <br>`"is_archive":false`
-**disable_paralled_booking**| N/A |`"disable_paralled_booking": true`<br>`"disable_paralled_booking": false`
+**disable_parallel_booking**| N/A |`"disable_parallel_booking": true`<br>`"disable_parallel_booking": false`
 **created_by**|<li>**eq** (_default_)</li><li>neq</li><li>any</li><li>none</li>| `"created_by:eq": 1`<br>`"created_by:neq": 1`<br>`"created_by:any": [1, 2]`<br>`"created_by:none": [1, 2]`
 **modified_by**|<li>**eq** (_default_)</li><li>neq</li><li>any</li><li>none</li>| `"modified_by:eq": 1`<br>`"modified_by:neq": 1`<br>`"modified_by:any": [1, 2]`<br>`"modified_by:none": [1, 2]`
 **created_on**|<li>**eq** (_default_)</li><li>lt</li><li>gt</li><li>bt</li><li>ex</li>| `"created_on:eq": ["2021-07-08T00:00:00]`<br>`"created_on:lt": ["2021-07-08T00:00:00]`<br>`"created_on:gt": ["2021-07-08T59:59:59"]`<br>`"created_on:bt": ["2021-07-08T00:00:00", "2021-07-10T23:59:59"]`<br>`"created_on:bt": ["2021-07-08T00:00:00", ""]` <br>`"created_on:bt": ["", "2021-07-10T23:59:59"]` <br>`"created_on:ex": ["2021-07-08T00:00:00", "2021-07-10T23:59:59"]` <br>`"created_on:ex": ["2021-07-08T00:00:00", ""]` <br>`"created_on:ex": ["", "2021-07-10T23:59:59"]]` 
@@ -497,7 +497,7 @@ Updates an existing rate by setting the values of the parameters passed. Any par
 
 This request accepts the same arguments as the rate creation call.
 
->Example Request`"modified_on:lt": ["2021-07-08T00:00:00]`<br>
+>Example Request
 
 ```shell
 curl -v -X PUT \
@@ -545,11 +545,9 @@ Name     |    Description
 
 ### Update Billing Status
 
->**`PUT /v1/projects/{ID}/billingStatus/`**
+>**`PUT /v1/projects/{ID}/billingStatus`**
 
 Updates project billing status by setting the value of the `is_billable`.
-
-This request accepts mostly the same arguments as the rate creation call.
 
 >Example Request
 
@@ -661,7 +659,7 @@ curl -v -X POST \
 
 Name     |    Description
 ---:     |    :----   
-**rate** <br> <span class ="required">`required`</span> | Represnts billing rate. Rate value is a floating point number which could not be less than 0 and greater than 99999999.99.
+**rate** <br> <span class ="required">`required`</span> | Represents billing rate. Rate value is a floating point number which could not be less than 0 and greater than 99999999.99.
 **effective_date** <br> <span class ="required">`required`</span> | String representing date value for effective date of rate. This field takes input in ISO 8601 extended notation for date value i.e. yyyy-MM-dd.
 
 ### Returns
@@ -706,13 +704,13 @@ offset=1&limit=10" \
                 "created_on": "2018-08-20T09:25:34.925474Z",
                 "created_by": 
                 {
-                    "name": "Rahul Sharma",
+                    "name": "John doe",
                     "id": 118
                 },
                 "modified_on": "2018-09-28T12:32:44.896426Z",
                 "modified_by": 
                 {
-                    "name": "Rahul Sharma",
+                    "name": "John doe",
                     "id": 118
                 },
                 }
@@ -783,7 +781,7 @@ curl -v -X PUT \
 
 Name     |    Description
 ---:     |    :----   
-**rate** <br> <span class ="required">`required`</span> | Represnts billing rate. Rate value is a floating point number which could not be less than 0 and greater than 99999999.99.
+**rate** <br> <span class ="required">`required`</span> | Represents billing rate. Rate value is a floating point number which could not be less than 0 and greater than 99999999.99.
 **effective_date** <br>`optional`| String representing date value for effective date of rate. This field takes input in ISO 8601 extended notation for date value i.e. yyyy-MM-dd.
 
 ### Returns
@@ -798,7 +796,7 @@ Name     |    Description
 
 ### Delete Role Rate
 
-> **`DELETE /v1/roles/{ID}/rate/{RATE_ID}`**
+> **`DELETE /v1/roles/{ID}/rates/{RATE_ID}`**
 
 Permanently deletes a rate. It cannot be undone.
 

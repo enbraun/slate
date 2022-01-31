@@ -42,5 +42,6 @@ The full list of all operators is shown below.
 |**Radio Group**| <li>**eq** *(default)* </li><li>neq</li><li>any</li><li>none</li>|`"radio_field:eq": 15`<br>`"radio_field:neq": 15`<br>`"radio_field:any": [16,15]`<br>`"radio_field:none": [16,15]`
 |**Label**|<li>**eq** *(default)* </li><li>neq</li><li>any</li><li>none</li> |`"label_field:eq": 18`<br>`"label_field:neq": 18`<br>`"label_field:any": [16,18]`<br>`"label_field:none": [16,18]`
 |**Drop Down Single Select**| <li>**eq** *(default)* </li><li>neq</li><li>any</li><li>none</li>|`"ddss_field:eq": 15`<br>`"ddss_field:neq": 15`<br>`"ddss_field:any": [16,15]`<br>`"ddss_field:none": [16,15]`
-|**Drop Down Multi Select**| <li>**any** *(default)* </li><li>none</li><li>all</li><li>ex</li></ul>|`"ddms_field:any": [20,21]`<br>`"ddms_field:none": [20,21]`<br>`"ddms_field:all": [20,21]`<br>`"ddms_field:ex": [20,21]`
+|**Drop Down Multi Select**| <li>**any** *(default)* </li><li>none</li><li>all</li><li>ex</li>|`"ddms_field:any": [20,21]`<br>`"ddms_field:none": [20,21]`<br>`"ddms_field:all": [20,21]`<br>`"ddms_field:ex": [20,21]`
 |**User Single Select**| <li>**eq** *(default)* </li><li>neq</li><li>any</li><li>none</li>|`"uss_field:eq": 15`<br>`"uss_field:neq": 15`<br>`"uss_field:any": [16,15]`<br>`"uss_field:none": [16,15]`
+|**User Multi Select**| <li>**any** *(default)* </li><li>none</li><li>all</li><li>ex</li>|`"ums_field:any":[20,21]`<br>`"ums_field:none": [20,21]`<br>`"ums_field:all": [20,21]`<br>`"ums_field:ex": [20,21]`
