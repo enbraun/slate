@@ -34,12 +34,12 @@
     "disable_parallel_booking": false,
     "created_on": "2018-08-20T09:22:02.728296Z",
     "created_by": {
-        "name": "Rahul Sharma",
+        "name": "John doe",
         "id": 118
     },
     "modified_on": "2018-11-20T11:55:48.880898Z",
     "modified_by": {
-        "name": "Rahul Sharma",
+        "name": "John doe",
         "id": 118
     },
     "udf_qualifications": [{
@@ -220,12 +220,12 @@ curl -v \
       "disable_parallel_booking": false,
       "created_on": "2018-08-20T09:22:02.728296Z",
       "created_by": {
-        "name": "Rahul Sharma",
+        "name": "John doe",
         "id": 118
       },
       "modified_on": "2018-11-20T11:55:48.880898Z",
       "modified_by": {
-        "name": "Rahul Sharma",
+        "name": "John doe",
         "id": 118
       },
       "udf_qualifications": [{
@@ -319,12 +319,12 @@ curl -v "https://app.eresourcescheduler.cloud/rest/v1/resources/1" \
     "disable_parallel_booking": false,
     "created_on": "2018-08-20T09:22:02.728296Z",
     "created_by": {
-        "name": "Rahul Sharma",
+        "name": "John doe",
         "id": 118
     },
     "modified_on": "2018-11-20T11:55:48.880898Z",
     "modified_by": {
-        "name": "Rahul Sharma",
+        "name": "John doe",
         "id": 118
     },
     "udf_qualifications": [{
@@ -416,7 +416,7 @@ Below is a list of available fields, which allow filtering resources:
 **start_Date**|<li>**eq** (_default_)</li><li>lt</li><li>gt</li><li> bt</li><li>ex</li>| `"start_date:eq": "2016-01-27"`<br>` "start_date:lt": "1999-12-22"`<br>` "start_date:gt": "1990-01-11"`<br>`"start_date:bt": ["2001-01-01", "2010-12-31"]`<br> `"start_date:ex": ["1992-02-12", "1997-01-27"]`
 **last_date**|<li>**eq** (_default_)</li><li>lt</li><li>gt</li><li> bt</li><li>ex</li>| `"last_date:eq": "2016-05-17"` <br> `"last_date:lt": "2002-12-31"`<br>` "last_date:gt": "2010-01-01"` <br> `"last_date:bt": ["1995-12-31", "1999-01-01"]`<br> `"last_date:ex": ["2001-01-01", "2002-01-01"]`
 **timezone**|<li>**eq** (_default_)</li><li>neq</li><li>any</li><li>none</li>| `"timezone:eq": 1`<br>`"timezone:neq": 1`<br>`"timezone:any": [1, 2]`<br>`"timezone:none": [3, 2]`
-**disable_paralled_booking**| N/A |`"disable_paralled_booking": true`<br>`"disable_paralled_booking": false`
+**disable_parallel_booking**| N/A |`"disable_parallel_booking": true`<br>`"disable_parallel_booking": false`
 **created_by**|<li>**eq** (_default_)</li><li>neq</li><li>any</li><li>none</li>| `"created_by:eq": 1`<br>`"created_by:neq": 1`<br>`"created_by:any": [1, 2]`<br>`"created_by:none": [1, 2]`
 **modified_by**|<li>**eq** (_default_)</li><li>neq</li><li>any</li><li>none</li>| `"modified_by:eq": 1`<br>`"modified_by:neq": 1`<br>`"modified_by:any": [1, 2]`<br>`"modified_by:none": [1, 2]`
 **created_on**|<li>**eq** (_default_)</li><li>lt</li><li>gt</li><li>bt</li><li>ex</li>| `"created_on:eq": ["2021-07-08T00:00:00]`<br>`"created_on:lt": ["2021-07-08T00:00:00]`<br>`"created_on:gt": ["2021-07-08T59:59:59"]`<br>`"created_on:bt": ["2021-07-08T00:00:00", "2021-07-10T23:59:59"]`<br>`"created_on:bt": ["2021-07-08T00:00:00", ""]` <br>`"created_on:bt": ["", "2021-07-10T23:59:59"]` <br>`"created_on:ex": ["2021-07-08T00:00:00", "2021-07-10T23:59:59"]` <br>`"created_on:ex": ["2021-07-08T00:00:00", ""]` <br>`"created_on:ex": ["", "2021-07-10T23:59:59"]]` 
@@ -543,7 +543,7 @@ To capture timings about a resource, eRS Cloud provides Timings. One resource ma
 
 Let say, If a resource works on a full-time profile but then for a certain period of time he switched his timings from full-time to part-time. Then for that certain period part-time calendar will be applied along with it's effective date. Timings are beneficial to apply multiple calendars on a resource. 
 
-eRS Cloud API allows you to perform *`POST`*, *`GET`*, *`PUT`*, *`DELETE`* operations on Notes.
+eRS Cloud API allows you to perform *`POST`*, *`GET`*, *`PUT`*, *`DELETE`* operations on Timings.
 
 <span class="optional"><b>ATTRIBUTES</b></span>
 
@@ -624,10 +624,10 @@ Retrieves the details of timings which are applied to the resource. You only nee
 | **403** <br> <span class = "error">`Forbidden`</span> |Authorization failed due to insufficient permissions. This occurs when user does not have enough access rights to perform this action. Access for each user can be controlled by an Administrator using eRS Cloud Application.|
 | **404** <br> <span class = "error">`Not Found`</span> | Not Found error occurs when requested resource does not exist (i.e. There is no resource with given ID). This may also occur when requesting a resource that has been deleted. |
 
-<br><br><br><br><br><br><br><br>
-<br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br><br><br><br>
 
-### Applying new timing (POST)
+### Applying new timing
 
 > `POST v1/resources/{ID}/timings`
 
@@ -880,7 +880,7 @@ curl -v -X POST \
 Name         |  Description
  ---:        |    :----   
 **date**  <br><span class="required">`required`</span>| Date Field describes when will the exception get applied. It is a `Date` type of field. 
-**descirption**  <br>`optional`|As the name shows it is a description which we want to give for the exception . This field is a `string` type of field. 
+**description**  <br>`optional`|As the name shows it is a description which we want to give for the exception . This field is a `string` type of field. 
 **name**  <br><span class="required">`required`</span>|Name describes the name of exception. This field is a `string` type of field.
 **is_working_exception**  <br><span class="required">`required`</span>|Is working exception describes whether exception is a working exception or not. Accepts `true` if it is a working exception otherwise accepts `false` if it a non-working exception. This field is a `boolean` type of field.
 **timing_blocks**  <br>`optional`|Timing blocks describes the timings of exception. This field can be passed `null`, as eRS Cloud provides you the facility to create an exception without timings. This field is a `Array of objects` type of field.
@@ -934,7 +934,7 @@ This request accepts mostly the same argument as the exception creation call.
 Name         |  Description
  ---:        |    :----   
 **date**  <br><span class="required">`required`</span>| Date Field describes when will the exception get applied. It is a `Date` type of field. 
-**descirption**  <br>`optional`|As the name shows it is a description which we want to give for the exception . This field is a `string` type of field. 
+**description**  <br>`optional`|As the name shows it is a description which we want to give for the exception . This field is a `string` type of field. 
 **name**  <br><span class="required">`required`</span>|Name describes the name of exception. This field is a `string` type of field.
 **is_working_exception**  <br><span class="required">`required`</span>|Is working exception describes whether exception is working exception or not. Accepts `true` if it is working exception otherwise accepts `false` if it a non-working exception. This field is a `boolean` type of field
 **timing_blocks**  <br>`optional`|Timing blocks describes the timings of exception. This field can be pass `null`, as eRS Cloud provides you the facility to create an exception without timings. This field is a `Array of objects` type of field.
@@ -975,7 +975,7 @@ curl -v -X DELETE \
 
 ## Notes
 
-> Exmaple Response
+> Example Response
 
 ```json
 {
@@ -1052,7 +1052,7 @@ curl -v -X GET \
  "https://app.eresourcescheduler.cloud/rest/v1/resources/8/notes?offset=1&limit=10&order_by=created_on" \
  -H "Authorization: Bearer B8x5Vj1O65r6wnoV"
 ```
-> Exmaple Response
+> Example Response
 
 ```json
 {
@@ -1109,8 +1109,6 @@ curl -v -X GET \
 **400** <br> <span class = "error">`Bad Request` </span>| Bad Request may occur when offset and limit value is given as negative integer. |
 **403** <br> <span class = "error">`Forbidden`</span> | Authorization failed due to insufficient permissions. This occurs when user does not have enough access rights to perform this action. Access for each user can be controlled by an Administrator using eRS Cloud Application.|
 **404** <br><span class = "error">`Not Found`</span> |This status code indicates that resource does not exist.| 
-
-> Example Request
 
 
 ### Create a note

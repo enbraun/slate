@@ -116,7 +116,7 @@ curl -v \
 ```
 
 
-> Exmaple Response
+> Example Response
 
 ```json
 {
@@ -146,25 +146,6 @@ curl -v \
         "day_num": 5,
         "start_time": 540,
         "end_time": 1020
-      }],
-      "holidays": [{
-        "id": 1,
-        "name": "Christmas Day",
-        "description": null,
-        "date": "2018-12-25",
-        "tags": []
-      }],
-      "exceptions": [{
-        "id": 1,
-        "name": "Over Time",
-        "description": null,
-        "date": "2018-12-20",
-        "is_working_exception": true,
-        "tags": [],
-        "timings": [{
-          "start_time": 540,
-          "end_time": 1140
-        }]
       }],
       "created_on": "2018-08-21T10:03:08.650207+00:00",
       "modified_on": "2018-12-03T15:09:34.697541+00:00",

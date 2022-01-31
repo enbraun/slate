@@ -21,12 +21,12 @@
     "is_archive": false,
     "created_on": "2018-08-20T09:25:34.925474Z",
     "created_by": {
-      "name": "Rahul Sharma",
+      "name": "John doe",
       "id": 118
     },
     "modified_on": "2018-09-28T12:32:44.896426Z",
     "modified_by": {
-      "name": "Rahul Sharma",
+      "name": "John doe",
       "id": 118
     },
     "udf_color": "#FF8A80;0",
@@ -47,7 +47,7 @@
 Name      |  Description
  ---:     |    :---- 
 **id** <br>`integer` |  eRS Cloud generated unique identifier for the project object.
-**title** <br>`string` | Represents title or name of the project. This may be up to 255 characters.
+**title** <br>`string` | Represents title or name of the project. It can be up to 255 characters.
 **type** <br>`object` | Describes the type of project. This is one of the project type objects which an Administrator user creates using eRS Cloud Application.
 **email** <br>`string` | An optional email address of project object.
 **project_start_date** <br>`string` |  Date on which project is considered started.
@@ -155,12 +155,12 @@ curl -v \
       "is_archive": false,
       "created_on": "2018-08-20T09:25:34.925474Z",
       "created_by": {
-        "name": "Rahul Sharma",
+        "name": "John doe",
         "id": 118
       },
       "modified_on": "2018-09-28T12:32:44.896426Z",
       "modified_by": {
-        "name": "Rahul Sharma",
+        "name": "John doe",
         "id": 118
       },
       "udf_color": "#FF8A80;0",
@@ -228,12 +228,12 @@ curl -v "https://app.eresourcescheduler.cloud/rest/v1/projects/1" \
   "is_archive": false,
   "created_on": "2018-08-20T09:25:34.925474Z",
   "created_by": {
-    "name": "Rahul Sharma",
+    "name": "John doe",
     "id": 118
   },
   "modified_on": "2018-09-28T12:32:44.896426Z",
   "modified_by": {
-    "name": "Rahul Sharma",
+    "name": "John doe",
     "id": 118
   },
   "udf_color": "#FF8A80;0",
@@ -311,12 +311,12 @@ curl -X POST \
       "is_archive": false,
       "created_on": "2018-08-20T09:25:34.925474Z",
       "created_by": {
-        "name": "Rahul Sharma",
+        "name": "John doe",
         "id": 118
       },
       "modified_on": "2018-09-28T12:32:44.896426Z",
       "modified_by": {
-        "name": "Rahul Sharma",
+        "name": "John doe",
         "id": 118
       },
       "udf_color": "#FF8A80;0",
@@ -360,7 +360,7 @@ Below is a list of available fields, which allow filtering projects:
 **end_date**|<li>**eq** (_default_) </li><li>lt</li><li>gt</li><li>bt</li><li>ex</li>| `"end_date:eq":"2015-02-02"`<br>`"end_date:lt":"2015-02-02"`<br>`"end_date:gt":"2015-02-02"`<br>`"end_date:bt":["2015-02-02","2015-04-05"]`<br>`"end_date:ex":["2015-02-02","2015-04-04"]`
 **tags**|<li>**any** (_default_) </li><li>none</li><li>all</li><li>ex</li>|`"tags:any":"["tagA", "tagB"]`<br>`"tags:none":"["tagA", "tagB"]`<br>`"tags:all":["tagB","tagC"]`<br>`"tags:ex":["tagB","tagC"]`
 **is_archive**| N/A |`"is_archive":true` <br>`"is_archive":false`
-**disable_paralled_booking**| N/A |`"disable_paralled_booking": true`<br>`"disable_paralled_booking": false`
+**disable_parallel_booking**| N/A |`"disable_parallel_booking": true`<br>`"disable_parallel_booking": false`
 **created_by**|<li>**eq** (_default_)</li><li>neq</li><li>any</li><li>none</li>| `"created_by:eq": 1`<br>`"created_by:neq": 1`<br>`"created_by:any": [1, 2]`<br>`"created_by:none": [1, 2]`
 **modified_by**|<li>**eq** (_default_)</li><li>neq</li><li>any</li><li>none</li>| `"modified_by:eq": 1`<br>`"modified_by:neq": 1`<br>`"modified_by:any": [1, 2]`<br>`"modified_by:none": [1, 2]`
 **created_on**|<li>**eq** (_default_)</li><li>lt</li><li>gt</li><li>bt</li><li>ex</li>| `"created_on:eq": ["2021-07-08T00:00:00]`<br>`"created_on:lt": ["2021-07-08T00:00:00]`<br>`"created_on:gt": ["2021-07-08T59:59:59"]`<br>`"created_on:bt": ["2021-07-08T00:00:00", "2021-07-10T23:59:59"]`<br>`"created_on:bt": ["2021-07-08T00:00:00", ""]` <br>`"created_on:bt": ["", "2021-07-10T23:59:59"]` <br>`"created_on:ex": ["2021-07-08T00:00:00", "2021-07-10T23:59:59"]` <br>`"created_on:ex": ["2021-07-08T00:00:00", ""]` <br>`"created_on:ex": ["", "2021-07-10T23:59:59"]]` 
@@ -393,11 +393,11 @@ curl -v -X PUT \
 
 |Name         |  Description |
 | ---:        |    :----     |
-**title** <br> <span class="required">`required`</span>  |String representing the  title of a project. This may be up to 255 characters.
+**title** <br> <span class="required">`required`</span>  |String representing the  title of a project. It can be up to 255 characters.
 **project_start_date**<br><span class="mandatoryFlag">&#9873;</span> <span class="removableFlag mln-2">&#9873;</span> | String value representing a date in ISO 8601 extended notation for date i.e. yyyy-MM-dd. The project is started from this date.
 **end_date**<br><span class="mandatoryFlag">&#9873;</span> <span class="removableFlag mln-2">&#9873;</span> | String value representing a date in ISO 8601 extended notation for date i.e. yyyy-MM-dd. The project is considered ended / completed on this date.
 **email**<br><span class="mandatoryFlag">&#9873;</span> <span class="removableFlag mln-2">&#9873;</span> | String value representing email address associated with project object. Email address must be properly formatted with a maximum length of 254 characters.
-**tags**<br><span class="removableFlag mln-2">&#9873;</span> | An optional array of strings which could be attached to this project object as labels. This can be useful for the purpose of filtering, identification or other information. This may be up to 50 characters.
+**tags**<br><span class="removableFlag mln-2">&#9873;</span> | An optional array of strings which could be attached to this project object as labels. This can be useful for the purpose of filtering, identification or other information. It can be up to 50 characters.
 **disable_parallel_booking** <br>`optional` | Boolean value defining if project can or cannot have multiple bookings at a time. Default value for disable parallel booking is false.
 **udf_\*** <br><span class="mandatoryFlag">&#9873;</span> <span class="removableFlag mln-2">&#9873;</span> | A user with Administrator rights can add custom fields. These fields can be used to capture additional information in Project. Different types of projects may have a different set of user-defined fields. The value for user defined field can be passed as shown in example request. In first example `udf_progress` is a user defined field. <a href ="#user-defined-fields" class="api-ref">Learn more</a><br><br>_**Note**: User with Administrator rights can make fields marked with <span class="mandatoryFlag iconInline">&#9873;</span> mandatory and remove fields marked with <span class="removableFlag iconInline">&#9873;</span>, from <a href ="#get-a-specific-project-type" class="api-ref">specific project type</a> using eRS Cloud Application. If mandatory fields are not passed with a valid value or removed fields are passed while updating project, the operation will fail with response code **400**_.
 
@@ -479,11 +479,11 @@ curl -v -X GET \
       "project_id": 2,
       "created_by": {
         "id": 118,
-        "name": "Rahul Sharma"
+        "name": "John doe"
       },
       "modified_by": {
         "id": 118,
-        "name": "Rahul Sharma"
+        "name": "John doe"
       }
     },
     { ... },
@@ -496,8 +496,8 @@ curl -v -X GET \
 
 Name         |  Description
  ---:        |    :----   
- **ID** <br><span class="required">`Integer`</span> | Auto generated unique identifier for task object.
- **name** <br> <span class ="required">`String`</span> | Name of task object.
+ **ID** <br>`Integer`| Auto generated unique identifier for task object.
+ **name** <br>`String`| Name of task object.
 **start_time** <br>`String`| Represents start time of task object.
 **end_time** <br>`String`| Represents end time of task object. 
 **project_id** <br>`Integer` | Unique ID of project object, which this task belongs to.
@@ -507,7 +507,7 @@ Name         |  Description
 
 | Code      | Description | 
 | ---:        |    :----   | 
-**200** <br> <span class = "success">`OK`</span> | This status code indicates that the operation was successful and list tasks retrieved successfully.
+**200** <br> <span class = "success">`OK`</span> | This status code indicates that the operation was successful and list of tasks retrieved successfully.
 **403** <br> <span class = "error">`Forbidden`</span> |Authorization failed due to insufficient permissions. This occurs when user does not have enough access rights to perform this action. Access for each user can be controlled by an Administrator using eRS Cloud Application.
 **404** <br> <span class = "error">`Not Found`</span> | Not Found error occurs when requested project task does not exist (i.e. There is no project task exists with given ID). This may also occur when requesting tasks of project that has been deleted.
 
@@ -541,7 +541,7 @@ curl -v -X POST \
 
 Name     |    Description
 ---:     |    :----   
-**name** <br> <span class ="required">`required`</span> | String representing the name of task. This may be up to 100 characters long.
+**name** <br> <span class ="required">`required`</span> | String representing the name of task. It can be up to 100 characters long.
 **start_time** <br>`optional`| String representing timestamp value for start time of task. This field takes input in ISO 8601 extended notation for date and time value i.e. yyyy-MM-ddTHH:mm:ssZ and supports time zone offset as well.
 **end_time** <br>`optional`|  String representing timestamp value for end time of task. This field takes input in ISO 8601 extended notation for date and time value i.e. yyyy-MM-ddTHH:mm:ssZ and supports time zone offset as well.
 
@@ -578,7 +578,7 @@ curl -v -X PUT \
 
 Name         |  Description
  ---:        |    :----   
-**name** <br> <span class ="required">`required`</span> | String representing the name of task. This may be up to 100 characters long.
+**name** <br> <span class ="required">`required`</span> | String representing the name of task. It can be up to 100 characters long.
 **start_time** <br>`optional`| String representing timestamp value for start time of task. This field takes input in ISO 8601 extended notation for date and time value i.e. yyyy-MM-ddTHH:mm:ssZ and supports time zone offset as well.
 **end_time** <br>`optional`|  String representing timestamp value for end time of task. This field takes input in ISO 8601 extended notation for date and time value i.e. yyyy-MM-ddTHH:mm:ssZ and supports time zone offset as well.
 
@@ -615,7 +615,7 @@ curl -v -X DELETE \
 -H "Authorization: Bearer B8x5Vj1O65r6wnoV"
 ```
 
-### Return
+### Returns
 
 | Code      | Description  
 | :---      | :----
@@ -623,6 +623,357 @@ curl -v -X DELETE \
 **409** <br> <span class = "error">`Conflict`</span> | Conflict indicates that the task can not be deleted as there are bookings or timesheets associated with this task. If you wish to delete it any way you must use force delete option by passing <span class = "required">`true`</span> for parameters <span class = "required">`remove_from_bookings`</span> and <span class = "required">`remove_from_timesheet`</span>. This operation removes task from all associated bookings and timesheets, and then deletes the task itself. Example request is shown to right.
 **403** <br> <span class = "error">`Forbidden`</span> |Authorization failed due to insufficient permissions. This occurs when user does not have enough access rights to perform this action. Access for each user can be controlled by an Administrator using eRS Cloud Application.
 **404** <br><span class = "error">`Not Found`</span> | This indicates that project or task does not exist.
+
+## Phases
+
+A phase is a time frame for a project, making it easy to visualize different stages of a project. Each project has its own set of phases.
+
+This API allows you to list, create, delete and update phases of any project.
+
+### List Phases
+
+Retrieves a list of all the phases of specified project. The list of phases is returned sorted by name.
+
+>**`GET /v1/projects/{ID}/phases`**
+
+> Example Request
+
+```shell
+curl -v -X GET \
+"https://app.eresourcescheduler.cloud/rest/v1/projects/477/phases" \
+-H "Authorization: Bearer B8x5Vj1O65r6wnoV"
+```
+> Example Response
+ 
+ ```json
+{
+  "total_count": 8,
+  "data": [{
+      "id": 1,
+      "name": "Documentation",
+      "description": "Product synopsis and documentation",
+      "start_date": "2022-01-04",
+      "end_date": "2022-01-11",
+      "project_id": 477,
+      "created_on": "2022-01-01T04:31:51.0+00:00",
+      "modified_on": "2022-01-01T04:35:03.0+00:00",
+      "created_by":{
+          "id": 1146,
+          "name": "John Doe"
+      },
+      "modified_by":{
+          "id": 1146,
+          "name": "John Doe"
+      }
+    },
+    { ... },
+    { ... }
+  ]
+}
+```
+<span class="optional"><b>ATTRIBUTES</b></span>
+
+
+Name         |  Description
+ ---:        |    :----   
+**ID** <br>`Integer`| Auto generated unique identifier for phase object.
+**name** <br>`String` | Name of phase object.
+**description** <br> `String` | Any other information regarding this phase.
+**start_date** <br>`String`| Represents start date of the phase object.
+**end_date** <br>`String`| Represents end date of the phase object. 
+**project_id** <br>`Integer` | Unique ID of project object, which this phase belongs to.
+
+
+### Returns
+
+| Code      | Description | 
+| ---:        |    :----   | 
+**200** <br> <span class = "success">`OK`</span> | This status code indicates that the operation was successful and the phases list was successfully retrieved.
+**403** <br> <span class = "error">`Forbidden`</span> |Authorization failed due to insufficient permissions. This occurs when the user does not have enough access rights to perform this action. Access for each user can be controlled by an Administrator using eRS Cloud Application.
+**404** <br> <span class = "error">`Not Found`</span> | Not Found error occurs when requested project does not exist.
+<br><br>
+
+### Create a phase
+ 
+Creates a new phase object for the specified project.
+
+
+>**`POST /v1/projects/{ID}/phases`**
+
+>Example Request
+
+```shell
+
+curl -v -X POST \
+"https://app.eresourcescheduler.cloud/rest/v1/projects/477/phases" \
+-H "Authorization: Bearer B8x5Vj1O65r6wnoV" \
+-H "Content-Type: application/json" \
+-d '{
+      "name": "Development",  
+      "start_date": "2022-01-14",
+      "end_date": "2022-03-27",
+      "description": "First phase of development"
+    }'
+```
+
+<span class="optional"><b>REQUEST BODY PARAMETERS</b></span>
+
+
+Name     |    Description
+---:     |    :----   
+**name** <br> <span class ="required">`required`</span> | String representing the name of phase. It can be up to 100 characters long.
+**start_date** <br><span class ="required">`required`</span> | String representing date value for start date of phase. This field takes input in ISO 8601 extended notation for date value i.e. yyyy-MM-dd.
+**end_date** <br><span class ="required">`required`</span>|  String representing date value for end date of phase.  This field takes input in ISO 8601 extended notation for date value i.e. yyyy-MM-dd.
+**description** <br>`optional` |  String consisting information related to this phase. It can be up to 255 characters long.
+
+### Returns
+ 
+| Code      |Description |
+ :---        |    :----   |
+**201** <br><span class = "success">`Created`</span> | Indicates that the operation was successful and phase is created successfully.
+**400** <br> <span class = "error">`Bad Request`</span> | Bad Request error occurs when a request is malformed, syntactically incorrect, missing required parameters or any unknown parameter is passed. Additionally, a Bad Request error may also occur when `start_date` is given later than `end_date` or the date range for this phase is overlapping with any existing phase.
+**403** <br> <span class = "error">`Forbidden`</span> | Authorization failed due to insufficient permissions. This occurs when the user does not have enough access rights to perform this action. Access for each user can be controlled by an Administrator using eRS Cloud Application.
+
+### Update a phase
+
+>**`PUT /v1/projects/{ID}/phases/{Phase_ID}`**
+
+Updates an existing phase by setting the values of the parameters passed. Any parameters not passed will be left unchanged. 
+
+This request accepts mostly the same arguments as the phase creation call.
+
+>Example Request
+
+```shell
+curl -v -X PUT \
+"https://app.eresourcescheduler.cloud/rest/v1/projects/477/phases/2" \
+-H "Authorization: Bearer B8x5Vj1O65r6wnoV" \
+-H "Content-Type: application/json" \
+-d '{
+      "description": "First phase of development"
+    }'
+
+```
+
+<span class="optional"><b>REQUEST BODY PARAMETERS</b></span>
+
+Name         |  Description
+ ---:        |    :----   
+**name** <br><span class ="required">`required`</span> | String representing the name of phase. It can be up to 100 characters long.
+**start_date** <br><span class ="required">`required`</span> | String representing date value for start date of phase. This field takes input in ISO 8601 extended notation for date value i.e. yyyy-MM-dd.
+**end_date** <br><span class ="required">`required`</span>|  String representing date value for end date of phase.  This field takes input in ISO 8601 extended notation for date value i.e. yyyy-MM-dd.
+**description** <br>`optional` |  String consisting information related to this phase. It can be up to 255 characters long.
+
+### Returns
+
+| Code      | Description | 
+| ---:      |    :----    | 
+**200** <br><span class = "success">`OK`</span> | Indicates that the operation was successful and phase is updated successfully.
+**400** <br> <span class = "error">`Bad Request`</span> | Bad Request occurs when a request is malformed, syntactically incorrect, empty required parameters or any unknown parameter is passed. Additionally, a Bad Request error may also occur when `start_date` is given later than `end_date` or the date range for this phase is overlapping with any existing phase.
+**403** <br> <span class = "error">`Forbidden`</span> | Authorization failed due to insufficient permissions. This occurs when the user does not have enough access rights to perform this action. Access for each user can be controlled by an Administrator using eRS Cloud Application.
+**404** <br><span class = "error">`Not Found`</span> | This status code indicates that the project or phase does not exist.
+
+
+<br><br>
+### Delete a phase
+
+> **`DELETE /v1/projects/{ID}/phases/{Phase_ID}`**
+
+Permanently deletes a phase. It cannot be undone. 
+
+> Example Request
+
+```shell
+curl -v -X DELETE \
+"https://app.eresourcescheduler.cloud/rest/v1/projects/477/phases/2" \
+-H "Authorization: Bearer B8x5Vj1O65r6wnoV"
+```
+
+
+### Returns
+
+| Code      | Description  
+| :---      | :----
+**200** <br><span class = "success">`OK`</span> | Indicates that the operation was successful and phase is deleted successfully.
+**403** <br> <span class = "error">`Forbidden`</span> |Authorization failed due to insufficient permissions. This occurs when the user does not have enough access rights to perform this action. Access for each user can be controlled by an Administrator using eRS Cloud Application.
+**404** <br><span class = "error">`Not Found`</span> | This indicates that the project or phase does not exist.
+
+
+## Milestones
+
+A milestone is a notation used to define a goal reached in a project. Each project has its own milestones.
+
+This API allows you to list, create, delete and update milestones of any project.
+
+### List Milestones
+
+Retrieves a list of all the milestones of specified project. The list of milestones is returned sorted by name.
+
+>**`GET /v1/projects/{ID}/milestones`**
+
+> Example Request
+
+```shell
+curl -v -X GET \
+"https://app.eresourcescheduler.cloud/rest/v1/projects/477/milestones" \
+-H "Authorization: Bearer B8x5Vj1O65r6wnoV"
+```
+> Example Response
+ 
+ ```json
+{
+  "total_count": 4,
+  "data": [{
+      "id": 1,
+      "name": "Documentation Complete",
+      "description": "Done with initial planning & documentation.",
+      "date": "2022-01-11",
+      "color": "#3F51B5",
+      "project_id": 477,
+      "created_on": "2022-01-01T04:31:51.0+00:00",
+      "modified_on": "2022-01-01T04:35:03.0+00:00",
+      "created_by":{
+          "id": 1146,
+          "name": "John Doe"
+      },
+      "modified_by":{
+          "id": 1146,
+          "name": "John Doe"
+      }
+    },
+    { ... },
+    { ... }
+  ]
+}
+```
+<span class="optional"><b>ATTRIBUTES</b></span>
+
+
+Name         |  Description
+ ---:        |    :----   
+**ID** <br>`Integer` | Auto-generated unique identifier for milestone object.
+**project_id** <br>`Integer` | Unique ID of project object, which this milestone belongs to.
+**name** <br>`String` | Name of milestone object.
+**description** <br> `String` | Any information regarding this milestone.
+**date** <br>`String`| Represents date of the milestone object.
+**color** <br>`String`| String representing hexadecimal color code assigned to the milestone. 
+
+
+### Returns
+
+| Code      | Description | 
+| ---:        |    :----   | 
+**200** <br> <span class = "success">`OK`</span> | This code indicates that the operation was successful and the milestones list was retrieved successfully.
+**403** <br> <span class = "error">`Forbidden`</span> |Authorization failed due to insufficient permissions. This occurs when the user does not have enough access rights to perform this action. Access for each user can be controlled by an Administrator using eRS Cloud Application.
+**404** <br> <span class = "error">`Not Found`</span> | Not Found error occurs when requested project does not exist.
+<br><br>
+
+### Create a milestone
+ 
+Creates a new milestone object for the specified project.
+
+
+>**`POST /v1/projects/{ID}/milestones`**
+
+>Example Request
+
+```shell
+
+curl -v -X POST \
+"https://app.eresourcescheduler.cloud/rest/v1/projects/477/milestones" \
+-H "Authorization: Bearer B8x5Vj1O65r6wnoV" \
+-H "Content-Type: application/json" \
+-d '{
+      "name": "Development Phase 1 Completed",
+      "date": "2022-04-02",
+      "color": "#3F51B5",
+      "description": "Development phase-I is completed, staging link at https://mydomain.tld/phase1."
+    }'
+```
+
+<span class="optional"><b>REQUEST BODY PARAMETERS</b></span>
+
+
+Name     |    Description
+---:     |    :----   
+**name** <br> <span class ="required">`required`</span> | String representing the name of a milestone. It can be up to 100 characters long.
+**date** <br><span class ="required">`required`</span> | String representing date value for date of milestone. This field takes input in ISO 8601 extended notation for date value i.e. yyyy-MM-dd.
+**color** <br>`optional`|  String representing a color code for this milestone object. This is helpful to visually identify a milestone on the scheduling chart.This field takes input in string format of hexadecimal color code.
+**description** <br>`optional` |  String consisting information related to this milestone. It can be up to 255 characters long.
+
+### Returns
+ 
+| Code      |Description |
+ :---        |    :----   |
+**201** <br><span class = "success">`Created`</span> | Indicates that the operation was successful and a milestone is created successfully.
+**400** <br> <span class = "error">`Bad Request`</span> | Bad Request error occurs when a request is malformed, syntactically incorrect, missing required parameters or any unknown parameter is passed.
+**403** <br> <span class = "error">`Forbidden`</span> | Authorization failed due to insufficient permissions. This occurs when the user does not have enough access rights to perform this action. Access for each user can be controlled by an Administrator using eRS Cloud Application.
+**404** <br><span class = "error">`Not Found`</span> | This status code indicates that the project on which the milestone is being created, does not exist.
+
+### Update a milestone
+
+>**`PUT /v1/projects/{ID}/milestones/{Milestone_ID}`**
+
+Updates an existing milestone by setting the values of the parameters passed. Any parameters not passed will be left unchanged. 
+
+This request accepts mostly the same arguments as the milestone creation call.
+
+>Example Request
+
+```shell
+curl -v -X PUT \
+"https://app.eresourcescheduler.cloud/rest/v1/projects/477/milestones/1" \
+-H "Authorization: Bearer B8x5Vj1O65r6wnoV" \
+-H "Content-Type: application/json" \
+-d '{
+      "name": "Documentation Completed"
+    }'
+
+```
+
+<span class="optional"><b>REQUEST BODY PARAMETERS</b></span>
+
+Name         |  Description
+ ---:        |    :----   
+**name** <br> <span class ="required">`required`</span> | String representing the name of a milestone. It can be up to 100 characters long.
+**date** <br><span class ="required">`required`</span> | String representing date value for date of milestone. This field takes input in ISO 8601 extended notation for date value i.e. yyyy-MM-dd.
+**color** <br>`optional`|  String representing a color code for this milestone object. This is helpful to visually identify a milestone on the scheduling chart.This field takes input in string format of hexadecimal color code.
+**description** <br>`optional` |  String consisting information related to this milestone. It can be up to 255 characters long.
+
+### Returns
+
+| Code      | Description | 
+| ---:      |    :----    | 
+**200** <br><span class = "success">`OK`</span> | Indicates that the operation was successful and milestone is updated successfully.
+**400** <br> <span class = "error">`Bad Request`</span> | Bad Request error occurs when a request is malformed, syntactically incorrect, empty required parameters or any unknown parameter is passed.
+**403** <br> <span class = "error">`Forbidden`</span> | Authorization failed due to insufficient permissions. This occurs when the user does not have enough access rights to perform this action. Access for each user can be controlled by an Administrator using eRS Cloud Application.
+**404** <br><span class = "error">`Not Found`</span> | This status code indicates that the project or milestone does not exist.
+
+
+<br><br>
+### Delete a milestone
+
+> **`DELETE /v1/projects/{ID}/milestones/{Milestone_ID}`**
+
+Permanently deletes a milestone. It cannot be undone. 
+
+> Example Request
+
+```shell
+curl -v -X DELETE \
+"https://app.eresourcescheduler.cloud/rest/v1/projects/477/milestones/2" \
+-H "Authorization: Bearer B8x5Vj1O65r6wnoV"
+```
+
+
+### Returns
+
+| Code      | Description  
+| :---      | :----
+**200** <br><span class = "success">`OK`</span> | Indicates that the operation was successful and milestone is deleted successfully.
+**403** <br> <span class = "error">`Forbidden`</span> | Authorization failed due to insufficient permissions. This occurs when the user does not have enough access rights to perform this action. Access for each user can be controlled by an Administrator using eRS Cloud Application.
+**404** <br><span class = "error">`Not Found`</span> | This indicates that the project or milestone does not exist.
+
 
 ## Project Notes
 
@@ -673,7 +1024,7 @@ curl -v -X GET \
  -H "Authorization: Bearer B8x5Vj1O65r6wnoV"
 ```
 
-> Exmaple Response
+> Example Response
 
 ```json
 {
@@ -732,9 +1083,6 @@ curl -v -X GET \
 | **400** <br> <span class = "error">`Bad Request`</span> | Bad Request may occur when offset and limit value is negative.|
 | **403** <br> <span class = "error">`Forbidden`</span> | Authorization failed due to insufficient permissions. This occurs when user does not have enough access rights to perform this action. Access for each user can be controlled by an Administrator using eRS Cloud Application.|
 | **404** <br><span class = "error">`Not Found`</span> | This status code indicates that project ID does not exist.| 
-
-
-> Example Request
 
 
 ### Create a note
