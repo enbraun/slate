@@ -30,12 +30,12 @@
   "tags": [],
   "created_on": "2018-09-07T04:09:45.254681Z",
   "created_by": {
-    "name": "Rahul Sharma",
+    "name": "John doe",
     "id": 118
   },
   "modified_on": "2018-11-21T06:23:02.494932Z",
   "modified_by": {
-    "name": "Rahul Sharma",
+    "name": "John doe",
     "id": 118
   }
 }
@@ -176,12 +176,12 @@ start=2018-01-01&end=2018-12-31&offset=1&limit=10" \
       "tags": [],
       "created_on": "2018-09-07T04:09:45.254681Z",
       "created_by": {
-        "name": "Rahul Sharma",
+        "name": "John doe",
         "id": 118
       },
       "modified_on": "2018-11-21T06:23:02.494932Z",
       "modified_by": {
-        "name": "Rahul Sharma",
+        "name": "John doe",
         "id": 118
       }
     },
@@ -251,12 +251,12 @@ curl -v -X GET "https://app.eresourcescheduler.cloud/rest/v1/bookings/25" \
   "tags": [],
   "created_on": "2018-09-07T04:09:45.254681Z",
   "created_by": {
-    "name": "Rahul Sharma",
+    "name": "John doe",
     "id": 118
   },
   "modified_on": "2018-11-21T06:23:02.494932Z",
   "modified_by": {
-    "name": "Rahul Sharma",
+    "name": "John doe",
     "id": 118
   }
 }
@@ -334,12 +334,12 @@ start=2018-01-01&end=2018-08-09" \
       "tags": [],
       "created_on": "2018-09-07T04:09:45.254681Z",
       "created_by": {
-        "name": "Rahul Sharma",
+        "name": "John doe",
         "id": 118
       },
       "modified_on": "2018-11-21T06:23:02.494932Z",
       "modified_by": {
-        "name": "Rahul Sharma",
+        "name": "John doe",
         "id": 118
       }
     },
