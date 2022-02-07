@@ -465,6 +465,12 @@
                     <a href="#tasks" class="toc-h2 toc-link" data-title="Tasks">Tasks</a>
                   </li>
                   <li>
+                    <a href="#phases" class="toc-h2 toc-link" data-title="Phases">Phases</a>
+                  </li>
+                  <li>
+                    <a href="#milestones" class="toc-h2 toc-link" data-title="Milestones">Milestones</a>
+                  </li>
+                  <li>
                     <a href="#project-notes" class="toc-h2 toc-link" data-title="Project Notes">Project Notes</a>
                   </li>
               </ul>
@@ -751,7 +757,7 @@ grant_type=authorization_code</span><span class="se">\</span><span class="s2">
 
 <p>User defined fields are filterable. Also, user can configure the visibility of such fields in the different forms, for example a field named <code>employee_id</code> can be created which is meant only for <code>Employee</code> type of resources.</p>
 
-<p>There are sixteen types of different fields available for different use cases. Each type of field has it&#39;s own set of attributes which can be configured to fit your requirements. Once such fields are added and applied, the response for that object will contain these along with normal attributes.</p>
+<p>There are seventeen types of different fields available for different use cases. Each type of field has it&#39;s own set of attributes which can be configured to fit your requirements. Once such fields are added and applied, the response for that object will contain these along with normal attributes.</p>
 
 <p><em><strong>Note</strong>: There can be a maximum of 75 user-defined fields.</em></p>
 <h2 id='types-of-user-defined-fields'>Types of User Defined Fields</h2>
@@ -809,7 +815,7 @@ grant_type=authorization_code</span><span class="se">\</span><span class="s2">
 </tr>
 <tr>
 <td style="text-align: left"><strong>Checkbox Group</strong> <br> <code>integer array</code></td>
-<td style="text-align: left">Allows user to select one or more values from a group of check boxes. This is useful where user needs to pick multiple values from available options. This field can be configured to have a pick list of multiple options from which the user can select one.</td>
+<td style="text-align: left">Allows user to select one or more values from a group of check boxes. This is useful where user needs to pick multiple values from available options. This field can be configured to have a pick list of multiple options from which the user can select multiple.</td>
 </tr>
 <tr>
 <td style="text-align: left"><strong>Dropdown  Multi select</strong> <br> <code>integer array</code></td>
@@ -826,6 +832,10 @@ grant_type=authorization_code</span><span class="se">\</span><span class="s2">
 <tr>
 <td style="text-align: left"><strong>User Single Select</strong> <br> <code>integer</code></td>
 <td style="text-align: left">Allows user to select a single value from the dropdown list of available users.</td>
+</tr>
+<tr>
+<td style="text-align: left"><strong>User Multi Select</strong> <br> <code>integer array</code></td>
+<td style="text-align: left">Allows user to select multiple user values from the dropdown list of available users.</td>
 </tr>
 </tbody></table>
 <h1 id='resource-types'>Resource Types</h1><h2 id='resource-type-object'>Resource Type Object</h2>
@@ -2281,7 +2291,7 @@ grant_type=authorization_code</span><span class="se">\</span><span class="s2">
 <span class="nt">-H</span> <span class="s2">"Authorization: Bearer B8x5Vj1O65r6wnoV"</span>
 </code></pre></div>
 <blockquote>
-<p>Exmaple Response</p>
+<p>Example Response</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"total_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
@@ -2310,25 +2320,6 @@ grant_type=authorization_code</span><span class="se">\</span><span class="s2">
         </span><span class="nl">"day_num"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
         </span><span class="nl">"start_time"</span><span class="p">:</span><span class="w"> </span><span class="mi">540</span><span class="p">,</span><span class="w">
         </span><span class="nl">"end_time"</span><span class="p">:</span><span class="w"> </span><span class="mi">1020</span><span class="w">
-      </span><span class="p">}],</span><span class="w">
-      </span><span class="nl">"holidays"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
-        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Christmas Day"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-12-25"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
-      </span><span class="p">}],</span><span class="w">
-      </span><span class="nl">"exceptions"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
-        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Over Time"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-12-20"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"is_working_exception"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
-        </span><span class="nl">"timings"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
-          </span><span class="nl">"start_time"</span><span class="p">:</span><span class="w"> </span><span class="mi">540</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"end_time"</span><span class="p">:</span><span class="w"> </span><span class="mi">1140</span><span class="w">
-        </span><span class="p">}]</span><span class="w">
       </span><span class="p">}],</span><span class="w">
       </span><span class="nl">"created_on"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-08-21T10:03:08.650207+00:00"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"modified_on"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-12-03T15:09:34.697541+00:00"</span><span class="p">,</span><span class="w">
@@ -2478,12 +2469,12 @@ grant_type=authorization_code</span><span class="se">\</span><span class="s2">
     </span><span class="nl">"disable_parallel_booking"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
     </span><span class="nl">"created_on"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-08-20T09:22:02.728296Z"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"created_by"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Rahul Sharma"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John doe"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">118</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="nl">"modified_on"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-11-20T11:55:48.880898Z"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"modified_by"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Rahul Sharma"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John doe"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">118</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="nl">"udf_qualifications"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
@@ -2769,12 +2760,12 @@ grant_type=authorization_code</span><span class="se">\</span><span class="s2">
       </span><span class="nl">"disable_parallel_booking"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
       </span><span class="nl">"created_on"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-08-20T09:22:02.728296Z"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"created_by"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Rahul Sharma"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John doe"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">118</span><span class="w">
       </span><span class="p">},</span><span class="w">
       </span><span class="nl">"modified_on"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-11-20T11:55:48.880898Z"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"modified_by"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Rahul Sharma"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John doe"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">118</span><span class="w">
       </span><span class="p">},</span><span class="w">
       </span><span class="nl">"udf_qualifications"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
@@ -2882,12 +2873,12 @@ grant_type=authorization_code</span><span class="se">\</span><span class="s2">
     </span><span class="nl">"disable_parallel_booking"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
     </span><span class="nl">"created_on"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-08-20T09:22:02.728296Z"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"created_by"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Rahul Sharma"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John doe"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">118</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="nl">"modified_on"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-11-20T11:55:48.880898Z"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"modified_by"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Rahul Sharma"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John doe"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">118</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="nl">"udf_qualifications"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
@@ -3038,9 +3029,9 @@ grant_type=authorization_code</span><span class="se">\</span><span class="s2">
 <td style="text-align: left"><code>&quot;timezone:eq&quot;: 1</code><br><code>&quot;timezone:neq&quot;: 1</code><br><code>&quot;timezone:any&quot;: [1, 2]</code><br><code>&quot;timezone:none&quot;: [3, 2]</code></td>
 </tr>
 <tr>
-<td style="text-align: left"><strong>disable_paralled_booking</strong></td>
+<td style="text-align: left"><strong>disable_parallel_booking</strong></td>
 <td style="text-align: left">N/A</td>
-<td style="text-align: left"><code>&quot;disable_paralled_booking&quot;: true</code><br><code>&quot;disable_paralled_booking&quot;: false</code></td>
+<td style="text-align: left"><code>&quot;disable_parallel_booking&quot;: true</code><br><code>&quot;disable_parallel_booking&quot;: false</code></td>
 </tr>
 <tr>
 <td style="text-align: left"><strong>created_by</strong></td>
@@ -3243,7 +3234,7 @@ force_delete_timesheet_entry=true"</span> <span class="se">\</span>
 
 <p>Let say, If a resource works on a full-time profile but then for a certain period of time he switched his timings from full-time to part-time. Then for that certain period part-time calendar will be applied along with it&#39;s effective date. Timings are beneficial to apply multiple calendars on a resource. </p>
 
-<p>eRS Cloud API allows you to perform <em><code>POST</code></em>, <em><code>GET</code></em>, <em><code>PUT</code></em>, <em><code>DELETE</code></em> operations on Notes.</p>
+<p>eRS Cloud API allows you to perform <em><code>POST</code></em>, <em><code>GET</code></em>, <em><code>PUT</code></em>, <em><code>DELETE</code></em> operations on Timings.</p>
 
 <p><span class="optional"><b>ATTRIBUTES</b></span></p>
 
@@ -3369,9 +3360,9 @@ force_delete_timesheet_entry=true"</span> <span class="se">\</span>
 </tr>
 </tbody></table>
 
-<p><br><br><br><br><br><br><br><br>
-<br><br><br><br><br><br><br><br></p>
-<h3 id='applying-new-timing-post'>Applying new timing (POST)</h3>
+<p><br><br><br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br><br><br><br></p>
+<h3 id='applying-new-timing'>Applying new timing</h3>
 <blockquote>
 <p><code>POST v1/resources/{ID}/timings</code></p>
 
@@ -3718,7 +3709,7 @@ force_delete_timesheet_entry=true"</span> <span class="se">\</span>
 <td style="text-align: left">Date Field describes when will the exception get applied. It is a <code>Date</code> type of field.</td>
 </tr>
 <tr>
-<td style="text-align: right"><strong>descirption</strong>  <br><code>optional</code></td>
+<td style="text-align: right"><strong>description</strong>  <br><code>optional</code></td>
 <td style="text-align: left">As the name shows it is a description which we want to give for the exception . This field is a <code>string</code> type of field.</td>
 </tr>
 <tr>
@@ -3806,7 +3797,7 @@ force_delete_timesheet_entry=true"</span> <span class="se">\</span>
 <td style="text-align: left">Date Field describes when will the exception get applied. It is a <code>Date</code> type of field.</td>
 </tr>
 <tr>
-<td style="text-align: right"><strong>descirption</strong>  <br><code>optional</code></td>
+<td style="text-align: right"><strong>description</strong>  <br><code>optional</code></td>
 <td style="text-align: left">As the name shows it is a description which we want to give for the exception . This field is a <code>string</code> type of field.</td>
 </tr>
 <tr>
@@ -3885,7 +3876,7 @@ force_delete_timesheet_entry=true"</span> <span class="se">\</span>
 </tbody></table>
 <h2 id='notes'>Notes</h2>
 <blockquote>
-<p>Exmaple Response</p>
+<p>Example Response</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
    </span><span class="nl">"total_count"</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span><span class="w">
@@ -3982,7 +3973,7 @@ force_delete_timesheet_entry=true"</span> <span class="se">\</span>
  <span class="nt">-H</span> <span class="s2">"Authorization: Bearer B8x5Vj1O65r6wnoV"</span>
 </code></pre></div>
 <blockquote>
-<p>Exmaple Response</p>
+<p>Example Response</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
    </span><span class="nl">"total_count"</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span><span class="w">
@@ -4071,10 +4062,6 @@ force_delete_timesheet_entry=true"</span> <span class="se">\</span>
 <td style="text-align: left">This status code indicates that resource does not exist.</td>
 </tr>
 </tbody></table>
-
-<blockquote>
-<p>Example Request</p>
-</blockquote>
 <h3 id='create-a-note'>Create a note</h3>
 <blockquote>
 <p><code>POST  v1/resources/{ID}/notes</code></p>
@@ -4155,7 +4142,7 @@ curl <span class="nt">-v</span> <span class="nt">-X</span> PUT <span class="se">
   <span class="nt">-d</span> <span class="s1">'{"content": "Hello World"}'</span>
 </code></pre></div>
 <blockquote>
-<p>Example Request With HTML Tags.</p>
+<p>Example Request With HTML Tag.</p>
 </blockquote>
 <div class="highlight"><pre class="highlight shell tab-shell"><code>
 curl <span class="nt">-v</span> <span class="nt">-X</span> PUT <span class="se">\</span>
@@ -4256,12 +4243,12 @@ curl <span class="nt">-v</span> <span class="nt">-X</span> DELETE <span class="s
     </span><span class="nl">"is_archive"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
     </span><span class="nl">"created_on"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-08-20T09:25:34.925474Z"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"created_by"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Rahul Sharma"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John doe"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">118</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="nl">"modified_on"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-09-28T12:32:44.896426Z"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"modified_by"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Rahul Sharma"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John doe"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">118</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="nl">"udf_color"</span><span class="p">:</span><span class="w"> </span><span class="s2">"#FF8A80;0"</span><span class="p">,</span><span class="w">
@@ -4290,7 +4277,7 @@ curl <span class="nt">-v</span> <span class="nt">-X</span> DELETE <span class="s
 </tr>
 <tr>
 <td style="text-align: right"><strong>title</strong> <br><code>string</code></td>
-<td style="text-align: left">Represents title or name of the project. This may be up to 255 characters.</td>
+<td style="text-align: left">Represents title or name of the project. It can be up to 255 characters.</td>
 </tr>
 <tr>
 <td style="text-align: right"><strong>type</strong> <br><code>object</code></td>
@@ -4468,12 +4455,12 @@ curl <span class="nt">-v</span> <span class="nt">-X</span> DELETE <span class="s
       </span><span class="nl">"is_archive"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
       </span><span class="nl">"created_on"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-08-20T09:25:34.925474Z"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"created_by"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Rahul Sharma"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John doe"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">118</span><span class="w">
       </span><span class="p">},</span><span class="w">
       </span><span class="nl">"modified_on"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-09-28T12:32:44.896426Z"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"modified_by"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Rahul Sharma"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John doe"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">118</span><span class="w">
       </span><span class="p">},</span><span class="w">
       </span><span class="nl">"udf_color"</span><span class="p">:</span><span class="w"> </span><span class="s2">"#FF8A80;0"</span><span class="p">,</span><span class="w">
@@ -4557,12 +4544,12 @@ curl <span class="nt">-v</span> <span class="nt">-X</span> DELETE <span class="s
   </span><span class="nl">"is_archive"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
   </span><span class="nl">"created_on"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-08-20T09:25:34.925474Z"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"created_by"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Rahul Sharma"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John doe"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">118</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="nl">"modified_on"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-09-28T12:32:44.896426Z"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"modified_by"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Rahul Sharma"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John doe"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">118</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="nl">"udf_color"</span><span class="p">:</span><span class="w"> </span><span class="s2">"#FF8A80;0"</span><span class="p">,</span><span class="w">
@@ -4647,12 +4634,12 @@ curl <span class="nt">-v</span> <span class="nt">-X</span> DELETE <span class="s
       </span><span class="nl">"is_archive"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
       </span><span class="nl">"created_on"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-08-20T09:25:34.925474Z"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"created_by"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Rahul Sharma"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John doe"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">118</span><span class="w">
       </span><span class="p">},</span><span class="w">
       </span><span class="nl">"modified_on"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-09-28T12:32:44.896426Z"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"modified_by"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Rahul Sharma"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John doe"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">118</span><span class="w">
       </span><span class="p">},</span><span class="w">
       </span><span class="nl">"udf_color"</span><span class="p">:</span><span class="w"> </span><span class="s2">"#FF8A80;0"</span><span class="p">,</span><span class="w">
@@ -4739,9 +4726,9 @@ curl <span class="nt">-v</span> <span class="nt">-X</span> DELETE <span class="s
 <td style="text-align: left"><code>&quot;is_archive&quot;:true</code> <br><code>&quot;is_archive&quot;:false</code></td>
 </tr>
 <tr>
-<td style="text-align: left"><strong>disable_paralled_booking</strong></td>
+<td style="text-align: left"><strong>disable_parallel_booking</strong></td>
 <td style="text-align: left">N/A</td>
-<td style="text-align: left"><code>&quot;disable_paralled_booking&quot;: true</code><br><code>&quot;disable_paralled_booking&quot;: false</code></td>
+<td style="text-align: left"><code>&quot;disable_parallel_booking&quot;: true</code><br><code>&quot;disable_parallel_booking&quot;: false</code></td>
 </tr>
 <tr>
 <td style="text-align: left"><strong>created_by</strong></td>
@@ -4795,7 +4782,7 @@ curl <span class="nt">-v</span> <span class="nt">-X</span> DELETE <span class="s
 </thead><tbody>
 <tr>
 <td style="text-align: right"><strong>title</strong> <br> <span class="required"><code>required</code></span></td>
-<td style="text-align: left">String representing the  title of a project. This may be up to 255 characters.</td>
+<td style="text-align: left">String representing the  title of a project. It can be up to 255 characters.</td>
 </tr>
 <tr>
 <td style="text-align: right"><strong>project_start_date</strong><br><span class="mandatoryFlag">&#9873;</span> <span class="removableFlag mln-2">&#9873;</span></td>
@@ -4811,7 +4798,7 @@ curl <span class="nt">-v</span> <span class="nt">-X</span> DELETE <span class="s
 </tr>
 <tr>
 <td style="text-align: right"><strong>tags</strong><br><span class="removableFlag mln-2">&#9873;</span></td>
-<td style="text-align: left">An optional array of strings which could be attached to this project object as labels. This can be useful for the purpose of filtering, identification or other information. This may be up to 50 characters.</td>
+<td style="text-align: left">An optional array of strings which could be attached to this project object as labels. This can be useful for the purpose of filtering, identification or other information. It can be up to 50 characters.</td>
 </tr>
 <tr>
 <td style="text-align: right"><strong>disable_parallel_booking</strong> <br><code>optional</code></td>
@@ -4893,7 +4880,7 @@ force_delete_timesheet_entry=true"</span> <span class="se">\</span>
 <h2 id='tasks'>Tasks</h2>
 <p>A task is a single unit of work – an action to accomplish in a project, a single step in a multi-step project. Each project has it&#39;s own set of tasks.</p>
 
-<p>This API allows you to list, create, delete, update tasks of any project.</p>
+<p>This API allows you to list, create, delete and update tasks of any project.</p>
 <h3 id='list-tasks'>List Tasks</h3>
 <p>Retrieves list of all the tasks of specified project. List of tasks is returned sorted by name.</p>
 
@@ -4919,11 +4906,11 @@ force_delete_timesheet_entry=true"</span> <span class="se">\</span>
       </span><span class="nl">"project_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
       </span><span class="nl">"created_by"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">118</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Rahul Sharma"</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John doe"</span><span class="w">
       </span><span class="p">},</span><span class="w">
       </span><span class="nl">"modified_by"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">118</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Rahul Sharma"</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John doe"</span><span class="w">
       </span><span class="p">}</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="p">{</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="p">},</span><span class="w">
@@ -4940,11 +4927,11 @@ force_delete_timesheet_entry=true"</span> <span class="se">\</span>
 </tr>
 </thead><tbody>
 <tr>
-<td style="text-align: right"><strong>ID</strong> <br><span class="required"><code>Integer</code></span></td>
+<td style="text-align: right"><strong>ID</strong> <br><code>Integer</code></td>
 <td style="text-align: left">Auto generated unique identifier for task object.</td>
 </tr>
 <tr>
-<td style="text-align: right"><strong>name</strong> <br> <span class ="required"><code>String</code></span></td>
+<td style="text-align: right"><strong>name</strong> <br><code>String</code></td>
 <td style="text-align: left">Name of task object.</td>
 </tr>
 <tr>
@@ -4969,7 +4956,7 @@ force_delete_timesheet_entry=true"</span> <span class="se">\</span>
 </thead><tbody>
 <tr>
 <td style="text-align: right"><strong>200</strong> <br> <span class = "success"><code>OK</code></span></td>
-<td style="text-align: left">This status code indicates that the operation was successful and list tasks retrieved successfully.</td>
+<td style="text-align: left">This status code indicates that the operation was successful and list of tasks retrieved successfully.</td>
 </tr>
 <tr>
 <td style="text-align: right"><strong>403</strong> <br> <span class = "error"><code>Forbidden</code></span></td>
@@ -5012,7 +4999,7 @@ curl <span class="nt">-v</span> <span class="nt">-X</span> POST <span class="se"
 </thead><tbody>
 <tr>
 <td style="text-align: right"><strong>name</strong> <br> <span class ="required"><code>required</code></span></td>
-<td style="text-align: left">String representing the name of task. This may be up to 100 characters long.</td>
+<td style="text-align: left">String representing the name of task. It can be up to 100 characters long.</td>
 </tr>
 <tr>
 <td style="text-align: right"><strong>start_time</strong> <br><code>optional</code></td>
@@ -5074,7 +5061,7 @@ curl <span class="nt">-v</span> <span class="nt">-X</span> POST <span class="se"
 </thead><tbody>
 <tr>
 <td style="text-align: right"><strong>name</strong> <br> <span class ="required"><code>required</code></span></td>
-<td style="text-align: left">String representing the name of task. This may be up to 100 characters long.</td>
+<td style="text-align: left">String representing the name of task. It can be up to 100 characters long.</td>
 </tr>
 <tr>
 <td style="text-align: right"><strong>start_time</strong> <br><code>optional</code></td>
@@ -5132,7 +5119,7 @@ curl <span class="nt">-v</span> <span class="nt">-X</span> POST <span class="se"
 <span class="s2">"https://app.eresourcescheduler.cloud/rest/v1/projects/1/tasks/2</span><span class="se">\</span><span class="s2">
 ?remove_from_bookings=true&amp;remove_from_timesheet=true"</span> <span class="se">\</span>
 <span class="nt">-H</span> <span class="s2">"Authorization: Bearer B8x5Vj1O65r6wnoV"</span>
-</code></pre></div><h3 id='return'>Return</h3>
+</code></pre></div><h3 id='returns-9'>Returns</h3>
 <table><thead>
 <tr>
 <th style="text-align: left">Code</th>
@@ -5154,6 +5141,548 @@ curl <span class="nt">-v</span> <span class="nt">-X</span> POST <span class="se"
 <tr>
 <td style="text-align: left"><strong>404</strong> <br><span class = "error"><code>Not Found</code></span></td>
 <td style="text-align: left">This indicates that project or task does not exist.</td>
+</tr>
+</tbody></table>
+<h2 id='phases'>Phases</h2>
+<p>A phase is a time frame for a project, making it easy to visualize different stages of a project. Each project has its own set of phases.</p>
+
+<p>This API allows you to list, create, delete and update phases of any project.</p>
+<h3 id='list-phases'>List Phases</h3>
+<p>Retrieves a list of all the phases of specified project. The list of phases is returned sorted by name.</p>
+
+<blockquote>
+<p><strong><code>GET /v1/projects/{ID}/phases</code></strong></p>
+
+<p>Example Request</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-v</span> <span class="nt">-X</span> GET <span class="se">\</span>
+<span class="s2">"https://app.eresourcescheduler.cloud/rest/v1/projects/477/phases"</span> <span class="se">\</span>
+<span class="nt">-H</span> <span class="s2">"Authorization: Bearer B8x5Vj1O65r6wnoV"</span>
+</code></pre></div>
+<blockquote>
+<p>Example Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"total_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Documentation"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Product synopsis and documentation"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"start_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-01-04"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"end_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-01-11"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"project_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">477</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"created_on"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-01-01T04:31:51.0+00:00"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"modified_on"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-01-01T04:35:03.0+00:00"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"created_by"</span><span class="p">:{</span><span class="w">
+          </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1146</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John Doe"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"modified_by"</span><span class="p">:{</span><span class="w">
+          </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1146</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John Doe"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p><span class="optional"><b>ATTRIBUTES</b></span></p>
+
+<table><thead>
+<tr>
+<th style="text-align: right">Name</th>
+<th style="text-align: left">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: right"><strong>ID</strong> <br><code>Integer</code></td>
+<td style="text-align: left">Auto generated unique identifier for phase object.</td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>name</strong> <br><code>String</code></td>
+<td style="text-align: left">Name of phase object.</td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>description</strong> <br> <code>String</code></td>
+<td style="text-align: left">Any other information regarding this phase.</td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>start_date</strong> <br><code>String</code></td>
+<td style="text-align: left">Represents start date of the phase object.</td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>end_date</strong> <br><code>String</code></td>
+<td style="text-align: left">Represents end date of the phase object.</td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>project_id</strong> <br><code>Integer</code></td>
+<td style="text-align: left">Unique ID of project object, which this phase belongs to.</td>
+</tr>
+</tbody></table>
+<h3 id='returns-10'>Returns</h3>
+<table><thead>
+<tr>
+<th style="text-align: right">Code</th>
+<th style="text-align: left">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: right"><strong>200</strong> <br> <span class = "success"><code>OK</code></span></td>
+<td style="text-align: left">This status code indicates that the operation was successful and the phases list was successfully retrieved.</td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>403</strong> <br> <span class = "error"><code>Forbidden</code></span></td>
+<td style="text-align: left">Authorization failed due to insufficient permissions. This occurs when the user does not have enough access rights to perform this action. Access for each user can be controlled by an Administrator using eRS Cloud Application.</td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>404</strong> <br> <span class = "error"><code>Not Found</code></span></td>
+<td style="text-align: left">Not Found error occurs when requested project does not exist.</td>
+</tr>
+</tbody></table>
+
+<p><br><br></p>
+<h3 id='create-a-phase'>Create a phase</h3>
+<p>Creates a new phase object for the specified project.</p>
+
+<blockquote>
+<p><strong><code>POST /v1/projects/{ID}/phases</code></strong></p>
+
+<p>Example Request</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>
+curl <span class="nt">-v</span> <span class="nt">-X</span> POST <span class="se">\</span>
+<span class="s2">"https://app.eresourcescheduler.cloud/rest/v1/projects/477/phases"</span> <span class="se">\</span>
+<span class="nt">-H</span> <span class="s2">"Authorization: Bearer B8x5Vj1O65r6wnoV"</span> <span class="se">\</span>
+<span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+<span class="nt">-d</span> <span class="s1">'{
+      "name": "Development",  
+      "start_date": "2022-01-14",
+      "end_date": "2022-03-27",
+      "description": "First phase of development"
+    }'</span>
+</code></pre></div>
+<p><span class="optional"><b>REQUEST BODY PARAMETERS</b></span></p>
+
+<table><thead>
+<tr>
+<th style="text-align: right">Name</th>
+<th style="text-align: left">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: right"><strong>name</strong> <br> <span class ="required"><code>required</code></span></td>
+<td style="text-align: left">String representing the name of phase. It can be up to 100 characters long.</td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>start_date</strong> <br><span class ="required"><code>required</code></span></td>
+<td style="text-align: left">String representing date value for start date of phase. This field takes input in ISO 8601 extended notation for date value i.e. yyyy-MM-dd.</td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>end_date</strong> <br><span class ="required"><code>required</code></span></td>
+<td style="text-align: left">String representing date value for end date of phase.  This field takes input in ISO 8601 extended notation for date value i.e. yyyy-MM-dd.</td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>description</strong> <br><code>optional</code></td>
+<td style="text-align: left">String consisting information related to this phase. It can be up to 255 characters long.</td>
+</tr>
+</tbody></table>
+<h3 id='returns-11'>Returns</h3>
+<table><thead>
+<tr>
+<th style="text-align: left">Code</th>
+<th style="text-align: left">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left"><strong>201</strong> <br><span class = "success"><code>Created</code></span></td>
+<td style="text-align: left">Indicates that the operation was successful and phase is created successfully.</td>
+</tr>
+<tr>
+<td style="text-align: left"><strong>400</strong> <br> <span class = "error"><code>Bad Request</code></span></td>
+<td style="text-align: left">Bad Request error occurs when a request is malformed, syntactically incorrect, missing required parameters or any unknown parameter is passed. Additionally, a Bad Request error may also occur when <code>start_date</code> is given later than <code>end_date</code> or the date range for this phase is overlapping with any existing phase.</td>
+</tr>
+<tr>
+<td style="text-align: left"><strong>403</strong> <br> <span class = "error"><code>Forbidden</code></span></td>
+<td style="text-align: left">Authorization failed due to insufficient permissions. This occurs when the user does not have enough access rights to perform this action. Access for each user can be controlled by an Administrator using eRS Cloud Application.</td>
+</tr>
+</tbody></table>
+<h3 id='update-a-phase'>Update a phase</h3>
+<blockquote>
+<p><strong><code>PUT /v1/projects/{ID}/phases/{Phase_ID}</code></strong></p>
+</blockquote>
+
+<p>Updates an existing phase by setting the values of the parameters passed. Any parameters not passed will be left unchanged. </p>
+
+<p>This request accepts mostly the same arguments as the phase creation call.</p>
+
+<blockquote>
+<p>Example Request</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-v</span> <span class="nt">-X</span> PUT <span class="se">\</span>
+<span class="s2">"https://app.eresourcescheduler.cloud/rest/v1/projects/477/phases/2"</span> <span class="se">\</span>
+<span class="nt">-H</span> <span class="s2">"Authorization: Bearer B8x5Vj1O65r6wnoV"</span> <span class="se">\</span>
+<span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+<span class="nt">-d</span> <span class="s1">'{
+      "description": "First phase of development"
+    }'</span>
+
+</code></pre></div>
+<p><span class="optional"><b>REQUEST BODY PARAMETERS</b></span></p>
+
+<table><thead>
+<tr>
+<th style="text-align: right">Name</th>
+<th style="text-align: left">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: right"><strong>name</strong> <br><span class ="required"><code>required</code></span></td>
+<td style="text-align: left">String representing the name of phase. It can be up to 100 characters long.</td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>start_date</strong> <br><span class ="required"><code>required</code></span></td>
+<td style="text-align: left">String representing date value for start date of phase. This field takes input in ISO 8601 extended notation for date value i.e. yyyy-MM-dd.</td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>end_date</strong> <br><span class ="required"><code>required</code></span></td>
+<td style="text-align: left">String representing date value for end date of phase.  This field takes input in ISO 8601 extended notation for date value i.e. yyyy-MM-dd.</td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>description</strong> <br><code>optional</code></td>
+<td style="text-align: left">String consisting information related to this phase. It can be up to 255 characters long.</td>
+</tr>
+</tbody></table>
+<h3 id='returns-12'>Returns</h3>
+<table><thead>
+<tr>
+<th style="text-align: right">Code</th>
+<th style="text-align: left">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: right"><strong>200</strong> <br><span class = "success"><code>OK</code></span></td>
+<td style="text-align: left">Indicates that the operation was successful and phase is updated successfully.</td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>400</strong> <br> <span class = "error"><code>Bad Request</code></span></td>
+<td style="text-align: left">Bad Request occurs when a request is malformed, syntactically incorrect, empty required parameters or any unknown parameter is passed. Additionally, a Bad Request error may also occur when <code>start_date</code> is given later than <code>end_date</code> or the date range for this phase is overlapping with any existing phase.</td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>403</strong> <br> <span class = "error"><code>Forbidden</code></span></td>
+<td style="text-align: left">Authorization failed due to insufficient permissions. This occurs when the user does not have enough access rights to perform this action. Access for each user can be controlled by an Administrator using eRS Cloud Application.</td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>404</strong> <br><span class = "error"><code>Not Found</code></span></td>
+<td style="text-align: left">This status code indicates that the project or phase does not exist.</td>
+</tr>
+</tbody></table>
+
+<p><br><br></p>
+<h3 id='delete-a-phase'>Delete a phase</h3>
+<blockquote>
+<p><strong><code>DELETE /v1/projects/{ID}/phases/{Phase_ID}</code></strong></p>
+</blockquote>
+
+<p>Permanently deletes a phase. It cannot be undone. </p>
+
+<blockquote>
+<p>Example Request</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-v</span> <span class="nt">-X</span> DELETE <span class="se">\</span>
+<span class="s2">"https://app.eresourcescheduler.cloud/rest/v1/projects/477/phases/2"</span> <span class="se">\</span>
+<span class="nt">-H</span> <span class="s2">"Authorization: Bearer B8x5Vj1O65r6wnoV"</span>
+</code></pre></div><h3 id='returns-13'>Returns</h3>
+<table><thead>
+<tr>
+<th style="text-align: left">Code</th>
+<th style="text-align: left">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left"><strong>200</strong> <br><span class = "success"><code>OK</code></span></td>
+<td style="text-align: left">Indicates that the operation was successful and phase is deleted successfully.</td>
+</tr>
+<tr>
+<td style="text-align: left"><strong>403</strong> <br> <span class = "error"><code>Forbidden</code></span></td>
+<td style="text-align: left">Authorization failed due to insufficient permissions. This occurs when the user does not have enough access rights to perform this action. Access for each user can be controlled by an Administrator using eRS Cloud Application.</td>
+</tr>
+<tr>
+<td style="text-align: left"><strong>404</strong> <br><span class = "error"><code>Not Found</code></span></td>
+<td style="text-align: left">This indicates that the project or phase does not exist.</td>
+</tr>
+</tbody></table>
+<h2 id='milestones'>Milestones</h2>
+<p>A milestone is a notation used to define a goal reached in a project. Each project has its own milestones.</p>
+
+<p>This API allows you to list, create, delete and update milestones of any project.</p>
+<h3 id='list-milestones'>List Milestones</h3>
+<p>Retrieves a list of all the milestones of specified project. The list of milestones is returned sorted by name.</p>
+
+<blockquote>
+<p><strong><code>GET /v1/projects/{ID}/milestones</code></strong></p>
+
+<p>Example Request</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-v</span> <span class="nt">-X</span> GET <span class="se">\</span>
+<span class="s2">"https://app.eresourcescheduler.cloud/rest/v1/projects/477/milestones"</span> <span class="se">\</span>
+<span class="nt">-H</span> <span class="s2">"Authorization: Bearer B8x5Vj1O65r6wnoV"</span>
+</code></pre></div>
+<blockquote>
+<p>Example Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"total_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Documentation Complete"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Done with initial planning &amp; documentation."</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-01-11"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"color"</span><span class="p">:</span><span class="w"> </span><span class="s2">"#3F51B5"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"project_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">477</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"created_on"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-01-01T04:31:51.0+00:00"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"modified_on"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-01-01T04:35:03.0+00:00"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"created_by"</span><span class="p">:{</span><span class="w">
+          </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1146</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John Doe"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"modified_by"</span><span class="p">:{</span><span class="w">
+          </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1146</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John Doe"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p><span class="optional"><b>ATTRIBUTES</b></span></p>
+
+<table><thead>
+<tr>
+<th style="text-align: right">Name</th>
+<th style="text-align: left">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: right"><strong>ID</strong> <br><code>Integer</code></td>
+<td style="text-align: left">Auto-generated unique identifier for milestone object.</td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>project_id</strong> <br><code>Integer</code></td>
+<td style="text-align: left">Unique ID of project object, which this milestone belongs to.</td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>name</strong> <br><code>String</code></td>
+<td style="text-align: left">Name of milestone object.</td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>description</strong> <br> <code>String</code></td>
+<td style="text-align: left">Any information regarding this milestone.</td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>date</strong> <br><code>String</code></td>
+<td style="text-align: left">Represents date of the milestone object.</td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>color</strong> <br><code>String</code></td>
+<td style="text-align: left">String representing hexadecimal color code assigned to the milestone.</td>
+</tr>
+</tbody></table>
+<h3 id='returns-14'>Returns</h3>
+<table><thead>
+<tr>
+<th style="text-align: right">Code</th>
+<th style="text-align: left">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: right"><strong>200</strong> <br> <span class = "success"><code>OK</code></span></td>
+<td style="text-align: left">This code indicates that the operation was successful and the milestones list was retrieved successfully.</td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>403</strong> <br> <span class = "error"><code>Forbidden</code></span></td>
+<td style="text-align: left">Authorization failed due to insufficient permissions. This occurs when the user does not have enough access rights to perform this action. Access for each user can be controlled by an Administrator using eRS Cloud Application.</td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>404</strong> <br> <span class = "error"><code>Not Found</code></span></td>
+<td style="text-align: left">Not Found error occurs when requested project does not exist.</td>
+</tr>
+</tbody></table>
+
+<p><br><br></p>
+<h3 id='create-a-milestone'>Create a milestone</h3>
+<p>Creates a new milestone object for the specified project.</p>
+
+<blockquote>
+<p><strong><code>POST /v1/projects/{ID}/milestones</code></strong></p>
+
+<p>Example Request</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>
+curl <span class="nt">-v</span> <span class="nt">-X</span> POST <span class="se">\</span>
+<span class="s2">"https://app.eresourcescheduler.cloud/rest/v1/projects/477/milestones"</span> <span class="se">\</span>
+<span class="nt">-H</span> <span class="s2">"Authorization: Bearer B8x5Vj1O65r6wnoV"</span> <span class="se">\</span>
+<span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+<span class="nt">-d</span> <span class="s1">'{
+      "name": "Development Phase 1 Completed",
+      "date": "2022-04-02",
+      "color": "#3F51B5",
+      "description": "Development phase-I is completed, staging link at https://mydomain.tld/phase1."
+    }'</span>
+</code></pre></div>
+<p><span class="optional"><b>REQUEST BODY PARAMETERS</b></span></p>
+
+<table><thead>
+<tr>
+<th style="text-align: right">Name</th>
+<th style="text-align: left">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: right"><strong>name</strong> <br> <span class ="required"><code>required</code></span></td>
+<td style="text-align: left">String representing the name of a milestone. It can be up to 100 characters long.</td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>date</strong> <br><span class ="required"><code>required</code></span></td>
+<td style="text-align: left">String representing date value for date of milestone. This field takes input in ISO 8601 extended notation for date value i.e. yyyy-MM-dd.</td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>color</strong> <br><code>optional</code></td>
+<td style="text-align: left">String representing a color code for this milestone object. This is helpful to visually identify a milestone on the scheduling chart.This field takes input in string format of hexadecimal color code.</td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>description</strong> <br><code>optional</code></td>
+<td style="text-align: left">String consisting information related to this milestone. It can be up to 255 characters long.</td>
+</tr>
+</tbody></table>
+<h3 id='returns-15'>Returns</h3>
+<table><thead>
+<tr>
+<th style="text-align: left">Code</th>
+<th style="text-align: left">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left"><strong>201</strong> <br><span class = "success"><code>Created</code></span></td>
+<td style="text-align: left">Indicates that the operation was successful and a milestone is created successfully.</td>
+</tr>
+<tr>
+<td style="text-align: left"><strong>400</strong> <br> <span class = "error"><code>Bad Request</code></span></td>
+<td style="text-align: left">Bad Request error occurs when a request is malformed, syntactically incorrect, missing required parameters or any unknown parameter is passed.</td>
+</tr>
+<tr>
+<td style="text-align: left"><strong>403</strong> <br> <span class = "error"><code>Forbidden</code></span></td>
+<td style="text-align: left">Authorization failed due to insufficient permissions. This occurs when the user does not have enough access rights to perform this action. Access for each user can be controlled by an Administrator using eRS Cloud Application.</td>
+</tr>
+<tr>
+<td style="text-align: left"><strong>404</strong> <br><span class = "error"><code>Not Found</code></span></td>
+<td style="text-align: left">This status code indicates that the project on which the milestone is being created, does not exist.</td>
+</tr>
+</tbody></table>
+<h3 id='update-a-milestone'>Update a milestone</h3>
+<blockquote>
+<p><strong><code>PUT /v1/projects/{ID}/milestones/{Milestone_ID}</code></strong></p>
+</blockquote>
+
+<p>Updates an existing milestone by setting the values of the parameters passed. Any parameters not passed will be left unchanged. </p>
+
+<p>This request accepts mostly the same arguments as the milestone creation call.</p>
+
+<blockquote>
+<p>Example Request</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-v</span> <span class="nt">-X</span> PUT <span class="se">\</span>
+<span class="s2">"https://app.eresourcescheduler.cloud/rest/v1/projects/477/milestones/1"</span> <span class="se">\</span>
+<span class="nt">-H</span> <span class="s2">"Authorization: Bearer B8x5Vj1O65r6wnoV"</span> <span class="se">\</span>
+<span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+<span class="nt">-d</span> <span class="s1">'{
+      "name": "Documentation Completed"
+    }'</span>
+
+</code></pre></div>
+<p><span class="optional"><b>REQUEST BODY PARAMETERS</b></span></p>
+
+<table><thead>
+<tr>
+<th style="text-align: right">Name</th>
+<th style="text-align: left">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: right"><strong>name</strong> <br> <span class ="required"><code>required</code></span></td>
+<td style="text-align: left">String representing the name of a milestone. It can be up to 100 characters long.</td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>date</strong> <br><span class ="required"><code>required</code></span></td>
+<td style="text-align: left">String representing date value for date of milestone. This field takes input in ISO 8601 extended notation for date value i.e. yyyy-MM-dd.</td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>color</strong> <br><code>optional</code></td>
+<td style="text-align: left">String representing a color code for this milestone object. This is helpful to visually identify a milestone on the scheduling chart.This field takes input in string format of hexadecimal color code.</td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>description</strong> <br><code>optional</code></td>
+<td style="text-align: left">String consisting information related to this milestone. It can be up to 255 characters long.</td>
+</tr>
+</tbody></table>
+<h3 id='returns-16'>Returns</h3>
+<table><thead>
+<tr>
+<th style="text-align: right">Code</th>
+<th style="text-align: left">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: right"><strong>200</strong> <br><span class = "success"><code>OK</code></span></td>
+<td style="text-align: left">Indicates that the operation was successful and milestone is updated successfully.</td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>400</strong> <br> <span class = "error"><code>Bad Request</code></span></td>
+<td style="text-align: left">Bad Request error occurs when a request is malformed, syntactically incorrect, empty required parameters or any unknown parameter is passed.</td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>403</strong> <br> <span class = "error"><code>Forbidden</code></span></td>
+<td style="text-align: left">Authorization failed due to insufficient permissions. This occurs when the user does not have enough access rights to perform this action. Access for each user can be controlled by an Administrator using eRS Cloud Application.</td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>404</strong> <br><span class = "error"><code>Not Found</code></span></td>
+<td style="text-align: left">This status code indicates that the project or milestone does not exist.</td>
+</tr>
+</tbody></table>
+
+<p><br><br></p>
+<h3 id='delete-a-milestone'>Delete a milestone</h3>
+<blockquote>
+<p><strong><code>DELETE /v1/projects/{ID}/milestones/{Milestone_ID}</code></strong></p>
+</blockquote>
+
+<p>Permanently deletes a milestone. It cannot be undone. </p>
+
+<blockquote>
+<p>Example Request</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-v</span> <span class="nt">-X</span> DELETE <span class="se">\</span>
+<span class="s2">"https://app.eresourcescheduler.cloud/rest/v1/projects/477/milestones/2"</span> <span class="se">\</span>
+<span class="nt">-H</span> <span class="s2">"Authorization: Bearer B8x5Vj1O65r6wnoV"</span>
+</code></pre></div><h3 id='returns-17'>Returns</h3>
+<table><thead>
+<tr>
+<th style="text-align: left">Code</th>
+<th style="text-align: left">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left"><strong>200</strong> <br><span class = "success"><code>OK</code></span></td>
+<td style="text-align: left">Indicates that the operation was successful and milestone is deleted successfully.</td>
+</tr>
+<tr>
+<td style="text-align: left"><strong>403</strong> <br> <span class = "error"><code>Forbidden</code></span></td>
+<td style="text-align: left">Authorization failed due to insufficient permissions. This occurs when the user does not have enough access rights to perform this action. Access for each user can be controlled by an Administrator using eRS Cloud Application.</td>
+</tr>
+<tr>
+<td style="text-align: left"><strong>404</strong> <br><span class = "error"><code>Not Found</code></span></td>
+<td style="text-align: left">This indicates that the project or milestone does not exist.</td>
 </tr>
 </tbody></table>
 <h2 id='project-notes'>Project Notes</h2>
@@ -5224,7 +5753,7 @@ curl <span class="nt">-v</span> <span class="nt">-X</span> POST <span class="se"
  <span class="nt">-H</span> <span class="s2">"Authorization: Bearer B8x5Vj1O65r6wnoV"</span>
 </code></pre></div>
 <blockquote>
-<p>Exmaple Response</p>
+<p>Example Response</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"total_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
@@ -5290,7 +5819,7 @@ curl <span class="nt">-v</span> <span class="nt">-X</span> POST <span class="se"
 <td style="text-align: left">List of notes will be returned and sorted by it&#39;s latest modified date.</td>
 </tr>
 </tbody></table>
-<h3 id='returns-9'>Returns</h3>
+<h3 id='returns-18'>Returns</h3>
 <table><thead>
 <tr>
 <th style="text-align: right">Code</th>
@@ -5314,10 +5843,6 @@ curl <span class="nt">-v</span> <span class="nt">-X</span> POST <span class="se"
 <td style="text-align: left">This status code indicates that project ID does not exist.</td>
 </tr>
 </tbody></table>
-
-<blockquote>
-<p>Example Request</p>
-</blockquote>
 <h3 id='create-a-note'>Create a note</h3>
 <blockquote>
 <p><code>POST  v1/projects/{ID}/notes</code></p>
@@ -5343,7 +5868,7 @@ curl <span class="nt">-v</span> <span class="nt">-X</span> POST <span class="s2"
 <td style="text-align: left">To create new note you have to pass the body from content parameter. Content param accepts plain text. Also, you can pass text with HTML tags as Notes are Multi Line Rich Text.</td>
 </tr>
 </tbody></table>
-<h3 id='returns-10'>Returns</h3>
+<h3 id='returns-19'>Returns</h3>
 <table><thead>
 <tr>
 <th style="text-align: left">Code</th>
@@ -5398,7 +5923,7 @@ curl <span class="nt">-v</span> <span class="nt">-X</span> PUT <span class="s2">
 <td style="text-align: left">To update note you have to pass the body from <code>content</code> parameter.  Content param accepts plain text. Also, you can pass text with HTML tags as Notes are Multi Line Rich Text.</td>
 </tr>
 </tbody></table>
-<h3 id='returns-11'>Returns</h3>
+<h3 id='returns-20'>Returns</h3>
 <table><thead>
 <tr>
 <th style="text-align: right">Code</th>
@@ -5435,7 +5960,7 @@ curl <span class="nt">-v</span> <span class="nt">-X</span> PUT <span class="s2">
 <div class="highlight"><pre class="highlight shell tab-shell"><code>
 curl <span class="nt">-v</span> <span class="nt">-X</span> DELETE <span class="s2">"https://app.eresourcescheduler.cloud/rest/v1/projects/8/notes/5"</span><span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Authorization: Bearer B8x5Vj1O65r6wnoV"</span>
-</code></pre></div><h3 id='returns-12'>Returns</h3>
+</code></pre></div><h3 id='returns-21'>Returns</h3>
 <table><thead>
 <tr>
 <th style="text-align: right">Code</th>
@@ -5484,12 +6009,12 @@ curl <span class="nt">-v</span> <span class="nt">-X</span> DELETE <span class="s
   </span><span class="nl">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
   </span><span class="nl">"created_on"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-09-07T04:09:45.254681Z"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"created_by"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Rahul Sharma"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John doe"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">118</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="nl">"modified_on"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-11-21T06:23:02.494932Z"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"modified_by"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Rahul Sharma"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John doe"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">118</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -5753,12 +6278,12 @@ start=2018-01-01&amp;end=2018-12-31&amp;offset=1&amp;limit=10"</span> <span clas
       </span><span class="nl">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
       </span><span class="nl">"created_on"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-09-07T04:09:45.254681Z"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"created_by"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Rahul Sharma"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John doe"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">118</span><span class="w">
       </span><span class="p">},</span><span class="w">
       </span><span class="nl">"modified_on"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-11-21T06:23:02.494932Z"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"modified_by"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Rahul Sharma"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John doe"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">118</span><span class="w">
       </span><span class="p">}</span><span class="w">
     </span><span class="p">},</span><span class="w">
@@ -5853,12 +6378,12 @@ start=2018-01-01&amp;end=2018-12-31&amp;offset=1&amp;limit=10"</span> <span clas
   </span><span class="nl">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
   </span><span class="nl">"created_on"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-09-07T04:09:45.254681Z"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"created_by"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Rahul Sharma"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John doe"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">118</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="nl">"modified_on"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-11-21T06:23:02.494932Z"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"modified_by"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Rahul Sharma"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John doe"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">118</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -5942,12 +6467,12 @@ start=2018-01-01&amp;end=2018-08-09"</span> <span class="se">\</span>
       </span><span class="nl">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
       </span><span class="nl">"created_on"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-09-07T04:09:45.254681Z"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"created_by"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Rahul Sharma"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John doe"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">118</span><span class="w">
       </span><span class="p">},</span><span class="w">
       </span><span class="nl">"modified_on"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-11-21T06:23:02.494932Z"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"modified_by"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Rahul Sharma"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John doe"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">118</span><span class="w">
       </span><span class="p">}</span><span class="w">
     </span><span class="p">},</span><span class="w">
@@ -6354,13 +6879,13 @@ offset=1&amp;limit=10"</span> <span class="se">\</span>
                 </span><span class="nl">"created_on"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-08-20T09:20:34.925474Z"</span><span class="p">,</span><span class="w">
                 </span><span class="nl">"created_by"</span><span class="p">:</span><span class="w"> 
                 </span><span class="p">{</span><span class="w">
-                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Rahul Sharma"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John doe"</span><span class="p">,</span><span class="w">
                     </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">118</span><span class="w">
                 </span><span class="p">},</span><span class="w">
                 </span><span class="nl">"modified_on"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-09-28T12:23:44.896426Z"</span><span class="p">,</span><span class="w">
                 </span><span class="nl">"modified_by"</span><span class="p">:</span><span class="w"> 
                 </span><span class="p">{</span><span class="w">
-                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Rahul Sharma"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John doe"</span><span class="p">,</span><span class="w">
                     </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">118</span><span class="w">
                 </span><span class="p">},</span><span class="w">
             </span><span class="p">},</span><span class="w">
@@ -6372,13 +6897,13 @@ offset=1&amp;limit=10"</span> <span class="se">\</span>
                 </span><span class="nl">"created_on"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-08-20T09:30:34.925474Z"</span><span class="p">,</span><span class="w">
                 </span><span class="nl">"created_by"</span><span class="p">:</span><span class="w"> 
                 </span><span class="p">{</span><span class="w">
-                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Rahul Sharma"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John doe"</span><span class="p">,</span><span class="w">
                     </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">118</span><span class="w">
                 </span><span class="p">},</span><span class="w">
                 </span><span class="nl">"modified_on"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-09-28T12:32:44.896426Z"</span><span class="p">,</span><span class="w">
                 </span><span class="nl">"modified_by"</span><span class="p">:</span><span class="w"> 
                 </span><span class="p">{</span><span class="w">
-                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Rahul Sharma"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John doe"</span><span class="p">,</span><span class="w">
                     </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">118</span><span class="w">
                 </span><span class="p">},</span><span class="w">
             </span><span class="p">}</span><span class="w">
@@ -6519,9 +7044,9 @@ offset=1&amp;limit=10"</span> <span class="se">\</span>
 <td style="text-align: left"><code>&quot;timezone:eq&quot;: 1</code><br><code>&quot;timezone:neq&quot;: 1</code><br><code>&quot;timezone:any&quot;: [1, 2]</code><br><code>&quot;timezone:none&quot;: [3, 2]</code></td>
 </tr>
 <tr>
-<td style="text-align: left"><strong>disable_paralled_booking</strong></td>
+<td style="text-align: left"><strong>disable_parallel_booking</strong></td>
 <td style="text-align: left">N/A</td>
-<td style="text-align: left"><code>&quot;disable_paralled_booking&quot;: true</code><br><code>&quot;disable_paralled_booking&quot;: false</code></td>
+<td style="text-align: left"><code>&quot;disable_parallel_booking&quot;: true</code><br><code>&quot;disable_parallel_booking&quot;: false</code></td>
 </tr>
 <tr>
 <td style="text-align: left"><strong>created_by</strong></td>
@@ -6628,7 +7153,7 @@ curl <span class="nt">-v</span> <span class="nt">-X</span> PUT <span class="se">
 </tbody></table>
 <h3 id='delete-resource-rate'>Delete Resource Rate</h3>
 <blockquote>
-<p><strong><code>DELETE /v1/resources/{ID}/rate/{RATE_ID}</code></strong></p>
+<p><strong><code>DELETE /v1/resources/{ID}/rates/{RATE_ID}</code></strong></p>
 </blockquote>
 
 <p>Permanently deletes a rate. It cannot be undone.</p>
@@ -6810,13 +7335,13 @@ offset=1&amp;limit=10"</span> <span class="se">\</span>
                 </span><span class="nl">"created_on"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-08-20T09:25:34.925474Z"</span><span class="p">,</span><span class="w">
                 </span><span class="nl">"created_by"</span><span class="p">:</span><span class="w"> 
                 </span><span class="p">{</span><span class="w">
-                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Rahul Sharma"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John doe"</span><span class="p">,</span><span class="w">
                     </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">118</span><span class="w">
                 </span><span class="p">},</span><span class="w">
                 </span><span class="nl">"modified_on"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-09-28T12:32:44.896426Z"</span><span class="p">,</span><span class="w">
                 </span><span class="nl">"modified_by"</span><span class="p">:</span><span class="w"> 
                 </span><span class="p">{</span><span class="w">
-                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Rahul Sharma"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John doe"</span><span class="p">,</span><span class="w">
                     </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">118</span><span class="w">
                 </span><span class="p">},</span><span class="w">
                 </span><span class="p">}</span><span class="w">
@@ -6940,9 +7465,9 @@ offset=1&amp;limit=10"</span> <span class="se">\</span>
 <td style="text-align: left"><code>&quot;is_archive&quot;:true</code> <br><code>&quot;is_archive&quot;:false</code></td>
 </tr>
 <tr>
-<td style="text-align: left"><strong>disable_paralled_booking</strong></td>
+<td style="text-align: left"><strong>disable_parallel_booking</strong></td>
 <td style="text-align: left">N/A</td>
-<td style="text-align: left"><code>&quot;disable_paralled_booking&quot;: true</code><br><code>&quot;disable_paralled_booking&quot;: false</code></td>
+<td style="text-align: left"><code>&quot;disable_parallel_booking&quot;: true</code><br><code>&quot;disable_parallel_booking&quot;: false</code></td>
 </tr>
 <tr>
 <td style="text-align: left"><strong>created_by</strong></td>
@@ -6977,7 +7502,7 @@ offset=1&amp;limit=10"</span> <span class="se">\</span>
 <p>This request accepts the same arguments as the rate creation call.</p>
 
 <blockquote>
-<p>Example Request<code>&quot;modified_on:lt&quot;: [&quot;2021-07-08T00:00:00]</code><br></p>
+<p>Example Request</p>
 </blockquote>
 <div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-v</span> <span class="nt">-X</span> PUT <span class="se">\</span>
 <span class="s2">"https://app.eresourcescheduler.cloud/rest/v1/projects/8/rates/9"</span> <span class="se">\</span>
@@ -7050,12 +7575,10 @@ curl <span class="nt">-v</span> <span class="nt">-X</span> PUT <span class="se">
 </tbody></table>
 <h3 id='update-billing-status'>Update Billing Status</h3>
 <blockquote>
-<p><strong><code>PUT /v1/projects/{ID}/billingStatus/</code></strong></p>
+<p><strong><code>PUT /v1/projects/{ID}/billingStatus</code></strong></p>
 </blockquote>
 
 <p>Updates project billing status by setting the value of the <code>is_billable</code>.</p>
-
-<p>This request accepts mostly the same arguments as the rate creation call.</p>
 
 <blockquote>
 <p>Example Request</p>
@@ -7219,7 +7742,7 @@ curl <span class="nt">-v</span> <span class="nt">-X</span> POST <span class="se"
 </thead><tbody>
 <tr>
 <td style="text-align: right"><strong>rate</strong> <br> <span class ="required"><code>required</code></span></td>
-<td style="text-align: left">Represnts billing rate. Rate value is a floating point number which could not be less than 0 and greater than 99999999.99.</td>
+<td style="text-align: left">Represents billing rate. Rate value is a floating point number which could not be less than 0 and greater than 99999999.99.</td>
 </tr>
 <tr>
 <td style="text-align: right"><strong>effective_date</strong> <br> <span class ="required"><code>required</code></span></td>
@@ -7285,13 +7808,13 @@ offset=1&amp;limit=10"</span> <span class="se">\</span>
                 </span><span class="nl">"created_on"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-08-20T09:25:34.925474Z"</span><span class="p">,</span><span class="w">
                 </span><span class="nl">"created_by"</span><span class="p">:</span><span class="w"> 
                 </span><span class="p">{</span><span class="w">
-                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Rahul Sharma"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John doe"</span><span class="p">,</span><span class="w">
                     </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">118</span><span class="w">
                 </span><span class="p">},</span><span class="w">
                 </span><span class="nl">"modified_on"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-09-28T12:32:44.896426Z"</span><span class="p">,</span><span class="w">
                 </span><span class="nl">"modified_by"</span><span class="p">:</span><span class="w"> 
                 </span><span class="p">{</span><span class="w">
-                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Rahul Sharma"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John doe"</span><span class="p">,</span><span class="w">
                     </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">118</span><span class="w">
                 </span><span class="p">},</span><span class="w">
                 </span><span class="p">}</span><span class="w">
@@ -7391,7 +7914,7 @@ curl <span class="nt">-v</span> <span class="nt">-X</span> PUT <span class="se">
 </thead><tbody>
 <tr>
 <td style="text-align: right"><strong>rate</strong> <br> <span class ="required"><code>required</code></span></td>
-<td style="text-align: left">Represnts billing rate. Rate value is a floating point number which could not be less than 0 and greater than 99999999.99.</td>
+<td style="text-align: left">Represents billing rate. Rate value is a floating point number which could not be less than 0 and greater than 99999999.99.</td>
 </tr>
 <tr>
 <td style="text-align: right"><strong>effective_date</strong> <br><code>optional</code></td>
@@ -7428,7 +7951,7 @@ curl <span class="nt">-v</span> <span class="nt">-X</span> PUT <span class="se">
 </tbody></table>
 <h3 id='delete-role-rate'>Delete Role Rate</h3>
 <blockquote>
-<p><strong><code>DELETE /v1/roles/{ID}/rate/{RATE_ID}</code></strong></p>
+<p><strong><code>DELETE /v1/roles/{ID}/rates/{RATE_ID}</code></strong></p>
 </blockquote>
 
 <p>Permanently deletes a rate. It cannot be undone.</p>
@@ -7494,7 +8017,7 @@ curl <span class="nt">-v</span> <span class="nt">-X</span> PUT <span class="se">
   </span><span class="p">],</span><span class="w">
   </span><span class="nl">"created_on"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-07-27T07:56:17.515125Z"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"created_by"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Rahul Sharma"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John doe"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">118</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="nl">"modified_on"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-07-27T13:23:46.583746Z"</span><span class="p">,</span><span class="w">
@@ -7504,7 +8027,7 @@ curl <span class="nt">-v</span> <span class="nt">-X</span> PUT <span class="se">
   </span><span class="p">},</span><span class="w">
   </span><span class="nl">"submitted_on"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-07-27T07:56:17.515125Z"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"submitted_by"</span><span class="p">:{</span><span class="w">
-    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Rahul Sharma"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John doe"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">118</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="nl">"approval_time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-07-27T13:23:46.583746Z"</span><span class="p">,</span><span class="w">
@@ -7787,7 +8310,7 @@ start=2021-07-01&amp;end=2021-07-31&amp;offset=1&amp;limit=10"</span> <span clas
       </span><span class="p">],</span><span class="w">
       </span><span class="nl">"created_on"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-07-27T07:56:17.515125Z"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"created_by"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Rahul Sharma"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John doe"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">118</span><span class="w">
       </span><span class="p">},</span><span class="w">
       </span><span class="nl">"modified_on"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-07-27T13:23:46.583746Z"</span><span class="p">,</span><span class="w">
@@ -7797,7 +8320,7 @@ start=2021-07-01&amp;end=2021-07-31&amp;offset=1&amp;limit=10"</span> <span clas
       </span><span class="p">},</span><span class="w">
       </span><span class="nl">"submitted_on"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-07-27T07:56:17.515125Z"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"submitted_by"</span><span class="p">:{</span><span class="w">
-        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Rahul Sharma"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John doe"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">118</span><span class="w">
       </span><span class="p">},</span><span class="w">
       </span><span class="nl">"approval_time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-07-27T13:23:46.583746Z"</span><span class="p">,</span><span class="w">
@@ -7903,7 +8426,7 @@ start=2021-07-01&amp;end=2021-07-31&amp;offset=1&amp;limit=10"</span> <span clas
   </span><span class="p">],</span><span class="w">
   </span><span class="nl">"created_on"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-07-27T07:56:17.515125Z"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"created_by"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Rahul Sharma"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John doe"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">118</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="nl">"modified_on"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-07-27T13:23:46.583746Z"</span><span class="p">,</span><span class="w">
@@ -7913,7 +8436,7 @@ start=2021-07-01&amp;end=2021-07-31&amp;offset=1&amp;limit=10"</span> <span clas
   </span><span class="p">},</span><span class="w">
   </span><span class="nl">"submitted_on"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-07-27T07:56:17.515125Z"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"submitted_by"</span><span class="p">:{</span><span class="w">
-    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Rahul Sharma"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John doe"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">118</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="nl">"approval_time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-07-27T13:23:46.583746Z"</span><span class="p">,</span><span class="w">
@@ -8008,7 +8531,7 @@ start=2021-07-01&amp;end=2021-07-31"</span> <span class="se">\</span>
       </span><span class="p">],</span><span class="w">
       </span><span class="nl">"created_on"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-07-27T07:56:17.515125Z"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"created_by"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Rahul Sharma"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John doe"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">118</span><span class="w">
       </span><span class="p">},</span><span class="w">
       </span><span class="nl">"modified_on"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-07-27T13:23:46.583746Z"</span><span class="p">,</span><span class="w">
@@ -8018,7 +8541,7 @@ start=2021-07-01&amp;end=2021-07-31"</span> <span class="se">\</span>
       </span><span class="p">},</span><span class="w">
       </span><span class="nl">"submitted_on"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-07-27T07:56:17.515125Z"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"submitted_by"</span><span class="p">:{</span><span class="w">
-        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Rahul Sharma"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John doe"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">118</span><span class="w">
       </span><span class="p">},</span><span class="w">
       </span><span class="nl">"approval_time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-07-27T13:23:46.583746Z"</span><span class="p">,</span><span class="w">
@@ -8452,13 +8975,18 @@ start=2021-07-01&amp;end=2021-07-31"</span> <span class="se">\</span>
 </tr>
 <tr>
 <td style="text-align: left"><strong>Drop Down Multi Select</strong></td>
-<td style="text-align: left"><li><strong>any</strong> <em>(default)</em> </li><li>none</li><li>all</li><li>ex</li></ul></td>
+<td style="text-align: left"><li><strong>any</strong> <em>(default)</em> </li><li>none</li><li>all</li><li>ex</li></td>
 <td style="text-align: left"><code>&quot;ddms_field:any&quot;: [20,21]</code><br><code>&quot;ddms_field:none&quot;: [20,21]</code><br><code>&quot;ddms_field:all&quot;: [20,21]</code><br><code>&quot;ddms_field:ex&quot;: [20,21]</code></td>
 </tr>
 <tr>
 <td style="text-align: left"><strong>User Single Select</strong></td>
 <td style="text-align: left"><li><strong>eq</strong> <em>(default)</em> </li><li>neq</li><li>any</li><li>none</li></td>
 <td style="text-align: left"><code>&quot;uss_field:eq&quot;: 15</code><br><code>&quot;uss_field:neq&quot;: 15</code><br><code>&quot;uss_field:any&quot;: [16,15]</code><br><code>&quot;uss_field:none&quot;: [16,15]</code></td>
+</tr>
+<tr>
+<td style="text-align: left"><strong>User Multi Select</strong></td>
+<td style="text-align: left"><li><strong>any</strong> <em>(default)</em> </li><li>none</li><li>all</li><li>ex</li></td>
+<td style="text-align: left"><code>&quot;ums_field:any&quot;:[20,21]</code><br><code>&quot;ums_field:none&quot;: [20,21]</code><br><code>&quot;ums_field:all&quot;: [20,21]</code><br><code>&quot;ums_field:ex&quot;: [20,21]</code></td>
 </tr>
 </tbody></table>
 
