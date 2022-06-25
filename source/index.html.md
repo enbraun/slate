@@ -22,6 +22,7 @@ includes:
   - booking
   - rates
   - timesheet
+  - utilization
   - filter
 search: true
 
