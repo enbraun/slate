@@ -545,6 +545,14 @@
               </ul>
           </li>
           <li>
+            <a href="#utilization" class="toc-h1 toc-link" data-title="Utilization">Utilization</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#get-utilization" class="toc-h2 toc-link" data-title="Get Utilization">Get Utilization</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
             <a href="#filters" class="toc-h1 toc-link" data-title="Filters">Filters</a>
               <ul class="toc-list-h2">
                   <li>
@@ -8848,6 +8856,352 @@ start=2021-07-01&amp;end=2021-07-31"</span> <span class="se">\</span>
 <tr>
 <td style="text-align: right"><strong>404</strong> <br> <span class = "error"><code>Not Found</code></span></td>
 <td style="text-align: left">Not Found error occurs when requested timesheet entry does not exist or is already deleted.</td>
+</tr>
+</tbody></table>
+<h1 id='utilization'>Utilization</h1>
+<p>This API endpoint is used to query the calculated utilization of resources and projects. The API also allows fetching out planned and actual utilization with different filter criteria in various ways. This enables a great power to find out what is needed. eRS Cloud API also allows filtering on custom-defined fields with multiple operators and conditions to cover complex scenarios.</p>
+<h2 id='get-utilization'>Get Utilization</h2>
+<blockquote>
+<p><strong><code>POST /v1/utilization</code></strong></p>
+
+<p>Example: Get utilization by resources</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="s2">"https://app.eresourcescheduler.cloud/rest/v1/utilization?</span><span class="se">\</span><span class="s2">
+view=resource&amp;start=2022-05-01&amp;end=2022-05-31"</span> <span class="se">\</span>
+<span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+<span class="nt">-H</span> <span class="s2">"Authorization: Bearer B8x5Vj1O65r6wnoV"</span> <span class="se">\</span>
+</code></pre></div>
+<blockquote>
+<p>Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"end_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-05-31"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"offset"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"total_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">11</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"limit"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"start_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-05-01"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"resources"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Albert Murphy"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"total_planned_hrs"</span><span class="p">:</span><span class="w"> </span><span class="mf">160.79</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Ayn Dante"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"total_planned_hrs"</span><span class="p">:</span><span class="w"> </span><span class="mf">71.22</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Chris Rose"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"total_planned_hrs"</span><span class="p">:</span><span class="w"> </span><span class="mf">138.6</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Emily Eliot"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"total_planned_hrs"</span><span class="p">:</span><span class="w"> </span><span class="mf">187.2</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">9</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Jayden Brock"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"total_planned_hrs"</span><span class="p">:</span><span class="w"> </span><span class="mf">164.39</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Joanna Collins"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"total_planned_hrs"</span><span class="p">:</span><span class="w"> </span><span class="mf">114.0</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Martha Day"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"total_planned_hrs"</span><span class="p">:</span><span class="w"> </span><span class="mf">66.0</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+
+    </span><span class="p">{</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>Example: Get utilization by projects</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="s2">"https://app.eresourcescheduler.cloud/rest/v1/utilization?</span><span class="se">\</span><span class="s2">
+view=project&amp;start=2022-05-01&amp;end=2022-05-31"</span> <span class="se">\</span>
+<span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+<span class="nt">-H</span> <span class="s2">"Authorization: Bearer B8x5Vj1O65r6wnoV"</span> <span class="se">\</span>
+</code></pre></div>
+<blockquote>
+<p>Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"end_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-05-31"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"offset"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"total_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"limit"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"start_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-05-01"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"projects"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Apollo 11"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"total_planned_hrs"</span><span class="p">:</span><span class="w"> </span><span class="mf">274.0</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Falcon 9"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"total_planned_hrs"</span><span class="p">:</span><span class="w"> </span><span class="mf">132.0</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Hubble Telescope"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"total_planned_hrs"</span><span class="p">:</span><span class="w"> </span><span class="mf">422.59</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mangalyaan"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"total_planned_hrs"</span><span class="p">:</span><span class="w"> </span><span class="mf">229.20</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mars Express"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"total_planned_hrs"</span><span class="p">:</span><span class="w"> </span><span class="mf">213.79</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mars Rover"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"total_planned_hrs"</span><span class="p">:</span><span class="w"> </span><span class="mf">208.79</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>Example: Get utilization by projects using project filter</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="s2">"https://app.eresourcescheduler.cloud/rest/v1/utilization?</span><span class="se">\</span><span class="s2">
+view=project&amp;start=2022-05-01&amp;end=2022-05-31"</span> <span class="se">\</span>
+<span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+<span class="nt">-H</span> <span class="s2">"Authorization: Bearer B8x5Vj1O65r6wnoV"</span> <span class="se">\</span>
+<span class="nt">-d</span> <span class="s1">'{        
+       "project":{
+            "project_start_date:gt":"2022-01-01",
+            "tags":["Medium","High"]
+        }
+    }'</span>
+</code></pre></div>
+<blockquote>
+<p>Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"end_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-05-31"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"offset"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"total_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"limit"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"start_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-05-01"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"projects"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Apollo 11"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"total_planned_hrs"</span><span class="p">:</span><span class="w"> </span><span class="mf">274.0</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Hubble Telescope"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"total_planned_hrs"</span><span class="p">:</span><span class="w"> </span><span class="mf">422.59</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+   </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>Example: Get planned and actual utilization</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="s2">"https://app.eresourcescheduler.cloud/rest/v1/utilization?</span><span class="se">\</span><span class="s2">
+start=2022-05-01&amp;end=2022-05-31&amp;data=actual,planned"</span> <span class="se">\</span>
+<span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+<span class="nt">-H</span> <span class="s2">"Authorization: Bearer B8x5Vj1O65r6wnoV"</span> <span class="se">\</span>
+</code></pre></div>
+<blockquote>
+<p>Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"end_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-05-31"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"offset"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"total_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">11</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"limit"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"start_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-05-01"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"resource"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Albert Murphy"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"total_actual_hrs"</span><span class="p">:</span><span class="w"> </span><span class="mf">10.4</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"total_planned_hrs"</span><span class="p">:</span><span class="w"> </span><span class="mf">160.79</span><span class="p">,</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Ayn Dante"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"total_actual_hrs"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"total_planned_hrs"</span><span class="p">:</span><span class="w"> </span><span class="mf">71.22</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Chris Rose"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"total_actual_hrs"</span><span class="p">:</span><span class="w"> </span><span class="mf">30.50</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"total_planned_hrs"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Emily Eliot"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"total_actual_hrs"</span><span class="p">:</span><span class="w"> </span><span class="mf">12.8</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"total_planned_hrs"</span><span class="p">:</span><span class="w"> </span><span class="mf">187.2</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">9</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Jayden Brock"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"total_actual_hrs"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"total_planned_hrs"</span><span class="p">:</span><span class="w"> </span><span class="mf">164.39</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Joanna Collins"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"total_actual_hrs"</span><span class="p">:</span><span class="w"> </span><span class="mf">15.0</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"total_planned_hrs"</span><span class="p">:</span><span class="w"> </span><span class="mf">114.0</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Martha Day"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"total_actual_hrs"</span><span class="p">:</span><span class="w"> </span><span class="mf">25.40</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"total_planned_hrs"</span><span class="p">:</span><span class="w"> </span><span class="mf">66.0</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>Example: Get planned and actual utilization with daily breakup</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="s2">"https://app.eresourcescheduler.cloud/rest/v1/utilization?</span><span class="se">\</span><span class="s2">
+start=2022-05-01&amp;end=2022-05-05&amp;data=actual,planned&amp;daily_hrs=true"</span> <span class="se">\</span>
+<span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+<span class="nt">-H</span> <span class="s2">"Authorization: Bearer B8x5Vj1O65r6wnoV"</span> <span class="se">\</span>
+</code></pre></div>
+<blockquote>
+<p>Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"end_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-05-05"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"offset"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"total_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">11</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"limit"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"start_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-05-01"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"resource"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"daily_actual_hrs"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"2022-05-01"</span><span class="p">:</span><span class="w"> </span><span class="mf">3.0</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"2022-05-01"</span><span class="p">:</span><span class="w"> </span><span class="mf">2.0</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"2022-05-01"</span><span class="p">:</span><span class="w"> </span><span class="mf">5.0</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"2022-05-01"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"2022-05-01"</span><span class="p">:</span><span class="w"> </span><span class="mf">3.0</span><span class="p">,</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nl">"daily_planned_hrs"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"2022-05-01"</span><span class="p">:</span><span class="w"> </span><span class="mf">5.0</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"2022-05-01"</span><span class="p">:</span><span class="w"> </span><span class="mf">5.0</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"2022-05-01"</span><span class="p">:</span><span class="w"> </span><span class="mf">5.0</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"2022-05-01"</span><span class="p">:</span><span class="w"> </span><span class="mf">3.0</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"2022-05-01"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0</span><span class="p">,</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Albert Murphy"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"total_actual_hrs"</span><span class="p">:</span><span class="w"> </span><span class="mf">13.0</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"total_planned_hrs"</span><span class="p">:</span><span class="w"> </span><span class="mf">18.0</span><span class="p">,</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"daily_actual_hrs"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"2022-05-01"</span><span class="p">:</span><span class="w"> </span><span class="mf">4.0</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"2022-05-01"</span><span class="p">:</span><span class="w"> </span><span class="mf">4.0</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"2022-05-01"</span><span class="p">:</span><span class="w"> </span><span class="mf">4.0</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"2022-05-01"</span><span class="p">:</span><span class="w"> </span><span class="mf">4.0</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"2022-05-01"</span><span class="p">:</span><span class="w"> </span><span class="mf">5.0</span><span class="p">,</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nl">"daily_planned_hrs"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"2022-05-01"</span><span class="p">:</span><span class="w"> </span><span class="mf">8.0</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"2022-05-01"</span><span class="p">:</span><span class="w"> </span><span class="mf">8.0</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"2022-05-01"</span><span class="p">:</span><span class="w"> </span><span class="mf">8.0</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"2022-05-01"</span><span class="p">:</span><span class="w"> </span><span class="mf">8.0</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"2022-05-01"</span><span class="p">:</span><span class="w"> </span><span class="mf">8.0</span><span class="p">,</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Ayn Dante"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"total_actual_hrs"</span><span class="p">:</span><span class="w"> </span><span class="mf">21.0</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"total_planned_hrs"</span><span class="p">:</span><span class="w"> </span><span class="mf">40.0</span><span class="p">,</span><span class="w">
+      </span><span class="p">},</span><span class="w">      
+      </span><span class="p">{</span><span class="err">...</span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="err">...</span><span class="p">}</span><span class="w">      
+   </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p><span class="optional"><b>REQUEST QUERY PARAMETERS</b></span></p>
+
+<table><thead>
+<tr>
+<th style="text-align: right">Name</th>
+<th style="text-align: left">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: right"><strong>start</strong><br><code>optional</code></td>
+<td style="text-align: left">String value representing start date in ISO 8601 extended notation for date i.e. yyyy-MM-dd. This is used to get utilization on or after this date.</td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>end</strong><br><code>optional</code></td>
+<td style="text-align: left">String value representing end date in ISO 8601 extended notation for date i.e. yyyy-MM-dd. This is used to get utilization on or before this date.</td>
+</tr>
+<tr>
+<td style="text-align: right"></td>
+<td style="text-align: left"><em><strong>Note</strong>: By default, if <code>start</code> &amp; <code>end</code> arguments are omitted, then utilization of the current month will be returned. If utilization of a specific period is required, then both <code>start</code> &amp; <code>end</code> arguments must be passed.</em></td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>limit</strong><br><code>optional</code></td>
+<td style="text-align: left">The limit keyword is used to limit the number of records returned from a result set. If a limit count is given, no more than that many records will be returned (but possibly less, if the query itself yields fewer records)<br><em>Default value of <code>limit</code> is</em> <span class="required"><strong><code>10</code></strong></span>.<br><em>Maximum value of <code>limit</code> can be</em> <span class="required"><strong><code>25</code></strong></span>.</td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>offset</strong><br><code>optional</code></td>
+<td style="text-align: left">Offset keyword is used to skip n items. If the offset value is given as 10, then the first 10 records will be skipped from the result set. Offset is often used together with the limit keyword.<br><em>Default value of <code>offset</code> is</em> <span class="required"><strong><code>0</code></strong></span>.</td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>view</strong><br><code>optional</code></td>
+<td style="text-align: left">This parameter allows you to select from the two available views i.e. <strong>resource</strong> or <strong>project</strong>. The <code>Resource</code> view aggregates utilization data on resources, whereas the <code>project</code> view aggregates data on projects.<br><em>Default value of <code>view</code> is</em> <span class="required"><strong><code>resource</code></strong></span>.</td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>data</strong><br><code>optional</code></td>
+<td style="text-align: left">This parameter allows querying for planned and actual utilization. Possible value for this parameter can be &#39;planned&#39; or &#39;actual&#39; or &#39;planned,actual&#39;.<br><em>Default value of <code>data</code> is</em> <span class="required"><strong><code>planned</code></strong></span>.</td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>daily_hrs</strong><br><code>optional</code></td>
+<td style="text-align: left">This parameter defines whether the result should contain a daily breakup of hours or not. If the parameter with the true value exists in the request, then the response will include daily utilization hours along with the aggregated total utilization hours.<br><em>Default value of <code>daily_hrs</code> is</em> <span class="required"><strong><code>false</code></strong></span>.</td>
+</tr>
+</tbody></table>
+
+<p>Along with query parameters, this API endpoint also accepts filter criteria as a request body. Kindly refer to the examples shown to the right. To learn more about filters, visit <a href="#filters" class="api-ref">this section</a>.</p>
+<h3 id='returns'>Returns</h3>
+<table><thead>
+<tr>
+<th style="text-align: right">Code</th>
+<th style="text-align: left">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: right"><strong>200</strong> <br> <span class = "success"><code>OK</code></span></td>
+<td style="text-align: left">This indicates that the operation was successful and utilization is returned.</td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>400</strong> <br> <span class = "error"><code>Bad Request</code></span></td>
+<td style="text-align: left">Bad Request error occurs when a request is malformed, syntactically incorrect or when the offset or limit value is a negative integer.</td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>403</strong> <br> <span class = "error"><code>Forbidden</code></span></td>
+<td style="text-align: left">Authorization failed due to insufficient permissions. This occurs when user does not have enough access rights to perform this action. Access for each user can be controlled by an Administrator using eRS Cloud Application.</td>
 </tr>
 </tbody></table>
 <h1 id='filters'>Filters</h1><h2 id='definition'>Definition</h2>
