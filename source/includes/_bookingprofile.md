@@ -101,7 +101,6 @@ curl -v \
     "display_name": "Unit",
     "field_type": "UNIT",
     "minnum": 1,
-    "maxnum": 5,
     "is_required": false,
     "is_system_defined": true
 }
