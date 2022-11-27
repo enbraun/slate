@@ -6746,21 +6746,21 @@ start=2018-01-01&amp;end=2018-08-09"</span> <span class="se">\</span>
 <p>Example Request: Delete a recurring booking and all its related bookings.</p>
 </blockquote>
 <div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-v</span> <span class="nt">-X</span> DELETE <span class="s2">"https://app.eresourcescheduler.cloud/rest</span><span class="se">\</span><span class="s2">
-/v1/bookings/28?delete_connected_bookings=1"</span><span class="se">\</span>
+/v1/bookings/28?delete_connected_bookings=1"</span> <span class="se">\</span>
 <span class="nt">-H</span> <span class="s2">"Authorization: Bearer B8x5Vj1O65r6wnoV"</span>
 </code></pre></div>
 <blockquote>
 <p>Example Request: Delete a recurring booking and all its future bookings.</p>
 </blockquote>
 <div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-v</span> <span class="nt">-X</span> DELETE <span class="s2">"https://app.eresourcescheduler.cloud/rest</span><span class="se">\</span><span class="s2">
-/v1/bookings/28?delete_connected_bookings=2"</span><span class="se">\</span>
+/v1/bookings/28?delete_connected_bookings=2"</span> <span class="se">\</span>
 <span class="nt">-H</span> <span class="s2">"Authorization: Bearer B8x5Vj1O65r6wnoV"</span>
 </code></pre></div>
 <blockquote>
 <p>Example Request: Delete a recurring booking without affecting related bookings.</p>
 </blockquote>
 <div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-v</span> <span class="nt">-X</span> DELETE <span class="s2">"https://app.eresourcescheduler.cloud/rest</span><span class="se">\</span><span class="s2">
-/v1/bookings/28?delete_connected_bookings=4"</span><span class="se">\</span>
+/v1/bookings/28?delete_connected_bookings=4"</span> <span class="se">\</span>
 <span class="nt">-H</span> <span class="s2">"Authorization: Bearer B8x5Vj1O65r6wnoV"</span>
 </code></pre></div><h3 id='returns-5'>Returns</h3>
 <table><thead>
