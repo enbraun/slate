@@ -1843,7 +1843,6 @@ grant_type=authorization_code</span><span class="se">\</span><span class="s2">
     </span><span class="nl">"display_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Unit"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"field_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"UNIT"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"minnum"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"maxnum"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
     </span><span class="nl">"is_required"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
     </span><span class="nl">"is_system_defined"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -6073,7 +6072,7 @@ curl <span class="nt">-v</span> <span class="nt">-X</span> DELETE <span class="s
 </tr>
 <tr>
 <td style="text-align: right"><strong>unit</strong> <br><code>integer</code></td>
-<td style="text-align: left">Represents unit of effort for this booking. Unit could be one of <code>Capacity %</code> , <code>Total Booking Hours</code> , <code>Hours Per Day</code> , <code>Full Time Equivalent</code> , <code>Time per day</code>.</td>
+<td style="text-align: left">Represents unit of effort for this booking. Unit could be one of <code>Capacity %</code> , <code>Total Booking Hours</code> or <code>Full Time Equivalent</code>.</td>
 </tr>
 <tr>
 <td style="text-align: right"><strong>progress</strong> <br><code>integer</code></td>
@@ -6182,7 +6181,7 @@ curl <span class="nt">-v</span> <span class="nt">-X</span> DELETE <span class="s
 </tr>
 <tr>
 <td style="text-align: right"><strong>unit</strong><br><code>optional</code></td>
-<td style="text-align: left">Integer number (1-5) representing unit in which effort is being defined. Unit value could be one of the following :<br><br><li><strong>1</strong> for <code>Capacity %</code> : This is default unit for booking. This represents <code>effort</code> in percentage of capacity of intended resource for defined time range. </li> <li> <strong>2</strong> for <code>Total Booking Hours</code> : This defines <code>effort</code> value in fixed hours which doesn&#39;t change upon changes in booking.</li> <li> <strong>3</strong> for <code>Hours Per day</code> : This could be used where a certain no of hours per day need to be spend for a booking. For example 4 hours per day (working day).</li> <li> <strong>4</strong> for <code>Full Time Equivalent</code> : Full time equivalent is calculated using FTE calendar defined in <a href="https://app.eresourcescheduler.cloud/#!/admin/calendars/settings" target="_blank" class="api-ref">Administrator calendar settings</a>. Capacity from FTE calendar for defined time in booking, is considered as 1 FTE.</li> <li> <strong>5</strong> for <code>Time Per Day</code> : It is useful where <code>effort</code> needs to put in on a particular time of every working day i.e. 4:15 PM to 5:30 PM daily. Time portion of <code>start_time</code> argument is considered as per day start time, and Time portion of <code>end_time</code> argument is considered per day end time for this booking. </li></td>
+<td style="text-align: left">Integer number (1-5) representing unit in which effort is being defined. Unit value could be one of the following :<br><br><li><strong>1</strong> for <code>Capacity %</code> : This is default unit for booking. This represents <code>effort</code> in percentage of capacity of intended resource for defined time range. </li> <li> <strong>2</strong> for <code>Total Booking Hours</code> : This defines <code>effort</code> value in fixed hours which doesn&#39;t change upon changes in booking.</li> <li> <del><strong>3</strong> for <code>Hours Per day</code> : This could be used where a certain no of hours per day need to be spend for a booking. For example 4 hours per day (working day).</del></li> <li> <strong>4</strong> for <code>Full Time Equivalent</code> : Full time equivalent is calculated using FTE calendar defined in <a href="https://app.eresourcescheduler.cloud/#!/admin/calendars/settings" target="_blank" class="api-ref">Administrator calendar settings</a>. Capacity from FTE calendar for defined time in booking, is considered as 1 FTE.</li> <li> <del><strong>5</strong> for <code>Time Per Day</code> : It is useful where <code>effort</code> needs to put in on a particular time of every working day i.e. 4:15 PM to 5:30 PM daily. Time portion of <code>start_time</code> argument is considered as per day start time, and Time portion of <code>end_time</code> argument is considered per day end time for this booking.</del> </li> <br><em><strong>Note</strong>: <span class="warning">Booking units <strong>Hours per day</strong> and <strong>Time per day</strong> are no longer supported.</span>.</em></td>
 </tr>
 <tr>
 <td style="text-align: right"><strong>progress</strong> <br><code>optional</code></td>
@@ -6595,7 +6594,40 @@ start=2018-01-01&amp;end=2018-08-09"</span> <span class="se">\</span>
       "resource_id": 3, 
       "project_id" : 4, 
       "start_time" : "2017-06-05T09:00", 
-      "unit": 3 
+      "unit": 1 
+    }'</span>
+</code></pre></div>
+<blockquote>
+<p>Example Request: Update a recurring booking and all its related bookings.</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-v</span> <span class="nt">-X</span> PUT <span class="s2">"https://app.eresourcescheduler.cloud/rest</span><span class="se">\</span><span class="s2">
+/v1/bookings/28?update_connected_bookings=1"</span> <span class="se">\</span>
+<span class="nt">-H</span> <span class="s2">"Authorization: Bearer B8x5Vj1O65r6wnoV"</span> <span class="se">\</span>
+<span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+<span class="nt">-d</span> <span class="s1">'{ 
+      "start_time" : "2022-12-05T09:00" 
+    }'</span>
+</code></pre></div>
+<blockquote>
+<p>Example Request: Update a recurring booking and all its future bookings.</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-v</span> <span class="nt">-X</span> PUT <span class="s2">"https://app.eresourcescheduler.cloud/rest</span><span class="se">\</span><span class="s2">
+/v1/bookings/28?update_connected_bookings=2"</span> <span class="se">\</span>
+<span class="nt">-H</span> <span class="s2">"Authorization: Bearer B8x5Vj1O65r6wnoV"</span> <span class="se">\</span>
+<span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+<span class="nt">-d</span> <span class="s1">'{ 
+      "start_time" : "2022-12-05T09:00" 
+    }'</span>
+</code></pre></div>
+<blockquote>
+<p>Example Request: Update a recurring booking without changing related bookings.</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-v</span> <span class="nt">-X</span> PUT <span class="s2">"https://app.eresourcescheduler.cloud/rest</span><span class="se">\</span><span class="s2">
+/v1/bookings/28?update_connected_bookings=4"</span> <span class="se">\</span>
+<span class="nt">-H</span> <span class="s2">"Authorization: Bearer B8x5Vj1O65r6wnoV"</span> <span class="se">\</span>
+<span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+<span class="nt">-d</span> <span class="s1">'{ 
+      "start_time" : "2022-12-05T09:00" 
     }'</span>
 </code></pre></div>
 <p><span class="optional"><b>REQUEST BODY PARAMETERS</b></span></p>
@@ -6636,7 +6668,7 @@ start=2018-01-01&amp;end=2018-08-09"</span> <span class="se">\</span>
 </tr>
 <tr>
 <td style="text-align: right"><strong>unit</strong><br><code>optional</code></td>
-<td style="text-align: left">Integer number (1-5) representing unit in which effort is being defined. Unit value could be one of the following :<br><br><li><strong>1</strong> for <code>Capacity %</code> : This is default unit for booking. This represents <code>effort</code> in percentage of capacity of intended resource for defined time range. </li> <li> <strong>2</strong> for <code>Total Booking Hours</code> : This defines <code>effort</code> value in fixed hours which doesn&#39;t change upon changes in booking.</li> <li> <strong>3</strong> for <code>Hours Per day</code> : This could be used where a certain no of hours need to be spend for a booking. For example 4 hours per day (working day).</li> <li> <strong>4</strong> for <code>Full Time Equivalent</code> : Full time equivalent is calculated using FTE calendar defined in <a href="https://app.eresourcescheduler.cloud/#!/admin/calendars/settings" target="_blank" class="api-ref">Administrator calendar settings</a>. Capacity from FTE calendar for defined time in booking, is considered as 1 FTE.</li> <li> <strong>5</strong> for <code>Time Per Day</code> : It is useful where <code>effort</code> needs to put in on a particular time of every working day i.e. 4:15 PM to 5:30 PM daily. Time portion of <code>start_time</code> argument is considered as per day start time, and Time portion of <code>end_time</code> argument is considered per day end time for this booking. </li></td>
+<td style="text-align: left">Integer number (1-5) representing unit in which effort is being defined. Unit value could be one of the following :<br><br><li><strong>1</strong> for <code>Capacity %</code> : This is default unit for booking. This represents <code>effort</code> in percentage of capacity of intended resource for defined time range. </li> <li> <strong>2</strong> for <code>Total Booking Hours</code> : This defines <code>effort</code> value in fixed hours which doesn&#39;t change upon changes in booking.</li> <li> <del><strong>3</strong> for <code>Hours Per day</code> : This could be used where a certain no of hours need to be spend for a booking. For example 4 hours per day (working day).</del></li> <li> <strong>4</strong> for <code>Full Time Equivalent</code> : Full time equivalent is calculated using FTE calendar defined in <a href="https://app.eresourcescheduler.cloud/#!/admin/calendars/settings" target="_blank" class="api-ref">Administrator calendar settings</a>. Capacity from FTE calendar for defined time in booking, is considered as 1 FTE.</li> <li> <del><strong>5</strong> for <code>Time Per Day</code> : It is useful where <code>effort</code> needs to put in on a particular time of every working day i.e. 4:15 PM to 5:30 PM daily. Time portion of <code>start_time</code> argument is considered as per day start time, and Time portion of <code>end_time</code> argument is considered per day end time for this booking.</del></li><br><em><strong>Note</strong>: <span class="warning">Booking units <strong>Hours per day</strong> and <strong>Time per day</strong> are no longer supported.</span>.</em></td>
 </tr>
 <tr>
 <td style="text-align: right"><strong>progress</strong> <br><code>optional</code></td>
@@ -6683,6 +6715,10 @@ start=2018-01-01&amp;end=2018-08-09"</span> <span class="se">\</span>
 <td style="text-align: left">This indicates that the operation was successful and a booking updated successfully.</td>
 </tr>
 <tr>
+<td style="text-align: right"><strong>409</strong> <br> <span class = "error"><code>Conflict</code></span></td>
+<td style="text-align: left">Conflict indicates that you are updating a recurring booking, so you must pass the parameter <code>update_connected_bookings</code> to replicate the changes to the related bookings. The value for the parameter <code>update_connected_bookings</code> can be <strong>1</strong>(for updating all bookings), <strong>2</strong>(for updating all future bookings) or <strong>4</strong>(for updating only this booking) as shown in the example requests.</td>
+</tr>
+<tr>
 <td style="text-align: right"><strong>400</strong> <br> <span class = "error"><code>Bad Request</code></span></td>
 <td style="text-align: left">Bad Request error occurs when a request is malformed, syntactically incorrect, empty required parameters or any unknown parameter is passed. Additionally, Bad request may also occur in one of these conditions :<ul><li>Trying to update <code>start_time</code> or <code>end_time</code> such that <code>end_time</code> gets earlier than <code>start_time</code>.</li><li>Trying to update <code>start_time</code> of booking before the <code>start_date</code> of resource or <code>end_time</code> after the <code>last_date</code> of resource (if resource has a <code>last_date</code> defined.)</li><li>Trying to update a booking of archived resource</li><li>Trying to update bookings of archived project.</li><li>Duration of booking is more than allowed booking duration set by Administrator using ers Cloud Application in <a href="https://app.eresourcescheduler.cloud/#!/admin/settings/chart" target="_blank" class="api-ref">Administrator Scheduling Settings</a>.</li></ul></td>
 </tr>
@@ -6705,6 +6741,27 @@ start=2018-01-01&amp;end=2018-08-09"</span> <span class="se">\</span>
 </blockquote>
 <div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-v</span> <span class="nt">-X</span> DELETE <span class="s2">"https://app.eresourcescheduler.cloud/rest</span><span class="se">\</span><span class="s2">
 /v1/bookings/1"</span> <span class="nt">-H</span> <span class="s2">"Authorization: Bearer B8x5Vj1O65r6wnoV"</span>
+</code></pre></div>
+<blockquote>
+<p>Example Request: Delete a recurring booking and all its related bookings.</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-v</span> <span class="nt">-X</span> DELETE <span class="s2">"https://app.eresourcescheduler.cloud/rest</span><span class="se">\</span><span class="s2">
+/v1/bookings/28?delete_connected_bookings=1"</span><span class="se">\</span>
+<span class="nt">-H</span> <span class="s2">"Authorization: Bearer B8x5Vj1O65r6wnoV"</span>
+</code></pre></div>
+<blockquote>
+<p>Example Request: Delete a recurring booking and all its future bookings.</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-v</span> <span class="nt">-X</span> DELETE <span class="s2">"https://app.eresourcescheduler.cloud/rest</span><span class="se">\</span><span class="s2">
+/v1/bookings/28?delete_connected_bookings=2"</span><span class="se">\</span>
+<span class="nt">-H</span> <span class="s2">"Authorization: Bearer B8x5Vj1O65r6wnoV"</span>
+</code></pre></div>
+<blockquote>
+<p>Example Request: Delete a recurring booking without affecting related bookings.</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-v</span> <span class="nt">-X</span> DELETE <span class="s2">"https://app.eresourcescheduler.cloud/rest</span><span class="se">\</span><span class="s2">
+/v1/bookings/28?delete_connected_bookings=4"</span><span class="se">\</span>
+<span class="nt">-H</span> <span class="s2">"Authorization: Bearer B8x5Vj1O65r6wnoV"</span>
 </code></pre></div><h3 id='returns-5'>Returns</h3>
 <table><thead>
 <tr>
@@ -6715,6 +6772,10 @@ start=2018-01-01&amp;end=2018-08-09"</span> <span class="se">\</span>
 <tr>
 <td style="text-align: right"><strong>200</strong> <br><span class = "success"><code>OK</code></span></td>
 <td style="text-align: left">This status code indicates that the operation was successful and a booking deleted successfully.</td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>409</strong> <br> <span class = "error"><code>Conflict</code></span></td>
+<td style="text-align: left">Conflict indicates that you are deleting a recurring booking, so you must pass the parameter <code>delete_connected_bookings</code> to delete the related bookings. The value for the parameter <code>delete_connected_bookings</code> can be <strong>1</strong>(to delete all bookings), <strong>2</strong>(to delete all future bookings) or <strong>4</strong>(to delete only this booking). Kindly refer to the example requests.</td>
 </tr>
 <tr>
 <td style="text-align: right"><strong>403</strong> <br> <span class = "error"><code>Forbidden</code></span></td>
