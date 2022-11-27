@@ -488,7 +488,7 @@ curl -v -X DELETE "https://app.eresourcescheduler.cloud/rest\
 
 ```shell
 curl -v -X DELETE "https://app.eresourcescheduler.cloud/rest\
-/v1/bookings/28?delete_connected_bookings=1"\
+/v1/bookings/28?delete_connected_bookings=1" \
 -H "Authorization: Bearer B8x5Vj1O65r6wnoV"
 ```
 
@@ -496,7 +496,7 @@ curl -v -X DELETE "https://app.eresourcescheduler.cloud/rest\
 
 ```shell
 curl -v -X DELETE "https://app.eresourcescheduler.cloud/rest\
-/v1/bookings/28?delete_connected_bookings=2"\
+/v1/bookings/28?delete_connected_bookings=2" \
 -H "Authorization: Bearer B8x5Vj1O65r6wnoV"
 ```
 
@@ -504,7 +504,7 @@ curl -v -X DELETE "https://app.eresourcescheduler.cloud/rest\
 
 ```shell
 curl -v -X DELETE "https://app.eresourcescheduler.cloud/rest\
-/v1/bookings/28?delete_connected_bookings=4"\
+/v1/bookings/28?delete_connected_bookings=4" \
 -H "Authorization: Bearer B8x5Vj1O65r6wnoV"
 ```
 
