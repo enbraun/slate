@@ -219,7 +219,7 @@ start=2018-01-01&end=2018-12-31&offset=1&limit=10" \
 > Example Request
 
 ```shell
-curl -v -X GET "https://app.eresourcescheduler.cloud/rest/v1/bookings/25" \
+curl -v -X GET "https://app.eresourcescheduler.cloud/rest/v1/bookings/34" \
 -H "Authorization: Bearer B8x5Vj1O65r6wnoV"
 ```
 
@@ -281,7 +281,7 @@ Retrieves the details of an existing booking. You only need to  provide the uniq
 
 ```shell
 curl -X POST "https://app.eresourcescheduler.cloud/rest/v1/bookings/search?\
-start=2018-01-01&end=2018-08-09" \
+start=2018-01-01&end=2018-12-31" \
 -H "Content-Type: application/json" \
 -H "Authorization: Bearer B8x5Vj1O65r6wnoV" \
 -d '{ 
@@ -293,7 +293,7 @@ start=2018-01-01&end=2018-08-09" \
 
 ```shell
 curl -X POST "https://app.eresourcescheduler.cloud/rest/v1/bookings/search?\
-start=2018-01-01&end=2018-08-09" \
+start=2018-01-01&end=2018-12-31" \
 -H "Content-Type: application/json" \
 -H "Authorization: Bearer B8x5Vj1O65r6wnoV" \
 -d '{        
@@ -320,8 +320,8 @@ start=2018-01-01&end=2018-08-09" \
         "id": 1
       },
       "project": {
-        "id": 5,
-        "title": "Mars Rover"
+        "id": 9,
+        "title": "Mangalyaan"
       },
       "task": null,
       "start_time": "2018-12-26T09:00:00",
@@ -374,8 +374,8 @@ Below is a list of available fields, which allow filtering bookings:
 **progress**|<li>**eq** _(default_) </li><li>lt </li><li>  gt </li><li> bt </li><li> ex</li> |`"progress:eq": 40` <br>`"progress:lt": 50`<br>`"progress:gt": 60`<br>`"progress:bt": [50,60]`<br>`"progress:ex": [30,40]`<br>
 **created_by**|<li>**eq** (_default_)</li><li>neq</li><li>any</li><li>none</li>| `"created_by:eq": 1`<br>`"created_by:neq": 1`<br>`"created_by:any": [1, 2]`<br>`"created_by:none": [1, 2]`
 **modified_by**|<li>**eq** (_default_)</li><li>neq</li><li>any</li><li>none</li>| `"modified_by:eq": 1`<br>`"modified_by:neq": 1`<br>`"modified_by:any": [1, 2]`<br>`"modified_by:none": [1, 2]`
-**created_on**|<li>**eq** (_default_)</li><li>lt</li><li>gt</li><li>bt</li><li>ex</li>| `"created_on:eq": ["2021-07-08T00:00:00]``"created_on:lt": ["2021-07-08T00:00:00]`<br>`"created_on:gt": ["2021-07-08T59:59:59"]`<br>`"created_on:bt": ["2021-07-08T00:00:00", "2021-07-10T23:59:59"]`<br>`"created_on:bt": ["2021-07-08T00:00:00", ""]` <br>`"created_on:bt": ["", "2021-07-10T23:59:59"]` <br>`"created_on:ex": ["2021-07-08T00:00:00", "2021-07-10T23:59:59"]` <br>`"created_on:ex": ["2021-07-08T00:00:00", ""]` <br>`"created_on:ex": ["", "2021-07-10T23:59:59"]]` 
-**modified_on**|<li>**eq** (_default_)</li><li>lt</li><li>gt</li><li>bt</li><li>ex</li>| `"modified_on:eq": ["2021-07-08T00:00:00]`<br>`"modified_on:lt": ["2021-07-08T00:00:00]`<br>`"modified_on:gt": ["2021-07-08T59:59:59"]`<br>`"modified_on:bt": ["2021-07-08T00:00:00", "2021-07-10T23:59:59"]`<br>`"modified_on:bt": ["2021-07-08T00:00:00", ""]` <br>`"modified_on:bt": ["", "2021-07-10T23:59:59"]` <br>`"modified_on:ex": ["2021-07-08T00:00:00", "2021-07-10T23:59:59"]` <br>`"modified_on:ex": ["2021-07-08T00:00:00", ""]` <br>`"modified_on:ex": ["", "2021-07-10T23:59:59"]]` 
+**created_on**|<li>**eq** (_default_)</li><li>lt</li><li>gt</li><li>bt</li><li>ex</li>| `"created_on:eq": ["2021-07-08T00:00:00"]`<br>`"created_on:lt": ["2021-07-08T00:00:00"]`<br>`"created_on:gt": ["2021-07-08T59:59:59"]` <br> `"created_on:bt": ["2021-07-08T00:00:00", "2021-07-10T23:59:59"]`<br>`"created_on:bt": ["2021-07-08T00:00:00", ""]` <br>`"created_on:bt": ["", "2021-07-10T23:59:59"]` <br>`"created_on:ex": ["2021-07-08T00:00:00", "2021-07-10T23:59:59"]` <br>`"created_on:ex": ["2021-07-08T00:00:00", ""]` <br>`"created_on:ex": ["", "2021-07-10T23:59:59"]]` 
+**modified_on**|<li>**eq** (_default_)</li><li>lt</li><li>gt</li><li>bt</li><li>ex</li>| `"modified_on:eq": ["2021-07-08T00:00:00"]`<br>`"modified_on:lt": ["2021-07-08T00:00:00"]`<br>`"modified_on:gt": ["2021-07-08T59:59:59"]`<br>`"modified_on:bt": ["2021-07-08T00:00:00", "2021-07-10T23:59:59"]`<br>`"modified_on:bt": ["2021-07-08T00:00:00", ""]` <br>`"modified_on:bt": ["", "2021-07-10T23:59:59"]` <br>`"modified_on:ex": ["2021-07-08T00:00:00", "2021-07-10T23:59:59"]` <br>`"modified_on:ex": ["2021-07-08T00:00:00", ""]` <br>`"modified_on:ex": ["", "2021-07-10T23:59:59"]]` 
 
 _Additionally, bookings can also be filtered using <a href="#search-resources" class="api-ref">resource fields</a>, <a href="#search-projects" class="api-ref">project fields</a> and <a href="#filters-for-user-defined-fields" class="api-ref">custom fields</a> of bookings. An example request for fetching only booking having `resource_id` as 2, `project_id` as 9 and `role_id` as 1 is shown._
 
@@ -388,13 +388,13 @@ Updates the specified booking by setting values of parameters passed. Values of 
 > Example Request
 
 ```shell
-curl -v -X PUT "https://app.eresourcescheduler.cloud/rest/v1/bookings/25" \
+curl -v -X PUT "https://app.eresourcescheduler.cloud/rest/v1/bookings/34" \
 -H "Authorization: Bearer B8x5Vj1O65r6wnoV" \
 -H "Content-Type: application/json" \
 -d '{ 
       "resource_id": 3, 
       "project_id" : 4, 
-      "start_time" : "2017-06-05T09:00", 
+      "start_time" : "2018-06-05T09:00", 
       "unit": 1 
     }'
 ```

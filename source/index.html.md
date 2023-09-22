@@ -14,11 +14,13 @@ includes:
   - udftypes
   - resourcetypes
   - projecttypes
+  - requirementprofile
   - bookingprofile
   - timesheetprofile
   - calendars
   - resource
   - project
+  - requirement
   - booking
   - rates
   - timesheet
