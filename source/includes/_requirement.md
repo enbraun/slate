@@ -586,7 +586,7 @@ curl -v -X PUT "https://app.eresourcescheduler.cloud/rest/v1/requirements/251" \
 -d '{
     "project_id": 1,
     "start_time": "2023-08-15T09:00:00",
-    "start_time": "2023-08-15T09:00:00",
+    "end_time":"2023-08-15T17:00:00",
     "effort": 8,
     "role_id":3,
     "unit": 2,
@@ -600,6 +600,37 @@ curl -v -X PUT "https://app.eresourcescheduler.cloud/rest/v1/requirements/251" \
     ]
 }'
 ```
+
+> Example Request: Update a requirement and unlinking its linked bookings
+
+```shell
+curl -v -X PUT "https://app.eresourcescheduler.cloud/rest/v1\
+/requirements/106?unlink_bookings=true" \
+-H "Authorization: Bearer B8x5Vj1O65r6wnoV" \
+-H "Content-Type: application/json" \
+-d '{ 
+        "task_id":4,
+        "role_id":1,
+        "start_time":"2023-10-10T09:00:00",
+        "end_time":"2023-10-13T17:00:00"      
+    }'
+```
+
+> Example Request: Update a requirement and deleting its linked bookings
+
+```shell
+curl -v -X PUT "https://app.eresourcescheduler.cloud/rest/v1\
+/requirements/106?delete_bookings=true" \
+-H "Authorization: Bearer B8x5Vj1O65r6wnoV" \
+-H "Content-Type: application/json" \
+-d '{ 
+        "task_id":4,
+        "role_id":1,
+        "start_time":"2023-10-10T09:00:00",
+        "end_time":"2023-10-13T17:00:00"
+    }'
+```
+
 
 <span class="optional"><b>REQUEST BODY PARAMETERS</b></span>
 
@@ -620,36 +651,6 @@ Name               |  Description
 
 ### Returns
 
-> **`Example Request: Unlink or delete the bookings and update requirement.`**
-
-```shell
-for unlinking bookings and update requirement
-
-curl -v -X PUT "https://app.eresourcescheduler.cloud/rest/v1\
-/requirements/106?unlink_bookings=true" \
--H "Authorization: Bearer B8x5Vj1O65r6wnoV" \
--H "Content-Type: application/json" \
--d '{ 
-        "task_id":4,
-        "role_id":1,
-        "start_time":"2023-10-10T09:00:00",
-        "end_time":"2023-10-13T17:00:00"      
-    }'
-
-for deleting bookings and update requirement
-
-
-curl -v -X PUT "https://app.eresourcescheduler.cloud/rest/v1\
-/requirements/106?delete_bookings=true" \
--H "Authorization: Bearer B8x5Vj1O65r6wnoV" \
--H "Content-Type: application/json" \
--d '{ 
-        "task_id":4,
-        "role_id":1,
-        "start_time":"2023-10-10T09:00:00",
-        "end_time":"2023-10-13T17:00:00"
-    }'
-```
 
 
 | Code      | Description | 
@@ -833,24 +834,22 @@ curl -v -X DELETE "https://app.eresourcescheduler.cloud/rest\
 -H "Authorization: Bearer B8x5Vj1O65r6wnoV"
 ```
 
-> **`Example Request: Unlink or delete the bookings and delete requirement.`**
 
+> Example Request: Delete requirement and its linked bookings
+ 
 ```shell
-for deleting bookings and requirement
-
 curl -v -X DELETE "https://app.eresourcescheduler.cloud/rest/v1\
 /requirements/106?delete_bookings=true" \
 -H "Authorization: Bearer B8x5Vj1O65r6wnoV"
+```
 
-
-for Unlinking bookings and deleting requirement
-
+> Example Request: Delete requirement and unlinking its linked bookings
+ 
+```shell
 curl -v -X DELETE "https://app.eresourcescheduler.cloud/rest/v1\
 /requirements/106?unlink_bookings=true" \
 -H "Authorization: Bearer B8x5Vj1O65r6wnoV"
-
 ```
-
 
 ### Returns
 
