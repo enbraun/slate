@@ -285,7 +285,7 @@
     </style>
     <link href="stylesheets/screen-37168a3c.css" rel="stylesheet" media="screen" />
     <link href="stylesheets/print-953e3353.css" rel="stylesheet" media="print" />
-    <link href="stylesheets/styles-6a854fae.css" rel="stylesheet" media="screen" />
+    <link href="stylesheets/styles-4063b7fb.css" rel="stylesheet" media="screen" />
    
       <script src="javascripts/all-a9fde460.js"></script>
 
@@ -369,6 +369,14 @@
                   </li>
                   <li>
                     <a href="#get-all-project-types" class="toc-h2 toc-link" data-title="Get All Project Types">Get All Project Types</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#requirement-profile" class="toc-h1 toc-link" data-title="Requirement Profile">Requirement Profile</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#requirement-profile-object" class="toc-h2 toc-link" data-title="Requirement Profile Object">Requirement Profile Object</a>
                   </li>
               </ul>
           </li>
@@ -471,7 +479,39 @@
                     <a href="#milestones" class="toc-h2 toc-link" data-title="Milestones">Milestones</a>
                   </li>
                   <li>
+                    <a href="#project-exception" class="toc-h2 toc-link" data-title="Project Exception">Project Exception</a>
+                  </li>
+                  <li>
                     <a href="#project-notes" class="toc-h2 toc-link" data-title="Project Notes">Project Notes</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#requirement" class="toc-h1 toc-link" data-title="Requirement">Requirement</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#requirement-object" class="toc-h2 toc-link" data-title="Requirement Object">Requirement Object</a>
+                  </li>
+                  <li>
+                    <a href="#create-a-requirement" class="toc-h2 toc-link" data-title="Create a Requirement">Create a Requirement</a>
+                  </li>
+                  <li>
+                    <a href="#list-requirements" class="toc-h2 toc-link" data-title="List Requirements">List Requirements</a>
+                  </li>
+                  <li>
+                    <a href="#retrieve-a-requirement" class="toc-h2 toc-link" data-title="Retrieve a Requirement">Retrieve a Requirement</a>
+                  </li>
+                  <li>
+                    <a href="#search-requirements" class="toc-h2 toc-link" data-title="Search Requirements">Search Requirements</a>
+                  </li>
+                  <li>
+                    <a href="#update-a-requirement" class="toc-h2 toc-link" data-title="Update a Requirement">Update a Requirement</a>
+                  </li>
+                  <li>
+                    <a href="#requirement-operator" class="toc-h2 toc-link" data-title="Requirement Operator">Requirement Operator</a>
+                  </li>
+                  <li>
+                    <a href="#delete-a-requirement" class="toc-h2 toc-link" data-title="Delete a Requirement">Delete a Requirement</a>
                   </li>
               </ul>
           </li>
@@ -1742,6 +1782,177 @@ grant_type=authorization_code</span><span class="se">\</span><span class="s2">
 <tr>
 <td style="text-align: right"><strong>403</strong> <br> <span class = "error"><code>Forbidden</code></span></td>
 <td style="text-align: left">Authorization failed due to insufficient permissions. This occurs when user does not have enough access rights to perform this action. Access for each user can be controlled by an Administrator using eRS Cloud Application.</td>
+</tr>
+</tbody></table>
+<h1 id='requirement-profile'>Requirement Profile</h1><h2 id='requirement-profile-object'>Requirement Profile Object</h2>
+<p>Requirement profile object represents requirement profile.</p>
+
+<blockquote>
+<p><strong><code>/v1/requirement/fields</code></strong></p>
+
+<p>Example Request</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-v</span> <span class="se">\</span>
+<span class="s2">"https://app.eresourcescheduler.cloud/rest/v1/requirement/fields"</span> <span class="se">\</span>
+<span class="nt">-H</span> <span class="s2">"Authorization: Bearer B8x5Vj1O65r6wnoV"</span>
+</code></pre></div>
+<blockquote>
+<p>Example Response </p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">29</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"effort"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"display_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Effort"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"field_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EFFORT"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"minnum"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"is_system_defined"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"is_required"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="p">}</span><span class="err">,</span><span class="w">
+</span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">17</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"end_time"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"display_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Ends"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"field_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DATIM"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"is_required"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"is_system_defined"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"maxdate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2099-12-31"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"mindate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1900-01-01"</span><span class="w">
+</span><span class="p">}</span><span class="err">,</span><span class="w">
+</span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">31</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"role_id"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"display_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Performing Role"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"field_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ROLEPS"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"is_required"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"is_system_defined"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"options"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+         </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"id"</span><span class="p">:</span><span class="mi">6</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"name"</span><span class="p">:</span><span class="s2">"Accountant"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+         </span><span class="p">},</span><span class="w">
+         </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"id"</span><span class="p">:</span><span class="mi">7</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"name"</span><span class="p">:</span><span class="s2">"Business Analyst"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"description"</span><span class="p">:</span><span class="kc">null</span><span class="p">},</span><span class="w">
+         </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"id"</span><span class="p">:</span><span class="mi">4</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"name"</span><span class="p">:</span><span class="s2">"Consultant"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"description"</span><span class="p">:</span><span class="kc">null</span><span class="p">},</span><span class="w">
+         </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"id"</span><span class="p">:</span><span class="mi">5</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"name"</span><span class="p">:</span><span class="s2">"Project Manager"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"description"</span><span class="p">:</span><span class="kc">null</span><span class="p">},</span><span class="w">
+         </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"id"</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"name"</span><span class="p">:</span><span class="s2">"Tax Manager"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"description"</span><span class="p">:</span><span class="kc">null</span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="err">,</span><span class="w">
+</span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"project_id"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"display_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Project"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"field_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PRJSS"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"is_required"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"is_system_defined"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="p">}</span><span class="err">,</span><span class="w">
+</span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">16</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"start_time"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"display_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Starts"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"field_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DATIM"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"is_required"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"is_system_defined"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"maxdate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2099-12-31"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"mindate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1900-01-01"</span><span class="w">
+</span><span class="p">}</span><span class="err">,</span><span class="w">
+</span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">32</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tags"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"display_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Tags"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"field_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TAGS"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"is_required"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"is_system_defined"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="p">}</span><span class="err">,</span><span class="w">
+</span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">30</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"task_id"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"display_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Task"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"field_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TSKSS"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"is_required"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"is_system_defined"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="p">}</span><span class="err">,</span><span class="w">
+</span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unit"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"display_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Unit"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"field_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"UNIT"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"minnum"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"is_required"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"is_system_defined"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div>
+<p><span class="optional"><b>ATTRIBUTES</b></span></p>
+
+<table><thead>
+<tr>
+<th style="text-align: right">Name</th>
+<th style="text-align: left">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: right"><strong>id</strong>  <br><code>integer</code></td>
+<td style="text-align: left">Represents unique identification number of this field, which can be used to refer or search it.</td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>code</strong>  <br><code>string</code></td>
+<td style="text-align: left">It represents the unique code of the field which is referred as API code. This code acts as <code>key</code> in API response and the same must be used as <code>key</code> to pass values for a POST or PUT request.</td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>field_type</strong> <br><code>string</code></td>
+<td style="text-align: left">Represents the type of field. For example  TEXT (for Text Field), INT (for Integer Number field), DDSS (for Dropdown Single Select Field), etc.</td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>display_name</strong><br><code>string</code></td>
+<td style="text-align: left">Name of this field to identify it.</td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>is_system_defined</strong><br><code>boolean</code></td>
+<td style="text-align: left">Indicates whether this field is system defined or a custom field. Fields which are system defined can not be customized.</td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>is_required</strong><br><code>boolean</code></td>
+<td style="text-align: left">Indicates whether this field is mandatory or not. If this field is a required field then a valid value for this field must be passed while creating such object and while updating object (if this field is intended to update).</td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>minnum</strong> <br><code>integer</code></td>
+<td style="text-align: left">Represents minimum value this field can accept. <span class="warning">Only applicable for numeric fields</span>.</td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>maxnum</strong> <br><code>integer</code></td>
+<td style="text-align: left">Represents maximum value this field can accept. <span class="warning">Only applicable for numeric fields</span>.</td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>mindate</strong> <br><code>string</code></td>
+<td style="text-align: left">Represents minimum value this field can accept. <span class="warning">Only applicable for date / date time fields</span>.</td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>maxdate</strong> <br><code>string</code></td>
+<td style="text-align: left">Represents maximum value this field can accept. <span class="warning">Only applicable for date / date time fields</span>.</td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>options</strong> <br> <code>array of objects</code></td>
+<td style="text-align: left">Field types such as Dropdown Single Select, Dropdown Multi Select, Radio Group etc.</td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>options.id</strong> <br> <code>integer</code></td>
+<td style="text-align: left">Represents unique identification number for the individual option object.</td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>options.name</strong> <br> <code>string</code></td>
+<td style="text-align: left">Represents name or content of option object.</td>
 </tr>
 </tbody></table>
 <h1 id='booking-profile'>Booking Profile</h1><h2 id='booking-profile-object'>Booking Profile Object</h2>
@@ -4311,6 +4522,14 @@ curl <span class="nt">-v</span> <span class="nt">-X</span> DELETE <span class="s
 <td style="text-align: left">Tags are the list of strings (labels) attached to this project object which could be used for the purpose of filtering, identification or other information.</td>
 </tr>
 <tr>
+<td style="text-align: right"><strong>timezone</strong> <br><code>integer</code></td>
+<td style="text-align: left">Defines and categorize projects based on their location. This field is only available when scheduling plus module is on.</td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>project_calender</strong> <br><code>integer</code></td>
+<td style="text-align: left">ID of the Calendar object, which should be assigned to the project. Depending upon requirements, different calendars can be applied to different projects. If the calendar is omitted, then the default calendar (as defined in the Administrator calendar settings) will be applied to this project.This field is only available when scheduling plus module is on.</td>
+</tr>
+<tr>
 <td style="text-align: right"><strong>is_archive</strong> <br><code>boolean</code></td>
 <td style="text-align: left">Boolean value representing whether this project is archived or not.</td>
 </tr>
@@ -4389,6 +4608,14 @@ curl <span class="nt">-v</span> <span class="nt">-X</span> DELETE <span class="s
 <tr>
 <td style="text-align: right"><strong>tags</strong><br><span class="removableFlag mln-2">&#9873;</span></td>
 <td style="text-align: left">An optional array of strings which could be attached to this project object as labels. This can be useful for the purpose of filtering, identification or other information.</td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>timezone</strong> <br><span class="mandatoryFlag">&#9873;</span> <span class="removableFlag mln-2">&#9873;</span></td>
+<td style="text-align: left">One timezone object can be defined for a project.<br><br><em><strong>Note</strong>: <span class="warning">This field is only available when scheduling plus module is on</span>.</em></td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>project_calender</strong> <br></td>
+<td style="text-align: left">ID of the Calendar object, which should be assigned to the project. Depending upon requirements, different calendars can be applied to different projects. If the calendar is omitted, then the default calendar (as defined in the Administrator calendar settings) will be applied to this project.<br><br><em><strong>Note</strong>: <span class="warning">This field is only available when scheduling plus module is on</span>.</em></td>
 </tr>
 <tr>
 <td style="text-align: right"><strong>disable_parallel_booking</strong> <br><code>optional</code></td>
@@ -4728,6 +4955,11 @@ curl <span class="nt">-v</span> <span class="nt">-X</span> DELETE <span class="s
 <td style="text-align: left"><code>&quot;tags:any&quot;:&quot;[&quot;tagA&quot;, &quot;tagB&quot;]</code><br><code>&quot;tags:none&quot;:&quot;[&quot;tagA&quot;, &quot;tagB&quot;]</code><br><code>&quot;tags:all&quot;:[&quot;tagB&quot;,&quot;tagC&quot;]</code><br><code>&quot;tags:ex&quot;:[&quot;tagB&quot;,&quot;tagC&quot;]</code></td>
 </tr>
 <tr>
+<td style="text-align: left"><strong>timezone</strong></td>
+<td style="text-align: left"><li><strong>eq</strong> (<em>default</em>)</li><li>neq</li><li>any</li><li>none</li></td>
+<td style="text-align: left"><code>&quot;timezone:eq&quot;: 1</code><br><code>&quot;timezone:neq&quot;: 1</code><br><code>&quot;timezone:any&quot;: [1, 2]</code><br><code>&quot;timezone:none&quot;: [3, 2]</code></td>
+</tr>
+<tr>
 <td style="text-align: left"><strong>is_archive</strong></td>
 <td style="text-align: left">N/A</td>
 <td style="text-align: left"><code>&quot;is_archive&quot;:true</code> <br><code>&quot;is_archive&quot;:false</code></td>
@@ -4808,6 +5040,14 @@ curl <span class="nt">-v</span> <span class="nt">-X</span> DELETE <span class="s
 <td style="text-align: left">An optional array of strings which could be attached to this project object as labels. This can be useful for the purpose of filtering, identification or other information. It can be up to 50 characters.</td>
 </tr>
 <tr>
+<td style="text-align: right"><strong>timezone</strong> <br><span class="mandatoryFlag">&#9873;</span> <span class="removableFlag mln-2">&#9873;</span></td>
+<td style="text-align: left">One timezone object can be defined for a project.<br><br><em><strong>Note</strong>: <span class="warning">This field is only available when scheduling plus module is on</span>.</em></td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>project_calender</strong> <br></td>
+<td style="text-align: left">ID of the Calendar object, which should be assigned to the project. Depending upon requirements, different calendars can be applied to different projects. If the calendar is omitted, then the default calendar (as defined in the Administrator calendar settings) will be applied to this project.<br><br><em><strong>Note</strong>: <span class="warning">This field is only available when scheduling plus module is on</span>.</em></td>
+</tr>
+<tr>
 <td style="text-align: right"><strong>disable_parallel_booking</strong> <br><code>optional</code></td>
 <td style="text-align: left">Boolean value defining if project can or cannot have multiple bookings at a time. Default value for disable parallel booking is false.</td>
 </tr>
@@ -4836,7 +5076,7 @@ curl <span class="nt">-v</span> <span class="nt">-X</span> DELETE <span class="s
 <td style="text-align: left">Authorization failed due to insufficient permissions. This occurs when user does not have enough access rights to perform this action. Access for each user can be controlled by an Administrator using eRS Cloud Application.</td>
 </tr>
 <tr>
-<td style="text-align: right"><strong>404</strong> <br><span class = "error"><code>Not Found</code></span></td>
+<td style="text-align: right"><strong>404</strong> Delete a Project<br><span class = "error"><code>Not Found</code></span></td>
 <td style="text-align: left">This status code indicates that project does not exist.</td>
 </tr>
 </tbody></table>
@@ -5692,6 +5932,361 @@ curl <span class="nt">-v</span> <span class="nt">-X</span> POST <span class="se"
 <td style="text-align: left">This indicates that the project or milestone does not exist.</td>
 </tr>
 </tbody></table>
+<h2 id='project-exception'>Project Exception</h2>
+<blockquote>
+<p>Example Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+   </span><span class="nl">"total_count"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
+   </span><span class="nl">"data"</span><span class="p">:[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+         </span><span class="nl">"id"</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span><span class="w">
+         </span><span class="nl">"name"</span><span class="p">:</span><span class="s2">"Working Sunday"</span><span class="p">,</span><span class="w">
+         </span><span class="nl">"description"</span><span class="p">:</span><span class="s2">"Working Sunday"</span><span class="p">,</span><span class="w">
+         </span><span class="nl">"date"</span><span class="p">:</span><span class="s2">"2018-11-17"</span><span class="p">,</span><span class="w">
+         </span><span class="nl">"is_working_exception"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="w">
+         </span><span class="nl">"created_on"</span><span class="p">:</span><span class="s2">"2018-11-03T15:07:30.917087+05:30"</span><span class="p">,</span><span class="w">
+         </span><span class="nl">"modified_on"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
+         </span><span class="nl">"created_by"</span><span class="p">:{</span><span class="w">
+            </span><span class="nl">"id"</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"name"</span><span class="p">:</span><span class="s2">"Patrick Wilson"</span><span class="w">
+         </span><span class="p">},</span><span class="w">
+         </span><span class="nl">"modified_by"</span><span class="p">:{</span><span class="w">
+            </span><span class="nl">"id"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"name"</span><span class="p">:</span><span class="kc">null</span><span class="w">
+         </span><span class="p">},</span><span class="w">
+         </span><span class="nl">"timings"</span><span class="p">:[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+               </span><span class="nl">"start_time"</span><span class="p">:</span><span class="mi">600</span><span class="p">,</span><span class="w">
+               </span><span class="nl">"end_time"</span><span class="p">:</span><span class="mi">1080</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+         </span><span class="p">]</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+   </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>Exception is nothing but time duration that is different from a general schedule. eRS provides you the feature to add an exception to a project.</p>
+
+<p>Let&#39;s say there&#39;s a project with a calendar that doesn&#39;t have Sunday as a working day. But for some reason, work has to be done on the project on Sunday. In this case, it&#39;s a working exception. So, in such a situation, exceptions come in handy.</p>
+
+<p>eRS Cloud provides you two types of exceptions: 
+    <ol><li>Working Exception : <p>&#160;&#160;&#160;&#160;&#160; Working Exception is added on a non-working day. </p></li> <li>Non-working Exception : <p>&#160;&#160;&#160;&#160;&#160; Non-working Exception is added on a working day. </p></li></ol></p>
+
+<p><em><strong>Note</strong>: Working Exception can be added without timings.</em></p>
+
+<p><span class="optional"><b>ATTRIBUTES</b></span></p>
+
+<table><thead>
+<tr>
+<th style="text-align: right">Name</th>
+<th style="text-align: left">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: right"><strong>id</strong> <br><code>integer</code></td>
+<td style="text-align: left">eRS Cloud generated unique identifier for the exceptions object.</td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>name</strong><br> <code>string</code></td>
+<td style="text-align: left">This field describes name of exception.</td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>description</strong><br> <code>string</code></td>
+<td style="text-align: left">This field describes about the exception.</td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>date</strong><br> <code>string</code></td>
+<td style="text-align: left">Date Field describes when will the exception get applied.</td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>is_working_exception</strong>  <br><span class="required"><code>boolean</code></span></td>
+<td style="text-align: left">Is working exception describes whether exception is a working exception or non working exception. True value means that exception is working exception and false value means that exception is non working exception.</td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>created_on</strong> <br><code>string</code></td>
+<td style="text-align: left">Time at which  exception is created.</td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>modified_on</strong> <br><code>string</code></td>
+<td style="text-align: left">Timestamp of the latest modification.</td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>created_by</strong> <br> <code>object</code></td>
+<td style="text-align: left">This field describes by whom exception is created .</td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>modified_by</strong> <br><code>object</code></td>
+<td style="text-align: left">This field describes by whom the latest modification is done.</td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>timings</strong> <br> <code>object</code></td>
+<td style="text-align: left">Timings describe the timings of exception.</td>
+</tr>
+</tbody></table>
+<h3 id='retrieving-exceptions'>Retrieving exceptions</h3>
+<blockquote>
+<p><code>GET v1/projects/{ID}/exceptions</code></p>
+
+<p>Example Request</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-v</span> <span class="nt">-X</span> GET <span class="se">\</span>
+<span class="s2">"https://app.eresourcescheduler.cloud/rest/v1/projects/12/exceptions"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Bearer B8x5Vj1O65r6wnoV"</span>
+</code></pre></div>
+<blockquote>
+<p>Example Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+   </span><span class="nl">"total_count"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
+   </span><span class="nl">"data"</span><span class="p">:[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+         </span><span class="nl">"id"</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span><span class="w">
+         </span><span class="nl">"name"</span><span class="p">:</span><span class="s2">"Working Sunday"</span><span class="p">,</span><span class="w">
+         </span><span class="nl">"description"</span><span class="p">:</span><span class="s2">"Working Sunday"</span><span class="p">,</span><span class="w">
+         </span><span class="nl">"date"</span><span class="p">:</span><span class="s2">"2018-11-17"</span><span class="p">,</span><span class="w">
+         </span><span class="nl">"is_working_exception"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="w">
+         </span><span class="nl">"created_on"</span><span class="p">:</span><span class="s2">"2018-11-03T15:07:30.917087+05:30"</span><span class="p">,</span><span class="w">
+         </span><span class="nl">"modified_on"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
+         </span><span class="nl">"created_by"</span><span class="p">:{</span><span class="w">
+            </span><span class="nl">"id"</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"name"</span><span class="p">:</span><span class="s2">"Patrick Wilson"</span><span class="w">
+         </span><span class="p">},</span><span class="w">
+         </span><span class="nl">"modified_by"</span><span class="p">:{</span><span class="w">
+            </span><span class="nl">"id"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"name"</span><span class="p">:</span><span class="kc">null</span><span class="w">
+         </span><span class="p">},</span><span class="w">
+         </span><span class="nl">"timings"</span><span class="p">:[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+               </span><span class="nl">"start_time"</span><span class="p">:</span><span class="mi">600</span><span class="p">,</span><span class="w">
+               </span><span class="nl">"end_time"</span><span class="p">:</span><span class="mi">1080</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+         </span><span class="p">]</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+   </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>Retrieves the details of exceptions which are applied to the project. You only need to provide the unique project identifier that was returned upon project creation.</p>
+<h3 id='returns-18'>Returns</h3>
+<table><thead>
+<tr>
+<th style="text-align: right">Code</th>
+<th style="text-align: left">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: right"><strong>200</strong> <br> <span class = "success"><code>OK</code></span></td>
+<td style="text-align: left">This status code indicates that the operation was successful and exceptions retrieved successfully.</td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>403</strong> <br> <span class = "error"><code>Forbidden</code></span></td>
+<td style="text-align: left">Authorization failed due to insufficient permissions. This occurs when user does not have enough access rights to perform this action. Access for each user can be controlled by an Administrator using eRS Cloud Application.</td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>404</strong> <br> <span class = "error"><code>Not Found</code></span></td>
+<td style="text-align: left">Not Found error occurs when requested project does not exist (i.e. There is no project with given ID). This may also occur when requesting a project that has been deleted.</td>
+</tr>
+</tbody></table>
+<h3 id='create-an-exception'>Create an exception</h3>
+<blockquote>
+<p><code>POST v1/projects/{ID}/exceptions</code></p>
+
+<p>Example Request</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-v</span> <span class="nt">-X</span> POST <span class="se">\</span>
+<span class="s2">"https://app.eresourcescheduler.cloud/rest/v1/projects/12/exceptions"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Bearer B8x5Vj1O65r6wnoV"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  <span class="nt">-d</span> <span class="s1">'{ 
+        "date": "2018-11-02", 
+        "description": "Thursday 1", 
+        "name": "Thursday 1", 
+          "is_working_exception": true, 
+          "timing_blocks":[ 
+                  { 
+                    "start_time":600, 
+                    "end_time":1080 
+                  } 
+               ]  
+       }'</span>
+</code></pre></div>
+<p><span class="optional"><b>REQUEST BODY PARAMETERS</b></span></p>
+
+<table><thead>
+<tr>
+<th style="text-align: right">Name</th>
+<th style="text-align: left">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: right"><strong>date</strong>  <br><span class="required"><code>required</code></span></td>
+<td style="text-align: left">Date Field describes when will the exception get applied. It is a <code>Date</code> type of field.</td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>description</strong>  <br><code>optional</code></td>
+<td style="text-align: left">As the name shows it is a description which we want to give for the exception . This field is a <code>string</code> type of field.</td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>name</strong>  <br><span class="required"><code>required</code></span></td>
+<td style="text-align: left">Name describes the name of exception. This field is a <code>string</code> type of field.</td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>is_working_exception</strong>  <br><span class="required"><code>required</code></span></td>
+<td style="text-align: left">Is working exception describes whether exception is a working exception or not. Accepts <code>true</code> if it is a working exception otherwise accepts <code>false</code> if it a non-working exception. This field is a <code>boolean</code> type of field.</td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>timing_blocks</strong>  <br><code>optional</code></td>
+<td style="text-align: left">Timing blocks describes the timings of exception. This field can be passed <code>null</code>, as eRS Cloud provides you the facility to create an exception without timings. This field is a <code>Array of objects</code> type of field.</td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>timing_blocks.start_time</strong>  <br><code>optional</code></td>
+<td style="text-align: left">Start time describes the start time of exception. This field can be passed <code>null</code>, as eRS Cloud provides you the facility to create an exception without timings. This field is a <code>Integer</code> type of field.</td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>timing_blocks.end_time</strong>  <br><code>optional</code></td>
+<td style="text-align: left">End time describes the end time of exception. This field can be passed <code>null</code>, as eRS Cloud provides you the facility to create an exception without timings. This field is a <code>Integer</code> type of field.</td>
+</tr>
+</tbody></table>
+<h3 id='returns-19'>Returns</h3>
+<table><thead>
+<tr>
+<th style="text-align: left">Code</th>
+<th style="text-align: left">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left"><strong>201</strong> <br><span class = "success"><code>Created</code></span></td>
+<td style="text-align: left">This status code indicates that the operation was successful and exception created successfully.</td>
+</tr>
+<tr>
+<td style="text-align: left"><strong>400</strong> <br> <span class = "error"><code>Bad Request</code></span></td>
+<td style="text-align: left">Bad Request error occurs when a request is malformed, syntactically incorrect, missing required parameters are  or any unknown parameter is passed.</td>
+</tr>
+<tr>
+<td style="text-align: left"><strong>403</strong> <br> <span class = "error"><code>Forbidden</code></span></td>
+<td style="text-align: left">Authorization failed due to insufficient permissions. This occurs when user does not have enough access rights to perform this action. Access for each user can be controlled by an Administrator using eRS Cloud Application.</td>
+</tr>
+<tr>
+<td style="text-align: left"><strong>404</strong> <br><span class = "error"><code>Not Found</code></span></td>
+<td style="text-align: left">This status code indicates that project does not exist.</td>
+</tr>
+</tbody></table>
+<h3 id='update-an-exception'>Update an exception</h3>
+<blockquote>
+<p><code>PUT v1/projects/{ID}/exceptions/{Exception_ID}</code></p>
+
+<p>Example Request</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-v</span> <span class="nt">-X</span> PUT <span class="se">\</span>
+<span class="s2">"https://app.eresourcescheduler.cloud/rest/v1/projects/12/exceptions/2"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Bearer B8x5Vj1O65r6wnoV"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  <span class="nt">-d</span> <span class="s1">'{ 
+    "date": "2018-11-02", 
+    "description": "Thursday 1", 
+    "name": "Thursday 1", 
+    "is_working_exception": true, 
+    "timing_blocks":[ 
+            { 
+               "start_time":600, 
+               "end_time":1080 
+            } 
+         ]  
+    }'</span>
+</code></pre></div>
+<p>Updates the specified project&#39;s exception by setting the value of the parameter passed. You need to provide the unique project identifier that was returned upon project creation and unique exception identifier that was returned upon exception addition. If parameter is not provided then it will be left unchanged.</p>
+
+<p>This request accepts mostly the same argument as the exception creation call.</p>
+
+<p><span class="optional"><b>REQUEST BODY PARAMETERS</b></span></p>
+
+<table><thead>
+<tr>
+<th style="text-align: right">Name</th>
+<th style="text-align: left">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: right"><strong>date</strong>  <br><span class="required"><code>required</code></span></td>
+<td style="text-align: left">Date Field describes when will the exception get applied. It is a <code>Date</code> type of field.</td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>description</strong>  <br><code>optional</code></td>
+<td style="text-align: left">As the name shows it is a description which we want to give for the exception . This field is a <code>string</code> type of field.</td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>name</strong>  <br><span class="required"><code>required</code></span></td>
+<td style="text-align: left">Name describes the name of exception. This field is a <code>string</code> type of field.</td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>is_working_exception</strong>  <br><span class="required"><code>required</code></span></td>
+<td style="text-align: left">Is working exception describes whether exception is working exception or not. Accepts <code>true</code> if it is working exception otherwise accepts <code>false</code> if it a non-working exception. This field is a <code>boolean</code> type of field</td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>timing_blocks</strong>  <br><code>optional</code></td>
+<td style="text-align: left">Timing blocks describes the timings of exception. This field can be pass <code>null</code>, as eRS Cloud provides you the facility to create an exception without timings. This field is a <code>Array of objects</code> type of field.</td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>timing_blocks.start_time</strong>  <br><code>optional</code></td>
+<td style="text-align: left">Start time describes the start time of exception. This field can be pass <code>null</code>, as eRS Cloud provides you the facility to create an exception without timings. This field is a <code>Integer</code> type of field.</td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>timing_blocks.end_time</strong>  <br><code>optional</code></td>
+<td style="text-align: left">End time describes the end time of exception. This field can be pass <code>null</code>, as eRS Cloud provides you the facility to create an exception without timings. This field is a <code>Integer</code> type of field.</td>
+</tr>
+</tbody></table>
+<h3 id='returns-20'>Returns</h3>
+<table><thead>
+<tr>
+<th style="text-align: right">Code</th>
+<th style="text-align: left">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: right"><strong>200</strong> <br> <span class = "success"><code>OK</code></span></td>
+<td style="text-align: left">This indicates that the operation was successful and a exception updated successfully.</td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>400</strong> <br> <span class = "error"><code>Bad Request</code></span></td>
+<td style="text-align: left">Bad Request occurs when a request is not well-formed, syntactically incorrect, empty required parameters or any unknown parameter is passed.</td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>403</strong> <br> <span class = "error"><code>Forbidden</code></span></td>
+<td style="text-align: left">Authorization failed due to insufficient permissions. This occurs when user does not have enough access rights to perform this action. Access for each user can be controlled by an Administrator using eRS Cloud Application.</td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>404</strong> <br><span class = "error"><code>Not Found</code></span></td>
+<td style="text-align: left">This status code indicates that project or exception does not exist.</td>
+</tr>
+</tbody></table>
+<h3 id='delete-an-exception'>Delete an exception</h3>
+<blockquote>
+<p><code>DELETE v1/projects/{ID}/exceptions/{Exception_ID}</code></p>
+</blockquote>
+
+<p>Permanently deletes an applied exception. It cannot be undone. You need to provide the unique project identifier that was returned upon project creation and unique exception identifier that was returned upon exception addition.</p>
+
+<blockquote>
+<p>Example Request</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-v</span> <span class="nt">-X</span> DELETE <span class="se">\</span>
+<span class="s2">"https://app.eresourcescheduler.cloud/rest/v1/projects/12/exceptions/2"</span><span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Bearer B8x5Vj1O65r6wnoV"</span>
+</code></pre></div>
+<table><thead>
+<tr>
+<th style="text-align: right">Code</th>
+<th style="text-align: left">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: right"><strong>200</strong> <br><span class = "success"><code>OK</code></span></td>
+<td style="text-align: left">This status code indicates that the operation was successful and exception deleted successfully.</td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>404</strong> <br><span class = "error"><code>Not Found</code></span></td>
+<td style="text-align: left">This status code indicates that project or exception does not exist.</td>
+</tr>
+</tbody></table>
 <h2 id='project-notes'>Project Notes</h2>
 <p>To capture additional information about a project, eRS Cloud provides the <code>Notes</code>. If one has to provide any new information to a project which is not captured from the field, for such situations Notes are beneficial.</p>
 
@@ -5826,7 +6421,7 @@ curl <span class="nt">-v</span> <span class="nt">-X</span> POST <span class="se"
 <td style="text-align: left">List of notes will be returned and sorted by it&#39;s latest modified date.</td>
 </tr>
 </tbody></table>
-<h3 id='returns-18'>Returns</h3>
+<h3 id='returns-21'>Returns</h3>
 <table><thead>
 <tr>
 <th style="text-align: right">Code</th>
@@ -5875,7 +6470,7 @@ curl <span class="nt">-v</span> <span class="nt">-X</span> POST <span class="s2"
 <td style="text-align: left">To create new note you have to pass the body from content parameter. Content param accepts plain text. Also, you can pass text with HTML tags as Notes are Multi Line Rich Text.</td>
 </tr>
 </tbody></table>
-<h3 id='returns-19'>Returns</h3>
+<h3 id='returns-22'>Returns</h3>
 <table><thead>
 <tr>
 <th style="text-align: left">Code</th>
@@ -5930,7 +6525,7 @@ curl <span class="nt">-v</span> <span class="nt">-X</span> PUT <span class="s2">
 <td style="text-align: left">To update note you have to pass the body from <code>content</code> parameter.  Content param accepts plain text. Also, you can pass text with HTML tags as Notes are Multi Line Rich Text.</td>
 </tr>
 </tbody></table>
-<h3 id='returns-20'>Returns</h3>
+<h3 id='returns-23'>Returns</h3>
 <table><thead>
 <tr>
 <th style="text-align: right">Code</th>
@@ -5967,7 +6562,7 @@ curl <span class="nt">-v</span> <span class="nt">-X</span> PUT <span class="s2">
 <div class="highlight"><pre class="highlight shell tab-shell"><code>
 curl <span class="nt">-v</span> <span class="nt">-X</span> DELETE <span class="s2">"https://app.eresourcescheduler.cloud/rest/v1/projects/8/notes/5"</span><span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Authorization: Bearer B8x5Vj1O65r6wnoV"</span>
-</code></pre></div><h3 id='returns-21'>Returns</h3>
+</code></pre></div><h3 id='returns-24'>Returns</h3>
 <table><thead>
 <tr>
 <th style="text-align: right">Code</th>
@@ -5985,6 +6580,1171 @@ curl <span class="nt">-v</span> <span class="nt">-X</span> DELETE <span class="s
 <tr>
 <td style="text-align: right"><strong>404</strong> <br><span class = "error"><code>Not Found</code></span></td>
 <td style="text-align: left">This status code indicates that project or note does not exist.</td>
+</tr>
+</tbody></table>
+<h1 id='requirement'>Requirement</h1><h2 id='requirement-object'>Requirement Object</h2>
+<blockquote>
+<p>Example Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">251</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"project"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mars Rover"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"task"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Data Processing"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"role"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Tax Manager"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">11</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"start_time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-08-21T09:00:00"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"end_time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-08-22T17:00:00"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"effort"</span><span class="p">:</span><span class="w"> </span><span class="mi">32</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"unit"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="s2">"London"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"onsite"</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"assignments"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"booking_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3306</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"resource"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">126</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Oliver"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"start_time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-09-20T09:00:00"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"end_time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-09-25T17:15:00"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"effort_hrs"</span><span class="p">:</span><span class="w"> </span><span class="mf">16.12</span><span class="w">
+      </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"booking_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3305</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"resource"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">140</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Thomas"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"start_time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-09-20T09:00:00"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"end_time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-09-25T17:15:00"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"effort_hrs"</span><span class="p">:</span><span class="w"> </span><span class="mf">16.3</span><span class="w">
+      </span><span class="p">}</span><span class="w"> </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"flexi_range_duration"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"flexi_range_unit"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"allow_multi_allocation"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"conditions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"operator"</span><span class="p">:</span><span class="w"> </span><span class="s2">"all"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"field"</span><span class="p">:</span><span class="w"> </span><span class="s2">"udf_skills"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"values"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Account Reconciliation"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">34</span><span class="w">
+    </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Account Taxation"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">23</span><span class="w">
+    </span><span class="p">}</span><span class="w"> </span><span class="p">],</span><span class="w">
+      </span><span class="nl">"weightage"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"is_mandatory"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+     </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"operator"</span><span class="p">:</span><span class="w"> </span><span class="s2">"any"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"field"</span><span class="p">:</span><span class="w"> </span><span class="s2">"udf_city"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"values"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"London"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">361</span><span class="w">
+    </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Dublin"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">362</span><span class="w">
+    </span><span class="p">}</span><span class="w"> </span><span class="p">],</span><span class="w">
+      </span><span class="nl">"weightage"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"is_mandatory"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+    </span><span class="p">}</span><span class="w"> </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"created_on"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-09-15T09:03:48.428713+00:00"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"created_by"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John doe"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"modified_on"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-09-15T09:05:40.515333+00:00"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"modified_by"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John doe"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p><span style="color:#b93d6a"><code>Requirement</code></span> object represents a role request for a specific project or task within a defined time range.</p>
+
+<p><span class="optional"><b>ATTRIBUTES</b></span></p>
+
+<p>Following attributes are available for requirement object. To know about attributes currently applied for requirement object please check <a href="#requirement-profile" class="api-ref">Requirement Profile</a> API.</p>
+
+<table><thead>
+<tr>
+<th style="text-align: right">Name</th>
+<th style="text-align: left">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: right"><strong>id</strong> <br><code>integer</code></td>
+<td style="text-align: left">eRS Cloud generated unique identifier for the requirement object.</td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>project</strong> <br><code>object</code></td>
+<td style="text-align: left">Project object for which this requirement was created.</td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>task</strong> <br><code>object</code></td>
+<td style="text-align: left">Task object defines what needs to be done.These tasks can be selected from the predefined tasks within the project associated with the requirement.</td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>role</strong> <br><code>object</code></td>
+<td style="text-align: left">Role object defines which role resource needs to perform for this requirement.</td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>start_time</strong> <br><code>string</code></td>
+<td style="text-align: left">Represents the starting date and time of the requirement.</td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>end_time</strong> <br><code>string</code></td>
+<td style="text-align: left">Represents the ending date and time of the requirement.</td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>effort</strong> <br><code>float</code></td>
+<td style="text-align: left">Represents the effort value for the requirement.</td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>unit</strong> <br><code>integer</code></td>
+<td style="text-align: left">Represents unit of effort for the requirement. Unit could be one of <code>Hours</code> or <code>Full Time Equivalent</code>.</td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>tags</strong> <br><code>array of strings</code></td>
+<td style="text-align: left">Tags are strings (labels) associated with this requirement object which could be used for the purpose of identification or other information.</td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>assignments</strong> <br><code>array of object</code></td>
+<td style="text-align: left">This refers to resources that have been allocated to fulfill the requirements of the project or task.</li><li><strong>assignments.booking_id</strong> <code>integer</code> <br> ID of the booking object on which the resource has been assigned against the requirement.</li><li><strong>assignments.resource</strong> <code>object</code> <br>ID and name of the resource that has been assigned to the requirement.</li><li><strong>assignments.start_time</strong> <code>string</code> <br> Represents the start date and time of the booking object of the assigned resource.</li><li><strong>assignments.end_time</strong> <code>string</code> <br> Represents the end date and time of the booking object of the assigned resource.<li><strong>assignments.effort_hrs</strong> <code>float</code> <br>Represents the effort value required from the assigned resource for the project in the booking object.</li></td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>flexi_range_duration</strong> <br><code>integer</code></td>
+<td style="text-align: left">Represents the defined duration range for flexibility in fulfilling the requirement compared to the original requirement date.</td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>flexi_range_unit</strong> <br><code>integer</code></td>
+<td style="text-align: left">Represents a unit that allows for flexibility in fulfilling the requirement. Unit value could be one of the following:<br><br><li> <strong>1</strong> for <code>Hours</code> : Refers to &#39;hours&#39; as a unit.</li><li> <strong>2</strong> for <code>Days</code> : Refers to &#39;days&#39; as a unit.</li><br></td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>allow_multi_allocation</strong> <br><code>boolean</code></td>
+<td style="text-align: left">This refers to allocation of a specific requirement to multiple assignment.</td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>conditions</strong> <br><code>array of object</code></td>
+<td style="text-align: left">This refers to the criteria on which the requirement must be fulfilled.<li><strong>conditions.field</strong> <code>string</code> <br> This is a reference to the text&#39;s API_code.</li> <li><strong><a href="#requirement-operator" class="api-ref">conditions.operator</a></strong> <code>string</code>  <br> This refers to a character that represents a specific mathematical or logical action or process. </li><li><strong>conditions.values</strong> <br>This refers to the values defined for the requirement to be considered in suggested resources.</li><li><strong>conditions.weightage</strong> <code>integer</code>  <br> Every condition can be assigned relative importance in comparison to other conditions to calculate its weightage. Weightage is ultimately used to calculate the match score of resources.</li> <li><strong>conditions.is_mandatory</strong> <code>boolean</code> <br> Indicates whether this field is mandatory. If this field is marked as mandatory, it means that a required value must be provided for it in the suggested resources.</li></td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>created_on</strong> <br><code>string</code></td>
+<td style="text-align: left">Timestamp at which this requirement object was created.</td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>created_by</strong> <br> <code>object</code></td>
+<td style="text-align: left">Object representing user who created this requirement object.</td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>modified_on</strong> <br><code>string</code></td>
+<td style="text-align: left">Represents latest modification timestamp.</td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>modified_by</strong> <br><code>object</code></td>
+<td style="text-align: left">Object representing most recent user who modified this requirement object.</td>
+</tr>
+</tbody></table>
+<h2 id='create-a-requirement'>Create a Requirement</h2>
+<blockquote>
+<p><strong><code>POST v1/requirements</code></strong></p>
+
+<p>Example Request:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code> curl <span class="nt">-v</span> <span class="nt">-X</span> POST <span class="s2">"https://app.eresourcescheduler.cloud/rest/v1/requirements"</span> <span class="se">\</span>
+ <span class="nt">-H</span> <span class="s2">"Authorization: Bearer B8x5Vj1O65r6wnoV"</span> <span class="se">\</span>
+ <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+ <span class="nt">-d</span> <span class="s1">'{ 
+        "project_id": 1,
+        "task_id": 1,
+        "role_id": 7,
+        "start_time": "2023-10-02T00:00:00",
+        "end_time": "2023-10-03T00:00:00",
+        "effort": 3,
+        "unit": 4,
+        "tags": ["London","Onsite"] ,
+        "flexi_range_duration": 5,
+        "flexi_range_unit": 2,
+        "allow_multi_allocation": true,
+        "conditions": [{
+            "field": "udf_qualification",
+            "operator": "any",
+            "values": [334,337],
+            "weightage": 40,
+            "is_mandatory": true
+          }, {
+            "field": "udf_experiences",
+            "operator": "eq",
+            "values": 5,
+            "weightage": 40,
+            "is_mandatory": true
+          }
+        ]
+      }'</span>
+</code></pre></div>
+<p>Creates a new requirement object.</p>
+
+<p><span class="optional"><b>REQUEST BODY PARAMETERS</b></span></p>
+
+<table><thead>
+<tr>
+<th style="text-align: right">Name</th>
+<th style="text-align: left">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: right"><strong>project_id</strong> <br><span class="required"><code>required</code></span></td>
+<td style="text-align: left">ID of the project object for which this requirement object is being created.</td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>task_id</strong><br></td>
+<td style="text-align: left">ID of the task object within the project that needs to be done in this requirement.</td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>role_id</strong><br></td>
+<td style="text-align: left">ID of the role object that the resource needs to perform for the requirement. Role can be either the performing role or non-performing role of the resource.</td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>start_time</strong> <br> <span class="required"><code>required</code></span></td>
+<td style="text-align: left">Represents start date and time for requirement object. This field accepts value in ISO 8601 format for date-time i.e. yyyy-mm-ddThh:mm:ss. The value must be snapped in 15 minutes interval, which effectively means that minutes values should be one of(00/15/30/45) and seconds value should always be 0. (if given).</td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>end_time</strong> <br> <span class="required"><code>required</code></span></td>
+<td style="text-align: left">Represents end date and time for requirement object. This field accepts value in ISO 8601 format for date-time i.e. yyyy-mm-ddThh:mm:ss. The value must be snapped in 15 minutes interval, which effectively means that minutes values should be one of(00/15/30/45) and seconds value should always be 0. (if given). <code>end_time</code> must always be ahead of <code>start_time</code> by at least 15 minutes as a requirement of less than 15 minutes is not allowed.</td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>effort</strong> <br> <span class="required"><code>required</code></span></td>
+<td style="text-align: left">Represents the effort value for the requirement.This defines how much effort is needed to complete the task. Effort value is a floating-point number that cannot be less than 0 or greater than 99999999.99. If effort value is not provided system will take default value 0.</td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>unit</strong><br> <span class="required"><code>required</code></span></td>
+<td style="text-align: left">Integer number (2 or 4) represents the unit in which effort is defined. The unit value can be one of the following:<br><br><li> <strong>2</strong> for <code>Hours</code> : This defines <code>effort</code> value in fixed hours which doesn&#39;t change upon changes in requirement.</li><li> <strong>4</strong> for <code>Full Time Equivalent</code> : Full time equivalent is calculated using FTE calendar defined in <a href="https://app.eresourcescheduler.cloud/#!/admin/calendars/settings" target="_blank" class="api-ref">Administrator calendar settings</a>. Capacity from FTE calendar for defined time in requirement, is considered as 1 FTE.</li><br></td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>tags</strong> <br><code>array of strings</code></td>
+<td style="text-align: left">Tags are strings (labels) associated with this requirement object which could be used for the purpose of identification or other information.</td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>flexi_range_duration</strong> <br><code>integer</code></td>
+<td style="text-align: left">Represents the defined duration range for flexibility in fulfilling the requirement compared to the original requirement date.</td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>flexi_range_unit</strong> <br><code>integer</code></td>
+<td style="text-align: left">Represents a unit that allows for flexibility in fulfilling the requirement. Unit value could be one of the following:<br><br><li> <strong>1</strong> for <code>Hours</code> : Refers to &#39;hours&#39; as a unit</li><li> <strong>2</strong> for <code>Days</code> : Refers to &#39;days&#39; as a unit </li><br></td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>allow_multi_allocation</strong> <br><code>boolean</code></td>
+<td style="text-align: left">This refers to allocation of a specific requirement to multiple resources simultaneously.</td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>conditions</strong> <br><code>array of object</code></td>
+<td style="text-align: left">This refers to the criteria on which the requirement must be fulfilled.<li><strong>conditions.field</strong> <code>string</code> <br> This is a reference to the text&#39;s API_code.</li> <li><a href="#requirement-operator" class="api-ref">conditions.operator</a><code>string</code>  <br> This refers to a character that represents a specific mathematical or logical action or process. </li><li><strong>conditions.values</strong> <br>This refers to the values defined for the requirement to be considered in suggested resources.</li> <li><strong>conditions.weightage</strong> <code>integer</code>  <br> Every condition can be assigned relative importance in comparison to other conditions to calculate its weightage. Weightage is ultimately used to calculate the match score of resources.</li> <li><strong>conditions.is_mandatory</strong> <code>boolean</code> <br> Indicates whether this field is mandatory. If this field is marked as mandatory, it means that a required value must be provided for it in the suggested resources.</li></td>
+</tr>
+</tbody></table>
+<h3 id='returns'>Returns</h3>
+<table><thead>
+<tr>
+<th style="text-align: left">Code</th>
+<th style="text-align: left">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left"><strong>201</strong> <br><span class = "success"><code>Created</code></span></td>
+<td style="text-align: left">This status code indicates that the operation was successful and  a requirement is created successfully.</td>
+</tr>
+<tr>
+<td style="text-align: left"><strong>400</strong> <br> <span class = "error"><code>Bad Request</code></span></td>
+<td style="text-align: left">Bad Request error occurs when a request is malformed, syntactically incorrect, missing required parameters or any unknown parameter is passed. Additionally, Bad request may also occur in one of these conditions:<ul><li>Project is marked as  Archived.</li><li>Duration of requirement is more than allowed requirement duration set by Administrator using ers Cloud Application in <a href="https://app.eresourcescheduler.cloud/#!/admin/settings/requirement" target="_blank" class="api-ref">Administrator Requirement Settings</a>.</li></ul></td>
+</tr>
+<tr>
+<td style="text-align: left"><strong>403</strong> <br> <span class = "error"><code>Forbidden</code></span></td>
+<td style="text-align: left">Authorization failed due to insufficient permissions. This occurs when user does not have enough access rights to perform this action. Access for each user can be controlled by an Administrator using eRS Cloud Application.</td>
+</tr>
+</tbody></table>
+<h2 id='list-requirements'>List Requirements</h2>
+<p>Returns list of requirements. The requirements are returned sorted by requirement&#39;s <code>start_time</code> and ID. </p>
+
+<blockquote>
+<p><strong><code>GET /v1/requirements</code></strong></p>
+
+<p>Example Request</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-v</span> GET <span class="s2">"https://app.eresourcescheduler.cloud/rest/v1/requirements?</span><span class="se">\</span><span class="s2">
+start=2023-01-01&amp;end=2023-12-31"</span> <span class="se">\</span>
+<span class="nt">-H</span> <span class="s2">"Authorization: Bearer B8x5Vj1O65r6wnoV"</span>
+</code></pre></div>
+<blockquote>
+<p>Example Request With Offset And Limit </p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-v</span> GET <span class="s2">"https://app.eresourcescheduler.cloud/rest/v1/requirements?</span><span class="se">\</span><span class="s2">
+start=2023-01-01&amp;end=2023-12-31&amp;offset=1&amp;limit=10"</span> <span class="se">\</span>
+<span class="nt">-H</span> <span class="s2">"Authorization: Bearer B8x5Vj1O65r6wnoV"</span>
+</code></pre></div>
+<blockquote>
+<p>Example Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"total_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">251</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"project"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mars Rover"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"task"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Data Processing"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"role"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Tax Manager"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">11</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"start_time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-08-21T09:00:00"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"end_time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-08-22T17:00:00"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"effort"</span><span class="p">:</span><span class="w"> </span><span class="mi">32</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"unit"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="s2">"London"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"onsite"</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="nl">"assignments"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"booking_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3306</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"resource"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">126</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Oliver"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"start_time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-09-20T09:00:00"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"end_time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-09-25T17:15:00"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"effort_hrs"</span><span class="p">:</span><span class="w"> </span><span class="mf">16.12</span><span class="w">
+      </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"booking_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3305</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"resource"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">140</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Thomas"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"start_time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-09-20T09:00:00"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"end_time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-09-25T17:15:00"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"effort_hrs"</span><span class="p">:</span><span class="w"> </span><span class="mf">16.3</span><span class="w">
+      </span><span class="p">}</span><span class="w"> </span><span class="p">],</span><span class="w">
+      </span><span class="nl">"flexi_range_duration"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"flexi_range_unit"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"allow_multi_allocation"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"conditions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"operator"</span><span class="p">:</span><span class="w"> </span><span class="s2">"all"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"field"</span><span class="p">:</span><span class="w"> </span><span class="s2">"udf_skills"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"values"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Account Reconciliation"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">34</span><span class="w">
+      </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Account Taxation"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">23</span><span class="w">
+      </span><span class="p">}</span><span class="w"> </span><span class="p">],</span><span class="w">
+        </span><span class="nl">"weightage"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"is_mandatory"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+      </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"operator"</span><span class="p">:</span><span class="w"> </span><span class="s2">"any"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"field"</span><span class="p">:</span><span class="w"> </span><span class="s2">"udf_city"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"values"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"London"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">361</span><span class="w">
+      </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Dublin"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">362</span><span class="w">
+      </span><span class="p">}</span><span class="w"> </span><span class="p">],</span><span class="w">
+        </span><span class="nl">"weightage"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"is_mandatory"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+      </span><span class="p">}</span><span class="w"> </span><span class="p">],</span><span class="w">
+      </span><span class="nl">"created_on"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-09-15T09:03:48.428713+00:00"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"created_by"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John doe"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"modified_on"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-09-15T09:05:40.515333+00:00"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"modified_by"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John doe"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">    
+  </span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p><span class="optional"><b>REQUEST QUERY PARAMETERS</b></span></p>
+
+<table><thead>
+<tr>
+<th style="text-align: right">Name</th>
+<th style="text-align: left">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: right"><strong>limit</strong><br><code>optional</code></td>
+<td style="text-align: left">The limit keyword is used to limit the number of records returned from a result set. If a limit count is given, no more than that many records will be returned (but possibly less, if the query itself yields less records)<br><em>Default value of <code>limit</code> is</em> <span class="required"><strong><code>100</code></strong></span>.<br><em>Maximum value of <code>limit</code> can be</em> <span class="required"><strong><code>500</code></strong></span>.</td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>offset</strong><br><code>optional</code></td>
+<td style="text-align: left">Offset keyword is used to skip n items. If offset value is given as 10, then first 10 records will be skipped from result set. Offset is often used together with the Limit keyword.<br><em>Default value of <code>offset</code> is</em> <span class="required"><strong><code>0</code></strong></span>.</td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>start</strong><br><code>optional</code></td>
+<td style="text-align: left">String value representing start date in ISO 8601 extended notation for date i.e. yyyy-MM-dd. This is used to filter requirements starting on or after this date.</td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>end</strong><br><code>optional</code></td>
+<td style="text-align: left">String value representing end date in ISO 8601 extended notation for date i.e. yyyy-MM-dd. This is used to filter requirements starting before this date.</td>
+</tr>
+<tr>
+<td style="text-align: right"></td>
+<td style="text-align: left"><em><strong>Note</strong>: By default if <code>start</code> &amp; <code>end</code> arguments are omitted, then requirements of current month will be returned. If requirements of a certain period are needed, then both <code>start</code> &amp; <code>end</code> arguments required. If only one argument <code>start</code> or <code>end</code> is passed then a bad request error is raised.</em></td>
+</tr>
+</tbody></table>
+<h3 id='returns-2'>Returns</h3>
+<table><thead>
+<tr>
+<th style="text-align: right">Code</th>
+<th style="text-align: left">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: right"><strong>200</strong> <br> <span class = "success"><code>OK</code></span></td>
+<td style="text-align: left">This indicates that the operation was successful and list of requirements is returned.</td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>400</strong> <br> <span class = "error"><code>Bad Request</code> </span></td>
+<td style="text-align: left">Bad Request may occur when offset or limit value is negative integer.</td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>403</strong> <br> <span class = "error"><code>Forbidden</code></span></td>
+<td style="text-align: left">Authorization failed due to insufficient permissions. This occurs when user does not have enough access rights to perform this action. Access for each user can be controlled by an Administrator using eRS Cloud Application.</td>
+</tr>
+</tbody></table>
+<h2 id='retrieve-a-requirement'>Retrieve a Requirement</h2>
+<blockquote>
+<p><strong><code>GET v1/requirements/{ID}</code></strong></p>
+
+<p>Example Request</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-v</span> <span class="nt">-X</span> GET <span class="s2">"https://app.eresourcescheduler.cloud/rest/v1/requirements/251"</span> <span class="se">\</span>
+<span class="nt">-H</span> <span class="s2">"Authorization: Bearer B8x5Vj1O65r6wnoV"</span>
+</code></pre></div>
+<blockquote>
+<p>Example Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">251</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"project"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mars Rover"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"task"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Data Processing"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"role"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Tax Manager"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">11</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"start_time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-08-21T09:00:00"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"end_time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-08-22T17:00:00"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"effort"</span><span class="p">:</span><span class="w"> </span><span class="mi">32</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"unit"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="s2">"London"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"onsite"</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"assignments"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"booking_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3306</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"resource"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">126</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Oliver"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"start_time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-09-20T09:00:00"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"end_time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-09-25T17:15:00"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"effort_hrs"</span><span class="p">:</span><span class="w"> </span><span class="mf">16.12</span><span class="w">
+    </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"booking_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3305</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"resource"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">140</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Thomas"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"start_time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-09-20T09:00:00"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"end_time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-09-25T17:15:00"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"effort_hrs"</span><span class="p">:</span><span class="w"> </span><span class="mf">16.3</span><span class="w">
+      </span><span class="p">}</span><span class="w"> </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"flexi_range_duration"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"flexi_range_unit"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"allow_multi_allocation"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"conditions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"operator"</span><span class="p">:</span><span class="w"> </span><span class="s2">"all"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"field"</span><span class="p">:</span><span class="w"> </span><span class="s2">"udf_skills"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"values"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Account Reconciliation"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">34</span><span class="w">
+  </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Account Taxation"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">23</span><span class="w">
+  </span><span class="p">}</span><span class="w"> </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"weightage"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"is_mandatory"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+    </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"operator"</span><span class="p">:</span><span class="w"> </span><span class="s2">"any"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"field"</span><span class="p">:</span><span class="w"> </span><span class="s2">"udf_city"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"values"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"London"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">361</span><span class="w">
+  </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Dublin"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">362</span><span class="w">
+  </span><span class="p">}</span><span class="w"> </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"weightage"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"is_mandatory"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+  </span><span class="p">}</span><span class="w"> </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"created_on"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-09-15T09:03:48.428713+00:00"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"created_by"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John doe"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"modified_on"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-09-15T09:05:40.515333+00:00"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"modified_by"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John doe"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>Retrieves the details of an existing requirement. You only need to  provide the unique requirement identifier that was returned upon requirement creation.</p>
+<h3 id='returns-3'>Returns</h3>
+<table><thead>
+<tr>
+<th style="text-align: right">Code</th>
+<th style="text-align: left">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: right"><strong>200</strong> <br> <span class = "success"><code>OK</code></span></td>
+<td style="text-align: left">This status code indicates that the operation was successful and a requirement returned successfully.</td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>403</strong> <br> <span class = "error"><code>Forbidden</code></span></td>
+<td style="text-align: left">Authorization failed due to insufficient permissions. This occurs when user does not have enough access rights to perform this action. Access for each user can be controlled by an Administrator using eRS Cloud Application.</td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>404</strong> <br> <span class = "error"><code>Not Found</code></span></td>
+<td style="text-align: left">Not Found error occurs when requested requirement does not exist (i.e. There is no requirement with given ID). This may also occur when requesting a requirement that has been deleted.</td>
+</tr>
+</tbody></table>
+<h2 id='search-requirements'>Search Requirements</h2>
+<blockquote>
+<p><strong><code>POST /v1/requirements/search</code></strong></p>
+
+<p>Example Request For Filter In JSON Format</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="s2">"https://app.eresourcescheduler.cloud/rest/v1/requirements/search?</span><span class="se">\</span><span class="s2">
+start=2023-01-01&amp;end=2023-12-31"</span> <span class="se">\</span>
+<span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+<span class="nt">-H</span> <span class="s2">"Authorization: Bearer B8x5Vj1O65r6wnoV"</span> <span class="se">\</span>
+<span class="nt">-d</span> <span class="s1">'{ 
+      "requirement":{
+        "role_id:any":1
+        }
+    }'</span>
+</code></pre></div>
+<blockquote>
+<p>Example Request For Filter By Passing Multiple Filters In JSON Format</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="s2">"https://app.eresourcescheduler.cloud/rest/v1/requirements/search?</span><span class="se">\</span><span class="s2">
+start=2023-01-01&amp;end=2023-12-31"</span> <span class="se">\</span>
+<span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+<span class="nt">-H</span> <span class="s2">"Authorization: Bearer B8x5Vj1O65r6wnoV"</span> <span class="se">\</span>
+<span class="nt">-d</span> <span class="s1">'{
+       "project":{"id:eq":1},
+       "requirement":{"role_id:any":1},
+       "task":{"id:any":[2,3]}
+     }'</span>
+</code></pre></div>
+<blockquote>
+<p>Example Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"total_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">249</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"project"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Apollo 11"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"task"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Data Handling"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"role"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Project Manager"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"start_time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-09-21T09:00:00"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"end_time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-09-22T17:00:00"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"effort"</span><span class="p">:</span><span class="w"> </span><span class="mi">32</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"unit"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="s2">"London"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"onsite"</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+       </span><span class="nl">"assignments"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"flexi_range_duration"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"flexi_range_unit"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"allow_multi_allocation"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"conditions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"operator"</span><span class="p">:</span><span class="w"> </span><span class="s2">"all"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"field"</span><span class="p">:</span><span class="w"> </span><span class="s2">"udf_skills"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"values"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Account Reconciliation"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">34</span><span class="w">
+      </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Account Taxation"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">23</span><span class="w">
+      </span><span class="p">}</span><span class="w"> </span><span class="p">],</span><span class="w">
+        </span><span class="nl">"weightage"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"is_mandatory"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+      </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"operator"</span><span class="p">:</span><span class="w"> </span><span class="s2">"any"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"field"</span><span class="p">:</span><span class="w"> </span><span class="s2">"udf_city"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"values"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"London"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">361</span><span class="w">
+      </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Dublin"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">362</span><span class="w">
+      </span><span class="p">}</span><span class="w"> </span><span class="p">],</span><span class="w">
+        </span><span class="nl">"weightage"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"is_mandatory"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+      </span><span class="p">}</span><span class="w"> </span><span class="p">],</span><span class="w">
+      </span><span class="nl">"created_on"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-09-15T09:03:48.428713+00:00"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"created_by"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John doe"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"modified_on"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-09-15T09:05:40.515333+00:00"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"modified_by"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John doe"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p><span class="optional"><b>REQUEST QUERY PARAMETERS</b></span></p>
+
+<table><thead>
+<tr>
+<th style="text-align: right">Name</th>
+<th style="text-align: left">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: right"><strong>limit</strong><br><code>optional</code></td>
+<td style="text-align: left">The limit keyword is used to limit the number of records returned from a result set. If a limit count is given, no more than that many records will be returned (but possibly less, if the query itself yields less records)<br><em>Default value of <code>limit</code> is</em> <span class="required"><strong><code>100</code></strong></span>.<br><em>Maximum value of <code>limit</code> can be</em> <span class="required"><strong><code>500</code></strong></span>.</td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>offset</strong><br><code>optional</code></td>
+<td style="text-align: left">Offset keyword is used to skip n items. If offset value is given as 10, then first 10 records will be skipped from result set. Offset is often used together with the Limit keyword.<br><em>Default value of <code>offset</code> is</em> <span class="required"><strong><code>0</code></strong></span>.</td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>start</strong><br><code>optional</code></td>
+<td style="text-align: left">String value representing start date in ISO 8601 extended notation for date i.e. yyyy-MM-dd. This is used to filter requirements starting on or after this date.</td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>end</strong><br><code>optional</code></td>
+<td style="text-align: left">String value representing end date in ISO 8601 extended notation for date i.e. yyyy-MM-dd. This is used to filter requirements starting before this date.</td>
+</tr>
+<tr>
+<td style="text-align: right"></td>
+<td style="text-align: left"><em><strong>Note</strong>: By default if <code>start</code> &amp; <code>end</code> arguments are omitted, then requirements of current month will be returned. If requirements of a certain period are needed, then both <code>start</code> &amp; <code>end</code> arguments required. If only one argument <code>start</code> or <code>end</code> is passed then a bad request error is raised.</em></td>
+</tr>
+</tbody></table>
+
+<p>Search Requirement API allows filtering the results set in various ways. This enables a great power to find out what is needed. eRS Cloud API also allows filtering on custom defined fields with multiple operators and conditions to cover up complex scenarios for searching.</p>
+
+<p>A filter condition consists of three components which are <strong><em>field</em></strong>, <strong><em>operator</em></strong> and <strong><em>value</em></strong>. For example, fetching only those requirements having tag <code>tagA</code> or <code>tagB</code>, could be achieved by adding <code>&quot;tags:any&quot;: [&quot;tagA&quot;, &quot;tagB&quot;]</code> to request body. If operator is not supplied, it takes default operator for field.</p>
+
+<p>Below is a list of available fields, which allow filtering requirements:</p>
+
+<table><thead>
+<tr>
+<th style="text-align: left"><strong>Field Type</strong></th>
+<th style="text-align: left"><strong>Operator</strong></th>
+<th style="text-align: left"><strong>Example</strong></th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left"><strong>tags</strong></td>
+<td style="text-align: left"><li class="nowrap"><strong>any</strong> (<em>default</em>)</li><li>none</li><li>all</li><li>ex</li></td>
+<td style="text-align: left"><code>&quot;tags:any&quot;: [&quot;tagA&quot;,&quot;tagB&quot;]</code><br><code>&quot;tags:none&quot;: [&quot;tagA&quot;,&quot;tagB&quot;]</code><br><code>&quot;tags:all&quot;: [&quot;tagA&quot;,&quot;tagB&quot;]</code><br><code>&quot;tags:ex&quot;: [&quot;tagA&quot;,&quot;tagB&quot;]</code></td>
+</tr>
+<tr>
+<td style="text-align: left"><strong>gap</strong></td>
+<td style="text-align: left"><li class="nowrap"><strong>eq</strong> <em>(default)</em> </li><li>lt</li><li>gt</li><li>bt</li><li>ex</li></td>
+<td style="text-align: left"><code>&quot;gap:eq&quot;: &quot;50h&quot;, &quot;gap:eq&quot;:&quot;50%&quot;</code><br><code>&quot;gap:lt&quot;: &quot;50h&quot;, &quot;gap:eq&quot;:&quot;50%&quot;</code><br><code>&quot;gap:gt&quot;: &quot;50h&quot;, &quot;gap:eq&quot;:&quot;50%&quot;</code><br><code>&quot;gap:bt&quot;: [&quot;50h&quot;,&quot;60h&quot;], &quot;gap:eq&quot;:[&quot;50%&quot;,&quot;60%&quot;]</code> <br><code>&quot;gap:ex&quot;: [&quot;50h&quot;,&quot;60h&quot;], &quot;gap:eq&quot;:[&quot;50%&quot;,&quot;60%&quot;]</code></td>
+</tr>
+<tr>
+<td style="text-align: left"><strong>role_id</strong></td>
+<td style="text-align: left"><li class="nowrap"><strong>any</strong> (<em>default</em>)  </li><li>none</li><li>eq</li><li>neq</li></td>
+<td style="text-align: left"><code>&quot;role_id:any&quot;: [1,2]</code><br><code>&quot;role_id:none&quot;: [1,2]</code><br><code>&quot;role_id:eq&quot;: 1</code><br><code>&quot;role_id:neq&quot;: 1</code></td>
+</tr>
+<tr>
+<td style="text-align: left"><strong>created_by</strong></td>
+<td style="text-align: left"><li class="nowrap"><strong>eq</strong> (<em>default</em>)</li><li>neq</li><li>any</li><li>none</li></td>
+<td style="text-align: left"><code>&quot;created_by:eq&quot;: 1</code><br><code>&quot;created_by:neq&quot;: 1</code><br><code>&quot;created_by:any&quot;: [1, 2]</code><br><code>&quot;created_by:none&quot;: [1, 2]</code></td>
+</tr>
+<tr>
+<td style="text-align: left"><strong>modified_by</strong></td>
+<td style="text-align: left"><li class="nowrap"><strong>eq</strong> (<em>default</em>)</li><li>neq</li><li>any</li><li>none</li></td>
+<td style="text-align: left"><code>&quot;modified_by:eq&quot;: 1</code><br><code>&quot;modified_by:neq&quot;: 1</code><br><code>&quot;modified_by:any&quot;: [1, 2]</code><br><code>&quot;modified_by:none&quot;: [1, 2]</code></td>
+</tr>
+<tr>
+<td style="text-align: left"><strong>created_on</strong></td>
+<td style="text-align: left"><li class="nowrap"><strong>eq</strong> (<em>default</em>)</li><li>lt</li><li>gt</li><li>bt</li><li>ex</li></td>
+<td style="text-align: left"><code>&quot;created_on:eq&quot;: [&quot;2021-07-08T00:00:00&quot;]</code><br><code>&quot;created_on:lt&quot;: [&quot;2021-07-08T00:00:00&quot;]</code><br><code>&quot;created_on:gt&quot;: [&quot;2021-07-08T59:59:59&quot;]</code><br><code>&quot;created_on:bt&quot;: [&quot;2021-07-08T00:00:00&quot;, &quot;2021-07-10T23:59:59&quot;]</code> <br><code>&quot;created_on:bt&quot;: [&quot;2021-07-08T00:00:00&quot;, &quot;&quot;]</code> <br><code>&quot;created_on:bt&quot;: [&quot;&quot;, &quot;2021-07-10T23:59:59&quot;]</code> <br><code>&quot;created_on:ex&quot;: [&quot;2021-07-08T00:00:00&quot;, &quot;2021-07-10T23:59:59&quot;]</code> <br><code>&quot;created_on:ex&quot;: [&quot;2021-07-08T00:00:00&quot;, &quot;&quot;]</code> <br><code>&quot;created_on:ex&quot;: [&quot;&quot;, &quot;2021-07-10T23:59:59&quot;]]</code></td>
+</tr>
+<tr>
+<td style="text-align: left"><strong>modified_on</strong></td>
+<td style="text-align: left"><li class="nowrap"><strong>eq</strong> (<em>default</em>)</li><li>lt</li><li>gt</li><li>bt</li><li>ex</li></td>
+<td style="text-align: left"><code>&quot;modified_on:eq&quot;: [&quot;2021-07-08T00:00:00&quot;]</code><br><code>&quot;modified_on:lt&quot;: [&quot;2021-07-08T00:00:00&quot;]</code><br><code>&quot;modified_on:gt&quot;: [&quot;2021-07-08T59:59:59&quot;]</code><br><code>&quot;modified_on:bt&quot;: [&quot;2021-07-08T00:00:00&quot;, &quot;2021-07-10T23:59:59&quot;]</code> <br><code>&quot;modified_on:bt&quot;: [&quot;2021-07-08T00:00:00&quot;, &quot;&quot;]</code> <br><code>&quot;modified_on:bt&quot;: [&quot;&quot;, &quot;2021-07-10T23:59:59&quot;]</code> <br><code>&quot;modified_on:ex&quot;: [&quot;2021-07-08T00:00:00&quot;, &quot;2021-07-10T23:59:59&quot;]</code> <br><code>&quot;modified_on:ex&quot;: [&quot;2021-07-08T00:00:00&quot;, &quot;&quot;]</code> <br><code>&quot;modified_on:ex&quot;: [&quot;&quot;, &quot;2021-07-10T23:59:59&quot;]]</code></td>
+</tr>
+</tbody></table>
+<h2 id='update-a-requirement'>Update a Requirement</h2>
+<p>Updates the specified requirement by setting values of parameters passed. Values of any parameters which are not provided will be unchanged. To unset existing value for a parameter, just pass an empty value i.e. <code>null</code>.</p>
+
+<blockquote>
+<p><strong><code>PUT /v1/requirements/{ID}</code></strong></p>
+
+<p>Example Request</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-v</span> <span class="nt">-X</span> PUT <span class="s2">"https://app.eresourcescheduler.cloud/rest/v1/requirements/251"</span> <span class="se">\</span>
+<span class="nt">-H</span> <span class="s2">"Authorization: Bearer B8x5Vj1O65r6wnoV"</span> <span class="se">\</span>
+<span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+<span class="nt">-d</span> <span class="s1">'{
+    "project_id": 1,
+    "start_time": "2023-08-15T09:00:00",
+    "end_time":"2023-08-15T17:00:00",
+    "effort": 8,
+    "role_id":3,
+    "unit": 2,
+    "conditions": [
+        {
+          "field":"udf_qualification",
+          "operator":"any",
+          "values":[18,26],
+          "weightage":20,
+          "is_mandatory":false}
+    ]
+}'</span>
+</code></pre></div>
+<blockquote>
+<p>Example Request: Update a requirement and unlinking its linked bookings</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-v</span> <span class="nt">-X</span> PUT <span class="s2">"https://app.eresourcescheduler.cloud/rest/v1</span><span class="se">\</span><span class="s2">
+/requirements/106?unlink_bookings=true"</span> <span class="se">\</span>
+<span class="nt">-H</span> <span class="s2">"Authorization: Bearer B8x5Vj1O65r6wnoV"</span> <span class="se">\</span>
+<span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+<span class="nt">-d</span> <span class="s1">'{ 
+        "task_id":4,
+        "role_id":1,
+        "start_time":"2023-10-10T09:00:00",
+        "end_time":"2023-10-13T17:00:00"      
+    }'</span>
+</code></pre></div>
+<blockquote>
+<p>Example Request: Update a requirement and deleting its linked bookings</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-v</span> <span class="nt">-X</span> PUT <span class="s2">"https://app.eresourcescheduler.cloud/rest/v1</span><span class="se">\</span><span class="s2">
+/requirements/106?delete_bookings=true"</span> <span class="se">\</span>
+<span class="nt">-H</span> <span class="s2">"Authorization: Bearer B8x5Vj1O65r6wnoV"</span> <span class="se">\</span>
+<span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+<span class="nt">-d</span> <span class="s1">'{ 
+        "task_id":4,
+        "role_id":1,
+        "start_time":"2023-10-10T09:00:00",
+        "end_time":"2023-10-13T17:00:00"
+    }'</span>
+</code></pre></div>
+<p><span class="optional"><b>REQUEST BODY PARAMETERS</b></span></p>
+
+<table><thead>
+<tr>
+<th style="text-align: right">Name</th>
+<th style="text-align: left">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: right"><strong>project_id</strong> <br><span class="required"><code>required</code></span></td>
+<td style="text-align: left">ID of the project object for which this requirement object is being created. This will throw an error if you post an empty value.</td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>task_id</strong><br></td>
+<td style="text-align: left">ID of the task object within the project that needs to be done in this requirement.</td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>role_id</strong><br></td>
+<td style="text-align: left">ID of the role object that the resource needs to perform for the requirement. Role can be either the performing role or non-performing role of the resource.</td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>start_time</strong> <br><span class="required"><code>required</code></span></td>
+<td style="text-align: left">Represents start date and time for requirement object. This field accepts value in ISO 8601 format for date-time i.e. yyyy-mm-ddThh:mm:ss. The value must be snapped in 15 minutes interval, which effectively means that minutes values should be one of(00/15/30/45) and seconds value should always be 0. (if given). This will throw an error if you post an empty value.</td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>end_time</strong> <br><span class="required"><code>required</code></span></td>
+<td style="text-align: left">Represents end date and time for requirement object. This field accepts value in ISO 8601 format for date-time i.e. yyyy-mm-ddThh:mm:ss. The value must be snapped in 15 minutes interval, which effectively means that minutes values should be one of(00/15/30/45) and seconds value should always be 0. (if given). <code>end_time</code> must always be ahead of <code>start_time</code> by at least 15 minutes as a requirement of less than 15 minutes is not allowed. This will throw an error if you post an empty value.</td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>effort</strong>  <br><span class="required"><code>required</code></span></td>
+<td style="text-align: left">Represents the effort value for the requirement.This defines how much effort is needed to complete the task. Effort value is a floating-point number that cannot be less than 0 or greater than 99999999.99. If effort value is not provided system will take default value 0.</td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>unit</strong><br> <span class="required"><code>required</code></span></td>
+<td style="text-align: left">Integer number (2 or 4) represents the unit in which effort is defined. The unit value can be one of the following:<br><br><li> <strong>2</strong> for <code>Hours</code> : This defines <code>effort</code> value in fixed hours which doesn&#39;t change upon changes in requirement.</li><li> <strong>4</strong> for <code>Full Time Equivalent</code> : Full time equivalent is calculated using FTE calendar defined in <a href="https://app.eresourcescheduler.cloud/#!/admin/calendars/settings" target="_blank" class="api-ref">Administrator calendar settings</a>. Capacity from FTE calendar for defined time in requirement, is considered as 1 FTE.</li><br></td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>tags</strong> <br><code>array of strings</code></td>
+<td style="text-align: left">Tags are strings (labels) associated with this requirement object which could be used for the purpose of identification or other information.</td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>flexi_range_duration</strong> <br><code>integer</code></td>
+<td style="text-align: left">Represents the defined duration range for flexibility in fulfilling the requirement compared to the original requirement date.</td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>flexi_range_unit</strong> <br><code>integer</code></td>
+<td style="text-align: left">Represents a unit that allows for flexibility in fulfilling the requirement. Unit value could be one of the following:<br><br><li> <strong>1</strong> for <code>Hours</code> : Refers to &#39;hours&#39; as a unit.</li><li> <strong>2</strong> for <code>Days</code> : Refers to &#39;days&#39; as a unit.</li><br></td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>allow_multi_allocation</strong> <br><code>boolean</code></td>
+<td style="text-align: left">This refers to allocation of a specific requirement to multiple resources simultaneously.</td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>conditions</strong> <br><code>array of object</code></td>
+<td style="text-align: left">This refers to the criteria on which the requirement must be fulfilled.<li><strong>conditions.field</strong> <code>string</code> <br> This is a reference to the text&#39;s API_code.</li> <li><a href="#requirement-operator" class="api-ref">conditions.operator</a><code>string</code>  <br> This refers to a character that represents a specific mathematical or logical action or process. </li><li><strong>conditions.values</strong> <br>This refers to the values defined for the requirement to be considered in suggested resources.</li> <li><strong>conditions.weightage</strong> <code>integer</code>  <br> Every condition can be assigned relative importance in comparison to other conditions to calculate its weightage. Weightage is ultimately used to calculate the match score of resources.</li> <li><strong>conditions.is_mandatory</strong> <code>boolean</code> <br> Indicates whether this field is mandatory. If this field is marked as mandatory, it means that a required value must be provided for it in the suggested resources.</li></td>
+</tr>
+</tbody></table>
+<h3 id='returns-4'>Returns</h3>
+<table><thead>
+<tr>
+<th style="text-align: right">Code</th>
+<th style="text-align: left">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: right"><strong>200</strong> <br> <span class = "success"><code>OK</code></span></td>
+<td style="text-align: left">This indicates that the operation was successful and a requirement updated successfully.</td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>400</strong> <br> <span class = "error"><code>Bad Request</code></span></td>
+<td style="text-align: left">Bad Request error occurs when a request is malformed, syntactically incorrect, empty required parameters or any unknown parameter is passed. Additionally, Bad request may also occur in one of these conditions:<ul><li>Trying to update <code>start_time</code> or <code>end_time</code> such that <code>end_time</code> gets earlier than <code>start_time</code>.</li><li>Trying to update requirements of archived project.</li><li>Duration of requirement is more than allowed requirement duration set by Administrator using ers Cloud Application in <a href="https://app.eresourcescheduler.cloud/#!/admin/settings/requirement" target="_blank" class="api-ref">Administrator Requirement Settings</a>.</li></ul></td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>403</strong> <br> <span class = "error"><code>Forbidden</code></span></td>
+<td style="text-align: left">Authorization failed due to insufficient permissions. This occurs when user does not have enough access rights to perform this action. Access for each user can be controlled by an Administrator using eRS Cloud Application.</td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>404</strong> <br> <span class = "error"><code>Not Found</code></span></td>
+<td style="text-align: left">Not Found error occurs when requested requirement does not exist (i.e. There is no requirement with given ID). This may also occur when requesting a requirement that has been deleted.</td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>409</strong> <br> <span class = "error"><code>Conflict</code></span></td>
+<td style="text-align: left">Conflict indicates that when you are updating a requirement linked to booking(s), then you must pass one of the parameters i.e; <code>delete_bookings=true</code> to delete requirement and respective booking or another parameter <code>unlink_bookings=true</code> will update requirement after unlinking the respective bookings. this action will be performed through <a href="https://app.eresourcescheduler.cloud/#!/admin/settings/requirement" target="_blank" class="api-ref">Administrator Requirement Settings</a></td>
+</tr>
+</tbody></table>
+<h2 id='requirement-operator'>Requirement Operator</h2>
+<blockquote>
+<p>Example for Conditions (resource_type_id)</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code><span class="o">{</span>
+  ...
+  ...
+  <span class="s2">"conditions"</span>: <span class="o">[{</span> 
+        <span class="s2">"field"</span>:<span class="s2">"resource_type_id"</span>,
+        <span class="s2">"operator"</span>:<span class="s2">"any"</span>,
+        <span class="s2">"values"</span>:[2,3],
+        <span class="s2">"weightage"</span>:10,
+        <span class="s2">"is_mandatory"</span>: <span class="nb">true</span>
+        <span class="o">}]</span>
+  ...
+  ...
+<span class="o">}</span>
+</code></pre></div>
+<blockquote>
+<p>Example for Conditions (resource name)</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code><span class="o">{</span>
+  ...
+  ...
+  <span class="s2">"conditions"</span>: <span class="o">[{</span>          
+        <span class="s2">"field"</span>:<span class="s2">"resource"</span>,
+        <span class="s2">"operator"</span>:<span class="s2">"match"</span>,
+        <span class="s2">"values"</span>:[3,5,8],
+        <span class="s2">"weightage"</span>:10,
+        <span class="s2">"is_mandatory"</span>: <span class="nb">true</span>
+        <span class="o">}]</span>
+  ...
+  ...
+<span class="o">}</span>
+</code></pre></div>
+<blockquote>
+<p>Example for Conditions (resource start date)</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code><span class="o">{</span>
+  ...
+  ...
+  <span class="s2">"conditions"</span>: <span class="o">[{</span>
+        <span class="s2">"field"</span>:<span class="s2">"start_date"</span>,
+        <span class="s2">"operator"</span>:<span class="s2">"bt"</span>,
+        <span class="s2">"values"</span>:[<span class="s2">"2023-03-24"</span>,<span class="s2">"2023-05-20"</span><span class="o">]</span>,
+        <span class="s2">"weightage"</span>:10,
+        <span class="s2">"is_mandatory"</span>: <span class="nb">true</span>
+       <span class="o">}]</span>
+  ...
+  ...
+<span class="o">}</span>
+</code></pre></div>
+<blockquote>
+<p>Example for Conditions (resource last date)</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code><span class="o">{</span>
+  ...
+  ...
+  <span class="s2">"conditions"</span>: <span class="o">[{</span>  
+        <span class="s2">"field"</span>:<span class="s2">"last_date"</span>,
+        <span class="s2">"operator"</span>:<span class="s2">"eq"</span>,
+        <span class="s2">"values"</span>:<span class="s2">"2023-03-24"</span>,
+        <span class="s2">"weightage"</span>:20,
+        <span class="s2">"is_mandatory"</span>: <span class="nb">true</span>
+        <span class="o">}]</span>
+  ...
+  ...
+<span class="o">}</span>
+</code></pre></div>
+<blockquote>
+<p>Example for Conditions (time zone)</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code><span class="o">{</span>
+  ...
+  ...
+  <span class="s2">"conditions"</span>: <span class="o">[{</span>
+        <span class="s2">"field"</span>:<span class="s2">"timezone"</span>,
+        <span class="s2">"operator"</span>:<span class="s2">"any"</span>,
+        <span class="s2">"values"</span>:[315,240],
+        <span class="s2">"weightage"</span>:10,
+        <span class="s2">"is_mandatory"</span>: <span class="nb">true</span>
+          <span class="o">}]</span>
+  ...
+  ...
+<span class="o">}</span>
+</code></pre></div>
+<blockquote>
+<p>Example for Conditions (resource primary_role)</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code><span class="o">{</span>
+  ...
+  ...
+  <span class="s2">"conditions"</span>: <span class="o">[{</span>
+        <span class="s2">"field"</span>:<span class="s2">"primary_role_id"</span>,
+        <span class="s2">"weightage"</span>:10
+        <span class="o">}]</span>
+  ...
+  ...
+<span class="o">}</span>
+</code></pre></div>
+<blockquote>
+<p>Example for Conditions (resource availability)</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code><span class="o">{</span>
+  ...
+  ...
+  <span class="s2">"conditions"</span>: <span class="o">[{</span>
+        <span class="s2">"field"</span>:<span class="s2">"availability"</span>,
+        <span class="s2">"weightage"</span>:10
+        <span class="o">}]</span>
+  ...
+  ...
+<span class="o">}</span>
+</code></pre></div><h3 id='conditions-for-system-generated-fields'>Conditions for System Generated Fields</h3>
+<table><thead>
+<tr>
+<th style="text-align: left"><strong>Field code</strong></th>
+<th style="text-align: left"></th>
+<th style="text-align: left"><strong>Operators</strong></th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left"><strong>resource_type_id</strong></td>
+<td style="text-align: left"><div class="w-100"></div></td>
+<td style="text-align: left"><li class="w-300"><strong>eq</strong> (<em>default</em>)</li><li>any</li></td>
+</tr>
+<tr>
+<td style="text-align: left"><strong>resource</strong></td>
+<td style="text-align: left"></td>
+<td style="text-align: left"><li ><strong>match</strong> (<em>default</em>)</li></td>
+</tr>
+<tr>
+<td style="text-align: left"><strong>start_Date</strong></td>
+<td style="text-align: left"></td>
+<td style="text-align: left"><li><strong>eq</strong> (<em>default</em>)</li><li>lt</li><li>gt</li><li> bt</li><li>ex</li></td>
+</tr>
+<tr>
+<td style="text-align: left"><strong>last_date</strong></td>
+<td style="text-align: left"></td>
+<td style="text-align: left"><li><strong>eq</strong> (<em>default</em>)</li><li>lt</li><li>gt</li><li> bt</li><li>ex</li></td>
+</tr>
+<tr>
+<td style="text-align: left"><strong>timezone</strong></td>
+<td style="text-align: left"></td>
+<td style="text-align: left"><li><strong>eq</strong> (<em>default</em>)</li><li>any</li></td>
+</tr>
+<tr>
+<td style="text-align: left"><strong>primary_role_id</strong></td>
+<td style="text-align: left"></td>
+<td style="text-align: left">N/A</td>
+</tr>
+<tr>
+<td style="text-align: left"><strong>availability</strong></td>
+<td style="text-align: left"></td>
+<td style="text-align: left">N/A</td>
+</tr>
+</tbody></table>
+<h3 id='conditions-for-user-generated-fields'>Conditions for User Generated Fields</h3>
+<table><thead>
+<tr>
+<th style="text-align: left"><strong>Field Type</strong></th>
+<th style="text-align: left"></th>
+<th style="text-align: left"><strong>Operators</strong></th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left"><strong>Integer Number</strong></td>
+<td style="text-align: left"><div class="w-100"></div></td>
+<td style="text-align: left"><li class="w-300"><strong>eq</strong> <em>(default)</em> </li><li>lt </li><li>  gt </li><li> bt </li><li> ex</li></td>
+</tr>
+<tr>
+<td style="text-align: left"><strong>Fractional Number</strong></td>
+<td style="text-align: left"></td>
+<td style="text-align: left"><li ><strong>eq</strong> <em>(default)</em> </li><li>lt </li><li>  gt </li><li> bt </li><li> ex</li></td>
+</tr>
+<tr>
+<td style="text-align: left"><strong>Date</strong></td>
+<td style="text-align: left"></td>
+<td style="text-align: left"><li><strong>eq</strong> <em>(default)</em> </li><li>lt </li><li>  gt </li><li> bt </li><li> ex</li></td>
+</tr>
+<tr>
+<td style="text-align: left"><strong>Checkbox</strong></td>
+<td style="text-align: left"></td>
+<td style="text-align: left">N/A</td>
+</tr>
+<tr>
+<td style="text-align: left"><strong>Checkbox Group</strong></td>
+<td style="text-align: left"></td>
+<td style="text-align: left"><li><strong>any</strong> <em>(default)</em> </li><li>all</li></td>
+</tr>
+<tr>
+<td style="text-align: left"><strong>Radio Group</strong></td>
+<td style="text-align: left"></td>
+<td style="text-align: left"><li><strong>eq</strong> <em>(default)</em> </li><li>any</li></td>
+</tr>
+<tr>
+<td style="text-align: left"><strong>Label</strong></td>
+<td style="text-align: left"></td>
+<td style="text-align: left"><li><strong>eq</strong> <em>(default)</em> </li><li>any</li></td>
+</tr>
+<tr>
+<td style="text-align: left"><strong>Drop Down Single Select</strong></td>
+<td style="text-align: left"></td>
+<td style="text-align: left"><li ><strong>eq</strong> <em>(default)</em></li> <li>any</li></td>
+</tr>
+<tr>
+<td style="text-align: left"><strong>Drop Down Multi Select</strong></td>
+<td style="text-align: left"></td>
+<td style="text-align: left"><li><strong>any</strong> <em>(default)</em> </li><li>all</li></td>
+</tr>
+<tr>
+<td style="text-align: left"><strong>User Single Select</strong></td>
+<td style="text-align: left"></td>
+<td style="text-align: left"><li><strong>eq</strong> <em>(default)</em> </li><li>any</li></td>
+</tr>
+<tr>
+<td style="text-align: left"><strong>User Multi Select</strong></td>
+<td style="text-align: left"></td>
+<td style="text-align: left"><li><strong>any</strong> <em>(default)</em> </li><li>all</li></td>
+</tr>
+</tbody></table>
+<h2 id='delete-a-requirement'>Delete a Requirement</h2>
+<p>Permanently deletes a requirement. It cannot be undone.</p>
+
+<blockquote>
+<p><strong><code>DELETE /v1/requirements/{ID}</code></strong></p>
+
+<p>Example Request</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-v</span> <span class="nt">-X</span> DELETE <span class="s2">"https://app.eresourcescheduler.cloud/rest</span><span class="se">\</span><span class="s2">
+/v1/requirements/1"</span> <span class="se">\</span>
+<span class="nt">-H</span> <span class="s2">"Authorization: Bearer B8x5Vj1O65r6wnoV"</span>
+</code></pre></div>
+<blockquote>
+<p>Example Request: Delete requirement and its linked bookings</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-v</span> <span class="nt">-X</span> DELETE <span class="s2">"https://app.eresourcescheduler.cloud/rest/v1</span><span class="se">\</span><span class="s2">
+/requirements/106?delete_bookings=true"</span> <span class="se">\</span>
+<span class="nt">-H</span> <span class="s2">"Authorization: Bearer B8x5Vj1O65r6wnoV"</span>
+</code></pre></div>
+<blockquote>
+<p>Example Request: Delete requirement and unlinking its linked bookings</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-v</span> <span class="nt">-X</span> DELETE <span class="s2">"https://app.eresourcescheduler.cloud/rest/v1</span><span class="se">\</span><span class="s2">
+/requirements/106?unlink_bookings=true"</span> <span class="se">\</span>
+<span class="nt">-H</span> <span class="s2">"Authorization: Bearer B8x5Vj1O65r6wnoV"</span>
+</code></pre></div><h3 id='returns-5'>Returns</h3>
+<table><thead>
+<tr>
+<th style="text-align: right">Code</th>
+<th style="text-align: left">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: right"><strong>200</strong> <br><span class = "success"><code>OK</code></span></td>
+<td style="text-align: left">This status code indicates that the operation was successful and a requirement deleted successfully.</td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>403</strong> <br> <span class = "error"><code>Forbidden</code></span></td>
+<td style="text-align: left">Authorization failed due to insufficient permissions. This occurs when user does not have enough access rights to perform this action. Access for each user can be controlled by an Administrator using eRS Cloud Application.</td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>404</strong> <br> <span class = "error"><code>Not Found</code></span></td>
+<td style="text-align: left">Not Found error occurs when requested requirement does not exist or has been deleted already.</td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>409</strong> <br> <span class = "error"><code>Conflict</code></span></td>
+<td style="text-align: left">Conflict indicates that when you are deleting a requirement linked to booking(s), then you must pass one of the parameters i.e; <code>delete_bookings=true</code> to delete both requirement and respective booking or another parameter <code>unlink_bookings=true</code> will delete requirement after unlinking the respective bookings. this action will be performed through <a href="https://app.eresourcescheduler.cloud/#!/admin/settings/requirement" target="_blank" class="api-ref">Administrator Requirement Settings</a></td>
 </tr>
 </tbody></table>
 <h1 id='booking'>Booking</h1><h2 id='booking-object'>Booking Object</h2>
@@ -6354,7 +8114,7 @@ start=2018-01-01&amp;end=2018-12-31&amp;offset=1&amp;limit=10"</span> <span clas
 
 <p>Example Request</p>
 </blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-v</span> <span class="nt">-X</span> GET <span class="s2">"https://app.eresourcescheduler.cloud/rest/v1/bookings/25"</span> <span class="se">\</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-v</span> <span class="nt">-X</span> GET <span class="s2">"https://app.eresourcescheduler.cloud/rest/v1/bookings/34"</span> <span class="se">\</span>
 <span class="nt">-H</span> <span class="s2">"Authorization: Bearer B8x5Vj1O65r6wnoV"</span>
 </code></pre></div>
 <blockquote>
@@ -6423,7 +8183,7 @@ start=2018-01-01&amp;end=2018-12-31&amp;offset=1&amp;limit=10"</span> <span clas
 <p>Example Request For Filter In JSON Format</p>
 </blockquote>
 <div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="s2">"https://app.eresourcescheduler.cloud/rest/v1/bookings/search?</span><span class="se">\</span><span class="s2">
-start=2018-01-01&amp;end=2018-08-09"</span> <span class="se">\</span>
+start=2018-01-01&amp;end=2018-12-31"</span> <span class="se">\</span>
 <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
 <span class="nt">-H</span> <span class="s2">"Authorization: Bearer B8x5Vj1O65r6wnoV"</span> <span class="se">\</span>
 <span class="nt">-d</span> <span class="s1">'{ 
@@ -6434,7 +8194,7 @@ start=2018-01-01&amp;end=2018-08-09"</span> <span class="se">\</span>
 <p>Example Request For Filter By Passing Multiple Filters In JSON Format</p>
 </blockquote>
 <div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="s2">"https://app.eresourcescheduler.cloud/rest/v1/bookings/search?</span><span class="se">\</span><span class="s2">
-start=2018-01-01&amp;end=2018-08-09"</span> <span class="se">\</span>
+start=2018-01-01&amp;end=2018-12-31"</span> <span class="se">\</span>
 <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
 <span class="nt">-H</span> <span class="s2">"Authorization: Bearer B8x5Vj1O65r6wnoV"</span> <span class="se">\</span>
 <span class="nt">-d</span> <span class="s1">'{        
@@ -6460,8 +8220,8 @@ start=2018-01-01&amp;end=2018-08-09"</span> <span class="se">\</span>
         </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
       </span><span class="p">},</span><span class="w">
       </span><span class="nl">"project"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mars Rover"</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">9</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mangalyaan"</span><span class="w">
       </span><span class="p">},</span><span class="w">
       </span><span class="nl">"task"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
       </span><span class="nl">"start_time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-12-26T09:00:00"</span><span class="p">,</span><span class="w">
@@ -6569,12 +8329,12 @@ start=2018-01-01&amp;end=2018-08-09"</span> <span class="se">\</span>
 <tr>
 <td style="text-align: left"><strong>created_on</strong></td>
 <td style="text-align: left"><li><strong>eq</strong> (<em>default</em>)</li><li>lt</li><li>gt</li><li>bt</li><li>ex</li></td>
-<td style="text-align: left"><code>&quot;created_on:eq&quot;: [&quot;2021-07-08T00:00:00]</code><code>&quot;created_on:lt&quot;: [&quot;2021-07-08T00:00:00]</code><br><code>&quot;created_on:gt&quot;: [&quot;2021-07-08T59:59:59&quot;]</code><br><code>&quot;created_on:bt&quot;: [&quot;2021-07-08T00:00:00&quot;, &quot;2021-07-10T23:59:59&quot;]</code><br><code>&quot;created_on:bt&quot;: [&quot;2021-07-08T00:00:00&quot;, &quot;&quot;]</code> <br><code>&quot;created_on:bt&quot;: [&quot;&quot;, &quot;2021-07-10T23:59:59&quot;]</code> <br><code>&quot;created_on:ex&quot;: [&quot;2021-07-08T00:00:00&quot;, &quot;2021-07-10T23:59:59&quot;]</code> <br><code>&quot;created_on:ex&quot;: [&quot;2021-07-08T00:00:00&quot;, &quot;&quot;]</code> <br><code>&quot;created_on:ex&quot;: [&quot;&quot;, &quot;2021-07-10T23:59:59&quot;]]</code></td>
+<td style="text-align: left"><code>&quot;created_on:eq&quot;: [&quot;2021-07-08T00:00:00&quot;]</code><br><code>&quot;created_on:lt&quot;: [&quot;2021-07-08T00:00:00&quot;]</code><br><code>&quot;created_on:gt&quot;: [&quot;2021-07-08T59:59:59&quot;]</code> <br> <code>&quot;created_on:bt&quot;: [&quot;2021-07-08T00:00:00&quot;, &quot;2021-07-10T23:59:59&quot;]</code><br><code>&quot;created_on:bt&quot;: [&quot;2021-07-08T00:00:00&quot;, &quot;&quot;]</code> <br><code>&quot;created_on:bt&quot;: [&quot;&quot;, &quot;2021-07-10T23:59:59&quot;]</code> <br><code>&quot;created_on:ex&quot;: [&quot;2021-07-08T00:00:00&quot;, &quot;2021-07-10T23:59:59&quot;]</code> <br><code>&quot;created_on:ex&quot;: [&quot;2021-07-08T00:00:00&quot;, &quot;&quot;]</code> <br><code>&quot;created_on:ex&quot;: [&quot;&quot;, &quot;2021-07-10T23:59:59&quot;]]</code></td>
 </tr>
 <tr>
 <td style="text-align: left"><strong>modified_on</strong></td>
 <td style="text-align: left"><li><strong>eq</strong> (<em>default</em>)</li><li>lt</li><li>gt</li><li>bt</li><li>ex</li></td>
-<td style="text-align: left"><code>&quot;modified_on:eq&quot;: [&quot;2021-07-08T00:00:00]</code><br><code>&quot;modified_on:lt&quot;: [&quot;2021-07-08T00:00:00]</code><br><code>&quot;modified_on:gt&quot;: [&quot;2021-07-08T59:59:59&quot;]</code><br><code>&quot;modified_on:bt&quot;: [&quot;2021-07-08T00:00:00&quot;, &quot;2021-07-10T23:59:59&quot;]</code><br><code>&quot;modified_on:bt&quot;: [&quot;2021-07-08T00:00:00&quot;, &quot;&quot;]</code> <br><code>&quot;modified_on:bt&quot;: [&quot;&quot;, &quot;2021-07-10T23:59:59&quot;]</code> <br><code>&quot;modified_on:ex&quot;: [&quot;2021-07-08T00:00:00&quot;, &quot;2021-07-10T23:59:59&quot;]</code> <br><code>&quot;modified_on:ex&quot;: [&quot;2021-07-08T00:00:00&quot;, &quot;&quot;]</code> <br><code>&quot;modified_on:ex&quot;: [&quot;&quot;, &quot;2021-07-10T23:59:59&quot;]]</code></td>
+<td style="text-align: left"><code>&quot;modified_on:eq&quot;: [&quot;2021-07-08T00:00:00&quot;]</code><br><code>&quot;modified_on:lt&quot;: [&quot;2021-07-08T00:00:00&quot;]</code><br><code>&quot;modified_on:gt&quot;: [&quot;2021-07-08T59:59:59&quot;]</code><br><code>&quot;modified_on:bt&quot;: [&quot;2021-07-08T00:00:00&quot;, &quot;2021-07-10T23:59:59&quot;]</code><br><code>&quot;modified_on:bt&quot;: [&quot;2021-07-08T00:00:00&quot;, &quot;&quot;]</code> <br><code>&quot;modified_on:bt&quot;: [&quot;&quot;, &quot;2021-07-10T23:59:59&quot;]</code> <br><code>&quot;modified_on:ex&quot;: [&quot;2021-07-08T00:00:00&quot;, &quot;2021-07-10T23:59:59&quot;]</code> <br><code>&quot;modified_on:ex&quot;: [&quot;2021-07-08T00:00:00&quot;, &quot;&quot;]</code> <br><code>&quot;modified_on:ex&quot;: [&quot;&quot;, &quot;2021-07-10T23:59:59&quot;]]</code></td>
 </tr>
 </tbody></table>
 
@@ -6587,13 +8347,13 @@ start=2018-01-01&amp;end=2018-08-09"</span> <span class="se">\</span>
 
 <p>Example Request</p>
 </blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-v</span> <span class="nt">-X</span> PUT <span class="s2">"https://app.eresourcescheduler.cloud/rest/v1/bookings/25"</span> <span class="se">\</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-v</span> <span class="nt">-X</span> PUT <span class="s2">"https://app.eresourcescheduler.cloud/rest/v1/bookings/34"</span> <span class="se">\</span>
 <span class="nt">-H</span> <span class="s2">"Authorization: Bearer B8x5Vj1O65r6wnoV"</span> <span class="se">\</span>
 <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
 <span class="nt">-d</span> <span class="s1">'{ 
       "resource_id": 3, 
       "project_id" : 4, 
-      "start_time" : "2017-06-05T09:00", 
+      "start_time" : "2018-06-05T09:00", 
       "unit": 1 
     }'</span>
 </code></pre></div>
@@ -9202,6 +10962,58 @@ start=2022-05-01&amp;end=2022-05-05&amp;data=actual,planned&amp;daily_hrs=true"<
    </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
+<blockquote>
+<p>Example: Get requested hours by project</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="s2">"https://app.eresourcescheduler.cloud/rest/v1/utilization?</span><span class="se">\</span><span class="s2">
+view=project&amp;data=requested&amp;start=2022-05-01&amp;end=2022-05-31"</span> <span class="se">\</span>
+<span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+<span class="nt">-H</span> <span class="s2">"Authorization: Bearer B8x5Vj1O65r6wnoV"</span> <span class="se">\</span>
+</code></pre></div>
+<blockquote>
+<p>Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"end_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-05-31"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"offset"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"total_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"limit"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"start_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-05-01"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"projects"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Apollo 11"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"total_requested_hrs"</span><span class="p">:</span><span class="w"> </span><span class="mf">274.0</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Falcon 9"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"total_planned_hrs"</span><span class="p">:</span><span class="w"> </span><span class="mf">132.0</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Hubble Telescope"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"total_planned_hrs"</span><span class="p">:</span><span class="w"> </span><span class="mf">422.59</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mangalyaan"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"total_planned_hrs"</span><span class="p">:</span><span class="w"> </span><span class="mf">229.20</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mars Express"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"total_planned_hrs"</span><span class="p">:</span><span class="w"> </span><span class="mf">213.79</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mars Rover"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"total_planned_hrs"</span><span class="p">:</span><span class="w"> </span><span class="mf">208.79</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
 <p><span class="optional"><b>REQUEST QUERY PARAMETERS</b></span></p>
 
 <table><thead>
@@ -9236,7 +11048,7 @@ start=2022-05-01&amp;end=2022-05-05&amp;data=actual,planned&amp;daily_hrs=true"<
 </tr>
 <tr>
 <td style="text-align: right"><strong>data</strong><br><code>optional</code></td>
-<td style="text-align: left">This parameter allows querying for planned and actual utilization. Possible value for this parameter can be &#39;planned&#39; or &#39;actual&#39; or &#39;planned,actual&#39;.<br><em>Default value of <code>data</code> is</em> <span class="required"><strong><code>planned</code></strong></span>.</td>
+<td style="text-align: left">This parameter allows querying for planned and actual utilization. Possible values for this parameter can be any combination of &#39;planned,&#39; &#39;actual,&#39; or &#39;requested&#39; when the view is set to project.<br><em>Default value of <code>data</code> is</em> <span class="required"><strong><code>planned</code></strong></span>.</td>
 </tr>
 <tr>
 <td style="text-align: right"><strong>daily_hrs</strong><br><code>optional</code></td>
