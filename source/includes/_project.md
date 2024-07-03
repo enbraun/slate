@@ -54,6 +54,8 @@ Name      |  Description
 **end_date** <br>`string` | Date on which project is considered ended / completed.
 **image** <br>`string` | String value representing URL of image file of project.
 **tags** <br>`array of strings` | Tags are the list of strings (labels) attached to this project object which could be used for the purpose of filtering, identification or other information.
+**timezone** <br>`integer` | Defines and categorize projects based on their location. This field is only available when scheduling plus module is on.
+**project_calender** <br>`integer` | ID of the Calendar object, which should be assigned to the project. Depending upon requirements, different calendars can be applied to different projects. If the calendar is omitted, then the default calendar (as defined in the Administrator calendar settings) will be applied to this project.This field is only available when scheduling plus module is on.
 **is_archive** <br>`boolean` | Boolean value representing whether this project is archived or not.
 **created_on** <br>`string` | Timestamp at which this project object was created.
 **created_by** <br> `object` | Object representing user who created this project object.
@@ -93,6 +95,8 @@ Name               |  Description
 **project_start_date**<br><span class="mandatoryFlag">&#9873;</span> <span class="removableFlag mln-2">&#9873;</span> | String value representing a date in ISO 8601 extended notation for date i.e. yyyy-MM-dd.
 **end_date**<br><span class="mandatoryFlag">&#9873;</span> <span class="removableFlag mln-2">&#9873;</span> | String value representing a date in ISO 8601 extended notation for date i.e. yyyy-MM-dd.
 **tags**<br><span class="removableFlag mln-2">&#9873;</span> | An optional array of strings which could be attached to this project object as labels. This can be useful for the purpose of filtering, identification or other information.
+**timezone** <br><span class="mandatoryFlag">&#9873;</span> <span class="removableFlag mln-2">&#9873;</span> | One timezone object can be defined for a project.<br><br>_**Note**: <span class="warning">This field is only available when scheduling plus module is on</span>._
+**project_calender** <br>| ID of the Calendar object, which should be assigned to the project. Depending upon requirements, different calendars can be applied to different projects. If the calendar is omitted, then the default calendar (as defined in the Administrator calendar settings) will be applied to this project.<br><br>_**Note**: <span class="warning">This field is only available when scheduling plus module is on</span>._
 **disable_parallel_booking** <br>`optional` | Boolean value defining if project can or cannot have multiple bookings at a time. Default value for disable parallel booking is false.
 **udf_\*** <br><span class="mandatoryFlag">&#9873;</span> <span class="removableFlag mln-2">&#9873;</span> | A user with Administrator rights can add custom fields. These fields can be used to capture additional information in Projects. Different types of projects may have a different set of user-defined fields. The value for user defined field can be passed as shown in example request. In given example `udf_progress`</span> is a user defined field. <a href="#user-defined-fields" class="api-ref">Learn more</a><br><br>_**Note**: User with Administrator rights can make fields marked with <span class="mandatoryFlag iconInline">&#9873;</span> mandatory and remove fields marked with <span class="removableFlag iconInline">&#9873;</span>, from <a href ="#get-a-specific-project-type" class="api-ref">specific project type</a> using eRS Cloud Application. If mandatory fields are not passed with a valid value or removed fields are passed while creating project, the operation will fail with response code **400**_.
 
@@ -359,6 +363,7 @@ Below is a list of available fields, which allow filtering projects:
 **project_start_date**|<li>**eq** (_default_)</li><li>lt</li><li>gt</li><li>bt</li><li>ex</li>|`"project_start_date:eq":"2015-02-02"`<br>`"project_start_date:lt":"2015-02-02"`<br>`"project_start_date:gt":"2015-02-02"`<br>`"project_start_date:bt":["2015-02-02","2015-04-05"]` <br>`"project_start_date:ex":["2015-02-02","2015-04-04"]`
 **end_date**|<li>**eq** (_default_) </li><li>lt</li><li>gt</li><li>bt</li><li>ex</li>| `"end_date:eq":"2015-02-02"`<br>`"end_date:lt":"2015-02-02"`<br>`"end_date:gt":"2015-02-02"`<br>`"end_date:bt":["2015-02-02","2015-04-05"]`<br>`"end_date:ex":["2015-02-02","2015-04-04"]`
 **tags**|<li>**any** (_default_) </li><li>none</li><li>all</li><li>ex</li>|`"tags:any":"["tagA", "tagB"]`<br>`"tags:none":"["tagA", "tagB"]`<br>`"tags:all":["tagB","tagC"]`<br>`"tags:ex":["tagB","tagC"]`
+**timezone**|<li>**eq** (_default_)</li><li>neq</li><li>any</li><li>none</li>| `"timezone:eq": 1`<br>`"timezone:neq": 1`<br>`"timezone:any": [1, 2]`<br>`"timezone:none": [3, 2]`
 **is_archive**| N/A |`"is_archive":true` <br>`"is_archive":false`
 **disable_parallel_booking**| N/A |`"disable_parallel_booking": true`<br>`"disable_parallel_booking": false`
 **created_by**|<li>**eq** (_default_)</li><li>neq</li><li>any</li><li>none</li>| `"created_by:eq": 1`<br>`"created_by:neq": 1`<br>`"created_by:any": [1, 2]`<br>`"created_by:none": [1, 2]`
@@ -398,6 +403,8 @@ curl -v -X PUT \
 **end_date**<br><span class="mandatoryFlag">&#9873;</span> <span class="removableFlag mln-2">&#9873;</span> | String value representing a date in ISO 8601 extended notation for date i.e. yyyy-MM-dd. The project is considered ended / completed on this date.
 **email**<br><span class="mandatoryFlag">&#9873;</span> <span class="removableFlag mln-2">&#9873;</span> | String value representing email address associated with project object. Email address must be properly formatted with a maximum length of 254 characters.
 **tags**<br><span class="removableFlag mln-2">&#9873;</span> | An optional array of strings which could be attached to this project object as labels. This can be useful for the purpose of filtering, identification or other information. It can be up to 50 characters.
+**timezone** <br><span class="mandatoryFlag">&#9873;</span> <span class="removableFlag mln-2">&#9873;</span> | One timezone object can be defined for a project.<br><br>_**Note**: <span class="warning">This field is only available when scheduling plus module is on</span>._
+**project_calender** <br>| ID of the Calendar object, which should be assigned to the project. Depending upon requirements, different calendars can be applied to different projects. If the calendar is omitted, then the default calendar (as defined in the Administrator calendar settings) will be applied to this project.<br><br>_**Note**: <span class="warning">This field is only available when scheduling plus module is on</span>._
 **disable_parallel_booking** <br>`optional` | Boolean value defining if project can or cannot have multiple bookings at a time. Default value for disable parallel booking is false.
 **udf_\*** <br><span class="mandatoryFlag">&#9873;</span> <span class="removableFlag mln-2">&#9873;</span> | A user with Administrator rights can add custom fields. These fields can be used to capture additional information in Project. Different types of projects may have a different set of user-defined fields. The value for user defined field can be passed as shown in example request. In first example `udf_progress` is a user defined field. <a href ="#user-defined-fields" class="api-ref">Learn more</a><br><br>_**Note**: User with Administrator rights can make fields marked with <span class="mandatoryFlag iconInline">&#9873;</span> mandatory and remove fields marked with <span class="removableFlag iconInline">&#9873;</span>, from <a href ="#get-a-specific-project-type" class="api-ref">specific project type</a> using eRS Cloud Application. If mandatory fields are not passed with a valid value or removed fields are passed while updating project, the operation will fail with response code **400**_.
 
@@ -409,7 +416,7 @@ curl -v -X PUT \
 **200** <br> <span class = "success">`OK`</span> | Indicates that the operation was successful and project is updated successfully.
 **400** <br> <span class = "error">`Bad Request`</span> | Bad Request occurs when a request is not well-formed, syntactically incorrect, empty required parameters or any unknown parameter is passed. <br> Additionally, Bad request may also occur when :<ul><li>User tries to update archived project.</li><li> User tries to update `project_start_date` or `end_date` or both such that `end_date` gets earlier than `project_start_date`. </li></ul>
 **403** <br> <span class = "error">`Forbidden`</span> | Authorization failed due to insufficient permissions. This occurs when user does not have enough access rights to perform this action. Access for each user can be controlled by an Administrator using eRS Cloud Application.
-**404** <br><span class = "error">`Not Found`</span> | This status code indicates that project does not exist.
+**404** Delete a Project<br><span class = "error">`Not Found`</span> | This status code indicates that project does not exist.
 
 
 ## Delete a Project
@@ -974,6 +981,248 @@ curl -v -X DELETE \
 **403** <br> <span class = "error">`Forbidden`</span> | Authorization failed due to insufficient permissions. This occurs when the user does not have enough access rights to perform this action. Access for each user can be controlled by an Administrator using eRS Cloud Application.
 **404** <br><span class = "error">`Not Found`</span> | This indicates that the project or milestone does not exist.
 
+## Project Exception
+
+>Example Response
+
+```json
+{
+   "total_count":1,
+   "data":[
+      {
+         "id":2,
+         "name":"Working Sunday",
+         "description":"Working Sunday",
+         "date":"2018-11-17",
+         "is_working_exception":true,
+         "created_on":"2018-11-03T15:07:30.917087+05:30",
+         "modified_on":null,
+         "created_by":{
+            "id":2,
+            "name":"Patrick Wilson"
+         },
+         "modified_by":{
+            "id":null,
+            "name":null
+         },
+         "timings":[
+            {
+               "start_time":600,
+               "end_time":1080
+            }
+         ]
+      }
+   ]
+}
+```
+
+Exception is nothing but time duration that is different from a general schedule. eRS provides you the feature to add an exception to a project.
+
+Let's say there's a project with a calendar that doesn't have Sunday as a working day. But for some reason, work has to be done on the project on Sunday. In this case, it's a working exception. So, in such a situation, exceptions come in handy.
+
+
+eRS Cloud provides you two types of exceptions: 
+    <ol><li>Working Exception : <p>&#160;&#160;&#160;&#160;&#160; Working Exception is added on a non-working day. </p></li> <li>Non-working Exception : <p>&#160;&#160;&#160;&#160;&#160; Non-working Exception is added on a working day. </p></li></ol>
+
+_**Note**: Working Exception can be added without timings._
+
+<span class="optional"><b>ATTRIBUTES</b></span>
+
+Name         |  Description
+ ---:        |    :----   
+ **id** <br>`integer`   |  eRS Cloud generated unique identifier for the exceptions object.|
+ **name**<br> `string` | This field describes name of exception.| 
+ **description**<br> `string` | This field describes about the exception.|
+ **date**<br> `string` | Date Field describes when will the exception get applied.|
+ **is_working_exception**  <br><span class="required">`boolean`</span>|Is working exception describes whether exception is a working exception or non working exception. True value means that exception is working exception and false value means that exception is non working exception.
+ **created_on** <br>`string` | Time at which  exception is created. |
+ **modified_on** <br>`string` | Timestamp of the latest modification. |
+ **created_by** <br> `object` | This field describes by whom exception is created .|
+ **modified_by** <br>`object` | This field describes by whom the latest modification is done. |
+ **timings** <br> `object` |Timings describe the timings of exception.
+
+
+
+### Retrieving exceptions
+
+> `GET v1/projects/{ID}/exceptions`
+
+> Example Request
+
+```shell
+curl -v -X GET \
+"https://app.eresourcescheduler.cloud/rest/v1/projects/12/exceptions" \
+  -H "Authorization: Bearer B8x5Vj1O65r6wnoV"
+```
+
+> Example Response
+
+```json
+{
+   "total_count":1,
+   "data":[
+      {
+         "id":2,
+         "name":"Working Sunday",
+         "description":"Working Sunday",
+         "date":"2018-11-17",
+         "is_working_exception":true,
+         "created_on":"2018-11-03T15:07:30.917087+05:30",
+         "modified_on":null,
+         "created_by":{
+            "id":2,
+            "name":"Patrick Wilson"
+         },
+         "modified_by":{
+            "id":null,
+            "name":null
+         },
+         "timings":[
+            {
+               "start_time":600,
+               "end_time":1080
+            }
+         ]
+      }
+   ]
+}
+```
+
+Retrieves the details of exceptions which are applied to the project. You only need to provide the unique project identifier that was returned upon project creation.
+
+
+
+### Returns
+
+| Code      | Description | 
+| ---:        |    :----   | 
+| **200** <br> <span class = "success">`OK`</span>     | This status code indicates that the operation was successful and exceptions retrieved successfully.  |
+| **403** <br> <span class = "error">`Forbidden`</span> |Authorization failed due to insufficient permissions. This occurs when user does not have enough access rights to perform this action. Access for each user can be controlled by an Administrator using eRS Cloud Application.|
+| **404** <br> <span class = "error">`Not Found`</span> | Not Found error occurs when requested project does not exist (i.e. There is no project with given ID). This may also occur when requesting a project that has been deleted. |
+
+
+### Create an exception
+
+> `POST v1/projects/{ID}/exceptions`
+
+> Example Request
+
+```shell
+curl -v -X POST \
+"https://app.eresourcescheduler.cloud/rest/v1/projects/12/exceptions" \
+  -H "Authorization: Bearer B8x5Vj1O65r6wnoV" \
+  -H "Content-Type: application/json" \
+  -d '{ 
+        "date": "2018-11-02", 
+        "description": "Thursday 1", 
+        "name": "Thursday 1", 
+          "is_working_exception": true, 
+          "timing_blocks":[ 
+                  { 
+                    "start_time":600, 
+                    "end_time":1080 
+                  } 
+               ]  
+       }'
+```
+
+<span class="optional"><b>REQUEST BODY PARAMETERS</b></span>
+
+Name         |  Description
+ ---:        |    :----   
+**date**  <br><span class="required">`required`</span>| Date Field describes when will the exception get applied. It is a `Date` type of field. 
+**description**  <br>`optional`|As the name shows it is a description which we want to give for the exception . This field is a `string` type of field. 
+**name**  <br><span class="required">`required`</span>|Name describes the name of exception. This field is a `string` type of field.
+**is_working_exception**  <br><span class="required">`required`</span>|Is working exception describes whether exception is a working exception or not. Accepts `true` if it is a working exception otherwise accepts `false` if it a non-working exception. This field is a `boolean` type of field.
+**timing_blocks**  <br>`optional`|Timing blocks describes the timings of exception. This field can be passed `null`, as eRS Cloud provides you the facility to create an exception without timings. This field is a `Array of objects` type of field.
+**timing_blocks.start_time**  <br>`optional`|Start time describes the start time of exception. This field can be passed `null`, as eRS Cloud provides you the facility to create an exception without timings. This field is a `Integer` type of field.  
+**timing_blocks.end_time**  <br>`optional`|End time describes the end time of exception. This field can be passed `null`, as eRS Cloud provides you the facility to create an exception without timings. This field is a `Integer` type of field.  
+
+
+### Returns
+ 
+| Code      |Description |
+ :---        |    :----   |
+| **201** <br><span class = "success">`Created`</span> | This status code indicates that the operation was successful and exception created successfully.|
+| **400** <br> <span class = "error">`Bad Request`</span> | Bad Request error occurs when a request is malformed, syntactically incorrect, missing required parameters are  or any unknown parameter is passed.  |
+| **403** <br> <span class = "error">`Forbidden`</span> |Authorization failed due to insufficient permissions. This occurs when user does not have enough access rights to perform this action. Access for each user can be controlled by an Administrator using eRS Cloud Application.|
+|  **404** <br><span class = "error">`Not Found`</span> |This status code indicates that project does not exist.|
+### Update an exception
+
+
+> `PUT v1/projects/{ID}/exceptions/{Exception_ID}`
+
+> Example Request
+
+```shell
+curl -v -X PUT \
+"https://app.eresourcescheduler.cloud/rest/v1/projects/12/exceptions/2" \
+  -H "Authorization: Bearer B8x5Vj1O65r6wnoV" \
+  -H "Content-Type: application/json" \
+  -d '{ 
+ 	"date": "2018-11-02", 
+	"description": "Thursday 1", 
+	"name": "Thursday 1", 
+    "is_working_exception": true, 
+    "timing_blocks":[ 
+            { 
+               "start_time":600, 
+               "end_time":1080 
+            } 
+         ]  
+    }'
+```
+
+
+
+Updates the specified project's exception by setting the value of the parameter passed. You need to provide the unique project identifier that was returned upon project creation and unique exception identifier that was returned upon exception addition. If parameter is not provided then it will be left unchanged.
+
+This request accepts mostly the same argument as the exception creation call.
+
+<span class="optional"><b>REQUEST BODY PARAMETERS</b></span>
+
+
+Name         |  Description
+ ---:        |    :----   
+**date**  <br><span class="required">`required`</span>| Date Field describes when will the exception get applied. It is a `Date` type of field. 
+**description**  <br>`optional`|As the name shows it is a description which we want to give for the exception . This field is a `string` type of field. 
+**name**  <br><span class="required">`required`</span>|Name describes the name of exception. This field is a `string` type of field.
+**is_working_exception**  <br><span class="required">`required`</span>|Is working exception describes whether exception is working exception or not. Accepts `true` if it is working exception otherwise accepts `false` if it a non-working exception. This field is a `boolean` type of field
+**timing_blocks**  <br>`optional`|Timing blocks describes the timings of exception. This field can be pass `null`, as eRS Cloud provides you the facility to create an exception without timings. This field is a `Array of objects` type of field.
+**timing_blocks.start_time**  <br>`optional`|Start time describes the start time of exception. This field can be pass `null`, as eRS Cloud provides you the facility to create an exception without timings. This field is a `Integer` type of field.  
+**timing_blocks.end_time**  <br>`optional`|End time describes the end time of exception. This field can be pass `null`, as eRS Cloud provides you the facility to create an exception without timings. This field is a `Integer` type of field.  
+
+### Returns
+
+| Code      | Description | 
+| ---:        |    :----   | 
+| **200** <br> <span class = "success">`OK`</span> | This indicates that the operation was successful and a exception updated successfully.|
+| **400** <br> <span class = "error">`Bad Request`</span> | Bad Request occurs when a request is not well-formed, syntactically incorrect, empty required parameters or any unknown parameter is passed.|
+| **403** <br> <span class = "error">`Forbidden`</span> |Authorization failed due to insufficient permissions. This occurs when user does not have enough access rights to perform this action. Access for each user can be controlled by an Administrator using eRS Cloud Application.|
+| **404** <br><span class = "error">`Not Found`</span> |This status code indicates that project or exception does not exist.| 
+
+
+### Delete an exception
+
+> `DELETE v1/projects/{ID}/exceptions/{Exception_ID}`
+
+Permanently deletes an applied exception. It cannot be undone. You need to provide the unique project identifier that was returned upon project creation and unique exception identifier that was returned upon exception addition.
+
+
+> Example Request
+
+```shell
+curl -v -X DELETE \
+"https://app.eresourcescheduler.cloud/rest/v1/projects/12/exceptions/2"\
+  -H "Authorization: Bearer B8x5Vj1O65r6wnoV"
+```
+
+
+
+| Code      | Description  
+| ---:        |    :----   
+| **200** <br><span class = "success">`OK`</span> |This status code indicates that the operation was successful and exception deleted successfully. |
+| **404** <br><span class = "error">`Not Found`</span> |This status code indicates that project or exception does not exist.| 
 
 ## Project Notes
 
