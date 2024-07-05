@@ -36,23 +36,23 @@
   ],
   "created_on": "2021-07-27T07:56:17.515125Z",
   "created_by": {
-    "name": "John doe",
+    "name": "John Doe",
     "id": 118
   },
   "modified_on": "2021-07-27T13:23:46.583746Z",
   "modified_by": {
     "name": "John Smith",
-    "id": 943
+    "id": 1146
   },
   "submitted_on": "2021-07-27T07:56:17.515125Z",
   "submitted_by":{
-    "name": "John doe",
+    "name": "John Doe",
     "id": 118
   },
   "approval_time": "2021-07-27T13:23:46.583746Z",
   "approver":{
     "name": "John Smith",
-    "id": 943
+    "id": 1146
   },
 }
 ```
@@ -200,7 +200,7 @@ start=2021-07-01&end=2021-07-31&offset=1&limit=10" \
       ],
       "created_on": "2021-07-27T07:56:17.515125Z",
       "created_by": {
-        "name": "John doe",
+        "name": "John Doe",
         "id": 118
       },
       "modified_on": "2021-07-27T13:23:46.583746Z",
@@ -210,13 +210,13 @@ start=2021-07-01&end=2021-07-31&offset=1&limit=10" \
       },
       "submitted_on": "2021-07-27T07:56:17.515125Z",
       "submitted_by":{
-        "name": "John doe",
+        "name": "John Doe",
         "id": 118
       },
       "approval_time": "2021-07-27T13:23:46.583746Z",
       "approver":{
         "name": "John Smith",
-        "id": 943
+        "id": 1146
       },
     },
     { ... },
@@ -291,23 +291,23 @@ curl -v -X GET "https://app.eresourcescheduler.cloud/rest/v1/timesheet/25" \
   ],
   "created_on": "2021-07-27T07:56:17.515125Z",
   "created_by": {
-    "name": "John doe",
+    "name": "John Doe",
     "id": 118
   },
   "modified_on": "2021-07-27T13:23:46.583746Z",
   "modified_by": {
     "name": "John Smith",
-    "id": 943
+    "id": 1146
   },
   "submitted_on": "2021-07-27T07:56:17.515125Z",
   "submitted_by":{
-    "name": "John doe",
+    "name": "John Doe",
     "id": 118
   },
   "approval_time": "2021-07-27T13:23:46.583746Z",
   "approver":{
     "name": "John Smith",
-    "id": 943
+    "id": 1146
   },
 }
 ```
@@ -390,23 +390,23 @@ start=2021-07-01&end=2021-07-31" \
       ],
       "created_on": "2021-07-27T07:56:17.515125Z",
       "created_by": {
-        "name": "John doe",
+        "name": "John Doe",
         "id": 118
       },
       "modified_on": "2021-07-27T13:23:46.583746Z",
       "modified_by": {
         "name": "John Smith",
-        "id": 943
+        "id": 1146
       },
       "submitted_on": "2021-07-27T07:56:17.515125Z",
       "submitted_by":{
-        "name": "John doe",
+        "name": "John Doe",
         "id": 118
       },
       "approval_time": "2021-07-27T13:23:46.583746Z",
       "approver":{
         "name": "John Smith",
-        "id": 943
+        "id": 1146
       },
     },
     { ... },

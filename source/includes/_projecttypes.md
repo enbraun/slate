@@ -9,6 +9,7 @@
   "id": 1,
   "name": "Standard",
   "description": "",
+  "color": "#000000;1",
   "fields": [
       {
         "id": 39,
@@ -102,6 +103,8 @@ Name | Description
 | ---:  |  :----   |
 **id**  <br>`integer` |Unique identification number for the object, which allows referring to this object and can be used to search a particular project type.
 **name** <br>`string` | Represents name for this object. This is used to identify object by using some meaningful phrase to describe type of projects like `Standard`, `Education` etc.
+**description**  <br>`string` |  Description for project type object.
+**color** <br>`String`| String representing hexadecimal color code assigned to the project type.
 **fields** <br>`array of objects` |Represents collection of fields (or attributes) that are available for this project type. Each <a href = "#project" class="api-ref">Project</a> object of this project type can store / update values for these field. While creating or updating a <a href = "#project" class="api-ref">Project</a> user must pass arguments which are available for intended project type object. 
 **fields.id**<br>`integer` | Represents unique identification number of this field, which can be used to refer or search it.
 **fields.display_name** <br>`string` |Name of this field to identify it.
@@ -148,6 +151,7 @@ curl -v \
     "id": 3,
     "name": "Education",
     "description": "",
+    "color": "#000000;1",
     "fields": [
       {
         "id": 39,
@@ -243,6 +247,7 @@ curl -v \
       "id": 3,
       "name": "Education",
       "description": "",
+      "color": "#000000;1",
       "fields": [
         {
           "id": 39,

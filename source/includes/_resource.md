@@ -1,5 +1,6 @@
 # Resource
 
+
 ## Resource Object
 
 >Example Response  
@@ -32,14 +33,19 @@
     }],
     "tags": [],
     "disable_parallel_booking": false,
+    "timezone": {
+        "name": "(UTC+05:30) Asia/Calcutta (IST)",
+        "description": "Asia/Calcutta",
+        "id": 230
+    },
     "created_on": "2018-08-20T09:22:02.728296Z",
     "created_by": {
-        "name": "John doe",
+        "name": "John Doe",
         "id": 118
     },
     "modified_on": "2018-11-20T11:55:48.880898Z",
     "modified_by": {
-        "name": "John doe",
+        "name": "John Doe",
         "id": 118
     },
     "udf_qualifications": [{
@@ -109,7 +115,7 @@ Creates a new resource object.
        "first_name": "Andrew",
        "last_name": "Mooney",
        "resource_type_id": 1,
-       "start_date": "2016-05-02",
+       "start_date": "2018-01-01",
        "email": "andrew@enbraun.com",
        "roles" : [1,3],
        "udf_employee_no": "ABC0001"
@@ -218,14 +224,19 @@ curl -v \
       }],
       "tags": [],
       "disable_parallel_booking": false,
+      "timezone": {
+        "name": "(UTC+05:30) Asia/Calcutta (IST)",
+        "description": "Asia/Calcutta",
+        "id": 230
+      },
       "created_on": "2018-08-20T09:22:02.728296Z",
       "created_by": {
-        "name": "John doe",
+        "name": "John Doe",
         "id": 118
       },
       "modified_on": "2018-11-20T11:55:48.880898Z",
       "modified_by": {
-        "name": "John doe",
+        "name": "John Doe",
         "id": 118
       },
       "udf_qualifications": [{
@@ -317,14 +328,19 @@ curl -v "https://app.eresourcescheduler.cloud/rest/v1/resources/1" \
     }],
     "tags": [],
     "disable_parallel_booking": false,
+    "timezone": {
+        "name": "(UTC+05:30) Asia/Calcutta (IST)",
+        "description": "Asia/Calcutta",
+        "id": 230
+    },
     "created_on": "2018-08-20T09:22:02.728296Z",
     "created_by": {
-        "name": "John doe",
+        "name": "John Doe",
         "id": 118
     },
     "modified_on": "2018-11-20T11:55:48.880898Z",
     "modified_by": {
-        "name": "John doe",
+        "name": "John Doe",
         "id": 118
     },
     "udf_qualifications": [{
@@ -643,6 +659,19 @@ curl -v -X POST "https://app.eresourcescheduler.cloud/rest/v1/resources/12/timin
 	    "effective_date": "2018-02-02" 
       }'
 ```
+> Example Request For Replace Existing Rate
+ 
+```shell
+curl -v -X POST "https://app.eresourcescheduler.cloud/rest/v1/resources/12/timings" \
+ -H "Authorization: Bearer B8x5Vj1O65r6wnoV" \
+ -H "Content-Type: application/json" \
+ -d  '{ 
+        "applied_on": "2018-12-04T08:14:41.109Z", 
+        "calendar_id": "1", 
+        "effective_date": "2018-02-02" 
+        "replace_existing_date": true
+      }'
+```
 
 <span class="optional"><b>REQUEST BODY PARAMETERS</b></span>
 
@@ -662,7 +691,7 @@ Name         |  Description
 | **400** <br> <span class = "error">`Bad Request`</span> | Bad Request error occurs when a request is malformed, syntactically incorrect, missing required parameters are  or any unknown parameter is passed.  |
 | **403** <br> <span class = "error">`Forbidden`</span> |Authorization failed due to insufficient permissions. This occurs when user does not have enough access rights to perform this action. Access for each user can be controlled by an Administrator using eRS Cloud Application.|
 | **404** <br> <span class = "error">`Not Found`</span> | Not Found error occurs when requested resource does not exist.
-
+| **409** <br> <span class = "error">`Conflict`</span> | Conflict indicates that the Calendar can not be created as calendar is already associated with passed effective date. If you wish to create calendar on the same date any way you must use replace existing date option by passing true for parameter replace_existing_date which will replace existing date with passed date. Example request is shown to right.
 
 ### Update timings
 

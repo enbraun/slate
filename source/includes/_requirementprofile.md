@@ -121,10 +121,13 @@ Name | Description
 | ---:  |  :----   |
 **id**  <br>`integer` |  Represents unique identification number of this field, which can be used to refer or search it.
 **code**  <br>`string` |  It represents the unique code of the field which is referred as API code. This code acts as `key` in API response and the same must be used as `key` to pass values for a POST or PUT request.
-**field_type** <br>`string` |  Represents the type of field. For example  TEXT (for Text Field), INT (for Integer Number field), DDSS (for Dropdown Single Select Field), etc. 
+**field_type** <br>`string` |  Represents the type of field. For example  TEXT (for Text Field), INT (for Integer Number field), DDSS (for Dropdown Single Select Field), etc.See <a href = "#user-defined-fields" class="api-ref">User Defined Fields</a> to know more about different field types. 
 **display_name**<br>`string` |Name of this field to identify it.
 **is_system_defined**<br>`boolean` |  Indicates whether this field is system defined or a custom field. Fields which are system defined can not be customized.
 **is_required**<br>`boolean` |Indicates whether this field is mandatory or not. If this field is a required field then a valid value for this field must be passed while creating such object and while updating object (if this field is intended to update).
+**regex** <br>`string` |  Represents regular expression which must be matched by value for this field. <span class="warning">Only applicable for text fields</span>.
+**fields.minlength** <br>`integer` |  Represents minimum no of characters in value this field can accept. <span class="warning"> Only applicable for text fields</span>.
+**fields.maxlength** <br>`integer` |  Represents maximum no of characters in value this field can accept. <span class="warning">Only applicable for text fields<span>.
 **minnum** <br>`integer` | Represents minimum value this field can accept. <span class="warning">Only applicable for numeric fields</span>.
 **maxnum** <br>`integer` | Represents maximum value this field can accept. <span class="warning">Only applicable for numeric fields</span>.
 **mindate** <br>`string` |Represents minimum value this field can accept. <span class="warning">Only applicable for date / date time fields</span>.
@@ -132,3 +135,4 @@ Name | Description
 **options** <br> `array of objects` | Field types such as Dropdown Single Select, Dropdown Multi Select, Radio Group etc.
 **options.id** <br> `integer` |   Represents unique identification number for the individual option object.
 **options.name** <br> `string` | Represents name or content of option object.
+**options.color** <br> `string` | Allows a user to store color code of option object. <span class="warning">It is only available for LABEL type fields</span>.
