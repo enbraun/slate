@@ -8,7 +8,7 @@ Calendar is used to define working-timing of resources. An Administrator user ca
 
 ```json
 {
-    "id": 2,
+    "id": 1,
     "name": "New York Calendar",
     "description": null,
     "is_default": false,    
@@ -60,7 +60,7 @@ Calendar is used to define working-timing of resources. An Administrator user ca
     },
     "modified_by": {
         "id": 118,
-        "name": "John doe"
+        "name": "John Doe"
     }
 }
 ```
@@ -122,7 +122,7 @@ curl -v \
 {
   "total_count": 4,
   "data": [{
-      "id": 2,
+      "id": 1,
       "name": "New York Calendar",
       "description": null,
       "is_default": false,
@@ -155,7 +155,7 @@ curl -v \
       },
       "modified_by": {
         "id": 118,
-        "name": "John doe"
+        "name": "John Doe"
       }
     },
     { ... },
@@ -247,7 +247,7 @@ curl -v \
     },
     "modified_by": {
         "id": 118,
-        "name": "John doe"
+        "name": "John Doe"
     }
 }
 ```

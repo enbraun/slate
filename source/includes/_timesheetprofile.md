@@ -18,6 +18,24 @@ curl -v \
  
 ```json
 {
+   "id": 43,
+   "code": "rate_from",
+   "display_name": "Billing Rate",
+   "field_type": "RTFRM",
+   "minnum": 0,
+   "is_system_defined": true,
+   "is_required": false
+},
+{
+    "id": 42,
+    "code": "billing_status",
+    "display_name": "Billing Status",
+    "field_type": "BLSTS",
+    "minnum": 0,
+    "is_system_defined": true,
+    "is_required": false
+},
+{
     "id": 62,
     "code": "date",
     "display_name": "Date",
