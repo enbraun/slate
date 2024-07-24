@@ -135,4 +135,4 @@ Name | Description
 **options** <br> `array of objects` | Field types such as Dropdown Single Select, Dropdown Multi Select, Radio Group etc.
 **options.id** <br> `integer` |   Represents unique identification number for the individual option object.
 **options.name** <br> `string` | Represents name or content of option object.
-**options.color** <br> `string` | Allows a user to store color code of option object. <span class="warning">It is only available for LABEL type fields</span>.
+**options.color** <br> `string` | Allows a user to store color code of option object. <span class="warning">Only applicable for LABEL type fields</span>.

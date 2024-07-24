@@ -691,7 +691,7 @@ Name         |  Description
 | **400** <br> <span class = "error">`Bad Request`</span> | Bad Request error occurs when a request is malformed, syntactically incorrect, missing required parameters are  or any unknown parameter is passed.  |
 | **403** <br> <span class = "error">`Forbidden`</span> |Authorization failed due to insufficient permissions. This occurs when user does not have enough access rights to perform this action. Access for each user can be controlled by an Administrator using eRS Cloud Application.|
 | **404** <br> <span class = "error">`Not Found`</span> | Not Found error occurs when requested resource does not exist.
-| **409** <br> <span class = "error">`Conflict`</span> | Conflict indicates that the Calendar can not be created as calendar is already associated with passed effective date. If you wish to create calendar on the same date any way you must use replace existing date option by passing true for parameter replace_existing_date which will replace existing date with passed date. Example request is shown to right.
+| **409** <br> <span class = "error">`Conflict`</span> | Conflict indicates that the Calendar can not be created as calendar is already associated with passed effective date. If you wish to create calendar on the same date any way you must use replace existing date option by passing <span class = "required"> `true` </span> for parameter <span class = "required"> `replace_existing_date`</span> which will replace existing date with passed date. Example request is shown to right.
 
 ### Update timings
 

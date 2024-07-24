@@ -104,7 +104,7 @@ Name | Description
 **id**  <br>`integer` |Unique identification number for the object, which allows referring to this object and can be used to search a particular project type.
 **name** <br>`string` | Represents name for this object. This is used to identify object by using some meaningful phrase to describe type of projects like `Standard`, `Education` etc.
 **description**  <br>`string` |  Description for project type object.
-**color** <br>`String`| String representing hexadecimal color code assigned to the project type.
+**color** <br>`string`| String representing hexadecimal color code assigned to the project type.
 **fields** <br>`array of objects` |Represents collection of fields (or attributes) that are available for this project type. Each <a href = "#project" class="api-ref">Project</a> object of this project type can store / update values for these field. While creating or updating a <a href = "#project" class="api-ref">Project</a> user must pass arguments which are available for intended project type object. 
 **fields.id**<br>`integer` | Represents unique identification number of this field, which can be used to refer or search it.
 **fields.display_name** <br>`string` |Name of this field to identify it.
@@ -122,7 +122,7 @@ Name | Description
 **fields.options** <br>`string` |Field types such as Dropdown Single Select, Dropdown Multi Select, Radio Group etc. ( See <a href = "#user-defined-fields" class="api-ref">User Defined Fields</a> to know more. ) Allows user to pick one or more from these available options.
 **fields.options.id** <br>`integer` |  Represents unique identification number for the individual option object.
 **fields.options.name** <br>`string` | Represents name or content of option object.
-**fields.options.color** <br> `string` | Allows a user to store color code of option object. <span class="warning">It is only available for LABEL type fields</span>.
+**fields.options.color** <br> `string` | Allows a user to store color code of option object. <span class="warning">Only applicable for LABEL type fields</span>.
 
 
 

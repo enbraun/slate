@@ -22,6 +22,7 @@
       "description": "Pacific/Honolulu",
       "id": 316
     },
+    "project_calendar": 1,
     "disable_parallel_booking": false,
     "is_archive": false,
     "created_on": "2018-08-20T09:25:34.925474Z",
@@ -165,6 +166,7 @@ curl -v \
         "description": "Pacific/Honolulu",
         "id": 316
       },
+      "project_calendar": 1,
       "disable_parallel_booking": false,
       "is_archive": false,
       "created_on": "2018-08-20T09:25:34.925474Z",
@@ -243,6 +245,10 @@ curl -v "https://app.eresourcescheduler.cloud/rest/v1/projects/1" \
     "description": "Pacific/Honolulu",
     "id": 316
   },
+  "project_calendar": {
+    "name": "blank",
+    "id": 2
+    },
   "disable_parallel_booking": false,
   "is_archive": false,
   "created_on": "2018-08-20T09:25:34.925474Z",
@@ -520,11 +526,11 @@ curl -v -X GET \
 
 Name         |  Description
  ---:        |    :----   
- **ID** <br>`Integer`| Auto generated unique identifier for task object.
- **name** <br>`String`| Name of task object.
-**start_time** <br>`String`| Represents start time of task object.
-**end_time** <br>`String`| Represents end time of task object. 
-**project_id** <br>`Integer` | Unique ID of project object, which this task belongs to.
+ **ID** <br>`integer`| Auto generated unique identifier for task object.
+ **name** <br>`string`| Name of task object.
+**start_time** <br>`string`| Represents start time of task object.
+**end_time** <br>`string`| Represents end time of task object. 
+**project_id** <br>`integer` | Unique ID of project object, which this task belongs to.
 **created_on** <br>`string` | Timestamp at which this task object was created.
 **created_by** <br> `object` | Object representing user who created this task object.
 **modified_on** <br>`string` | Represents latest modification timestamp.
@@ -705,12 +711,12 @@ curl -v -X GET \
 
 Name         |  Description
  ---:        |    :----   
-**ID** <br>`Integer`| Auto generated unique identifier for phase object.
-**name** <br>`String` | Name of phase object.
-**description** <br> `String` | Any other information regarding this phase.
-**start_date** <br>`String`| Represents start date of the phase object.
-**end_date** <br>`String`| Represents end date of the phase object. 
-**project_id** <br>`Integer` | Unique ID of project object, which this phase belongs to.
+**ID** <br>`integer`| Auto generated unique identifier for phase object.
+**name** <br>`string` | Name of phase object.
+**description** <br> `string` | Any other information regarding this phase.
+**start_date** <br>`string`| Represents start date of the phase object.
+**end_date** <br>`string`| Represents end date of the phase object. 
+**project_id** <br>`integer` | Unique ID of project object, which this phase belongs to.
 **created_on** <br>`string` | Timestamp at which this phase object was created.
 **created_by** <br> `object` | Object representing user who created this phase object.
 **modified_on** <br>`string` | Represents latest modification timestamp.
@@ -884,12 +890,12 @@ curl -v -X GET \
 
 Name         |  Description
  ---:        |    :----   
-**ID** <br>`Integer` | Auto-generated unique identifier for milestone object.
-**project_id** <br>`Integer` | Unique ID of project object, which this milestone belongs to.
-**name** <br>`String` | Name of milestone object.
-**description** <br> `String` | Any information regarding this milestone.
-**date** <br>`String`| Represents date of the milestone object.
-**color** <br>`String`| String representing hexadecimal color code assigned to the milestone.
+**ID** <br>`integer` | Auto-generated unique identifier for milestone object.
+**project_id** <br>`integer` | Unique ID of project object, which this milestone belongs to.
+**name** <br>`string` | Name of milestone object.
+**description** <br> `string` | Any information regarding this milestone.
+**date** <br>`string`| Represents date of the milestone object.
+**color** <br>`string`| String representing hexadecimal color code assigned to the milestone.
 **created_on** <br>`string` | Timestamp at which this milestone object was created.
 **created_by** <br> `object` | Object representing user who created this milestone object.
 **modified_on** <br>`string` | Represents latest modification timestamp.
