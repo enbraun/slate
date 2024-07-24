@@ -22,7 +22,6 @@
       "description": "Pacific/Honolulu",
       "id": 316
     },
-    "project_calendar": 1,
     "disable_parallel_booking": false,
     "is_archive": false,
     "created_on": "2018-08-20T09:25:34.925474Z",
@@ -61,7 +60,7 @@ Name      |  Description
 **image** <br>`string` | String value representing URL of image file of project.
 **tags** <br>`array of strings` | Tags are the list of strings (labels) attached to this project object which could be used for the purpose of filtering, identification or other information.
 **timezone** <br>`integer` | Defines and categorize projects based on their location. This field is only available when scheduling plus module is on.
-**project_calender** <br>`integer` | ID of the Calendar object, which should be assigned to the project. Depending upon requirements, different calendars can be applied to different projects. If the calendar is omitted, then the default calendar (as defined in the Administrator calendar settings) will be applied to this project.This field is only available when scheduling plus module is on.
+**project_calendar** <br>`integer` | ID of the Calendar object, which should be assigned to the project. Depending upon requirements, different calendars can be applied to different projects. If the calendar is omitted, then the default calendar (as defined in the Administrator calendar settings) will be applied to this project.This field is only available when scheduling plus module is on.
 **is_archive** <br>`boolean` | Boolean value representing whether this project is archived or not.
 **created_on** <br>`string` | Timestamp at which this project object was created.
 **created_by** <br> `object` | Object representing user who created this project object.
@@ -102,7 +101,7 @@ Name               |  Description
 **end_date**<br><span class="mandatoryFlag">&#9873;</span> <span class="removableFlag mln-2">&#9873;</span> | String value representing a date in ISO 8601 extended notation for date i.e. yyyy-MM-dd.
 **tags**<br><span class="removableFlag mln-2">&#9873;</span> | An optional array of strings which could be attached to this project object as labels. This can be useful for the purpose of filtering, identification or other information.
 **timezone** <br><span class="mandatoryFlag">&#9873;</span> <span class="removableFlag mln-2">&#9873;</span> | One timezone object can be defined for a project.<br><br>_**Note**: <span class="warning">This field is only available when scheduling plus module is on</span>._
-**project_calender** <br>| ID of the Calendar object, which should be assigned to the project. Depending upon requirements, different calendars can be applied to different projects. If the calendar is omitted, then the default calendar (as defined in the Administrator calendar settings) will be applied to this project.<br><br>_**Note**: <span class="warning">This field is only available when scheduling plus module is on</span>._
+**project_calendar** <br>| ID of the Calendar object, which should be assigned to the project. Depending upon requirements, different calendars can be applied to different projects. If the calendar is omitted, then the default calendar (as defined in the Administrator calendar settings) will be applied to this project.<br><br>_**Note**: <span class="warning">This field is only available when scheduling plus module is on</span>._
 **disable_parallel_booking** <br>`optional` | Boolean value defining if project can or cannot have multiple bookings at a time. Default value for disable parallel booking is false.
 **udf_\*** <br><span class="mandatoryFlag">&#9873;</span> <span class="removableFlag mln-2">&#9873;</span> | A user with Administrator rights can add custom fields. These fields can be used to capture additional information in Projects. Different types of projects may have a different set of user-defined fields. The value for user defined field can be passed as shown in example request. In given example `udf_confirmed`</span> is a user defined field. <a href="#user-defined-fields" class="api-ref">Learn more</a><br><br>_**Note**: User with Administrator rights can make fields marked with <span class="mandatoryFlag iconInline">&#9873;</span> mandatory and remove fields marked with <span class="removableFlag iconInline">&#9873;</span>, from <a href ="#get-a-specific-project-type" class="api-ref">specific project type</a> using eRS Cloud Application. If mandatory fields are not passed with a valid value or removed fields are passed while creating project, the operation will fail with response code **400**_.
 
@@ -166,7 +165,6 @@ curl -v \
         "description": "Pacific/Honolulu",
         "id": 316
       },
-      "project_calendar": 1,
       "disable_parallel_booking": false,
       "is_archive": false,
       "created_on": "2018-08-20T09:25:34.925474Z",
@@ -246,8 +244,8 @@ curl -v "https://app.eresourcescheduler.cloud/rest/v1/projects/1" \
     "id": 316
   },
   "project_calendar": {
-    "name": "blank",
-    "id": 2
+    "name": "Default",
+    "id": 1
     },
   "disable_parallel_booking": false,
   "is_archive": false,
@@ -425,7 +423,7 @@ curl -v -X PUT \
 **email**<br><span class="mandatoryFlag">&#9873;</span> <span class="removableFlag mln-2">&#9873;</span> | String value representing email address associated with project object. Email address must be properly formatted with a maximum length of 254 characters.
 **tags**<br><span class="removableFlag mln-2">&#9873;</span> | An optional array of strings which could be attached to this project object as labels. This can be useful for the purpose of filtering, identification or other information. It can be up to 50 characters.
 **timezone** <br><span class="mandatoryFlag">&#9873;</span> <span class="removableFlag mln-2">&#9873;</span> | One timezone object can be defined for a project.<br><br>_**Note**: <span class="warning">This field is only available when scheduling plus module is on</span>._
-**project_calender** <br>| ID of the Calendar object, which should be assigned to the project. Depending upon requirements, different calendars can be applied to different projects. If the calendar is omitted, then the default calendar (as defined in the Administrator calendar settings) will be applied to this project.<br><br>_**Note**: <span class="warning">This field is only available when scheduling plus module is on</span>._
+**project_calendar** <br>| ID of the Calendar object, which should be assigned to the project. Depending upon requirements, different calendars can be applied to different projects. If the calendar is omitted, then the default calendar (as defined in the Administrator calendar settings) will be applied to this project.<br><br>_**Note**: <span class="warning">This field is only available when scheduling plus module is on</span>._
 **disable_parallel_booking** <br>`optional` | Boolean value defining if project can or cannot have multiple bookings at a time. Default value for disable parallel booking is false.
 **udf_\*** <br><span class="mandatoryFlag">&#9873;</span> <span class="removableFlag mln-2">&#9873;</span> | A user with Administrator rights can add custom fields. These fields can be used to capture additional information in Project. Different types of projects may have a different set of user-defined fields. The value for user defined field can be passed as shown in example request. In first example `udf_progress` is a user defined field. <a href ="#user-defined-fields" class="api-ref">Learn more</a><br><br>_**Note**: User with Administrator rights can make fields marked with <span class="mandatoryFlag iconInline">&#9873;</span> mandatory and remove fields marked with <span class="removableFlag iconInline">&#9873;</span>, from <a href ="#get-a-specific-project-type" class="api-ref">specific project type</a> using eRS Cloud Application. If mandatory fields are not passed with a valid value or removed fields are passed while updating project, the operation will fail with response code **400**_.
 
