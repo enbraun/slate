@@ -520,7 +520,7 @@ force_delete_timesheet_entry=true" \
 | Code      | Description  
 | ---:        |    :----   
 **200** <br><span class = "success">`OK`</span> | This status code indicates that the operation was successful and a resource deleted successfully.
-**409** <br> <span class = "error">`Conflict`</span> | Conflict indicates that the resource can not be deleted as there are bookings, timesheets or rates associated with this resource. If you wish to delete it anyway, you must use force delete option by passing <span class = "required">`true`</span> for parameters <span class = "required">`force_delete_bookings`</span>, <span class = "required">`force_delete_timesheet_entry`</span> and <span class = "required">`force_delete_rates`</span> which will delete associated bookings, timesheets and rates corresponding to the resource. This operation deletes all bookings, timesheets and rates of requested resource and resource itself (shown in example request).
+**409** <br> <span class = "error">`Conflict`</span> | Conflict indicates that the resource can not be deleted because there are bookings, timesheets or rates associated with this resource. If you wish to delete it anyway, you must use force delete option by passing <span class = "required">`true`</span> for parameters <span class = "required">`force_delete_bookings`</span>, <span class = "required">`force_delete_timesheet_entry`</span> and <span class = "required">`force_delete_rates`</span> which will delete associated bookings, timesheets and rates corresponding to the resource. This operation deletes all bookings, timesheets and rates of requested resource and resource itself (shown in example request).
 | **403** <br> <span class = "error">`Forbidden`</span> | Authorization failed due to insufficient permissions. This occurs when user does not have enough access rights to perform this action. Access for each user can be controlled by an Administrator using eRS Cloud Application.|
 | **404** <br> <span class = "error">`Not Found`</span> | Not Found error occurs when requested resource does not exist.
 
@@ -691,7 +691,8 @@ Name         |  Description
 | **400** <br> <span class = "error">`Bad Request`</span> | Bad Request error occurs when a request is malformed, syntactically incorrect, missing required parameters are  or any unknown parameter is passed.  |
 | **403** <br> <span class = "error">`Forbidden`</span> |Authorization failed due to insufficient permissions. This occurs when user does not have enough access rights to perform this action. Access for each user can be controlled by an Administrator using eRS Cloud Application.|
 | **404** <br> <span class = "error">`Not Found`</span> | Not Found error occurs when requested resource does not exist.
-| **409** <br> <span class = "error">`Conflict`</span> | Conflict indicates that the Calendar can not be created as calendar is already associated with passed effective date. If you wish to create calendar on the same date any way you must use replace existing date option by passing <span class = "required"> `true` </span> for parameter <span class = "required"> `replace_existing_date`</span> which will replace existing date with passed date. Example request is shown to right.
+| **409** <br> <span class = "error">`Conflict`</span> | Conflict status indicates that the calendar cannot be applied on the provided effective date because a calendar is already set for that date. If you still wish to apply it on the same date, you must use the "replace existing" option by setting the <span class = "required"> `replace_existing_date`</span> parameter to <span class = "required"> `true`</span>. This will replace the existing calendar with the new one. Example request is shown to right.
+
 
 ### Update timings
 
