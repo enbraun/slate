@@ -140,9 +140,9 @@ Name | Description
 ---------: | :-----------
 **id**  <br>`integer` |  Unique identification number for the object, which allows referring to this object and can be used to search a particular resource type.
 **name** <br> `string` | Represents name for this object. This is used to identify object by using some meaningful phrase to describe type of resources like `Employee`, `Machine` etc.
-**description**  <br>`string` |  Description for resource type object.
+**description**  <br>`string` |  Description for the resource type object.
 **is_human** <br> `boolean` | Indicates whether this resource type is `human` or `non-human`. For example, `Employee` could be a human resource type while `Machine`, `Meeting Rooms` etc. can be non-human resource type.
-**color** <br>`string`| String representing hexadecimal color code assigned to the resource type.
+**color** <br>`string`| String representing the hexadecimal color code assigned to the resource type.
 **fields** <br> `array of objects`  | Represents collection of fields (or attributes) that are available for this resource type. Each <a href ="#resource" class = "api-ref">Resource</a> object of this resource type can store / update values for these field. While creating or updating a <a href ="#resource" class = "api-ref">Resource</a> user must pass arguments which are available for intended resource type object. 
 **fields.id**<br> `integer` | Represents unique identification number of this field, which can be used to refer or search it.
 **fields.display_name** <br> `string`  | Name of this field to identify it.

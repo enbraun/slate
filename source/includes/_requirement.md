@@ -119,7 +119,7 @@ Name         |  Description
 **created_by** <br> `object` | Object representing user who created this requirement object.
 **modified_on** <br>`string` | Represents latest modification timestamp.
 **modified_by** <br>`object` | Object representing most recent user who modified this requirement object.
-**udf_\*** | Custom user-defined fields are used to capture additional information of requirement. User-defined fields can be of multiple types.Custom fields are highly useful for optimally configuring requirement objects. In the given example response, all keys starting with the prefix `udf_` are user-defined custom fields.<a href="#user-defined-fields" class="api-ref">Learn more</a>
+**udf_\*** | Custom user-defined fields are used to capture additional information of requirement. User-defined fields can be of multiple types. Custom fields are highly useful for optimally configuring requirement objects. In the given example response, all keys starting with the prefix `udf_` are user-defined custom fields. <a href="#user-defined-fields" class="api-ref">Learn more</a>
 
 ## Create a Requirement
 
