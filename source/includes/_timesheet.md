@@ -36,23 +36,23 @@
   ],
   "created_on": "2021-07-27T07:56:17.515125Z",
   "created_by": {
-    "name": "John doe",
+    "name": "John Doe",
     "id": 118
   },
   "modified_on": "2021-07-27T13:23:46.583746Z",
   "modified_by": {
     "name": "John Smith",
-    "id": 943
+    "id": 1146
   },
   "submitted_on": "2021-07-27T07:56:17.515125Z",
   "submitted_by":{
-    "name": "John doe",
+    "name": "John Doe",
     "id": 118
   },
   "approval_time": "2021-07-27T13:23:46.583746Z",
   "approver":{
     "name": "John Smith",
-    "id": 943
+    "id": 1146
   },
 }
 ```
@@ -120,7 +120,7 @@ Name               |  Description
  ---:        |    :----   
 **resource_id**  <br><span class="required">`required`</span>  | ID of resource object who performed task in this timesheet entry.
 **project_id** <br><span class="required">`required`</span>  |  ID of project object on which this timesheet entry is being created.
-**date**<br><span class="required">`required`</span>  | String value representing a date on which task was performed. Date accepts value in ISO 8601 format i.e. YYYY-MM-DD. Date of a timesheet entry cannot be before `start_date` or after `last_date` of the resource for which this timesheet entry is being created.
+**date**<br><span class="required">`required`</span>  | String value representing a date on which task was performed. Date accepts value in ISO 8601 format i.e. yyyy-MM-dd. Date of a timesheet entry cannot be before `start_date` or after `last_date` of the resource for which this timesheet entry is being created.
 **time_start** <br>  | Represents start time for timesheet entry. This field accepts value in HH:MM in 24 hour format or HH:MMam or HH:MMpm in 12 hour format.
 **time_end** <br>  | Represents end time for timesheet entry. This field accepts value in HH:MM in 24 hour format or HH:MMam or HH:MMpm in 12 hour format. `time_end` must always be ahead of `time_start`.
 **hours** <br> | This defines how many hours the resource worked on a given task. Hours value is a floating point number which could not be 0 or less than 0 and greater than 99999  (When entries for more than 24 hours a day is disabled, maximum value can be up to 24). When user provides `time_start` and `time_end` for a timesheet entry, system automatically calculates hours worked by resource by difference in `time_end` and `time_start`.<br><br>_**Note**: The user should either provide `time_start` and `time_end` or `hours`. `time_start` and `time_end` value can also be provided with `hours` when the difference between them is equal to `hours` value._
@@ -200,7 +200,7 @@ start=2021-07-01&end=2021-07-31&offset=1&limit=10" \
       ],
       "created_on": "2021-07-27T07:56:17.515125Z",
       "created_by": {
-        "name": "John doe",
+        "name": "John Doe",
         "id": 118
       },
       "modified_on": "2021-07-27T13:23:46.583746Z",
@@ -210,13 +210,13 @@ start=2021-07-01&end=2021-07-31&offset=1&limit=10" \
       },
       "submitted_on": "2021-07-27T07:56:17.515125Z",
       "submitted_by":{
-        "name": "John doe",
+        "name": "John Doe",
         "id": 118
       },
       "approval_time": "2021-07-27T13:23:46.583746Z",
       "approver":{
         "name": "John Smith",
-        "id": 943
+        "id": 1146
       },
     },
     { ... },
@@ -291,23 +291,23 @@ curl -v -X GET "https://app.eresourcescheduler.cloud/rest/v1/timesheet/25" \
   ],
   "created_on": "2021-07-27T07:56:17.515125Z",
   "created_by": {
-    "name": "John doe",
+    "name": "John Doe",
     "id": 118
   },
   "modified_on": "2021-07-27T13:23:46.583746Z",
   "modified_by": {
     "name": "John Smith",
-    "id": 943
+    "id": 1146
   },
   "submitted_on": "2021-07-27T07:56:17.515125Z",
   "submitted_by":{
-    "name": "John doe",
+    "name": "John Doe",
     "id": 118
   },
   "approval_time": "2021-07-27T13:23:46.583746Z",
   "approver":{
     "name": "John Smith",
-    "id": 943
+    "id": 1146
   },
 }
 ```
@@ -390,23 +390,23 @@ start=2021-07-01&end=2021-07-31" \
       ],
       "created_on": "2021-07-27T07:56:17.515125Z",
       "created_by": {
-        "name": "John doe",
+        "name": "John Doe",
         "id": 118
       },
       "modified_on": "2021-07-27T13:23:46.583746Z",
       "modified_by": {
         "name": "John Smith",
-        "id": 943
+        "id": 1146
       },
       "submitted_on": "2021-07-27T07:56:17.515125Z",
       "submitted_by":{
-        "name": "John doe",
+        "name": "John Doe",
         "id": 118
       },
       "approval_time": "2021-07-27T13:23:46.583746Z",
       "approver":{
         "name": "John Smith",
-        "id": 943
+        "id": 1146
       },
     },
     { ... },
@@ -472,7 +472,7 @@ Name               |  Description
  ---:        |    :----   
 **resource_id**  <br><span class="required">`required`</span>  | ID of resource object which is being used in timesheet entry. This will throw an error if you post an empty value.
 **project_id** <br><span class="required">`required`</span>  |  ID of project object which this timesheet entry is being created for. This will throw an error if you post an empty value.
-**date**<br><span class="required">`required`</span>  | String value representing a date on which task was performed. Date accepts value in ISO 8601 format i.e. YYYY-MM-DD. Date of a timesheet entry cannot be before `start_date` or after `last_date` of the resource for which this timesheet entry is being created.
+**date**<br><span class="required">`required`</span>  | String value representing a date on which task was performed. Date accepts value in ISO 8601 format i.e. yyyy-MM-dd. Date of a timesheet entry cannot be before `start_date` or after `last_date` of the resource for which this timesheet entry is being created.
 **time_start** <br>  | Represents start time for timesheet entry. This field accepts value in HH:MM in 24 hour format or HH:MMam or HH:MMpm in 12 hour format.
 **time_end** <br>  | Represents end time for timesheet entry. This field accepts value in HH:MM in 24 hour format or HH:MMam or HH:MMpm in 12 hour format. `time_end` must always be ahead of `time_start`.
 **hours** <br> | This defines how many hours the resource worked on a given task. Hours value is a floating point number which could not be 0 or less than 0 and greater than 99999  (When entries for more than 24 hours a day is disabled, maximum value can be up to 24).<br><br>_**Note**: The user should either provide `time_start` and `time_end` or `hours`. `time_start` and `time_end` value can also be provided with `hours` when the difference between them is equal to `hours` value._

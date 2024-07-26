@@ -49,6 +49,7 @@
     "flexi_range_duration": 5,
     "flexi_range_unit": 2,
     "allow_multi_allocation": true,
+    "sync_to_booking": true,
     "conditions": [ {
       "operator": "all",
       "field": "udf_skills",
@@ -78,15 +79,15 @@
       "weightage": 10,
       "is_mandatory": false
     } ],
-    "created_on": "2023-09-15T09:03:48.428713+00:00",
+    "created_on": "2023-09-15T09:03:33.505344Z",
     "created_by": {
-      "name": "John doe",
-      "id": 4
+      "name": "John Doe",
+      "id": 118
     },
-    "modified_on": "2023-09-15T09:05:40.515333+00:00",
+    "modified_on": "2023-09-15T09:05:12.314058Z",
     "modified_by": {
-      "name": "John doe",
-      "id": 5
+      "name": "John Doe",
+      "id": 118
     }
 }
 ```
@@ -112,11 +113,13 @@ Name         |  Description
 **flexi_range_duration** <br>`integer` | Represents the defined duration range for flexibility in fulfilling the requirement compared to the original requirement date.
 **flexi_range_unit** <br>`integer` | Represents a unit that allows for flexibility in fulfilling the requirement. Unit value could be one of the following:<br><br><li> **1** for `Hours` : Refers to 'hours' as a unit.</li><li> **2** for `Days` : Refers to 'days' as a unit.</li><br>
 **allow_multi_allocation** <br>`boolean` | This refers to allocation of a specific requirement to multiple assignment.
+**sync_to_booking** <br>`boolean` | This setting indicates whether the values of common custom fields in the bookings corresponding to this requirement are always in sync. When turned on, users will not be able to modify the common custom fields in the booking form, and the values will always be taken from the linked requirement.
 **conditions** <br>`array of object` | This refers to the criteria on which the requirement must be fulfilled.<li>**conditions.field** `string` <br> This is a reference to the text's API_code.</li> <li>**<a href="#requirement-operator" class="api-ref">conditions.operator</a>** `string`  <br> This refers to a character that represents a specific mathematical or logical action or process. </li><li>**conditions.values** <br>This refers to the values defined for the requirement to be considered in suggested resources.</li><li>**conditions.weightage** `integer`  <br> Every condition can be assigned relative importance in comparison to other conditions to calculate its weightage. Weightage is ultimately used to calculate the match score of resources.</li> <li>**conditions.is_mandatory** `boolean` <br> Indicates whether this field is mandatory. If this field is marked as mandatory, it means that a required value must be provided for it in the suggested resources.</li>
 **created_on** <br>`string` | Timestamp at which this requirement object was created.
 **created_by** <br> `object` | Object representing user who created this requirement object.
 **modified_on** <br>`string` | Represents latest modification timestamp.
 **modified_by** <br>`object` | Object representing most recent user who modified this requirement object.
+**udf_\*** | Custom user-defined fields are used to capture additional information of requirement. User-defined fields can be of multiple types. Custom fields are highly useful for optimally configuring requirement objects. In the given example response, all keys starting with the prefix `udf_` are user-defined custom fields. <a href="#user-defined-fields" class="api-ref">Learn more</a>
 
 ## Create a Requirement
 
@@ -135,12 +138,14 @@ Name         |  Description
         "role_id": 7,
         "start_time": "2023-10-02T00:00:00",
         "end_time": "2023-10-03T00:00:00",
+        "udf_confirmed": true,
         "effort": 3,
         "unit": 4,
         "tags": ["London","Onsite"] ,
         "flexi_range_duration": 5,
         "flexi_range_unit": 2,
         "allow_multi_allocation": true,
+         "sync_to_booking": true,
         "conditions": [{
             "field": "udf_qualification",
             "operator": "any",
@@ -166,17 +171,19 @@ Creates a new requirement object.
 Name               |  Description
  ---:        |    :----   
 **project_id** <br><span class="required">`required`</span>  |  ID of the project object for which this requirement object is being created.
-**task_id**<br>|  ID of the task object within the project that needs to be done in this requirement.
-**role_id**<br>|  ID of the role object that the resource needs to perform for the requirement. Role can be either the performing role or non-performing role of the resource.
-**start_time** <br> <span class="required">`required`</span>  | Represents start date and time for requirement object. This field accepts value in ISO 8601 format for date-time i.e. yyyy-mm-ddThh:mm:ss. The value must be snapped in 15 minutes interval, which effectively means that minutes values should be one of(00/15/30/45) and seconds value should always be 0. (if given).
-**end_time** <br> <span class="required">`required`</span>  | Represents end date and time for requirement object. This field accepts value in ISO 8601 format for date-time i.e. yyyy-mm-ddThh:mm:ss. The value must be snapped in 15 minutes interval, which effectively means that minutes values should be one of(00/15/30/45) and seconds value should always be 0. (if given). `end_time` must always be ahead of `start_time` by at least 15 minutes as a requirement of less than 15 minutes is not allowed.
+**task_id**<br><span class="mandatoryFlag">&#9873;</span> <span class="removableFlag mln-2">&#9873;</span>|  ID of the task object within the project that needs to be done in this requirement.
+**role_id**<br><span class="mandatoryFlag">&#9873;</span> <span class="removableFlag mln-2">&#9873;</span>|  ID of the role object that the resource needs to perform for the requirement. Role can be either the performing role or non-performing role of the resource.
+**start_time** <br> <span class="required">`required`</span>  | Represents start date and time for requirement object. This field accepts value in ISO 8601 format for date-time i.e. yyyy-MM-ddThh:mm:ss. The value must be snapped in 15 minutes interval, which effectively means that minutes values should be one of(00/15/30/45) and seconds value should always be 0. (if given).
+**end_time** <br> <span class="required">`required`</span>  | Represents end date and time for requirement object. This field accepts value in ISO 8601 format for date-time i.e. yyyy-MM-ddThh:mm:ss. The value must be snapped in 15 minutes interval, which effectively means that minutes values should be one of(00/15/30/45) and seconds value should always be 0. (if given). `end_time` must always be ahead of `start_time` by at least 15 minutes as a requirement of less than 15 minutes is not allowed.
 **effort** <br> <span class="required">`required`</span>|Represents the effort value for the requirement.This defines how much effort is needed to complete the task. Effort value is a floating-point number that cannot be less than 0 or greater than 99999999.99. If effort value is not provided system will take default value 0.
 **unit**<br> <span class="required">`required`</span>  | Integer number (2 or 4) represents the unit in which effort is defined. The unit value can be one of the following:<br><br><li> **2** for `Hours` : This defines `effort` value in fixed hours which doesn't change upon changes in requirement.</li><li> **4** for `Full Time Equivalent` : Full time equivalent is calculated using FTE calendar defined in <a href="https://app.eresourcescheduler.cloud/#!/admin/calendars/settings" target="_blank" class="api-ref">Administrator calendar settings</a>. Capacity from FTE calendar for defined time in requirement, is considered as 1 FTE.</li><br>
-**tags** <br>`array of strings` |Tags are strings (labels) associated with this requirement object which could be used for the purpose of identification or other information.
+**tags** <br><span class="removableFlag mln-2">&#9873;</span> |Tags are strings (labels) associated with this requirement object which could be used for the purpose of identification or other information.
 **flexi_range_duration** <br>`integer` |Represents the defined duration range for flexibility in fulfilling the requirement compared to the original requirement date.
 **flexi_range_unit** <br>`integer` | Represents a unit that allows for flexibility in fulfilling the requirement. Unit value could be one of the following:<br><br><li> **1** for `Hours` : Refers to 'hours' as a unit</li><li> **2** for `Days` : Refers to 'days' as a unit </li><br>
 **allow_multi_allocation** <br>`boolean` | This refers to allocation of a specific requirement to multiple resources simultaneously.
+**sync_to_booking** <br>`boolean` | This setting indicates whether the values of common custom fields in the bookings corresponding to this requirement are always in sync. When turned on, users will not be able to modify the common custom fields in the booking form, and the values will always be taken from the linked requirement.
 **conditions** <br>`array of object` | This refers to the criteria on which the requirement must be fulfilled.<li>**conditions.field** `string` <br> This is a reference to the text's API_code.</li> <li><a href="#requirement-operator" class="api-ref">conditions.operator</a>`string`  <br> This refers to a character that represents a specific mathematical or logical action or process. </li><li>**conditions.values** <br>This refers to the values defined for the requirement to be considered in suggested resources.</li> <li>**conditions.weightage** `integer`  <br> Every condition can be assigned relative importance in comparison to other conditions to calculate its weightage. Weightage is ultimately used to calculate the match score of resources.</li> <li>**conditions.is_mandatory** `boolean` <br> Indicates whether this field is mandatory. If this field is marked as mandatory, it means that a required value must be provided for it in the suggested resources.</li>
+**udf_\***<br><span class="mandatoryFlag">&#9873;</span> <span class="removableFlag mln-2">&#9873;</span> | A user with Administrator rights can add custom fields. These fields can be used to capture additional information in Requirements. The value for a user defined field can be passed as shown in example request. In given example `udf_confirmed`</span> is a user defined field. <a href="#user-defined-fields" class="api-ref">Learn more</a><br><br>_**Note**: User with Administrator rights can make fields marked with <span class="mandatoryFlag iconInline">&#9873;</span> mandatory and remove fields marked with <span class="removableFlag iconInline">&#9873;</span>, from <a href ="#requirement-profile" class="api-ref">requirement profile</a> using eRS Cloud Application. If mandatory fields are not passed with a valid value or if removed fields are passed while creating requirement, the operation will fail with response code **400**_.
 
 
 ### Returns
@@ -258,6 +265,7 @@ start=2023-01-01&end=2023-12-31&offset=1&limit=10" \
       "flexi_range_duration": 5,
       "flexi_range_unit": 2,
       "allow_multi_allocation": true,
+      "sync_to_booking": true,
       "conditions": [ {
         "operator": "all",
         "field": "udf_skills",
@@ -289,13 +297,13 @@ start=2023-01-01&end=2023-12-31&offset=1&limit=10" \
       } ],
       "created_on": "2023-09-15T09:03:48.428713+00:00",
       "created_by": {
-        "name": "John doe",
-        "id": 4
+        "name": "John Doe",
+        "id": 118
       },
       "modified_on": "2023-09-15T09:05:40.515333+00:00",
       "modified_by": {
-        "name": "John doe",
-        "id": 5
+        "name": "John Doe",
+        "id": 118
       }
     },
     { ... },
@@ -383,6 +391,7 @@ curl -v -X GET "https://app.eresourcescheduler.cloud/rest/v1/requirements/251" \
   "flexi_range_duration": 5,
   "flexi_range_unit": 2,
   "allow_multi_allocation": true,
+  "sync_to_booking": true,
   "conditions": [ {
     "operator": "all",
     "field": "udf_skills",
@@ -414,13 +423,13 @@ curl -v -X GET "https://app.eresourcescheduler.cloud/rest/v1/requirements/251" \
   } ],
   "created_on": "2023-09-15T09:03:48.428713+00:00",
   "created_by": {
-    "name": "John doe",
-    "id": 4
+    "name": "John Doe",
+    "id": 118
   },
   "modified_on": "2023-09-15T09:05:40.515333+00:00",
   "modified_by": {
-    "name": "John doe",
-    "id": 5
+    "name": "John Doe",
+    "id": 118
   }
 }
 ```
@@ -499,6 +508,7 @@ start=2023-01-01&end=2023-12-31" \
       "flexi_range_duration": 5,
       "flexi_range_unit": 2,
       "allow_multi_allocation": true,
+      "sync_to_booking": false,
       "conditions": [ {
         "operator": "all",
         "field": "udf_skills",
@@ -530,13 +540,13 @@ start=2023-01-01&end=2023-12-31" \
       } ],
       "created_on": "2023-09-15T09:03:48.428713+00:00",
       "created_by": {
-        "name": "John doe",
-        "id": 4
+        "name": "John Doe",
+        "id": 118
       },
       "modified_on": "2023-09-15T09:05:40.515333+00:00",
       "modified_by": {
-        "name": "John doe",
-        "id": 5
+        "name": "John Doe",
+        "id": 118
       }
     },
     { ... },
@@ -570,7 +580,7 @@ Below is a list of available fields, which allow filtering requirements:
 **modified_by**|<li class="nowrap">**eq** (_default_)</li><li>neq</li><li>any</li><li>none</li>| `"modified_by:eq": 1`<br>`"modified_by:neq": 1`<br>`"modified_by:any": [1, 2]`<br>`"modified_by:none": [1, 2]`
 **created_on**|<li class="nowrap">**eq** (_default_)</li><li>lt</li><li>gt</li><li>bt</li><li>ex</li>| `"created_on:eq": ["2021-07-08T00:00:00"]`<br>`"created_on:lt": ["2021-07-08T00:00:00"]`<br>`"created_on:gt": ["2021-07-08T59:59:59"]`<br>`"created_on:bt": ["2021-07-08T00:00:00", "2021-07-10T23:59:59"]` <br>`"created_on:bt": ["2021-07-08T00:00:00", ""]` <br>`"created_on:bt": ["", "2021-07-10T23:59:59"]` <br>`"created_on:ex": ["2021-07-08T00:00:00", "2021-07-10T23:59:59"]` <br>`"created_on:ex": ["2021-07-08T00:00:00", ""]` <br>`"created_on:ex": ["", "2021-07-10T23:59:59"]]` 
 **modified_on**|<li class="nowrap">**eq** (_default_)</li><li>lt</li><li>gt</li><li>bt</li><li>ex</li>| `"modified_on:eq": ["2021-07-08T00:00:00"]`<br>`"modified_on:lt": ["2021-07-08T00:00:00"]`<br>`"modified_on:gt": ["2021-07-08T59:59:59"]`<br>`"modified_on:bt": ["2021-07-08T00:00:00", "2021-07-10T23:59:59"]` <br>`"modified_on:bt": ["2021-07-08T00:00:00", ""]` <br>`"modified_on:bt": ["", "2021-07-10T23:59:59"]` <br>`"modified_on:ex": ["2021-07-08T00:00:00", "2021-07-10T23:59:59"]` <br>`"modified_on:ex": ["2021-07-08T00:00:00", ""]` <br>`"modified_on:ex": ["", "2021-07-10T23:59:59"]]` 
-
+_Additionally, requirements can also be filtered using <a href="#search-projects" class="api-ref">project fields</a> and <a href="#filters-for-user-defined-fields" class="api-ref">custom fields</a> of requirements. An example request for fetching only requirement having `project_id` as 1 and `role_id` as 1 is shown._
 ## Update a Requirement
 
 Updates the specified requirement by setting values of parameters passed. Values of any parameters which are not provided will be unchanged. To unset existing value for a parameter, just pass an empty value i.e. `null`.
@@ -637,17 +647,20 @@ curl -v -X PUT "https://app.eresourcescheduler.cloud/rest/v1\
 Name               |  Description
  ---:        |    :----   
 **project_id** <br><span class="required">`required`</span>   |  ID of the project object for which this requirement object is being created. This will throw an error if you post an empty value.
-**task_id**<br>|  ID of the task object within the project that needs to be done in this requirement.
-**role_id**<br>|  ID of the role object that the resource needs to perform for the requirement. Role can be either the performing role or non-performing role of the resource.
-**start_time** <br><span class="required">`required`</span>  | Represents start date and time for requirement object. This field accepts value in ISO 8601 format for date-time i.e. yyyy-mm-ddThh:mm:ss. The value must be snapped in 15 minutes interval, which effectively means that minutes values should be one of(00/15/30/45) and seconds value should always be 0. (if given). This will throw an error if you post an empty value.
-**end_time** <br><span class="required">`required`</span> | Represents end date and time for requirement object. This field accepts value in ISO 8601 format for date-time i.e. yyyy-mm-ddThh:mm:ss. The value must be snapped in 15 minutes interval, which effectively means that minutes values should be one of(00/15/30/45) and seconds value should always be 0. (if given). `end_time` must always be ahead of `start_time` by at least 15 minutes as a requirement of less than 15 minutes is not allowed. This will throw an error if you post an empty value.
+**task_id**<br><span class="mandatoryFlag">&#9873;</span> <span class="removableFlag mln-2">&#9873;</span>|  ID of the task object within the project that needs to be done in this requirement.
+**role_id**<br><span class="mandatoryFlag">&#9873;</span> <span class="removableFlag mln-2">&#9873;</span>|  ID of the role object that the resource needs to perform for the requirement. Role can be either the performing role or non-performing role of the resource.
+**start_time** <br><span class="required">`required`</span>  | Represents start date and time for requirement object. This field accepts value in ISO 8601 format for date-time i.e. yyyy-MM-ddThh:mm:ss. The value must be snapped in 15 minutes interval, which effectively means that minutes values should be one of(00/15/30/45) and seconds value should always be 0. (if given). This will throw an error if you post an empty value.
+**end_time** <br><span class="required">`required`</span> | Represents end date and time for requirement object. This field accepts value in ISO 8601 format for date-time i.e. yyyy-MM-ddThh:mm:ss. The value must be snapped in 15 minutes interval, which effectively means that minutes values should be one of(00/15/30/45) and seconds value should always be 0. (if given). `end_time` must always be ahead of `start_time` by at least 15 minutes as a requirement of less than 15 minutes is not allowed. This will throw an error if you post an empty value.
 **effort**  <br><span class="required">`required`</span>  |Represents the effort value for the requirement.This defines how much effort is needed to complete the task. Effort value is a floating-point number that cannot be less than 0 or greater than 99999999.99. If effort value is not provided system will take default value 0.
 **unit**<br> <span class="required">`required`</span>  | Integer number (2 or 4) represents the unit in which effort is defined. The unit value can be one of the following:<br><br><li> **2** for `Hours` : This defines `effort` value in fixed hours which doesn't change upon changes in requirement.</li><li> **4** for `Full Time Equivalent` : Full time equivalent is calculated using FTE calendar defined in <a href="https://app.eresourcescheduler.cloud/#!/admin/calendars/settings" target="_blank" class="api-ref">Administrator calendar settings</a>. Capacity from FTE calendar for defined time in requirement, is considered as 1 FTE.</li><br>
 **tags** <br>`array of strings` |Tags are strings (labels) associated with this requirement object which could be used for the purpose of identification or other information.
 **flexi_range_duration** <br>`integer` | Represents the defined duration range for flexibility in fulfilling the requirement compared to the original requirement date.
 **flexi_range_unit** <br>`integer` | Represents a unit that allows for flexibility in fulfilling the requirement. Unit value could be one of the following:<br><br><li> **1** for `Hours` : Refers to 'hours' as a unit.</li><li> **2** for `Days` : Refers to 'days' as a unit.</li><br>
 **allow_multi_allocation** <br>`boolean` | This refers to allocation of a specific requirement to multiple resources simultaneously.
+**sync_to_booking** <br>`boolean` | This setting indicates whether the values of common custom fields in the bookings corresponding to this requirement are always in sync. When turned on, users will not be able to modify the common custom fields in the booking form, and the values will always be taken from the linked requirement.
 **conditions** <br>`array of object` | This refers to the criteria on which the requirement must be fulfilled.<li>**conditions.field** `string` <br> This is a reference to the text's API_code.</li> <li><a href="#requirement-operator" class="api-ref">conditions.operator</a>`string`  <br> This refers to a character that represents a specific mathematical or logical action or process. </li><li>**conditions.values** <br>This refers to the values defined for the requirement to be considered in suggested resources.</li> <li>**conditions.weightage** `integer`  <br> Every condition can be assigned relative importance in comparison to other conditions to calculate its weightage. Weightage is ultimately used to calculate the match score of resources.</li> <li>**conditions.is_mandatory** `boolean` <br> Indicates whether this field is mandatory. If this field is marked as mandatory, it means that a required value must be provided for it in the suggested resources.</li>
+**udf_\***<br><span class="mandatoryFlag">&#9873;</span> <span class="removableFlag mln-2">&#9873;</span> | A user with Administrator rights can add  custom fields. These fields can be used to capture additional information in requirements. <a href="#user-defined-fields" class="api-ref">Learn more.</a><br><br>_**Note**: User with Administrator rights can make fields marked with <span class="mandatoryFlag iconInline">&#9873;</span> mandatory and remove fields marked with <span class="removableFlag iconInline">&#9873;</span>, from <a href ="#requirement-profile" class="api-ref">requirement profile</a> using eRS Cloud Application. If mandatory fields are not passed with a valid value or if removed fields are passed while updating requirement, the operation will fail with response code **400**_.
+
 
 ### Returns
 
@@ -659,7 +672,7 @@ Name               |  Description
 **400** <br> <span class = "error">`Bad Request`</span> | Bad Request error occurs when a request is malformed, syntactically incorrect, empty required parameters or any unknown parameter is passed. Additionally, Bad request may also occur in one of these conditions:<ul><li>Trying to update `start_time` or `end_time` such that `end_time` gets earlier than `start_time`.</li><li>Trying to update requirements of archived project.</li><li>Duration of requirement is more than allowed requirement duration set by Administrator using ers Cloud Application in <a href="https://app.eresourcescheduler.cloud/#!/admin/settings/requirement" target="_blank" class="api-ref">Administrator Requirement Settings</a>.</li></ul>
 **403** <br> <span class = "error">`Forbidden`</span> |Authorization failed due to insufficient permissions. This occurs when user does not have enough access rights to perform this action. Access for each user can be controlled by an Administrator using eRS Cloud Application.
 **404** <br> <span class = "error">`Not Found`</span> | Not Found error occurs when requested requirement does not exist (i.e. There is no requirement with given ID). This may also occur when requesting a requirement that has been deleted.
-**409** <br> <span class = "error">`Conflict`</span> | Conflict indicates that when you are updating a requirement linked to booking(s), then you must pass one of the parameters i.e; `delete_bookings=true` to delete requirement and respective booking or another parameter `unlink_bookings=true` will update requirement after unlinking the respective bookings. this action will be performed through <a href="https://app.eresourcescheduler.cloud/#!/admin/settings/requirement" target="_blank" class="api-ref">Administrator Requirement Settings</a>
+**409** <br> <span class = "error">`Conflict`</span> | Conflict indicates that when you are updating a requirement linked to booking(s), then you must pass one of the parameters i.e; `delete_bookings=true` to delete requirement and respective booking or another parameter `unlink_bookings=true` will update requirement after unlinking the respective bookings. this action will be performed through <a href="https://app.eresourcescheduler.cloud/#!/admin/settings/requirement" target="_blank" class="api-ref">Administrator Requirement Settings.</a>
 
 
 
@@ -859,4 +872,4 @@ curl -v -X DELETE "https://app.eresourcescheduler.cloud/rest/v1\
 **200** <br><span class = "success">`OK`</span> | This status code indicates that the operation was successful and a requirement deleted successfully.
 **403** <br> <span class = "error">`Forbidden`</span> | Authorization failed due to insufficient permissions. This occurs when user does not have enough access rights to perform this action. Access for each user can be controlled by an Administrator using eRS Cloud Application.
 **404** <br> <span class = "error">`Not Found`</span> | Not Found error occurs when requested requirement does not exist or has been deleted already.
-**409** <br> <span class = "error">`Conflict`</span> | Conflict indicates that when you are deleting a requirement linked to booking(s), then you must pass one of the parameters i.e; `delete_bookings=true` to delete both requirement and respective booking or another parameter `unlink_bookings=true` will delete requirement after unlinking the respective bookings. this action will be performed through <a href="https://app.eresourcescheduler.cloud/#!/admin/settings/requirement" target="_blank" class="api-ref">Administrator Requirement Settings</a>
+**409** <br> <span class = "error">`Conflict`</span> | Conflict indicates that when you are deleting a requirement linked to booking(s), then you must pass one of the parameters i.e; `delete_bookings=true` to delete both requirement and respective booking or another parameter `unlink_bookings=true` will delete requirement after unlinking the respective bookings. this action will be performed through <a href="https://app.eresourcescheduler.cloud/#!/admin/settings/requirement" target="_blank" class="api-ref">Administrator Requirement Settings.</a>

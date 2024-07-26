@@ -13,7 +13,7 @@
 }
 ```
     
-As the name shows, these fields are user-defined custom fields. A user with Administrator rights can add such custom fields using eRS Cloud Application. These fields can be used to capture additional information in Resource, Project, Booking and Timesheet forms.
+As the name shows, these fields are user-defined custom fields. A user with Administrator rights can add such custom fields using eRS Cloud Application. These fields can be used to capture additional information in Resource, Project, Requirement, Booking and Timesheet forms.
 
 User defined fields are filterable. Also, user can configure the visibility of such fields in the different forms, for example a field named `employee_id` can be created which is meant only for `Employee` type of resources.
 

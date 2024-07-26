@@ -18,6 +18,32 @@ curl -v \
  
 ```json
 {
+   "id": 43,
+   "code": "rate_from",
+   "display_name": "Billing Rate",
+   "field_type": "RTFRM",
+   "minnum": 0,
+   "is_system_defined": true,
+   "is_required": false
+},
+{
+    "id": 42,
+    "code": "billing_status",
+    "display_name": "Billing Status",
+    "field_type": "BLSTS",
+    "minnum": 0,
+    "is_system_defined": true,
+    "is_required": false
+},
+{
+    "id": 46,
+    "code": "disable_parallel",
+    "display_name": "Disable Parallel",
+    "field_type": "DDSS",
+    "is_system_defined": true,
+    "is_required": false
+},
+{
     "id": 29,
     "code": "effort",
     "display_name": "Effort",
@@ -54,6 +80,16 @@ curl -v \
     ]
 },
 {
+    "id": 44,
+    "code": "progress",
+    "display_name": "Progress",
+    "field_type": "INT",
+    "minnum": 0,
+    "maxnum": 100,
+    "is_system_defined": true,
+    "is_required": false
+},
+{
     "id": 3,
     "code": "project_id",
     "display_name": "Project",
@@ -61,6 +97,14 @@ curl -v \
     "is_required": true,
     "is_system_defined": true
 },
+{
+    "id": 75,
+    "code": "requirement_id",
+    "display_name": "Requirement",
+    "field_type": "REQSS",
+    "is_system_defined": true,
+    "is_required": false
+ },
 {
     "id": 2,
     "code": "resource_id",
@@ -96,6 +140,23 @@ curl -v \
     "is_system_defined": true
 },
 {
+    "id": 27,
+    "code": "timezone",
+    "display_name": "Time Zone",
+    "field_type": "DDSS",
+    "is_system_defined": true,
+    "is_required": false,
+    "options": [
+         {
+            "id": 136,
+            "name": "Africa/Abidjan",
+            "description": "Africa/Abidjan"
+          },
+          {...},
+          {...}
+   ]
+},
+{
     "id": 5,
     "code": "unit",
     "display_name": "Unit",
@@ -129,4 +190,4 @@ Name | Description
 **options** <br> `array of objects` | Field types such as Dropdown Single Select, Dropdown Multi Select, Radio Group etc. ( See <a href="#user-defined-fields" class = "api-ref">User Defined Fields</a> to know more. ) Allows user to pick one or more from these available options.
 **options.id** <br> `integer` |   Represents unique identification number for the individual option object.
 **options.name** <br> `string` | Represents name or content of option object.
-**options.color** <br> `string` | Allows a user to store color code of option object. <span class="warning">It is only available for LABEL type fields</span>.
+**options.color** <br> `string` | Allows a user to store color code of option object. <span class="warning">Only applicable for LABEL type fields</span>.

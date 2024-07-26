@@ -63,9 +63,9 @@ view=resource&start=2022-05-01&end=2022-05-31" \
         "name": "Martha Day",
         "total_planned_hrs": 66.0
       },
-
-    { ... },
-    { ... }
+      
+      { ... },
+      { ... }
   ]
 }
 ```
@@ -198,7 +198,7 @@ start=2022-05-01&end=2022-05-31&data=actual,planned" \
         "id": 2,
         "name": "Chris Rose",
         "total_actual_hrs": 30.50,
-        "total_planned_hrs": 0.0
+        "total_planned_hrs": 138.6
       },
       {
         "id": 10,
@@ -224,13 +224,13 @@ start=2022-05-01&end=2022-05-31&data=actual,planned" \
         "total_actual_hrs": 25.40,
         "total_planned_hrs": 66.0
       },
-    { ... },
-    { ... }
+      { ... },
+      { ... }
   ]
 }
 ```
 
-> Example: Get planned and actual utilization with daily breakup
+> Example: Get planned and actual utilization with daily breakup 
 
 ```shell
 curl -X POST "https://app.eresourcescheduler.cloud/rest/v1/utilization?\
@@ -252,17 +252,17 @@ start=2022-05-01&end=2022-05-05&data=actual,planned&daily_hrs=true" \
       {
         "daily_actual_hrs": {
         "2022-05-01": 3.0,
-        "2022-05-01": 2.0,
-        "2022-05-01": 5.0,
-        "2022-05-01": 0.0,
-        "2022-05-01": 3.0,
+        "2022-05-02": 2.0,
+        "2022-05-03": 5.0,
+        "2022-05-04": 0.0,
+        "2022-05-05": 3.0,
         },
         "daily_planned_hrs": {
         "2022-05-01": 5.0,
-        "2022-05-01": 5.0,
-        "2022-05-01": 5.0,
-        "2022-05-01": 3.0,
-        "2022-05-01": 0.0,
+        "2022-05-02": 5.0,
+        "2022-05-03": 5.0,
+        "2022-05-04": 3.0,
+        "2022-05-05": 0.0,
         },
 
         "id": 1,
@@ -273,17 +273,17 @@ start=2022-05-01&end=2022-05-05&data=actual,planned&daily_hrs=true" \
       {
         "daily_actual_hrs": {
         "2022-05-01": 4.0,
-        "2022-05-01": 4.0,
-        "2022-05-01": 4.0,
-        "2022-05-01": 4.0,
-        "2022-05-01": 5.0,
+        "2022-05-02": 4.0,
+        "2022-05-03": 4.0,
+        "2022-05-04": 4.0,
+        "2022-05-05": 5.0,
         },
         "daily_planned_hrs": {
         "2022-05-01": 8.0,
-        "2022-05-01": 8.0,
-        "2022-05-01": 8.0,
-        "2022-05-01": 8.0,
-        "2022-05-01": 8.0,
+        "2022-05-02": 8.0,
+        "2022-05-03": 8.0,
+        "2022-05-04": 8.0,
+        "2022-05-05": 8.0,
         },
 
         "id": 8,
@@ -294,6 +294,66 @@ start=2022-05-01&end=2022-05-05&data=actual,planned&daily_hrs=true" \
       {...},
       {...}      
    ]
+}
+```
+
+> Example: Get capacity hours by resource
+
+```shell
+curl -X POST "https://app.eresourcescheduler.cloud/rest/v1/utilization?\
+view=resource&data=capacity&start=2022-05-01&end=2022-05-31" \
+-H "Content-Type: application/json" \
+-H "Authorization: Bearer B8x5Vj1O65r6wnoV" \
+```
+
+> Response
+
+```json
+{
+  "end_date": "2022-05-31",
+  "offset": 0,
+  "total_count": 11,
+  "limit": 10,
+  "start_date": "2022-05-01",
+  "resources": [
+      {
+        "id": 1,
+        "name": "Albert Murphy",
+        "total_capacity_hrs": 176.0
+      },
+      {
+        "id": 8,
+        "name": "Ayn Dante",
+        "total_capacity_hrs": 528.0
+      },
+      {
+        "id": 2,
+        "name": "Chris Rose",
+        "total_capacity_hrs": 220.0
+      },
+      {
+        "id": 10,
+        "name": "Emily Eliot",
+        "total_capacity_hrs": 181.5
+      },
+      {
+        "id": 9,
+        "name": "Jayden Brock",
+        "total_capacity_hrs": 0.0
+      },
+      {
+        "id": 4,
+        "name": "Joanna Collins",
+        "total_capacity_hrs": 176.0
+      },
+      {
+        "id": 3,
+        "name": "Martha Day",
+        "total_capacity_hrs": 528.0
+      },
+      { ... },
+      { ... }
+  ]
 }
 ```
 
@@ -361,7 +421,7 @@ view=project&data=requested&start=2022-05-01&end=2022-05-31" \
 **limit**<br>`optional` | The limit keyword is used to limit the number of records returned from a result set. If a limit count is given, no more than that many records will be returned (but possibly less, if the query itself yields fewer records)<br>_Default value of `limit` is_ <span class="required">**`10`**</span>.<br>_Maximum value of `limit` can be_ <span class="required">**`25`**</span>.
 **offset**<br>`optional` | Offset keyword is used to skip n items. If the offset value is given as 10, then the first 10 records will be skipped from the result set. Offset is often used together with the limit keyword.<br>_Default value of `offset` is_ <span class="required">**`0`**</span>.
 **view**<br>`optional` | This parameter allows you to select from the two available views i.e. **resource** or **project**. The `Resource` view aggregates utilization data on resources, whereas the `project` view aggregates data on projects.<br>_Default value of `view` is_ <span class="required">**`resource`**</span>.
-**data**<br>`optional` | This parameter allows querying for planned and actual utilization. Possible values for this parameter can be any combination of 'planned,' 'actual,' or 'requested' when the view is set to project.<br>_Default value of `data` is_ <span class="required">**`planned`**</span>.
+**data**<br>`optional` | This parameter allows querying various metrics such as planned utilization, actual utilization, resource capacity, and requested hours. The keys for different metrics are listed below: <br>`planned`: for planned utilization<br>`actual`: for actual utilization<br>`capacity`: for resource capacity (only applicable when the view is set to resource)<br>`requested`: for requirement hours (only applicable when the view is set to project)<br>User can pass any combination of applicable metrics seperated by comma (i.e. planned,actual).<br>_Default value of `data` is_ <span class="required">**`planned`**</span>.
 **daily_hrs**<br>`optional` | This parameter defines whether the result should contain a daily breakup of hours or not. If the parameter with the true value exists in the request, then the response will include daily utilization hours along with the aggregated total utilization hours.<br>_Default value of `daily_hrs` is_ <span class="required">**`false`**</span>.
 
 

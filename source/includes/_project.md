@@ -17,16 +17,21 @@
     "end_date": null,
     "image": "https://erscloud/img/7aca31f5-29ae205ba315",
     "tags": ["NASA"],
+    "timezone": {
+      "name": "(UTC-10:00) Pacific/Honolulu (HST)",
+      "description": "Pacific/Honolulu",
+      "id": 316
+    },
     "disable_parallel_booking": false,
     "is_archive": false,
     "created_on": "2018-08-20T09:25:34.925474Z",
     "created_by": {
-      "name": "John doe",
+      "name": "John Doe",
       "id": 118
     },
     "modified_on": "2018-09-28T12:32:44.896426Z",
     "modified_by": {
-      "name": "John doe",
+      "name": "John Doe",
       "id": 118
     },
     "udf_color": "#FF8A80;0",
@@ -55,7 +60,7 @@ Name      |  Description
 **image** <br>`string` | String value representing URL of image file of project.
 **tags** <br>`array of strings` | Tags are the list of strings (labels) attached to this project object which could be used for the purpose of filtering, identification or other information.
 **timezone** <br>`integer` | Defines and categorize projects based on their location. This field is only available when scheduling plus module is on.
-**project_calender** <br>`integer` | ID of the Calendar object, which should be assigned to the project. Depending upon requirements, different calendars can be applied to different projects. If the calendar is omitted, then the default calendar (as defined in the Administrator calendar settings) will be applied to this project.This field is only available when scheduling plus module is on.
+**project_calendar** <br>`integer` | ID of the Calendar object, which should be assigned to the project. Depending upon requirements, different calendars can be applied to different projects. If the calendar is omitted, then the default calendar (as defined in the Administrator calendar settings) will be applied to this project.This field is only available when scheduling plus module is on.
 **is_archive** <br>`boolean` | Boolean value representing whether this project is archived or not.
 **created_on** <br>`string` | Timestamp at which this project object was created.
 **created_by** <br> `object` | Object representing user who created this project object.
@@ -81,7 +86,7 @@ Creates a new project object.
        "project_type_id": 1,
        "project_start_date": "2016-05-02",
        "email": "andrew@enbraun.com",
-       "udf_progress": 70
+       "udf_confirmed": true
      }'
 ```
 
@@ -96,9 +101,9 @@ Name               |  Description
 **end_date**<br><span class="mandatoryFlag">&#9873;</span> <span class="removableFlag mln-2">&#9873;</span> | String value representing a date in ISO 8601 extended notation for date i.e. yyyy-MM-dd.
 **tags**<br><span class="removableFlag mln-2">&#9873;</span> | An optional array of strings which could be attached to this project object as labels. This can be useful for the purpose of filtering, identification or other information.
 **timezone** <br><span class="mandatoryFlag">&#9873;</span> <span class="removableFlag mln-2">&#9873;</span> | One timezone object can be defined for a project.<br><br>_**Note**: <span class="warning">This field is only available when scheduling plus module is on</span>._
-**project_calender** <br>| ID of the Calendar object, which should be assigned to the project. Depending upon requirements, different calendars can be applied to different projects. If the calendar is omitted, then the default calendar (as defined in the Administrator calendar settings) will be applied to this project.<br><br>_**Note**: <span class="warning">This field is only available when scheduling plus module is on</span>._
+**project_calendar** <br>| ID of the Calendar object, which should be assigned to the project. Depending upon requirements, different calendars can be applied to different projects. If the calendar is omitted, then the default calendar (as defined in the Administrator calendar settings) will be applied to this project.<br><br>_**Note**: <span class="warning">This field is only available when scheduling plus module is on</span>._
 **disable_parallel_booking** <br>`optional` | Boolean value defining if project can or cannot have multiple bookings at a time. Default value for disable parallel booking is false.
-**udf_\*** <br><span class="mandatoryFlag">&#9873;</span> <span class="removableFlag mln-2">&#9873;</span> | A user with Administrator rights can add custom fields. These fields can be used to capture additional information in Projects. Different types of projects may have a different set of user-defined fields. The value for user defined field can be passed as shown in example request. In given example `udf_progress`</span> is a user defined field. <a href="#user-defined-fields" class="api-ref">Learn more</a><br><br>_**Note**: User with Administrator rights can make fields marked with <span class="mandatoryFlag iconInline">&#9873;</span> mandatory and remove fields marked with <span class="removableFlag iconInline">&#9873;</span>, from <a href ="#get-a-specific-project-type" class="api-ref">specific project type</a> using eRS Cloud Application. If mandatory fields are not passed with a valid value or removed fields are passed while creating project, the operation will fail with response code **400**_.
+**udf_\*** <br><span class="mandatoryFlag">&#9873;</span> <span class="removableFlag mln-2">&#9873;</span> | A user with Administrator rights can add custom fields. These fields can be used to capture additional information in Projects. Different types of projects may have a different set of user-defined fields. The value for user defined field can be passed as shown in example request. In given example `udf_confirmed`</span> is a user defined field. <a href="#user-defined-fields" class="api-ref">Learn more</a><br><br>_**Note**: User with Administrator rights can make fields marked with <span class="mandatoryFlag iconInline">&#9873;</span> mandatory and remove fields marked with <span class="removableFlag iconInline">&#9873;</span>, from <a href ="#get-a-specific-project-type" class="api-ref">specific project type</a> using eRS Cloud Application. If mandatory fields are not passed with a valid value or removed fields are passed while creating project, the operation will fail with response code **400**_.
 
 ### Returns
 
@@ -155,16 +160,21 @@ curl -v \
       "end_date": null,
       "image": "https://erscloud/img/7aca31f5-29ae205ba315",
       "tags": ["NASA"],
+      "timezone": {
+        "name": "(UTC-10:00) Pacific/Honolulu (HST)",
+        "description": "Pacific/Honolulu",
+        "id": 316
+      },
       "disable_parallel_booking": false,
       "is_archive": false,
       "created_on": "2018-08-20T09:25:34.925474Z",
       "created_by": {
-        "name": "John doe",
+        "name": "John Doe",
         "id": 118
       },
       "modified_on": "2018-09-28T12:32:44.896426Z",
       "modified_by": {
-        "name": "John doe",
+        "name": "John Doe",
         "id": 118
       },
       "udf_color": "#FF8A80;0",
@@ -228,16 +238,25 @@ curl -v "https://app.eresourcescheduler.cloud/rest/v1/projects/1" \
   "end_date": null,
   "image": "https://erscloud/img/7aca31f5-29ae205ba315",
   "tags": ["NASA"],
+  "timezone": {
+    "name": "(UTC-10:00) Pacific/Honolulu (HST)",
+    "description": "Pacific/Honolulu",
+    "id": 316
+  },
+  "project_calendar": {
+    "name": "Default",
+    "id": 1
+    },
   "disable_parallel_booking": false,
   "is_archive": false,
   "created_on": "2018-08-20T09:25:34.925474Z",
   "created_by": {
-    "name": "John doe",
+    "name": "John Doe",
     "id": 118
   },
   "modified_on": "2018-09-28T12:32:44.896426Z",
   "modified_by": {
-    "name": "John doe",
+    "name": "John Doe",
     "id": 118
   },
   "udf_color": "#FF8A80;0",
@@ -315,12 +334,12 @@ curl -X POST \
       "is_archive": false,
       "created_on": "2018-08-20T09:25:34.925474Z",
       "created_by": {
-        "name": "John doe",
+        "name": "John Doe",
         "id": 118
       },
       "modified_on": "2018-09-28T12:32:44.896426Z",
       "modified_by": {
-        "name": "John doe",
+        "name": "John Doe",
         "id": 118
       },
       "udf_color": "#FF8A80;0",
@@ -404,7 +423,7 @@ curl -v -X PUT \
 **email**<br><span class="mandatoryFlag">&#9873;</span> <span class="removableFlag mln-2">&#9873;</span> | String value representing email address associated with project object. Email address must be properly formatted with a maximum length of 254 characters.
 **tags**<br><span class="removableFlag mln-2">&#9873;</span> | An optional array of strings which could be attached to this project object as labels. This can be useful for the purpose of filtering, identification or other information. It can be up to 50 characters.
 **timezone** <br><span class="mandatoryFlag">&#9873;</span> <span class="removableFlag mln-2">&#9873;</span> | One timezone object can be defined for a project.<br><br>_**Note**: <span class="warning">This field is only available when scheduling plus module is on</span>._
-**project_calender** <br>| ID of the Calendar object, which should be assigned to the project. Depending upon requirements, different calendars can be applied to different projects. If the calendar is omitted, then the default calendar (as defined in the Administrator calendar settings) will be applied to this project.<br><br>_**Note**: <span class="warning">This field is only available when scheduling plus module is on</span>._
+**project_calendar** <br>| ID of the Calendar object, which should be assigned to the project. Depending upon requirements, different calendars can be applied to different projects. If the calendar is omitted, then the default calendar (as defined in the Administrator calendar settings) will be applied to this project.<br><br>_**Note**: <span class="warning">This field is only available when scheduling plus module is on</span>._
 **disable_parallel_booking** <br>`optional` | Boolean value defining if project can or cannot have multiple bookings at a time. Default value for disable parallel booking is false.
 **udf_\*** <br><span class="mandatoryFlag">&#9873;</span> <span class="removableFlag mln-2">&#9873;</span> | A user with Administrator rights can add custom fields. These fields can be used to capture additional information in Project. Different types of projects may have a different set of user-defined fields. The value for user defined field can be passed as shown in example request. In first example `udf_progress` is a user defined field. <a href ="#user-defined-fields" class="api-ref">Learn more</a><br><br>_**Note**: User with Administrator rights can make fields marked with <span class="mandatoryFlag iconInline">&#9873;</span> mandatory and remove fields marked with <span class="removableFlag iconInline">&#9873;</span>, from <a href ="#get-a-specific-project-type" class="api-ref">specific project type</a> using eRS Cloud Application. If mandatory fields are not passed with a valid value or removed fields are passed while updating project, the operation will fail with response code **400**_.
 
@@ -421,7 +440,7 @@ curl -v -X PUT \
 
 ## Delete a Project
 
- Permanently deletes requested project. It cannot be undone. By default, this operation will fail if a project has any bookings, timesheets or rates associated with it. To override this, forceful deletion can be used which will delete all bookings, timesheets and rates and then, ultimately deletes the project object.
+ Permanently deletes requested project. It cannot be undone. By default, this operation will fail if a project has any bookings, rates, timesheets or requirements associated with it. To override this, forceful deletion can be used which will delete all bookings, rates, timesheets and requirements and then, ultimately deletes the project object.
 
 > **`DELETE /v1/projects/{ID}`**
 
@@ -440,7 +459,7 @@ curl -v -X DELETE \
 curl -v -X DELETE \
 "https://app.eresourcescheduler.cloud/rest/v1/projects/1?\
 force_delete_bookings=true&force_delete_rates=true&\
-force_delete_timesheet_entry=true" \
+force_delete_timesheet_entry=true&force_delete_requirements=true" \
 -H "Authorization: Bearer B8x5Vj1O65r6wnoV" 
 ```
 
@@ -450,7 +469,7 @@ force_delete_timesheet_entry=true" \
 | Code      | Description  
 | ---:        |    :----   
 **200** <br><span class = "success">`OK`</span> |This status code indicates that the operation was successful and project deleted successfully.
-**409** <br> <span class = "error">`Conflict`</span> |Conflict indicates that the project can not be deleted as there are bookings, timesheets or rates associated with this project. If you wish to delete it any way you must use force delete option by passing <span class = "required">`true`</span> for parameter <span class = "required">`force_delete_bookings`</span>, <span class = "required">`force_delete_timesheet_entry`</span> and <span class = "required">`force_delete_rates`</span> which will delete all associated bookings, timesheets and rates corresponding to the project. This operation deletes all bookings, timesheets and rates of requested project and project itself (shown in example request).
+**409** <br> <span class = "error">`Conflict`</span> |Conflict indicates that the project can not be deleted because there are bookings, rates, timesheets or requirements associated with this project. If you wish to delete it any way you must use force delete option by passing <span class = "required">`true`</span> for parameter <span class = "required">`force_delete_bookings`</span>, <span class = "required">`force_delete_rates`</span>, <span class = "required">`force_delete_timesheet_entry`</span> and <span class = "required">`force_delete_requirements`</span> which will delete all associated bookings, rates,timesheets and requirements corresponding to the project. This operation deletes all bookings, timesheets and rates of requested project and project itself (shown in example request).
 **403** <br> <span class = "error">`Forbidden`</span> | Authorization failed due to insufficient permissions. This occurs when user does not have enough access rights to perform this action. Access for each user can be controlled by an Administrator using eRS Cloud Application.
 **404** <br><span class = "error">`Not Found`</span> |This status code indicates that requested project does not exist.| |
 
@@ -484,13 +503,15 @@ curl -v -X GET \
       "start_time": "2018-09-16T18:30:00+00:00",
       "end_time": "2018-09-20T18:30:00+00:00",
       "project_id": 2,
+      "created_on": "2018-09-06T10:09:00.853477+00:00",
+      "modified_on": "2018-09-27T12:32:00.853477+00:00",
       "created_by": {
         "id": 118,
-        "name": "John doe"
+        "name": "John Doe"
       },
       "modified_by": {
         "id": 118,
-        "name": "John doe"
+        "name": "John Doe"
       }
     },
     { ... },
@@ -503,11 +524,15 @@ curl -v -X GET \
 
 Name         |  Description
  ---:        |    :----   
- **ID** <br>`Integer`| Auto generated unique identifier for task object.
- **name** <br>`String`| Name of task object.
-**start_time** <br>`String`| Represents start time of task object.
-**end_time** <br>`String`| Represents end time of task object. 
-**project_id** <br>`Integer` | Unique ID of project object, which this task belongs to.
+ **ID** <br>`integer`| Auto generated unique identifier for task object.
+ **name** <br>`string`| Name of task object.
+**start_time** <br>`string`| Represents start time of task object.
+**end_time** <br>`string`| Represents end time of task object. 
+**project_id** <br>`integer` | Unique ID of project object, which this task belongs to.
+**created_on** <br>`string` | Timestamp at which this task object was created.
+**created_by** <br> `object` | Object representing user who created this task object.
+**modified_on** <br>`string` | Represents latest modification timestamp.
+**modified_by** <br>`object` | Object representing most recent user who modified this task object.
 
 
 ### Returns
@@ -604,7 +629,7 @@ Name         |  Description
 
 > **`DELETE /v1/projects/{ID}/tasks/{Task_ID}`**
 
-Permanently deletes a task. It cannot be undone. By default, this operation will fail if a task has any bookings or timesheets associated with it. To override this behavior, forceful removal can be used which will remove this task from all bookings and timesheets associated with it.
+Permanently deletes a task. It cannot be undone. By default, this operation will fail if a task has any bookings, timesheets or requirements associated with it. To override this behavior, forceful removal can be used which will remove this task from all bookings, timesheets and requirements associated with it.
 
 > Example Request
 
@@ -618,7 +643,8 @@ curl -v -X DELETE \
 ```shell
 curl -v -X DELETE \
 "https://app.eresourcescheduler.cloud/rest/v1/projects/1/tasks/2\
-?remove_from_bookings=true&remove_from_timesheet=true" \
+?remove_from_bookings=true&remove_from_timesheet=true&\
+remove_from_requirement=true"\
 -H "Authorization: Bearer B8x5Vj1O65r6wnoV"
 ```
 
@@ -627,7 +653,7 @@ curl -v -X DELETE \
 | Code      | Description  
 | :---      | :----
 **200** <br><span class = "success">`OK`</span> | Indicates that the operation was successful and task is deleted successfully.
-**409** <br> <span class = "error">`Conflict`</span> | Conflict indicates that the task can not be deleted as there are bookings or timesheets associated with this task. If you wish to delete it any way you must use force delete option by passing <span class = "required">`true`</span> for parameters <span class = "required">`remove_from_bookings`</span> and <span class = "required">`remove_from_timesheet`</span>. This operation removes task from all associated bookings and timesheets, and then deletes the task itself. Example request is shown to right.
+**409** <br> <span class = "error">`Conflict`</span> | Conflict indicates that the task can not be deleted because there are bookings ,timesheets or requirements associated with this task. If you wish to delete it any way you must use force delete option by passing <span class = "required">`true`</span> for parameters <span class = "required">`remove_from_bookings`</span>, <span class = "required">`remove_from_timesheet`</span> and <span class = "required">`remove_from_requirement`</span>. This operation removes task from all associated bookings,timesheets and requirements, and then deletes the task itself. Example request is shown to right.
 **403** <br> <span class = "error">`Forbidden`</span> |Authorization failed due to insufficient permissions. This occurs when user does not have enough access rights to perform this action. Access for each user can be controlled by an Administrator using eRS Cloud Application.
 **404** <br><span class = "error">`Not Found`</span> | This indicates that project or task does not exist.
 
@@ -662,15 +688,15 @@ curl -v -X GET \
       "start_date": "2022-01-04",
       "end_date": "2022-01-11",
       "project_id": 477,
-      "created_on": "2022-01-01T04:31:51.0+00:00",
-      "modified_on": "2022-01-01T04:35:03.0+00:00",
+      "created_on": "2022-01-01T09:07:23.456852+00:00",
+      "modified_on": "2022-01-01T09:07:56.216114+00:00",
       "created_by":{
           "id": 1146,
-          "name": "John Doe"
+          "name": "John Smith"
       },
       "modified_by":{
           "id": 1146,
-          "name": "John Doe"
+          "name": "John Smith"
       }
     },
     { ... },
@@ -683,12 +709,16 @@ curl -v -X GET \
 
 Name         |  Description
  ---:        |    :----   
-**ID** <br>`Integer`| Auto generated unique identifier for phase object.
-**name** <br>`String` | Name of phase object.
-**description** <br> `String` | Any other information regarding this phase.
-**start_date** <br>`String`| Represents start date of the phase object.
-**end_date** <br>`String`| Represents end date of the phase object. 
-**project_id** <br>`Integer` | Unique ID of project object, which this phase belongs to.
+**ID** <br>`integer`| Auto generated unique identifier for phase object.
+**name** <br>`string` | Name of phase object.
+**description** <br> `string` | Any other information regarding this phase.
+**start_date** <br>`string`| Represents start date of the phase object.
+**end_date** <br>`string`| Represents end date of the phase object. 
+**project_id** <br>`integer` | Unique ID of project object, which this phase belongs to.
+**created_on** <br>`string` | Timestamp at which this phase object was created.
+**created_by** <br> `object` | Object representing user who created this phase object.
+**modified_on** <br>`string` | Represents latest modification timestamp.
+**modified_by** <br>`object` | Object representing most recent user who modified this phase object.
 
 
 ### Returns
@@ -837,15 +867,15 @@ curl -v -X GET \
       "date": "2022-01-11",
       "color": "#3F51B5",
       "project_id": 477,
-      "created_on": "2022-01-01T04:31:51.0+00:00",
-      "modified_on": "2022-01-01T04:35:03.0+00:00",
+      "created_on": "2022-01-01T09:11:35.40366+00:00",
+      "modified_on": "2022-01-01T09:15:35.40366+00:00",
       "created_by":{
           "id": 1146,
-          "name": "John Doe"
+          "name": "John Smith"
       },
       "modified_by":{
           "id": 1146,
-          "name": "John Doe"
+          "name": "John Smith"
       }
     },
     { ... },
@@ -858,12 +888,16 @@ curl -v -X GET \
 
 Name         |  Description
  ---:        |    :----   
-**ID** <br>`Integer` | Auto-generated unique identifier for milestone object.
-**project_id** <br>`Integer` | Unique ID of project object, which this milestone belongs to.
-**name** <br>`String` | Name of milestone object.
-**description** <br> `String` | Any information regarding this milestone.
-**date** <br>`String`| Represents date of the milestone object.
-**color** <br>`String`| String representing hexadecimal color code assigned to the milestone. 
+**ID** <br>`integer` | Auto-generated unique identifier for milestone object.
+**project_id** <br>`integer` | Unique ID of project object, which this milestone belongs to.
+**name** <br>`string` | Name of milestone object.
+**description** <br> `string` | Any information regarding this milestone.
+**date** <br>`string`| Represents date of the milestone object.
+**color** <br>`string`| String representing hexadecimal color code assigned to the milestone.
+**created_on** <br>`string` | Timestamp at which this milestone object was created.
+**created_by** <br> `object` | Object representing user who created this milestone object.
+**modified_on** <br>`string` | Represents latest modification timestamp.
+**modified_by** <br>`object` | Object representing most recent user who modified this milestone object. 
 
 
 ### Returns
