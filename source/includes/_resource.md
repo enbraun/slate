@@ -659,7 +659,7 @@ curl -v -X POST "https://app.eresourcescheduler.cloud/rest/v1/resources/12/timin
 	    "effective_date": "2018-02-02" 
       }'
 ```
-> Example Request For Replace Existing Rate
+> Example request to replace existing calendar
  
 ```shell
 curl -v -X POST "https://app.eresourcescheduler.cloud/rest/v1/resources/12/timings" \
