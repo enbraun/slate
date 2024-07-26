@@ -801,7 +801,7 @@ grant_type=authorization_code</span><span class="se">\</span><span class="s2">
   </span><span class="err">...</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
-<p>As the name shows, these fields are user-defined custom fields. A user with Administrator rights can add such custom fields using eRS Cloud Application. These fields can be used to capture additional information in Resource, Project, Booking and Timesheet forms.</p>
+<p>As the name shows, these fields are user-defined custom fields. A user with Administrator rights can add such custom fields using eRS Cloud Application. These fields can be used to capture additional information in Resource, Project, Requirement, Booking and Timesheet forms.</p>
 
 <p>User defined fields are filterable. Also, user can configure the visibility of such fields in the different forms, for example a field named <code>employee_id</code> can be created which is meant only for <code>Employee</code> type of resources.</p>
 
@@ -895,6 +895,7 @@ grant_type=authorization_code</span><span class="se">\</span><span class="s2">
   </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Employee"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
   </span><span class="nl">"is_human"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"color"</span><span class="p">:</span><span class="w"> </span><span class="s2">"#000000;1"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"fields"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
       </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">52</span><span class="p">,</span><span class="w">
       </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"udf_department"</span><span class="p">,</span><span class="w">
@@ -1033,8 +1034,16 @@ grant_type=authorization_code</span><span class="se">\</span><span class="s2">
 <td style="text-align: left">Represents name for this object. This is used to identify object by using some meaningful phrase to describe type of resources like <code>Employee</code>, <code>Machine</code> etc.</td>
 </tr>
 <tr>
+<td style="text-align: right"><strong>description</strong>  <br><code>string</code></td>
+<td style="text-align: left">Description for the resource type object.</td>
+</tr>
+<tr>
 <td style="text-align: right"><strong>is_human</strong> <br> <code>boolean</code></td>
 <td style="text-align: left">Indicates whether this resource type is <code>human</code> or <code>non-human</code>. For example, <code>Employee</code> could be a human resource type while <code>Machine</code>, <code>Meeting Rooms</code> etc. can be non-human resource type.</td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>color</strong> <br><code>string</code></td>
+<td style="text-align: left">String representing the hexadecimal color code assigned to the resource type.</td>
 </tr>
 <tr>
 <td style="text-align: right"><strong>fields</strong> <br> <code>array of objects</code></td>
@@ -1106,7 +1115,7 @@ grant_type=authorization_code</span><span class="se">\</span><span class="s2">
 </tr>
 <tr>
 <td style="text-align: right"><strong>fields.options.color</strong> <br> <code>string</code></td>
-<td style="text-align: left">Allows a user to store color code of option object. <span class="warning">It is only available for LABEL type fields</span>.</td>
+<td style="text-align: left">Allows a user to store color code of option object. <span class="warning">Only applicable for LABEL type fields</span>.</td>
 </tr>
 </tbody></table>
 <h2 id='get-a-specific-resource-type'>Get a Specific Resource Type</h2>
@@ -1118,7 +1127,7 @@ grant_type=authorization_code</span><span class="se">\</span><span class="s2">
 <p>Example Request</p>
 </blockquote>
 <div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-v</span> <span class="se">\</span>
-<span class="s2">"https://app.eresourcescheduler.cloud/rest/v1/resourcetypes/2"</span> <span class="se">\</span>
+<span class="s2">"https://app.eresourcescheduler.cloud/rest/v1/resourcetypes/1"</span> <span class="se">\</span>
 <span class="nt">-H</span> <span class="s2">"Authorization: Bearer B8x5Vj1O65r6wnoV"</span>
 </code></pre></div>
 <blockquote>
@@ -1129,6 +1138,7 @@ grant_type=authorization_code</span><span class="se">\</span><span class="s2">
   </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Employee"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
   </span><span class="nl">"is_human"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"color"</span><span class="p">:</span><span class="w"> </span><span class="s2">"#000000;1"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"fields"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
       </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">52</span><span class="p">,</span><span class="w">
       </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"udf_department"</span><span class="p">,</span><span class="w">
@@ -1289,6 +1299,7 @@ grant_type=authorization_code</span><span class="se">\</span><span class="s2">
       </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Employee"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
       </span><span class="nl">"is_human"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"color"</span><span class="p">:</span><span class="w"> </span><span class="s2">"#000000;1"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"fields"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
           </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">52</span><span class="p">,</span><span class="w">
           </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"udf_department"</span><span class="p">,</span><span class="w">
@@ -1405,6 +1416,7 @@ grant_type=authorization_code</span><span class="se">\</span><span class="s2">
   </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
   </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Standard"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"color"</span><span class="p">:</span><span class="w"> </span><span class="s2">"#000000;1"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"fields"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
       </span><span class="p">{</span><span class="w">
         </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">39</span><span class="p">,</span><span class="w">
@@ -1509,6 +1521,14 @@ grant_type=authorization_code</span><span class="se">\</span><span class="s2">
 <td style="text-align: left">Represents name for this object. This is used to identify object by using some meaningful phrase to describe type of projects like <code>Standard</code>, <code>Education</code> etc.</td>
 </tr>
 <tr>
+<td style="text-align: right"><strong>description</strong>  <br><code>string</code></td>
+<td style="text-align: left">Description for project type object.</td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>color</strong> <br><code>string</code></td>
+<td style="text-align: left">String representing hexadecimal color code assigned to the project type.</td>
+</tr>
+<tr>
 <td style="text-align: right"><strong>fields</strong> <br><code>array of objects</code></td>
 <td style="text-align: left">Represents collection of fields (or attributes) that are available for this project type. Each <a href = "#project" class="api-ref">Project</a> object of this project type can store / update values for these field. While creating or updating a <a href = "#project" class="api-ref">Project</a> user must pass arguments which are available for intended project type object.</td>
 </tr>
@@ -1578,7 +1598,7 @@ grant_type=authorization_code</span><span class="se">\</span><span class="s2">
 </tr>
 <tr>
 <td style="text-align: right"><strong>fields.options.color</strong> <br> <code>string</code></td>
-<td style="text-align: left">Allows a user to store color code of option object. <span class="warning">It is only available for LABEL type fields</span>.</td>
+<td style="text-align: left">Allows a user to store color code of option object. <span class="warning">Only applicable for LABEL type fields</span>.</td>
 </tr>
 </tbody></table>
 <h2 id='get-a-specific-project-type'>Get a Specific Project Type</h2>
@@ -1602,6 +1622,7 @@ grant_type=authorization_code</span><span class="se">\</span><span class="s2">
     </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
     </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Education"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"color"</span><span class="p">:</span><span class="w"> </span><span class="s2">"#000000;1"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"fields"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
       </span><span class="p">{</span><span class="w">
         </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">39</span><span class="p">,</span><span class="w">
@@ -1704,6 +1725,7 @@ grant_type=authorization_code</span><span class="se">\</span><span class="s2">
       </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
       </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Education"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"color"</span><span class="p">:</span><span class="w"> </span><span class="s2">"#000000;1"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"fields"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
         </span><span class="p">{</span><span class="w">
           </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">39</span><span class="p">,</span><span class="w">
@@ -1912,7 +1934,7 @@ grant_type=authorization_code</span><span class="se">\</span><span class="s2">
 </tr>
 <tr>
 <td style="text-align: right"><strong>field_type</strong> <br><code>string</code></td>
-<td style="text-align: left">Represents the type of field. For example  TEXT (for Text Field), INT (for Integer Number field), DDSS (for Dropdown Single Select Field), etc.</td>
+<td style="text-align: left">Represents the type of field. For example  TEXT (for Text Field), INT (for Integer Number field), DDSS (for Dropdown Single Select Field), etc.See <a href = "#user-defined-fields" class="api-ref">User Defined Fields</a> to know more about different field types.</td>
 </tr>
 <tr>
 <td style="text-align: right"><strong>display_name</strong><br><code>string</code></td>
@@ -1925,6 +1947,18 @@ grant_type=authorization_code</span><span class="se">\</span><span class="s2">
 <tr>
 <td style="text-align: right"><strong>is_required</strong><br><code>boolean</code></td>
 <td style="text-align: left">Indicates whether this field is mandatory or not. If this field is a required field then a valid value for this field must be passed while creating such object and while updating object (if this field is intended to update).</td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>regex</strong> <br><code>string</code></td>
+<td style="text-align: left">Represents regular expression which must be matched by value for this field. <span class="warning">Only applicable for text fields</span>.</td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>fields.minlength</strong> <br><code>integer</code></td>
+<td style="text-align: left">Represents minimum no of characters in value this field can accept. <span class="warning"> Only applicable for text fields</span>.</td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>fields.maxlength</strong> <br><code>integer</code></td>
+<td style="text-align: left">Represents maximum no of characters in value this field can accept. <span class="warning">Only applicable for text fields<span>.</td>
 </tr>
 <tr>
 <td style="text-align: right"><strong>minnum</strong> <br><code>integer</code></td>
@@ -1954,6 +1988,10 @@ grant_type=authorization_code</span><span class="se">\</span><span class="s2">
 <td style="text-align: right"><strong>options.name</strong> <br> <code>string</code></td>
 <td style="text-align: left">Represents name or content of option object.</td>
 </tr>
+<tr>
+<td style="text-align: right"><strong>options.color</strong> <br> <code>string</code></td>
+<td style="text-align: left">Allows a user to store color code of option object. <span class="warning">Only applicable for LABEL type fields</span>.</td>
+</tr>
 </tbody></table>
 <h1 id='booking-profile'>Booking Profile</h1><h2 id='booking-profile-object'>Booking Profile Object</h2>
 <p>Booking profile object represents booking profile.</p>
@@ -1971,6 +2009,32 @@ grant_type=authorization_code</span><span class="se">\</span><span class="s2">
 <p>Example Response </p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+   </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">43</span><span class="p">,</span><span class="w">
+   </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rate_from"</span><span class="p">,</span><span class="w">
+   </span><span class="nl">"display_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Billing Rate"</span><span class="p">,</span><span class="w">
+   </span><span class="nl">"field_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RTFRM"</span><span class="p">,</span><span class="w">
+   </span><span class="nl">"minnum"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+   </span><span class="nl">"is_system_defined"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+   </span><span class="nl">"is_required"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+</span><span class="p">}</span><span class="err">,</span><span class="w">
+</span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">42</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"billing_status"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"display_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Billing Status"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"field_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BLSTS"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"minnum"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"is_system_defined"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"is_required"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+</span><span class="p">}</span><span class="err">,</span><span class="w">
+</span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">46</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"disable_parallel"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"display_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Disable Parallel"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"field_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DDSS"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"is_system_defined"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"is_required"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+</span><span class="p">}</span><span class="err">,</span><span class="w">
+</span><span class="p">{</span><span class="w">
     </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">29</span><span class="p">,</span><span class="w">
     </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"effort"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"display_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Effort"</span><span class="p">,</span><span class="w">
@@ -2007,6 +2071,16 @@ grant_type=authorization_code</span><span class="se">\</span><span class="s2">
     </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="err">,</span><span class="w">
 </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">44</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"progress"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"display_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Progress"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"field_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"INT"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"minnum"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"maxnum"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"is_system_defined"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"is_required"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+</span><span class="p">}</span><span class="err">,</span><span class="w">
+</span><span class="p">{</span><span class="w">
     </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
     </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"project_id"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"display_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Project"</span><span class="p">,</span><span class="w">
@@ -2014,6 +2088,14 @@ grant_type=authorization_code</span><span class="se">\</span><span class="s2">
     </span><span class="nl">"is_required"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
     </span><span class="nl">"is_system_defined"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
 </span><span class="p">}</span><span class="err">,</span><span class="w">
+</span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">75</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"requirement_id"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"display_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Requirement"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"field_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"REQSS"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"is_system_defined"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"is_required"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+ </span><span class="p">}</span><span class="err">,</span><span class="w">
 </span><span class="p">{</span><span class="w">
     </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
     </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"resource_id"</span><span class="p">,</span><span class="w">
@@ -2047,6 +2129,23 @@ grant_type=authorization_code</span><span class="se">\</span><span class="s2">
     </span><span class="nl">"field_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TSKSS"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"is_required"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
     </span><span class="nl">"is_system_defined"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="p">}</span><span class="err">,</span><span class="w">
+</span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">27</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"timezone"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"display_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Time Zone"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"field_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DDSS"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"is_system_defined"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"is_required"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"options"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+         </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">136</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Africa/Abidjan"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Africa/Abidjan"</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="p">{</span><span class="err">...</span><span class="p">},</span><span class="w">
+          </span><span class="p">{</span><span class="err">...</span><span class="p">}</span><span class="w">
+   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="err">,</span><span class="w">
 </span><span class="p">{</span><span class="w">
     </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
@@ -2133,7 +2232,7 @@ grant_type=authorization_code</span><span class="se">\</span><span class="s2">
 </tr>
 <tr>
 <td style="text-align: right"><strong>options.color</strong> <br> <code>string</code></td>
-<td style="text-align: left">Allows a user to store color code of option object. <span class="warning">It is only available for LABEL type fields</span>.</td>
+<td style="text-align: left">Allows a user to store color code of option object. <span class="warning">Only applicable for LABEL type fields</span>.</td>
 </tr>
 </tbody></table>
 <h1 id='timesheet-profile'>Timesheet Profile</h1><h2 id='timesheet-profile-object'>Timesheet Profile Object</h2>
@@ -2152,6 +2251,24 @@ grant_type=authorization_code</span><span class="se">\</span><span class="s2">
 <p>Example Response </p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+   </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">43</span><span class="p">,</span><span class="w">
+   </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rate_from"</span><span class="p">,</span><span class="w">
+   </span><span class="nl">"display_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Billing Rate"</span><span class="p">,</span><span class="w">
+   </span><span class="nl">"field_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RTFRM"</span><span class="p">,</span><span class="w">
+   </span><span class="nl">"minnum"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+   </span><span class="nl">"is_system_defined"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+   </span><span class="nl">"is_required"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+</span><span class="p">}</span><span class="err">,</span><span class="w">
+</span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">42</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"billing_status"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"display_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Billing Status"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"field_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BLSTS"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"minnum"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"is_system_defined"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"is_required"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+</span><span class="p">}</span><span class="err">,</span><span class="w">
+</span><span class="p">{</span><span class="w">
     </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">62</span><span class="p">,</span><span class="w">
     </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"date"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"display_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Date"</span><span class="p">,</span><span class="w">
@@ -2309,7 +2426,7 @@ grant_type=authorization_code</span><span class="se">\</span><span class="s2">
 </tr>
 <tr>
 <td style="text-align: right"><strong>options.color</strong> <br> <code>string</code></td>
-<td style="text-align: left">Allows a user to store color code of option object. <span class="warning">It is only available for LABEL type fields</span>.</td>
+<td style="text-align: left">Allows a user to store color code of option object. <span class="warning">Only applicable for LABEL type fields</span>.</td>
 </tr>
 </tbody></table>
 <h1 id='calendars'>Calendars</h1><h2 id='calendar-object'>Calendar Object</h2>
@@ -2319,7 +2436,7 @@ grant_type=authorization_code</span><span class="se">\</span><span class="s2">
 <p>Example Response</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
     </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"New York Calendar"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
     </span><span class="nl">"is_default"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">    
@@ -2371,7 +2488,7 @@ grant_type=authorization_code</span><span class="se">\</span><span class="s2">
     </span><span class="p">},</span><span class="w">
     </span><span class="nl">"modified_by"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">118</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John doe"</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John Doe"</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
@@ -2433,7 +2550,7 @@ grant_type=authorization_code</span><span class="se">\</span><span class="s2">
 </tr>
 <tr>
 <td style="text-align: right"><strong>holidays.date</strong><br><code>string</code></td>
-<td style="text-align: left">Represents date on which holiday occurs. This is a string value in ISO 8601 extended Date format i.e. yyyy-mm-dd.</td>
+<td style="text-align: left">Represents date on which holiday occurs. This is a string value in ISO 8601 extended Date format i.e. yyyy-MM-dd.</td>
 </tr>
 <tr>
 <td style="text-align: right"><strong>holidays.tags</strong><br><code>array of string</code></td>
@@ -2457,7 +2574,7 @@ grant_type=authorization_code</span><span class="se">\</span><span class="s2">
 </tr>
 <tr>
 <td style="text-align: right"><strong>exceptions.date</strong><br><code>string</code></td>
-<td style="text-align: left">Represents date on which exception is to be applied. This is a string value in ISO 8601 extended Date format i.e. yyyy-mm-dd.</td>
+<td style="text-align: left">Represents date on which exception is to be applied. This is a string value in ISO 8601 extended Date format i.e. yyyy-MM-dd.</td>
 </tr>
 <tr>
 <td style="text-align: right"><strong>exceptions.is_working_exception</strong><br><code>boolean</code></td>
@@ -2514,7 +2631,7 @@ grant_type=authorization_code</span><span class="se">\</span><span class="s2">
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"total_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
   </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
-      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
       </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"New York Calendar"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
       </span><span class="nl">"is_default"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
@@ -2547,7 +2664,7 @@ grant_type=authorization_code</span><span class="se">\</span><span class="s2">
       </span><span class="p">},</span><span class="w">
       </span><span class="nl">"modified_by"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">118</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John doe"</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John Doe"</span><span class="w">
       </span><span class="p">}</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="p">{</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="p">},</span><span class="w">
@@ -2635,7 +2752,7 @@ grant_type=authorization_code</span><span class="se">\</span><span class="s2">
     </span><span class="p">},</span><span class="w">
     </span><span class="nl">"modified_by"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">118</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John doe"</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John Doe"</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div><h3 id='returns-2'>Returns</h3>
@@ -2685,14 +2802,19 @@ grant_type=authorization_code</span><span class="se">\</span><span class="s2">
     </span><span class="p">}],</span><span class="w">
     </span><span class="nl">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
     </span><span class="nl">"disable_parallel_booking"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"timezone"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"(UTC+05:30) Asia/Calcutta (IST)"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Asia/Calcutta"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">230</span><span class="w">
+    </span><span class="p">},</span><span class="w">
     </span><span class="nl">"created_on"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-08-20T09:22:02.728296Z"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"created_by"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John doe"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John Doe"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">118</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="nl">"modified_on"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-11-20T11:55:48.880898Z"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"modified_by"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John doe"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John Doe"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">118</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="nl">"udf_qualifications"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
@@ -2819,7 +2941,7 @@ grant_type=authorization_code</span><span class="se">\</span><span class="s2">
        "first_name": "Andrew",
        "last_name": "Mooney",
        "resource_type_id": 1,
-       "start_date": "2016-05-02",
+       "start_date": "2018-01-01",
        "email": "andrew@enbraun.com",
        "roles" : [1,3],
        "udf_employee_no": "ABC0001"
@@ -2976,14 +3098,19 @@ grant_type=authorization_code</span><span class="se">\</span><span class="s2">
       </span><span class="p">}],</span><span class="w">
       </span><span class="nl">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
       </span><span class="nl">"disable_parallel_booking"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"timezone"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"(UTC+05:30) Asia/Calcutta (IST)"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Asia/Calcutta"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">230</span><span class="w">
+      </span><span class="p">},</span><span class="w">
       </span><span class="nl">"created_on"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-08-20T09:22:02.728296Z"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"created_by"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John doe"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John Doe"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">118</span><span class="w">
       </span><span class="p">},</span><span class="w">
       </span><span class="nl">"modified_on"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-11-20T11:55:48.880898Z"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"modified_by"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John doe"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John Doe"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">118</span><span class="w">
       </span><span class="p">},</span><span class="w">
       </span><span class="nl">"udf_qualifications"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
@@ -3089,14 +3216,19 @@ grant_type=authorization_code</span><span class="se">\</span><span class="s2">
     </span><span class="p">}],</span><span class="w">
     </span><span class="nl">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
     </span><span class="nl">"disable_parallel_booking"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"timezone"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"(UTC+05:30) Asia/Calcutta (IST)"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Asia/Calcutta"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">230</span><span class="w">
+    </span><span class="p">},</span><span class="w">
     </span><span class="nl">"created_on"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-08-20T09:22:02.728296Z"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"created_by"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John doe"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John Doe"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">118</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="nl">"modified_on"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-11-20T11:55:48.880898Z"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"modified_by"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John doe"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John Doe"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">118</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="nl">"udf_qualifications"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
@@ -3408,7 +3540,7 @@ force_delete_timesheet_entry=true"</span> <span class="se">\</span>
 </tr>
 <tr>
 <td style="text-align: right"><strong>409</strong> <br> <span class = "error"><code>Conflict</code></span></td>
-<td style="text-align: left">Conflict indicates that the resource can not be deleted as there are bookings, timesheets or rates associated with this resource. If you wish to delete it anyway, you must use force delete option by passing <span class = "required"><code>true</code></span> for parameters <span class = "required"><code>force_delete_bookings</code></span>, <span class = "required"><code>force_delete_timesheet_entry</code></span> and <span class = "required"><code>force_delete_rates</code></span> which will delete associated bookings, timesheets and rates corresponding to the resource. This operation deletes all bookings, timesheets and rates of requested resource and resource itself (shown in example request).</td>
+<td style="text-align: left">Conflict indicates that the resource can not be deleted because there are bookings, timesheets or rates associated with this resource. If you wish to delete it anyway, you must use force delete option by passing <span class = "required"><code>true</code></span> for parameters <span class = "required"><code>force_delete_bookings</code></span>, <span class = "required"><code>force_delete_timesheet_entry</code></span> and <span class = "required"><code>force_delete_rates</code></span> which will delete associated bookings, timesheets and rates corresponding to the resource. This operation deletes all bookings, timesheets and rates of requested resource and resource itself (shown in example request).</td>
 </tr>
 <tr>
 <td style="text-align: right"><strong>403</strong> <br> <span class = "error"><code>Forbidden</code></span></td>
@@ -3595,6 +3727,19 @@ force_delete_timesheet_entry=true"</span> <span class="se">\</span>
         "effective_date": "2018-02-02" 
       }'</span>
 </code></pre></div>
+<blockquote>
+<p>Example request to replace existing calendar</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-v</span> <span class="nt">-X</span> POST <span class="s2">"https://app.eresourcescheduler.cloud/rest/v1/resources/12/timings"</span> <span class="se">\</span>
+ <span class="nt">-H</span> <span class="s2">"Authorization: Bearer B8x5Vj1O65r6wnoV"</span> <span class="se">\</span>
+ <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+ <span class="nt">-d</span>  <span class="s1">'{ 
+        "applied_on": "2018-12-04T08:14:41.109Z", 
+        "calendar_id": "1", 
+        "effective_date": "2018-02-02" 
+        "replace_existing_date": true
+      }'</span>
+</code></pre></div>
 <p><span class="optional"><b>REQUEST BODY PARAMETERS</b></span></p>
 
 <table><thead>
@@ -3638,6 +3783,10 @@ force_delete_timesheet_entry=true"</span> <span class="se">\</span>
 <tr>
 <td style="text-align: left"><strong>404</strong> <br> <span class = "error"><code>Not Found</code></span></td>
 <td style="text-align: left">Not Found error occurs when requested resource does not exist.</td>
+</tr>
+<tr>
+<td style="text-align: left"><strong>409</strong> <br> <span class = "error"><code>Conflict</code></span></td>
+<td style="text-align: left">Conflict status indicates that the calendar cannot be applied on the provided effective date because a calendar is already set for that date. If you still wish to apply it on the same date, you must use the &quot;replace existing&quot; option by setting the <span class = "required"> <code>replace_existing_date</code></span> parameter to <span class = "required"> <code>true</code></span>. This will replace the existing calendar with the new one. Example request is shown to right.</td>
 </tr>
 </tbody></table>
 <h3 id='update-timings'>Update timings</h3>
@@ -4457,16 +4606,21 @@ curl <span class="nt">-v</span> <span class="nt">-X</span> DELETE <span class="s
     </span><span class="nl">"end_date"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
     </span><span class="nl">"image"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://erscloud/img/7aca31f5-29ae205ba315"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"NASA"</span><span class="p">],</span><span class="w">
+    </span><span class="nl">"timezone"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"(UTC-10:00) Pacific/Honolulu (HST)"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Pacific/Honolulu"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">316</span><span class="w">
+    </span><span class="p">},</span><span class="w">
     </span><span class="nl">"disable_parallel_booking"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
     </span><span class="nl">"is_archive"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
     </span><span class="nl">"created_on"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-08-20T09:25:34.925474Z"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"created_by"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John doe"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John Doe"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">118</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="nl">"modified_on"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-09-28T12:32:44.896426Z"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"modified_by"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John doe"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John Doe"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">118</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="nl">"udf_color"</span><span class="p">:</span><span class="w"> </span><span class="s2">"#FF8A80;0"</span><span class="p">,</span><span class="w">
@@ -4526,7 +4680,7 @@ curl <span class="nt">-v</span> <span class="nt">-X</span> DELETE <span class="s
 <td style="text-align: left">Defines and categorize projects based on their location. This field is only available when scheduling plus module is on.</td>
 </tr>
 <tr>
-<td style="text-align: right"><strong>project_calender</strong> <br><code>integer</code></td>
+<td style="text-align: right"><strong>project_calendar</strong> <br><code>integer</code></td>
 <td style="text-align: left">ID of the Calendar object, which should be assigned to the project. Depending upon requirements, different calendars can be applied to different projects. If the calendar is omitted, then the default calendar (as defined in the Administrator calendar settings) will be applied to this project.This field is only available when scheduling plus module is on.</td>
 </tr>
 <tr>
@@ -4574,7 +4728,7 @@ curl <span class="nt">-v</span> <span class="nt">-X</span> DELETE <span class="s
        "project_type_id": 1,
        "project_start_date": "2016-05-02",
        "email": "andrew@enbraun.com",
-       "udf_progress": 70
+       "udf_confirmed": true
      }'</span>
 </code></pre></div>
 <p><span class="optional"><b>REQUEST BODY PARAMETERS</b></span></p>
@@ -4614,7 +4768,7 @@ curl <span class="nt">-v</span> <span class="nt">-X</span> DELETE <span class="s
 <td style="text-align: left">One timezone object can be defined for a project.<br><br><em><strong>Note</strong>: <span class="warning">This field is only available when scheduling plus module is on</span>.</em></td>
 </tr>
 <tr>
-<td style="text-align: right"><strong>project_calender</strong> <br></td>
+<td style="text-align: right"><strong>project_calendar</strong> <br></td>
 <td style="text-align: left">ID of the Calendar object, which should be assigned to the project. Depending upon requirements, different calendars can be applied to different projects. If the calendar is omitted, then the default calendar (as defined in the Administrator calendar settings) will be applied to this project.<br><br><em><strong>Note</strong>: <span class="warning">This field is only available when scheduling plus module is on</span>.</em></td>
 </tr>
 <tr>
@@ -4623,7 +4777,7 @@ curl <span class="nt">-v</span> <span class="nt">-X</span> DELETE <span class="s
 </tr>
 <tr>
 <td style="text-align: right"><strong>udf_*</strong> <br><span class="mandatoryFlag">&#9873;</span> <span class="removableFlag mln-2">&#9873;</span></td>
-<td style="text-align: left">A user with Administrator rights can add custom fields. These fields can be used to capture additional information in Projects. Different types of projects may have a different set of user-defined fields. The value for user defined field can be passed as shown in example request. In given example <code>udf_progress</code></span> is a user defined field. <a href="#user-defined-fields" class="api-ref">Learn more</a><br><br><em><strong>Note</strong>: User with Administrator rights can make fields marked with <span class="mandatoryFlag iconInline">&#9873;</span> mandatory and remove fields marked with <span class="removableFlag iconInline">&#9873;</span>, from <a href ="#get-a-specific-project-type" class="api-ref">specific project type</a> using eRS Cloud Application. If mandatory fields are not passed with a valid value or removed fields are passed while creating project, the operation will fail with response code <strong>400</strong></em>.</td>
+<td style="text-align: left">A user with Administrator rights can add custom fields. These fields can be used to capture additional information in Projects. Different types of projects may have a different set of user-defined fields. The value for user defined field can be passed as shown in example request. In given example <code>udf_confirmed</code></span> is a user defined field. <a href="#user-defined-fields" class="api-ref">Learn more</a><br><br><em><strong>Note</strong>: User with Administrator rights can make fields marked with <span class="mandatoryFlag iconInline">&#9873;</span> mandatory and remove fields marked with <span class="removableFlag iconInline">&#9873;</span>, from <a href ="#get-a-specific-project-type" class="api-ref">specific project type</a> using eRS Cloud Application. If mandatory fields are not passed with a valid value or removed fields are passed while creating project, the operation will fail with response code <strong>400</strong></em>.</td>
 </tr>
 </tbody></table>
 <h3 id='returns'>Returns</h3>
@@ -4685,16 +4839,21 @@ curl <span class="nt">-v</span> <span class="nt">-X</span> DELETE <span class="s
       </span><span class="nl">"end_date"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
       </span><span class="nl">"image"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://erscloud/img/7aca31f5-29ae205ba315"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"NASA"</span><span class="p">],</span><span class="w">
+      </span><span class="nl">"timezone"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"(UTC-10:00) Pacific/Honolulu (HST)"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Pacific/Honolulu"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">316</span><span class="w">
+      </span><span class="p">},</span><span class="w">
       </span><span class="nl">"disable_parallel_booking"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
       </span><span class="nl">"is_archive"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
       </span><span class="nl">"created_on"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-08-20T09:25:34.925474Z"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"created_by"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John doe"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John Doe"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">118</span><span class="w">
       </span><span class="p">},</span><span class="w">
       </span><span class="nl">"modified_on"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-09-28T12:32:44.896426Z"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"modified_by"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John doe"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John Doe"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">118</span><span class="w">
       </span><span class="p">},</span><span class="w">
       </span><span class="nl">"udf_color"</span><span class="p">:</span><span class="w"> </span><span class="s2">"#FF8A80;0"</span><span class="p">,</span><span class="w">
@@ -4774,16 +4933,25 @@ curl <span class="nt">-v</span> <span class="nt">-X</span> DELETE <span class="s
   </span><span class="nl">"end_date"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
   </span><span class="nl">"image"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://erscloud/img/7aca31f5-29ae205ba315"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"NASA"</span><span class="p">],</span><span class="w">
+  </span><span class="nl">"timezone"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"(UTC-10:00) Pacific/Honolulu (HST)"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Pacific/Honolulu"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">316</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"project_calendar"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Default"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+    </span><span class="p">},</span><span class="w">
   </span><span class="nl">"disable_parallel_booking"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
   </span><span class="nl">"is_archive"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
   </span><span class="nl">"created_on"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-08-20T09:25:34.925474Z"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"created_by"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John doe"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John Doe"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">118</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="nl">"modified_on"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-09-28T12:32:44.896426Z"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"modified_by"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John doe"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John Doe"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">118</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="nl">"udf_color"</span><span class="p">:</span><span class="w"> </span><span class="s2">"#FF8A80;0"</span><span class="p">,</span><span class="w">
@@ -4868,12 +5036,12 @@ curl <span class="nt">-v</span> <span class="nt">-X</span> DELETE <span class="s
       </span><span class="nl">"is_archive"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
       </span><span class="nl">"created_on"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-08-20T09:25:34.925474Z"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"created_by"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John doe"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John Doe"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">118</span><span class="w">
       </span><span class="p">},</span><span class="w">
       </span><span class="nl">"modified_on"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-09-28T12:32:44.896426Z"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"modified_by"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John doe"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John Doe"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">118</span><span class="w">
       </span><span class="p">},</span><span class="w">
       </span><span class="nl">"udf_color"</span><span class="p">:</span><span class="w"> </span><span class="s2">"#FF8A80;0"</span><span class="p">,</span><span class="w">
@@ -5044,7 +5212,7 @@ curl <span class="nt">-v</span> <span class="nt">-X</span> DELETE <span class="s
 <td style="text-align: left">One timezone object can be defined for a project.<br><br><em><strong>Note</strong>: <span class="warning">This field is only available when scheduling plus module is on</span>.</em></td>
 </tr>
 <tr>
-<td style="text-align: right"><strong>project_calender</strong> <br></td>
+<td style="text-align: right"><strong>project_calendar</strong> <br></td>
 <td style="text-align: left">ID of the Calendar object, which should be assigned to the project. Depending upon requirements, different calendars can be applied to different projects. If the calendar is omitted, then the default calendar (as defined in the Administrator calendar settings) will be applied to this project.<br><br><em><strong>Note</strong>: <span class="warning">This field is only available when scheduling plus module is on</span>.</em></td>
 </tr>
 <tr>
@@ -5081,7 +5249,7 @@ curl <span class="nt">-v</span> <span class="nt">-X</span> DELETE <span class="s
 </tr>
 </tbody></table>
 <h2 id='delete-a-project'>Delete a Project</h2>
-<p>Permanently deletes requested project. It cannot be undone. By default, this operation will fail if a project has any bookings, timesheets or rates associated with it. To override this, forceful deletion can be used which will delete all bookings, timesheets and rates and then, ultimately deletes the project object.</p>
+<p>Permanently deletes requested project. It cannot be undone. By default, this operation will fail if a project has any bookings, rates, timesheets or requirements associated with it. To override this, forceful deletion can be used which will delete all bookings, rates, timesheets and requirements and then, ultimately deletes the project object.</p>
 
 <blockquote>
 <p><strong><code>DELETE /v1/projects/{ID}</code></strong></p>
@@ -5098,7 +5266,7 @@ curl <span class="nt">-v</span> <span class="nt">-X</span> DELETE <span class="s
 <div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-v</span> <span class="nt">-X</span> DELETE <span class="se">\</span>
 <span class="s2">"https://app.eresourcescheduler.cloud/rest/v1/projects/1?</span><span class="se">\</span><span class="s2">
 force_delete_bookings=true&amp;force_delete_rates=true&amp;</span><span class="se">\</span><span class="s2">
-force_delete_timesheet_entry=true"</span> <span class="se">\</span>
+force_delete_timesheet_entry=true&amp;force_delete_requirements=true"</span> <span class="se">\</span>
 <span class="nt">-H</span> <span class="s2">"Authorization: Bearer B8x5Vj1O65r6wnoV"</span> 
 </code></pre></div><h3 id='returns-5'>Returns</h3>
 <table><thead>
@@ -5113,7 +5281,7 @@ force_delete_timesheet_entry=true"</span> <span class="se">\</span>
 </tr>
 <tr>
 <td style="text-align: right"><strong>409</strong> <br> <span class = "error"><code>Conflict</code></span></td>
-<td style="text-align: left">Conflict indicates that the project can not be deleted as there are bookings, timesheets or rates associated with this project. If you wish to delete it any way you must use force delete option by passing <span class = "required"><code>true</code></span> for parameter <span class = "required"><code>force_delete_bookings</code></span>, <span class = "required"><code>force_delete_timesheet_entry</code></span> and <span class = "required"><code>force_delete_rates</code></span> which will delete all associated bookings, timesheets and rates corresponding to the project. This operation deletes all bookings, timesheets and rates of requested project and project itself (shown in example request).</td>
+<td style="text-align: left">Conflict indicates that the project can not be deleted because there are bookings, rates, timesheets or requirements associated with this project. If you wish to delete it any way you must use force delete option by passing <span class = "required"><code>true</code></span> for parameter <span class = "required"><code>force_delete_bookings</code></span>, <span class = "required"><code>force_delete_rates</code></span>, <span class = "required"><code>force_delete_timesheet_entry</code></span> and <span class = "required"><code>force_delete_requirements</code></span> which will delete all associated bookings, rates,timesheets and requirements corresponding to the project. This operation deletes all bookings, timesheets and rates of requested project and project itself (shown in example request).</td>
 </tr>
 <tr>
 <td style="text-align: right"><strong>403</strong> <br> <span class = "error"><code>Forbidden</code></span></td>
@@ -5151,13 +5319,15 @@ force_delete_timesheet_entry=true"</span> <span class="se">\</span>
       </span><span class="nl">"start_time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-09-16T18:30:00+00:00"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"end_time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-09-20T18:30:00+00:00"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"project_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"created_on"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-09-06T10:09:00.853477+00:00"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"modified_on"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-09-27T12:32:00.853477+00:00"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"created_by"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">118</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John doe"</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John Doe"</span><span class="w">
       </span><span class="p">},</span><span class="w">
       </span><span class="nl">"modified_by"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">118</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John doe"</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John Doe"</span><span class="w">
       </span><span class="p">}</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="p">{</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="p">},</span><span class="w">
@@ -5174,24 +5344,40 @@ force_delete_timesheet_entry=true"</span> <span class="se">\</span>
 </tr>
 </thead><tbody>
 <tr>
-<td style="text-align: right"><strong>ID</strong> <br><code>Integer</code></td>
+<td style="text-align: right"><strong>ID</strong> <br><code>integer</code></td>
 <td style="text-align: left">Auto generated unique identifier for task object.</td>
 </tr>
 <tr>
-<td style="text-align: right"><strong>name</strong> <br><code>String</code></td>
+<td style="text-align: right"><strong>name</strong> <br><code>string</code></td>
 <td style="text-align: left">Name of task object.</td>
 </tr>
 <tr>
-<td style="text-align: right"><strong>start_time</strong> <br><code>String</code></td>
+<td style="text-align: right"><strong>start_time</strong> <br><code>string</code></td>
 <td style="text-align: left">Represents start time of task object.</td>
 </tr>
 <tr>
-<td style="text-align: right"><strong>end_time</strong> <br><code>String</code></td>
+<td style="text-align: right"><strong>end_time</strong> <br><code>string</code></td>
 <td style="text-align: left">Represents end time of task object.</td>
 </tr>
 <tr>
-<td style="text-align: right"><strong>project_id</strong> <br><code>Integer</code></td>
+<td style="text-align: right"><strong>project_id</strong> <br><code>integer</code></td>
 <td style="text-align: left">Unique ID of project object, which this task belongs to.</td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>created_on</strong> <br><code>string</code></td>
+<td style="text-align: left">Timestamp at which this task object was created.</td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>created_by</strong> <br> <code>object</code></td>
+<td style="text-align: left">Object representing user who created this task object.</td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>modified_on</strong> <br><code>string</code></td>
+<td style="text-align: left">Represents latest modification timestamp.</td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>modified_by</strong> <br><code>object</code></td>
+<td style="text-align: left">Object representing most recent user who modified this task object.</td>
 </tr>
 </tbody></table>
 <h3 id='returns-6'>Returns</h3>
@@ -5350,7 +5536,7 @@ curl <span class="nt">-v</span> <span class="nt">-X</span> POST <span class="se"
 <p><strong><code>DELETE /v1/projects/{ID}/tasks/{Task_ID}</code></strong></p>
 </blockquote>
 
-<p>Permanently deletes a task. It cannot be undone. By default, this operation will fail if a task has any bookings or timesheets associated with it. To override this behavior, forceful removal can be used which will remove this task from all bookings and timesheets associated with it.</p>
+<p>Permanently deletes a task. It cannot be undone. By default, this operation will fail if a task has any bookings, timesheets or requirements associated with it. To override this behavior, forceful removal can be used which will remove this task from all bookings, timesheets and requirements associated with it.</p>
 
 <blockquote>
 <p>Example Request</p>
@@ -5364,7 +5550,8 @@ curl <span class="nt">-v</span> <span class="nt">-X</span> POST <span class="se"
 </blockquote>
 <div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-v</span> <span class="nt">-X</span> DELETE <span class="se">\</span>
 <span class="s2">"https://app.eresourcescheduler.cloud/rest/v1/projects/1/tasks/2</span><span class="se">\</span><span class="s2">
-?remove_from_bookings=true&amp;remove_from_timesheet=true"</span> <span class="se">\</span>
+?remove_from_bookings=true&amp;remove_from_timesheet=true&amp;</span><span class="se">\</span><span class="s2">
+remove_from_requirement=true"</span><span class="se">\</span>
 <span class="nt">-H</span> <span class="s2">"Authorization: Bearer B8x5Vj1O65r6wnoV"</span>
 </code></pre></div><h3 id='returns-9'>Returns</h3>
 <table><thead>
@@ -5379,7 +5566,7 @@ curl <span class="nt">-v</span> <span class="nt">-X</span> POST <span class="se"
 </tr>
 <tr>
 <td style="text-align: left"><strong>409</strong> <br> <span class = "error"><code>Conflict</code></span></td>
-<td style="text-align: left">Conflict indicates that the task can not be deleted as there are bookings or timesheets associated with this task. If you wish to delete it any way you must use force delete option by passing <span class = "required"><code>true</code></span> for parameters <span class = "required"><code>remove_from_bookings</code></span> and <span class = "required"><code>remove_from_timesheet</code></span>. This operation removes task from all associated bookings and timesheets, and then deletes the task itself. Example request is shown to right.</td>
+<td style="text-align: left">Conflict indicates that the task can not be deleted because there are bookings ,timesheets or requirements associated with this task. If you wish to delete it any way you must use force delete option by passing <span class = "required"><code>true</code></span> for parameters <span class = "required"><code>remove_from_bookings</code></span>, <span class = "required"><code>remove_from_timesheet</code></span> and <span class = "required"><code>remove_from_requirement</code></span>. This operation removes task from all associated bookings,timesheets and requirements, and then deletes the task itself. Example request is shown to right.</td>
 </tr>
 <tr>
 <td style="text-align: left"><strong>403</strong> <br> <span class = "error"><code>Forbidden</code></span></td>
@@ -5418,15 +5605,15 @@ curl <span class="nt">-v</span> <span class="nt">-X</span> POST <span class="se"
       </span><span class="nl">"start_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-01-04"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"end_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-01-11"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"project_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">477</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"created_on"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-01-01T04:31:51.0+00:00"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"modified_on"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-01-01T04:35:03.0+00:00"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"created_on"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-01-01T09:07:23.456852+00:00"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"modified_on"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-01-01T09:07:56.216114+00:00"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"created_by"</span><span class="p">:{</span><span class="w">
           </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1146</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John Doe"</span><span class="w">
+          </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John Smith"</span><span class="w">
       </span><span class="p">},</span><span class="w">
       </span><span class="nl">"modified_by"</span><span class="p">:{</span><span class="w">
           </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1146</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John Doe"</span><span class="w">
+          </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John Smith"</span><span class="w">
       </span><span class="p">}</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="p">{</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="p">},</span><span class="w">
@@ -5443,28 +5630,44 @@ curl <span class="nt">-v</span> <span class="nt">-X</span> POST <span class="se"
 </tr>
 </thead><tbody>
 <tr>
-<td style="text-align: right"><strong>ID</strong> <br><code>Integer</code></td>
+<td style="text-align: right"><strong>ID</strong> <br><code>integer</code></td>
 <td style="text-align: left">Auto generated unique identifier for phase object.</td>
 </tr>
 <tr>
-<td style="text-align: right"><strong>name</strong> <br><code>String</code></td>
+<td style="text-align: right"><strong>name</strong> <br><code>string</code></td>
 <td style="text-align: left">Name of phase object.</td>
 </tr>
 <tr>
-<td style="text-align: right"><strong>description</strong> <br> <code>String</code></td>
+<td style="text-align: right"><strong>description</strong> <br> <code>string</code></td>
 <td style="text-align: left">Any other information regarding this phase.</td>
 </tr>
 <tr>
-<td style="text-align: right"><strong>start_date</strong> <br><code>String</code></td>
+<td style="text-align: right"><strong>start_date</strong> <br><code>string</code></td>
 <td style="text-align: left">Represents start date of the phase object.</td>
 </tr>
 <tr>
-<td style="text-align: right"><strong>end_date</strong> <br><code>String</code></td>
+<td style="text-align: right"><strong>end_date</strong> <br><code>string</code></td>
 <td style="text-align: left">Represents end date of the phase object.</td>
 </tr>
 <tr>
-<td style="text-align: right"><strong>project_id</strong> <br><code>Integer</code></td>
+<td style="text-align: right"><strong>project_id</strong> <br><code>integer</code></td>
 <td style="text-align: left">Unique ID of project object, which this phase belongs to.</td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>created_on</strong> <br><code>string</code></td>
+<td style="text-align: left">Timestamp at which this phase object was created.</td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>created_by</strong> <br> <code>object</code></td>
+<td style="text-align: left">Object representing user who created this phase object.</td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>modified_on</strong> <br><code>string</code></td>
+<td style="text-align: left">Represents latest modification timestamp.</td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>modified_by</strong> <br><code>object</code></td>
+<td style="text-align: left">Object representing most recent user who modified this phase object.</td>
 </tr>
 </tbody></table>
 <h3 id='returns-10'>Returns</h3>
@@ -5687,15 +5890,15 @@ curl <span class="nt">-v</span> <span class="nt">-X</span> POST <span class="se"
       </span><span class="nl">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-01-11"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"color"</span><span class="p">:</span><span class="w"> </span><span class="s2">"#3F51B5"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"project_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">477</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"created_on"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-01-01T04:31:51.0+00:00"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"modified_on"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-01-01T04:35:03.0+00:00"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"created_on"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-01-01T09:11:35.40366+00:00"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"modified_on"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-01-01T09:15:35.40366+00:00"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"created_by"</span><span class="p">:{</span><span class="w">
           </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1146</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John Doe"</span><span class="w">
+          </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John Smith"</span><span class="w">
       </span><span class="p">},</span><span class="w">
       </span><span class="nl">"modified_by"</span><span class="p">:{</span><span class="w">
           </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1146</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John Doe"</span><span class="w">
+          </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John Smith"</span><span class="w">
       </span><span class="p">}</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="p">{</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="p">},</span><span class="w">
@@ -5712,28 +5915,44 @@ curl <span class="nt">-v</span> <span class="nt">-X</span> POST <span class="se"
 </tr>
 </thead><tbody>
 <tr>
-<td style="text-align: right"><strong>ID</strong> <br><code>Integer</code></td>
+<td style="text-align: right"><strong>ID</strong> <br><code>integer</code></td>
 <td style="text-align: left">Auto-generated unique identifier for milestone object.</td>
 </tr>
 <tr>
-<td style="text-align: right"><strong>project_id</strong> <br><code>Integer</code></td>
+<td style="text-align: right"><strong>project_id</strong> <br><code>integer</code></td>
 <td style="text-align: left">Unique ID of project object, which this milestone belongs to.</td>
 </tr>
 <tr>
-<td style="text-align: right"><strong>name</strong> <br><code>String</code></td>
+<td style="text-align: right"><strong>name</strong> <br><code>string</code></td>
 <td style="text-align: left">Name of milestone object.</td>
 </tr>
 <tr>
-<td style="text-align: right"><strong>description</strong> <br> <code>String</code></td>
+<td style="text-align: right"><strong>description</strong> <br> <code>string</code></td>
 <td style="text-align: left">Any information regarding this milestone.</td>
 </tr>
 <tr>
-<td style="text-align: right"><strong>date</strong> <br><code>String</code></td>
+<td style="text-align: right"><strong>date</strong> <br><code>string</code></td>
 <td style="text-align: left">Represents date of the milestone object.</td>
 </tr>
 <tr>
-<td style="text-align: right"><strong>color</strong> <br><code>String</code></td>
+<td style="text-align: right"><strong>color</strong> <br><code>string</code></td>
 <td style="text-align: left">String representing hexadecimal color code assigned to the milestone.</td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>created_on</strong> <br><code>string</code></td>
+<td style="text-align: left">Timestamp at which this milestone object was created.</td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>created_by</strong> <br> <code>object</code></td>
+<td style="text-align: left">Object representing user who created this milestone object.</td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>modified_on</strong> <br><code>string</code></td>
+<td style="text-align: left">Represents latest modification timestamp.</td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>modified_by</strong> <br><code>object</code></td>
+<td style="text-align: left">Object representing most recent user who modified this milestone object.</td>
 </tr>
 </tbody></table>
 <h3 id='returns-14'>Returns</h3>
@@ -6630,6 +6849,7 @@ curl <span class="nt">-v</span> <span class="nt">-X</span> DELETE <span class="s
     </span><span class="nl">"flexi_range_duration"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
     </span><span class="nl">"flexi_range_unit"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
     </span><span class="nl">"allow_multi_allocation"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"sync_to_booking"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
     </span><span class="nl">"conditions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="nl">"operator"</span><span class="p">:</span><span class="w"> </span><span class="s2">"all"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"field"</span><span class="p">:</span><span class="w"> </span><span class="s2">"udf_skills"</span><span class="p">,</span><span class="w">
@@ -6659,15 +6879,15 @@ curl <span class="nt">-v</span> <span class="nt">-X</span> DELETE <span class="s
       </span><span class="nl">"weightage"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
       </span><span class="nl">"is_mandatory"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
     </span><span class="p">}</span><span class="w"> </span><span class="p">],</span><span class="w">
-    </span><span class="nl">"created_on"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-09-15T09:03:48.428713+00:00"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"created_on"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-09-15T09:03:33.505344Z"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"created_by"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John doe"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="w">
+      </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John Doe"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">118</span><span class="w">
     </span><span class="p">},</span><span class="w">
-    </span><span class="nl">"modified_on"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-09-15T09:05:40.515333+00:00"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"modified_on"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-09-15T09:05:12.314058Z"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"modified_by"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John doe"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="w">
+      </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John Doe"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">118</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
@@ -6736,6 +6956,10 @@ curl <span class="nt">-v</span> <span class="nt">-X</span> DELETE <span class="s
 <td style="text-align: left">This refers to allocation of a specific requirement to multiple assignment.</td>
 </tr>
 <tr>
+<td style="text-align: right"><strong>sync_to_booking</strong> <br><code>boolean</code></td>
+<td style="text-align: left">This setting indicates whether the values of common custom fields in the bookings corresponding to this requirement are always in sync. When turned on, users will not be able to modify the common custom fields in the booking form, and the values will always be taken from the linked requirement.</td>
+</tr>
+<tr>
 <td style="text-align: right"><strong>conditions</strong> <br><code>array of object</code></td>
 <td style="text-align: left">This refers to the criteria on which the requirement must be fulfilled.<li><strong>conditions.field</strong> <code>string</code> <br> This is a reference to the text&#39;s API_code.</li> <li><strong><a href="#requirement-operator" class="api-ref">conditions.operator</a></strong> <code>string</code>  <br> This refers to a character that represents a specific mathematical or logical action or process. </li><li><strong>conditions.values</strong> <br>This refers to the values defined for the requirement to be considered in suggested resources.</li><li><strong>conditions.weightage</strong> <code>integer</code>  <br> Every condition can be assigned relative importance in comparison to other conditions to calculate its weightage. Weightage is ultimately used to calculate the match score of resources.</li> <li><strong>conditions.is_mandatory</strong> <code>boolean</code> <br> Indicates whether this field is mandatory. If this field is marked as mandatory, it means that a required value must be provided for it in the suggested resources.</li></td>
 </tr>
@@ -6755,6 +6979,10 @@ curl <span class="nt">-v</span> <span class="nt">-X</span> DELETE <span class="s
 <td style="text-align: right"><strong>modified_by</strong> <br><code>object</code></td>
 <td style="text-align: left">Object representing most recent user who modified this requirement object.</td>
 </tr>
+<tr>
+<td style="text-align: right"><strong>udf_*</strong></td>
+<td style="text-align: left">Custom user-defined fields are used to capture additional information of requirement. User-defined fields can be of multiple types. Custom fields are highly useful for optimally configuring requirement objects. In the given example response, all keys starting with the prefix <code>udf_</code> are user-defined custom fields. <a href="#user-defined-fields" class="api-ref">Learn more</a></td>
+</tr>
 </tbody></table>
 <h2 id='create-a-requirement'>Create a Requirement</h2>
 <blockquote>
@@ -6771,12 +6999,14 @@ curl <span class="nt">-v</span> <span class="nt">-X</span> DELETE <span class="s
         "role_id": 7,
         "start_time": "2023-10-02T00:00:00",
         "end_time": "2023-10-03T00:00:00",
+        "udf_confirmed": true,
         "effort": 3,
         "unit": 4,
         "tags": ["London","Onsite"] ,
         "flexi_range_duration": 5,
         "flexi_range_unit": 2,
         "allow_multi_allocation": true,
+         "sync_to_booking": true,
         "conditions": [{
             "field": "udf_qualification",
             "operator": "any",
@@ -6808,20 +7038,20 @@ curl <span class="nt">-v</span> <span class="nt">-X</span> DELETE <span class="s
 <td style="text-align: left">ID of the project object for which this requirement object is being created.</td>
 </tr>
 <tr>
-<td style="text-align: right"><strong>task_id</strong><br></td>
+<td style="text-align: right"><strong>task_id</strong><br><span class="mandatoryFlag">&#9873;</span> <span class="removableFlag mln-2">&#9873;</span></td>
 <td style="text-align: left">ID of the task object within the project that needs to be done in this requirement.</td>
 </tr>
 <tr>
-<td style="text-align: right"><strong>role_id</strong><br></td>
+<td style="text-align: right"><strong>role_id</strong><br><span class="mandatoryFlag">&#9873;</span> <span class="removableFlag mln-2">&#9873;</span></td>
 <td style="text-align: left">ID of the role object that the resource needs to perform for the requirement. Role can be either the performing role or non-performing role of the resource.</td>
 </tr>
 <tr>
 <td style="text-align: right"><strong>start_time</strong> <br> <span class="required"><code>required</code></span></td>
-<td style="text-align: left">Represents start date and time for requirement object. This field accepts value in ISO 8601 format for date-time i.e. yyyy-mm-ddThh:mm:ss. The value must be snapped in 15 minutes interval, which effectively means that minutes values should be one of(00/15/30/45) and seconds value should always be 0. (if given).</td>
+<td style="text-align: left">Represents start date and time for requirement object. This field accepts value in ISO 8601 format for date-time i.e. yyyy-MM-ddThh:mm:ss. The value must be snapped in 15 minutes interval, which effectively means that minutes values should be one of(00/15/30/45) and seconds value should always be 0. (if given).</td>
 </tr>
 <tr>
 <td style="text-align: right"><strong>end_time</strong> <br> <span class="required"><code>required</code></span></td>
-<td style="text-align: left">Represents end date and time for requirement object. This field accepts value in ISO 8601 format for date-time i.e. yyyy-mm-ddThh:mm:ss. The value must be snapped in 15 minutes interval, which effectively means that minutes values should be one of(00/15/30/45) and seconds value should always be 0. (if given). <code>end_time</code> must always be ahead of <code>start_time</code> by at least 15 minutes as a requirement of less than 15 minutes is not allowed.</td>
+<td style="text-align: left">Represents end date and time for requirement object. This field accepts value in ISO 8601 format for date-time i.e. yyyy-MM-ddThh:mm:ss. The value must be snapped in 15 minutes interval, which effectively means that minutes values should be one of(00/15/30/45) and seconds value should always be 0. (if given). <code>end_time</code> must always be ahead of <code>start_time</code> by at least 15 minutes as a requirement of less than 15 minutes is not allowed.</td>
 </tr>
 <tr>
 <td style="text-align: right"><strong>effort</strong> <br> <span class="required"><code>required</code></span></td>
@@ -6832,7 +7062,7 @@ curl <span class="nt">-v</span> <span class="nt">-X</span> DELETE <span class="s
 <td style="text-align: left">Integer number (2 or 4) represents the unit in which effort is defined. The unit value can be one of the following:<br><br><li> <strong>2</strong> for <code>Hours</code> : This defines <code>effort</code> value in fixed hours which doesn&#39;t change upon changes in requirement.</li><li> <strong>4</strong> for <code>Full Time Equivalent</code> : Full time equivalent is calculated using FTE calendar defined in <a href="https://app.eresourcescheduler.cloud/#!/admin/calendars/settings" target="_blank" class="api-ref">Administrator calendar settings</a>. Capacity from FTE calendar for defined time in requirement, is considered as 1 FTE.</li><br></td>
 </tr>
 <tr>
-<td style="text-align: right"><strong>tags</strong> <br><code>array of strings</code></td>
+<td style="text-align: right"><strong>tags</strong> <br><span class="removableFlag mln-2">&#9873;</span></td>
 <td style="text-align: left">Tags are strings (labels) associated with this requirement object which could be used for the purpose of identification or other information.</td>
 </tr>
 <tr>
@@ -6848,8 +7078,16 @@ curl <span class="nt">-v</span> <span class="nt">-X</span> DELETE <span class="s
 <td style="text-align: left">This refers to allocation of a specific requirement to multiple resources simultaneously.</td>
 </tr>
 <tr>
+<td style="text-align: right"><strong>sync_to_booking</strong> <br><code>boolean</code></td>
+<td style="text-align: left">This setting indicates whether the values of common custom fields in the bookings corresponding to this requirement are always in sync. When turned on, users will not be able to modify the common custom fields in the booking form, and the values will always be taken from the linked requirement.</td>
+</tr>
+<tr>
 <td style="text-align: right"><strong>conditions</strong> <br><code>array of object</code></td>
 <td style="text-align: left">This refers to the criteria on which the requirement must be fulfilled.<li><strong>conditions.field</strong> <code>string</code> <br> This is a reference to the text&#39;s API_code.</li> <li><a href="#requirement-operator" class="api-ref">conditions.operator</a><code>string</code>  <br> This refers to a character that represents a specific mathematical or logical action or process. </li><li><strong>conditions.values</strong> <br>This refers to the values defined for the requirement to be considered in suggested resources.</li> <li><strong>conditions.weightage</strong> <code>integer</code>  <br> Every condition can be assigned relative importance in comparison to other conditions to calculate its weightage. Weightage is ultimately used to calculate the match score of resources.</li> <li><strong>conditions.is_mandatory</strong> <code>boolean</code> <br> Indicates whether this field is mandatory. If this field is marked as mandatory, it means that a required value must be provided for it in the suggested resources.</li></td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>udf_*</strong><br><span class="mandatoryFlag">&#9873;</span> <span class="removableFlag mln-2">&#9873;</span></td>
+<td style="text-align: left">A user with Administrator rights can add custom fields. These fields can be used to capture additional information in Requirements. The value for a user defined field can be passed as shown in example request. In given example <code>udf_confirmed</code></span> is a user defined field. <a href="#user-defined-fields" class="api-ref">Learn more</a><br><br><em><strong>Note</strong>: User with Administrator rights can make fields marked with <span class="mandatoryFlag iconInline">&#9873;</span> mandatory and remove fields marked with <span class="removableFlag iconInline">&#9873;</span>, from <a href ="#requirement-profile" class="api-ref">requirement profile</a> using eRS Cloud Application. If mandatory fields are not passed with a valid value or if removed fields are passed while creating requirement, the operation will fail with response code <strong>400</strong></em>.</td>
 </tr>
 </tbody></table>
 <h3 id='returns'>Returns</h3>
@@ -6940,6 +7178,7 @@ start=2023-01-01&amp;end=2023-12-31&amp;offset=1&amp;limit=10"</span> <span clas
       </span><span class="nl">"flexi_range_duration"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
       </span><span class="nl">"flexi_range_unit"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
       </span><span class="nl">"allow_multi_allocation"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"sync_to_booking"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
       </span><span class="nl">"conditions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="nl">"operator"</span><span class="p">:</span><span class="w"> </span><span class="s2">"all"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"field"</span><span class="p">:</span><span class="w"> </span><span class="s2">"udf_skills"</span><span class="p">,</span><span class="w">
@@ -6971,13 +7210,13 @@ start=2023-01-01&amp;end=2023-12-31&amp;offset=1&amp;limit=10"</span> <span clas
       </span><span class="p">}</span><span class="w"> </span><span class="p">],</span><span class="w">
       </span><span class="nl">"created_on"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-09-15T09:03:48.428713+00:00"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"created_by"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John doe"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John Doe"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">118</span><span class="w">
       </span><span class="p">},</span><span class="w">
       </span><span class="nl">"modified_on"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-09-15T09:05:40.515333+00:00"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"modified_by"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John doe"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John Doe"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">118</span><span class="w">
       </span><span class="p">}</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="p">{</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="p">},</span><span class="w">
@@ -7090,6 +7329,7 @@ start=2023-01-01&amp;end=2023-12-31&amp;offset=1&amp;limit=10"</span> <span clas
   </span><span class="nl">"flexi_range_duration"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
   </span><span class="nl">"flexi_range_unit"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
   </span><span class="nl">"allow_multi_allocation"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"sync_to_booking"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
   </span><span class="nl">"conditions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="nl">"operator"</span><span class="p">:</span><span class="w"> </span><span class="s2">"all"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"field"</span><span class="p">:</span><span class="w"> </span><span class="s2">"udf_skills"</span><span class="p">,</span><span class="w">
@@ -7121,13 +7361,13 @@ start=2023-01-01&amp;end=2023-12-31&amp;offset=1&amp;limit=10"</span> <span clas
   </span><span class="p">}</span><span class="w"> </span><span class="p">],</span><span class="w">
   </span><span class="nl">"created_on"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-09-15T09:03:48.428713+00:00"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"created_by"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John doe"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="w">
+    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John Doe"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">118</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="nl">"modified_on"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-09-15T09:05:40.515333+00:00"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"modified_by"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John doe"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="w">
+    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John Doe"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">118</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
@@ -7212,6 +7452,7 @@ start=2023-01-01&amp;end=2023-12-31"</span> <span class="se">\</span>
       </span><span class="nl">"flexi_range_duration"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
       </span><span class="nl">"flexi_range_unit"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
       </span><span class="nl">"allow_multi_allocation"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"sync_to_booking"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
       </span><span class="nl">"conditions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="nl">"operator"</span><span class="p">:</span><span class="w"> </span><span class="s2">"all"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"field"</span><span class="p">:</span><span class="w"> </span><span class="s2">"udf_skills"</span><span class="p">,</span><span class="w">
@@ -7243,13 +7484,13 @@ start=2023-01-01&amp;end=2023-12-31"</span> <span class="se">\</span>
       </span><span class="p">}</span><span class="w"> </span><span class="p">],</span><span class="w">
       </span><span class="nl">"created_on"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-09-15T09:03:48.428713+00:00"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"created_by"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John doe"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John Doe"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">118</span><span class="w">
       </span><span class="p">},</span><span class="w">
       </span><span class="nl">"modified_on"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-09-15T09:05:40.515333+00:00"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"modified_by"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John doe"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John Doe"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">118</span><span class="w">
       </span><span class="p">}</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="p">{</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="p">},</span><span class="w">
@@ -7336,6 +7577,8 @@ start=2023-01-01&amp;end=2023-12-31"</span> <span class="se">\</span>
 <td style="text-align: left"><code>&quot;modified_on:eq&quot;: [&quot;2021-07-08T00:00:00&quot;]</code><br><code>&quot;modified_on:lt&quot;: [&quot;2021-07-08T00:00:00&quot;]</code><br><code>&quot;modified_on:gt&quot;: [&quot;2021-07-08T59:59:59&quot;]</code><br><code>&quot;modified_on:bt&quot;: [&quot;2021-07-08T00:00:00&quot;, &quot;2021-07-10T23:59:59&quot;]</code> <br><code>&quot;modified_on:bt&quot;: [&quot;2021-07-08T00:00:00&quot;, &quot;&quot;]</code> <br><code>&quot;modified_on:bt&quot;: [&quot;&quot;, &quot;2021-07-10T23:59:59&quot;]</code> <br><code>&quot;modified_on:ex&quot;: [&quot;2021-07-08T00:00:00&quot;, &quot;2021-07-10T23:59:59&quot;]</code> <br><code>&quot;modified_on:ex&quot;: [&quot;2021-07-08T00:00:00&quot;, &quot;&quot;]</code> <br><code>&quot;modified_on:ex&quot;: [&quot;&quot;, &quot;2021-07-10T23:59:59&quot;]]</code></td>
 </tr>
 </tbody></table>
+
+<p><em>Additionally, requirements can also be filtered using <a href="#search-projects" class="api-ref">project fields</a> and <a href="#filters-for-user-defined-fields" class="api-ref">custom fields</a> of requirements. An example request for fetching only requirement having <code>project_id</code> as 1 and <code>role_id</code> as 1 is shown.</em></p>
 <h2 id='update-a-requirement'>Update a Requirement</h2>
 <p>Updates the specified requirement by setting values of parameters passed. Values of any parameters which are not provided will be unchanged. To unset existing value for a parameter, just pass an empty value i.e. <code>null</code>.</p>
 
@@ -7405,20 +7648,20 @@ start=2023-01-01&amp;end=2023-12-31"</span> <span class="se">\</span>
 <td style="text-align: left">ID of the project object for which this requirement object is being created. This will throw an error if you post an empty value.</td>
 </tr>
 <tr>
-<td style="text-align: right"><strong>task_id</strong><br></td>
+<td style="text-align: right"><strong>task_id</strong><br><span class="mandatoryFlag">&#9873;</span> <span class="removableFlag mln-2">&#9873;</span></td>
 <td style="text-align: left">ID of the task object within the project that needs to be done in this requirement.</td>
 </tr>
 <tr>
-<td style="text-align: right"><strong>role_id</strong><br></td>
+<td style="text-align: right"><strong>role_id</strong><br><span class="mandatoryFlag">&#9873;</span> <span class="removableFlag mln-2">&#9873;</span></td>
 <td style="text-align: left">ID of the role object that the resource needs to perform for the requirement. Role can be either the performing role or non-performing role of the resource.</td>
 </tr>
 <tr>
 <td style="text-align: right"><strong>start_time</strong> <br><span class="required"><code>required</code></span></td>
-<td style="text-align: left">Represents start date and time for requirement object. This field accepts value in ISO 8601 format for date-time i.e. yyyy-mm-ddThh:mm:ss. The value must be snapped in 15 minutes interval, which effectively means that minutes values should be one of(00/15/30/45) and seconds value should always be 0. (if given). This will throw an error if you post an empty value.</td>
+<td style="text-align: left">Represents start date and time for requirement object. This field accepts value in ISO 8601 format for date-time i.e. yyyy-MM-ddThh:mm:ss. The value must be snapped in 15 minutes interval, which effectively means that minutes values should be one of(00/15/30/45) and seconds value should always be 0. (if given). This will throw an error if you post an empty value.</td>
 </tr>
 <tr>
 <td style="text-align: right"><strong>end_time</strong> <br><span class="required"><code>required</code></span></td>
-<td style="text-align: left">Represents end date and time for requirement object. This field accepts value in ISO 8601 format for date-time i.e. yyyy-mm-ddThh:mm:ss. The value must be snapped in 15 minutes interval, which effectively means that minutes values should be one of(00/15/30/45) and seconds value should always be 0. (if given). <code>end_time</code> must always be ahead of <code>start_time</code> by at least 15 minutes as a requirement of less than 15 minutes is not allowed. This will throw an error if you post an empty value.</td>
+<td style="text-align: left">Represents end date and time for requirement object. This field accepts value in ISO 8601 format for date-time i.e. yyyy-MM-ddThh:mm:ss. The value must be snapped in 15 minutes interval, which effectively means that minutes values should be one of(00/15/30/45) and seconds value should always be 0. (if given). <code>end_time</code> must always be ahead of <code>start_time</code> by at least 15 minutes as a requirement of less than 15 minutes is not allowed. This will throw an error if you post an empty value.</td>
 </tr>
 <tr>
 <td style="text-align: right"><strong>effort</strong>  <br><span class="required"><code>required</code></span></td>
@@ -7445,8 +7688,16 @@ start=2023-01-01&amp;end=2023-12-31"</span> <span class="se">\</span>
 <td style="text-align: left">This refers to allocation of a specific requirement to multiple resources simultaneously.</td>
 </tr>
 <tr>
+<td style="text-align: right"><strong>sync_to_booking</strong> <br><code>boolean</code></td>
+<td style="text-align: left">This setting indicates whether the values of common custom fields in the bookings corresponding to this requirement are always in sync. When turned on, users will not be able to modify the common custom fields in the booking form, and the values will always be taken from the linked requirement.</td>
+</tr>
+<tr>
 <td style="text-align: right"><strong>conditions</strong> <br><code>array of object</code></td>
 <td style="text-align: left">This refers to the criteria on which the requirement must be fulfilled.<li><strong>conditions.field</strong> <code>string</code> <br> This is a reference to the text&#39;s API_code.</li> <li><a href="#requirement-operator" class="api-ref">conditions.operator</a><code>string</code>  <br> This refers to a character that represents a specific mathematical or logical action or process. </li><li><strong>conditions.values</strong> <br>This refers to the values defined for the requirement to be considered in suggested resources.</li> <li><strong>conditions.weightage</strong> <code>integer</code>  <br> Every condition can be assigned relative importance in comparison to other conditions to calculate its weightage. Weightage is ultimately used to calculate the match score of resources.</li> <li><strong>conditions.is_mandatory</strong> <code>boolean</code> <br> Indicates whether this field is mandatory. If this field is marked as mandatory, it means that a required value must be provided for it in the suggested resources.</li></td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>udf_*</strong><br><span class="mandatoryFlag">&#9873;</span> <span class="removableFlag mln-2">&#9873;</span></td>
+<td style="text-align: left">A user with Administrator rights can add  custom fields. These fields can be used to capture additional information in requirements. <a href="#user-defined-fields" class="api-ref">Learn more.</a><br><br><em><strong>Note</strong>: User with Administrator rights can make fields marked with <span class="mandatoryFlag iconInline">&#9873;</span> mandatory and remove fields marked with <span class="removableFlag iconInline">&#9873;</span>, from <a href ="#requirement-profile" class="api-ref">requirement profile</a> using eRS Cloud Application. If mandatory fields are not passed with a valid value or if removed fields are passed while updating requirement, the operation will fail with response code <strong>400</strong></em>.</td>
 </tr>
 </tbody></table>
 <h3 id='returns-4'>Returns</h3>
@@ -7474,7 +7725,7 @@ start=2023-01-01&amp;end=2023-12-31"</span> <span class="se">\</span>
 </tr>
 <tr>
 <td style="text-align: right"><strong>409</strong> <br> <span class = "error"><code>Conflict</code></span></td>
-<td style="text-align: left">Conflict indicates that when you are updating a requirement linked to booking(s), then you must pass one of the parameters i.e; <code>delete_bookings=true</code> to delete requirement and respective booking or another parameter <code>unlink_bookings=true</code> will update requirement after unlinking the respective bookings. this action will be performed through <a href="https://app.eresourcescheduler.cloud/#!/admin/settings/requirement" target="_blank" class="api-ref">Administrator Requirement Settings</a></td>
+<td style="text-align: left">Conflict indicates that when you are updating a requirement linked to booking(s), then you must pass one of the parameters i.e; <code>delete_bookings=true</code> to delete requirement and respective booking or another parameter <code>unlink_bookings=true</code> will update requirement after unlinking the respective bookings. this action will be performed through <a href="https://app.eresourcescheduler.cloud/#!/admin/settings/requirement" target="_blank" class="api-ref">Administrator Requirement Settings.</a></td>
 </tr>
 </tbody></table>
 <h2 id='requirement-operator'>Requirement Operator</h2>
@@ -7744,7 +7995,7 @@ start=2023-01-01&amp;end=2023-12-31"</span> <span class="se">\</span>
 </tr>
 <tr>
 <td style="text-align: right"><strong>409</strong> <br> <span class = "error"><code>Conflict</code></span></td>
-<td style="text-align: left">Conflict indicates that when you are deleting a requirement linked to booking(s), then you must pass one of the parameters i.e; <code>delete_bookings=true</code> to delete both requirement and respective booking or another parameter <code>unlink_bookings=true</code> will delete requirement after unlinking the respective bookings. this action will be performed through <a href="https://app.eresourcescheduler.cloud/#!/admin/settings/requirement" target="_blank" class="api-ref">Administrator Requirement Settings</a></td>
+<td style="text-align: left">Conflict indicates that when you are deleting a requirement linked to booking(s), then you must pass one of the parameters i.e; <code>delete_bookings=true</code> to delete both requirement and respective booking or another parameter <code>unlink_bookings=true</code> will delete requirement after unlinking the respective bookings. this action will be performed through <a href="https://app.eresourcescheduler.cloud/#!/admin/settings/requirement" target="_blank" class="api-ref">Administrator Requirement Settings.</a></td>
 </tr>
 </tbody></table>
 <h1 id='booking'>Booking</h1><h2 id='booking-object'>Booking Object</h2>
@@ -7896,7 +8147,8 @@ start=2023-01-01&amp;end=2023-12-31"</span> <span class="se">\</span>
        "resource_id": 1, 
        "project_id" : 9, 
        "start_time" : "2017-06-01T09:00", 
-       "end_time": "2017-06-11T17:00", 
+       "end_time": "2017-06-11T17:00",
+       "udf_progress": 70,
        "effort": 100, 
        "unit": 1 
      }'</span>
@@ -7921,18 +8173,18 @@ start=2023-01-01&amp;end=2023-12-31"</span> <span class="se">\</span>
 </tr>
 <tr>
 <td style="text-align: right"><strong>start_time</strong> <br> <span class="required"><code>required</code></span></td>
-<td style="text-align: left">Represents start date and time for booking object. This field accepts value in ISO 8601 format for date-time i.e. yyyy-mm-ddThh:mm:ss. The value must be snapped in 15 minutes interval, which effectively means that minutes values should be one of(00/15/30/45) and seconds value should always be 0. (if given).</td>
+<td style="text-align: left">Represents start date and time for booking object. This field accepts value in ISO 8601 format for date-time i.e. yyyy-MM-ddThh:mm:ss. The value must be snapped in 15 minutes interval, which effectively means that minutes values should be one of(00/15/30/45) and seconds value should always be 0. (if given).</td>
 </tr>
 <tr>
 <td style="text-align: right"><strong>end_time</strong> <br> <span class="required"><code>required</code></span></td>
-<td style="text-align: left">Represents end date and time for booking object. This field accepts value in ISO 8601 format for date-time i.e. yyyy-mm-ddThh:mm:ss. The value must be snapped in 15 minutes interval, which effectively means that minutes values should be one of(00/15/30/45) and seconds value should always be 0. (if given). <code>end_time</code> must always be ahead of <code>start_time</code> by at least 15 minutes as a booking of less than 15 minutes is not allowed.</td>
+<td style="text-align: left">Represents end date and time for booking object. This field accepts value in ISO 8601 format for date-time i.e. yyyy-MM-ddThh:mm:ss. The value must be snapped in 15 minutes interval, which effectively means that minutes values should be one of(00/15/30/45) and seconds value should always be 0. (if given). <code>end_time</code> must always be ahead of <code>start_time</code> by at least 15 minutes as a booking of less than 15 minutes is not allowed.</td>
 </tr>
 <tr>
 <td style="text-align: right"><strong>role_id</strong><br><span class="mandatoryFlag">&#9873;</span> <span class="removableFlag mln-2">&#9873;</span></td>
 <td style="text-align: left">ID of role object which needs to be performed for this booking. This could be ID of a role which targeted resource performs (i.e &quot;Performing Role&quot;) or any other role (i.e. &quot;Non-Performing-Role&quot;).</td>
 </tr>
 <tr>
-<td style="text-align: right"><strong>task_id</strong><br><span class="removableFlag mln-2">&#9873;</span></td>
+<td style="text-align: right"><strong>task_id</strong><br><span class="mandatoryFlag">&#9873;</span> <span class="removableFlag mln-2">&#9873;</span></td>
 <td style="text-align: left">ID of task object which needs to be done in this booking. This could only be ID of a task which is listed in targeted project.</td>
 </tr>
 <tr>
@@ -7973,7 +8225,7 @@ start=2023-01-01&amp;end=2023-12-31"</span> <span class="se">\</span>
 </tr>
 <tr>
 <td style="text-align: right"><strong>udf_*</strong><br><span class="mandatoryFlag">&#9873;</span> <span class="removableFlag mln-2">&#9873;</span></td>
-<td style="text-align: left">A user with Administrator rights can add custom fields. These fields can be used to capture additional information in Bookings. Different types of bookings may have a different set of user-defined fields. The value for user defined field can be passed as shown in example request. In given example <code>udf_progress</code></span> is a user defined field. <a href="#user-defined-fields" class="api-ref">Learn more</a><br><br><em><strong>Note</strong>: User with Administrator rights can make fields marked with <span class="mandatoryFlag iconInline">&#9873;</span> mandatory and remove fields marked with <span class="removableFlag iconInline">&#9873;</span>, from <a href ="#booking-profile" class="api-ref">booking profile</a> using eRS Cloud Application. If mandatory fields are not passed with a valid value or removed fields are passed while creating booking, the operation will fail with response code <strong>400</strong></em>.</td>
+<td style="text-align: left">A user with Administrator rights can add custom fields. These fields can be used to capture additional information in Bookings. The value for user defined field can be passed as shown in example request. In given example <code>udf_progress</code></span> is a user defined field. <a href="#user-defined-fields" class="api-ref">Learn more</a><br><br><em><strong>Note</strong>: User with Administrator rights can make fields marked with <span class="mandatoryFlag iconInline">&#9873;</span> mandatory and remove fields marked with <span class="removableFlag iconInline">&#9873;</span>, from <a href ="#booking-profile" class="api-ref">booking profile</a> using eRS Cloud Application. If mandatory fields are not passed with a valid value or removed fields are passed while creating booking, the operation will fail with response code <strong>400</strong></em>.</td>
 </tr>
 </tbody></table>
 <h3 id='returns'>Returns</h3>
@@ -8336,6 +8588,11 @@ start=2018-01-01&amp;end=2018-12-31"</span> <span class="se">\</span>
 <td style="text-align: left"><li><strong>eq</strong> (<em>default</em>)</li><li>lt</li><li>gt</li><li>bt</li><li>ex</li></td>
 <td style="text-align: left"><code>&quot;modified_on:eq&quot;: [&quot;2021-07-08T00:00:00&quot;]</code><br><code>&quot;modified_on:lt&quot;: [&quot;2021-07-08T00:00:00&quot;]</code><br><code>&quot;modified_on:gt&quot;: [&quot;2021-07-08T59:59:59&quot;]</code><br><code>&quot;modified_on:bt&quot;: [&quot;2021-07-08T00:00:00&quot;, &quot;2021-07-10T23:59:59&quot;]</code><br><code>&quot;modified_on:bt&quot;: [&quot;2021-07-08T00:00:00&quot;, &quot;&quot;]</code> <br><code>&quot;modified_on:bt&quot;: [&quot;&quot;, &quot;2021-07-10T23:59:59&quot;]</code> <br><code>&quot;modified_on:ex&quot;: [&quot;2021-07-08T00:00:00&quot;, &quot;2021-07-10T23:59:59&quot;]</code> <br><code>&quot;modified_on:ex&quot;: [&quot;2021-07-08T00:00:00&quot;, &quot;&quot;]</code> <br><code>&quot;modified_on:ex&quot;: [&quot;&quot;, &quot;2021-07-10T23:59:59&quot;]]</code></td>
 </tr>
+<tr>
+<td style="text-align: left"><strong>billing_status</strong></td>
+<td style="text-align: left">N/A</td>
+<td style="text-align: left"><code>&quot;billing_status&quot;: 2</code><br><code>&quot;billing_status&quot;: 4</code><br><br><em><strong>Note</strong>: Integer number (2/4) representing billing status of the booking. Billing status value could be one of the following :<br><br><li><strong>2</strong> for <code>Billable</code> : This defines billing status as <code>billable</code> for this booking. </li> <li> <strong>4</strong> for <code>Non Billable</code> : This defines billing status as <code>non billable</code> for this booking.</li></em></td>
+</tr>
 </tbody></table>
 
 <p><em>Additionally, bookings can also be filtered using <a href="#search-resources" class="api-ref">resource fields</a>, <a href="#search-projects" class="api-ref">project fields</a> and <a href="#filters-for-user-defined-fields" class="api-ref">custom fields</a> of bookings. An example request for fetching only booking having <code>resource_id</code> as 2, <code>project_id</code> as 9 and <code>role_id</code> as 1 is shown.</em></p>
@@ -8408,18 +8665,18 @@ start=2018-01-01&amp;end=2018-12-31"</span> <span class="se">\</span>
 </tr>
 <tr>
 <td style="text-align: right"><strong>start_time</strong> <br> <span class="required"><code>required</code></span></td>
-<td style="text-align: left">Represents start date and time for booking object. This field accepts value in ISO 8601 format for date-time i.e. yyyy-mm-ddThh:mm:ss. The value must be snapped in 15 minutes interval, which effectively means that minutes values should be one of(00/15/30/45) and seconds value should always be 0. (if given). This will throw an error if you post an empty value.</td>
+<td style="text-align: left">Represents start date and time for booking object. This field accepts value in ISO 8601 format for date-time i.e. yyyy-MM-ddThh:mm:ss. The value must be snapped in 15 minutes interval, which effectively means that minutes values should be one of(00/15/30/45) and seconds value should always be 0. (if given). This will throw an error if you post an empty value.</td>
 </tr>
 <tr>
 <td style="text-align: right"><strong>end_time</strong> <br> <span class="required"><code>required</code></span></td>
-<td style="text-align: left">Represents end date and time for booking object. This field accepts value in ISO 8601 format for date-time i.e. yyyy-mm-ddThh:mm:ss. The value must be snapped in 15 minutes interval, which effectively means that minutes values should be one of(00/15/30/45) and seconds value should always be 0. (if given). <code>end_time</code> must always be ahead of <code>start_time</code> by at least 15 minutes as a booking of less than 15 minutes is not allowed. This will throw an error if you post an empty value.</td>
+<td style="text-align: left">Represents end date and time for booking object. This field accepts value in ISO 8601 format for date-time i.e. yyyy-MM-ddThh:mm:ss. The value must be snapped in 15 minutes interval, which effectively means that minutes values should be one of(00/15/30/45) and seconds value should always be 0. (if given). <code>end_time</code> must always be ahead of <code>start_time</code> by at least 15 minutes as a booking of less than 15 minutes is not allowed. This will throw an error if you post an empty value.</td>
 </tr>
 <tr>
 <td style="text-align: right"><strong>role_id</strong><br><span class="mandatoryFlag">&#9873;</span> <span class="removableFlag mln-2">&#9873;</span></td>
 <td style="text-align: left">ID of role object which needs to be performed for this booking. This could be ID of a role which targeted resource performs (i.e &quot;Performing Role&quot;) or any other role (i.e. &quot;Non-Performing-Role&quot;).</td>
 </tr>
 <tr>
-<td style="text-align: right"><strong>task_id</strong><br><span class="removableFlag mln-2">&#9873;</span></td>
+<td style="text-align: right"><strong>task_id</strong><br><span class="mandatoryFlag">&#9873;</span> <span class="removableFlag mln-2">&#9873;</span></td>
 <td style="text-align: left">ID of task object which needs to be done in this booking. This could only be ID of a task which is listed in targeted project.</td>
 </tr>
 <tr>
@@ -8673,7 +8930,7 @@ curl <span class="nt">-v</span> <span class="nt">-X</span> POST <span class="se"
 </tr>
 <tr>
 <td style="text-align: left"><strong>409</strong> <br> <span class = "error"><code>Conflict</code></span></td>
-<td style="text-align: left">Conflict indicates that the rate can not be created as the same type of rate is already associated with passed effective date. If you wish to create rate of the same type any way you must use replace existing rate option by passing <span class = "required"> <code>true</code> </span> for parameter <span class = "required"> <code>replace_existing_rate</code> </span> or you can create rate of another type on given <code>effective_date</code>. This operation replaces existing rate with passed rate. Example request is shown to right.</td>
+<td style="text-align: left">Conflict indicates that the rate can not be created because the same type of rate is already associated with passed effective date. If you wish to create rate of the same type any way you must use replace existing rate option by passing <span class = "required"> <code>true</code> </span> for parameter <span class = "required"> <code>replace_existing_rate</code> </span> or you can create rate of another type on given <code>effective_date</code>. This operation replaces existing rate with passed rate. Example request is shown to right.</td>
 </tr>
 </tbody></table>
 <h3 id='list-resource-rates'>List Resource Rates</h3>
@@ -8977,7 +9234,7 @@ curl <span class="nt">-v</span> <span class="nt">-X</span> PUT <span class="se">
 </tr>
 <tr>
 <td style="text-align: right"><strong>409</strong> <br> <span class = "error"><code>Conflict</code></span></td>
-<td style="text-align: left">Conflict indicates that the rate can not be created as the same type of rate is already associated with passed effective date. If you wish to create rate of the same type any way you must use replace existing rate option by passing <span class = "required"> <code>true</code> </span> for parameter <span class = "required"> <code>replace_existing_rate</code> </span> or you can create rate of another type on given effective date. This operation replaces existing rate with passed rate. Example request is shown to right.</td>
+<td style="text-align: left">Conflict indicates that the rate can not be updated because the same type of rate is already associated with passed effective date. If you wish to update rate of the same type any way you must use replace existing rate option by passing <span class = "required"> <code>true</code> </span> for parameter <span class = "required"> <code>replace_existing_rate</code> </span> or you can update rate of another type on given effective date. This operation replaces existing rate with passed rate. Example request is shown to right.</td>
 </tr>
 </tbody></table>
 <h3 id='delete-resource-rate'>Delete Resource Rate</h3>
@@ -9129,7 +9386,7 @@ curl <span class="nt">-v</span> <span class="nt">-X</span> POST <span class="se"
 </tr>
 <tr>
 <td style="text-align: left"><strong>409</strong> <br> <span class = "error"><code>Conflict</code></span></td>
-<td style="text-align: left">Conflict indicates that the rate can not be created as rate is already associated with passed effective date. If you wish to create rate of the same type any way you must use replace existing rate option by passing <span class = "required"> <code>true</code> </span> for parameter <span class = "required"> <code>replace_existing_rate</code> </span> which will replace existing rate with passed rate. Example request is shown to right.</td>
+<td style="text-align: left">Conflict indicates that the rate can not be created because rate is already associated with passed effective date. If you wish to create rate of the same type any way you must use replace existing rate option by passing <span class = "required"> <code>true</code> </span> for parameter <span class = "required"> <code>replace_existing_rate</code> </span> which will replace existing rate with passed rate. Example request is shown to right.</td>
 </tr>
 </tbody></table>
 <h3 id='list-project-rates'>List Project Rates</h3>
@@ -9399,7 +9656,7 @@ curl <span class="nt">-v</span> <span class="nt">-X</span> PUT <span class="se">
 </tr>
 <tr>
 <td style="text-align: right"><strong>409</strong> <br> <span class = "error"><code>Conflict</code></span></td>
-<td style="text-align: left">Conflict indicates that the rate can not be created as rate is already associated with passed effective date. If you wish to create rate of the same type any way you must use replace existing rate option by passing <span class = "required"> <code>true</code> </span> for parameter <span class = "required"> <code>replace_existing_rate</code> </span> which will replace existing rate with passed rate. Example request is shown to right.</td>
+<td style="text-align: left">Conflict indicates that the rate can not be updated as rate is already associated with passed effective date. If you wish to update rate of the same type any way you must use replace existing rate option by passing <span class = "required"> <code>true</code> </span> for parameter <span class = "required"> <code>replace_existing_rate</code> </span> which will replace existing rate with passed rate. Example request is shown to right.</td>
 </tr>
 </tbody></table>
 <h3 id='update-billing-status'>Update Billing Status</h3>
@@ -9492,7 +9749,7 @@ curl <span class="nt">-v</span> <span class="nt">-X</span> PUT <span class="se">
 </tr>
 </tbody></table>
 <h2 id='role-rates'>Role Rates</h2>
-<p>A rate is an entity that allows you to assign billing rates to a role object. Each role has it&#39;s own set of rates assigned on different effective dates.</p>
+<p>A rate is an entity that allows you to assign billing or cost rates to a role object. Each role has it&#39;s own set of billing and cost rate assigned on different effective dates.</p>
 
 <p>This API allows you to list, create, delete, update rates of any role.</p>
 
@@ -9528,6 +9785,10 @@ curl <span class="nt">-v</span> <span class="nt">-X</span> PUT <span class="se">
 <td style="text-align: right"><strong>rates.effective_date</strong> <br><code>string</code></td>
 <td style="text-align: left">Represents effective date for the rate.</td>
 </tr>
+<tr>
+<td style="text-align: right"><strong>rates.rate_type</strong> <br><code>integer</code></td>
+<td style="text-align: left">Represents rate type. Value of rate type is <strong>1</strong> for cost rate and <strong>2</strong> for billing rate. Both types of rate can be defined on the same <code>effective_date</code>.</td>
+</tr>
 </tbody></table>
 <h3 id='create-role-rate'>Create Role Rate</h3>
 <p>Creates a new rate object for specified role.</p>
@@ -9543,7 +9804,8 @@ curl <span class="nt">-v</span> <span class="nt">-X</span> POST <span class="se"
 <span class="nt">-H</span> <span class="s2">"Authorization: Bearer B8x5Vj1O65r6wnoV"</span> <span class="se">\</span>
 <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
 <span class="nt">-d</span> <span class="s1">'{
-      "rate": 150,
+      "cost_rate": 150,
+      "billing_rate": 300,
       "effective_date": "2018-09-16"
     }'</span>
 </code></pre></div>
@@ -9556,7 +9818,8 @@ curl <span class="nt">-v</span> <span class="nt">-X</span> POST <span class="se"
 <span class="nt">-H</span> <span class="s2">"Authorization: Bearer B8x5Vj1O65r6wnoV"</span> <span class="se">\</span>
 <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
 <span class="nt">-d</span> <span class="s1">'{
-      "rate": 250,
+      "cost_rate": 200,
+      "billing_rate": 350,
       "effective_date": "2018-09-16",
       "replace_existing_rate": true
     }'</span>
@@ -9570,8 +9833,12 @@ curl <span class="nt">-v</span> <span class="nt">-X</span> POST <span class="se"
 </tr>
 </thead><tbody>
 <tr>
-<td style="text-align: right"><strong>rate</strong> <br> <span class ="required"><code>required</code></span></td>
-<td style="text-align: left">Represents billing rate. Rate value is a floating point number which could not be less than 0 and greater than 99999999.99.</td>
+<td style="text-align: right"><strong>cost_rate</strong> <br> <code>*optional</code></td>
+<td style="text-align: left">Represents cost rate. Rate value is a floating point number which could not be less than 0 and greater than 99999999.99.</td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>billing_rate/rate</strong> <br> <code>*optional</code></td>
+<td style="text-align: left">Represents billing rate. Rate value is a floating point number which could not be less than 0 and greater than 99999999.99.<br><br><em><strong>*Note</strong> : Either of the two rate types, i.e. <code>cost_rate</code> or <code>billing_rate</code> is necessary for creating rate.</em></td>
 </tr>
 <tr>
 <td style="text-align: right"><strong>effective_date</strong> <br> <span class ="required"><code>required</code></span></td>
@@ -9603,7 +9870,7 @@ curl <span class="nt">-v</span> <span class="nt">-X</span> POST <span class="se"
 </tr>
 <tr>
 <td style="text-align: left"><strong>409</strong> <br> <span class = "error"><code>Conflict</code></span></td>
-<td style="text-align: left">Conflict indicates that the rate can not be created as rate is already associated with passed effective date. If you wish to create rate of the same type any way you must use replace existing rate option by passing <span class = "required"> <code>true</code> </span> for parameter <span class = "required"> <code>replace_existing_rate</code> </span> which will replace existing rate with passed rate. Example request is shown to right.</td>
+<td style="text-align: left">Conflict indicates that the rate can not be created because the same type of rate is already associated with passed effective date. If you wish to create rate of the same type any way you must use replace existing rate option by passing <span class = "required"> <code>true</code> </span> for parameter <span class = "required"> <code>replace_existing_rate</code> </span> or you can create rate of another type on given <code>effective_date</code>. This operation replaces existing rate with passed rate. Example request is shown to right.</td>
 </tr>
 </tbody></table>
 <h3 id='list-role-rates'>List Role Rates</h3>
@@ -9633,6 +9900,7 @@ offset=1&amp;limit=10"</span> <span class="se">\</span>
             </span><span class="p">{</span><span class="w">
                 </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w">
                 </span><span class="nl">"rate"</span><span class="p">:</span><span class="w"> </span><span class="mi">150</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"rate_type"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
                 </span><span class="nl">"effective_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-01-01"</span><span class="p">,</span><span class="w">
                 </span><span class="nl">"created_on"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-08-20T09:25:34.925474Z"</span><span class="p">,</span><span class="w">
                 </span><span class="nl">"created_by"</span><span class="p">:</span><span class="w"> 
@@ -9646,7 +9914,25 @@ offset=1&amp;limit=10"</span> <span class="se">\</span>
                     </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John doe"</span><span class="p">,</span><span class="w">
                     </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">118</span><span class="w">
                 </span><span class="p">},</span><span class="w">
-                </span><span class="p">}</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">9</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"rate"</span><span class="p">:</span><span class="w"> </span><span class="mi">250</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"rate_type"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"effective_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-01-01"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"created_on"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-08-20T09:25:34.925474Z"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"created_by"</span><span class="p">:</span><span class="w"> 
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John doe"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">118</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"modified_on"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-09-28T12:32:44.896426Z"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"modified_by"</span><span class="p">:</span><span class="w"> 
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John doe"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">118</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+            </span><span class="p">}</span><span class="w">
             </span><span class="p">]</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="p">{</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="p">},</span><span class="w">
@@ -9775,7 +10061,7 @@ curl <span class="nt">-v</span> <span class="nt">-X</span> PUT <span class="se">
 </tr>
 <tr>
 <td style="text-align: right"><strong>409</strong> <br> <span class = "error"><code>Conflict</code></span></td>
-<td style="text-align: left">Conflict indicates that the rate can not be created as rate is already associated with passed effective date. If you wish to create rate of the same type any way you must use replace existing rate option by passing <span class = "required"> <code>true</code> </span> for parameter <span class = "required"> <code>replace_existing_rate</code> </span> which will replace existing rate with passed rate. Example request is shown to right.</td>
+<td style="text-align: left">Conflict indicates that the rate can not be updated because the same type of rate is already associated with passed effective date. If you wish to update rate of the same type any way you must use replace existing rate option by passing <span class = "required"> <code>true</code> </span> for parameter <span class = "required"> <code>replace_existing_rate</code> </span> or you can update rate of another type on given <code>effective_date</code>. This operation replaces existing rate with passed rate. Example request is shown to right.</td>
 </tr>
 </tbody></table>
 <h3 id='delete-role-rate'>Delete Role Rate</h3>
@@ -9846,23 +10132,23 @@ curl <span class="nt">-v</span> <span class="nt">-X</span> PUT <span class="se">
   </span><span class="p">],</span><span class="w">
   </span><span class="nl">"created_on"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-07-27T07:56:17.515125Z"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"created_by"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John doe"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John Doe"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">118</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="nl">"modified_on"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-07-27T13:23:46.583746Z"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"modified_by"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John Smith"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">943</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1146</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="nl">"submitted_on"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-07-27T07:56:17.515125Z"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"submitted_by"</span><span class="p">:{</span><span class="w">
-    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John doe"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John Doe"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">118</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="nl">"approval_time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-07-27T13:23:46.583746Z"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"approver"</span><span class="p">:{</span><span class="w">
     </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John Smith"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">943</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1146</span><span class="w">
   </span><span class="p">},</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
@@ -10013,7 +10299,7 @@ curl <span class="nt">-v</span> <span class="nt">-X</span> PUT <span class="se">
 </tr>
 <tr>
 <td style="text-align: right"><strong>date</strong><br><span class="required"><code>required</code></span></td>
-<td style="text-align: left">String value representing a date on which task was performed. Date accepts value in ISO 8601 format i.e. YYYY-MM-DD. Date of a timesheet entry cannot be before <code>start_date</code> or after <code>last_date</code> of the resource for which this timesheet entry is being created.</td>
+<td style="text-align: left">String value representing a date on which task was performed. Date accepts value in ISO 8601 format i.e. yyyy-MM-dd. Date of a timesheet entry cannot be before <code>start_date</code> or after <code>last_date</code> of the resource for which this timesheet entry is being created.</td>
 </tr>
 <tr>
 <td style="text-align: right"><strong>time_start</strong> <br></td>
@@ -10139,7 +10425,7 @@ start=2021-07-01&amp;end=2021-07-31&amp;offset=1&amp;limit=10"</span> <span clas
       </span><span class="p">],</span><span class="w">
       </span><span class="nl">"created_on"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-07-27T07:56:17.515125Z"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"created_by"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John doe"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John Doe"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">118</span><span class="w">
       </span><span class="p">},</span><span class="w">
       </span><span class="nl">"modified_on"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-07-27T13:23:46.583746Z"</span><span class="p">,</span><span class="w">
@@ -10149,13 +10435,13 @@ start=2021-07-01&amp;end=2021-07-31&amp;offset=1&amp;limit=10"</span> <span clas
       </span><span class="p">},</span><span class="w">
       </span><span class="nl">"submitted_on"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-07-27T07:56:17.515125Z"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"submitted_by"</span><span class="p">:{</span><span class="w">
-        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John doe"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John Doe"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">118</span><span class="w">
       </span><span class="p">},</span><span class="w">
       </span><span class="nl">"approval_time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-07-27T13:23:46.583746Z"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"approver"</span><span class="p">:{</span><span class="w">
         </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John Smith"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">943</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1146</span><span class="w">
       </span><span class="p">},</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="p">{</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="p">},</span><span class="w">
@@ -10255,23 +10541,23 @@ start=2021-07-01&amp;end=2021-07-31&amp;offset=1&amp;limit=10"</span> <span clas
   </span><span class="p">],</span><span class="w">
   </span><span class="nl">"created_on"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-07-27T07:56:17.515125Z"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"created_by"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John doe"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John Doe"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">118</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="nl">"modified_on"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-07-27T13:23:46.583746Z"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"modified_by"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John Smith"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">943</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1146</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="nl">"submitted_on"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-07-27T07:56:17.515125Z"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"submitted_by"</span><span class="p">:{</span><span class="w">
-    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John doe"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John Doe"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">118</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="nl">"approval_time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-07-27T13:23:46.583746Z"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"approver"</span><span class="p">:{</span><span class="w">
     </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John Smith"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">943</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1146</span><span class="w">
   </span><span class="p">},</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
@@ -10360,23 +10646,23 @@ start=2021-07-01&amp;end=2021-07-31"</span> <span class="se">\</span>
       </span><span class="p">],</span><span class="w">
       </span><span class="nl">"created_on"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-07-27T07:56:17.515125Z"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"created_by"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John doe"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John Doe"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">118</span><span class="w">
       </span><span class="p">},</span><span class="w">
       </span><span class="nl">"modified_on"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-07-27T13:23:46.583746Z"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"modified_by"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John Smith"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">943</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1146</span><span class="w">
       </span><span class="p">},</span><span class="w">
       </span><span class="nl">"submitted_on"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-07-27T07:56:17.515125Z"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"submitted_by"</span><span class="p">:{</span><span class="w">
-        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John doe"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John Doe"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">118</span><span class="w">
       </span><span class="p">},</span><span class="w">
       </span><span class="nl">"approval_time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-07-27T13:23:46.583746Z"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"approver"</span><span class="p">:{</span><span class="w">
         </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John Smith"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">943</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1146</span><span class="w">
       </span><span class="p">},</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="p">{</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="p">},</span><span class="w">
@@ -10522,7 +10808,7 @@ start=2021-07-01&amp;end=2021-07-31"</span> <span class="se">\</span>
 </tr>
 <tr>
 <td style="text-align: right"><strong>date</strong><br><span class="required"><code>required</code></span></td>
-<td style="text-align: left">String value representing a date on which task was performed. Date accepts value in ISO 8601 format i.e. YYYY-MM-DD. Date of a timesheet entry cannot be before <code>start_date</code> or after <code>last_date</code> of the resource for which this timesheet entry is being created.</td>
+<td style="text-align: left">String value representing a date on which task was performed. Date accepts value in ISO 8601 format i.e. yyyy-MM-dd. Date of a timesheet entry cannot be before <code>start_date</code> or after <code>last_date</code> of the resource for which this timesheet entry is being created.</td>
 </tr>
 <tr>
 <td style="text-align: right"><strong>time_start</strong> <br></td>
@@ -10738,8 +11024,8 @@ view=resource&amp;start=2022-05-01&amp;end=2022-05-31"</span> <span class="se">\
         </span><span class="nl">"total_planned_hrs"</span><span class="p">:</span><span class="w"> </span><span class="mf">66.0</span><span class="w">
       </span><span class="p">},</span><span class="w">
 
-    </span><span class="p">{</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="p">},</span><span class="w">
-    </span><span class="p">{</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="p">}</span><span class="w">
+      </span><span class="p">{</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="p">}</span><span class="w">
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
@@ -10866,7 +11152,7 @@ start=2022-05-01&amp;end=2022-05-31&amp;data=actual,planned"</span> <span class=
         </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
         </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Chris Rose"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"total_actual_hrs"</span><span class="p">:</span><span class="w"> </span><span class="mf">30.50</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"total_planned_hrs"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0</span><span class="w">
+        </span><span class="nl">"total_planned_hrs"</span><span class="p">:</span><span class="w"> </span><span class="mf">138.6</span><span class="w">
       </span><span class="p">},</span><span class="w">
       </span><span class="p">{</span><span class="w">
         </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
@@ -10892,13 +11178,13 @@ start=2022-05-01&amp;end=2022-05-31&amp;data=actual,planned"</span> <span class=
         </span><span class="nl">"total_actual_hrs"</span><span class="p">:</span><span class="w"> </span><span class="mf">25.40</span><span class="p">,</span><span class="w">
         </span><span class="nl">"total_planned_hrs"</span><span class="p">:</span><span class="w"> </span><span class="mf">66.0</span><span class="w">
       </span><span class="p">},</span><span class="w">
-    </span><span class="p">{</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="p">},</span><span class="w">
-    </span><span class="p">{</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="p">}</span><span class="w">
+      </span><span class="p">{</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="p">}</span><span class="w">
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <blockquote>
-<p>Example: Get planned and actual utilization with daily breakup</p>
+<p>Example: Get planned and actual utilization with daily breakup </p>
 </blockquote>
 <div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="s2">"https://app.eresourcescheduler.cloud/rest/v1/utilization?</span><span class="se">\</span><span class="s2">
 start=2022-05-01&amp;end=2022-05-05&amp;data=actual,planned&amp;daily_hrs=true"</span> <span class="se">\</span>
@@ -10918,17 +11204,17 @@ start=2022-05-01&amp;end=2022-05-05&amp;data=actual,planned&amp;daily_hrs=true"<
       </span><span class="p">{</span><span class="w">
         </span><span class="nl">"daily_actual_hrs"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="nl">"2022-05-01"</span><span class="p">:</span><span class="w"> </span><span class="mf">3.0</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"2022-05-01"</span><span class="p">:</span><span class="w"> </span><span class="mf">2.0</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"2022-05-01"</span><span class="p">:</span><span class="w"> </span><span class="mf">5.0</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"2022-05-01"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"2022-05-01"</span><span class="p">:</span><span class="w"> </span><span class="mf">3.0</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"2022-05-02"</span><span class="p">:</span><span class="w"> </span><span class="mf">2.0</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"2022-05-03"</span><span class="p">:</span><span class="w"> </span><span class="mf">5.0</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"2022-05-04"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"2022-05-05"</span><span class="p">:</span><span class="w"> </span><span class="mf">3.0</span><span class="p">,</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="nl">"daily_planned_hrs"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="nl">"2022-05-01"</span><span class="p">:</span><span class="w"> </span><span class="mf">5.0</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"2022-05-01"</span><span class="p">:</span><span class="w"> </span><span class="mf">5.0</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"2022-05-01"</span><span class="p">:</span><span class="w"> </span><span class="mf">5.0</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"2022-05-01"</span><span class="p">:</span><span class="w"> </span><span class="mf">3.0</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"2022-05-01"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"2022-05-02"</span><span class="p">:</span><span class="w"> </span><span class="mf">5.0</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"2022-05-03"</span><span class="p">:</span><span class="w"> </span><span class="mf">5.0</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"2022-05-04"</span><span class="p">:</span><span class="w"> </span><span class="mf">3.0</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"2022-05-05"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0</span><span class="p">,</span><span class="w">
         </span><span class="p">},</span><span class="w">
 
         </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
@@ -10939,17 +11225,17 @@ start=2022-05-01&amp;end=2022-05-05&amp;data=actual,planned&amp;daily_hrs=true"<
       </span><span class="p">{</span><span class="w">
         </span><span class="nl">"daily_actual_hrs"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="nl">"2022-05-01"</span><span class="p">:</span><span class="w"> </span><span class="mf">4.0</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"2022-05-01"</span><span class="p">:</span><span class="w"> </span><span class="mf">4.0</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"2022-05-01"</span><span class="p">:</span><span class="w"> </span><span class="mf">4.0</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"2022-05-01"</span><span class="p">:</span><span class="w"> </span><span class="mf">4.0</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"2022-05-01"</span><span class="p">:</span><span class="w"> </span><span class="mf">5.0</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"2022-05-02"</span><span class="p">:</span><span class="w"> </span><span class="mf">4.0</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"2022-05-03"</span><span class="p">:</span><span class="w"> </span><span class="mf">4.0</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"2022-05-04"</span><span class="p">:</span><span class="w"> </span><span class="mf">4.0</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"2022-05-05"</span><span class="p">:</span><span class="w"> </span><span class="mf">5.0</span><span class="p">,</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="nl">"daily_planned_hrs"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="nl">"2022-05-01"</span><span class="p">:</span><span class="w"> </span><span class="mf">8.0</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"2022-05-01"</span><span class="p">:</span><span class="w"> </span><span class="mf">8.0</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"2022-05-01"</span><span class="p">:</span><span class="w"> </span><span class="mf">8.0</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"2022-05-01"</span><span class="p">:</span><span class="w"> </span><span class="mf">8.0</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"2022-05-01"</span><span class="p">:</span><span class="w"> </span><span class="mf">8.0</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"2022-05-02"</span><span class="p">:</span><span class="w"> </span><span class="mf">8.0</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"2022-05-03"</span><span class="p">:</span><span class="w"> </span><span class="mf">8.0</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"2022-05-04"</span><span class="p">:</span><span class="w"> </span><span class="mf">8.0</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"2022-05-05"</span><span class="p">:</span><span class="w"> </span><span class="mf">8.0</span><span class="p">,</span><span class="w">
         </span><span class="p">},</span><span class="w">
 
         </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w">
@@ -10960,6 +11246,64 @@ start=2022-05-01&amp;end=2022-05-05&amp;data=actual,planned&amp;daily_hrs=true"<
       </span><span class="p">{</span><span class="err">...</span><span class="p">},</span><span class="w">
       </span><span class="p">{</span><span class="err">...</span><span class="p">}</span><span class="w">      
    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>Example: Get capacity hours by resource</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="s2">"https://app.eresourcescheduler.cloud/rest/v1/utilization?</span><span class="se">\</span><span class="s2">
+view=resource&amp;data=capacity&amp;start=2022-05-01&amp;end=2022-05-31"</span> <span class="se">\</span>
+<span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+<span class="nt">-H</span> <span class="s2">"Authorization: Bearer B8x5Vj1O65r6wnoV"</span> <span class="se">\</span>
+</code></pre></div>
+<blockquote>
+<p>Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"end_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-05-31"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"offset"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"total_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">11</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"limit"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"start_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-05-01"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"resources"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Albert Murphy"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"total_capacity_hrs"</span><span class="p">:</span><span class="w"> </span><span class="mf">176.0</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Ayn Dante"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"total_capacity_hrs"</span><span class="p">:</span><span class="w"> </span><span class="mf">528.0</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Chris Rose"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"total_capacity_hrs"</span><span class="p">:</span><span class="w"> </span><span class="mf">220.0</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Emily Eliot"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"total_capacity_hrs"</span><span class="p">:</span><span class="w"> </span><span class="mf">181.5</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">9</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Jayden Brock"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"total_capacity_hrs"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Joanna Collins"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"total_capacity_hrs"</span><span class="p">:</span><span class="w"> </span><span class="mf">176.0</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Martha Day"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"total_capacity_hrs"</span><span class="p">:</span><span class="w"> </span><span class="mf">528.0</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <blockquote>
@@ -11048,7 +11392,7 @@ view=project&amp;data=requested&amp;start=2022-05-01&amp;end=2022-05-31"</span> 
 </tr>
 <tr>
 <td style="text-align: right"><strong>data</strong><br><code>optional</code></td>
-<td style="text-align: left">This parameter allows querying for planned and actual utilization. Possible values for this parameter can be any combination of &#39;planned,&#39; &#39;actual,&#39; or &#39;requested&#39; when the view is set to project.<br><em>Default value of <code>data</code> is</em> <span class="required"><strong><code>planned</code></strong></span>.</td>
+<td style="text-align: left">This parameter allows querying various metrics such as planned utilization, actual utilization, resource capacity, and requested hours. The keys for different metrics are listed below: <br><code>planned</code>: for planned utilization<br><code>actual</code>: for actual utilization<br><code>capacity</code>: for resource capacity (only applicable when the view is set to resource)<br><code>requested</code>: for requirement hours (only applicable when the view is set to project)<br>User can pass any combination of applicable metrics seperated by comma (i.e. planned,actual).<br><em>Default value of <code>data</code> is</em> <span class="required"><strong><code>planned</code></strong></span>.</td>
 </tr>
 <tr>
 <td style="text-align: right"><strong>daily_hrs</strong><br><code>optional</code></td>
