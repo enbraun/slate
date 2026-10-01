@@ -237,6 +237,16 @@
   background-color: #002b36;
   font-weight: bold;
 }
+.highlight .ge {
+  font-style: italic;
+}
+.highlight .ges {
+  font-weight: bold;
+  font-style: italic;
+}
+.highlight .gs {
+  font-weight: bold;
+}
 .highlight .k, .highlight .kn, .highlight .kp, .highlight .kr, .highlight .kv {
   color: #6c71c4;
 }
@@ -283,16 +293,16 @@
   color: #859900;
 }
     </style>
-    <link href="stylesheets/screen-37168a3c.css" rel="stylesheet" media="screen" />
-    <link href="stylesheets/print-953e3353.css" rel="stylesheet" media="print" />
+    <link href="stylesheets/screen-b64fd062.css" rel="stylesheet" media="screen" />
+    <link href="stylesheets/print-2f4e17c3.css" rel="stylesheet" media="print" />
     <link href="stylesheets/styles-4063b7fb.css" rel="stylesheet" media="screen" />
    
-      <script src="javascripts/all-a9fde460.js"></script>
+      <script src="javascripts/all-1badf9fd.js"></script>
 
     <script>
       $(function() { setupCodeCopy(); });
     </script>
-    <script src="javascripts/ers-d4e03963.js"></script>
+    <script src="javascripts/ers-6f93c5d3.js"></script>
   </head>
 
   <body class="index" data-languages="[&quot;shell&quot;]">
@@ -7023,6 +7033,21 @@ curl <span class="nt">-v</span> <span class="nt">-X</span> DELETE <span class="s
         ]
       }'</span>
 </code></pre></div>
+<blockquote>
+<p>Example Request: Create a requirement beyond project dates (confirm when the project setting is <strong>Ask</strong>).</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code> curl <span class="nt">-v</span> <span class="nt">-X</span> POST <span class="s2">"https://app.eresourcescheduler.cloud/rest</span><span class="se">\</span><span class="s2">
+/v1/requirements?allow_beyond_project_dates=true"</span> <span class="se">\</span>
+ <span class="nt">-H</span> <span class="s2">"Authorization: Bearer B8x5Vj1O65r6wnoV"</span> <span class="se">\</span>
+ <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+ <span class="nt">-d</span> <span class="s1">'{ 
+        "project_id": 1,
+        "start_time": "2023-10-02T00:00:00",
+        "end_time": "2023-10-03T00:00:00",
+        "effort": 3,
+        "unit": 4
+      }'</span>
+</code></pre></div>
 <p>Creates a new requirement object.</p>
 
 <p><span class="optional"><b>REQUEST BODY PARAMETERS</b></span></p>
@@ -7102,8 +7127,12 @@ curl <span class="nt">-v</span> <span class="nt">-X</span> DELETE <span class="s
 <td style="text-align: left">This status code indicates that the operation was successful and  a requirement is created successfully.</td>
 </tr>
 <tr>
+<td style="text-align: left"><strong>409</strong> <br> <span class = "error"><code>Conflict</code></span></td>
+<td style="text-align: left">A conflict occurs when the requirement starts before the project start date or ends after the project end date, and the matching project setting (<em>When requirement starts before project start date</em> or <em>When requirement ends after project end date</em>) is set to <strong>Ask</strong>. These settings are configured per project using eRS Cloud Application; their defaults can be set (and locked) by Administrator in <a href="https://app.eresourcescheduler.cloud/#!/admin/settings/requirement" target="_blank" class="api-ref">Administrator Requirement Settings</a>.<br>To confirm, repeat the request with the query parameter <code>allow_beyond_project_dates=true</code>. Omitting the parameter or passing <code>false</code> has the same effect: the request is rejected with <strong>409</strong> and the requirement is not created.</td>
+</tr>
+<tr>
 <td style="text-align: left"><strong>400</strong> <br> <span class = "error"><code>Bad Request</code></span></td>
-<td style="text-align: left">Bad Request error occurs when a request is malformed, syntactically incorrect, missing required parameters or any unknown parameter is passed. Additionally, Bad request may also occur in one of these conditions:<ul><li>Project is marked as  Archived.</li><li>Duration of requirement is more than allowed requirement duration set by Administrator using ers Cloud Application in <a href="https://app.eresourcescheduler.cloud/#!/admin/settings/requirement" target="_blank" class="api-ref">Administrator Requirement Settings</a>.</li></ul></td>
+<td style="text-align: left">Bad Request error occurs when a request is malformed, syntactically incorrect, missing required parameters or any unknown parameter is passed. Additionally, Bad request may also occur in one of these conditions:<ul><li>Project is marked as  Archived.</li><li>Duration of requirement is more than allowed requirement duration set by Administrator using eRS Cloud Application in <a href="https://app.eresourcescheduler.cloud/#!/admin/settings/requirement" target="_blank" class="api-ref">Administrator Requirement Settings</a>.</li><li>Requirement starts before the project start date or ends after the project end date, and the matching project setting is set to <strong>Restrict</strong>. Restrict takes precedence over Ask, so <code>allow_beyond_project_dates=true</code> does not override it.</li></ul></td>
 </tr>
 <tr>
 <td style="text-align: left"><strong>403</strong> <br> <span class = "error"><code>Forbidden</code></span></td>
@@ -7635,6 +7664,17 @@ start=2023-01-01&amp;end=2023-12-31"</span> <span class="se">\</span>
         "end_time":"2023-10-13T17:00:00"
     }'</span>
 </code></pre></div>
+<blockquote>
+<p>Example Request: Update a requirement beyond project dates (confirm when the project setting is <strong>Ask</strong>).</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-v</span> <span class="nt">-X</span> PUT <span class="s2">"https://app.eresourcescheduler.cloud/rest/v1</span><span class="se">\</span><span class="s2">
+/requirements/251?allow_beyond_project_dates=true"</span> <span class="se">\</span>
+<span class="nt">-H</span> <span class="s2">"Authorization: Bearer B8x5Vj1O65r6wnoV"</span> <span class="se">\</span>
+<span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+<span class="nt">-d</span> <span class="s1">'{ 
+        "end_time":"2023-12-15T17:00:00"
+    }'</span>
+</code></pre></div>
 <p><span class="optional"><b>REQUEST BODY PARAMETERS</b></span></p>
 
 <table><thead>
@@ -7712,8 +7752,12 @@ start=2023-01-01&amp;end=2023-12-31"</span> <span class="se">\</span>
 <td style="text-align: left">This indicates that the operation was successful and a requirement updated successfully.</td>
 </tr>
 <tr>
+<td style="text-align: right"><strong>409</strong> <br> <span class = "error"><code>Conflict</code></span></td>
+<td style="text-align: left">Conflict indicates that when you are updating a requirement linked to booking(s), then you must pass one of the parameters i.e; <code>delete_bookings=true</code> to delete requirement and respective booking or another parameter <code>unlink_bookings=true</code> will update requirement after unlinking the respective bookings. this action will be performed through <a href="https://app.eresourcescheduler.cloud/#!/admin/settings/requirement" target="_blank" class="api-ref">Administrator Requirement Settings.</a><br><br>A conflict also occurs when the requirement starts before the project start date or ends after the project end date, and the matching project setting (<em>When requirement starts before project start date</em> or <em>When requirement ends after project end date</em>) is set to <strong>Ask</strong>. These settings are configured per project using eRS Cloud Application; their defaults can be set (and locked) by Administrator in <a href="https://app.eresourcescheduler.cloud/#!/admin/settings/requirement" target="_blank" class="api-ref">Administrator Requirement Settings</a>.<br>To confirm, repeat the request with the query parameter <code>allow_beyond_project_dates=true</code>. Omitting the parameter or passing <code>false</code> has the same effect: the request is rejected with <strong>409</strong> and the requirement is not updated. Both conflicts can occur on the same request; the <code>field</code> of the error reason names the parameter to pass (<code>delete_bookings</code> / <code>unlink_bookings</code> or <code>allow_beyond_project_dates</code>), and the parameters can be combined in one request.</td>
+</tr>
+<tr>
 <td style="text-align: right"><strong>400</strong> <br> <span class = "error"><code>Bad Request</code></span></td>
-<td style="text-align: left">Bad Request error occurs when a request is malformed, syntactically incorrect, empty required parameters or any unknown parameter is passed. Additionally, Bad request may also occur in one of these conditions:<ul><li>Trying to update <code>start_time</code> or <code>end_time</code> such that <code>end_time</code> gets earlier than <code>start_time</code>.</li><li>Trying to update requirements of archived project.</li><li>Duration of requirement is more than allowed requirement duration set by Administrator using ers Cloud Application in <a href="https://app.eresourcescheduler.cloud/#!/admin/settings/requirement" target="_blank" class="api-ref">Administrator Requirement Settings</a>.</li></ul></td>
+<td style="text-align: left">Bad Request error occurs when a request is malformed, syntactically incorrect, empty required parameters or any unknown parameter is passed. Additionally, Bad request may also occur in one of these conditions:<ul><li>Trying to update <code>start_time</code> or <code>end_time</code> such that <code>end_time</code> gets earlier than <code>start_time</code>.</li><li>Trying to update requirements of archived project.</li><li>Duration of requirement is more than allowed requirement duration set by Administrator using eRS Cloud Application in <a href="https://app.eresourcescheduler.cloud/#!/admin/settings/requirement" target="_blank" class="api-ref">Administrator Requirement Settings</a>.</li><li>Requirement starts before the project start date or ends after the project end date, and the matching project setting is set to <strong>Restrict</strong>. Restrict takes precedence over Ask, so <code>allow_beyond_project_dates=true</code> does not override it.</li></ul></td>
 </tr>
 <tr>
 <td style="text-align: right"><strong>403</strong> <br> <span class = "error"><code>Forbidden</code></span></td>
@@ -7722,10 +7766,6 @@ start=2023-01-01&amp;end=2023-12-31"</span> <span class="se">\</span>
 <tr>
 <td style="text-align: right"><strong>404</strong> <br> <span class = "error"><code>Not Found</code></span></td>
 <td style="text-align: left">Not Found error occurs when requested requirement does not exist (i.e. There is no requirement with given ID). This may also occur when requesting a requirement that has been deleted.</td>
-</tr>
-<tr>
-<td style="text-align: right"><strong>409</strong> <br> <span class = "error"><code>Conflict</code></span></td>
-<td style="text-align: left">Conflict indicates that when you are updating a requirement linked to booking(s), then you must pass one of the parameters i.e; <code>delete_bookings=true</code> to delete requirement and respective booking or another parameter <code>unlink_bookings=true</code> will update requirement after unlinking the respective bookings. this action will be performed through <a href="https://app.eresourcescheduler.cloud/#!/admin/settings/requirement" target="_blank" class="api-ref">Administrator Requirement Settings.</a></td>
 </tr>
 </tbody></table>
 <h2 id='requirement-operator'>Requirement Operator</h2>
@@ -8153,6 +8193,20 @@ start=2023-01-01&amp;end=2023-12-31"</span> <span class="se">\</span>
        "unit": 1 
      }'</span>
 </code></pre></div>
+<blockquote>
+<p>Example Request: Create a booking beyond project dates (confirm when the project setting is <strong>Ask</strong>).</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code> curl <span class="nt">-v</span> <span class="nt">-X</span> POST <span class="s2">"https://app.eresourcescheduler.cloud/rest</span><span class="se">\</span><span class="s2">
+/v1/bookings?allow_beyond_project_dates=true"</span> <span class="se">\</span>
+ <span class="nt">-H</span> <span class="s2">"Authorization: Bearer B8x5Vj1O65r6wnoV"</span> <span class="se">\</span>
+ <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+ <span class="nt">-d</span> <span class="s1">'{ 
+       "resource_id": 1, 
+       "project_id" : 9, 
+       "start_time" : "2017-06-01T09:00", 
+       "end_time": "2017-06-11T17:00"
+     }'</span>
+</code></pre></div>
 <p>Creates a new booking object.</p>
 
 <p><span class="optional"><b>REQUEST BODY PARAMETERS</b></span></p>
@@ -8240,8 +8294,12 @@ start=2023-01-01&amp;end=2023-12-31"</span> <span class="se">\</span>
 <td style="text-align: left">This status code indicates that the operation was successful and  a booking is created successfully.</td>
 </tr>
 <tr>
+<td style="text-align: left"><strong>409</strong> <br> <span class = "error"><code>Conflict</code></span></td>
+<td style="text-align: left">A conflict occurs when the booking starts before the project start date or ends after the project end date, and the matching project setting (<em>When booking starts before project start date</em> or <em>When booking ends after project end date</em>) is set to <strong>Ask</strong>. These settings are configured per project using eRS Cloud Application; their defaults can be set (and locked) by Administrator in <a href="https://app.eresourcescheduler.cloud/#!/admin/settings/chart" target="_blank" class="api-ref">Administrator Scheduling Settings</a>.<br>To confirm, repeat the request with the query parameter <code>allow_beyond_project_dates=true</code>. Omitting the parameter or passing <code>false</code> has the same effect: the request is rejected with <strong>409</strong> and the booking is not created.</td>
+</tr>
+<tr>
 <td style="text-align: left"><strong>400</strong> <br> <span class = "error"><code>Bad Request</code></span></td>
-<td style="text-align: left">Bad Request error occurs when a request is malformed, syntactically incorrect, missing required parameters or any unknown parameter is passed. Additionally, Bad request may also occur in one of these conditions :<ul><li>Booking is starting before the <code>start_date</code> of resource or ending after the <code>last_date</code> of resource (if resource has a <code>last_date</code> defined.)</li><li>Resource is Archived i.e. if targeted resource has a <code>last_date</code> of past.</li><li>Project is marked as  Archived.</li><li>Duration of booking is more than allowed booking duration set by Administrator using ers Cloud Application in <a href="https://app.eresourcescheduler.cloud/#!/admin/settings/chart" target="_blank" class="api-ref">Administrator Scheduling Settings</a>.</li></ul></td>
+<td style="text-align: left">Bad Request error occurs when a request is malformed, syntactically incorrect, missing required parameters or any unknown parameter is passed. Additionally, Bad request may also occur in one of these conditions :<ul><li>Booking is starting before the <code>start_date</code> of resource or ending after the <code>last_date</code> of resource (if resource has a <code>last_date</code> defined.)</li><li>Resource is Archived i.e. if targeted resource has a <code>last_date</code> of past.</li><li>Project is marked as  Archived.</li><li>Duration of booking is more than allowed booking duration set by Administrator using eRS Cloud Application in <a href="https://app.eresourcescheduler.cloud/#!/admin/settings/chart" target="_blank" class="api-ref">Administrator Scheduling Settings</a>.</li><li>Booking starts before the project start date or ends after the project end date, and the matching project setting is set to <strong>Restrict</strong>. Restrict takes precedence over Ask, so <code>allow_beyond_project_dates=true</code> does not override it.</li></ul></td>
 </tr>
 <tr>
 <td style="text-align: left"><strong>403</strong> <br> <span class = "error"><code>Forbidden</code></span></td>
@@ -8647,6 +8705,28 @@ start=2018-01-01&amp;end=2018-12-31"</span> <span class="se">\</span>
       "start_time" : "2022-12-05T09:00" 
     }'</span>
 </code></pre></div>
+<blockquote>
+<p>Example Request: Update a booking beyond project dates (confirm when the project setting is <strong>Ask</strong>).</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-v</span> <span class="nt">-X</span> PUT <span class="s2">"https://app.eresourcescheduler.cloud/rest</span><span class="se">\</span><span class="s2">
+/v1/bookings/34?allow_beyond_project_dates=true"</span> <span class="se">\</span>
+<span class="nt">-H</span> <span class="s2">"Authorization: Bearer B8x5Vj1O65r6wnoV"</span> <span class="se">\</span>
+<span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+<span class="nt">-d</span> <span class="s1">'{ 
+      "end_time" : "2018-07-20T17:00" 
+    }'</span>
+</code></pre></div>
+<blockquote>
+<p>Example Request: Update a recurring booking and all its related bookings beyond project dates.</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-v</span> <span class="nt">-X</span> PUT <span class="s2">"https://app.eresourcescheduler.cloud/rest</span><span class="se">\</span><span class="s2">
+/v1/bookings/28?update_connected_bookings=1&amp;allow_beyond_project_dates=true"</span> <span class="se">\</span>
+<span class="nt">-H</span> <span class="s2">"Authorization: Bearer B8x5Vj1O65r6wnoV"</span> <span class="se">\</span>
+<span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+<span class="nt">-d</span> <span class="s1">'{ 
+      "start_time" : "2022-12-05T09:00" 
+    }'</span>
+</code></pre></div>
 <p><span class="optional"><b>REQUEST BODY PARAMETERS</b></span></p>
 
 <table><thead>
@@ -8733,11 +8813,11 @@ start=2018-01-01&amp;end=2018-12-31"</span> <span class="se">\</span>
 </tr>
 <tr>
 <td style="text-align: right"><strong>409</strong> <br> <span class = "error"><code>Conflict</code></span></td>
-<td style="text-align: left">Conflict indicates that you are updating a recurring booking, so you must pass the parameter <code>update_connected_bookings</code> to replicate the changes to the related bookings. The value for the parameter <code>update_connected_bookings</code> can be <strong>1</strong>(to update all bookings), <strong>2</strong>(to update all future bookings) or <strong>4</strong>(to update only this booking) as shown in the example requests.</td>
+<td style="text-align: left">Conflict indicates that you are updating a recurring booking, so you must pass the parameter <code>update_connected_bookings</code> to replicate the changes to the related bookings. The value for the parameter <code>update_connected_bookings</code> can be <strong>1</strong>(to update all bookings), <strong>2</strong>(to update all future bookings) or <strong>4</strong>(to update only this booking) as shown in the example requests.<br><br>A conflict also occurs when the booking starts before the project start date or ends after the project end date, and the matching project setting (<em>When booking starts before project start date</em> or <em>When booking ends after project end date</em>) is set to <strong>Ask</strong>. These settings are configured per project using eRS Cloud Application; their defaults can be set (and locked) by Administrator in <a href="https://app.eresourcescheduler.cloud/#!/admin/settings/chart" target="_blank" class="api-ref">Administrator Scheduling Settings</a>.<br>To confirm, repeat the request with the query parameter <code>allow_beyond_project_dates=true</code>. Omitting the parameter or passing <code>false</code> has the same effect: the request is rejected with <strong>409</strong> and the booking is not updated. Both conflicts can occur on the same request; the <code>field</code> of the error reason names the parameter to pass (<code>update_connected_bookings</code> or <code>allow_beyond_project_dates</code>), and the parameters can be combined in one request. When <code>update_connected_bookings</code> is passed, the project date check applies to every affected booking.</td>
 </tr>
 <tr>
 <td style="text-align: right"><strong>400</strong> <br> <span class = "error"><code>Bad Request</code></span></td>
-<td style="text-align: left">Bad Request error occurs when a request is malformed, syntactically incorrect, empty required parameters or any unknown parameter is passed. Additionally, Bad request may also occur in one of these conditions :<ul><li>Trying to update <code>start_time</code> or <code>end_time</code> such that <code>end_time</code> gets earlier than <code>start_time</code>.</li><li>Trying to update <code>start_time</code> of booking before the <code>start_date</code> of resource or <code>end_time</code> after the <code>last_date</code> of resource (if resource has a <code>last_date</code> defined.)</li><li>Trying to update a booking of archived resource</li><li>Trying to update bookings of archived project.</li><li>Duration of booking is more than allowed booking duration set by Administrator using ers Cloud Application in <a href="https://app.eresourcescheduler.cloud/#!/admin/settings/chart" target="_blank" class="api-ref">Administrator Scheduling Settings</a>.</li></ul></td>
+<td style="text-align: left">Bad Request error occurs when a request is malformed, syntactically incorrect, empty required parameters or any unknown parameter is passed. Additionally, Bad request may also occur in one of these conditions :<ul><li>Trying to update <code>start_time</code> or <code>end_time</code> such that <code>end_time</code> gets earlier than <code>start_time</code>.</li><li>Trying to update <code>start_time</code> of booking before the <code>start_date</code> of resource or <code>end_time</code> after the <code>last_date</code> of resource (if resource has a <code>last_date</code> defined.)</li><li>Trying to update a booking of archived resource</li><li>Trying to update bookings of archived project.</li><li>Duration of booking is more than allowed booking duration set by Administrator using eRS Cloud Application in <a href="https://app.eresourcescheduler.cloud/#!/admin/settings/chart" target="_blank" class="api-ref">Administrator Scheduling Settings</a>.</li><li>Booking starts before the project start date or ends after the project end date, and the matching project setting is set to <strong>Restrict</strong>. Restrict takes precedence over Ask, so <code>allow_beyond_project_dates=true</code> does not override it.</li></ul></td>
 </tr>
 <tr>
 <td style="text-align: right"><strong>403</strong> <br> <span class = "error"><code>Forbidden</code></span></td>
