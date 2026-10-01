@@ -93,6 +93,21 @@ Name         |  Description
      }'
 ```
 
+> Example Request: Create a booking beyond project dates (confirm when the project setting is **Ask**).
+
+```shell
+ curl -v -X POST "https://app.eresourcescheduler.cloud/rest\
+/v1/bookings?allow_beyond_project_dates=true" \
+ -H "Authorization: Bearer B8x5Vj1O65r6wnoV" \
+ -H "Content-Type: application/json" \
+ -d '{ 
+       "resource_id": 1, 
+       "project_id" : 9, 
+       "start_time" : "2017-06-01T09:00", 
+       "end_time": "2017-06-11T17:00"
+     }'
+```
+
 Creates a new booking object.
 
 
@@ -122,8 +137,8 @@ Name               |  Description
 | Code      |Description |
  :---        |    :----   |
 | **201** <br><span class = "success">`Created`</span> | This status code indicates that the operation was successful and  a booking is created successfully.|
-**409** <br> <span class = "error">`Conflict`</span> | A conflict occurs when the booking starts before the project start date or ends after the project end date, and the corresponding booking setting is set to **Ask** in the project profile.<br>To confirm booking creation, pass the parameter `allow_beyond_project_dates` with the value `true`. To decline booking creation, pass the parameter `allow_beyond_project_dates` with the value `false`.
-**400** <br> <span class = "error">`Bad Request`</span> | Bad Request error occurs when a request is malformed, syntactically incorrect, missing required parameters or any unknown parameter is passed. Additionally, Bad request may also occur in one of these conditions :<ul><li>Booking is starting before the `start_date` of resource or ending after the `last_date` of resource (if resource has a `last_date` defined.)</li><li>Resource is Archived i.e. if targeted resource has a `last_date` of past.</li><li>Project is marked as  Archived.</li><li>Duration of booking is more than allowed booking duration set by Administrator using eRS Cloud Application in <a href="https://app.eresourcescheduler.cloud/#!/admin/settings/chart" target="_blank" class="api-ref">Administrator Scheduling Settings</a>.</li><li>Booking starts before the project start date or ends after the project end date, and the corresponding booking setting is set to **Restrict** in the project profile.</li></ul>
+**409** <br> <span class = "error">`Conflict`</span> | A conflict occurs when the booking starts before the project start date or ends after the project end date, and the matching project setting (_When booking starts before project start date_ or _When booking ends after project end date_) is set to **Ask**. These settings are configured per project using eRS Cloud Application; their defaults can be set (and locked) by Administrator in <a href="https://app.eresourcescheduler.cloud/#!/admin/settings/chart" target="_blank" class="api-ref">Administrator Scheduling Settings</a>.<br>To confirm, repeat the request with the query parameter `allow_beyond_project_dates=true`. Omitting the parameter or passing `false` has the same effect: the request is rejected with **409** and the booking is not created.
+**400** <br> <span class = "error">`Bad Request`</span> | Bad Request error occurs when a request is malformed, syntactically incorrect, missing required parameters or any unknown parameter is passed. Additionally, Bad request may also occur in one of these conditions :<ul><li>Booking is starting before the `start_date` of resource or ending after the `last_date` of resource (if resource has a `last_date` defined.)</li><li>Resource is Archived i.e. if targeted resource has a `last_date` of past.</li><li>Project is marked as  Archived.</li><li>Duration of booking is more than allowed booking duration set by Administrator using eRS Cloud Application in <a href="https://app.eresourcescheduler.cloud/#!/admin/settings/chart" target="_blank" class="api-ref">Administrator Scheduling Settings</a>.</li><li>Booking starts before the project start date or ends after the project end date, and the matching project setting is set to **Restrict**. Restrict takes precedence over Ask, so `allow_beyond_project_dates=true` does not override it.</li></ul>
 **403** <br> <span class = "error">`Forbidden`</span> |Authorization failed due to insufficient permissions. This occurs when user does not have enough access rights to perform this action. Access for each user can be controlled by an Administrator using eRS Cloud Application.|
 
 ## List Bookings
@@ -438,6 +453,30 @@ curl -v -X PUT "https://app.eresourcescheduler.cloud/rest\
     }'
 ```
 
+> Example Request: Update a booking beyond project dates (confirm when the project setting is **Ask**).
+
+```shell
+curl -v -X PUT "https://app.eresourcescheduler.cloud/rest\
+/v1/bookings/34?allow_beyond_project_dates=true" \
+-H "Authorization: Bearer B8x5Vj1O65r6wnoV" \
+-H "Content-Type: application/json" \
+-d '{ 
+      "end_time" : "2018-07-20T17:00" 
+    }'
+```
+
+> Example Request: Update a recurring booking and all its related bookings beyond project dates.
+
+```shell
+curl -v -X PUT "https://app.eresourcescheduler.cloud/rest\
+/v1/bookings/28?update_connected_bookings=1&allow_beyond_project_dates=true" \
+-H "Authorization: Bearer B8x5Vj1O65r6wnoV" \
+-H "Content-Type: application/json" \
+-d '{ 
+      "start_time" : "2022-12-05T09:00" 
+    }'
+```
+
 
 <span class="optional"><b>REQUEST BODY PARAMETERS</b></span>
 
@@ -465,8 +504,8 @@ Name               |  Description
 | Code      | Description | 
 | ---:        |    :----   | 
 **200** <br> <span class = "success">`OK`</span>    |  This indicates that the operation was successful and a booking updated successfully.
-**409** <br> <span class = "error">`Conflict`</span> | Conflict indicates that you are updating a recurring booking, so you must pass the parameter `update_connected_bookings` to replicate the changes to the related bookings. The value for the parameter `update_connected_bookings` can be **1**(to update all bookings), **2**(to update all future bookings) or **4**(to update only this booking) as shown in the example requests.<br><br>A conflict also occurs when the booking starts before the project start date or ends after the project end date, and the corresponding booking setting is set to **Ask** in the project profile.<br>To confirm booking update, pass the parameter `allow_beyond_project_dates` with the value `true`. To decline booking update, pass the parameter `allow_beyond_project_dates` with the value `false`.
-**400** <br> <span class = "error">`Bad Request`</span> | Bad Request error occurs when a request is malformed, syntactically incorrect, empty required parameters or any unknown parameter is passed. Additionally, Bad request may also occur in one of these conditions :<ul><li>Trying to update `start_time` or `end_time` such that `end_time` gets earlier than `start_time`.</li><li>Trying to update `start_time` of booking before the `start_date` of resource or `end_time` after the `last_date` of resource (if resource has a `last_date` defined.)</li><li>Trying to update a booking of archived resource</li><li>Trying to update bookings of archived project.</li><li>Duration of booking is more than allowed booking duration set by Administrator using eRS Cloud Application in <a href="https://app.eresourcescheduler.cloud/#!/admin/settings/chart" target="_blank" class="api-ref">Administrator Scheduling Settings</a>.</li><li>Booking starts before the project start date or ends after the project end date, and the corresponding booking setting is set to **Restrict** in the project profile.</li></ul>
+**409** <br> <span class = "error">`Conflict`</span> | Conflict indicates that you are updating a recurring booking, so you must pass the parameter `update_connected_bookings` to replicate the changes to the related bookings. The value for the parameter `update_connected_bookings` can be **1**(to update all bookings), **2**(to update all future bookings) or **4**(to update only this booking) as shown in the example requests.<br><br>A conflict also occurs when the booking starts before the project start date or ends after the project end date, and the matching project setting (_When booking starts before project start date_ or _When booking ends after project end date_) is set to **Ask**. These settings are configured per project using eRS Cloud Application; their defaults can be set (and locked) by Administrator in <a href="https://app.eresourcescheduler.cloud/#!/admin/settings/chart" target="_blank" class="api-ref">Administrator Scheduling Settings</a>.<br>To confirm, repeat the request with the query parameter `allow_beyond_project_dates=true`. Omitting the parameter or passing `false` has the same effect: the request is rejected with **409** and the booking is not updated. Both conflicts can occur on the same request; the `field` of the error reason names the parameter to pass (`update_connected_bookings` or `allow_beyond_project_dates`), and the parameters can be combined in one request. When `update_connected_bookings` is passed, the project date check applies to every affected booking.
+**400** <br> <span class = "error">`Bad Request`</span> | Bad Request error occurs when a request is malformed, syntactically incorrect, empty required parameters or any unknown parameter is passed. Additionally, Bad request may also occur in one of these conditions :<ul><li>Trying to update `start_time` or `end_time` such that `end_time` gets earlier than `start_time`.</li><li>Trying to update `start_time` of booking before the `start_date` of resource or `end_time` after the `last_date` of resource (if resource has a `last_date` defined.)</li><li>Trying to update a booking of archived resource</li><li>Trying to update bookings of archived project.</li><li>Duration of booking is more than allowed booking duration set by Administrator using eRS Cloud Application in <a href="https://app.eresourcescheduler.cloud/#!/admin/settings/chart" target="_blank" class="api-ref">Administrator Scheduling Settings</a>.</li><li>Booking starts before the project start date or ends after the project end date, and the matching project setting is set to **Restrict**. Restrict takes precedence over Ask, so `allow_beyond_project_dates=true` does not override it.</li></ul>
 **403** <br> <span class = "error">`Forbidden`</span> |Authorization failed due to insufficient permissions. This occurs when user does not have enough access rights to perform this action. Access for each user can be controlled by an Administrator using eRS Cloud Application.
 **404** <br> <span class = "error">`Not Found`</span> | Not Found error occurs when requested booking does not exist (i.e. There is no booking with given ID). This may also occur when requesting a booking that has been deleted.
 

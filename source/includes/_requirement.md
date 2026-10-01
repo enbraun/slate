@@ -163,6 +163,22 @@ Name         |  Description
       }'
 ```
 
+> Example Request: Create a requirement beyond project dates (confirm when the project setting is **Ask**).
+
+```shell
+ curl -v -X POST "https://app.eresourcescheduler.cloud/rest\
+/v1/requirements?allow_beyond_project_dates=true" \
+ -H "Authorization: Bearer B8x5Vj1O65r6wnoV" \
+ -H "Content-Type: application/json" \
+ -d '{ 
+        "project_id": 1,
+        "start_time": "2023-10-02T00:00:00",
+        "end_time": "2023-10-03T00:00:00",
+        "effort": 3,
+        "unit": 4
+      }'
+```
+
 Creates a new requirement object.
 
 
@@ -191,8 +207,8 @@ Name               |  Description
 | Code      |Description |
  :---        |    :----   |
 | **201** <br><span class = "success">`Created`</span> | This status code indicates that the operation was successful and  a requirement is created successfully.|
-**409** <br> <span class = "error">`Conflict`</span> | A conflict occurs when the requirement starts before the project start date or ends after the project end date, and the corresponding requirement setting is set to **Ask** in the project profile.<br>To confirm requirement creation, pass the parameter `allow_beyond_project_dates` with the value `true`. To decline requirement creation, pass the parameter `allow_beyond_project_dates` with the value `false`.
-**400** <br> <span class = "error">`Bad Request`</span> | Bad Request error occurs when a request is malformed, syntactically incorrect, missing required parameters or any unknown parameter is passed. Additionally, Bad request may also occur in one of these conditions:<ul><li>Project is marked as  Archived.</li><li>Duration of requirement is more than allowed requirement duration set by Administrator using eRS Cloud Application in <a href="https://app.eresourcescheduler.cloud/#!/admin/settings/requirement" target="_blank" class="api-ref">Administrator Requirement Settings</a>.</li><li>Requirement starts before the project start date or ends after the project end date, and the corresponding requirement setting is set to **Restrict** in the project profile.</li></ul>
+**409** <br> <span class = "error">`Conflict`</span> | A conflict occurs when the requirement starts before the project start date or ends after the project end date, and the matching project setting (_When requirement starts before project start date_ or _When requirement ends after project end date_) is set to **Ask**. These settings are configured per project using eRS Cloud Application; their defaults can be set (and locked) by Administrator in <a href="https://app.eresourcescheduler.cloud/#!/admin/settings/requirement" target="_blank" class="api-ref">Administrator Requirement Settings</a>.<br>To confirm, repeat the request with the query parameter `allow_beyond_project_dates=true`. Omitting the parameter or passing `false` has the same effect: the request is rejected with **409** and the requirement is not created.
+**400** <br> <span class = "error">`Bad Request`</span> | Bad Request error occurs when a request is malformed, syntactically incorrect, missing required parameters or any unknown parameter is passed. Additionally, Bad request may also occur in one of these conditions:<ul><li>Project is marked as  Archived.</li><li>Duration of requirement is more than allowed requirement duration set by Administrator using eRS Cloud Application in <a href="https://app.eresourcescheduler.cloud/#!/admin/settings/requirement" target="_blank" class="api-ref">Administrator Requirement Settings</a>.</li><li>Requirement starts before the project start date or ends after the project end date, and the matching project setting is set to **Restrict**. Restrict takes precedence over Ask, so `allow_beyond_project_dates=true` does not override it.</li></ul>
 **403** <br> <span class = "error">`Forbidden`</span> |Authorization failed due to insufficient permissions. This occurs when user does not have enough access rights to perform this action. Access for each user can be controlled by an Administrator using eRS Cloud Application.|
 
 ## List Requirements
@@ -642,6 +658,18 @@ curl -v -X PUT "https://app.eresourcescheduler.cloud/rest/v1\
     }'
 ```
 
+> Example Request: Update a requirement beyond project dates (confirm when the project setting is **Ask**).
+
+```shell
+curl -v -X PUT "https://app.eresourcescheduler.cloud/rest/v1\
+/requirements/251?allow_beyond_project_dates=true" \
+-H "Authorization: Bearer B8x5Vj1O65r6wnoV" \
+-H "Content-Type: application/json" \
+-d '{ 
+        "end_time":"2023-12-15T17:00:00"
+    }'
+```
+
 
 <span class="optional"><b>REQUEST BODY PARAMETERS</b></span>
 
@@ -670,8 +698,8 @@ Name               |  Description
 | Code      | Description | 
 | ---:        |    :----   | 
 **200** <br> <span class = "success">`OK`</span>    |  This indicates that the operation was successful and a requirement updated successfully.
-**409** <br> <span class = "error">`Conflict`</span> | Conflict indicates that when you are updating a requirement linked to booking(s), then you must pass one of the parameters i.e; `delete_bookings=true` to delete requirement and respective booking or another parameter `unlink_bookings=true` will update requirement after unlinking the respective bookings. this action will be performed through <a href="https://app.eresourcescheduler.cloud/#!/admin/settings/requirement" target="_blank" class="api-ref">Administrator Requirement Settings.</a><br><br>A conflict also occurs when the requirement starts before the project start date or ends after the project end date, and the corresponding requirement setting is set to **Ask** in the project profile.<br>To confirm requirement update, pass the parameter `allow_beyond_project_dates` with the value `true`. To decline requirement update, pass the parameter `allow_beyond_project_dates` with the value `false`.
-**400** <br> <span class = "error">`Bad Request`</span> | Bad Request error occurs when a request is malformed, syntactically incorrect, empty required parameters or any unknown parameter is passed. Additionally, Bad request may also occur in one of these conditions:<ul><li>Trying to update `start_time` or `end_time` such that `end_time` gets earlier than `start_time`.</li><li>Trying to update requirements of archived project.</li><li>Duration of requirement is more than allowed requirement duration set by Administrator using eRS Cloud Application in <a href="https://app.eresourcescheduler.cloud/#!/admin/settings/requirement" target="_blank" class="api-ref">Administrator Requirement Settings</a>.</li><li>Requirement starts before the project start date or ends after the project end date, and the corresponding requirement setting is set to **Restrict** in the project profile.</li></ul>
+**409** <br> <span class = "error">`Conflict`</span> | Conflict indicates that when you are updating a requirement linked to booking(s), then you must pass one of the parameters i.e; `delete_bookings=true` to delete requirement and respective booking or another parameter `unlink_bookings=true` will update requirement after unlinking the respective bookings. this action will be performed through <a href="https://app.eresourcescheduler.cloud/#!/admin/settings/requirement" target="_blank" class="api-ref">Administrator Requirement Settings.</a><br><br>A conflict also occurs when the requirement starts before the project start date or ends after the project end date, and the matching project setting (_When requirement starts before project start date_ or _When requirement ends after project end date_) is set to **Ask**. These settings are configured per project using eRS Cloud Application; their defaults can be set (and locked) by Administrator in <a href="https://app.eresourcescheduler.cloud/#!/admin/settings/requirement" target="_blank" class="api-ref">Administrator Requirement Settings</a>.<br>To confirm, repeat the request with the query parameter `allow_beyond_project_dates=true`. Omitting the parameter or passing `false` has the same effect: the request is rejected with **409** and the requirement is not updated. Both conflicts can occur on the same request; the `field` of the error reason names the parameter to pass (`delete_bookings` / `unlink_bookings` or `allow_beyond_project_dates`), and the parameters can be combined in one request.
+**400** <br> <span class = "error">`Bad Request`</span> | Bad Request error occurs when a request is malformed, syntactically incorrect, empty required parameters or any unknown parameter is passed. Additionally, Bad request may also occur in one of these conditions:<ul><li>Trying to update `start_time` or `end_time` such that `end_time` gets earlier than `start_time`.</li><li>Trying to update requirements of archived project.</li><li>Duration of requirement is more than allowed requirement duration set by Administrator using eRS Cloud Application in <a href="https://app.eresourcescheduler.cloud/#!/admin/settings/requirement" target="_blank" class="api-ref">Administrator Requirement Settings</a>.</li><li>Requirement starts before the project start date or ends after the project end date, and the matching project setting is set to **Restrict**. Restrict takes precedence over Ask, so `allow_beyond_project_dates=true` does not override it.</li></ul>
 **403** <br> <span class = "error">`Forbidden`</span> |Authorization failed due to insufficient permissions. This occurs when user does not have enough access rights to perform this action. Access for each user can be controlled by an Administrator using eRS Cloud Application.
 **404** <br> <span class = "error">`Not Found`</span> | Not Found error occurs when requested requirement does not exist (i.e. There is no requirement with given ID). This may also occur when requesting a requirement that has been deleted.
 
