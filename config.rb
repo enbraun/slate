@@ -27,7 +27,11 @@ ready do
   require './lib/multilang.rb'
 end
 
-activate :sprockets
+# Sprockets only bundles JavaScript (`//= require`). Stylesheets are compiled by
+# Middleman's own SassC renderer; Sprockets 4 passes `.css.scss` through uncompiled.
+activate :sprockets do |c|
+  c.supported_output_extensions = ['.js']
+end
 
 activate :autoprefixer do |config|
   config.browsers = ['last 2 version', 'Firefox ESR']
@@ -50,7 +54,9 @@ configure :build do
   # If you're having trouble with Middleman hanging, commenting
   # out the following two lines has been known to help
   activate :minify_css
-  activate :minify_javascript
+  # harmony: the JavaScript uses ES6 (const/let), which Uglifier rejects by default.
+  require 'uglifier'
+  activate :minify_javascript, compressor: -> { Uglifier.new(harmony: true) }
   # activate :gzip
 end
 
